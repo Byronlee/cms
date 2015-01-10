@@ -1,0 +1,23 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: postgres
+  password: postgres
+  host:  localhost
+
+development:
+  <<: *default
+  database: kr_development
+
+test:
+  <<: *default
+  database: kr_test
+
+production:
+  <<: *default
+  database: kr_production
+  username: postgres
+  password: postgres
+
+
