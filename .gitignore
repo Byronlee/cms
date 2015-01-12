@@ -17,6 +17,8 @@
 /public/uploads
 /public/assets
 /coverage
+/public
+/log
 
 /config/settings.local.rb
 /config/database.yml
