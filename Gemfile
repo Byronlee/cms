@@ -1,65 +1,77 @@
-source 'http://ruby.taobao.org'
+source 'https://rubygems.org'
+source "https://rails-assets.org"
 
 gem 'rails', '4.1.6'
-gem 'pg', '0.17.1'
+gem 'pg', '~> 0.17.1'
+gem 'fume-settable', '~> 0.0.3'
+gem "dalli", "~> 2.7.0"
+gem "redis", "~> 3.2.0"
+gem 'redis-namespace', "~> 1.5.1"
+gem 'sidekiq', '~> 3.1.2'
 
-gem 'faye'
-gem 'thin'
-gem 'http'
-gem 'will_paginate-bootstrap'
-gem 'mini_magick'
+# models
+gem "ancestry", "~> 2.1.0"
+gem 'symbolize', "~> 4.4.1"
+gem "carrierwave", "~> 0.10.0"
+gem 'carrierwave-upyun', '~> 0.1.6'
+gem "mini_magick", "~> 3.7.0"
+gem "acts-as-taggable-on", "~> 3.2.6"
+gem "cancancan", "~> 1.8.2"
+gem "fume-cancan", "~> 0.0.3"
+gem "rails-i18n", "~> 4.0.2"
+gem "activerecord-typedstore", "0.5.0"
 
-#controller
-gem 'responders'
+# views
+gem "simple_form", "~> 3.0.1"
+gem "fume-nav", "~> 0.0.2"
+gem "kaminari", "~> 0.15.1"
+gem "kaminari-bootstrap", "~> 3.0.1"
+gem 'devise-i18n', '~> 0.10.3'
 
-#config
-gem 'settingslogic'
+# controllers
+gem 'devise', "~> 3.2.3"
+gem 'devise-async', '~> 0.9.0'
+gem "responders", "~> 1.1.2"
 
-group :default do
-  gem 'slim-rails', '2.1.5'
-  gem "less-rails", '2.5.0'
-  gem 'coffee-rails', '4.0.1'
-  gem 'font-awesome-rails', '4.2.0.0'
-  gem 'therubyracer', '0.12.1'
-  gem "twitter-bootstrap-rails", '3.2.0'
-  gem 'uglifier'
-  gem 'jquery-rails'
-  gem 'simple_form', '3.0.2'
-  gem 'jbuilder'
-  gem 'epic-editor-rails'
-  gem 'ruby-pinyin'
-  gem 'redcarpet'
-end
+# assets
+gem 'sass-rails', '~> 4.0.3'
+gem 'uglifier', '>= 1.3.0'
+gem 'coffee-rails', '~> 4.0.0'
+gem 'jquery-rails'
+gem 'turbolinks'
+gem 'jquery-turbolinks', "~> 2.0.2"
+gem 'jbuilder', '~> 2.0'
+gem 'sdoc', '~> 0.4.0',          group: :doc
+gem "rails-assets-bootstrap"
 
-group :test do
-  gem 'database_cleaner'
-  gem 'rspec-rails', '3.1.0'
-  gem 'guard-rspec', '4.3.1'
-  gem 'spork-rails', '4.0.0'
-  gem 'guard-spork', '1.5.1'
-  gem 'factory_girl_rails', '4.4.1'
-  gem "simplecov", "~> 0.9.0", require: false
-end
+gem "rails-assets-html5shiv", "~> 3.7.0"
+gem "rails-assets-respond", "~> 1.4.0"
 
-group :test, :development do
-  gem 'pry', "~> 0.9.12.2"
-  gem 'pry-debugger', "~> 0.2.2"
+group :development do
+  # gem "better_errors", "~> 1.1.0"
+  # gem "binding_of_caller", "~> 0.7.2"
+  gem "puma", "~> 2.8.0"
+  gem "quiet_assets", "~> 1.0.2"
   gem "annotate"
-  gem 'byebug'
-  gem 'web-console', '~> 2.0.0.beta2'
   gem 'spring'
 end
 
-group :development do
-  gem 'pry-rails'
-  gem "capsum", "~> 1.0.1", require: false
-  gem 'capistrano', '~> 3.2.0'
-  gem 'capistrano-rails', '~> 1.1.0'
-  gem 'capistrano-bundler', '~> 1.1.0'
-  gem 'capistrano-rvm', '~> 0.1.0'
-  gem 'capistrano-passenger', '~> 0.0.1'
+group :development, :test do
+  gem "capsum", "~> 1.0.0", require: false
+  gem "capistrano-sidekiq", "~> 0.3.4", require: false
+  gem 'pry-nav', '~> 0.2.4'
+  gem "pry-doc"
+  gem "factory_girl_rails", "~> 4.4.1"
 end
 
-gem 'guard-livereload', group: [:development, :test], require: false
-
-
+group :test do
+  gem "rspec-rails", "~> 2.14.1"
+  gem "json_spec", "~> 1.1.1"
+  gem "rspec-sidekiq", '~> 1.0.0'
+  gem "simplecov", "~> 0.9.1", require: false
+  gem "shoulda-matchers", "~> 2.6.1"
+  gem 'database_cleaner', '~> 1.3.0'
+  gem "mocha", "~> 1.1.0"
+  gem "webmock", "~> 1.18.0"
+  gem "minitest"
+end
