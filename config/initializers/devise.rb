@@ -1,10 +1,12 @@
+require "omniauth/strategies/krypton"
+
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
-  # config.secret_key = '126ccdd6510aa666e43340e5587c140bbc2d704fc20b319eb525df5fc688c1d5cf6bbf1857b572635e7dc8b74d9cadedcc32f973a3f7cda13d05977e6c524c05'
+  # config.secret_key = '0f712e407a459db058f76970e84e1daf9fbd5d8c54827128fe212d4d5552f72ddf787c30d93deeee8a9a6d39ec95a3f930e1f4a4b018fbe7769fc432bc304fd6'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -29,7 +31,7 @@ Devise.setup do |config|
   # session. If you need permissions, you should implement that in a before filter.
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
-  # config.authentication_keys = [ :email ]
+  config.authentication_keys = [ :phone ]
 
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
@@ -41,12 +43,12 @@ Devise.setup do |config|
   # Configure which authentication keys should be case-insensitive.
   # These keys will be downcased upon creating or modifying a user and when used
   # to authenticate or find a user. Default is :email.
-  config.case_insensitive_keys = [ :email ]
+  config.case_insensitive_keys = [ :phone ]
 
   # Configure which authentication keys should have whitespace stripped.
   # These keys will have whitespace before and after removed upon creating or
   # modifying a user and when used to authenticate or find a user. Default is :email.
-  config.strip_whitespace_keys = [ :email ]
+  config.strip_whitespace_keys = [ :phone ]
 
   # Tell if authentication through request.params is enabled. True by default.
   # It can be set to an array that will enable params authentication only for the
@@ -97,7 +99,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = 'fb7bf8f50f7ef0b3c839021e49239cb217a6c24c2683f44ceda12749bd011be9d67c7d5d2b8f4dd0defa0ae723a2fd2e29c75b4099806b1dfc4a9b44858829a1'
+  # config.pepper = '5947e808a26496e41d99a1f7fefea5f5d873af065f0ba3f182dadc870fc84e86434e8cef511cbe673084d5770695bf4652f88b5818164f5395a40f89a04054e5'
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -230,6 +232,7 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
+  config.omniauth :krypton, Settings.oauth.krypton.app_id, Settings.oauth.krypton.secret
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
@@ -253,4 +256,7 @@ Devise.setup do |config|
   # When using omniauth, Devise cannot automatically set Omniauth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
+  Warden::Manager.before_logout do |user, auth, opts|
+    auth.cookies.clear(domain: Settings.cookie.domain)
+  end
 end
