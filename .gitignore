@@ -20,5 +20,6 @@
 /public
 /log
 
+/vendor/bundle/
 /config/settings.local.rb
 /config/database.yml
