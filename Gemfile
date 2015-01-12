@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://ruby.taobao.org'
 source "https://rails-assets.org"
 
 gem 'rails', '4.1.6'
