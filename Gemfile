@@ -30,6 +30,7 @@ gem 'devise-i18n', '~> 0.10.3'
 
 # controllers
 gem 'devise', "~> 3.2.3"
+gem 'omniauth-oauth2'
 gem 'devise-async', '~> 0.9.0'
 gem "responders", "~> 1.1.2"
 

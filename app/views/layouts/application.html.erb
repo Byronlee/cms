@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Kr</title>
+  <title>36氪</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag "#{Settings.oauth.krypton.host}/assets/helper.js", 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
