@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://ruby.taobao.org'
 source "https://rails-assets.org"
 
 gem 'rails', '4.1.6'
@@ -8,6 +8,7 @@ gem "dalli", "~> 2.7.0"
 gem "redis", "~> 3.2.0"
 gem 'redis-namespace', "~> 1.5.1"
 gem 'sidekiq', '~> 3.1.2'
+gem 'faraday', '~> 0.9.0'
 
 # models
 gem "ancestry", "~> 2.1.0"
