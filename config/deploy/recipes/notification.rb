@@ -1,7 +1,7 @@
 require "faraday"
 require "json"
 
-set :notification_url, "https://hooks.slack.com/services/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"
+set :notification_url, "https://hooks.slack.com/services/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"
 
 namespace :notification do
   task :started do
