@@ -63,6 +63,8 @@ group :development, :test do
   gem 'pry-nav', '~> 0.2.4'
   gem "pry-doc"
   gem "factory_girl_rails", "~> 4.4.1"
+  gem 'guard-rspec'
+  gem 'guard-livereload'
 end
 
 group :test do

@@ -1,4 +1,5 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+
   def krypton
     omniauth = request.env["omniauth.auth"]
     format = params[:state] == "iframe" ? :iframe : :html
