@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
          :omniauth_providers => [:krypton]
 
   has_many :authentications, dependent: :destroy
-
+  has_many :posts
   has_one :krypton_authentication, -> { where(provider: :krypton) }, class_name: Authentication.to_s
   def apply_omniauth(omniauth)
     self.phone = omniauth['info']['phone'] if phone.blank?

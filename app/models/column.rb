@@ -6,4 +6,7 @@ class Column < ActiveRecord::Base
   validates :name,      length: { maximum: 10 }
   validates :introduce, length: { maximum: 140 }
 
+  has_many :posts, counter_cache: true, dependent: :destroy
+  has_many :contributor, class_name: User.to_s
+  
 end

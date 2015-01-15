@@ -25,4 +25,7 @@ class Post < ActiveRecord::Base
   validates :content, length: { maximum: 10000 }
   validates :slug,    length: { maximum: 14 }
 
+  belongs_to :column
+  belongs_to :author, class_name: User.to_s
+  
 end
