@@ -33,6 +33,7 @@ gem 'devise-i18n', '~> 0.10.3'
 gem 'devise', "~> 3.4.1"
 gem 'devise-async' , "~> 0.9.0"
 gem "responders" , "~> 2.0.2"
+gem 'omniauth-oauth2'
 
 # api
 gem 'grape' , "~> 0.10.1"
@@ -72,6 +73,8 @@ group :development, :test do
   gem 'pry-nav', '~> 0.2.4'
   gem "pry-doc"
   gem "factory_girl_rails", "~> 4.4.1"
+  gem 'guard-rspec'
+  gem 'guard-livereload'
 end
 
 group :test do

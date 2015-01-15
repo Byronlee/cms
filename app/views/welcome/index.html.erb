@@ -1,2 +1,13 @@
 <h1>Welcome#index</h1>
 <p>Find me in app/views/welcome/index.html.erb</p>
+
+<% if current_user %>
+  Hi, <%= current_user.krypton_authentication.info[:email] || current_user.krypton_authentication.info[:phone] %> <%= link_to "注销", destroy_user_session_path, method: :delete %>
+
+  <%= debug current_user %>
+  <%= debug current_user.authentications.find_by_provider(:krypton) %>
+<% else %>
+  <%= link_to "Sign in through Krypton", user_omniauth_authorize_path(provider: :krypton) %>
+  <a href="javascript:KryptonID.new_session('<%= user_omniauth_authorize_path(provider: :krypton, theme: :iframe) %>')">modal</a>
+<% end %>
+

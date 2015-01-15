@@ -42,6 +42,9 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.mock_auth[:kypton] = FactoryGirl.attributes_for(:authentication)[:auth]
+
   config.render_views
   config.include FactoryGirl::Syntax::Methods
   ActiveRecord::Migration.maintain_test_schema!
