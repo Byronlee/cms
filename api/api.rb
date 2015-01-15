@@ -2,7 +2,9 @@ Dir["#{Rails.root}/api/*.rb"].each {|file| require file}
 
 module API
   class API < Grape::API
-    version 'v1'
+    version 'v1', using: :path
+    prefix "api"
+    format :json
 
     rescue_from ActiveRecord::RecordNotFound do
       rack_response({'message' => '404 Not found'}.to_json, 404)
@@ -16,9 +18,6 @@ module API
       API.logger.add Logger::FATAL, message
       rack_response({'message' => '500 Internal Server Error'}, 500)
     end
-
-    prefix "api"
-    format :json
 
     helpers APIHelpers
 
