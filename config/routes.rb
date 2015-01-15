@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  API::API.logger Rails.logger
+  mount API::API => '/'
+
   devise_for :users
   root 'welcome#index'
 
