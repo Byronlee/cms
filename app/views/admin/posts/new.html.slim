@@ -1,0 +1,7 @@
+= simple_form_for [:admin, @post] do | f |
+  = f.input :title
+  = f.input :title_link, as: :url 
+  = f.input :slug  
+  = f.input :summary, as: :text
+  = f.input :content
+  = f.button :submit

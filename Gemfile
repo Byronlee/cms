@@ -28,6 +28,7 @@ gem "fume-nav", "~> 0.0.2"
 gem "kaminari", "~> 0.15.1"
 gem "kaminari-bootstrap", "~> 3.0.1"
 gem 'devise-i18n', '~> 0.10.3'
+gem 'slim-rails'
 
 # controllers
 gem 'devise', "~> 3.4.1"
@@ -53,7 +54,10 @@ gem 'turbolinks'
 gem 'jquery-turbolinks', "~> 2.0.2"
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
-gem "rails-assets-bootstrap"
+gem "therubyracer"
+gem "less-rails" 
+gem "twitter-bootstrap-rails"
+
 
 gem "rails-assets-html5shiv", "~> 3.7.0"
 gem "rails-assets-respond", "~> 1.4.0"

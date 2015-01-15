@@ -92,6 +92,7 @@ GEM
       execjs
     coffee-script-source (1.8.0)
     colorize (0.7.5)
+    commonjs (0.2.7)
     connection_pool (2.1.0)
     crack (0.4.2)
       safe_yaml (~> 1.0.0)
@@ -210,6 +211,12 @@ GEM
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
+    less (2.6.0)
+      commonjs (~> 0.2.7)
+    less-rails (2.6.0)
+      actionpack (>= 3.1)
+      less (~> 2.6.0)
+    libv8 (3.16.14.7)
     loofah (2.0.1)
       nokogiri (>= 1.5.9)
     lumberjack (1.0.9)
@@ -285,10 +292,7 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.2.0)
       sprockets-rails
-    rails-assets-bootstrap (3.3.1)
-      rails-assets-jquery (>= 1.9.0)
     rails-assets-html5shiv (3.7.2)
-    rails-assets-jquery (2.1.3)
     rails-assets-respond (1.4.2)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
@@ -315,6 +319,7 @@ GEM
     redis (3.2.0)
     redis-namespace (1.5.1)
       redis (~> 3.0, >= 3.0.4)
+    ref (1.0.5)
     responders (2.0.2)
       railties (>= 4.2.0.alpha, < 5)
     rest-client (1.7.2)
@@ -366,6 +371,15 @@ GEM
       multi_json (~> 1.0)
       simplecov-html (~> 0.8.0)
     simplecov-html (0.8.0)
+    slim (3.0.1)
+      temple (~> 0.7.3)
+      tilt (>= 1.3.3, < 2.1)
+    slim-rails (3.0.1)
+      actionmailer (>= 3.1, < 5.0)
+      actionpack (>= 3.1, < 5.0)
+      activesupport (>= 3.1, < 5.0)
+      railties (>= 3.1, < 5.0)
+      slim (~> 3.0)
     slop (3.6.0)
     spring (1.2.0)
     sprockets (2.12.3)
@@ -386,6 +400,10 @@ GEM
     symbolize (4.4.1)
       activemodel (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
+    temple (0.7.5)
+    therubyracer (0.12.1)
+      libv8 (~> 3.16.14.0)
+      ref
     thor (0.19.1)
     thread_safe (0.3.4)
     tilt (1.4.1)
@@ -396,6 +414,11 @@ GEM
       hitimes
     turbolinks (2.5.3)
       coffee-rails
+    twitter-bootstrap-rails (3.2.0)
+      actionpack (~> 4.1)
+      execjs (~> 2.2)
+      rails (~> 4.1)
+      railties (~> 4.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.7.0)
@@ -450,6 +473,7 @@ DEPENDENCIES
   json_spec (~> 1.1.1)
   kaminari (~> 0.15.1)
   kaminari-bootstrap (~> 3.0.1)
+  less-rails
   mini_magick (~> 3.7.0)
   minitest
   mocha (~> 1.1.0)
@@ -461,7 +485,6 @@ DEPENDENCIES
   quiet_assets (~> 1.0.2)
   rack-cors (~> 0.3.1)
   rails (= 4.2.0)
-  rails-assets-bootstrap
   rails-assets-html5shiv (~> 3.7.0)
   rails-assets-respond (~> 1.4.0)
   rails-i18n (~> 4.0.2)
@@ -476,9 +499,12 @@ DEPENDENCIES
   sidekiq (~> 3.1.2)
   simple_form (~> 3.0.1)
   simplecov (~> 0.9.1)
+  slim-rails
   spring
   swagger-ui_rails (~> 0.1.7)
   symbolize (~> 4.4.1)
+  therubyracer
   turbolinks
+  twitter-bootstrap-rails
   uglifier (>= 1.3.0)
   webmock (~> 1.18.0)

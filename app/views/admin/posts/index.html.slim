@@ -1,0 +1,15 @@
+button
+  = link_to "创建文章", new_admin_post_path
+table.table
+  tr
+    th ID
+    th 标题
+    th 作者
+    th 专栏
+    th 创建时间
+    th 状态
+    th 操作
+  = render @posts
+
+
+

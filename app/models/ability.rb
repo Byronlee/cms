@@ -11,9 +11,13 @@ class Ability
 
   def member(user)
     can :read, :welcome
+    can :read, :admin
+    can :manage, :all
   end
 
   def anonymous(user)
     can :read, :welcome
+    can :read, :admin    
+    can :manage, :all
   end
 end
