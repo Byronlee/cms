@@ -1,7 +1,7 @@
 source 'http://ruby.taobao.org'
 source "https://rails-assets.org"
 
-gem 'rails', '4.2.0'
+gem 'rails', '4.1.6'
 gem 'pg', '~> 0.17.1'
 gem 'fume-settable', '~> 0.0.3'
 gem "dalli", "~> 2.7.0"
@@ -33,7 +33,7 @@ gem 'slim-rails'
 # controllers
 gem 'devise', "~> 3.4.1"
 gem 'devise-async' , "~> 0.9.0"
-gem "responders" , "~> 2.0.2"
+gem "responders"
 gem 'omniauth-oauth2'
 
 # api
