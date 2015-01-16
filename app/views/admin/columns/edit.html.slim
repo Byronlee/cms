@@ -1,4 +1,6 @@
 = simple_form_for [:admin, @column] do | f |
   = f.input :name
+  = f.input :icon
+  = f.input :cover
   = f.input :introduce, as: :text
   = f.button :submit

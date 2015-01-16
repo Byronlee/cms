@@ -1,6 +1,6 @@
 class Admin::ColumnsController < Admin::BaseController
   def index
-  	@columns = Column.all
+  	@columns = Column.order("id desc")
   end
 
   def update
@@ -21,6 +21,6 @@ class Admin::ColumnsController < Admin::BaseController
   private
 
   def column_params
-    params.require(:column).permit(:name, :introduce) if params[:column]
+    params.require(:column).permit(:name, :introduce, :icon, :cover) if params[:column]
   end
 end
