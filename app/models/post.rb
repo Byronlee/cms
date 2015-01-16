@@ -11,6 +11,8 @@
 #  slug       :string(255)
 #  state      :string(255)
 #  draft_key  :string(255)
+#  column_id  :integer
+#  user_id    :integer
 #  created_at :datetime
 #  updated_at :datetime
 #  cover      :string(255)
