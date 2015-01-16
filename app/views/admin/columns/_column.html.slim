@@ -1,0 +1,9 @@
+tr
+  td = column.id
+  td = 
+  td = column.name
+  td = column.introduce
+  td = column.created_at
+  td 
+    = link_to "编辑", edit_admin_column_path(column)
+    = link_to "删除", admin_column_path(column), :method => :delete
