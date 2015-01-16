@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: columns
+#
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  introduce  :text
+#  created_at :datetime
+#  updated_at :datetime
+#  cover      :string(255)
+#  icon       :string(255)
+#
+
 class Column < ActiveRecord::Base
   mount_uploader :cover, BaseUploader
   mount_uploader :icon,  BaseUploader
