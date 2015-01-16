@@ -29,6 +29,7 @@ gem "kaminari", "~> 0.15.1"
 gem "kaminari-bootstrap", "~> 3.0.1"
 gem 'devise-i18n', '~> 0.10.3'
 gem 'slim-rails'
+gem 'polymer-rails'
 
 # controllers
 gem 'devise', "~> 3.4.1"
@@ -80,6 +81,7 @@ group :development, :test do
   gem "factory_girl_rails", "~> 4.4.1"
   gem 'guard-rspec'
   gem 'guard-livereload'
+  gem 'web-console', '~> 2.0'
 end
 
 group :test do
