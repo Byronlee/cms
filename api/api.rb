@@ -2,7 +2,7 @@ Dir["#{Rails.root}/api/*.rb"].each {|file| require file}
 
 module API
   class API < Grape::API
-    version 'v1', using: :path
+    version 'v1'
     prefix "api"
     format :json
 
@@ -22,6 +22,13 @@ module API
     helpers APIHelpers
 
     mount Posts
+
+    add_swagger_documentation(
+      mount_path: 'swagger_doc',
+      api_version: 'v1',
+      hide_documentation_path: true,
+      include_base_url: false
+    )
 
   end
 end
