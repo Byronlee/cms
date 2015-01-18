@@ -1,0 +1,33 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/Byronlee/workspace/36kr/36krx2015/spec/support/database_cleaner_helper.rb": [
+        1,
+        null,
+        1,
+        0,
+        0,
+        null,
+        null,
+        1,
+        0,
+        0,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/Byronlee/workspace/36kr/36krx2015/spec/support/devise_helper.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/Byronlee/workspace/36kr/36krx2015/spec/support/sidekiq_helper.rb": [
+        1,
+        1,
+        null
+      ]
+    },
+    "timestamp": 1421575056
+  }
+}
