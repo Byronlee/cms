@@ -1,9 +1,21 @@
-<polymer-element name="next-collections">
+<polymer-element name="next-collections" attributes="show">
   <template>
-    <link rel="stylesheet" href="next-collections.css" />
+     <link rel="stylesheet" href="next-collections.css" />
+     <post-service id="service" posts="{{collections}}"></post-service>
+     <div layout vertical center>
+ 
+       <template repeat="{{item in collections}}">
+          <img src="{{item.feature_image}}" width="70" height="70">
+          <h2>{{item.name}}</h2>
+          <p>{{item.description}}</p>
+       </template>
+     
+     </div>
 
-    <h2>Next collections</h2>
   </template>
-
   <script src="next-collections.js"></script>
 </polymer-element>
+
+
+Ï
+

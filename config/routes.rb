@@ -14,9 +14,13 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: "dashboard#index"
-
     resources :posts
     resources :columns
     resources :users, :only => [:index]
   end
+
+  namespace :components do
+    get '/next/collections', :to => 'next#collections', :as => :next_collections
+  end
+
 end
