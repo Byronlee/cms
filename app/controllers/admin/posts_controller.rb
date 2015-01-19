@@ -10,6 +10,7 @@ class Admin::PostsController < Admin::BaseController
   end
 
   def create
+    @post.author = current_user
   	@post.save
   	respond_with @post, location: admin_posts_path
   end
