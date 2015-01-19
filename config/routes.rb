@@ -17,5 +17,6 @@ Rails.application.routes.draw do
 
     resources :posts
     resources :columns
+    resources :users, :only => [:index]
   end
 end
