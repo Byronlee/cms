@@ -1,6 +1,6 @@
 class Admin::ColumnsController < Admin::BaseController
   def index
-  	@columns = Column.order("id desc")
+  	@columns = Column.order("id desc").page params[:page]
   end
 
   def update
