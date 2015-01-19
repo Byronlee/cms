@@ -12,6 +12,7 @@
 #
 
 class Column < ActiveRecord::Base
+  paginates_per 2
   mount_uploader :cover, BaseUploader
   mount_uploader :icon,  BaseUploader
 

@@ -1,5 +1,9 @@
 button
   = link_to "创建专栏", new_admin_column_path
+
+div
+  = page_entries_info @columns
+
 table.table
   tr
     th ID
@@ -10,5 +14,4 @@ table.table
     th 操作
   = render @columns
 
-
-
+= paginate @columns
