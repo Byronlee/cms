@@ -28,6 +28,6 @@ class Post < ActiveRecord::Base
   validates :slug,    length: { maximum: 14 }
 
   belongs_to :column
-  belongs_to :author, class_name: User.to_s
+  belongs_to :author, class_name: User.to_s, foreign_key:'user_id'
   
 end
