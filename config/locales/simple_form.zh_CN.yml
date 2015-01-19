@@ -27,3 +27,18 @@ zh-CN:
       post:
         create: '创建文章'
         update: '更新文章'
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "没有找到记录"
+          one: "显示 <b>1</b> 个记录"
+          other: "显示 <b> %{count}</b> 个记录"
+      more_pages:
+        display_entries: "显示记录 <b>%{first}&nbsp;-&nbsp;%{last}</b> / <b>%{total}</b>"
+  views:
+    pagination:
+      first: "&laquo; 首页"
+      last: "尾页 &raquo;"
+      previous: "&lsaquo; 前一页"
+      next: "下一页 &rsaquo;"
+      truncate: "&hellip;"
