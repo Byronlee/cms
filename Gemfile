@@ -6,6 +6,7 @@ gem 'pg', '~> 0.17.1'
 gem 'fume-settable', '~> 0.0.3'
 gem "dalli", "~> 2.7.0"
 gem "redis", "~> 3.2.0"
+gem 'redis-objects', '~> 1.0.1'
 gem 'redis-namespace', "~> 1.5.1"
 gem 'sidekiq', '~> 3.1.2'
 gem 'faraday', '~> 0.9.0'
@@ -56,7 +57,7 @@ gem 'jquery-turbolinks', "~> 2.0.2"
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem "therubyracer"
-gem "less-rails" 
+gem "less-rails"
 gem "twitter-bootstrap-rails"
 
 
