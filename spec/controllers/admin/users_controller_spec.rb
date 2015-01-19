@@ -6,6 +6,7 @@ describe Admin::UsersController do
     it "returns http success" do
       get 'index'
       response.should be_success
+      expect(response).to render_template(:admin)
     end
   end
 
