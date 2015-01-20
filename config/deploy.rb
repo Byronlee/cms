@@ -25,6 +25,7 @@ namespace :deploy do
   end
 
   after "deploy:migrate", "deploy:seed"
+  after "deploy:updated", "newrelic:notice_deployment"
 end
 
 load "config/deploy/recipes/notification.rb"
