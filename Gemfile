@@ -35,6 +35,7 @@ gem 'devise', "~> 3.4.1"
 gem 'devise-async' , "~> 0.9.0"
 gem "responders"
 gem 'omniauth-oauth2'
+gem 'newrelic_rpm'
 
 # api
 gem 'grape' , "~> 0.10.1"
