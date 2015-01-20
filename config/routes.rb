@@ -1,8 +1,11 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
 
   API::API.logger Rails.logger
   mount API::API => '/'
-  mount GrapeSwaggerRails::Engine => '/api/doc'
+  mount GrapeSwaggerRails::Engine => '/swagger'
+  mount Sidekiq::Web => '/sidekiq'
 
   devise_for :users, controllers: {
     sessions: "users/sessions",
