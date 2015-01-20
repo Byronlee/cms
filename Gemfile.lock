@@ -221,6 +221,9 @@ GEM
       net-ssh (>= 2.6.5)
     net-ssh (2.9.2)
     netrc (0.10.2)
+    newrelic-redis (1.5.0)
+      newrelic_rpm (~> 3.0)
+      redis (< 4.0)
     newrelic_rpm (3.9.4.245)
     notiffany (0.0.3)
       nenv (~> 0.1)
@@ -449,6 +452,7 @@ DEPENDENCIES
   mini_magick (~> 3.7.0)
   minitest
   mocha (~> 1.1.0)
+  newrelic-redis
   newrelic_rpm
   omniauth-oauth2
   pg (~> 0.17.1)

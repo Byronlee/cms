@@ -7,6 +7,7 @@ gem 'fume-settable', '~> 0.0.3'
 gem "dalli", "~> 2.7.0"
 gem "redis", "~> 3.2.0"
 gem 'redis-namespace', "~> 1.5.1"
+gem 'newrelic-redis'
 gem 'sidekiq', '~> 3.1.2'
 gem 'faraday', '~> 0.9.0'
 
