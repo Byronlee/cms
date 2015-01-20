@@ -5,21 +5,13 @@
 === System dependencies
 
 * Ruby 2.2.0-p0
-
 * Postgres
-
 * Rails 4.1.6
-
 * Nginx + Unicorn
-
 * Faye
-
 * Linux or vagrant for mac
-
 * Sidekiq
-
 * Redis
-
 * Grape
 
 === Configuration
@@ -83,39 +75,27 @@
 
 * 产品环境
 
-``
   $ bundle exec cap production deploy:create_database
   $ bundle exec cap production deploy
   $ bundle exec cap production deploy:rake_seed
   $ bundle exec cap production run_faye
-``
 
 * 开发环境
 
-``
   $ bundle exec cap development deploy:create_database
   $ bundle exec cap development deploy
   $ bundle exec cap development deploy:rake_seed
   $ bundle exec cap development run_faye
-``
 
 ==== 如果不是第一次运行以下下命令即可:
 
 * 产品环境
 
-```
-
-ruby bundle exec cap production deploy
-
-```
+  ruby bundle exec cap production deploy
 
 * 开发环境
 
-```
-
-ruby bundle exec cap development deploy
-
-```
+  ruby bundle exec cap development deploy
 
 == 其他
 
@@ -128,5 +108,35 @@ ruby bundle exec cap development deploy
 修改swagger里的api路径
 
   http://localhost:3000/api/v1/swagger_doc
+
+=== Sidekiq Web 监控
+
+在本地项目根目录
+
+  $ bundle exec sidekiq -c config/sidekiq.yml
+
+然后在浏览器访问
+
+  http://localhost:3000/sidekiq
+
+=== Redis Web 监控
+
+在本地项目根目录
+```
+  $ redis-stat --server
+  $ redis-stat --verbose --server=8080 5
+
+  # redis-stat server can be daemonized
+  $ redis-stat --server --daemon
+
+  # Kill the daemon
+  $ killall -9 redis-stat-daemon
+```
+然后在浏览器访问
+
+  http://localhost:8080/sidekiq
+
+
+
 
 
