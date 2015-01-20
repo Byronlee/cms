@@ -40,6 +40,10 @@ class User < ActiveRecord::Base
     (authentications.empty? || !password.blank?) && super
   end
 
+  def name
+    self.krypton_authentication && self.krypton_authentication.info["name"]
+  end
+
 protected
 
   def email_required?
