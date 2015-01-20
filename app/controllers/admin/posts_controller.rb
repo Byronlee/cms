@@ -1,7 +1,7 @@
 class Admin::PostsController < Admin::BaseController
 
   def index
-  	@posts = Post.includes(:author, :column).all
+  	@posts = Post.includes(:author, :column).page params[:page]
   end
 
   def update
