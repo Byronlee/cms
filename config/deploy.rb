@@ -1,4 +1,5 @@
 set :application, 'krypton'
+ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
 fetch(:linked_files).concat %w{
   config/database.yml
