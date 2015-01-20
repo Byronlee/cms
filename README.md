@@ -34,7 +34,7 @@
   $ rake db:migrate 
   $ rake db:seed 
   $ rails s 
-```shell
+```
 
 ### 方案二：使用Vagrant
 
@@ -47,14 +47,14 @@
   $ vagrant init 36kr
   $ vagrant up
   $ vagrant ssh 或者 ssh -p2222 deploy@localhost
-```shell
+```
 
 #### 打开vagrant与host的端口映射
 
  在Vagrantfile文件里添加
 ```shell
   $ config.vm.network "forwarded_port", guest: 3000, host: 3000
-```shell
+```
 
 #### 开启目录映射
 
@@ -73,7 +73,7 @@
   $ rake db:migrate
   $ rake db:seed
   $ rails s
-```shell
+```
 
 ## Deployment instructions
 
@@ -87,7 +87,7 @@
   $ bundle exec cap production deploy
   $ bundle exec cap production deploy:rake_seed
   $ bundle exec cap production run_faye
-```shell
+```
 * 开发环境
 ```shell
   $ bundle exec cap development deploy:create_database
