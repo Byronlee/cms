@@ -64,7 +64,7 @@ gem "twitter-bootstrap-rails"
 
 
 gem "rails-assets-html5shiv", "~> 3.7.0"
-gem "rails-assets-respond", "~> 1.4.0"
+#gem "rails-assets-respond", "~> 1.4.0"
 
 group :development do
   # gem "better_errors", "~> 1.1.0"
@@ -83,7 +83,7 @@ group :development, :test do
   gem "factory_girl_rails", "~> 4.4.1"
   gem 'guard-rspec'
   gem 'guard-livereload'
-  gem 'web-console', '~> 2.0'
+  #gem 'web-console', '~> 2.0'
 end
 
 group :test do
