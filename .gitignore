@@ -19,6 +19,7 @@
 /coverage
 /public
 /log
+/spec/coverage/
 
 /vendor/bundle/
 /config/settings.local.rb
