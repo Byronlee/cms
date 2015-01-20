@@ -9,6 +9,7 @@ gem "redis", "~> 3.0.1"
 gem 'redis-objects', '~> 1.0.1'
 gem 'redis-namespace', "~> 1.5.1"
 gem 'redis-stat'
+gem 'newrelic-redis'
 gem 'sidekiq', '~> 3.1.2'
 gem 'faraday', '~> 0.9.0'
 
