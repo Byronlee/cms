@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
   end
 
   def name
-    self.krypton_authentication.info["name"]
+    self.krypton_authentication && self.krypton_authentication.info["name"]
   end
 
 protected
