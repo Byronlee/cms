@@ -9,11 +9,14 @@ zh-CN:
       default_message: "请查看下面详细的错误提示:"
     labels:
       post:
+        column_id: 'aaaaa'
         title: '文章标题'
         title_link: '标题连接'
         slug: '文章短标题'
         summary: '文章摘要'
         content: '文章内容'
+        column_id: '所属专栏'
+        disable_with: '正在提交...'
     placeholders:
       post:
         title: '请输入40字以内的文章标题'
