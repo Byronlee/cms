@@ -270,11 +270,12 @@ img.mg-lg{
 	background-image: linear-gradient(bottom, rgba(0,0,0,.07) 0%, rgba(255,255,255,.07) 100%);
 }
 .btn-wire{
-	background:transparent!important;
+	background:transparent !important;
 	border:2px solid transparent;
 }
 .btn-wire:hover{
-	background:transparent!importantborder:2px solid transparent;
+	background:transparent !important;
+	border:2px solid transparent;
 }
 .a-btn{
 	font-size: 14px;
