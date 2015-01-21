@@ -1,5 +1,21 @@
+GIT
+  remote: git://github.com/tian-xiaobo/grape-swagger-rails.git
+  revision: db1d8e27dac1bc44e16c95f68015ad9c79adc278
+  specs:
+    grape-swagger-rails (0.0.10)
+      grape-swagger
+      railties (>= 3.2.12)
+
+GIT
+  remote: git://github.com/tim-vandecasteele/grape-swagger.git
+  revision: ac11d8194dcd98caea97f285d0d607d96b765d2f
+  specs:
+    grape-swagger (0.9.1)
+      grape (>= 0.8.0)
+      grape-entity
+
 GEM
-  remote: http://ruby.taobao.org/
+  remote: http://rubygems.org/
   remote: https://rails-assets.org/
   specs:
     actionmailer (4.1.6)
@@ -84,7 +100,7 @@ GEM
     coffee-script-source (1.8.0)
     colorize (0.7.5)
     commonjs (0.2.7)
-    connection_pool (2.1.0)
+    connection_pool (2.1.1)
     crack (0.4.2)
       safe_yaml (~> 1.0.0)
     dalli (2.7.2)
@@ -145,11 +161,6 @@ GEM
       jbuilder
       tilt
       tilt-jbuilder (>= 0.4.0)
-    grape-swagger (0.9.0)
-      grape (>= 0.8.0)
-      grape-entity
-    grape-swagger-ui (0.0.9)
-      railties (>= 3.1)
     guard (2.11.1)
       formatador (>= 0.2.4)
       listen (~> 2.7)
@@ -216,7 +227,7 @@ GEM
     multi_json (1.10.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
-    nenv (0.1.1)
+    nenv (0.2.0)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.2)
@@ -286,7 +297,6 @@ GEM
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
     rdoc (4.2.0)
-      json (~> 1.4)
     redis (3.2.0)
     redis-namespace (1.5.1)
       redis (~> 3.0, >= 3.0.4)
@@ -367,6 +377,7 @@ GEM
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
     subexec (0.2.3)
+    swagger-ui_rails (0.1.7)
     symbolize (4.4.1)
       activemodel (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
@@ -433,8 +444,8 @@ DEPENDENCIES
   grape (~> 0.10.1)
   grape-entity (~> 0.4.4)
   grape-jbuilder (~> 0.2.0)
-  grape-swagger (~> 0.9.0)
-  grape-swagger-ui (~> 0.0.9)
+  grape-swagger!
+  grape-swagger-rails!
   guard-livereload
   guard-rspec
   hashie (~> 3.3.2)
@@ -454,7 +465,7 @@ DEPENDENCIES
   pry-nav (~> 0.2.4)
   puma (~> 2.8.0)
   quiet_assets (~> 1.0.2)
-  rack-cors (~> 0.3.1)
+  rack-cors
   rails (= 4.1.6)
   rails-assets-html5shiv (~> 3.7.0)
   rails-assets-respond (~> 1.4.0)
@@ -472,6 +483,7 @@ DEPENDENCIES
   simplecov (~> 0.9.1)
   slim-rails
   spring
+  swagger-ui_rails
   symbolize (~> 4.4.1)
   therubyracer
   turbolinks

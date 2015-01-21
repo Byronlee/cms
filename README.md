@@ -95,7 +95,7 @@
   $ bundle exec cap development deploy:rake_seed
   $ bundle exec cap development run_faye
 ```
-#### 如果不是第一次运行以下下命令即可:
+#### 如果不是第一次运行以下命令即可:
 
 * 产品环境
 ```shell
@@ -111,11 +111,7 @@
 
 在浏览器里打开
 ```shell
-  http://localhost:3000/api/swagger
-```
-修改swagger里的api路径
-```shell
-  http://localhost:3000/api/v1/swagger_doc
+  http://localhost:3000/api/doc
 ```
 ### Sidekiq Web 监控
 

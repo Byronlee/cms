@@ -1,4 +1,4 @@
-source 'http://ruby.taobao.org'
+source 'http://rubygems.org'
 source "https://rails-assets.org"
 
 gem 'rails', '4.1.6'
@@ -40,9 +40,10 @@ gem 'omniauth-oauth2'
 gem 'grape' , "~> 0.10.1"
 gem 'grape-entity' , "~> 0.4.4" # orgnize data
 gem 'grape-jbuilder' , "~> 0.2.0"
-gem 'grape-swagger', "~>0.9.0"
-gem 'grape-swagger-ui', "~>0.0.9"
-gem 'rack-cors' , "~> 0.3.1"  #solve the CORS problem
+gem 'grape-swagger', github: 'tim-vandecasteele/grape-swagger'
+gem 'grape-swagger-rails', github: 'tian-xiaobo/grape-swagger-rails'
+gem 'swagger-ui_rails'
+gem 'rack-cors' #solve the CORS problem
 gem 'hashie', '~> 3.3.2'
 
 # assets
