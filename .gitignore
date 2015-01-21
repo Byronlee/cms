@@ -24,3 +24,4 @@
 /vendor/bundle/
 /config/settings.local.rb
 /config/database.yml
+gmon.out

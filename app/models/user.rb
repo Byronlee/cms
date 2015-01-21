@@ -3,8 +3,8 @@
 # Table name: users
 #
 #  id                     :integer          not null, primary key
-#  email                  :string(255)      default(""), not null
-#  phone                  :string(255)      not null
+#  email                  :string(255)
+#  phone                  :string(255)
 #  encrypted_password     :string(255)      default(""), not null
 #  reset_password_token   :string(255)
 #  reset_password_sent_at :datetime
@@ -19,6 +19,8 @@
 #
 
 class User < ActiveRecord::Base
+  paginates_per 20
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :omniauthable,
@@ -39,7 +41,7 @@ class User < ActiveRecord::Base
   end
 
   def name
-    self.krypton_authentication.info["name"]
+    self.krypton_authentication && self.krypton_authentication.info["name"]
   end
 
 protected
