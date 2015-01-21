@@ -40,6 +40,9 @@ gem 'devise-async' , "~> 0.9.0"
 gem "responders"
 gem 'omniauth-oauth2'
 gem 'newrelic_rpm'
+gem 'slack-notifier'
+gem 'exception_notification'
+gem 'httparty'
 
 # api
 gem 'grape' , "~> 0.10.1"
