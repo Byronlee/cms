@@ -9,6 +9,7 @@ gem "redis", "~> 3.0.1"
 gem 'redis-objects', '~> 1.0.1'
 gem 'redis-namespace', "~> 1.5.1"
 gem 'redis-stat'
+gem 'newrelic-redis'
 gem 'sidekiq', '~> 3.1.2'
 gem 'faraday', '~> 0.9.0'
 
@@ -38,6 +39,10 @@ gem 'devise', "~> 3.4.1"
 gem 'devise-async' , "~> 0.9.0"
 gem "responders"
 gem 'omniauth-oauth2'
+gem 'newrelic_rpm'
+gem 'slack-notifier'
+gem 'exception_notification'
+gem 'httparty'
 
 # api
 gem 'grape' , "~> 0.10.1"
