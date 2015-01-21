@@ -1,13 +1,343 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<!-- Main container -->
+<div class="page-container">
+    
+<!-- Navigation Bloc -->
+<div class="bloc " id="nav-bloc">
+	<div class="container bloc-sm">
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html"><img src="/assets/img/logo.png" alt='' />36Kr</a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+				<ul class="site-navigation nav">
+					<li class="active">
+						<a href="index.html">Home</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+<!-- Navigation Bloc END -->
 
-<% if current_user %>
-  Hi, <%= current_user.krypton_authentication.info[:email] || current_user.krypton_authentication.info[:phone] %> <%= link_to "注销", destroy_user_session_path, method: :delete %>
+<!-- spotlight-section -->
+<div class="bloc bg-path-overlay  l-bloc" id="spotlight-section">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-8">
+				<img src="/assets/img/newyork.jpg" class="mg-lg" height="320" width="520" alt='' /><a href="index.html" class="btn   btn-rd pull-right btn-d">Recommended | Columns</a>
+			</div>
+			<div class="col-sm-4">
+				<img src="/assets/img/cornfield.jpg" width="260" height="106" alt='' /><img src="/assets/img/field.jpg" width="260" height="106" alt='' /><img src="/assets/img/map.jpg" width="260" height="106" alt='' />
+			</div>
+		</div>
+	</div>
+</div>
+<!-- spotlight-section END -->
 
-  <%= debug current_user %>
-  <%= debug current_user.authentications.find_by_provider(:krypton) %>
-<% else %>
-  <%= link_to "Sign in through Krypton", user_omniauth_authorize_path(provider: :krypton) %>
-  <a href="javascript:KryptonID.new_session('<%= user_omniauth_authorize_path(provider: :krypton, theme: :iframe) %>')">modal</a>
-<% end %>
+<!-- news-category-nav -->
+<div class="bloc l-bloc " id="news-category-nav">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12">
+				<a href="index.html" class="btn   btn-wire btn-rd pull-right">ALL NEWS ( 34 +)</a>
+				<h3 class="text-left mg-md">
+					<strong>STARTUPS NEWS</strong>
+				</h3>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- news-category-nav END -->
 
+<!-- startup-news-section -->
+<div class="bloc l-bloc " id="startup-news-section">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-4">
+				<img src="/assets/img/mountainsdusk.jpg" class="mg-md" width="230" height="153" alt='' />
+			</div>
+			<div class="col-sm-8">
+				<h3 class="mg-lg">
+					Heading content
+				</h3>
+				<p class=" mg-md">
+					Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- startup-news-section END -->
+
+<!-- app-section-header-next -->
+<next-collections></next-collections>
+<!-- app-next-section END -->
+
+<!-- app-section-header-lnews -->
+<div class="bloc l-bloc " id="app-section-header-lnews">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12">
+				<h3 class="mg-clear text-center">
+					<strong>K-NEWS</strong>
+				</h3>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- app-section-header-lnews END -->
+
+<!-- lighting-news-section -->
+<div class="bloc l-bloc " id="lighting-news-section">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-6">
+				<h3 class="mg-md">
+					Heading content
+				</h3>
+				<p>
+					Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+				</p>
+				<h3 class="mg-md">
+					Heading content
+				</h3>
+				<p>
+					Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+				</p>
+				<h3 class="mg-md">
+					Heading content
+				</h3>
+				<p>
+					Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+				</p>
+			</div>
+			<div class="col-sm-6">
+				<h3 class="mg-md">
+					Heading content
+				</h3>
+				<p>
+					Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+				</p>
+				<h3 class="mg-md">
+					Heading content
+				</h3>
+				<p>
+					Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+				</p>
+				<h3 class="mg-md">
+					Heading content
+				</h3>
+				<p>
+					Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- lighting-news-section END -->
+
+<!-- app-section-header-krtv -->
+<div class="bloc l-bloc " id="app-section-header-krtv">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12">
+				<h3 class="mg-md text-center">
+					<strong>KTV</strong>
+				</h3>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- app-section-header-krtv END -->
+
+<!-- app-krtv-section -->
+<div class="bloc  bg-camera d-bloc" id="app-krtv-section">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-4">
+				<div class="embed-responsive embed-responsive-4by3">
+					<iframe class="embed-responsive-item" src="https://player.vimeo.com/video/111507117">
+					</iframe>
+				</div>
+				<h3 class="mg-md">
+					Title goes here
+				</h3>
+				<p>
+					Lorem ipsum dolor sit amet, adipiscing elit Aenean commodo ligula eget.
+				</p>
+			</div>
+			<div class="col-sm-4">
+				<div class="embed-responsive embed-responsive-4by3">
+					<iframe class="embed-responsive-item" src="https://player.vimeo.com/video/111507117">
+					</iframe>
+				</div>
+				<h3 class="mg-md">
+					Title goes here
+				</h3>
+				<p>
+					Lorem ipsum dolor sit amet, adipiscing elit Aenean commodo ligula eget.
+				</p>
+			</div>
+			<div class="col-sm-4">
+				<div class="embed-responsive embed-responsive-4by3">
+					<iframe class="embed-responsive-item" src="https://player.vimeo.com/video/111507117">
+					</iframe>
+				</div>
+				<h3 class="mg-md">
+					Title goes here
+				</h3>
+				<p>
+					Lorem ipsum dolor sit amet, adipiscing elit Aenean commodo ligula eget.
+				</p>
+			</div>
+		</div><br /><br />
+		<div class="row">
+			<div class="col-sm-4">
+				<div class="embed-responsive embed-responsive-4by3">
+					<iframe class="embed-responsive-item" src="https://player.vimeo.com/video/111507117">
+					</iframe>
+				</div>
+				<h3 class="mg-md">
+					Title goes here
+				</h3>
+				<p>
+					Lorem ipsum dolor sit amet, adipiscing elit Aenean commodo ligula eget.
+				</p>
+			</div>
+			<div class="col-sm-4">
+				<div class="embed-responsive embed-responsive-4by3">
+					<iframe class="embed-responsive-item" src="https://player.vimeo.com/video/111507117">
+					</iframe>
+				</div>
+				<h3 class="mg-md">
+					Title goes here
+				</h3>
+				<p>
+					Lorem ipsum dolor sit amet, adipiscing elit Aenean commodo ligula eget.
+				</p>
+			</div>
+			<div class="col-sm-4">
+				<div class="embed-responsive embed-responsive-4by3">
+					<iframe class="embed-responsive-item" src="https://player.vimeo.com/video/111507117">
+					</iframe>
+				</div>
+				<h3 class="mg-md">
+					Title goes here
+				</h3>
+				<p>
+					Lorem ipsum dolor sit amet, adipiscing elit Aenean commodo ligula eget.
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- app-krtv-section END -->
+
+<!-- startup-union-section -->
+<div class="bloc l-bloc " id="startup-union-section">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12">
+				<h3 class="text-center mg-clear">
+					<strong>Startup Union</strong>
+				</h3>
+			</div>
+		</div>
+		<div class="row voffset">
+			<div class="col-sm-3">
+				<img src="/assets/img/walkway.jpg" class="img-responsive" alt='' />
+			</div>
+			<div class="col-sm-3">
+				<img src="/assets/img/field.jpg" class="img-responsive" alt='' />
+			</div>
+			<div class="col-sm-3">
+				<img src="/assets/img/newyork.jpg" class="img-responsive" alt='' />
+			</div>
+			<div class="col-sm-3">
+				<img src="/assets/img/map.jpg" class="img-responsive" alt='' />
+			</div>
+		</div>
+		<div class="row voffset">
+			<div class="col-sm-3">
+				<img src="/assets/img/tracks.jpg" class="img-responsive" alt='' />
+			</div>
+			<div class="col-sm-3">
+				<img src="/assets/img/sanfran.jpg" class="img-responsive" alt='' />
+			</div>
+			<div class="col-sm-3">
+				<img src="/assets/img/cornfield.jpg" class="img-responsive" alt='' />
+			</div>
+			<div class="col-sm-3">
+				<img src="/assets/img/walkway.jpg" class="img-responsive" alt='' />
+			</div>
+		</div>
+	</div>
+</div>
+<!-- startup-union-section END -->
+
+<!-- app-section-header-startup-union -->
+<div class="bloc l-bloc " id="app-section-header-startup-union">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-3">
+				<img src="/assets/img/ny-times.png" class="img-responsive" alt='' />
+			</div>
+			<div class="col-sm-3">
+				<img src="/assets/img/forbes.png" class="img-responsive" alt='' />
+			</div>
+			<div class="col-sm-3">
+				<img src="/assets/img/wired.png" class="img-responsive" alt='' />
+			</div>
+			<div class="col-sm-3">
+				<img src="/assets/img/guardian.png" class="img-responsive" alt='' />
+			</div>
+		</div>
+	</div>
+</div>
+<!-- app-section-header-startup-union END -->
+
+<!-- Footer - bloc-19 -->
+<div class="bloc l-bloc " id="bloc-19">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12">
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Footer - bloc-19 END -->
+
+<!-- Footer - footer-nav -->
+<div class="bloc l-bloc " id="footer-nav">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-3">
+				<h3>
+					About
+				</h3><a href="index.html" class="a-btn a-block">The team</a><a href="index.html" class="a-btn a-block">Contact us</a>
+			</div>
+			<div class="col-sm-3">
+				<h3>
+					Get the App
+				</h3><a href="index.html" class="a-btn a-block">iPhone</a><a href="index.html" class="a-btn a-block">Android</a>
+			</div>
+			<div class="col-sm-3">
+				<h3>
+					Follow us
+				</h3><a href="index.html" class="a-btn a-block">Twitter</a><a href="index.html" class="a-btn a-block">Facebook</a>
+			</div>
+			<div class="col-sm-3">
+				<h3>
+					Company
+				</h3><a href="index.html" class="a-btn a-block">Terms of use</a><a href="index.html" class="a-btn a-block">Privacy</a>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Footer - footer-nav END -->
+</div>
+<!-- Main container END -->

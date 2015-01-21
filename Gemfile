@@ -5,8 +5,10 @@ gem 'rails', '4.1.6'
 gem 'pg', '~> 0.17.1'
 gem 'fume-settable', '~> 0.0.3'
 gem "dalli", "~> 2.7.0"
-gem "redis", "~> 3.2.0"
+gem "redis", "~> 3.0.1"
+gem 'redis-objects', '~> 1.0.1'
 gem 'redis-namespace', "~> 1.5.1"
+gem 'redis-stat'
 gem 'sidekiq', '~> 3.1.2'
 gem 'faraday', '~> 0.9.0'
 
@@ -29,6 +31,7 @@ gem "kaminari", "~> 0.15.1"
 gem "kaminari-bootstrap", "~> 3.0.1"
 gem 'devise-i18n', '~> 0.10.3'
 gem 'slim-rails'
+gem 'polymer-rails'
 
 # controllers
 gem 'devise', "~> 3.4.1"
@@ -80,6 +83,7 @@ group :development, :test do
   gem "factory_girl_rails", "~> 4.4.1"
   gem 'guard-rspec'
   gem 'guard-livereload'
+  #gem 'web-console', '~> 2.0'
 end
 
 group :test do
@@ -90,6 +94,6 @@ group :test do
   gem "shoulda-matchers", "~> 2.6.1"
   gem 'database_cleaner', '~> 1.3.0'
   gem "mocha", "~> 1.1.0"
-  gem "webmock", "~> 1.18.0"
+  #gem "webmock", "~> 1.18.0"
   gem "minitest"
 end

@@ -1,0 +1,47 @@
+<polymer-element name="next-collections" attributes="show">
+<template>
+ <link rel="stylesheet" href="next-collections.css" />
+ <post-service id="service" posts="{{collections}}"></post-service>
+ <div>
+
+  <div class="bloc l-bloc " id="app-section-header-next">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h3 class="text-center mg-lg">
+            <strong>NEXT</strong>
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- app-section-header-next END -->
+
+  <!-- app-next-section -->
+  <div class="bloc  bg-citysky-overlay d-bloc" id="app-next-section">
+    <div class="container bloc-sm">
+      <div class="row">
+        <template repeat="{{item in collections}}">
+          <div class="col-sm-3" style="min-height: 230px;">
+            <a href="#" target="_blank">
+              <img src="{{item.feature_image}}" class="img-responsive" alt='' />
+            </a>
+            <h3 class="mg-md">
+             <a href="#" >{{ item.name }}</a>
+           </h3>
+           <p>
+            {{ item.description }}
+          </p>
+        </div>
+      </template>
+    </div>
+  </div>
+ </div>
+</div>
+</template>
+<script src="next-collections.js"></script>
+</polymer-element>
+
+
+Ï
+
