@@ -16,5 +16,6 @@ Rails.application.routes.draw do
     root to: "dashboard#index"
 
     resources :posts
+    resources :columns
   end
 end

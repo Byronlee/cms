@@ -11,12 +11,15 @@
 #  slug       :string(255)
 #  state      :string(255)
 #  draft_key  :string(255)
+#  column_id  :integer
+#  user_id    :integer
 #  created_at :datetime
 #  updated_at :datetime
 #  cover      :string(255)
 #
 
 class Post < ActiveRecord::Base
+  paginates_per 20
   mount_uploader :cover, BaseUploader
 
   validates :title, :summary, :content, :title_link, presence: true
@@ -26,6 +29,6 @@ class Post < ActiveRecord::Base
   validates :slug,    length: { maximum: 14 }
 
   belongs_to :column
-  belongs_to :author, class_name: User.to_s
+  belongs_to :author, class_name: User.to_s, foreign_key:'user_id'
   
 end

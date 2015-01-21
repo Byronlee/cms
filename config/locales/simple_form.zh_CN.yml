@@ -9,11 +9,14 @@ zh-CN:
       default_message: "请查看下面详细的错误提示:"
     labels:
       post:
+        column_id: 'aaaaa'
         title: '文章标题'
         title_link: '标题连接'
         slug: '文章短标题'
         summary: '文章摘要'
         content: '文章内容'
+        column_id: '所属专栏'
+        disable_with: '正在提交...'
     placeholders:
       post:
         title: '请输入40字以内的文章标题'
@@ -27,3 +30,18 @@ zh-CN:
       post:
         create: '创建文章'
         update: '更新文章'
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "没有找到记录"
+          one: "显示 <b>1</b> 条记录"
+          other: "显示 <b> %{count}</b> 条记录"
+      more_pages:
+        display_entries: "显示记录 <b>%{first}&nbsp;-&nbsp;%{last}</b> / <b>%{total}</b>"
+  views:
+    pagination:
+      first: "&laquo; 首页"
+      last: "尾页 &raquo;"
+      previous: "&lsaquo; 前一页"
+      next: "下一页 &rsaquo;"
+      truncate: "&hellip;"

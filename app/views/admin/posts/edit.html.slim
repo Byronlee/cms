@@ -1,7 +1,10 @@
 = simple_form_for [:admin, @post] do | f |
+  div
+    = f.label :column_id
+  = f.select :column_id, Column.all.collect{|c| [c.name, c.id]}
   = f.input :title
   = f.input :title_link, as: :url 
   = f.input :slug  
   = f.input :summary, as: :text
   = f.input :content
-  = f.button :submit
+  = f.button :submit, data: { disable_with: "submitting..." }
