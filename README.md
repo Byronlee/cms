@@ -144,3 +144,10 @@
 ```shell
   http://localhost:8080/sidekiq
 ```
+
+### NewRelic 本地监控
+
+然后在浏览器访问
+```shell
+  http://localhost:3000/newrelic
+```
