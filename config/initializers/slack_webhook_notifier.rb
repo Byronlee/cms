@@ -14,7 +14,8 @@ module ExceptionNotifier
         @notifier = nil
       end
     end
-
+    
+    # TODO 与分支 添加主页信息流 合并后将发通知的事情加入队列处理
     def call(exception, options={})
       message = [
         "项目:  36krx2015",
