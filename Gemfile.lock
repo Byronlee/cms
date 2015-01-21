@@ -323,6 +323,8 @@ GEM
     redis (3.0.7)
     redis-namespace (1.5.1)
       redis (~> 3.0, >= 3.0.4)
+    redis-objects (1.0.1)
+      redis (>= 3.0.2)
     redis-stat (0.4.9)
       ansi256 (~> 0.2.5)
       daemons (~> 1.1.9)
