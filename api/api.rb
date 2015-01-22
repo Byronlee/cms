@@ -1,4 +1,11 @@
+#TDOO: DRY
 Dir["#{Rails.root}/api/*.rb"].each {|file| require file}
+Dir["#{Rails.root}/api/controllers/*.rb"].each {|file| require file}
+Dir["#{Rails.root}/api/entities/*.rb"].each {|file| require file}
+Dir["#{Rails.root}/api/helpers/*.rb"].each {|file| require file}
+Dir["#{Rails.root}/api/utils/*.rb"].each {|file| require file}
+Dir["#{Rails.root}/api/exceptions/*.rb"].each {|file| require file}
+Dir["#{Rails.root}/api/validations/*.rb"].each {|file| require file}
 
 module API
   class API < Grape::API
@@ -7,8 +14,10 @@ module API
     format :json
 
     helpers APIHelpers
-#    formatter :json, APIHelpers::JSendSuccessFormatter
-#    error_formatter :json, APIHelpers::JSendErrorFormatter
+    helpers FormatterHelpers
+    helpers ExceptionHelpers
+#    formatter :json, FormatterHelpers::JSendSuccessFormatter
+#    error_formatter :json, FormatterHelpers::JSendErrorFormatter
 
     rescue_from ActiveRecord::RecordNotFound do
       rack_response({message: '404 Not found', status: 404}, 404)
@@ -24,6 +33,7 @@ module API
     end
 
     mount Posts
+    mount Columns
 
     add_swagger_documentation(
       api_version: 'v1', mount_path: 'swagger_doc', hide_documentation_path: true, include_base_url: false

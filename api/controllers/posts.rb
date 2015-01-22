@@ -3,22 +3,22 @@ module API
     # TODO 鉴权、认证、用户、类型等规则
     KEYS = [:id, :title, :created_at, :updated_at, :summary, :content,:title_link,
       :must_read, :slug, :state, :draft_key, :cover]
-    STATE = ['publish', 'draft', 'archive', 'login']
+    STATE = ['publish', 'draft', 'archived', 'login']
 
-    desc 'Post'
+    desc 'Posts Feature'
     resource :posts do
 
       # Get all posts list
       # params[:page]
       # params[:per_page]: default is 30
-      # params[:state]: default(or empty) 'publish', 'draft', 'archive', 'login'
+      # params[:state]: default(or empty) 'publish', 'draft', 'archived', 'login'
       # Example
       #   /api/v1/posts?state=&page=1&per_page=15
       desc 'Get all posts list'
       params do
         optional :page,  type: Integer, default: 1, desc: "Specify the page of paginated results."
         optional :per_page,  type: Integer, default: 30, desc: "Specify the page of paginated results."
-        optional :state,  type: String, default: 'publish', desc: "'publish', 'draft', 'archive', 'login'"
+        optional :state,  type: String, values: STATE, default: 'publish', desc: "Post state"
       end
       get 'index' do
         @posts = Post.all.order(created_at: :desc)
@@ -31,7 +31,7 @@ module API
       # params[:page]
       # params[:per_page]: default is 30
       # params[:action]: default('down') 'down', 'up'
-      # params[:state]: default(or empty) 'publish', 'draft', 'archive', 'login'
+      # params[:state]: default(or empty) 'publish', 'draft', 'archived', 'login'
       # Example
       #   /api/v1/posts/:id/page?sym=up&state=&page=1&per_page=15
       desc 'Get id posts list'
