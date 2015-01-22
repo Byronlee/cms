@@ -1,5 +1,17 @@
-source 'http://rubygems.org'
-source "https://rails-assets.org"
+require 'yaml'
+
+if File.exist? File.expand_path("../config/gem_sources.yml", __FILE__)
+  gem_sources_file = File.expand_path("../config/gem_sources.yml", __FILE__)
+  puts "NOTE: Using the following gem sources from `config/gem_sources.yml`:"
+  @custom_gem_source = true
+else
+  gem_sources_file = File.expand_path("../config/gem_sources.yml.example", __FILE__)
+end
+sources_yaml = YAML::load(File.read(gem_sources_file))
+sources_yaml['gem_sources'].each do |source_str|
+  puts source_str if @custom_gem_source
+  source source_str
+end
 
 gem 'rails', '4.1.6'
 gem 'pg', '~> 0.17.1'
