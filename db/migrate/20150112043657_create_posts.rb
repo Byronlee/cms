@@ -9,8 +9,8 @@ class CreatePosts < ActiveRecord::Migration
       t.string :slug
       t.string :state
       t.string :draft_key
-      t.belongs_to :column
-      t.integer  :user_id
+      t.integer :column_id
+      t.integer :user_id
 
       t.timestamps
     end
