@@ -9,7 +9,7 @@ ExceptionNotification.configure do |config|
   config.ignored_exceptions = []
 
   config.ignore_if do |exception, options|
-    not Rails.env.production?
+    (not Rails.env.production?) || (not Rails.env.test?)
   end
 
   config.add_notifier :slack, {
