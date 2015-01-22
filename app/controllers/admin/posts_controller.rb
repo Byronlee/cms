@@ -15,6 +15,10 @@ class Admin::PostsController < Admin::BaseController
   	respond_with @post, location: admin_posts_path
   end
 
+  def show
+    @post = Post.includes(:author, :column).find(params[:id])
+  end
+
   def destroy
   	@post.destroy
     redirect_to :back

@@ -1,0 +1,18 @@
+h2
+  = @post.title
+
+div
+  span
+    |所属专栏： 
+    = @post.column.name
+
+  span style="margin-left:20px;"
+    |创建时间： 
+    = @post.created_at
+
+  span style="margin-left:20px;"
+    |作者： 
+    = @post.author.try(:name)
+
+div
+  = @post.content
