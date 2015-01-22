@@ -23,8 +23,8 @@ module ExceptionNotifier
         "错误类型: #{exception.class}",
         "错误信息: #{ exception.message }",
         "请求连接: #{options[:env]["HTTP_HOST"]}#{options[:env]["REQUEST_PATH"]}",
-        "浏览器信息: #{options[:env]["HTTP_USER_AGENT"]}",
-        "Backtrack: #{ exception.backtrace[0..4].join("\n")}"
+        "浏览器信息: #{options[:env]["HTTP_USER_AGENT"]}"
+        #"Backtrack: #{ exception.backtrace[0..4].join("\n")}"
       ].join("\n\n")
       @notifier.ping(message, @message_opts) if valid?
     end

@@ -8,9 +8,9 @@ ExceptionNotification.configure do |config|
   # config.ignored_exceptions += %w{ActionView::TemplateError CustomError}
   config.ignored_exceptions = []
 
-  #config.ignore_if do |exception, options|
-  #  not Rails.env.production?
-  #end
+  config.ignore_if do |exception, options|
+    not Rails.env.production?
+  end
 
   config.add_notifier :slack, {
     :webhook_url => 'https://hooks.slack.com/services/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',
