@@ -1,5 +1,5 @@
 = render 'og_meta'
-
+n
 h2
   = @post.title
 
@@ -7,7 +7,6 @@ div
   span
     |所属专栏： 
     = @post.column.try(:name)
-
   span style="margin-left:20px;"
     |创建时间： 
     = @post.created_at
@@ -15,7 +14,6 @@ div
   span style="margin-left:20px;"
     |作者： 
     = @post.author.try(:name)
-
 img src==@post.cover_url
 
 div
