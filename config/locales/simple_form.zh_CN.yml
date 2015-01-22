@@ -18,6 +18,9 @@ zh-CN:
         column_id: '所属专栏'
         cover: '特色图片'
         disable_with: '正在提交...'
+      headline:
+        url: 网址
+        order_num: 序号
     placeholders:
       post:
         title: '请输入40字以内的文章标题'
@@ -25,6 +28,9 @@ zh-CN:
         slug: '请输入14字以内的文章短标题'
         summary: '请输入40字以内的文章摘要'
         content: '请输入1万字以内的文章内容'
+      headline:
+        url: 网站URL
+        order_num: 优先级序号
     prompt:
   helpers:
     submit:
