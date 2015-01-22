@@ -16,6 +16,7 @@ zh-CN:
         summary: '文章摘要'
         content: '文章内容'
         column_id: '所属专栏'
+        cover: '特色图片'
         disable_with: '正在提交...'
     placeholders:
       post:
