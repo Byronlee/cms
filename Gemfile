@@ -45,6 +45,7 @@ gem "kaminari-bootstrap", "~> 3.0.1"
 gem 'devise-i18n', '~> 0.10.3'
 gem 'slim-rails'
 gem 'polymer-rails'
+gem 'acts_as_graph_object' 
 
 # controllers
 gem 'devise', "~> 3.4.1"
