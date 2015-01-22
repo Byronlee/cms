@@ -1,5 +1,5 @@
 module API
-  module APIHelpers
+  module FormatterHelpers
 
     module JSendSuccessFormatter
       def self.call(object, env)
@@ -13,18 +13,6 @@ module API
           { :status => 'fail', :data => message }.to_json
         else
           { :status => 'error', :message => message }.to_json
-        end
-      end
-    end
-
-    module ExceptionHandlers
-      def self.included(base)
-        base.instance_eval do
-          rescue_from Grape::Exceptions::ValidationErrors do |e|
-            Rack::Response.new({
-              error: { code: 1001, message: e.message }
-            }.to_json, e.status)
-          end
         end
       end
     end
