@@ -36,6 +36,7 @@ gem "cancancan", "~> 1.8.2"
 gem "fume-cancan", "~> 0.0.3"
 gem "rails-i18n", "~> 4.0.2"
 gem "activerecord-typedstore", "0.5.0"
+gem "opengraph_parser"
 
 # views
 gem "simple_form", "~> 3.0.1"
@@ -45,7 +46,7 @@ gem "kaminari-bootstrap", "~> 3.0.1"
 gem 'devise-i18n', '~> 0.10.3'
 gem 'slim-rails'
 gem 'polymer-rails'
-gem 'acts_as_graph_object' 
+gem 'acts_as_graph_object'
 
 # controllers
 gem 'devise', "~> 3.4.1"

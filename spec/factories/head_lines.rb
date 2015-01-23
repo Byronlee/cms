@@ -9,8 +9,11 @@
 #  updated_at :datetime
 #
 
-require 'spec_helper'
+# Read about factories at https://github.com/thoughtbot/factory_girl
 
-describe Headline do
-  pending "add some examples to (or delete) #{__FILE__}"
+FactoryGirl.define do
+  factory :head_line do
+    url "MyString"
+    order_num 1
+  end
 end

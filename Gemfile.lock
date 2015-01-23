@@ -50,6 +50,7 @@ GEM
       activerecord (>= 3, < 5)
     acts_as_graph_object (0.0.11)
       rails
+    addressable (2.3.6)
     ancestry (2.1.0)
       activerecord (>= 3.0.0)
     annotate (2.6.5)
@@ -276,6 +277,9 @@ GEM
       multi_json (~> 1.3)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
+    opengraph_parser (0.2.3)
+      addressable
+      nokogiri
     option_initializer (1.5.1)
     orm_adapter (0.5.0)
     parallelize (0.4.1)
@@ -523,6 +527,7 @@ DEPENDENCIES
   newrelic-redis
   newrelic_rpm
   omniauth-oauth2
+  opengraph_parser
   pg (~> 0.17.1)
   polymer-rails
   pry-doc

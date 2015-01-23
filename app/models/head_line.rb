@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: headlines
+# Table name: head_lines
 #
 #  id         :integer          not null, primary key
 #  url        :string(255)
@@ -9,8 +9,8 @@
 #  updated_at :datetime
 #
 
-class Headline < ActiveRecord::Base
-	paginates_per 2
+class HeadLine < ActiveRecord::Base
+	paginates_per 20
 
 	validates :url, presence: true
 	validates_uniqueness_of :url

@@ -1,14 +1,11 @@
-class NextComponentWorker
-  include Sidekiq::Worker
-  sidekiq_options :queue => :krx2015, :backtrace => true
-
+class NextComponentWorker < BaseComponentWorker
   def perform
     @collections = Faraday.get(Settings.next.collection_api+"?access_token="+token["access_token"]).body
     @next_redis_db = Redis::HashKey.new('next').tap{| rc | rc.expire(token["expires_in"]) }
     @next_redis_db["collections"] = @collections
   end
 
-private
+  private
 
   def token
   	JSON.parse(Faraday.new(:url => Settings.next.host).post do | req |

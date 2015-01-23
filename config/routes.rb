@@ -20,15 +20,12 @@ Rails.application.routes.draw do
     resources :posts
     resources :columns
     resources :users, :only => [:index]
-    resources :headlines, :except => [:show] do
-      collection do 
-        get :top_items
-      end 
-    end
+    resources :head_lines, :except => [:show]
   end
 
   namespace :components do
     get '/next/collections', :to => 'next#collections', :as => :next_collections
+    get '/head_lines', :to => 'head_lines#collections', :as => :spotlight_collections
   end
 
 end
