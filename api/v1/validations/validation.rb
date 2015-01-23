@@ -1,4 +1,4 @@
-module API
+module V1
   module Validations
     class Range < Grape::Validations::DefaultValidator
 
