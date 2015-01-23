@@ -13,7 +13,12 @@
 
 FactoryGirl.define do
   factory :head_line do
-    url "MyString"
-    order_num 1
+    url "http://localhost/admin/posts/1"
+    order_num 10
+  end
+
+  factory :head_line2, :class => 'HeadLine' do
+    url "http://localhost/admin/posts/2"
+    order_num 10
   end
 end
