@@ -1,4 +1,5 @@
 //= require application/kr_storage
+
 $.get('/components/head_lines', {}, function(head_lines){ 
     Polymer('head-lines', {
 	  ready: function(){
