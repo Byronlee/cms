@@ -20,7 +20,11 @@ Rails.application.routes.draw do
     resources :posts
     resources :columns
     resources :users, :only => [:index]
-    resources :headlines, :except => [:show]
+    resources :headlines, :except => [:show] do
+      collection do 
+        get :top_items
+      end 
+    end
   end
 
   namespace :components do

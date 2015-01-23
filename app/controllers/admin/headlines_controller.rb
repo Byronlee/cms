@@ -18,6 +18,11 @@ class Admin::HeadlinesController < Admin::BaseController
     redirect_to :back
   end
 
+  def top_items
+    @headlines = Headline.order('updated_at desc').limit(4)
+    render :json => @headlines
+  end
+
   private
 
   def headline_params

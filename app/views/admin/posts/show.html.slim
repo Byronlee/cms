@@ -6,7 +6,7 @@ h2
 div
   span
     |所属专栏： 
-    = @post.column.name
+    = @post.column.try(:name)
 
   span style="margin-left:20px;"
     |创建时间： 
