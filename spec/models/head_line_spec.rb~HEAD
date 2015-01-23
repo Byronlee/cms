@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: headlines
+# Table name: head_lines
 #
 #  id         :integer          not null, primary key
 #  url        :string(255)
@@ -11,6 +11,6 @@
 
 require 'spec_helper'
 
-describe Headline do
+describe HeadLine do
   pending "add some examples to (or delete) #{__FILE__}"
 end

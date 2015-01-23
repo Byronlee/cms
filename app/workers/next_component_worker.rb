@@ -1,5 +1,5 @@
 class NextComponentWorker < BaseWorker
-  
+
   def perform
     @collections = Faraday.get(Settings.next.collection_api+"?access_token="+token["access_token"]).body
     @next_redis_db = Redis::HashKey.new('next').tap{| rc | rc.expire(token["expires_in"]) }

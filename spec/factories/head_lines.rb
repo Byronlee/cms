@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: head_lines
+# Table name: headlines
 #
 #  id         :integer          not null, primary key
 #  url        :string(255)
@@ -13,12 +13,7 @@
 
 FactoryGirl.define do
   factory :head_line do
-    url "http://localhost/admin/posts/1"
-    order_num 10
-  end
-
-  factory :head_line2, :class => 'HeadLine' do
-    url "http://localhost/admin/posts/2"
-    order_num 10
+    url "MyString"
+    order_num 1
   end
 end

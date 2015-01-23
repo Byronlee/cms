@@ -20,5 +20,4 @@ class HeadLinesComponentWorker < BaseWorker
 	    image:og.images.first
     }
    end 
-   
 end
