@@ -1,11 +1,4 @@
-#TDOO: DRY
-Dir["#{Rails.root}/api/v1/*.rb"].each {|file| require file}
-Dir["#{Rails.root}/api/v1/controllers/*.rb"].each {|file| require file}
-Dir["#{Rails.root}/api/v1/entities/*.rb"].each {|file| require file}
-Dir["#{Rails.root}/api/v1/helpers/*.rb"].each {|file| require file}
-Dir["#{Rails.root}/api/v1/utils/*.rb"].each {|file| require file}
-Dir["#{Rails.root}/api/v1/exceptions/*.rb"].each {|file| require file}
-Dir["#{Rails.root}/api/v1/validations/*.rb"].each {|file| require file}
+Dir["#{Rails.root}/api/v1/**/*.rb"].each {|file| require file}
 
 module V1
   class Root < API::API
