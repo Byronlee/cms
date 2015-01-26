@@ -1,6 +1,6 @@
 module API
   module V1
-    module APIEntities
+    module Entities
       class Column < Base
         expose :id,         documentation: 'not null, primary key'
         expose :name,       documentation: ''

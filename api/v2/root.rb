@@ -6,7 +6,7 @@ module V2
     version 'v2'
     format :json
 
-    helpers V2::APIHelpers
+    helpers V2::Helpers
     helpers V2::FormatterHelpers
     helpers V2::ExceptionHelpers
 

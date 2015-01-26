@@ -25,7 +25,7 @@ module API
           @posts = Post.all.order(created_at: :desc)
           @posts = Post.where(state: params[:state]).order(created_at: :desc) if STATE.include?(params[:state])
           @posts = @posts.page(params[:page]).per(params[:per_page])
-          present @posts, with: APIEntities::Post
+          present @posts, with: Entities::Post
         end
 
         # Get id posts list
@@ -58,7 +58,7 @@ module API
             @posts = Post.where("created_at #{action} :date", date: post.created_at).order(created_at: :desc)
             @posts = @posts.page(params[:page]).per(params[:per_page] || 30)
           end
-          present @posts, with: APIEntities::Post
+          present @posts, with: Entities::Post
         end
 
         # Get post detail
@@ -68,7 +68,7 @@ module API
         get ":id" do
           @post = Post.find(params[:id])
           error!("Post not found", 404) if @post.blank?
-          present @post, with: APIEntities::Post
+          present @post, with: Entities::Post
         end
 
         # Create a new post
@@ -97,7 +97,7 @@ module API
           #TODO: 鉴权
           @post = Post.new params.slice(*KEYS)
           if @post.save
-            present @post, with: APIEntities::Post
+            present @post, with: Entities::Post
           else
             error!({ error: @post.errors.full_messages }, 400)
           end
@@ -120,7 +120,7 @@ module API
           #TODO:判断修改权限
           @post.update_attributes params.slice(*KEYS)
 
-          present @post, with: APIEntities::Post
+          present @post, with: Entities::Post
         end
 
         # Delete post. Available only for admin

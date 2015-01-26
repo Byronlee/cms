@@ -1,6 +1,6 @@
 module API
   module V1
-    module APIEntities
+    module Entities
       class Post < Base
         expose :id         , documentation: 'not null, primary key'
         expose :title      , documentation: '标题'

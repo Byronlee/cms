@@ -81,7 +81,7 @@ gem "twitter-bootstrap-rails"
 
 
 gem "rails-assets-html5shiv", "~> 3.7.0"
-gem "rails-assets-respond", "~> 1.4.0"
+#gem "rails-assets-respond", "~> 1.4.0"
 
 group :development do
   # gem "better_errors", "~> 1.1.0"

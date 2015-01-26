@@ -1,5 +1,5 @@
 module V1
-  module APIHelpers
+  module Helpers
 
   end
 end

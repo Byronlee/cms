@@ -18,7 +18,7 @@ module API
         end
         get 'index' do
           @columns = Column.order(id: :desc).page(params[:page]).per(params[:per_page])
-          present @columns, with: APIEntities::Column
+          present @columns, with: Entities::Column
         end
 
         # Get columns detail
@@ -34,7 +34,7 @@ module API
         get ':id' do
           @posts = Post.where("column_id = :id", id: params[:id]).page(params[:page]).per(params[:per_page])
           error!("Post not found", 404) if @posts.blank?
-          present @posts, with: APIEntities::Post
+          present @posts, with: Entities::Post
         end
 
 
@@ -68,7 +68,7 @@ module API
           else
             @posts = @posts.page(params[:page]).per(params[:per_page] || 30)
           end
-          present @posts, with: APIEntities::Post
+          present @posts, with: Entities::Post
         end
 
       end
