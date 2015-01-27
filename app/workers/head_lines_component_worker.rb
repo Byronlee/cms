@@ -1,10 +1,10 @@
-class HeadLinesComponentWorker < BaseComponentWorker
+class HeadLinesComponentWorker < BaseWorker
+
   def perform
   	head_lines = Headline.order('updated_at desc').limit(4)
   	@collections = head_lines.inject([]) do | result, head_line |
   		result << prase(head_line.url)
     end 
-    binding.pry
     Redis::HashKey.new('head_lines')["collections"] = @collections.to_json
   end
 
@@ -20,4 +20,5 @@ class HeadLinesComponentWorker < BaseComponentWorker
 	    image:og.images.first
     }
    end 
+   
 end
