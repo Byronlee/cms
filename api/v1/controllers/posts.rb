@@ -1,5 +1,5 @@
-module API
-  module V1
+module V1
+  module Controllers
     class Posts < Grape::API
       # TODO 鉴权、认证、用户、类型等规则
       KEYS = [:id, :title, :created_at, :updated_at, :summary, :content,:title_link,

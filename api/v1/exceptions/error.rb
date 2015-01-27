@@ -1,5 +1,5 @@
-module API
-  module V1
+module V1
+  module Exceptions
 
     # code: api error code defined by 36kr by xiaobo, errors originated from
     # subclasses of Error have code start from 2000.

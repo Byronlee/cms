@@ -1,5 +1,5 @@
-module API
-  module V1
+module V1
+  module Controllers
     class Columns < Grape::API
       KEYS = [:name, :introduce, :cover, :icon]
 
