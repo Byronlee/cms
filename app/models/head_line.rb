@@ -16,14 +16,14 @@ class HeadLine < ActiveRecord::Base
 	validates :url, presence: true
 	validates_uniqueness_of :url
 
-	after_update :fetch_remote_metas
-	after_create :fetch_remote_metas
 	after_destroy :fetch_remote_metas
+	after_save :fetch_remote_metas
 
 	private 
+
 	def fetch_remote_metas
-		logger.info "perform the worker to fetch remote metas"
-		logger.info HeadLinesComponentWorker.perform_async
+	  logger.info "perform the worker to fetch remote metas"
+	  logger.info HeadLinesComponentWorker.perform_async
   end
 
 end
