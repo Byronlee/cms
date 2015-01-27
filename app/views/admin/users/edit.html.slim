@@ -1,0 +1,3 @@
+= simple_form_for [:admin, @user] do | f |
+  = f.select :role, User.get_role_values
+  = f.button :submit, data: { disable_with: "Submitting..." }
