@@ -16,6 +16,7 @@
 #  last_sign_in_ip        :string(255)
 #  created_at             :datetime
 #  updated_at             :datetime
+#  role                   :string(255)
 #
 
 class User < ActiveRecord::Base
@@ -26,6 +27,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauth_providers => [:krypton]
+  symbolize :role, :in => Settings.roles, :default => :reader, :methods => true, :scopes => :shallow
 
   has_many :authentications, dependent: :destroy
   has_many :posts
