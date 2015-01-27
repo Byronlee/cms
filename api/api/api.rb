@@ -1,5 +1,5 @@
 module API
-  class API2 < Grape::API
+  class API < Grape::API
 
     mount API::V1::Root
 

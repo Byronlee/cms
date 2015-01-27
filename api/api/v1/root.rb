@@ -1,11 +1,11 @@
-class ::API::V1::Root < ::API::BaseAPI
+class ::API::V1::Root < ::API::Base
   prefix 'api'
   version 'v1'
   format :json
 
-  helpers ::V1::Helpers
-  helpers ::V1::FormatterHelpers
-  helpers ::V1::ExceptionHelpers
+  helpers API::V1::Helpers
+  helpers API::V1::FormatterHelpers
+  helpers API::V1::ExceptionHelpers
 
   #formatter :json, V1::FormatterHelpers::JSendSuccessFormatter
   #error_formatter :json, V1::FormatterHelpers::JSendErrorFormatter

@@ -1,5 +1,5 @@
 module API
-  class BaseAPI < Grape::API
+  class Base < Grape::API
 
     rescue_from ActiveRecord::RecordNotFound do
       rack_response({message: '404 Not found', status: 404}, 404)

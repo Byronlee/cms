@@ -2,8 +2,8 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
 
-  API::API2.logger Rails.logger
-  mount API::API2 => '/'
+  API::API.logger Rails.logger
+  mount API::API => '/'
   mount GrapeSwaggerRails::Engine => '/api/doc'
   mount Sidekiq::Web => '/sidekiq'
 
