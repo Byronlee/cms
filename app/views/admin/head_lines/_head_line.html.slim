@@ -1,0 +1,8 @@
+tr
+  td = head_line.id
+  td = link_to head_line.url, head_line.url, target:'_new'
+  td = head_line.order_num
+  td 
+    = link_to "编辑", edit_admin_head_line_path(head_line)
+    = link_to "删除", admin_head_line_path(head_line), :method => :delete
+ 

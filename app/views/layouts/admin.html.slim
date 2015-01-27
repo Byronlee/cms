@@ -7,6 +7,10 @@ html lang="en"
     title= content_for?(:title) ? yield(:title) : "Kr"
     = csrf_meta_tags
 
+    /!--opengraph meata start
+    = content_for?(:og_meta) ? yield(:og_meta) : ''
+    /!--opengraph meata end
+
     /! Le HTML5 shim, for IE6-8 support of HTML elements
     /[if lt IE 9]
       = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"
@@ -24,6 +28,7 @@ html lang="en"
         a.navbar-brand href=admin_root_path  Kr
         .navbar-collapse.collapse.navbar-responsive-collapse
           ul.nav.navbar-nav
+            li= link_to "头条管理", admin_head_lines_path
             li= link_to "文章管理", admin_posts_path
             li= link_to "专栏管理", admin_columns_path
             li= link_to "用户管理", admin_users_path
