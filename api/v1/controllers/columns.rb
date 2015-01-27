@@ -1,6 +1,6 @@
 module V1
   module Controllers
-    class Columns < Grape::API
+    class Columns < ::V1::Base
       KEYS = [:name, :introduce, :cover, :icon]
 
       desc 'Columns Feature'

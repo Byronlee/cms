@@ -1,7 +1,7 @@
 module V1
   module Exceptions
-    module ExceptionHandlers
 
+    module ExceptionHandlers
       def self.included(base)
         base.instance_eval do
           rescue_from Grape::Exceptions::ValidationErrors do |e|

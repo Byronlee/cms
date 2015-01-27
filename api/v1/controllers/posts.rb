@@ -1,6 +1,6 @@
 module V1
   module Controllers
-    class Posts < Grape::API
+    class Posts < ::V1::Base
       # TODO 鉴权、认证、用户、类型等规则
       KEYS = [:id, :title, :created_at, :updated_at, :summary, :content,:title_link,
         :must_read, :slug, :state, :draft_key, :cover]
