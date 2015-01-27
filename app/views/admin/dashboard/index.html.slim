@@ -1,2 +1,12 @@
-h1 Admin::Users#index
-Find me in app/views/admin/users/index.html.slim
+/!breadcrumbs
+div#content-header
+  div#breadcrumb
+    a.tip-bottom href="#" title="Go to Home"
+      i.icon-home
+      |home
+/!End-breadcrumbs
+
+div.container-fluid
+  h1  welcome to dashboard
+
+= render 'layouts/set_active_nav', :active_id => "nav_dashboard"  

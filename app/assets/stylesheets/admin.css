@@ -2,3 +2,25 @@
  *= require_tree ./admin
  *= require_self
  */
+
+ .navbar-inverse{
+ 	background-color: rgb(31,38,45) !important;
+ }
+
+#user-nav{
+	z-index: 0 !important;
+}
+
+.control-group{
+	padding-right: 10%;
+}
+
+.control-group textarea, .control-group input{
+   width: 100%;
+}
+
+.control-group input{
+   width: 50%;
+   height: auto !important;
+   line-height: 25px !important;
+}

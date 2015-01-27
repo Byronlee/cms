@@ -9,7 +9,6 @@ zh-CN:
       default_message: "请查看下面详细的错误提示:"
     labels:
       post:
-        column_id: 'aaaaa'
         title: '文章标题'
         title_link: '标题连接'
         slug: '文章短标题'
@@ -21,6 +20,12 @@ zh-CN:
       head_line:
         url: 网址
         order_num: 序号
+      column:
+        name: '专栏名称'
+        introduce: '专栏介绍'
+        cover: 专栏图像
+        icon:  专栏图标
+        disable_with: '正在提交...'
     placeholders:
       post:
         title: '请输入40字以内的文章标题'
@@ -31,12 +36,20 @@ zh-CN:
       head_line:
         url: 网站URL
         order_num: 优先级序号
+      column:
+        name: '专栏名称'
+        introduce: '专栏介绍'
+        cover: 专栏图像
+        icon:  专栏图标
     prompt:
   helpers:
     submit:
       post:
         create: '创建文章'
         update: '更新文章'
+      column:
+        create: '创建专栏'
+        update: '更新专栏'
     page_entries_info:
       one_page:
         display_entries:
