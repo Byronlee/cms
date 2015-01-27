@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
   namespace :components do
     get '/next/collections', :to => 'next#collections', :as => :next_collections
-    get '/head_lines', :to => 'head_lines#collections', :as => :spotlight_collections
+    resources :head_lines, :only => [:index]
   end
 
 end
