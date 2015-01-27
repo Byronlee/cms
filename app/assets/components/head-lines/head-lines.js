@@ -8,3 +8,4 @@ $.get('/components/head_lines', {}, function(head_lines){
 	     this.rest_head_lines = head_lines.slice(1,4)
 	   }
 	});
+});
