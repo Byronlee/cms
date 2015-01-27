@@ -1,5 +1,5 @@
 module API
-  class API < Grape::API
+  class BaseAPI < Grape::API
 
     rescue_from ActiveRecord::RecordNotFound do
       rack_response({message: '404 Not found', status: 404}, 404)
@@ -13,8 +13,6 @@ module API
       API.logger.add Logger::FATAL, message
       rack_response({message: '500 Internal Server Error', status: 500}, 500)
     end
-
-    mount API::V1::Root
 
   end
 end
