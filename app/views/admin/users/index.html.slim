@@ -17,24 +17,22 @@ div.container-fluid
         i.icon-th
       h5 = page_entries_info @users
 
-.pull-right
-  - User.get_role_values.each do | role |
-    = link_to "#{role[0]}(#{User.send(role[1].to_sym).count})", admin_users_path+"?role=#{role[1]}"
-
-    div class="widget-content nopadding"
-      table class="table table-bordered data-table dataTable"
-        thead
-          tr role="row"
-            th ID
-            th 姓名
-            th 邮箱
-            th 手机
-            th 登陆次数
-            th 最后一次登陆时间
-            th 最后一次登陆IP
-        tbody
-          = render @users
-      div class="dataTables_paginate fg-buttonset ui-buttonset fg-buttonset-multi ui-buttonset-multi paging_full_numbers"
-        = paginate @users
+  div class="widget-content nopadding"
+    table class="table table-bordered data-table dataTable"
+      thead
+        tr role="row"
+          th ID
+          th 姓名
+          th 邮箱
+          th 手机
+          th 角色
+          th 登陆次数
+          th 最后一次登陆时间
+          th 最后一次登陆IP
+          th 操作
+      tbody
+        = render @users
+    div class="dataTables_paginate fg-buttonset ui-buttonset fg-buttonset-multi ui-buttonset-multi paging_full_numbers"
+      = paginate @users
 
 = render 'layouts/set_active_nav', :active_id => "nav_users"        

@@ -57,14 +57,8 @@ ActiveRecord::Schema.define(version: 20150127084115) do
     t.string   "cover"
   end
 
-  create_table "roles", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "users", force: true do |t|
-    t.string   "email"
+    t.string   "email",                  default: ""
     t.string   "phone"
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -77,7 +71,6 @@ ActiveRecord::Schema.define(version: 20150127084115) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "role_id"
     t.string   "role"
   end
 

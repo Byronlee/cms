@@ -3,7 +3,7 @@
 # Table name: users
 #
 #  id                     :integer          not null, primary key
-#  email                  :string(255)
+#  email                  :string(255)      default("")
 #  phone                  :string(255)
 #  encrypted_password     :string(255)      default(""), not null
 #  reset_password_token   :string(255)
@@ -16,11 +16,11 @@
 #  last_sign_in_ip        :string(255)
 #  created_at             :datetime
 #  updated_at             :datetime
-#  role_id                :integer
 #  role                   :string(255)
 #
 
 class User < ActiveRecord::Base
+  extend Enumerize
   paginates_per 20
 
   # Include default devise modules. Others available are:
@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauth_providers => [:krypton]
-  symbolize :role, :in => Settings.roles, :default => :reader, :methods => true, :scopes => :shallow
+  enumerize :role, :in => Settings.roles, :default => :reader, :methods => true, :scopes => :shallow
 
   has_many :authentications, dependent: :destroy
   has_many :posts

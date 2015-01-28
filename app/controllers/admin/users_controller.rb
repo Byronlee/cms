@@ -1,7 +1,7 @@
 class Admin::UsersController < Admin::BaseController
 
   def index  
-  	@users = User.send(params[:role].to_sym) rescue User.all 
+  	@users = User.include(:krypton_authentication).send(params[:role].to_sym) rescue User.all 
   	@users = @users.page params[:page]
   end
 
