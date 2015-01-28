@@ -14,16 +14,9 @@ html lang="en"
     /! Le HTML5 shim, for IE6-8 support of HTML elements
     /[if lt IE 9]
       = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"
-    = stylesheet_link_tag "admin", :media => "all"
+    = stylesheet_link_tag "matrix_admin", :media => "all"
     = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
 
-    link rel="stylesheet" href="/css/bootstrap.min.css"
-    link rel="stylesheet" href="/css/bootstrap-responsive.min.css"
-    link rel="stylesheet" href="/css/fullcalendar.css"
-    link rel="stylesheet" href="/css/matrix-style.css"
-    link rel="stylesheet" href="/css/matrix-media.css"
-    link href="/font-awesome/css/font-awesome.css" rel="stylesheet"
-    link rel="stylesheet" href="/css/jquery.gritter.css"
     = javascript_include_tag "admin"
 
   body
