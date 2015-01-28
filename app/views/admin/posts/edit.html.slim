@@ -13,6 +13,7 @@ div#content-header
 /!End-breadcrumbs
 
 div.container-fluid
+  = bootstrap_flash
   div.widget-box
     div clas="widget-content nopadding"
       = simple_form_for [:admin, @post], html:{class:"form-horizontal"}  do | f |
