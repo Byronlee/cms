@@ -1,4 +1,24 @@
-= simple_form_for [:admin, @head_line] do | f |
-  = f.input :url
-  = f.input :order_num
-  = f.button :submit, data: { disable_with: "submitting..." }
+/!breadcrumbs
+div#content-header
+  div#breadcrumb
+    a.tip-bottom title="回到首页" href= admin_root_path
+      i.icon-home
+      | 首页
+    a.tip-bottom title="回到头条管理列表页面" href= admin_head_lines_path
+      i.icon-list
+      | 头条管理
+    a.current href="#"
+      | 编辑头条
+  <h1>编辑头条</h1>
+/!End-breadcrumbs
+
+div.container-fluid
+  div.widget-box
+    div clas="widget-content nopadding"
+			= simple_form_for [:admin, @head_line], html:{class:"form-horizontal"} do | f |
+			  = f.input :url
+			  = f.input :order_num
+			  div.form-actions
+				  = f.button :submit, data: { disable_with: "submitting..." }
+
+= render 'layouts/set_active_nav', :active_id => "nav_head_lines"

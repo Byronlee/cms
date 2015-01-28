@@ -50,6 +50,9 @@ zh-CN:
       column:
         create: '创建专栏'
         update: '更新专栏'
+      head_line:
+        create: '创建头条'
+        update: '更新头条'
     page_entries_info:
       one_page:
         display_entries:
