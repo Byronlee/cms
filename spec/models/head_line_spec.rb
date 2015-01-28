@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: headlines
+# Table name: head_lines
 #
 #  id         :integer          not null, primary key
 #  url        :string(255)
