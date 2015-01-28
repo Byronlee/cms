@@ -1,7 +1,7 @@
 class Admin::PostsController < Admin::BaseController
 
   def index
-  	@posts = Post.includes(:author, :column).page params[:page]
+  	@posts = Post.order('updated_at desc').includes(:author, :column).page params[:page]
   end
 
   def update
@@ -15,6 +15,11 @@ class Admin::PostsController < Admin::BaseController
   	respond_with @post, location: admin_posts_path
   end
 
+  def show
+    @post = Post.includes(:author, :column).find(params[:id])
+    @host = request.host_with_port
+  end
+
   def destroy
   	@post.destroy
     redirect_to :back
@@ -23,7 +28,7 @@ class Admin::PostsController < Admin::BaseController
   private
 
   def post_params
-    params.require(:post).permit(:column_id, :title, :content, :slug, :summary, :title_link) if params[:post]
+    params.require(:post).permit(:column_id, :title, :content, :slug, :summary, :title_link, :cover) if params[:post]
   end
 
 end

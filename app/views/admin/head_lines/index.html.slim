@@ -1,0 +1,15 @@
+button
+  = link_to "创建头条", new_admin_head_line_path
+
+div
+  = page_entries_info @head_lines
+  
+table.table
+  tr
+    th ID
+    th URL
+    th ORDER
+    th 操作
+  = render @head_lines
+
+= paginate @head_lines

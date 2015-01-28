@@ -19,6 +19,8 @@ settings.next = {
     collection_api: "https://next.36kr.com/api/v1/posts/collections"
 }
 
+settings.roles =  [:reader, :operator, :writer, :editor, :admin, :contributor]
+
 settings.cookie = {
   domain: ".36kr.com"
 }

@@ -1,0 +1,7 @@
+/*
+ *= require application/bootstrap
+ *= require application/style
+ */
+:host {
+  display: block;
+}

@@ -23,19 +23,15 @@
 </div>
 <!-- Navigation Bloc END -->
 
+<% if current_user %>
+  Hi, <%= current_user.krypton_authentication.info[:email] || current_user.krypton_authentication.info[:phone] %> <%= link_to "注销", destroy_user_session_path, method: :delete %>
+<% else %>
+  <%= link_to "Sign in through Krypton", user_omniauth_authorize_path(provider: :krypton) %>
+  <a href="javascript:KryptonID.new_session('<%= user_omniauth_authorize_path(provider: :krypton, theme: :iframe) %>')">modal</a>
+<% end %>
+
 <!-- spotlight-section -->
-<div class="bloc bg-path-overlay  l-bloc" id="spotlight-section">
-	<div class="container bloc-sm">
-		<div class="row">
-			<div class="col-sm-8">
-				<img src="/assets/img/newyork.jpg" class="mg-lg" height="320" width="520" alt='' /><a href="index.html" class="btn   btn-rd pull-right btn-d">Recommended | Columns</a>
-			</div>
-			<div class="col-sm-4">
-				<img src="/assets/img/cornfield.jpg" width="260" height="106" alt='' /><img src="/assets/img/field.jpg" width="260" height="106" alt='' /><img src="/assets/img/map.jpg" width="260" height="106" alt='' />
-			</div>
-		</div>
-	</div>
-</div>
+<head-lines></head-lines>
 <!-- spotlight-section END -->
 
 <!-- news-category-nav -->
