@@ -48,4 +48,5 @@ RSpec.configure do |config|
   config.render_views
   config.include FactoryGirl::Syntax::Methods
   ActiveRecord::Migration.maintain_test_schema!
+  config.include RSpec::Rails::RequestExampleGroup, type: :request, file_path: /spec\/api/
 end
