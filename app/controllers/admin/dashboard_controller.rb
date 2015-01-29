@@ -1,6 +1,5 @@
-#coding=utf-8
 class Admin::DashboardController < Admin::BaseController
-	authorize_resource :class => false
+	authorize_object :dashboard
 	
   def index
   end
