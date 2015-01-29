@@ -1,6 +1,6 @@
 /*
  *= require_tree ./css
- *= require font-awesome/css/font-awesome
+ *= require ./font-awesome/css/font-awesome
  *= require_self
  */
 
@@ -21,7 +21,12 @@
 }
 
 .control-group input{
-   width: 50%;
+   width: 100%;
    height: auto !important;
    line-height: 25px !important;
+}
+
+.pagination-table{
+	float: right;
+	margin: 10px 0;
 }

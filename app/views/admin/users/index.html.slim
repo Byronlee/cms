@@ -19,7 +19,7 @@ div.container-fluid
       h5 = page_entries_info @users
 
   div class="widget-content nopadding"
-    table class="table table-bordered data-table dataTable"
+    table class="table table-bordered table-striped with-check"
       thead
         tr role="row"
           th ID
@@ -33,7 +33,7 @@ div.container-fluid
           th 操作
       tbody
         = render @users
-    div class="dataTables_paginate fg-buttonset ui-buttonset fg-buttonset-multi ui-buttonset-multi paging_full_numbers"
+    div class="pagination pagination-table"
       = paginate @users
 
 = render 'layouts/set_active_nav', :active_id => "nav_users"        

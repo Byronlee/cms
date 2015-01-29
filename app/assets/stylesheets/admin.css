@@ -20,7 +20,7 @@
 }
 
 .control-group input{
-   width: 50%;
+   width: 100%;
    height: auto !important;
    line-height: 25px !important;
 }

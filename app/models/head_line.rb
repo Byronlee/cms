@@ -11,7 +11,7 @@
 
 class HeadLine < ActiveRecord::Base
 
-	paginates_per 20
+	paginates_per 2
 
 	validates :url, presence: true
 	validates_uniqueness_of :url

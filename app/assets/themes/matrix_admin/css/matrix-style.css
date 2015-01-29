@@ -53,8 +53,8 @@ hr{ border-top-color:#dadada;}
 	z-index: -9;
 }
 #header h1 {
-	background: url("../img/matrix_logo.png") no-repeat scroll 0 0 transparent;
-	height: 31px;
+	background: url("../img/36kr.png") no-repeat scroll 0 100% transparent;
+	height: 30px;
 	left: 20px;
 	line-height: 600px;
 	overflow: hidden;

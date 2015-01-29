@@ -19,7 +19,7 @@
 #
 
 class Post < ActiveRecord::Base
-  paginates_per 20
+  paginates_per 2
   mount_uploader :cover, BaseUploader
 
   validates :title, :summary, :content, :title_link, presence: true
