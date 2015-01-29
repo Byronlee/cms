@@ -1,8 +1,8 @@
 class Admin::UsersController < Admin::BaseController
+  load_and_authorize_resource
 
   def index  
-  	@users = User.send(params[:role].to_sym) rescue User.all 
-  	@users = @users.page params[:page]
+    @users = @users.includes(:krypton_authentication).page params[:page]
   end
 
   def update

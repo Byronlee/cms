@@ -1,5 +1,6 @@
 class Admin::HeadLinesController < Admin::BaseController
-
+   load_and_authorize_resource
+   
    def index
   	@head_lines = HeadLine.order('updated_at desc').page params[:page]
   end

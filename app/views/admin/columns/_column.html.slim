@@ -6,5 +6,8 @@ tr
   td = column.introduce
   td = column.created_at
   td 
-    = link_to "编辑", edit_admin_column_path(column)
-    = link_to "删除", admin_column_path(column), :method => :delete
+    a.tip-top data-original-title="编辑" href= edit_admin_column_path(column)
+      i.icon-pencil
+    |&nbsp;&nbsp;
+    a.tip-top data-original-title="删除" data-method="delete" data-confirm="确定删除文章 #{column.name} ？" href= admin_column_path(column)
+      i.icon-remove

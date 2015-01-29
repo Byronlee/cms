@@ -1,22 +1,41 @@
 = render 'og_meta'
 
-h2
-  = @post.title
+/!breadcrumbs
+div#content-header
+  div#breadcrumb
+    a.tip-bottom title="回到首页" href= admin_root_path
+      i.icon-home
+      | 首页
+    a.tip-bottom title="回到文章管理列表页面" href= admin_posts_path
+      i.icon-file
+      | 文章管理
+    a.current href="#"
+      = @post.title
+  h1
+    = @post.title
+/!End-breadcrumbs
 
-div
-  span
-    |所属专栏： 
-    = @post.column.try(:name)
-  span style="margin-left:20px;"
-    |创建时间： 
-    = @post.created_at
 
-  span style="margin-left:20px;"
-    |作者： 
-    = @post.author.try(:name)
-img src==@post.cover_url
+div.container-fluid
+  = bootstrap_flash
+  div.span12
+    img src==@post.cover_url
 
-img src==@post.cover_url
+  div.span12 style="margin-top:20px;"
+    span
+      b
+        |所属专栏： 
+      = @post.column.try(:name)
+    span style="margin-left:20px;"
+      b
+        |作者： 
+      = @post.author.try(:name)
+    span style="margin-left:20px;"
+      b
+        |创建时间： 
+      = @post.created_at
 
-div
-  = @post.content
+  div.span12 style="margin-top:20px;"
+
+
+    = @post.content

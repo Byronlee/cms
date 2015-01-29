@@ -14,37 +14,70 @@ html lang="en"
     /! Le HTML5 shim, for IE6-8 support of HTML elements
     /[if lt IE 9]
       = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"
-    = stylesheet_link_tag "admin", :media => "all"
+    = stylesheet_link_tag "matrix_admin/matrix_admin", :media => "all"
     = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
-    = javascript_include_tag "admin"
+
+    = javascript_include_tag "matrix_admin/matrix_admin"
 
   body
-    .navbar.navbar-default.navbar-static-top
-      .container
-        button.navbar-toggle type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse"
-          span.icon-bar
-          span.icon-bar
-          span.icon-bar
-        a.navbar-brand href=admin_root_path  Kr
-        .navbar-collapse.collapse.navbar-responsive-collapse
-          ul.nav.navbar-nav
-            li= link_to "头条管理", admin_head_lines_path
-            li= link_to "文章管理", admin_posts_path
-            li= link_to "专栏管理", admin_columns_path
-            li= link_to "用户管理", admin_users_path
+    /!Header-part
+    div#header
+      h1
+        a href=admin_root_path  Matrix Admin
+    /!close-Header-part
 
-    .container
-      .row
-        .col-lg-9
-          = bootstrap_flash
-          = yield
-        .col-lg-3
-          .well.sidebar-nav
-            h3 Sidebar
-            ul.nav.nav-list
-              li.nav-header Sidebar
-              li= link_to "Link 1", "/path1"
-              li= link_to "Link 2", "/path2"
-              li= link_to "Link 3", "/path3"
-      footer
-        p &copy; Company 2015
+
+    /!top-Header-menu
+    div#user-nav class="navbar navbar-inverse"
+      ul.nav
+        li#profile-messages class="dropdown" 
+          a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"
+            i class="icon icon-user"
+            span class="text"  Welcome User
+        li
+          a title="" target="_blank" href= root_path
+            i class="icon icon-share-alt"
+            span.text  主站
+        li 
+          a title="" href="login.html"
+            i class="icon icon-share-alt"
+            span.text  Logout
+    /!close-top-Header-menu
+
+
+    /!sidebar-menu
+    div#sidebar
+      a.visible-phone href= admin_root_path
+        i class="icon icon-home"
+        |Dashboard
+      ul
+        li#nav_dashboard
+          a href= admin_root_path
+            i class="icon icon-home"
+            span  Dashboard
+        li#nav_head_lines
+          a href=admin_head_lines_path
+            i class="icon icon-star"
+            span  头条管理
+        li#nav_posts
+          a href=admin_posts_path
+            i class="icon icon-file"
+            span  文章管理  
+        li#nav_columns
+          a href=admin_columns_path
+            i class="icon icon-list"
+            span  专栏管理  
+        li#nav_users
+          a href=admin_users_path
+            i class="icon icon-user"
+            span  用户管理  
+    /!close-sidebar-menu
+
+    div#content
+      = yield
+  
+    /!Footer-part
+    div.row-fluid
+      div#footer class="span12"
+       |&copy; Company 2015 36Kr
+    /!end-Footer-part

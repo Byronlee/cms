@@ -1,18 +1,39 @@
-= page_entries_info(@users)
-.pull-right
-  - User.get_role_values.each do | role |
-    = link_to "#{role[0]}(#{User.send(role[1].to_sym).count})", admin_users_path+"?role=#{role[1]}"
-table.table
-  tr
-    th ID
-    th 姓名
-    th 邮箱
-    th 手机
-    th 登陆次数
-    th 最后一次登陆时间
-    th 最后一次登陆IP
-    th 用户角色
-    th 操作
-  = render @users
+/!breadcrumbs
+div#content-header
+  div#breadcrumb
+    a.tip-bottom title="Go to Home" href= admin_root_path
+      i.icon-home
+      | 首页
+    a.current href="#"
+      i.icon-user
+      | 用户管理
+  <h1>用户管理</h1>
+/!End-breadcrumbs
 
-= paginate @users
+div.container-fluid
+  = bootstrap_flash
+  div.widget-box
+    div.widget-title
+      span.icon
+        i.icon-th
+      h5 = page_entries_info @users
+
+  div class="widget-content nopadding"
+    table class="table table-bordered table-striped with-check"
+      thead
+        tr role="row"
+          th ID
+          th 姓名
+          th 邮箱
+          th 手机
+          th 角色
+          th 登陆次数
+          th 最后一次登陆时间
+          th 最后一次登陆IP
+          th 操作
+      tbody
+        = render @users
+    div class="pagination pagination-table"
+      = paginate @users
+
+= render 'layouts/set_active_nav', :active_id => "nav_users"        

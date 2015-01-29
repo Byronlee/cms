@@ -12,7 +12,6 @@
 #
 
 class Authentication < ActiveRecord::Base
-
   belongs_to :user
   store :raw, accessors: [ :info ], coder: JSON
 

@@ -20,6 +20,7 @@
 #
 
 class User < ActiveRecord::Base
+  extend Enumerize
   paginates_per 20
 
   # Include default devise modules. Others available are:
@@ -27,7 +28,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauth_providers => [:krypton]
-  symbolize :role, :in => Settings.roles, :default => :reader, :methods => true, :scopes => :shallow
+  enumerize :role, :in => Settings.roles, :default => :reader, :methods => true, :scopes => :shallow
 
   has_many :authentications, dependent: :destroy
   has_many :posts

@@ -1,21 +1,39 @@
-button
-  = link_to "创建文章", new_admin_post_path
+/!breadcrumbs
+div#content-header
+  div#breadcrumb
+    a.tip-bottom title="Go to Home" href= admin_root_path
+      i.icon-home
+      | 首页
+    a.current href="#"
+      i.icon-file
+      | 文章管理
+  <h1>文章管理</h1>
+/!End-breadcrumbs
 
-div
-  = page_entries_info @posts
-  
-table.table
-  tr
-    th ID
-    th 标题
-    th 作者
-    th 专栏
-    th 创建时间
-    th 状态
-    th 操作
-  = render @posts
+div.container-fluid
+  = bootstrap_flash
+  = link_to "创建文章", new_admin_post_path, class:"btn btn-primary"
 
-= paginate @posts
+  div.widget-box
+    div.widget-title
+      span.icon
+        i.icon-th
+      h5 = page_entries_info @posts
+    
+    div class="widget-content nopadding"
+      table class="table table-bordered table-striped with-check"
+        thead
+          tr role="row"
+            th ID
+            th 标题
+            th 作者
+            th 专栏
+            th 创建时间
+            th 状态
+            th 操作
+        tbody
+          = render @posts
+      div class="pagination pagination-table"
+        = paginate @posts
 
-
-
+= render 'layouts/set_active_nav', :active_id => "nav_posts"

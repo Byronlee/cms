@@ -2,7 +2,11 @@ tr
   td = head_line.id
   td = link_to head_line.url, head_line.url, target:'_new'
   td = head_line.order_num
+  td = head_line.created_at
   td 
-    = link_to "编辑", edit_admin_head_line_path(head_line)
-    = link_to "删除", admin_head_line_path(head_line), :method => :delete
+    a.tip-top data-original-title="编辑" href= edit_admin_head_line_path(head_line)
+      i.icon-pencil
+    |&nbsp;&nbsp;
+    a.tip-top data-original-title="删除" data-method="delete" data-confirm="确定删除头条 #{head_line.url} ？" href= admin_head_line_path(head_line)
+      i.icon-remove
  
