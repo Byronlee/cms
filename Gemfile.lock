@@ -132,6 +132,8 @@ GEM
     em-websocket (0.5.1)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
+    enumerize (0.9.0)
+      activesupport (>= 3.2)
     equalizer (0.0.9)
     erubis (2.7.0)
     eventmachine (1.0.4)
@@ -436,9 +438,6 @@ GEM
       net-ssh (>= 2.8.0)
     subexec (0.2.3)
     swagger-ui_rails (0.1.7)
-    symbolize (4.4.1)
-      activemodel (>= 3.2, < 5)
-      activesupport (>= 3.2, < 5)
     tabularize (0.2.9)
       unicode-display_width (~> 0.1.1)
     temple (0.7.5)
@@ -499,6 +498,7 @@ DEPENDENCIES
   devise (~> 3.4.1)
   devise-async (~> 0.9.0)
   devise-i18n (~> 0.10.3)
+  enumerize
   exception_notification
   factory_girl_rails (~> 4.4.1)
   faraday (~> 0.9.0)
@@ -555,7 +555,6 @@ DEPENDENCIES
   slim-rails
   spring
   swagger-ui_rails
-  symbolize (~> 4.4.1)
   therubyracer
   turbolinks
   twitter-bootstrap-rails

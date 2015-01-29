@@ -24,10 +24,10 @@ require 'spec_helper'
 describe User do
 	let(:user) { create :user }
 	
-	it "用户默认角色是writer" do
-		expect(user.role).to eql(:reader)
-		expect(user.reader?).to be_true
+	it "用户默认角色是reader" do
+		expect(user.role).to eql("reader")
+		expect(user.role.reader?).to be_true
     expect(user.role_text).to eq("读者")
-    expect(User.get_role_values).to include(["读者", :reader])
+    expect(User.role.options).to include(["读者", "reader"])
 	end
 end

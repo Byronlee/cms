@@ -1,6 +1,5 @@
 zh-CN:
-  activerecord:
-    symbolizes:
+    enumerize:
       user:
         role:
           reader: 读者

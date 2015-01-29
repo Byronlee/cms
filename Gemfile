@@ -27,7 +27,7 @@ gem 'faraday', '~> 0.9.0'
 
 # models
 gem "ancestry", "~> 2.1.0"
-gem 'symbolize', "~> 4.4.1"
+gem 'enumerize'
 gem "carrierwave", "~> 0.10.0"
 gem 'carrierwave-upyun', '~> 0.1.6'
 gem "mini_magick", "~> 3.7.0"

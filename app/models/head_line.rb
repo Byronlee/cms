@@ -10,7 +10,6 @@
 #
 
 class HeadLine < ActiveRecord::Base
-
 	paginates_per 20
 
 	validates :url, presence: true

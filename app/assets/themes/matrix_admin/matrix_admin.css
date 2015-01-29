@@ -1,0 +1,32 @@
+/*
+ *= require_tree ./css
+ *= require ./font-awesome/css/font-awesome
+ *= require_self
+ */
+
+ .navbar-inverse{
+ 	background-color: rgb(31,38,45) !important;
+ }
+
+#user-nav{
+	z-index: 0 !important;
+}
+
+.control-group{
+	padding-right: 10%;
+}
+
+.control-group textarea, .control-group input{
+   width: 100%;
+}
+
+.control-group input{
+   width: 100%;
+   height: auto !important;
+   line-height: 25px !important;
+}
+
+.pagination-table{
+	float: right;
+	margin: 10px 0;
+}

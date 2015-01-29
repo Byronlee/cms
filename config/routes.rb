@@ -16,7 +16,8 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   namespace :admin do
-    root to: "dashboard#index"
+    root to: redirect("/admin/dashboard")
+    resources :dashboard
     resources :posts
     resources :columns
     resources :head_lines, :except => [:show]
