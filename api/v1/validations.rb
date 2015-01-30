@@ -1,6 +1,6 @@
 module V1
   module Validations
-    class Range < Grape::Validations::DefaultValidator
+    class Range < ::Grape::Validations::DefaultValidator
 
       def initialize(attrs, options, required, scope)
         @range    = options

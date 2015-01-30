@@ -33,7 +33,6 @@ module V1
         end
         get ':id' do
           @posts = Post.where("column_id = :id", id: params[:id]).page(params[:page]).per(params[:per_page])
-          error!("Post not found", 404) if @posts.blank?
           present @posts, with: Entities::Post
         end
 
@@ -63,11 +62,11 @@ module V1
                    end
           @posts = Post.where("column_id = :cid and created_at #{action} :date",
                               cid: post.column_id, date: post.created_at).order(created_at: :desc)
-          if @posts.blank?
-            error!("Post not found", 404)
-          else
+          #if @posts.blank?
+          #  error!("Post not found", 404)
+          #else
             @posts = @posts.page(params[:page]).per(params[:per_page] || 30)
-          end
+          #end
           present @posts, with: Entities::Post
         end
 
