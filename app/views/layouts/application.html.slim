@@ -8,4 +8,61 @@ html
     = html_import_tag 'application'
     = csrf_meta_tags
   body
-    = yield
+    /!Main container
+    div.page-container
+      /!Navigation Bloc
+      div#nav-bloc class="bloc"
+        div class="container bloc-sm"
+          nav class="navbar row"
+            div.navbar-header
+              a.navbar-brand href="index.html"
+                img src="/assets/img/logo.png" alt=''
+                  |36kr
+              button#nav-toggle type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1"
+                span.sr-only
+                  |Toggle navigation
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+            div class="collapse navbar-collapse navbar-1"
+              ul class="site-navigation nav"
+                li.active
+                  a href="index.html"  Home
+      /!Navigation Bloc END
+
+      = yield
+
+      /!Footer - bloc-19
+      div#bloc-19 class="bloc l-bloc"
+        div class="container bloc-sm"
+          div.row
+            div.col-sm-12
+      /!Footer - bloc-19 END
+
+      /!Footer - footer-nav
+      div#footer-nav class="bloc l-bloc"
+        div class="container bloc-sm"
+          div.row
+            div.col-sm-3
+              h3
+                |About
+              a href="index.html" class="a-btn a-block"  The team
+              a href="index.html" class="a-btn a-block"  Contact us
+            div.col-sm-3
+              h3
+                |Get the App
+              a href="index.html" class="a-btn a-block"  iPhone
+              a href="index.html" class="a-btn a-block"  Android
+            div.col-sm-3
+              h3
+                |Follow us
+              a href="index.html" class="a-btn a-block"  Twitter
+              a href="index.html" class="a-btn a-block"  Facebook
+            div.col-sm-3
+              h3
+                |Company
+              a href="index.html" class="a-btn a-block"  Terms of use
+              a href="index.html" class="a-btn a-block"  Privacy
+
+      /!Footer - footer-nav END
+    /!Main container END
