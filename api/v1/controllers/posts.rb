@@ -3,7 +3,7 @@ module V1
     class Posts < ::V1::Base
       # TODO 鉴权、认证、用户、类型等规则
       KEYS = [:id, :title, :created_at, :updated_at, :summary, :content,:title_link,
-        :must_read, :slug, :state, :draft_key, :cover]
+        :must_read, :slug, :state, :draft_key, :cover, :user_id, :source_id]
       STATE = ['publish', 'draft', 'archived', 'login']
 
       desc 'Posts Feature'
@@ -82,15 +82,17 @@ module V1
         #   POST /api/v1/posts
         desc 'Create a new post'
         params do
-          requires :title,  type: String,   desc: ""
-          requires :summary,  type: String, desc: ""
-          requires :content,  type: String, desc: ""
-          requires :title_link,  type: String, desc: ""
-          requires :state, type: String, values: STATE, default: 'draft', desc: ""
-          optional :must_read, type: Boolean, default: 'false', desc: ""
-          optional :slug, type: String, desc: ""
-          optional :draft_key, type: String, desc: ""
-          optional :cover, type: String, desc: ""
+          requires :title,  type: String,   desc: "标题"
+          requires :content,  type: String, desc: "内容"
+          requires :user_id,  type: Integer, desc: "用户id"
+          requires :source_id,  type: Integer, desc: "来源id"
+#          requires :summary,  type: String, desc: ""
+#          requires :title_link,  type: String, desc: ""
+#          requires :state, type: String, values: STATE, default: 'draft', desc: ""
+#          optional :must_read, type: Boolean, default: 'false', desc: ""
+#          optional :slug, type: String, desc: ""
+#          optional :draft_key, type: String, desc: ""
+#          optional :cover, type: String, desc: ""
         end
         post 'new' do
           #authenticate!
