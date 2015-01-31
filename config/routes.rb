@@ -25,4 +25,5 @@ Rails.application.routes.draw do
     get '/next/collections', to: 'next#collections', as: :next_collections
     resources :head_lines, only: [:index]
   end
+  resources :posts, :only => [:show]
 end

@@ -1,0 +1,14 @@
+div class="bloc l-bloc"
+  div#post_cover
+    img style="" src= @post.cover_url
+  div#post-title
+    div class="container bloc-sm"
+      div.row
+        div.col-sm-12
+          h1  = @post.title
+
+  div
+    div class="container bloc-sm"
+      div.row
+        div.col-sm-12
+          = @post.content
