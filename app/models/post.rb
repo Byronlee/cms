@@ -23,7 +23,9 @@ class Post < ActiveRecord::Base
   paginates_per 20
   mount_uploader :cover, BaseUploader
 
-  validates :title, :summary, :content, :title_link, presence: true
+  validates_presence_of :title, :content
+  validates_presence_of :summary, :title_link, :slug, if: -> { persisted? }
+
   validates :slug,    length: { maximum: 14 }
   validates :summary, length: { maximum: 40 }
   validates :title,   length: { maximum: 40 }

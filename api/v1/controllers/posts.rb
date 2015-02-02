@@ -91,7 +91,7 @@ module V1
           # authenticate!
           # TODO: 鉴权
           @post = Post.new params.slice(*KEYS)
-          if @post.save(validate: false)
+          if @post.save
             present @post, with: Entities::Post
           else
             error!({ error: @post.errors.full_messages }, 400)
