@@ -44,7 +44,11 @@ class User < ActiveRecord::Base
   end
 
   def name
-    self.krypton_authentication && self.krypton_authentication.info["name"]
+    if self.krypton_authentication && self.krypton_authentication.info["name"].present?
+      self.krypton_authentication.info["name"]
+    else
+      self.phone || self.email
+    end
   end
 
   protected

@@ -10,5 +10,9 @@ div class="bloc l-bloc"
   div
     div class="container bloc-sm"
       div.row
+        div.col-sm-12#post_info
+          span#author_info  = "by #{@post.author.name}"
+          ||
+          span#hour_info  = time_ago_in_words(@post.created_at)
         div.col-sm-12
           = @post.content

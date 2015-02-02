@@ -11,3 +11,17 @@ div#post-title{
   filter:alpha(opacity=40);
   position: relative;
 }
+
+div#post_info{
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+#author_info{
+  margin-right: 10px;
+}
+
+#hour_info{
+  margin-left: 10px;
+}
