@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20150202111502) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "cover"
-    t.integer  "source_id"
+    t.string   "source"
   end
 
   create_table "users", force: true do |t|

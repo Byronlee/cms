@@ -16,7 +16,7 @@
 #  created_at :datetime
 #  updated_at :datetime
 #  cover      :string(255)
-#  source_id  :integer
+#  source     :string(255)
 #
 
 FactoryGirl.define do
@@ -28,6 +28,6 @@ FactoryGirl.define do
     must_read 'true'
     state 'draft'
     user_id 1
-    source_id 1
+    source 'writer'
   end
 end
