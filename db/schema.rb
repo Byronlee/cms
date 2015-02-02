@@ -34,6 +34,15 @@ ActiveRecord::Schema.define(version: 20150204083838) do
     t.string   "icon"
   end
 
+  create_table "comments", force: true do |t|
+    t.text     "content"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "head_lines", force: true do |t|
     t.string   "url"
     t.integer  "order_num"

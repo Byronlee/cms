@@ -16,3 +16,6 @@ div class="bloc l-bloc"
           span#hour_info  = time_ago_in_words(@post.created_at)
         div.col-sm-12
           = @post.content
+
+        div.col-sm-12 class="comment"
+          = render 'comments/form', :commentable => @post

@@ -33,4 +33,5 @@ class Post < ActiveRecord::Base
 
   belongs_to :column
   belongs_to :author, class_name: User.to_s, foreign_key: 'user_id'
+  has_many :comments, :as => :commentable
 end
