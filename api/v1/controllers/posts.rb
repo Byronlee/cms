@@ -85,13 +85,13 @@ module V1
           requires :title,    type: String,   desc: '标题'
           requires :content,  type: String,   desc: '内容'
           requires :user_id,  type: Integer,  desc: '用户id'
-          requires :source,   type: String,   desc: '来源id'
+          optional :source,   type: String,   desc: '来源id'
         end
         post 'new' do
           # authenticate!
           # TODO: 鉴权
           @post = Post.new params.slice(*KEYS)
-          if @post.save
+          if @post.save(validate: false)
             present @post, with: Entities::Post
           else
             error!({ error: @post.errors.full_messages }, 400)
