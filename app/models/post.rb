@@ -16,6 +16,7 @@
 #  created_at :datetime
 #  updated_at :datetime
 #  cover      :string(255)
+#  source     :string(255)
 #
 
 class Post < ActiveRecord::Base
@@ -23,12 +24,11 @@ class Post < ActiveRecord::Base
   mount_uploader :cover, BaseUploader
 
   validates :title, :summary, :content, :title_link, presence: true
-  validates :title,   length: { maximum: 40 }
-  validates :summary, length: { maximum: 40 }
-  validates :content, length: { maximum: 10000 }
   validates :slug,    length: { maximum: 14 }
+  validates :summary, length: { maximum: 40 }
+  validates :title,   length: { maximum: 40 }
+  validates :content, length: { maximum: 10_000 }
 
   belongs_to :column
-  belongs_to :author, class_name: User.to_s, foreign_key:'user_id'
-  
+  belongs_to :author, class_name: User.to_s, foreign_key: 'user_id'
 end

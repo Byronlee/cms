@@ -15,6 +15,8 @@ module V1
       expose :created_at , documentation: ''
       expose :updated_at , documentation: ''
       expose :cover      , documentation: '封面图片'
+      expose :user_id    , documentation: '用户'
+      expose :source     , documentation: '来源'
     end
   end
 end

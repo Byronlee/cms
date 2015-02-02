@@ -16,6 +16,7 @@
 #  created_at :datetime
 #  updated_at :datetime
 #  cover      :string(255)
+#  source     :string(255)
 #
 
 FactoryGirl.define do
@@ -26,5 +27,7 @@ FactoryGirl.define do
     title_link 'title_link'
     must_read 'true'
     state 'draft'
+    user_id 1
+    source 'writer'
   end
 end

@@ -7,11 +7,11 @@ require_relative 'formatter'
 class ::V1::Base < Grape::API
   prefix 'api'
   version 'v1'
-
-  helpers ::V1::Helpers
-
+  #format :json
   #formatter :json, ::V1::JSendSuccessFormatter
   #error_formatter :json, ::V1::JSendErrorFormatter
+
+  helpers ::V1::Helpers
 
   include ::V1::ExceptionHandlers
 
@@ -20,7 +20,8 @@ class ::V1::Base < Grape::API
   mount ::V1::Controllers::Columns
 
   add_swagger_documentation(
-    api_version: 'v1', mount_path: 'swagger_doc', hide_documentation_path: true, include_base_url: false
+    api_version: 'v1', mount_path: 'swagger_doc',
+    hide_documentation_path: true, include_base_url: false
   )
 
 end
