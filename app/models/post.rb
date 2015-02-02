@@ -23,14 +23,12 @@ class Post < ActiveRecord::Base
   paginates_per 20
   mount_uploader :cover, BaseUploader
 
-#  validates :title, :summary, :content, :title_link, presence: true
-  validates :title, :content, presence: true
+  validates :title, :summary, :content, :title_link, presence: true unless new_record?
+  validates :slug,    length: { maximum: 14 } unless new_record?
+  validates :summary, length: { maximum: 40 } unless new_record?
   validates :title,   length: { maximum: 40 }
-#  validates :summary, length: { maximum: 40 }
-  validates :content, length: { maximum: 10000 }
-  validates :slug,    length: { maximum: 14 }
+  validates :content, length: { maximum: 10_000 }
 
   belongs_to :column
-  belongs_to :author, class_name: User.to_s, foreign_key:'user_id'
-
+  belongs_to :author, class_name: User.to_s, foreign_key: 'user_id'
 end

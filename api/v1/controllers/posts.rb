@@ -37,7 +37,7 @@ module V1
         #   /api/v1/posts/:id/page?action=up&state=&page=1&per_page=15
         desc 'Get id posts list'
         params do
-          optional :page,  type: Integer, default: 1, desc: "Specify the page of paginated results."
+          optional :page,  type: Integer, default: 1, desc: 'Specify the page of paginated results.'
           optional :per_page,  type: Integer, default: 30, desc: "Specify the page of paginated results."
           optional :action,  type: String, default: 'down', desc: "'down', 'up'"
           requires :state, type: String, values: STATE, default: 'draft', desc: ""
@@ -82,21 +82,14 @@ module V1
         #   POST /api/v1/posts
         desc 'Create a new post'
         params do
-          requires :title,  type: String,   desc: "标题"
-          requires :content,  type: String, desc: "内容"
-          requires :user_id,  type: Integer, desc: "用户id"
-          requires :source_id,  type: Integer, desc: "来源id"
-#          requires :summary,  type: String, desc: ""
-#          requires :title_link,  type: String, desc: ""
-#          requires :state, type: String, values: STATE, default: 'draft', desc: ""
-#          optional :must_read, type: Boolean, default: 'false', desc: ""
-#          optional :slug, type: String, desc: ""
-#          optional :draft_key, type: String, desc: ""
-#          optional :cover, type: String, desc: ""
+          requires :title,  type: String,   desc: '标题'
+          requires :content,  type: String, desc: '内容'
+          requires :user_id,  type: Integer, desc: '用户id'
+          requires :source_id,  type: Integer, desc: '来源id'
         end
         post 'new' do
-          #authenticate!
-          #TODO: 鉴权
+          # authenticate!
+          # TODO: 鉴权
           @post = Post.new params.slice(*KEYS)
           if @post.save
             present @post, with: Entities::Post
