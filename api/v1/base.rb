@@ -13,8 +13,6 @@ class ::V1::Base < Grape::API
 
   helpers ::V1::Helpers
 
-  include ::V1::ExceptionHandlers
-
   mount ::V1::Controllers::Users
   mount ::V1::Controllers::Posts
   mount ::V1::Controllers::Columns
