@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 20150204083838) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_excellent"
+    t.boolean  "is_long"
   end
 
   create_table "head_lines", force: true do |t|

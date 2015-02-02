@@ -9,6 +9,8 @@
 #  user_id          :integer
 #  created_at       :datetime
 #  updated_at       :datetime
+#  is_excellent     :boolean
+#  is_long          :boolean
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl
