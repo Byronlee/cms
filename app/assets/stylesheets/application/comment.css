@@ -1,0 +1,33 @@
+#comments-list{
+  margin-top:20px;
+}
+
+#comments-list img{
+  width:50px;
+  height:50px;
+  position:absolute;
+  right:0;
+  top:10px;
+}
+
+#comments-list .row{
+  margin-top: 50px;
+}
+
+#comments-list h4{
+  margin-bottom: 25px;
+}
+
+#comments-list #actions{
+  margin-top: 20px;
+}
+
+#comments-list #actions #toggleFormBtn{
+  float:right;
+}
+
+#comments-list #comment-time-info{
+   clear:both;
+   margin-top: 20px;
+   padding-left: 15px;
+}

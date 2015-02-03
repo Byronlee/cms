@@ -1,0 +1,18 @@
+div#comments-excellent
+  - @comments.each do |comment|
+    div.row
+      div style="overflow:hidden"
+        div.col-sm-10
+          div
+            h4  = comment.user.name
+          div = comment.content
+        div.col-sm-2
+          img.img-circle onerror="imgError(this);" src= "#{comment.user.avatar}"
+      div#comment-time-info
+        = time_ago_in_words(comment.created_at)
+div#comments-normal style="display:none"
+div#actions
+  button#toggleNormalComments class="btn btn-primary" onClick="getNormalList(this)"  = "Expand All #{comments_normal_count} Comments"
+  button#toggleFormBtn class="btn btn-primary btn-warning" onClick="toggleCommentForm();"
+    |Comment&nbsp;
+    b#toggleFormIcon class="caret"

@@ -27,6 +27,8 @@ Rails.application.routes.draw do
   end
 
   resources :posts, :only => [:show] do
-    resources :comments
+    resources :comments do
+      get :normal_list, on: :collection
+    end
   end
 end

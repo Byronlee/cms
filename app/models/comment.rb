@@ -18,8 +18,14 @@ class Comment < ActiveRecord::Base
   validates :content, length: { maximum: 3_000 }
 
   belongs_to :commentable, :polymorphic => true
+  belongs_to :user
 
   before_save :set_is_long_attribute
+
+  # default_scope {order('char_length(content) DESC')}
+  default_scope {order('created_at DESC')}
+  scope :excellent, -> { where(is_excellent: true) }
+  scope :normal, -> { where(is_excellent: [false, nil]) }
 
   private
 

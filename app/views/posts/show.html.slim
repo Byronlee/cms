@@ -17,5 +17,13 @@ div class="bloc l-bloc"
         div.col-sm-12
           = @post.content
 
+        div.col-sm-12#comments-list
+
         div.col-sm-12 class="comment"
           = render 'comments/form', :commentable => @post
+
+javascript:
+  $(document).ready(function(ret, status){
+    $.get("/posts/1/comments.js", function(){
+    });
+  });
