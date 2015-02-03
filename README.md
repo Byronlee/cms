@@ -41,38 +41,26 @@
 > 提供的Vagrant镜像包已经包含系统所有依赖的环境，只需本地加载这个镜像包，项目就可以启动运行了。
  目前镜像已经存在的用户有vagrant 和 deploy 密码同用户名
 
+#### 初始化Vagrant镜像
+
 ```shell
   $ mkdir -p ~/workspace/source && cd ~/workspace
-  $ vagrant box add 36kr ubuntu_tls_ruby_mongo_postgre_memcached_redis_nginx_node_els_img_faye_sidekiq_36kr_v2.box
+  $ vagrant box add 36kr ubuntu_tls_ruby_mongo_postgre_memcached_redis_nginx_node_els_img_faye_sidekiq_36kr_v3.box
   $ vagrant init 36kr
-  $ vagrant up
-  $ vagrant ssh 或者 ssh -p2222 deploy@localhost
 ```
 
-#### 打开vagrant与host的端口映射
-
- 在Vagrantfile文件里添加
+ 修改Vagrantfile文件
 ```shell
+  # 开启vagrant与host的端口映射
   $ config.vm.network "forwarded_port", guest: 3000, host: 3000
-```
-
-#### 开启目录映射
-
- 在Vagrantfile文件里添加
-```shell
+  # 开启目录映射
   $ config.vm.synced_folder "~/workspace/source/36krx2015", "/vagrant_data"
 ```
 
-### 在vagrant里启动项目
+#### 启动Vagrant
+
 ```shell
-  $ vagrant reload
-  $ vagrant ssh 或者 ssh -p2222 vagrant@localhost
-  $ cd /vagrant_data
-  $ bundle install
-  $ rake db:create
-  $ rake db:migrate
-  $ rake db:seed
-  $ rails s
+  $ vagrant up
 ```
 
 ## Deployment instructions
@@ -95,6 +83,14 @@
   $ bundle exec cap development deploy:rake_seed
   $ bundle exec cap development run_faye
 ```
+* Vagrant环境
+```shell
+  $ bundle exec cap vagrant deploy:create_database
+  $ bundle exec cap vagrant deploy
+  $ bundle exec cap vagrant deploy:rake_seed
+  $ bundle exec cap vagrant run_faye
+```
+
 #### 如果不是第一次运行以下命令即可:
 
 * 产品环境

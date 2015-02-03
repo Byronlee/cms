@@ -1,7 +1,6 @@
 module V1
 
-
-  # code: api error code defined by 36kr by xiaobo, errors originated from
+  # code: api error code defined, errors originated from
   # subclasses of Error have code start from 2000.
   # text: human readable error message
   # status: http status code

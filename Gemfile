@@ -96,6 +96,9 @@ end
 
 group :development, :test do
   gem "capsum", "~> 1.0.0", require: false
+  gem 'capistrano-rails'
+  gem "capistrano-rbenv"
+  gem 'capistrano-bundler'
   gem "capistrano-sidekiq", "~> 0.3.4", require: false
   gem 'pry-nav', '~> 0.2.4'
   gem "pry-doc"
