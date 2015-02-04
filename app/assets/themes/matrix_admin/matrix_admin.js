@@ -1,5 +1,6 @@
 //= require ./js/jquery.min
 //= require ./js/jquery.ui.custom
+//= require jquery_ujs
 //= require ./js/bootstrap.min
 //= require ./js/jquery.peity.min
 //= require ./js/matrix

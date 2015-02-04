@@ -2,17 +2,12 @@ class Admin::CommentsController < Admin::BaseController
   load_and_authorize_resource
 
   def index
-    @comments = Comment.includes(:commentable).unscoped.order('char_length(content) desc').page params[:page]
+    @comments = Comment.includes(:commentable, user:[:krypton_authentication]).unscoped.order('char_length(content) desc').page params[:page]
   end
 
-  def update
-    @comment.update(comment_params)
-    respond_with @comment, location: admin_comments_path
-  end
-
-  def create
-    @comment.save
-    respond_with @comment, location: admin_comments_path
+  def set_excellent
+    @comment.update_attributes(comment_params)
+    redirect_to :back
   end
 
   def destroy
