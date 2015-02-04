@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150202111502) do
+ActiveRecord::Schema.define(version: 20150203040207) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,15 @@ ActiveRecord::Schema.define(version: 20150202111502) do
   create_table "head_lines", force: true do |t|
     t.string   "url"
     t.integer  "order_num"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "newsflashes", force: true do |t|
+    t.text     "original_input"
+    t.string   "hash_title"
+    t.text     "description_text"
+    t.string   "news_url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
