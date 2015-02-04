@@ -11,6 +11,7 @@
 #  updated_at       :datetime
 #  is_excellent     :boolean
 #  is_long          :boolean
+#  state            :string(255)
 #
 
 require 'spec_helper'

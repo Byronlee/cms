@@ -10,6 +10,22 @@ class Admin::CommentsController < Admin::BaseController
     redirect_to :back
   end
 
+  def do_publish
+    if @comment.may_publish?
+      @comment.publish
+      @comment.save
+    end
+    redirect_to :back
+  end
+
+  def do_reject
+    if @comment.may_reject?
+      @comment.reject
+      @comment.save
+    end
+    redirect_to :back
+  end
+
   def destroy
     @comment.destroy
     redirect_to :back

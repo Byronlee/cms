@@ -11,9 +11,12 @@
 #  updated_at       :datetime
 #  is_excellent     :boolean
 #  is_long          :boolean
+#  state            :string(255)
 #
 
 class Comment < ActiveRecord::Base
+  include AASM
+  aasm.attribute_name :state
   paginates_per 20
 
   validates :content, presence: true
@@ -26,9 +29,31 @@ class Comment < ActiveRecord::Base
 
   # default_scope {order('char_length(content) DESC')}
   default_scope {order('created_at DESC')}
-  scope :excellent, -> { where(is_excellent: true) }
-  scope :normal, -> { where(is_excellent: [false, nil]) }
+  scope :excellent, -> { where(is_excellent: true, state:[:published, :prepublish]) }
+  scope :normal, -> { where(is_excellent: [false, nil], state:[:published, :prepublish]) }
 
+  aasm do
+    state :reviewing, :initial => true
+    state :published
+    state :rejected
+    state :prepublish
+
+    event :publish do
+      transitions :from => [:reviewing, :rejected, :prepublish], :to => :published
+    end
+
+    event :reject do
+      transitions :from => [:reviewing, :published, :prepublish], :to => :rejected
+    end
+  end
+
+  def set_state
+    if self.user.may_publish?
+      self.state = 'publish'
+    elsif self.user.may_prepublish?
+      self.state = 'prepublish'
+    end
+  end
   private
 
   def set_is_long_attribute

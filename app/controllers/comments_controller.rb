@@ -17,6 +17,7 @@ class CommentsController < ApplicationController
     @commentable = find_commentable
     @comment = @commentable.comments.build(comment_params)
     @comment.user = current_user
+    @comment.set_state
     @comment.save
     redirect_to :back
   end

@@ -20,7 +20,11 @@ Rails.application.routes.draw do
     resources :head_lines, except: [:show]
     resources :users, :newsflashes
     resources :comments do
-      post :set_excellent, on: :member
+      member do
+        post :set_excellent
+        post :do_publish
+        post :do_reject
+      end
     end
   end
 

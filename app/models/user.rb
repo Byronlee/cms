@@ -59,6 +59,14 @@ class User < ActiveRecord::Base
     return self.krypton_authentication.info["image"] if self.krypton_authentication && self.krypton_authentication.info["image"].present?
   end
 
+  def may_publish?
+    [:admin, :writer].include? self.role.to_sym
+  end
+
+  def may_prepublish?
+    [:editor].include? self.role.to_sym
+  end
+
   def email_required?
     false
   end

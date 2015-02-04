@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20150204083838) do
     t.datetime "updated_at"
     t.boolean  "is_excellent"
     t.boolean  "is_long"
+    t.string   "state"
   end
 
   create_table "head_lines", force: true do |t|
