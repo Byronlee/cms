@@ -5,6 +5,7 @@ class CreateNewsflashes < ActiveRecord::Migration
       t.string :hash_title
       t.text :description_text
       t.string :news_url
+      t.integer :newsflash_topic_color_id
 
       t.timestamps
     end
