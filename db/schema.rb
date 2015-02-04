@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20150204083838) do
     t.text     "description_text"
     t.string   "news_url"
     t.integer  "newsflash_topic_color_id"
+    t.string   "news_summaries",           default: [], array: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -8,6 +8,7 @@
 #  description_text         :text
 #  news_url                 :string(255)
 #  newsflash_topic_color_id :integer
+#  news_summaries           :string(255)      default([]), is an Array
 #  created_at               :datetime
 #  updated_at               :datetime
 #

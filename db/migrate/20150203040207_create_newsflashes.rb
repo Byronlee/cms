@@ -6,7 +6,7 @@ class CreateNewsflashes < ActiveRecord::Migration
       t.text :description_text
       t.string :news_url
       t.integer :newsflash_topic_color_id
-
+      t.string :news_summaries, :array => true, default: []
       t.timestamps
     end
   end

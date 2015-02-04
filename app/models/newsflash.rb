@@ -8,6 +8,7 @@
 #  description_text         :text
 #  news_url                 :string(255)
 #  newsflash_topic_color_id :integer
+#  news_summaries           :string(255)      default([]), is an Array
 #  created_at               :datetime
 #  updated_at               :datetime
 #
@@ -25,9 +26,23 @@ class Newsflash < ActiveRecord::Base
   acts_as_taggable
 
   before_validation :prase_original_input
+
   def prase_original_input
-    return unless !!(/^#(.+??)#(.+??)$/ =~ original_input)
-    valid_url = URI.extract(original_input).last
+    inputs = original_input.split(/---{0,}/)
+    prase_basic_attrs_from_original_input inputs[0]
+    prase_summaries_from_original_input inputs[1] if inputs[1]
+  end
+
+  private
+
+  def prase_basic_attrs_from_original_input(input)
+    return unless !!(/^#(.+??)#(.+??)$/ =~ input)
+    valid_url = URI.extract(input).last
     self.hash_title, self.description_text, self.news_url = $1, $2.gsub(valid_url.to_s, ''), valid_url
+  end
+
+  def prase_summaries_from_original_input(input)
+    summaries = input.split(/n\d[\.|\．]/).select { |s| !s.blank? }
+    self.news_summaries = summaries
   end
 end
