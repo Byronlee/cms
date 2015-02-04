@@ -3,6 +3,7 @@ tr
   td = link_to newsflash.hash_title, admin_newsflash_path(newsflash)
   td = newsflash.author.try(:name)
   td = newsflash.description_text
+  td = newsflash.news_url
   td = newsflash.created_at
   td
     a.tip-top data-original-title="编辑" href= edit_admin_newsflash_path(newsflash)

@@ -22,7 +22,9 @@ class Newsflash < ActiveRecord::Base
 
   before_validation :prase_original_input
   def prase_original_input
-    return unless /^#(.+??)#(.+??)$/ =~ original_input
-    self.hash_title, self.description_text = $1, $2
+    return unless !!(/^#(.+??)#(.+??)$/ =~ original_input)
+    valid_url = URI.extract(original_input).last
+    binding.pry
+    self.hash_title, self.description_text, self.news_url = $1, $2.gsub(valid_url.to_s, ''), valid_url
   end
 end

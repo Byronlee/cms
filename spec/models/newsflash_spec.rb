@@ -34,4 +34,27 @@ describe Newsflash do
       expect(newsflash.description_text).to eq('哈哈哈，这是内容')
     end
   end
+
+  context 'when original_input with hash_title, description_text, news_url' do
+    let(:input) { '#这是第一天快新闻#哈哈哈，这是内容http://baidu.com' }
+
+    it 'shuld save success' do
+      newsflash = create :newsflash, original_input: input
+      expect(newsflash.original_input).to eq(input)
+      expect(newsflash.hash_title).to eq('这是第一天快新闻')
+      expect(newsflash.description_text).to eq('哈哈哈，这是内容')
+      expect(newsflash.news_url).to eq('http://baidu.com')
+    end
+  end
 end
+
+
+
+
+
+
+
+
+
+
+
