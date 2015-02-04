@@ -58,7 +58,6 @@ describe Newsflash do
       expect(newsflash.hash_title).to eq('这是第一天快新闻')
       expect(newsflash.description_text).to eq('哈哈哈，这是内容')
       expect(newsflash.news_url).to eq('http://baidu.com')
-      p newsflash.news_summaries
       expect(newsflash.news_summaries.length).to eq(3)
     end
   end
