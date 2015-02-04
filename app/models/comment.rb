@@ -64,6 +64,28 @@ class Comment < ActiveRecord::Base
     [:published, :prepublished].include? self.state.to_sym
   end
 
+  aasm do
+    state :reviewing, :initial => true
+    state :published
+    state :rejected
+    state :prepublish
+
+    event :publish do
+      transitions :from => [:reviewing, :rejected, :prepublish], :to => :published
+    end
+
+    event :reject do
+      transitions :from => [:reviewing, :published, :prepublish], :to => :rejected
+    end
+  end
+
+  def set_state
+    if self.user.may_publish?
+      self.state = 'publish'
+    elsif self.user.may_prepublish?
+      self.state = 'prepublish'
+    end
+  end
   private
 
   def set_is_long_attribute
