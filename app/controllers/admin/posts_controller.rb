@@ -1,6 +1,6 @@
 class Admin::PostsController < Admin::BaseController
   load_and_authorize_resource
-  
+
   def index
   	@posts = Post.order('updated_at desc').includes(:author, :column).page params[:page]
   end

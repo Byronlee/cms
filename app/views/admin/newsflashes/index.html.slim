@@ -1,0 +1,38 @@
+/!breadcrumbs
+div#content-header
+  div#breadcrumb
+    a.tip-bottom title="Go to Home" href= admin_root_path
+      i.icon-home
+      | 首页
+    a.current href="#"
+      i.icon-file
+      | 快讯管理
+  <h1>快讯管理</h1>
+/!End-breadcrumbs
+
+div.container-fluid
+  = bootstrap_flash
+  = link_to "创建快讯", new_admin_newsflash_path, class:"btn btn-primary"
+
+  div.widget-box
+    div.widget-title
+      span.icon
+        i.icon-th
+      h5 = page_entries_info @newsflashes
+
+    div class="widget-content nopadding"
+      table class="table table-bordered table-striped with-check"
+        thead
+          tr role="row"
+            th ID
+            th 标题
+            th 作者
+            th 内容
+            th 时间
+            th 操作
+        tbody
+          = render @newsflashes
+      div class="pagination pagination-table"
+        = paginate @newsflashes
+
+= render 'layouts/set_active_nav', :active_id => "nav_posts"

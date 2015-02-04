@@ -1,0 +1,25 @@
+/!breadcrumbs
+div#content-header
+  div#breadcrumb
+    a.tip-bottom title="回到首页" href= admin_root_path
+      i.icon-home
+      | 首页
+    a.tip-bottom title="回到快讯管理列表页面" href= admin_newsflashes_path
+      i.icon-file
+      | 快讯管理
+    a.current href="#"
+      | 创建快讯
+  <h1>创建快讯章</h1>
+/!End-breadcrumbs
+
+div.container-fluid
+  = bootstrap_flash
+  div.widget-box
+    div clas="widget-content nopadding"
+      - unless @newsflash.errors.blank?
+        = debug @newsflash.errors.messages
+      = simple_form_for [:admin, @newsflash], html:{ class:"form-horizontal" } do | f |
+        = f.input :original_input, as: :text, :input_html => { 'rows' => 10}
+        div.form-actions
+          = f.button :submit, data: { disable_with: "submitting..." }, class: "btn btn-primary"
+= render 'layouts/set_active_nav', :active_id => "nav_posts"

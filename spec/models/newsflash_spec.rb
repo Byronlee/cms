@@ -20,11 +20,11 @@ describe Newsflash do
     it 'shuld not save success' do
       newsflash = build :newsflash, original_input: input
       expect(newsflash.save).to eq(false)
-      expect(newsflash.errors.first).to eq([:hash_title, "不能为空字符"])
+      expect(newsflash.errors.first).to eq([:hash_title, '不能为空字符'])
     end
   end
 
-   context 'when original_input with volida params' do
+  context 'when original_input with valide params' do
     let(:input) { '#这是第一天快新闻#哈哈哈，这是内容' }
 
     it 'shuld save success' do
@@ -35,13 +35,3 @@ describe Newsflash do
     end
   end
 end
-
-
-
-
-
-
-
-
-
-

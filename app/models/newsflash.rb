@@ -12,6 +12,7 @@
 #
 
 class Newsflash < ActiveRecord::Base
+  paginates_per 20
   validates_presence_of :original_input, :hash_title, :description_text
 
   validates :description_text, length: { maximum: 140 }

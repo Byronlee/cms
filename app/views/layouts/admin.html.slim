@@ -30,7 +30,7 @@ html lang="en"
     /!top-Header-menu
     div#user-nav class="navbar navbar-inverse"
       ul.nav
-        li#profile-messages class="dropdown" 
+        li#profile-messages class="dropdown"
           a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"
             i class="icon icon-user"
             span class="text"  Welcome User
@@ -38,7 +38,7 @@ html lang="en"
           a title="" target="_blank" href= root_path
             i class="icon icon-share-alt"
             span.text  主站
-        li 
+        li
           a title="" href="login.html"
             i class="icon icon-share-alt"
             span.text  Logout
@@ -62,20 +62,24 @@ html lang="en"
         li#nav_posts
           a href=admin_posts_path
             i class="icon icon-file"
-            span  文章管理  
+            span  文章管理
+        li#nav_newsflashes
+          a href=admin_newsflashes_path
+            i class="icon icon-file"
+            span  快讯管理
         li#nav_columns
           a href=admin_columns_path
             i class="icon icon-list"
-            span  专栏管理  
+            span  专栏管理
         li#nav_users
           a href=admin_users_path
             i class="icon icon-user"
-            span  用户管理  
+            span  用户管理
     /!close-sidebar-menu
 
     div#content
       = yield
-  
+
     /!Footer-part
     div.row-fluid
       div#footer class="span12"
