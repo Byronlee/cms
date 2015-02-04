@@ -12,13 +12,15 @@
 #
 
 class Newsflash < ActiveRecord::Base
-  paginates_per 20
   validates_presence_of :original_input, :hash_title, :description_text
 
   validates :description_text, length: { maximum: 140 }
   validates :hash_title,       length: { maximum: 20  }
 
   belongs_to :author, class_name: User.to_s, foreign_key: 'user_id'
+
+  paginates_per 20
+  acts_as_taggable
 
   before_validation :prase_original_input
   def prase_original_input
