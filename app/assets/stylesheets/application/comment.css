@@ -11,7 +11,7 @@
 }
 
 #comments-list .row{
-  margin-top: 50px;
+  margin-top: 20px;
 }
 
 #comments-list h4{
@@ -30,4 +30,9 @@
    clear:both;
    margin-top: 20px;
    padding-left: 15px;
+}
+
+.header-sperator{
+  border-bottom: solid 1px #9c9c9c;
+  margin-top: 30px;
 }

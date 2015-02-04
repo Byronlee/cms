@@ -15,10 +15,15 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   namespace :admin do
-    root to: redirect('/admin/dashboard')
-    resources :dashboard, :posts, :columns
-    resources :head_lines, except: [:show]
-    resources :users, :newsflashes
+    resources :newsflashes
+    root to: redirect("/admin/dashboard")
+    resources :dashboard
+    resources :posts do
+      resources :comments, only:[:index], on: :collection
+    end
+    resources :columns
+    resources :head_lines, :except => [:show]
+    resources :users
     resources :comments do
       member do
         post :set_excellent

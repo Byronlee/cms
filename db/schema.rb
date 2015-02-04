@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(version: 20150204083838) do
     t.datetime "updated_at"
     t.string   "cover"
     t.string   "source"
+    t.integer  "comments_count"
   end
 
   create_table "taggings", force: true do |t|

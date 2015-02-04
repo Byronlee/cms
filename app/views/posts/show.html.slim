@@ -24,6 +24,6 @@ div class="bloc l-bloc"
 
 javascript:
   $(document).ready(function(ret, status){
-    $.get("/posts/1/comments.js", function(){
+    $.get("/posts/#{@post.id}/comments.js", function(){
     });
   });

@@ -22,8 +22,8 @@ function toggleCommentForm(){
   }
 }
 
-function getNormalList(obj){
-  $.get("/posts/1/comments/normal_list.js", function(data, status){
+function getNormalList(obj, commentable_type, commentable_id){
+  $.get("/"+ commentable_type +"/"+ commentable_id +"/comments/normal_list.js", function(data, status){
     if(status == "success"){
       $(obj).attr("onclick","toggleNormalComments()");
       toggleNormalComments();
@@ -35,11 +35,13 @@ function toggleNormalComments(){
   var normal_list = $("#comments-normal");
   var v = normal_list.css('display');
   if(!v || v == "none"){
-    normal_list.fadeIn();
-    $("#toggleNormalComments").text($("#toggleNormalComments").text().replace("Expand", "Collapse"));
+    normal_list.fadeIn(function(){
+      $("#toggleNormalComments").text($("#toggleNormalComments").text().replace("Expand", "Collapse"));
+    });
   }
   else{
-    normal_list.fadeOut();
-    $('#toggleNormalComments').text($("#toggleNormalComments").text().replace("Pull Back", "Expand"));
+    normal_list.fadeOut(function(){
+      $('#toggleNormalComments').text($("#toggleNormalComments").text().replace("Collapse", "Expand"));
+    });
   }
 }

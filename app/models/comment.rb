@@ -22,13 +22,12 @@ class Comment < ActiveRecord::Base
   validates :content, presence: true
   validates :content, length: { maximum: 3_000 }
 
-  belongs_to :commentable, :polymorphic => true
+  belongs_to :commentable, :polymorphic => true, counter_cache: true
   belongs_to :user
 
   before_save :set_is_long_attribute
 
-  # default_scope {order('char_length(content) DESC')}
-  default_scope {order('created_at DESC')}
+  scope :order_by_content, -> { includes(:commentable, user:[:krypton_authentication]).order('char_length(content) desc')}
   scope :excellent, -> { where(is_excellent: true, state:[:published, :prepublish]) }
   scope :normal, -> { where(is_excellent: [false, nil], state:[:published, :prepublish]) }
 

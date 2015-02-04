@@ -5,6 +5,8 @@ class CommentsController < ApplicationController
     @commentable = find_commentable
     @comments = @commentable.comments.excellent
     @comments_normal_count = @commentable.comments.normal.count
+    @commentable_type = @commentable.class.to_s.downcase.pluralize
+    @commentable_id = @commentable.id
   end
 
   def normal_list
