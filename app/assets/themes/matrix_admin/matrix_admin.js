@@ -5,10 +5,10 @@
 //= require ./js/matrix
 //= require ./js/jquery.gritter.min
 //= require ./js/matrix.interface
+//= require ./js/select2.min
 //= require ./js/jquery.validate
 //= require ./js/matrix.form_validation
 //= require ./js/jquery.uniform
-//= require ./js/select2.min
 //= require ./js/matrix.popover
 //= require ./js/jquery.dataTables.min
 //= require ./js/matrix.tables

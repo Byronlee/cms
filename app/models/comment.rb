@@ -14,6 +14,8 @@
 #
 
 class Comment < ActiveRecord::Base
+  paginates_per 20
+
   validates :content, presence: true
   validates :content, length: { maximum: 3_000 }
 

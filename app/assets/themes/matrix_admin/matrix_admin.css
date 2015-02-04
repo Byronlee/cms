@@ -5,28 +5,32 @@
  */
 
  .navbar-inverse{
- 	background-color: rgb(31,38,45) !important;
+  background-color: rgb(31,38,45) !important;
  }
 
 #user-nav{
-	z-index: 0 !important;
+  z-index: 0 !important;
 }
 
 .control-group{
-	padding-right: 10%;
+  padding-right: 10%;
 }
 
 .control-group textarea, .control-group input{
-   width: 100%;
+  width: 100%;
 }
 
 .control-group input{
-   width: 100%;
-   height: auto !important;
-   line-height: 25px !important;
+  width: 100%;
+  height: auto !important;
+  line-height: 25px !important;
 }
 
 .pagination-table{
-	float: right;
-	margin: 10px 0;
+  float: right;
+  margin: 10px 0;
+}
+
+.auto-popover{
+  cursor: pointer;
 }

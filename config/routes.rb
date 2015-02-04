@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     root to: redirect('/admin/dashboard')
     resources :dashboard, :posts, :columns
     resources :head_lines, except: [:show]
-    resources :users, :newsflashes
+    resources :users, :newsflashes, :comments
   end
 
   namespace :components do

@@ -36,7 +36,7 @@ function toggleNormalComments(){
   var v = normal_list.css('display');
   if(!v || v == "none"){
     normal_list.fadeIn();
-    $("#toggleNormalComments").text($("#toggleNormalComments").text().replace("Expand", "Pull Back"));
+    $("#toggleNormalComments").text($("#toggleNormalComments").text().replace("Expand", "Collapse"));
   }
   else{
     normal_list.fadeOut();
