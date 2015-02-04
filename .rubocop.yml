@@ -1,8 +1,0 @@
-Documentation:
-  Enabled: false
-
-Style/AsciiComments:
-  Enabled: false
-
-Metrics/LineLength:
-  Max: 130

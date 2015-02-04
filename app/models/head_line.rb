@@ -10,19 +10,18 @@
 #
 
 class HeadLine < ActiveRecord::Base
-	paginates_per 20
+  paginates_per 20
 
-	validates :url, presence: true
-	validates_uniqueness_of :url
+  validates :url, presence: true
+  validates_uniqueness_of :url
 
-	after_destroy :fetch_remote_metas
-	after_save :fetch_remote_metas
+  after_destroy :fetch_remote_metas
+  after_save :fetch_remote_metas
 
-	private 
+  private
 
-	def fetch_remote_metas
-	  logger.info "perform the worker to fetch remote metas"
-	  logger.info HeadLinesComponentWorker.perform_async
+  def fetch_remote_metas
+    logger.info 'perform the worker to fetch remote metas'
+    logger.info HeadLinesComponentWorker.perform_async
   end
-
 end

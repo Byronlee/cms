@@ -25,5 +25,4 @@ class Newsflash < ActiveRecord::Base
     return unless /^#(.+??)#(.+??)$/ =~ original_input
     self.hash_title, self.description_text = $1, $2
   end
-
 end
