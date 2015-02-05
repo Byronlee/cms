@@ -1,7 +1,6 @@
 module V1
   module Controllers
     class Posts < ::V1::Base
-      # TODO 鉴权、认证、用户、类型等规则
       KEYS = [:id, :title, :created_at, :updated_at, :summary, :content,:title_link,
         :must_read, :slug, :state, :draft_key, :cover, :user_id, :source]
       STATE = ['publish', 'draft', 'archived', 'login']
@@ -15,15 +14,16 @@ module V1
         # params[:state]: default(or empty) 'publish', 'draft', 'archived', 'login'
         # Example
         #   /api/v1/posts?state=&page=1&per_page=15
-        desc 'Get all posts list'
+        desc 'get all posts list'
         params do
-          optional :page,  type: Integer, default: 1, desc: "Specify the page of paginated results."
-          optional :per_page,  type: Integer, default: 30, desc: "Specify the page of paginated results."
-          optional :state,  type: String, values: STATE, default: 'publish', desc: "Post state"
+          optional :page,  type: Integer, default: 1, desc: '页数'
+          optional :per_page,  type: Integer, default: 30, desc: '每页记录数'
+          optional :state,  type: String, values: STATE, default: 'publish', desc: '状态'
         end
         get 'index' do
           @posts = Post.all.order(created_at: :desc)
-          @posts = Post.where(state: params[:state]).order(created_at: :desc) if STATE.include?(params[:state])
+          @posts = Post.where(state: params[:state])
+            .order(created_at: :desc) if STATE.include?(params[:state])
           @posts = @posts.page(params[:page]).per(params[:per_page])
           present @posts, with: Entities::Post
         end
@@ -35,27 +35,18 @@ module V1
         # params[:state]: default(or empty) 'publish', 'draft', 'archived', 'login'
         # Example
         #   /api/v1/posts/:id/page?action=up&state=&page=1&per_page=15
-        desc 'Get id posts list'
+        desc 'get id posts for page list'
         params do
-          optional :page,  type: Integer, default: 1, desc: 'Specify the page of paginated results.'
-          optional :per_page,  type: Integer, default: 30, desc: "Specify the page of paginated results."
-          optional :action,  type: String, default: 'down', desc: "'down', 'up'"
-          requires :state, type: String, values: STATE, default: 'draft', desc: ""
+          optional :page,  type: Integer, default: 1, desc: '页数'
+          optional :per_page,  type: Integer, default: 30, desc: '每页记录数'
+          optional :action,  type: String, default: 'down', desc: "下翻页 down 和 上翻页 up"
+          requires :state, type: String, values: STATE, default: 'draft', desc: '状态'
         end
         get ":id/page" do
           post = Post.find(params[:id])
-          if post.blank?
-            error!("Post not found", 404)
-          else
-            action = case params[:action]
-                     when 'up'
-                       '>='
-                     when 'down'
-                       '<='
-                     else
-                       '<='
-                     end
-            @posts = Post.where("created_at #{action} :date", date: post.created_at).order(created_at: :desc)
+          unless post.blank?
+            @posts = Post.where("created_at #{action params} :date", date: post.created_at)
+              .order(created_at: :desc)
             @posts = @posts.page(params[:page]).per(params[:per_page] || 30)
           end
           present @posts, with: Entities::Post
@@ -64,10 +55,10 @@ module V1
         # Get post detail
         # Example
         #   /api/v1/posts/:id
-        desc 'Get post detail'
+        desc 'get post detail'
         get ":id" do
           @post = Post.find(params[:id])
-          error!("Post not found", 404) if @post.blank?
+          #error!("Post not found", 404) if @post.blank?
           present @post, with: Entities::Post
         end
 
@@ -80,7 +71,7 @@ module V1
         #   title_link
         # Example Request:
         #   POST /api/v1/posts
-        desc 'Create a new post'
+        desc 'create a new post'
         params do
           requires :title,    type: String,   desc: '标题'
           requires :content,  type: String,   desc: '内容'
@@ -88,8 +79,6 @@ module V1
           optional :source,   type: String,   desc: '来源id'
         end
         post 'new' do
-          # authenticate!
-          # TODO: 鉴权
           @post = Post.new params.slice(*KEYS)
           if @post.save
             present @post, with: Entities::Post
@@ -107,14 +96,17 @@ module V1
         #   title_link
         # Example Request:
         #   PUT /api/v1/posts/:id
-        desc 'Update a post'
-        put ":id" do
-          #authenticate!
-          #TODO: 鉴权
+        desc 'update a post'
+        params do
+          requires :id, desc: '编号'
+          requires :title,    type: String,   desc: '标题'
+          requires :content,  type: String,   desc: '内容'
+          requires :user_id,  type: Integer,  desc: '用户id'
+          optional :source,   type: String,   desc: '来源id'
+        end
+        patch ':id' do
           @post = Post.find(params[:id])
-          #TODO:判断修改权限
           @post.update_attributes params.slice(*KEYS)
-
           present @post, with: Entities::Post
         end
 
@@ -122,10 +114,8 @@ module V1
         #
         # Example Request:
         #   DELETE /api/v1/posts/:id
-        desc 'Delete post. Available only for admin'
-        delete ":id" do
-          #authenticated_as_admin!
-          #TODO: 鉴权
+        desc 'delete post. Available only for admin'
+        delete ':id' do
           post = Post.find(params[:id])
           if post
             post.destroy

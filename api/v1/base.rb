@@ -28,6 +28,7 @@ class ::V1::Base < Grape::API
   mount ::V1::Controllers::Users
   mount ::V1::Controllers::Posts
   mount ::V1::Controllers::Columns
+  mount ::V1::Controllers::HeadLines
 
   add_swagger_documentation(
     api_version: 'v1', mount_path: 'swagger_doc',

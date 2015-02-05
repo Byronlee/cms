@@ -27,14 +27,14 @@ describe API::API do
     end
   end
 
-  describe "PUT 'update' /api/v1/posts/:id" do
-  let(:post) { create(:post) }
-    it "should return a post by id" do
-      put "/api/v1/posts/#{post.id}.json?title=patch"
-      response.status.should == 200
-      json_response['title'].should == 'patch'
-    end
-  end
+#  describe "PUT 'update' /api/v1/posts/:id" do
+#  let(:post) { create(:post) }
+#    it "should return a post by id" do
+#      put "/api/v1/posts/#{post.id}.json?title=patch"
+#      response.status.should == 200
+#      json_response['title'].should == 'patch'
+#    end
+#  end
 
   describe "DELETE /api/v1/posts/:id" do
   let(:post) { create(:post) }
