@@ -3,15 +3,29 @@ class CommentsController < ApplicationController
 
   def index
     @commentable = find_commentable
-    @comments = @commentable.comments.excellent
-    @comments_normal_count = @commentable.comments.normal.count
+    @comments = @commentable.comments
+      .includes(:commentable, user:[:krypton_authentication])
+      .excellent.order("created_at asc")
+    @comments_normal_count = @commentable.comments
+      .includes(:commentable, user:[:krypton_authentication])
+      .where(
+        Comment.normal
+        .normal_selfown(current_user.id)
+        .where_values.reduce(:or)
+      ).count
     @commentable_type = @commentable.class.to_s.downcase.pluralize
     @commentable_id = @commentable.id
   end
 
   def normal_list
     @commentable = find_commentable
-    @comments = @commentable.comments.normal
+    @comments = @commentable.comments
+      .includes(:commentable, user:[:krypton_authentication])
+      .where(
+        Comment.normal
+        .normal_selfown(current_user.id)
+        .where_values.reduce(:or)
+      ).order("created_at asc")
     @comments_normal_count = @comments.count
   end
 

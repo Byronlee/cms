@@ -3,7 +3,16 @@
     div.col-sm-10
       div
         h4  = comment.user.name
-      div = comment.content
+      div
+      - if comment.may_display?
+        = comment.content
+      - elsif comment.rejected?
+        div class="alert alert-danger" role="alert"  该评论已经被屏蔽！
+        |
+      - else
+        div class="alert alert-warning" role="alert"
+          div.comemnt-details-header  该评论正在审批中。。。
+          = comment.content
     div.col-sm-2
       img.img-circle onerror="imgError(this);" src= "#{comment.user.avatar}"
     div#comment-time-info
