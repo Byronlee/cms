@@ -39,7 +39,7 @@ Rails.application.routes.draw do
   end
 
   resources :posts, :only => [:show] do
-    resources :comments do
+    resources :comments, :only => [:index, :create] do
       get :normal_list, on: :collection
     end
   end
