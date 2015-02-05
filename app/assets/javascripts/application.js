@@ -14,11 +14,11 @@ function toggleCommentForm(){
   var v = form.css('display');
   if(!v || v == "none"){
     form.fadeIn();
-    $("#toggleFormIcon").removeClass("caret");//.addClass('main');
+    $("#toggleFormIcon").addClass("dropup");
   }
   else{
     form.fadeOut();
-    $("#toggleFormIcon").addClass("caret")
+    $("#toggleFormIcon").removeClass("dropup")
   }
 }
 

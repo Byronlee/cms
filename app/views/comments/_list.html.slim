@@ -17,4 +17,5 @@ div#actions
   button#toggleNormalComments class="btn btn-primary" onClick="getNormalList(this, '#{commentable_type}', #{commentable_id})"  = "Expand All #{comments_normal_count} Comments"
   button#toggleFormBtn class="btn btn-primary btn-warning" onClick="toggleCommentForm();"
     |Comment&nbsp;
-    b#toggleFormIcon class="caret"
+    span#toggleFormIcon
+      span.caret
