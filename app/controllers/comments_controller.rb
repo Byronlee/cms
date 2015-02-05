@@ -34,8 +34,11 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.build(comment_params)
     @comment.user = current_user
     @comment.set_state
-    @comment.save
-    redirect_to :back
+    if @comment.save
+      redirect_to :back, :flash => { :info => "创建评论成功" }
+    else
+      redirect_to :back, :flash => { :error => @comment.errors.messages[:content].first }
+    end
   end
 
   private
