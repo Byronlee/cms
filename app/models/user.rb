@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
     self.krypton_authentication && self.krypton_authentication.info["name"]
   end
 
-protected
+  protected
 
   def email_required?
     false

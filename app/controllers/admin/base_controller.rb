@@ -1,6 +1,5 @@
 class Admin::BaseController < ApplicationController
   respond_to :html
 
-  layout "admin"
-
+  layout 'admin'
 end
