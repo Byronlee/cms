@@ -22,13 +22,14 @@
 
 FactoryGirl.define do
   factory :post do
+    author
+    column
     title 'title'
     summary 'summary'
     content 'content'
     title_link 'title_link'
     must_read 'true'
     state 'draft'
-    user_id 1
     source 'writer'
   end
 end

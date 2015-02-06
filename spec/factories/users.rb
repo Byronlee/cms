@@ -20,7 +20,7 @@
 #
 
 FactoryGirl.define do
-  factory :user do
+  factory :user, aliases: [:author] do
     sequence(:email) { |n| "name#{n}@36kr.com" }
     sequence(:phone) { |n| "1388015659#{n}" }
     password { email }

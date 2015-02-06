@@ -26,6 +26,7 @@ class Comment < ActiveRecord::Base
   belongs_to :user
 
   before_save :set_is_long_attribute
+  before_save :set_state
 
   scope :order_by_content, -> {
     includes(:commentable, user:[:krypton_authentication])
@@ -34,8 +35,12 @@ class Comment < ActiveRecord::Base
   scope :excellent, -> { where(is_excellent: true, state:[:published, :prepublished]) }
   scope :normal, -> {
     where(is_excellent: [false, nil], state:[:published, :prepublished])
+    .where_values.reduce(:and)
   }
-  scope :normal_selfown, ->(user_id) { where(user_id:user_id)}
+  scope :normal_selfown, -> (user_id) {
+    where(is_excellent: [false, nil], user_id:user_id)
+    .where_values.reduce(:and)
+  }
 
   aasm do
     state :reviewing, :initial => true
@@ -52,14 +57,6 @@ class Comment < ActiveRecord::Base
     end
   end
 
-  def set_state
-    if self.user.may_publish?
-      self.state = 'published'
-    elsif self.user.may_prepublish?
-      self.state = 'prepublished'
-    end
-  end
-
   def may_display?
     [:published, :prepublished].include? self.state.to_sym
   end
@@ -69,5 +66,13 @@ class Comment < ActiveRecord::Base
   def set_is_long_attribute
     self.is_long = self.content.length > 140
     return true
+  end
+
+  def set_state
+    if self.user.may_publish?
+      self.state = 'published'
+    elsif self.user.may_prepublish?
+      self.state = 'prepublished'
+    end
   end
 end

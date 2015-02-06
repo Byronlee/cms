@@ -18,9 +18,11 @@
 
 FactoryGirl.define do
   factory :comment do
+    user
     content "MyText"
-    commentable_id 1
-    commentable_type "MyString"
-    user_id 1
+
+    factory :post_commentable do
+      association :commentable, factory: :post
+    end
   end
 end

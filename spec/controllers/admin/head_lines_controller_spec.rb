@@ -36,7 +36,7 @@ describe Admin::HeadLinesController do
 	      assigns(:head_line).errors.empty?.should_not be_true
 	      assigns(:head_line).errors[:url].empty?.should_not be_true
 	      assigns(:head_line).errors[:order_num].empty?.should be_true
-	    
+
 	      assigns(:head_line).errors[:url].first.should match(/不能为空字符/)
 	    end
 
@@ -46,7 +46,7 @@ describe Admin::HeadLinesController do
 	      assigns(:head_line).errors.empty?.should_not be_true
 	      assigns(:head_line).errors[:url].empty?.should_not be_true
 	      assigns(:head_line).errors[:introduce].empty?.should be_true
-	    
+
 	      assigns(:head_line).errors[:url].first.should match(/已经被使/)
       end
     end
@@ -67,7 +67,7 @@ describe Admin::HeadLinesController do
 	       assigns(:head_line).errors.empty?.should_not be_true
 	       assigns(:head_line).errors[:url].empty?.should_not be_true
 	       assigns(:head_line).errors[:order_num].empty?.should be_true
-	    
+
 	       assigns(:head_line).errors[:url].first.should match(/不能为空字符/)
 	     end
 
@@ -77,7 +77,7 @@ describe Admin::HeadLinesController do
 	       assigns(:head_line).errors.empty?.should_not be_true
 	       assigns(:head_line).errors[:url].empty?.should_not be_true
 	       assigns(:head_line).errors[:order_num].empty?.should be_true
-	    
+
 	       assigns(:head_line).errors[:url].first.should match(/已经被使用/)
 	     end
      end
@@ -87,10 +87,10 @@ describe Admin::HeadLinesController do
    	before{  @head_line = create :head_line }
   	it "returns http rediect" do
   	  request.env["HTTP_REFERER"] = admin_head_lines_path # for redicect :back
-      expect{ 
+      expect{
         delete :destroy, :id => @head_line
       }.to change(HeadLine, :count).by(-1)
       expect(response).to redirect_to(admin_head_lines_path)
     end
-  end	
+  end
 end
