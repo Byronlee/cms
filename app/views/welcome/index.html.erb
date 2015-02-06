@@ -1,12 +1,15 @@
 <!-- Main container -->
 <div class="page-container">
-    
+
 <!-- Navigation Bloc -->
 <div class="bloc " id="nav-bloc">
 	<div class="container bloc-sm">
 		<nav class="navbar row">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="index.html"><img src="/assets/img/logo.png" alt='' />36Kr</a>
+				<a class="navbar-brand" href="index.html">
+          <%= image_tag 'img/logo.png' %>
+          <span>36Kr</span>
+        </a>
 				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
 					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
 				</button>
@@ -54,7 +57,7 @@
 	<div class="container bloc-sm">
 		<div class="row">
 			<div class="col-sm-4">
-				<img src="/assets/img/mountainsdusk.jpg" class="mg-md" width="230" height="153" alt='' />
+			  <%= image_tag 'img/mountainsdusk.jpg', class: 'mg-md', width: 230, height: 153 %>
 			</div>
 			<div class="col-sm-8">
 				<h3 class="mg-lg">
@@ -245,30 +248,30 @@
 		</div>
 		<div class="row voffset">
 			<div class="col-sm-3">
-				<img src="/assets/img/walkway.jpg" class="img-responsive" alt='' />
+				<%= image_tag 'img/walkway.jpg', class: "img-responsive" %>
 			</div>
 			<div class="col-sm-3">
-				<img src="/assets/img/field.jpg" class="img-responsive" alt='' />
+				<%= image_tag 'img/field.jpg', class: "img-responsive"  %>
 			</div>
 			<div class="col-sm-3">
-				<img src="/assets/img/newyork.jpg" class="img-responsive" alt='' />
+				<%= image_tag 'img/newyork.jpg', class: "img-responsive" %>
 			</div>
 			<div class="col-sm-3">
-				<img src="/assets/img/map.jpg" class="img-responsive" alt='' />
+        <%= image_tag 'img/map.jpg', class: "img-responsive"  %>
 			</div>
 		</div>
 		<div class="row voffset">
 			<div class="col-sm-3">
-				<img src="/assets/img/tracks.jpg" class="img-responsive" alt='' />
+				<%= image_tag 'img/tracks.jpg', class: "img-responsive"  %>
 			</div>
 			<div class="col-sm-3">
-				<img src="/assets/img/sanfran.jpg" class="img-responsive" alt='' />
+				<%= image_tag 'img/sanfran.jpg', class: "img-responsive" %>
 			</div>
 			<div class="col-sm-3">
-				<img src="/assets/img/cornfield.jpg" class="img-responsive" alt='' />
+  			<%= image_tag 'img/cornfield.jpg', class: "img-responsive" %>
 			</div>
 			<div class="col-sm-3">
-				<img src="/assets/img/walkway.jpg" class="img-responsive" alt='' />
+				<%= image_tag 'img/walkway.jpg', class: "img-responsive" %>
 			</div>
 		</div>
 	</div>
@@ -280,16 +283,16 @@
 	<div class="container bloc-sm">
 		<div class="row">
 			<div class="col-sm-3">
-				<img src="/assets/img/ny-times.png" class="img-responsive" alt='' />
+				<%= image_tag "img/ny-times.png", class: "img-responsive" %>
 			</div>
 			<div class="col-sm-3">
-				<img src="/assets/img/forbes.png" class="img-responsive" alt='' />
+				<%= image_tag "img/forbes.png", class: "img-responsive" %>
 			</div>
 			<div class="col-sm-3">
-				<img src="/assets/img/wired.png" class="img-responsive" alt='' />
+				<%= image_tag "img/wired.png", class: "img-responsive" %>
 			</div>
 			<div class="col-sm-3">
-				<img src="/assets/img/guardian.png" class="img-responsive" alt='' />
+				<%= image_tag "img/guardian.png", class: "img-responsive" %>
 			</div>
 		</div>
 	</div>
