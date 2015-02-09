@@ -44,6 +44,29 @@ describe CommentsController do
       expect{
         post :create, post_id:comment.commentable, comment: attributes_for(:comment), format:'js'
       }.to change(Comment, :count).by(1)
+      expect(assigns(:comment).is_long?).should  be_false
+      expect(response).to redirect_to(post_path(comment.commentable))
+    end
+
+    it "should be long comment if length > 140" do
+      request.env["HTTP_REFERER"] = post_path(comment.commentable)
+      expect{
+        post :create, post_id:comment.commentable, comment:{content: 'A' * 150}, format:'js'
+      }.to change(Comment, :count).by(1)
+      expect(assigns(:comment).is_long?).should  be_true
+      expect(response).to redirect_to(post_path(comment.commentable))
+    end
+
+    it "should be invalid if length > 3000" do
+      request.env["HTTP_REFERER"] = post_path(comment.commentable)
+      expect{
+        post :create, post_id:comment.commentable, comment:{content: 'A' * 3001 }, format:'js'
+      }.to change(Comment, :count).by(0)
+
+      assigns(:comment).errors.empty?.should_not be_true
+      assigns(:comment).errors[:content].empty?.should_not be_true
+
+      assigns(:comment).errors[:content].first.should match(/过长/)
       expect(response).to redirect_to(post_path(comment.commentable))
     end
   end
