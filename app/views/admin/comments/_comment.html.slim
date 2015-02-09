@@ -12,7 +12,7 @@ tr
       span.tip-top class="badge badge-important pointer" data-original-title="优质评论"
         i.icon-thumbs-up
     |<div class="collapse" id="#{comment.id}" style="height: 0px;"><div class="widget-content"> #{comment.content} </div></div>
-  td = display_state(comment.state)
+  td = display_state(comment.aasm.human_state)
   td = comment.user.name
   td = comment.created_at
   td

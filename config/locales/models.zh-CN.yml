@@ -8,3 +8,11 @@ zh-CN:
           editor: 编辑
           admin: 管理员
           contributor: 投稿作者
+    activerecord:
+      attributes:
+        comment:
+          state:
+            reviewing: 审核中
+            published: 已发布
+            republished: 预发布
+            rejected: 已屏蔽
