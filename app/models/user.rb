@@ -53,8 +53,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  protected
-
   def avatar
     return self.krypton_authentication.info["image"] if self.krypton_authentication && self.krypton_authentication.info["image"].present?
   end
@@ -66,6 +64,8 @@ class User < ActiveRecord::Base
   def may_prepublish?
     [:editor].include? self.role.to_sym
   end
+
+  protected
 
   def email_required?
     false
