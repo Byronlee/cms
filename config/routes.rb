@@ -15,15 +15,12 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   namespace :admin do
-    resources :newsflashes
-    root to: redirect("/admin/dashboard")
-    resources :dashboard
+    root to: redirect('/admin/dashboard')
+    resources :dashboard, :newsflashes, :columns, :users
     resources :posts do
-      resources :comments, only:[:index], on: :collection
+      resources :comments, only: [:index], on: :collection
     end
-    resources :columns
     resources :head_lines, :except => [:show]
-    resources :users
     resources :comments do
       member do
         post :set_excellent
@@ -44,4 +41,3 @@ Rails.application.routes.draw do
     end
   end
 end
-
