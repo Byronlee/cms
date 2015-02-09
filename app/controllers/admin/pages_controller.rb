@@ -15,10 +15,6 @@ class Admin::PagesController < Admin::BaseController
     respond_with @page, location: admin_pages_path
   end
 
-  def show
-    @page = @page.find(params[:id])
-  end
-
   def destroy
     @page.destroy
     redirect_to :back
