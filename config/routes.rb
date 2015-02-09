@@ -15,14 +15,32 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   namespace :admin do
-    root to: redirect('/admin/dashboard')
-    resources :dashboard, :posts, :columns
-    resources :head_lines, except: [:show]
-    resources :users, :newsflashes
+    root to: redirect("/admin/dashboard")
+    resources :newsflashes
+    resources :dashboard
+    resources :columns
+    resources :users
+    resources :posts do
+      resources :comments, only: [:index], on: :collection
+    end
+    resources :head_lines, :except => [:show]
+    resources :comments do
+      member do
+        post :set_excellent
+        post :do_publish
+        post :do_reject
+      end
+    end
   end
 
   namespace :components do
     get '/next/collections', to: 'next#collections', as: :next_collections
     resources :head_lines, only: [:index]
+  end
+
+  resources :posts, :only => [:show] do
+    resources :comments, :only => [:index, :create] do
+      get :normal_list, on: :collection
+    end
   end
 end

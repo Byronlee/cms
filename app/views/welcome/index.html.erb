@@ -1,31 +1,3 @@
-<!-- Main container -->
-<div class="page-container">
-
-<!-- Navigation Bloc -->
-<div class="bloc " id="nav-bloc">
-	<div class="container bloc-sm">
-		<nav class="navbar row">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="index.html">
-          <%= image_tag 'img/logo.png' %>
-          <span>36Kr</span>
-        </a>
-				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
-					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-				</button>
-			</div>
-			<div class="collapse navbar-collapse navbar-1">
-				<ul class="site-navigation nav">
-					<li class="active">
-						<a href="index.html">Home</a>
-					</li>
-				</ul>
-			</div>
-		</nav>
-	</div>
-</div>
-<!-- Navigation Bloc END -->
-
 <% if current_user %>
   Hi, <%= current_user.krypton_authentication.info[:email] || current_user.krypton_authentication.info[:phone] %> <%= link_to "注销", destroy_user_session_path, method: :delete %>
 <% else %>
@@ -299,44 +271,3 @@
 </div>
 <!-- app-section-header-startup-union END -->
 
-<!-- Footer - bloc-19 -->
-<div class="bloc l-bloc " id="bloc-19">
-	<div class="container bloc-sm">
-		<div class="row">
-			<div class="col-sm-12">
-			</div>
-		</div>
-	</div>
-</div>
-<!-- Footer - bloc-19 END -->
-
-<!-- Footer - footer-nav -->
-<div class="bloc l-bloc " id="footer-nav">
-	<div class="container bloc-sm">
-		<div class="row">
-			<div class="col-sm-3">
-				<h3>
-					About
-				</h3><a href="index.html" class="a-btn a-block">The team</a><a href="index.html" class="a-btn a-block">Contact us</a>
-			</div>
-			<div class="col-sm-3">
-				<h3>
-					Get the App
-				</h3><a href="index.html" class="a-btn a-block">iPhone</a><a href="index.html" class="a-btn a-block">Android</a>
-			</div>
-			<div class="col-sm-3">
-				<h3>
-					Follow us
-				</h3><a href="index.html" class="a-btn a-block">Twitter</a><a href="index.html" class="a-btn a-block">Facebook</a>
-			</div>
-			<div class="col-sm-3">
-				<h3>
-					Company
-				</h3><a href="index.html" class="a-btn a-block">Terms of use</a><a href="index.html" class="a-btn a-block">Privacy</a>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- Footer - footer-nav END -->
-</div>
-<!-- Main container END -->

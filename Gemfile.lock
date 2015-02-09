@@ -18,6 +18,7 @@ GEM
   remote: http://rubygems.org/
   remote: https://rails-assets.org/
   specs:
+    aasm (4.0.8)
     actionmailer (4.1.6)
       actionpack (= 4.1.6)
       actionview (= 4.1.6)
@@ -485,6 +486,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aasm
   activerecord-typedstore (= 0.5.0)
   acts-as-taggable-on (~> 3.2.6)
   acts_as_graph_object

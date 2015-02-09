@@ -1,11 +1,14 @@
 tr
-  td = link_to post.id, admin_post_path(post.id)
-  td = link_to post.title, admin_post_path(post.id)
+  td = link_to post.id, admin_post_path(post)
+  td = link_to post.title, admin_post_path(post)
   td = post.author.try(:name)
   td = post.column.try(:name)
   td = post.created_at
   td = post.state
-  td 
+  td
+    span class='badge badge-warning'
+      = link_to post.comments_count.to_i, admin_post_comments_path(post)
+  td
     a.tip-top data-original-title="编辑" href= edit_admin_post_path(post)
       i.icon-pencil
     |&nbsp;&nbsp;

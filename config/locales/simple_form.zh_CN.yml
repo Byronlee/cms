@@ -28,6 +28,8 @@ zh-CN:
         disable_with: '正在提交...'
       user:
         role: 角色
+      comment:
+        content: 评论内容
     placeholders:
       post:
         title: '请输入40字以内的文章标题'
@@ -43,6 +45,8 @@ zh-CN:
         introduce: '专栏介绍'
         cover: 专栏图像
         icon:  专栏图标
+      comment:
+        content: '您怎么看？'
     prompt:
   helpers:
     submit:
@@ -58,6 +62,8 @@ zh-CN:
       user:
         create: '创建用户'
         update: '更新用户'
+      comment:
+        create: '创建评论'
     page_entries_info:
       one_page:
         display_entries:

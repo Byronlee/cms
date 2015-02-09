@@ -31,8 +31,10 @@ class User < ActiveRecord::Base
   enumerize :role, :in => Settings.roles, :default => :reader, :methods => true, :scopes => :shallow
 
   has_many :authentications, dependent: :destroy
-  has_many :posts
   has_one :krypton_authentication, -> { where(provider: :krypton) }, class_name: Authentication.to_s
+  has_many :posts
+  has_many :comments
+
   def apply_omniauth(omniauth)
     self.phone = omniauth['info']['phone'] if phone.blank?
     authentications.build provider: omniauth['provider'], uid: omniauth['uid'],
@@ -44,7 +46,23 @@ class User < ActiveRecord::Base
   end
 
   def name
-    self.krypton_authentication && self.krypton_authentication.info["name"]
+    if self.krypton_authentication && self.krypton_authentication.info["name"].present?
+      self.krypton_authentication.info["name"]
+    else
+      self.phone || self.email
+    end
+  end
+
+  def avatar
+    return self.krypton_authentication.info["image"] if self.krypton_authentication && self.krypton_authentication.info["image"].present?
+  end
+
+  def may_publish?
+    [:admin, :writer].include? self.role.to_sym
+  end
+
+  def may_prepublish?
+    [:editor].include? self.role.to_sym
   end
 
   protected
