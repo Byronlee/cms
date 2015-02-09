@@ -1,0 +1,26 @@
+= render 'og_meta'
+
+/!breadcrumbs
+div#content-header
+  div#breadcrumb
+    a.tip-bottom title="回到首页" href= admin_root_path
+      i.icon-home
+      | 首页
+    a.tip-bottom title="回到Page管理列表页面" href= admin_pages_path
+      i.icon-file
+      | Page管理
+    a.current href="#"
+      = @page.title
+  h1
+    = @page.title
+/!End-breadcrumbs
+
+
+div.container-fluid
+  = bootstrap_flash
+  div.span12 style="margin-top:20px;"
+    span
+        |创建时间：
+      = @page.created_at
+  div.span12 style="margin-top:20px;"
+    = @page.body
