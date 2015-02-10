@@ -161,6 +161,7 @@ GEM
     fume-settable (0.0.3)
       activesupport (>= 3.0)
       hashie
+    google-analytics-rails (0.0.6)
     grape (0.10.1)
       activesupport
       builder
@@ -513,6 +514,7 @@ DEPENDENCIES
   fume-cancan (~> 0.0.3)
   fume-nav (~> 0.0.2)
   fume-settable (~> 0.0.3)
+  google-analytics-rails
   grape (~> 0.10.1)
   grape-entity (~> 0.4.4)
   grape-jbuilder (~> 0.2.0)

@@ -48,6 +48,7 @@ gem 'devise-i18n', '~> 0.10.3'
 gem 'slim-rails'
 gem 'polymer-rails'
 gem 'acts_as_graph_object'
+gem 'google-analytics-rails'
 
 # controllers
 gem 'devise', "~> 3.4.1"

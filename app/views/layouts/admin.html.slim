@@ -92,4 +92,5 @@ html lang="en"
     div.row-fluid
       div#footer class="span12"
        |&copy; Company 2015 36Kr
+      = analytics_init if Rails.env.production?
     /!end-Footer-part

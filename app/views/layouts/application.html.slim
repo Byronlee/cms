@@ -63,6 +63,4 @@ html
                 |Company
               a href="index.html" class="a-btn a-block"  Terms of use
               a href="index.html" class="a-btn a-block"  Privacy
-
-      /!Footer - footer-nav END
-    /!Main container END
+        = analytics_init if Rails.env.production?
