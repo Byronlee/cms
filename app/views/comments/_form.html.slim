@@ -10,7 +10,7 @@ div#commentForm class="widget-content nopadding" style="display:#{(flash[:info] 
     div.form-actions
       span
       - if current_user
-        |sign as = current_user.name
+        |"sign as #{current_user.name}"
       - else
         = link_to "请先登录再评论", user_omniauth_authorize_path(provider: :krypton), class:"linkForSign btn btn-primary"
 
