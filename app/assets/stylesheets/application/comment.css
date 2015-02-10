@@ -41,3 +41,9 @@
   border-bottom: solid 1px #9c9c9c;
   margin-bottom: 10px;
 }
+
+.linkForSign{
+  position: relative;
+  top: -80px;
+  left: 40%;
+}

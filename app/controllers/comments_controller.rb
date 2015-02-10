@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
     @comments_normal_count = @commentable.comments
       .where(
         Comment.normal.or(
-          Comment.normal_selfown(current_user.id)
+          Comment.normal_selfown(current_user ? current_user.id : 0)
         )
       ).count
     @commentable_type = @commentable.class.to_s.downcase.pluralize
@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
       .includes(:commentable, user:[:krypton_authentication])
       .where(
         Comment.normal.or(
-          Comment.normal_selfown(current_user.id)
+          Comment.normal_selfown(current_user ? current_user.id : 0)
         )
       ).order("created_at asc")
     @comments_normal_count = @comments.count
