@@ -1,5 +1,5 @@
 <% if current_user %>
-  Hi, <%= current_user.krypton_authentication.info[:email] || current_user.krypton_authentication.info[:phone] %> <%= link_to "注销", destroy_user_session_path, method: :delete %>
+  Hi, <%= current_user.name %> <%= link_to "注销", destroy_user_session_path, method: :delete %>
 <% else %>
   <%= link_to "Sign in through Krypton", user_omniauth_authorize_path(provider: :krypton) %>
   <a href="javascript:KryptonID.new_session('<%= user_omniauth_authorize_path(provider: :krypton, theme: :iframe) %>')">modal</a>
