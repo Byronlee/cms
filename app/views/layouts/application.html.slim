@@ -12,7 +12,23 @@ html.no-js
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
     = javascript_include_tag "#{Settings.oauth.krypton.host}/assets/helper.js"
-    = html_import_tag 'application'
+    /= html_import_tag 'application'
     = csrf_meta_tags
   body#home
+    = render_cell :layout, :nav
+    .container.row
+      .main
+        = render_cell :layout, :headlines
+        .content
+          = yield
+        .aside
+          = render_cell :sidebar, :tags
+          = render_cell :sidebar, :social
+      .sidebar
+        = render_cell :sidebar, :ad
+        = render_cell :sidebar, :hot_post
+        = render_cell :sidebar, :apps
+        = render_cell :sidebar, :excellent_comments
+
     = analytics_init if Rails.env.production?
+    = render_cell :layout, :footer
