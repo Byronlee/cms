@@ -26,4 +26,5 @@ class SidebarCell < Cell::Rails
   def today
     render
   end
+
 end
