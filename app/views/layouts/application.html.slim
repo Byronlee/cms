@@ -1,66 +1,18 @@
 doctype html
-html
+html.no-js
   head
-    title  36氪
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
-    = javascript_include_tag "#{Settings.oauth.krypton.host}/assets/helper.js", 'data-turbolinks-track' => true
+    = render_cell :head, :basic_info
+    = render_cell :head, :ios_meta
+    = render_cell :head, :ios_icons
+    = render_cell :head, :iphone_media
+    = render_cell :head, :ipad_media
+    = render_cell :head, :ipad_retina_media
+    = render_cell :head, :twitter_card_meta
+    = render_cell :head, :facebook_open_graph_meta
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    = javascript_include_tag "#{Settings.oauth.krypton.host}/assets/helper.js"
     = html_import_tag 'application'
     = csrf_meta_tags
-  body
-    /!Main container
-    div.page-container
-      /!Navigation Bloc
-      div#nav-bloc class="bloc"
-        div class="container bloc-sm"
-          nav class="navbar row"
-            div.navbar-header
-              a.navbar-brand href=  root_path
-                img alt='' src= image_url("img/logo.png")
-                  |36kr
-              button#nav-toggle type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1"
-                span.sr-only
-                  |Toggle navigation
-                span.icon-bar
-                span.icon-bar
-                span.icon-bar
-            div class="collapse navbar-collapse navbar-1"
-              ul class="site-navigation nav"
-                li.active
-                  a href= root_path  Home
-      /!Navigation Bloc END
-
-      = yield
-
-      /!Footer - bloc-19
-      div#bloc-19 class="bloc l-bloc"
-        div class="container bloc-sm"
-          div.row
-            div.col-sm-12
-      /!Footer - bloc-19 END
-
-      /!Footer - footer-nav
-      div#footer-nav class="bloc l-bloc"
-        div class="container bloc-sm"
-          div.row
-            div.col-sm-3
-              h3
-                |About
-              a href="index.html" class="a-btn a-block"  The team
-              a href="index.html" class="a-btn a-block"  Contact us
-            div.col-sm-3
-              h3
-                |Get the App
-              a href="index.html" class="a-btn a-block"  iPhone
-              a href="index.html" class="a-btn a-block"  Android
-            div.col-sm-3
-              h3
-                |Follow us
-              a href="index.html" class="a-btn a-block"  Twitter
-              a href="index.html" class="a-btn a-block"  Facebook
-            div.col-sm-3
-              h3
-                |Company
-              a href="index.html" class="a-btn a-block"  Terms of use
-              a href="index.html" class="a-btn a-block"  Privacy
-        = analytics_init if Rails.env.production?
+  body#home
+    = analytics_init if Rails.env.production?
