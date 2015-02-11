@@ -1,0 +1,24 @@
+/!breadcrumbs
+div#content-header
+  div#breadcrumb
+    a.tip-bottom title="回到首页" href= admin_root_path
+      i.icon-home
+      | 首页
+    a.tip-bottom title="回到Page管理列表页面" href= admin_pages_path
+      i.icon-file
+      | Page管理
+    a.current href="#"
+      | 编辑Page信息
+  <h1>编辑Page信息</h1>
+/!End-breadcrumbs
+
+div.container-fluid
+  = bootstrap_flash
+  div.widget-box
+    div clas="widget-content nopadding"
+      = simple_form_for [:admin, @page], html:{class:"form-horizontal"}  do | f |
+        = f.input :title
+        = f.input :slug
+        = f.input :body, :input_html => { 'rows' => 6}
+        div.form-actions
+          = f.button :submit, data: { disable_with: "submitting..." }, class:"btn btn-primary"

@@ -1,0 +1,10 @@
+tr
+  td = link_to page.id, admin_page_path(page.id)
+  td = link_to page.title, admin_page_path(page.id)
+  td = page.created_at
+  td
+    a.tip-top data-original-title="编辑" href= edit_admin_page_path(page)
+      i.icon-pencil
+    |&nbsp;&nbsp;
+    a.tip-top data-original-title="删除" data-method="delete" data-confirm="确定删除文章 #{page.title} ？" href= admin_page_path(page)
+      i.icon-remove

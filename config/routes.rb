@@ -1,7 +1,6 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-
   mount API::API => '/'
   mount GrapeSwaggerRails::Engine => '/api/a14f30b8405857de59e098af4d1d07bda752a2dc'
   mount Sidekiq::Web => '/sidekiq'
@@ -15,15 +14,13 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   namespace :admin do
-    root to: redirect("/admin/dashboard")
-    resources :newsflashes
-    resources :dashboard
-    resources :columns
-    resources :users
+    root to: redirect('/admin/dashboard')
+    resources :dashboard, :columns
+    resources :head_lines, except: [:show]
+    resources :users, :newsflashes, :pages
     resources :posts do
       resources :comments, only: [:index], on: :collection
     end
-    resources :head_lines, :except => [:show]
     resources :comments do
       member do
         post :set_excellent
