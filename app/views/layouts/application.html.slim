@@ -15,15 +15,10 @@ html.no-js
     = html_import_tag 'application'
     = csrf_meta_tags
   body#home
-    = render_cell :layout, :nav
+    = render_cell :layout, :nav, current_user: current_user
     .container.row
       .main
-        head-lines
-        .content
-          = yield
-        .aside
-          = render_cell :sidebar, :tags
-          = render_cell :sidebar, :social
+        = yield
       .sidebar
         = render_cell :sidebar, :ad
         = render_cell :sidebar, :hot_post

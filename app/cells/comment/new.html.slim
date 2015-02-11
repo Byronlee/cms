@@ -1,0 +1,30 @@
+h2
+  | 文章评论(
+  span = @post.comments_count.to_i
+  | )
+.single-post-comment-reply
+  .single-post-comment__form.cf
+    form.comment action="/posts/#{@post.id}/comments" method="post"
+      = hidden_field_tag :authenticity_token, form_authenticity_token
+      textarea#post.textarea name="comment[content]" placeholder="你怎么看？" data-widearea="enable"
+    span.tip.right
+      | 请回复有价值的信息，无意义的评论将很快被删除，账号将被禁止发言
+  .single-post-comment__bottom.cf
+    .meta.left.cf
+      .avatar.left
+        a href=""
+          img[src="/assets/original/avatar.jpg" alt=""]
+      span.username.right
+        | signed as
+        a[href=""]
+          | dingyi
+    button.ladda-button.comment-submit-btn.right[data-style="slide-down" data-spinner-size="32"]
+      span.ladda-label
+        | 提交评论
+
+  javascript:
+    $(document).ready(function(){
+      $(".ladda-label").click(function(){
+        $("form.comment").submit()
+      })
+    });

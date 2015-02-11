@@ -137,4 +137,20 @@ header.header.header-normal
         li
           a.second-nav__request href="#" 寻求报道
         li
-          a.second-nav__login.overlay href="#panel-login" 登录
+          - if @current_user
+            = @current_user.name
+            = link_to "注销", destroy_user_session_path, method: :delete
+          - else
+            a.second-nav__login.overlay href="#{user_omniauth_authorize_path(provider: :krypton)}" 登录
+
+
+
+
+
+
+
+
+
+
+
+

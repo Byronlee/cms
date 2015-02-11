@@ -22,4 +22,8 @@ class SidebarCell < Cell::Rails
   def social
     render
   end
+
+  def today
+    render
+  end
 end

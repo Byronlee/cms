@@ -1,5 +1,6 @@
 class LayoutCell < Cell::Rails
-  def nav
+  def nav(args)
+    @current_user = args[:current_user]
     render
   end
 

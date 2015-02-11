@@ -1,32 +1,37 @@
-.content-wrapper
-  h2.lastest lastest news
-  .articles
-    - @posts.each do | item |
-      article.posts.post-1.cf
-        .info.cf
-          .topic.left
-            span
-              a.startups href="#{post_path(item)}" 国外创业 / Startups
-          .postmeta.right
-            a href="#" 丁伟峰 • 1小时前
-        .post
-          .left.left-col
-            .meta
-              a href="#{post_path(item)}"
-                i.icon.icon-share = item.comments_count
-            .image.feature-img.thumb-180
-              img src="#{item.cover}" alt=""
-          .right-col
-            h1
-              a href="" = item.title
-            p = item.summary
-  .pagination.cf
-    ul
-      li.previous.disabled
-        a.left href=""
-          i.icon-prev
-          | 上一页
-      li.next_page
-        a.right href=""
-          | 下一页
-          i.icon-next
+head-lines
+.content
+  .content-wrapper
+    h2.lastest lastest news
+    .articles
+      - @posts.each do | item |
+        article.posts.post-1.cf
+          .info.cf
+            .topic.left
+              span
+                a.startups href="#{post_path(item)}" 国外创业 / Startups
+            .postmeta.right
+              a href="#" 丁伟峰 • 1小时前
+          .post
+            .left.left-col
+              .meta
+                a href="#{post_path(item)}"
+                  i.icon.icon-share = item.comments_count
+              .image.feature-img.thumb-180
+                img src="#{item.cover_url}" alt=""
+            .right-col
+              h1
+                a href="#{post_path(item)}" = item.title
+              p = item.summary
+    .pagination.cf
+      ul
+        li.previous.disabled
+          a.left href=""
+            i.icon-prev
+            | 上一页
+        li.next_page
+          a.right href=""
+            | 下一页
+            i.icon-next
+.aside
+  = render_cell :sidebar, :tags
+  = render_cell :sidebar, :social
