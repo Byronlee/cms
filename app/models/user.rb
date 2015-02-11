@@ -3,7 +3,7 @@
 # Table name: users
 #
 #  id                     :integer          not null, primary key
-#  email                  :string(255)      default("")
+#  email                  :string(255)
 #  phone                  :string(255)
 #  encrypted_password     :string(255)      default(""), not null
 #  reset_password_token   :string(255)
@@ -29,6 +29,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauth_providers => [:krypton]
   enumerize :role, :in => Settings.roles, :default => :reader, :methods => true, :scopes => :shallow
+
+  validates :phone, presence: true, uniqueness: true, allow_blank: -> { email.present? }
+  validates :email, presence: true, uniqueness: true, allow_blank: -> { phone.present? }
 
   has_many :authentications, dependent: :destroy
   has_one :krypton_authentication, -> { where(provider: :krypton) }, class_name: Authentication.to_s
