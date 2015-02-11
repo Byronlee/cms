@@ -49,6 +49,7 @@ gem 'slim-rails'
 gem 'polymer-rails', '~> 0.2.8'
 gem 'acts_as_graph_object'
 gem 'google-analytics-rails'
+gem 'cells'
 
 # controllers
 gem 'devise', "~> 3.4.1"
