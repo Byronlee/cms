@@ -6,8 +6,4 @@ class LayoutCell < Cell::Rails
   def footer
     render
   end
-
-  def headlines
-    render
-  end
 end

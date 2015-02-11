@@ -12,13 +12,13 @@ html.no-js
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
     = javascript_include_tag "#{Settings.oauth.krypton.host}/assets/helper.js"
-    /= html_import_tag 'application'
+    = html_import_tag 'application'
     = csrf_meta_tags
   body#home
     = render_cell :layout, :nav
     .container.row
       .main
-        = render_cell :layout, :headlines
+        head-lines
         .content
           = yield
         .aside
