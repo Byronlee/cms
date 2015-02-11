@@ -1,0 +1,38 @@
+/!breadcrumbs
+div#content-header
+  div#breadcrumb
+    a.tip-bottom title="Go to Home" href= admin_root_path
+      i.icon-home
+      | 首页
+    a.current href="#"
+      i.icon-tint
+      | 信息流管理
+  <h1>信息流管理</h1>
+/!End-breadcrumbs
+
+div.container-fluid
+  = bootstrap_flash
+  = link_to "编辑信息流", new_admin_info_flow_path, class:"btn btn-primary"
+
+  div.widget-box
+    div.widget-title
+      span.icon
+        i.icon-th
+
+    div class="widget-content"
+      ul.thumbnails
+        - (@info_flows*10).each do |info_flow|
+          li.span2
+            a
+              img onerror="imgError(this)" src="#{info_flow.icon_url}"
+            div.descripiton
+              h5  = info_flow.name
+            div.actions
+              a href="#"
+                i.icon-remove
+              |&nbsp;&nbsp;
+              a href="#"
+                i.icon-search
+            span.tip-top class="label label-important" data-placement="left" data-original-title="文章数"  = info_flow.posts_count.to_i
+
+= render 'layouts/set_active_nav', :active_id => "nav_info_flows"

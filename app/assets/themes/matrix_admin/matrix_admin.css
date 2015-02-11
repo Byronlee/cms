@@ -34,3 +34,30 @@
 .auto-popover, .pointer{
   cursor: pointer;
 }
+
+.thumbnails li .label{
+  position: absolute;
+  padding: 5px;
+  top: -10px;
+  right: -5px;
+  cursor: pointer;
+}
+
+.thumbnails li img{
+  height: 160px;
+  width: 100%;
+}
+
+.thumbnails li .descripiton{
+  background-color: #3e3e3e;
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+  color: #fff;
+  margin-top: -40px;
+  height: 40px;
+}
+
+.thumbnails li .descripiton h5{
+  margin: 0 auto;
+  padding: 10px 5px;
+}

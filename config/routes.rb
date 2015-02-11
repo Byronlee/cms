@@ -28,6 +28,7 @@ Rails.application.routes.draw do
         post :do_reject
       end
     end
+    resources :info_flows
   end
 
   namespace :components do
