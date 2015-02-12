@@ -72,4 +72,8 @@ class Admin::InfoFlowsController < Admin::BaseController
   def info_flow_params
     params.require(:info_flow).permit(:name) if params[:info_flow]
   end
+
+  def edit
+    @columns = Column.all
+  end
 end

@@ -4,21 +4,60 @@ div#content-header
     a.tip-bottom title="回到首页" href= admin_root_path
       i.icon-home
       | 首页
-    a.tip-bottom title="回到信息流管理列表页面" href= admin_ads_path
-      i.icon-globe
+    a.tip-bottom title="回到信息流管理页面" href= admin_info_flows_path
+      i.icon-star
       | 信息流管理
     a.current href="#"
-      | 编辑信息流信息
-  <h1>编辑信息流信息</h1>
+      | 编辑信息流
+  <h1>编辑信息流</h1>
 /!End-breadcrumbs
 
 div.container-fluid
   = bootstrap_flash
   div.widget-box
-    div clas="widget-content nopadding"
-      = simple_form_for [:admin, @info_flow], html:{class:"form-horizontal"} do | f |
-        = f.input :name
-        div.form-actions
-          = f.button :submit, data: { disable_with: "Submitting..." }, class:"btn btn-primary"
+    div clas="widget-content" style="padding:20px;"
+      select id="custom-multiselect-headers" multiple="multiple"
+        - @columns.each do |column|
+          - if column.in_info_flow?
+            option value="#{column.name}" selected="selected"  ="#{column.name}"
+          - else
+            option value="#{column.name}"  ="#{column.name}"
 
-= render 'layouts/set_active_nav', :active_id => "nav_info_flows"
+javascript:
+  $(document).ready(function(){
+    $('#custom-multiselect-headers').multiSelect({
+      selectableHeader: "<input type='text' class='search-input search-input-header' autocomplete='off' placeholder='type \"keywords\"'>",
+      selectionHeader: "<input type='text' class='search-input search-input-header' autocomplete='off' placeholder='type \"keywords\"'>",
+      afterInit: function(ms){
+        var that = this,
+            $selectableSearch = that.$selectableUl.prev(),
+            $selectionSearch = that.$selectionUl.prev(),
+            selectableSearchString = '#'+that.$container.attr('id')+' .ms-elem-selectable:not(.ms-selected)',
+            selectionSearchString = '#'+that.$container.attr('id')+' .ms-elem-selection.ms-selected';
+
+        that.qs1 = $selectableSearch.quicksearch(selectableSearchString)
+        .on('keydown', function(e){
+          if (e.which === 40){
+            that.$selectableUl.focus();
+            return false;
+          }
+        });
+
+        that.qs2 = $selectionSearch.quicksearch(selectionSearchString)
+        .on('keydown', function(e){
+          if (e.which == 40){
+            that.$selectionUl.focus();
+            return false;
+          }
+        });
+      },
+      afterSelect: function(){
+        this.qs1.cache();
+        this.qs2.cache();
+      },
+      afterDeselect: function(){
+        this.qs1.cache();
+        this.qs2.cache();
+      }
+    });
+  });
