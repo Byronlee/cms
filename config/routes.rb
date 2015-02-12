@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     resources :info_flows, only:[:index] do
       get :edit, on: :collection
       post :update, on: :collection
+      delete :destroy, on: :member
     end
   end
 

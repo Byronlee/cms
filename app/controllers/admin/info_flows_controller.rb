@@ -16,5 +16,8 @@ class Admin::InfoFlowsController < Admin::BaseController
   end
 
   def destroy
+    @column = Column.find params[:id]
+    @column.update_attribute(:in_info_flow, false)
+    redirect_to admin_info_flows_path
   end
 end
