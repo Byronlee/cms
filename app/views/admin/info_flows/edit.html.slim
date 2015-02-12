@@ -26,6 +26,8 @@ div.container-fluid
       button#multiselect-refresh class="btn btn-success" 重置
       button#multiselect-submit class="btn btn-primary" style="margin-left:20px;" 保存修改
 
+= render 'layouts/set_active_nav', :active_id => "nav_info_flows"
+
 javascript:
   $(document).ready(function(){
     $('#custom-multiselect-headers').multiSelect({
@@ -58,12 +60,10 @@ javascript:
       afterSelect: function(){
         this.qs1.cache();
         this.qs2.cache();
-        check_submit_status();
       },
       afterDeselect: function(){
         this.qs1.cache();
         this.qs2.cache();
-        check_submit_status();
       }
     });
 
@@ -83,13 +83,4 @@ javascript:
          }
       });
     });
-
-    heck_submit_status();
   });
-
-  function check_submit_status(){
-    if($('#custom-multiselect-headers').val() == null)
-      $("#multiselect-submit").attr("disabled", true);
-    else
-      $("#multiselect-submit").attr("disabled", false);
-  }
