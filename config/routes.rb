@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     end
     resources :info_flows, only:[:index] do
       get :edit, on: :collection
+      post :update, on: :collection
     end
   end
 

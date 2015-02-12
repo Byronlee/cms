@@ -19,13 +19,17 @@ div.container-fluid
       select id="custom-multiselect-headers" multiple="multiple"
         - @columns.each do |column|
           - if column.in_info_flow?
-            option value="#{column.name}" selected="selected"  ="#{column.name}"
+            option value="#{column.id}" selected="selected"  ="#{column.name}"
           - else
-            option value="#{column.name}"  ="#{column.name}"
+            option value="#{column.id}"  ="#{column.name}"
+      div.actions style="margin-top:20px;"
+      button#multiselect-refresh class="btn btn-success" 重置
+      button#multiselect-submit class="btn btn-primary" style="margin-left:20px;" 保存修改
 
 javascript:
   $(document).ready(function(){
     $('#custom-multiselect-headers').multiSelect({
+      keepOrder: true,
       selectableHeader: "<input type='text' class='search-input search-input-header' autocomplete='off' placeholder='type \"keywords\"'>",
       selectionHeader: "<input type='text' class='search-input search-input-header' autocomplete='off' placeholder='type \"keywords\"'>",
       afterInit: function(ms){
@@ -54,10 +58,38 @@ javascript:
       afterSelect: function(){
         this.qs1.cache();
         this.qs2.cache();
+        check_submit_status();
       },
       afterDeselect: function(){
         this.qs1.cache();
         this.qs2.cache();
+        check_submit_status();
       }
     });
+
+    $('#multiselect-refresh').on('click', function(){
+      location.reload();
+    });
+
+     $('#multiselect-submit').on('click', function(){
+       ids = $('#custom-multiselect-headers').val();
+       $.ajax({
+         "url": "/admin/info_flows",
+         "data": {'column_ids':ids},
+         "dataType": "json",
+         "type": "POST",
+         "success": function () {
+           window.location = '/admin/info_flows/';
+         }
+      });
+    });
+
+    heck_submit_status();
   });
+
+  function check_submit_status(){
+    if($('#custom-multiselect-headers').val() == null)
+      $("#multiselect-submit").attr("disabled", true);
+    else
+      $("#multiselect-submit").attr("disabled", false);
+  }

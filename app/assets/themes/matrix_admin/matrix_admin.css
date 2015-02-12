@@ -63,7 +63,7 @@
 }
 
 #s2id_custom-multiselect-headers{
-  display: none;
+  visibility: hidden;
 }
 
 .ms-container{
