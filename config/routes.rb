@@ -28,7 +28,9 @@ Rails.application.routes.draw do
         post :do_reject
       end
     end
-    resources :info_flows
+    resources :info_flows, only:[:index] do
+      get :edit, on: :collection
+    end
   end
 
   namespace :components do

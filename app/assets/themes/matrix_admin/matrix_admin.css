@@ -61,3 +61,15 @@
   margin: 0 auto;
   padding: 10px 5px;
 }
+
+#s2id_custom-multiselect-headers{
+  display: none;
+}
+
+.ms-container{
+  width: 80%;
+}
+
+.search-input-header{
+  width: 95%;
+}

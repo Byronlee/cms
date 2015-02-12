@@ -12,7 +12,7 @@ div#content-header
 
 div.container-fluid
   = bootstrap_flash
-  = link_to "编辑信息流", new_admin_info_flow_path, class:"btn btn-primary"
+  = link_to "编辑信息流", edit_admin_info_flows_path, class:"btn btn-primary"
 
   div.widget-box
     div.widget-title
@@ -21,7 +21,7 @@ div.container-fluid
 
     div class="widget-content"
       ul.thumbnails
-        - (@info_flows*10).each do |info_flow|
+        - @info_flows.each do |info_flow|
           li.span2
             a
               img onerror="imgError(this)" src="#{info_flow.icon_url}"
