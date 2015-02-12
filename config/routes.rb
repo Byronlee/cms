@@ -38,6 +38,7 @@ Rails.application.routes.draw do
       post :update, on: :collection
       delete :destroy, on: :member
     end
+    resources :ads
   end
 
   namespace :components do

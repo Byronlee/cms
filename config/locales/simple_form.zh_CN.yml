@@ -30,6 +30,9 @@ zh-CN:
         role: 角色
       comment:
         content: 评论内容
+      ad:
+        content: 广告内容
+        position: 广告位
     placeholders:
       post:
         title: '请输入40字以内的文章标题'
@@ -47,6 +50,9 @@ zh-CN:
         icon:  专栏图标
       comment:
         content: '您怎么看？'
+      ad:
+        content: 广告占位内容？
+        position: 广告位置
     prompt:
   helpers:
     submit:
@@ -64,6 +70,9 @@ zh-CN:
         update: '更新用户'
       comment:
         create: '创建评论'
+      ad:
+        create: '创建广告位'
+        update: '更新广告位'
     page_entries_info:
       one_page:
         display_entries:
