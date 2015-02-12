@@ -48,6 +48,7 @@ Rails.application.routes.draw do
          delete :destroy_ad
        end
     end
+    resources :ads
   end
 
   namespace :components do
