@@ -14,4 +14,7 @@ class Admin::InfoFlowsController < Admin::BaseController
     end
     render :json => {"result" => "sucess"}
   end
+
+  def destroy
+  end
 end

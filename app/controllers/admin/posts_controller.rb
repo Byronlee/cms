@@ -2,7 +2,11 @@ class Admin::PostsController < Admin::BaseController
   load_and_authorize_resource
 
   def index
-    @posts = Post.order('updated_at desc').includes(:author, :column).page params[:page]
+    if(params[:column_id] and column = Column.find(params[:column_id]))
+      @posts = column.posts.order('updated_at desc').includes(:author, :column).page params[:page]
+    else
+      @posts = Post.order('updated_at desc').includes(:author, :column).page params[:page]
+    end
   end
 
   def update
