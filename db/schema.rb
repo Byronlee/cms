@@ -46,7 +46,6 @@ ActiveRecord::Schema.define(version: 20150210052315) do
     t.datetime "updated_at"
     t.string   "cover"
     t.string   "icon"
-    t.boolean  "in_info_flow"
     t.integer  "posts_count"
   end
 
