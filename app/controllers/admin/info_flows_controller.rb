@@ -31,8 +31,8 @@ class Admin::InfoFlowsController < Admin::BaseController
   end
 
   def edit_ads
-    @ads_in_info_flow = @info_flow.ads.order("position")
-    @ads = Ad.all.order("position") - @ads_in_info_flow
+    @ads_in_info_flow = @info_flow.ads
+    @ads = Ad.all - @ads_in_info_flow
   end
 
   def update_columns
@@ -72,5 +72,4 @@ class Admin::InfoFlowsController < Admin::BaseController
   def info_flow_params
     params.require(:info_flow).permit(:name) if params[:info_flow]
   end
-
 end
