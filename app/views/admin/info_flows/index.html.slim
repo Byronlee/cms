@@ -12,27 +12,25 @@ div#content-header
 
 div.container-fluid
   = bootstrap_flash
-  = link_to "编辑信息流", edit_admin_info_flows_path, class:"btn btn-primary"
+  = link_to "创建信息流", new_admin_info_flow_path, class:"btn btn-primary"
 
   div.widget-box
     div.widget-title
       span.icon
         i.icon-th
+      h5 = page_entries_info @info_flows
 
-    div class="widget-content"
-      ul.thumbnails
-        - @info_flows.each do |info_flow|
-          li.span2
-            a
-              img onerror="imgError(this)" src="#{info_flow.icon_url}"
-            div.descripiton
-              h5  = info_flow.name
-            div.actions
-              = link_to admin_info_flow_path(info_flow), method: :delete do
-                i.icon-remove
-              |&nbsp;&nbsp;
-              a href=  admin_column_posts_path(info_flow)
-                i.icon-search
-            span.tip-top class="label label-important" data-placement="left" data-original-title="文章数"  = info_flow.posts_count.to_i
+    div class="widget-content nopadding"
+      table class="table table-bordered table-striped with-check"
+        thead
+          tr role="row"
+            th ID
+            th 名称
+            th 创建时间
+            th 操作
+        tbody
+          = render @info_flows
+      div class="pagination pagination-table"
+        = paginate @info_flows
 
 = render 'layouts/set_active_nav', :active_id => "nav_info_flows"

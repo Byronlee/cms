@@ -33,12 +33,12 @@ Rails.application.routes.draw do
         post :do_reject
       end
     end
-    resources :info_flows, only:[:index] do
-      get :edit, on: :collection
-      post :update, on: :collection
-      delete :destroy, on: :member
-    end
     resources :ads
+    resources :info_flows do
+      # get :edit, on: :collection
+      # post :update, on: :collection
+      # delete :destroy, on: :member
+    end
   end
 
   namespace :components do

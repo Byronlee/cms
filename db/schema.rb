@@ -62,6 +62,12 @@ ActiveRecord::Schema.define(version: 20150210052315) do
     t.datetime "updated_at"
   end
 
+  create_table "info_flows", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "newsflash_topic_colors", force: true do |t|
     t.string   "site_name"
     t.string   "color"

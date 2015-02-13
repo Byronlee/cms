@@ -33,6 +33,8 @@ zh-CN:
       ad:
         content: 广告内容
         position: 广告位
+      info_flow:
+        name: 名称
     placeholders:
       post:
         title: '请输入40字以内的文章标题'
@@ -53,6 +55,8 @@ zh-CN:
       ad:
         content: 广告占位内容？
         position: 广告位置
+      info_flow:
+        name: 信息流名称
     prompt:
   helpers:
     submit:
@@ -73,6 +77,9 @@ zh-CN:
       ad:
         create: '创建广告位'
         update: '更新广告位'
+      info_flow:
+        create: '创建信息流'
+        update: '更新信息流'
     page_entries_info:
       one_page:
         display_entries:
