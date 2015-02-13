@@ -49,6 +49,11 @@ Rails.application.routes.draw do
        end
     end
     resources :ads
+    resources :info_flows do
+      # get :edit, on: :collection
+      # post :update, on: :collection
+      # delete :destroy, on: :member
+    end
   end
 
   namespace :components do
