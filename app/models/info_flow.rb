@@ -9,4 +9,6 @@
 #
 
 class InfoFlow < ActiveRecord::Base
+  has_and_belongs_to_many :columns
+  has_and_belongs_to_many :ads
 end

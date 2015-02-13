@@ -23,6 +23,13 @@ ActiveRecord::Schema.define(version: 20150210052315) do
     t.datetime "updated_at"
   end
 
+  create_table "ads_info_flows", force: true do |t|
+    t.integer  "info_flow_id"
+    t.integer  "ad_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "authentications", force: true do |t|
     t.string   "uid"
     t.string   "provider"
@@ -41,6 +48,13 @@ ActiveRecord::Schema.define(version: 20150210052315) do
     t.string   "icon"
     t.boolean  "in_info_flow"
     t.integer  "posts_count"
+  end
+
+  create_table "columns_info_flows", force: true do |t|
+    t.integer  "info_flow_id"
+    t.integer  "column_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "comments", force: true do |t|
@@ -64,6 +78,13 @@ ActiveRecord::Schema.define(version: 20150210052315) do
 
   create_table "info_flows", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "info_flows_columns", force: true do |t|
+    t.integer  "info_flow_id"
+    t.integer  "column_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

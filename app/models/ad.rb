@@ -10,4 +10,5 @@
 #
 
 class Ad < ActiveRecord::Base
+  has_and_belongs_to_many :info_flows
 end

@@ -35,9 +35,15 @@ Rails.application.routes.draw do
     end
     resources :ads
     resources :info_flows do
-      # get :edit, on: :collection
-      # post :update, on: :collection
-      # delete :destroy, on: :member
+       member do
+         get :columns_and_ads
+         post :update_columns
+         post :update_ads
+         get :edit_columns
+         get :edit_ads
+         delete :destroy_column
+         delete :destroy_ad
+       end
     end
   end
 

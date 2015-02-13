@@ -4,12 +4,16 @@ div#content-header
     a.tip-bottom title="回到首页" href= admin_root_path
       i.icon-home
       | 首页
-    a.tip-bottom title="回到信息流管理页面" href= admin_info_flows_path
-      i.icon-star
+    a href=admin_info_flows_path
+      i.icon-tint
       | 信息流管理
+    a href=columns_and_ads_admin_info_flow_path(@info_flow)
+      i.icon-tasks
+      = "#{@info_flow.name}信息流"
     a.current href="#"
-      | 编辑信息流
-  <h1>编辑信息流</h1>
+      i.icon-tasks
+      = "关联专栏"
+  <h1>关联专栏</h1>
 /!End-breadcrumbs
 
 div.container-fluid
@@ -17,10 +21,9 @@ div.container-fluid
   div.widget-box
     div clas="widget-content" style="padding:20px;"
       select id="custom-multiselect-headers" multiple="multiple"
-        - @columns.each do |column|
-          - if column.in_info_flow?
+        - @columns_in_info_flow.each do |column|
             option value="#{column.id}" selected="selected"  ="#{column.name}"
-          - else
+        - @columns.each do |column|
             option value="#{column.id}"  ="#{column.name}"
       div.actions style="margin-top:20px;"
       button#multiselect-refresh class="btn btn-success" 重置
@@ -32,8 +35,8 @@ javascript:
   $(document).ready(function(){
     $('#custom-multiselect-headers').multiSelect({
       keepOrder: true,
-      selectableHeader: "<input type='text' class='search-input search-input-header' autocomplete='off' placeholder='type \"keywords\"'>",
-      selectionHeader: "<input type='text' class='search-input search-input-header' autocomplete='off' placeholder='type \"keywords\"'>",
+      selectableHeader: "<input type='text' class='search-input search-input-header' autocomplete='off' placeholder='待选专栏'>",
+      selectionHeader:  "<input type='text' class='search-input search-input-header' autocomplete='off' placeholder='已选专栏'>",
       afterInit: function(ms){
         var that = this,
             $selectableSearch = that.$selectableUl.prev(),
@@ -74,12 +77,12 @@ javascript:
      $('#multiselect-submit').on('click', function(){
        ids = $('#custom-multiselect-headers').val();
        $.ajax({
-         "url": "/admin/info_flows",
+         "url": "#{update_columns_admin_info_flow_path(@info_flow)}",
          "data": {'column_ids':ids},
          "dataType": "json",
          "type": "POST",
          "success": function () {
-           window.location = '/admin/info_flows/';
+           window.location = "#{columns_and_ads_admin_info_flow_path(@info_flow)}";
          }
       });
     });
