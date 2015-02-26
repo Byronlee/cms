@@ -1,6 +1,9 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+
+  get 'info_flows/index'
+
   mount API::API => '/'
   mount GrapeSwaggerRails::Engine => '/api/a14f30b8405857de59e098af4d1d07bda752a2dc'
   mount Sidekiq::Web => '/sidekiq'
@@ -50,6 +53,7 @@ Rails.application.routes.draw do
   namespace :components do
     get '/next/collections', to: 'next#collections', as: :next_collections
     resources :head_lines, only: [:index]
+    resources :info_flows, only: [:index]
   end
 
   resources :posts, :only => [:show, :index] do
