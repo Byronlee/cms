@@ -3,7 +3,7 @@
 # Table name: ads
 #
 #  id         :integer          not null, primary key
-#  position   :string(255)
+#  position   :integer
 #  content    :text
 #  created_at :datetime
 #  updated_at :datetime

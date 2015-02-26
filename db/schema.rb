@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20150210052315) do
   enable_extension "plpgsql"
 
   create_table "ads", force: true do |t|
-    t.string   "position"
+    t.integer  "position"
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
