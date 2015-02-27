@@ -21,10 +21,10 @@ class InfoFlow < ActiveRecord::Base
     post_begin_index = posts.offset_value + 1
     post_end_index = [posts.current_page * posts.limit_value, posts.total_count].min
     ads = self.ads.order("position desc").select{|ad| ad.position >= post_begin_index - 1 && ad.position <= post_end_index }
-    posts = posts.to_a
+    posts_arr = posts.to_a
     ads.each do |ad|
-      posts.insert(ad.position, ad)
+      posts_arr.insert(ad.position, ad)
     end
-    posts
+    [posts_arr, posts.total_count]
   end
 end
