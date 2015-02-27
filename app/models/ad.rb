@@ -11,4 +11,7 @@
 
 class Ad < ActiveRecord::Base
   has_and_belongs_to_many :info_flows
+
+  validates :position, :content, presence: true
+  validates_uniqueness_of :position
 end

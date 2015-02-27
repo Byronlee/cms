@@ -13,7 +13,12 @@
 
 FactoryGirl.define do
   factory :ad do
-    position "MyString"
-    content "MyText"
+    position 2
+    content "ad first"
+  end
+
+  factory :ad2, class:Ad do
+    position 4
+    content "ad second"
   end
 end

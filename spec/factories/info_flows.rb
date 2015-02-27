@@ -12,6 +12,14 @@
 
 FactoryGirl.define do
   factory :info_flow do
-    name "MyString"
+    name "info_flow 1"
+  end
+
+  factory :info_flow2, class:InfoFlow do
+    name "info_flow 2"
+  end
+
+  factory :main_site, class:InfoFlow do
+    name "主站"
   end
 end
