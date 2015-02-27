@@ -35,9 +35,10 @@ Rails.application.routes.draw do
     resources :head_lines, only: [:index]
   end
 
-  resources :posts, :only => [:show] do
+  resources :posts, :only => [:show, :index] do
     resources :comments, :only => [:index, :create] do
       get :normal_list, on: :collection
     end
   end
+  get :feed, to: 'posts#feed', defaults: { format: :rss }
 end

@@ -3,4 +3,8 @@ class PostsController < ApplicationController
 
   def show
   end
+
+  def feed
+    @feeds = Post.limit(20)
+  end
 end
