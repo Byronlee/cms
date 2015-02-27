@@ -8,4 +8,3 @@ $.get('/components/info_flows', {}, function(info_flows){
      }
   });
 });
-

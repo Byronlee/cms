@@ -22,13 +22,15 @@
         <div class="container bloc-sm">
           <div class="row">
             <div class="col-sm-4">
-              <a href="{{item.title_link}}">
+              <a ref='{{item.title_link}}' href="javacript:void(0)" onclick="performLinkWithRel(this)" target="_blank">
                 <img src='{{item.cover.url}}', class: 'mg-md', style="width: 230, height: 153" />
               </a>
             </div>
             <div class="col-sm-8">
               <h3 class="mg-lg">
-                {{item.title}}
+                <a ref='[[item.title_link]]' href="javacript:void(0)" onclick="performLinkWithRel(this)" target="_blank">
+                  {{item.title}}
+                </a>
               </h3>
               <p class="mg-md">
                 {{item.summary}}

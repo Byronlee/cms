@@ -3,29 +3,29 @@ var storage = (function(win){
         regStorageKey = /^localstorage\_\_\_(.*)+\_\_\_\d*$/,
         prefixText = "localstorage",
         space = "___";
-        
+
     function getRealKey (key){
         var tempArr = key.split(space),
             realKey = {};
-            
+
         realKey['realkey'] = tempArr[1];
         realKey['expires'] = tempArr[2] || "";
-        
+
         return realKey;
     }
-    
+
     function isExpires(key,expires){
         var now  = +new Date();
 
         if(!expires){ return false; }
-                    
+
         if(now > parseInt(expires,10)){
             return true;
         }
-        
+
         return false;
     }
-    
+
     function clear (){
         for(var key in win.localStorage){
             if(regStorageKey.test(key)){
@@ -34,7 +34,7 @@ var storage = (function(win){
         }
         return this;
     }
-    
+
     function removeItem (key){
         var item = StorageKeys[key];
         if(item){
@@ -42,7 +42,7 @@ var storage = (function(win){
         }
         return this;
     }
-    
+
     function getItem (key){
         var item = StorageKeys[key];
         if(item){
@@ -52,38 +52,38 @@ var storage = (function(win){
         }
         return "";
     }
-    
+
     function setItem (key,value,expires){
         if(!key) { return this; }
 
         expires = expires || 0;
-        
+
         this._key = key;
         var now = (+new Date()),
         	localKey = prefixText + space + key + space + ( expires ? expires * 1000 + now : "" );
 
         win.localStorage.setItem(localKey,value);
         StorageKeys[key] = { "key" : localKey, "expires" : expires ? expires * 1000 + now  : "" };
-        
+
         return this;
     }
-    
+
     function expires (seconds){
         if(!seconds){ return this; }
-        
+
         var key = this._key,
             item = StorageKeys[key] || {},
             value = win.localStorage[item['key']],
             now = (+new Date());
-        
+
         if(!key){ return this; }
-        
+
         this.removeItem(key);
         this.setItem(key,value,seconds);
-        
+
         return this;
     }
-    
+
     function initCheck (){
         var realKey;
         for(var key in win.localStorage){
@@ -92,15 +92,15 @@ var storage = (function(win){
 
                 // 如果已经过期的local data，则删掉
                 if(isExpires(realKey['realkey'],realKey['expires'])){ win.localStorage.removeItem(key); continue; }
-                
+
                 StorageKeys[realKey['realkey']] = { "key" : key, "expires" : realKey['expires'] };
             }
         }
     }
-    
+
     // 立即检查localStorage过期情况
     initCheck();
-    
+
     return {
         getItem : getItem,
         setItem : setItem,
@@ -108,5 +108,9 @@ var storage = (function(win){
         clear : clear,
         expires : expires
     }
-    
+
 })(window);
+
+function performLinkWithRel(obj){
+  $(obj).attr('href', $(obj).attr('ref'));
+}
