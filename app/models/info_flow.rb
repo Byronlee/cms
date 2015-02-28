@@ -17,33 +17,40 @@ class InfoFlow < ActiveRecord::Base
   has_and_belongs_to_many :ads
 
  def posts_with_ads(page_num)
-   posts = Post.where(:column_id => self.columns).order('created_at desc').page(page_num)
+    posts = Post.where(:column_id => self.columns).order("created_at desc").page(page_num)
 
-   #ads =  read_ads_by period
-   #flows = mix_ads_adn_post(ads, posts)
-   #flows= min_seperate_with(flows)
+    ads = get_ads_with_period_of posts
+    flow = mix_posts_and_ads posts, ads
+    flow = mix_seperate_by_date flow
 
-   post_begin_index = posts.offset_value + 1
-   post_end_index = [posts.current_page * posts.limit_value, posts.total_count].min
-   ads = self.ads.order('position desc').select{ |ad| ad.position >= post_begin_index - 1 && ad.position <= post_end_index }
+    [flow, posts.total_count]
+  end
 
+  private
 
-   posts_arr = posts.to_a
-   #merger posts with ads
-   ads.each do |ad|
-     posts_arr.insert(ad.position, ad)
-   end
+  def get_ads_with_period_of(posts)
+    post_begin = posts.offset_value
+    post_end = [posts.current_page * posts.limit_value, posts.total_count].min
+    ads = self.ads.where(:position => post_begin..post_end).order("position desc")
+    ads.collect{|ad| ad.position -= post_begin; ad} #减去分页造成的偏移
+  end
 
+  def mix_posts_and_ads(posts, ads)
+    posts_mix = posts.to_a
+    ads.each do |ad|
+      posts_mix.insert(ad.position, ad)
+    end
+    posts_mix
+  end
 
-   #make a sign to seperate post between days
-   current_day = posts.first.created_at.strftime('%F')
-   posts_arr.each_with_index do |item, index|
-     if item.class.to_s == 'Post' && item.created_at.strftime('%F') != current_day
-       current_day = item.created_at.strftime('%F')
-       posts_arr.insert(index, {:date => current_day, :type => 'seperate'})
-     end
-   end
-
-  [posts_arr, posts.total_count]
+  def mix_seperate_by_date(flow)
+    current_date = flow.first.created_at.strftime("%F")
+    flow.each_with_index do |item, index|
+      if item.class.to_s == "Post" && item.created_at.strftime("%F") != current_date
+        current_date = item.created_at.strftime("%F")
+        flow.insert(index, {:date => current_date, :type => "seperate"})
+      end
+    end
+    flow
   end
 end
