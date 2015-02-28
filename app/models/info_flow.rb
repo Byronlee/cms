@@ -22,9 +22,20 @@ class InfoFlow < ActiveRecord::Base
     post_end_index = [posts.current_page * posts.limit_value, posts.total_count].min
     ads = self.ads.order("position desc").select{|ad| ad.position >= post_begin_index - 1 && ad.position <= post_end_index }
     posts_arr = posts.to_a
+    #merger posts with ads
     ads.each do |ad|
       posts_arr.insert(ad.position, ad)
     end
+
+    #make a sign to seperate post between days
+    current_day = posts.first.created_at.strftime("%F")
+    posts_arr.each_with_index do |item, index|
+      if item.class.to_s == "Post" && item.created_at.strftime("%F") != current_day
+        current_day = item.created_at.strftime("%F")
+        posts_arr.insert(index, {:date => current_day, :type => "seperate"})
+      end
+    end
+
     [posts_arr, posts.total_count]
   end
 end

@@ -17,7 +17,7 @@
 
   <!-- startup-news-section -->
   <template repeat="{{item in posts_with_ads}}">
-    <template bind if="{{ item.position == null }}">
+    <template bind if="{{ item.position == null && item.type != 'seperate' }}">
       <div class="bloc l-bloc " id="startup-news-section">
         <div class="container bloc-sm">
           <div class="row">
@@ -35,6 +35,17 @@
                <p class="mg-md">
                 {{item.summary}}
               </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+    <template bind if="{{ item.type == 'seperate' }}">
+       <div class="bloc l-bloc " id="startup-news-section">
+        <div class="container bloc-sm">
+          <div class="row">
+            <div class="fake-legend">
+              <span>{{item.date}}</span>
             </div>
           </div>
         </div>
