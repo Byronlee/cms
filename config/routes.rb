@@ -46,18 +46,6 @@ Rails.application.routes.draw do
          delete :destroy_ad
        end
     end
-    resources :ads
-    resources :info_flows do
-       member do
-         get :columns_and_ads
-         post :update_columns
-         post :update_ads
-         get :edit_columns
-         get :edit_ads
-         delete :destroy_column
-         delete :destroy_ad
-       end
-    end
   end
 
   namespace :components do

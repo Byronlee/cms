@@ -18,14 +18,22 @@ class InfoFlow < ActiveRecord::Base
 
  def posts_with_ads(page_num)
    posts = Post.where(:column_id => self.columns).order('created_at desc').page(page_num)
+
+   #ads =  read_ads_by period
+   #flows = mix_ads_adn_post(ads, posts)
+   #flows= min_seperate_with(flows)
+
    post_begin_index = posts.offset_value + 1
    post_end_index = [posts.current_page * posts.limit_value, posts.total_count].min
    ads = self.ads.order('position desc').select{ |ad| ad.position >= post_begin_index - 1 && ad.position <= post_end_index }
+
+
    posts_arr = posts.to_a
    #merger posts with ads
    ads.each do |ad|
      posts_arr.insert(ad.position, ad)
    end
+
 
    #make a sign to seperate post between days
    current_day = posts.first.created_at.strftime('%F')
