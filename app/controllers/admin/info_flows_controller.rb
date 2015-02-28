@@ -31,28 +31,28 @@ class Admin::InfoFlowsController < Admin::BaseController
   end
 
   def edit_ads
-    @ads_in_info_flow = @info_flow.ads.order("position")
-    @ads = Ad.all.order("position") - @ads_in_info_flow
+    @ads_in_info_flow = @info_flow.ads.order('position')
+    @ads = Ad.all.order('position') - @ads_in_info_flow
   end
 
   def update_columns
     if params[:column_ids]
       ActiveRecord::Base.transaction do
         @info_flow.columns.clear
-        @info_flow.columns << Column.where(id:params[:column_ids])
+        @info_flow.columns << Column.where(id: params[:column_ids])
       end
     end
-    render :json => {"result" => "sucess"}
+    render :json => { 'result' => 'sucess' }
   end
 
   def update_ads
     if params[:ad_ids]
       ActiveRecord::Base.transaction do
         @info_flow.ads.clear
-        @info_flow.ads << Ad.where(id:params[:ad_ids])
+        @info_flow.ads << Ad.where(id: params[:ad_ids])
       end
     end
-    render :json => {"result" => "sucess"}
+    render :json => { 'result ' => 'sucess' }
   end
 
   def destroy_column
@@ -64,7 +64,7 @@ class Admin::InfoFlowsController < Admin::BaseController
   def destroy_ad
     @ad = Ad.find params[:ad_id]
     @info_flow.ads.delete(@ad)
-    redirect_to columns_and_ads_admin_info_flow_path(@info_flow, anchor:'info_flow_ads')
+    redirect_to columns_and_ads_admin_info_flow_path(@info_flow, anchor: 'info_flow_ads')
   end
 
   private
