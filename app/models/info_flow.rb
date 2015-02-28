@@ -18,10 +18,9 @@ class InfoFlow < ActiveRecord::Base
 
  def posts_with_ads(page_num)
     posts = Post.where(:column_id => self.columns).order("created_at desc").page(page_num)
-
     ads = get_ads_with_period_of posts
     flow = mix_posts_and_ads posts, ads
-    flow = mix_seperate_by_date flow
+    flow = mix_seperate_by_date flow, posts
 
     [flow, posts.total_count]
   end
@@ -36,16 +35,16 @@ class InfoFlow < ActiveRecord::Base
   end
 
   def mix_posts_and_ads(posts, ads)
-    posts_mix = posts.to_a
+    posts_mix = posts.dup.to_a
     ads.each do |ad|
       posts_mix.insert(ad.position, ad)
     end
     posts_mix
   end
 
-  def mix_seperate_by_date(flow)
-    return flow if flow.blank?
-    current_date = flow.first.created_at.strftime("%F")
+  def mix_seperate_by_date(flow, posts)
+    return [] if posts.blank?
+    current_date = posts.first.created_at.strftime("%F")
     flow.each_with_index do |item, index|
       if item.class.to_s == "Post" && item.created_at.strftime("%F") != current_date
         current_date = item.created_at.strftime("%F")
