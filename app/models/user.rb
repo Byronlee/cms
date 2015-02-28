@@ -17,6 +17,7 @@
 #  created_at             :datetime
 #  updated_at             :datetime
 #  role                   :string(255)
+#  authentication_token   :string(255)
 #
 
 class User < ActiveRecord::Base
@@ -26,8 +27,8 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :omniauthable,
-         :recoverable, :rememberable, :trackable, :validatable,
-         :omniauth_providers => [:krypton]
+    :recoverable, :rememberable, :trackable, :validatable,
+    :omniauth_providers => [:krypton]
   enumerize :role, :in => Settings.roles, :default => :reader, :methods => true, :scopes => :shallow
 
   validates :phone, presence: true, uniqueness: true, allow_blank: -> { email.present? }
@@ -37,6 +38,12 @@ class User < ActiveRecord::Base
   has_one :krypton_authentication, -> { where(provider: :krypton) }, class_name: Authentication.to_s
   has_many :posts
   has_many :comments
+
+  before_save :ensure_authentication_token
+
+  def ensure_authentication_token
+    self.authentication_token ||= generate_authentication_token
+  end
 
   def apply_omniauth(omniauth)
     self.phone = omniauth['info']['phone'] if phone.blank?
@@ -73,4 +80,14 @@ class User < ActiveRecord::Base
   def email_required?
     false
   end
+
+  private
+
+  def generate_authentication_token
+    loop do
+      token = Devise.friendly_token
+      break token unless User.where(authentication_token: token).first
+    end
+  end
+
 end

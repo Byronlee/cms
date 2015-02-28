@@ -5,6 +5,7 @@ module V1
       expose :id         , documentation: 'not null, primary key'
       expose :email      , documentation: '邮箱'
       expose :phone      , documentation: '电话'
+      expose :authentication_token , documentation: '令牌'
 
     end
   end

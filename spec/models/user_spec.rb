@@ -17,6 +17,7 @@
 #  created_at             :datetime
 #  updated_at             :datetime
 #  role                   :string(255)
+#  authentication_token   :string(255)
 #
 
 require 'spec_helper'

@@ -23,11 +23,16 @@ class ::V1::Base < Grape::API
     #rack_response({message: '500 Internal Server Error', status: 500}, 500)
   end
 
+#  before do
+#    error!("401 Unauthorized", 401) unless authenticated
+#  end
+
   helpers ::V1::Helpers
 
   mount ::V1::Controllers::Users
   mount ::V1::Controllers::Posts
   mount ::V1::Controllers::Columns
+  mount ::V1::Controllers::Comments
   mount ::V1::Controllers::HeadLines
 
   add_swagger_documentation(

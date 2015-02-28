@@ -18,7 +18,7 @@ module V1
         params do
           optional :page,  type: Integer, default: 1, desc: '页数'
           optional :per_page,  type: Integer, default: 30, desc: '每页记录数'
-          optional :state,  type: String, values: STATE, default: 'publish', desc: '状态'
+#          optional :state,  type: String, values: STATE, default: 'publish', desc: '状态'
         end
         get 'index' do
           @posts = Post.all.order(created_at: :desc)
@@ -40,7 +40,7 @@ module V1
           optional :page,  type: Integer, default: 1, desc: '页数'
           optional :per_page,  type: Integer, default: 30, desc: '每页记录数'
           optional :action,  type: String, default: 'down', desc: "下翻页 down 和 上翻页 up"
-          requires :state, type: String, values: STATE, default: 'draft', desc: '状态'
+#          requires :state, type: String, values: STATE, default: 'draft', desc: '状态'
         end
         get ":id/page" do
           post = Post.find(params[:id])
