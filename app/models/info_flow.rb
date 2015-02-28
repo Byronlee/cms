@@ -44,6 +44,7 @@ class InfoFlow < ActiveRecord::Base
   end
 
   def mix_seperate_by_date(flow)
+    return flow if flow.blank?
     current_date = flow.first.created_at.strftime("%F")
     flow.each_with_index do |item, index|
       if item.class.to_s == "Post" && item.created_at.strftime("%F") != current_date
