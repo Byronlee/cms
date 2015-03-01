@@ -16,13 +16,21 @@ class InfoFlow < ActiveRecord::Base
   has_and_belongs_to_many :columns
   has_and_belongs_to_many :ads
 
- def posts_with_ads(page_num)
+  after_save :update_info_flows_cache
+  after_destroy :destroy_info_flows_cache
+
+  def posts_with_ads(page_num)
     posts = Post.where(:column_id => self.columns).order("created_at desc").page(page_num)
     ads = get_ads_with_period_of posts
     flow = mix_posts_and_ads posts, ads
     flow = mix_seperate_by_date flow, posts
 
     [flow, posts.total_count]
+  end
+
+  def update_info_flows_cache
+    logger.info "perform the worker to update info flows of #{self.name}"
+    logger.info InfoFlowsComponentWorker.perform_async(self.name)
   end
 
   private
@@ -52,5 +60,9 @@ class InfoFlow < ActiveRecord::Base
       end
     end
     flow
+  end
+
+  def destroy_info_flows_cache
+    Redis::HashKey.new('info_flow').delete(self.name)
   end
 end

@@ -40,6 +40,7 @@ class Admin::InfoFlowsController < Admin::BaseController
       ActiveRecord::Base.transaction do
         @info_flow.columns.clear
         @info_flow.columns << Column.where(id: params[:column_ids])
+        @info_flow.update_info_flows_cache
       end
     end
     render :json => { 'result' => 'sucess' }
@@ -50,6 +51,7 @@ class Admin::InfoFlowsController < Admin::BaseController
       ActiveRecord::Base.transaction do
         @info_flow.ads.clear
         @info_flow.ads << Ad.where(id: params[:ad_ids])
+        @info_flow.update_info_flows_cache
       end
     end
     render :json => { 'result ' => 'sucess' }
