@@ -1,11 +1,16 @@
 tr
   td = column.id
   td
-    img class="img-circle" style="width:50px; height:50px;" onerror="imgError(this)" src="#{column.icon_url}"
-  td = column.name
+    a href = admin_column_posts_path(column)
+      img class="img-circle" style="width:50px; height:50px;" onerror="imgError(this)" src="#{column.icon_url}"
+      |&nbsp;&nbsp;
+      = link_to column.name
   td = column.introduce
   td = column.created_at
   td
+    a.tip-top data-original-title="文章" href= admin_column_posts_path(column)
+      i.icon-search
+    |&nbsp;&nbsp;
     a.tip-top data-original-title="编辑" href= edit_admin_column_path(column)
       i.icon-pencil
     |&nbsp;&nbsp;

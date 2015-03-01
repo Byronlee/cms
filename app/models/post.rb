@@ -32,7 +32,7 @@ class Post < ActiveRecord::Base
   validates :title,   length: { maximum: 40 }
   validates :content, length: { maximum: 10_000 }
 
-  belongs_to :column
+  belongs_to :column, counter_cache: true
   belongs_to :author, class_name: User.to_s, foreign_key: 'user_id'
   has_many :comments, as: :commentable, dependent: :destroy
 end
