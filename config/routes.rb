@@ -16,14 +16,12 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: redirect("/admin/dashboard")
+    resources :dashboard, :pages, :newsflashes
+    resources :users, :ads
     resources :head_lines, except: [:show]
-    resources :pages
-    resources :newsflashes
-    resources :dashboard
     resources :columns do
       resources :posts, only: [:index], on: :collection
     end
-    resources :users
     resources :posts do
       resources :comments, only: [:index], on: :collection
     end
@@ -34,7 +32,6 @@ Rails.application.routes.draw do
         post :do_reject
       end
     end
-    resources :ads
     resources :info_flows do
        member do
          get :columns_and_ads
