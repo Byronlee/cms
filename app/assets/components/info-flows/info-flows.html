@@ -1,0 +1,78 @@
+<polymer-element name="info-flows">
+  <template>
+    <link rel="stylesheet" href="info-flows.css" />
+
+    <div class="bloc l-bloc " id="news-category-nav">
+    <div class="container bloc-sm">
+      <div class="row">
+        <div class="col-sm-12">
+          <a href="index.html" class="btn btn-wire btn-rd pull-right">ALL NEWS ( {{totle_count}} +)</a>
+          <h3 class="text-left mg-md">
+            <strong>STARTUPS NEWS</strong>
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- startup-news-section -->
+  <template repeat="{{item in posts_with_ads}}">
+    <template bind if="{{ item.position == null && item.type != 'seperate' }}">
+      <div class="bloc l-bloc " id="startup-news-section">
+        <div class="container bloc-sm">
+          <div class="row">
+            <div class="col-sm-4">
+              <a ref='{{item.title_link}}' href="javacript:void(0)" onclick="performLinkWithRel(this)" target="_blank">
+                <img src='{{item.cover.url}}', class: 'mg-md', style="width: 230, height: 153" />
+              </a>
+            </div>
+            <div class="col-sm-8">
+              <h3 class="mg-lg">
+                <a ref='{{item.title_link}}' href="javacript:void(0)" onclick="performLinkWithRel(this)" target="_blank">
+                  {{item.title}}
+                </a>
+              </h3>
+               <p class="mg-md">
+                {{item.summary}}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+    <template bind if="{{ item.type == 'seperate' }}">
+       <div class="bloc l-bloc " id="startup-news-section">
+        <div class="container bloc-sm">
+          <div class="row">
+            <div class="fake-legend">
+              <span>{{item.date}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+    <template bind if="{{ item.position != null }}">
+       <div class="bloc l-bloc " id="startup-news-section">
+        <div class="container bloc-sm">
+          <div class="row">
+            <div class="col-sm-4">
+              <img src='/assets/img/mountainsdusk.jpg', class: 'mg-md', style="width: 230, height: 153" />
+            </div>
+            <div class="col-sm-8">
+              <h3 class="mg-lg">
+                AD
+              </h3>
+              <p class="mg-md">
+                this is ad position
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+  </template>
+  <!-- startup-news-section END -->
+  </template>
+
+  <script src="info-flows.js"></script>
+</polymer-element>

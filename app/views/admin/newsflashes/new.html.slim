@@ -5,7 +5,7 @@ div#content-header
       i.icon-home
       | 首页
     a.tip-bottom title="回到快讯管理列表页面" href= admin_newsflashes_path
-      i.icon-file
+      i.icon-bullhorn
       | 快讯管理
     a.current href="#"
       | 创建快讯
@@ -27,4 +27,4 @@ div.container-fluid
               = item.site_name+"; 颜值:"+ item.color
         div.form-actions
           = f.button :submit, data: { disable_with: "submitting..." }, class: "btn btn-primary"
-= render 'layouts/set_active_nav', :active_id => "nav_posts"
+= render 'layouts/set_active_nav', :active_id => "nav_newsflashes"

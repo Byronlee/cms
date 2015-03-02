@@ -11,10 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150210052315) do
+ActiveRecord::Schema.define(version: 20150226064026) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "ads", force: true do |t|
+    t.integer  "position"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ads_info_flows", force: true do |t|
+    t.integer  "info_flow_id"
+    t.integer  "ad_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "authentications", force: true do |t|
     t.string   "uid"
@@ -32,6 +46,14 @@ ActiveRecord::Schema.define(version: 20150210052315) do
     t.datetime "updated_at"
     t.string   "cover"
     t.string   "icon"
+    t.integer  "posts_count"
+  end
+
+  create_table "columns_info_flows", force: true do |t|
+    t.integer  "info_flow_id"
+    t.integer  "column_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "comments", force: true do |t|
@@ -49,6 +71,19 @@ ActiveRecord::Schema.define(version: 20150210052315) do
   create_table "head_lines", force: true do |t|
     t.string   "url"
     t.integer  "order_num"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "info_flows", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "info_flows_columns", force: true do |t|
+    t.integer  "info_flow_id"
+    t.integer  "column_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -13,7 +13,15 @@
 //= require ./js/matrix.popover
 //= require ./js/jquery.dataTables.min
 //= require ./js/matrix.tables
+//= require ./js/jquery.multi-select
+//= require ./js/jquery.quicksearch
 
 function setActiveNav(obj_id){
   $("#" + obj_id).addClass('active');
+}
+
+function imgError(image) {
+  image.onerror = "";
+  image.src = '<%= image_url "img/girl.jpg" %>';
+  return true;
 }

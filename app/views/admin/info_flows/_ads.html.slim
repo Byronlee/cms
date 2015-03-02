@@ -1,0 +1,17 @@
+= link_to "关联广告位", edit_ads_admin_info_flow_path(@info_flow), class:"btn btn-primary"
+
+div.widget-box
+    div.widget-title
+      span.icon
+        i.icon-th
+
+    div class="widget-content nopadding"
+      table class="table table-bordered table-striped with-check"
+        thead
+          tr role="row"
+            th ID
+            th 广告位
+            th 内容
+            th 操作
+        tbody
+          = render 'ad', :info_flow => @info_flow

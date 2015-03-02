@@ -5,7 +5,7 @@ div#content-header
       i.icon-home
       | 首页
     a.current href="#"
-      i.icon-file
+      i.icon-bullhorn
       | 快讯管理
   <h1>快讯管理</h1>
 /!End-breadcrumbs
@@ -36,4 +36,4 @@ div.container-fluid
       div class="pagination pagination-table"
         = paginate @newsflashes
 
-= render 'layouts/set_active_nav', :active_id => "nav_posts"
+= render 'layouts/set_active_nav', :active_id => "nav_newsflashes"

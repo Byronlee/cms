@@ -1,0 +1,39 @@
+/!breadcrumbs
+div#content-header
+  div#breadcrumb
+    a.tip-bottom title="Go to Home" href= admin_root_path
+      i.icon-home
+      | 首页
+    a href=admin_info_flows_path
+      i.icon-tint
+      | 信息流管理
+    a.current href="#"
+      i.icon-tasks
+      = "#{@info_flow.name}信息流"
+  <h1>#{@info_flow.name}信息流管理</h1>
+/!End-breadcrumbs
+
+div.container-fluid
+  = bootstrap_flash
+  div.widget-box
+    div.widget-title
+      ul class="nav nav-tabs"
+        li.active
+          a data-toggle="tab" href="#info_flow_columns"  专栏
+        li
+          a data-toggle="tab" href="#info_flow_ads"  广告位
+
+    div class="widget-content tab-content"
+      div#info_flow_columns class="tab-pane active"
+        = render 'columns'
+
+      div#info_flow_ads class="tab-pane"
+        = render 'ads'
+
+= render 'layouts/set_active_nav', :active_id => "nav_info_flows"
+
+javascript:
+  $(document).ready(function(){
+    if(window.location.hash != "")
+      $("a[href='"+ window.location.hash +"']").click();
+  });

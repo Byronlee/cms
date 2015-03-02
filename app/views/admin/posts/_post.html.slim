@@ -2,7 +2,7 @@ tr
   td = link_to post.id, admin_post_path(post)
   td = link_to post.title, admin_post_path(post)
   td = post.author.try(:name)
-  td = post.column.try(:name)
+  td = link_to post.column.try(:name), admin_column_posts_path(post.column)
   td = post.created_at
   td = post.state
   td

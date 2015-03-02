@@ -1,0 +1,13 @@
+tr
+  td = info_flow.id
+  td = link_to info_flow.name, columns_and_ads_admin_info_flow_path(info_flow)
+  td = info_flow.created_at
+  td
+    a.tip-top data-original-title="详情" href= columns_and_ads_admin_info_flow_path(info_flow)
+      i.icon-search
+    |&nbsp;&nbsp;
+    a.tip-top data-original-title="编辑" href= edit_admin_info_flow_path(info_flow)
+      i.icon-pencil
+    |&nbsp;&nbsp;
+    a.tip-top data-original-title="删除" data-method="delete" data-confirm="确定删除该广告位 ？" href= admin_info_flow_path(info_flow)
+      i.icon-remove

@@ -6,13 +6,13 @@
       <div class="container bloc-sm">
         <div class="row">
           <div class="col-sm-8">
-            <a _href="{{first_head_line.url}}" target="_blank"><img src="{{first_head_line.image}}" class="mg-lg" height="320" width="520" alt='' /></a>
+            <a ref="{{first_head_line.url}}" href="javacript:void(0)" onclick="performLinkWithRel(this)" target="_blank"><img src="{{first_head_line.image}}" class="mg-lg" height="320" width="520" alt='' /></a>
             <a _href="index.html" class="btn btn-rd pull-right btn-d">Recommended | Columns</a>
           </div>
           <div class="col-sm-4">
             <template repeat="{{headline in rest_head_lines}}">
-            <a _href="{{headline.url}}" target="_blank"><img src="{{headline.image}}" width="260" height="106" alt='' /></a>
-          </template>
+              <a ref="{{headline.url}}" href="javacript:void(0)" onclick="performLinkWithRel(this)" target="_blank"><img src="{{headline.image}}" width="260" height="106" alt='' /></a>
+            </template>
         </div>
       </div>
     </div>

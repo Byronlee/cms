@@ -23,11 +23,11 @@
       <div class="row">
         <template repeat="{{item in collections}}">
           <div class="col-sm-3" style="min-height: 230px;">
-            <a href="#" target="_blank">
+            <a ref="{{item.url}}" href="javacript:void(0)" onclick="performLinkWithRel(this)" target="_blank">
               <img src="{{item.feature_image}}" class="img-responsive" alt='' />
             </a>
             <h3 class="mg-md">
-             <a href="#" >{{ item.name }}</a>
+             <a ref="{{item.url}}" href="javacript:void(0)" onclick="performLinkWithRel(this)"  target="_blank">{{ item.name }}</a>
            </h3>
            <p>
             {{ item.description }}

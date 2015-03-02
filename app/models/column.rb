@@ -2,13 +2,14 @@
 #
 # Table name: columns
 #
-#  id         :integer          not null, primary key
-#  name       :string(255)
-#  introduce  :text
-#  created_at :datetime
-#  updated_at :datetime
-#  cover      :string(255)
-#  icon       :string(255)
+#  id          :integer          not null, primary key
+#  name        :string(255)
+#  introduce   :text
+#  created_at  :datetime
+#  updated_at  :datetime
+#  cover       :string(255)
+#  icon        :string(255)
+#  posts_count :integer
 #
 
 class Column < ActiveRecord::Base
@@ -20,7 +21,10 @@ class Column < ActiveRecord::Base
   validates :name,      length: { maximum: 10 }
   validates :introduce, length: { maximum: 140 }
 
-  has_many :posts, counter_cache: true, dependent: :destroy
+  has_many :posts, dependent: :destroy
   has_many :contributors, class_name: User.to_s, foreign_key:'user_ids'
-  
+  has_and_belongs_to_many :info_flows
+
+  scope :info_flows, -> { where(in_info_flow: true) }
+
 end

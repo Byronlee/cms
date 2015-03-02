@@ -46,7 +46,7 @@ gem "kaminari", "~> 0.15.1"
 gem "kaminari-bootstrap", "~> 3.0.1"
 gem 'devise-i18n', '~> 0.10.3'
 gem 'slim-rails'
-gem 'polymer-rails'
+gem 'polymer-rails', '~> 0.2.8'
 gem 'acts_as_graph_object'
 gem 'google-analytics-rails'
 
