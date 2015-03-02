@@ -6,6 +6,9 @@ tr
       |&nbsp;&nbsp;
       = link_to column.name
   td = column.introduce
+  td
+    span class="badge badge-info"
+      = column.posts_count || 0
   td = column.created_at
   td
     a.tip-top data-original-title="文章" href= admin_column_posts_path(column)
