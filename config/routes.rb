@@ -66,5 +66,6 @@ Rails.application.routes.draw do
       get :normal_list, on: :collection
     end
   end
+  match 'pages/:slug' => 'pages#show', via: :get
   get :feed, to: 'posts#feed', defaults: { format: :rss }
 end
