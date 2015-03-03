@@ -4,7 +4,7 @@
 #
 #  id             :integer          not null, primary key
 #  title          :string(255)
-#  summary        :string(255)
+#  summary        :text
 #  content        :text
 #  title_link     :string(255)
 #  must_read      :boolean
@@ -18,6 +18,8 @@
 #  cover          :string(255)
 #  source         :string(255)
 #  comments_count :integer
+#  md_content     :text
+#  old_post_id    :integer
 #
 
 class Post < ActiveRecord::Base
