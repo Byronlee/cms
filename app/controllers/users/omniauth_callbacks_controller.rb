@@ -12,6 +12,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       current_user.authentications.create! omniauth: omniauth
       flash[:notice] = "Authentication successful."
       sign_in_and_redirect_to_iframe_or_parent(authentication.user)
+    elsif omniauth["info"]["email"].present? && (user = User.find_by_email(omniauth["info"]["email"]))
+      user.authentications.create! omniauth: omniauth
+      flash[:notice] = "Authentication successful."
+      sign_in_and_redirect_to_iframe_or_parent(user)
     else
       user = User.new
       user.apply_omniauth(omniauth)
