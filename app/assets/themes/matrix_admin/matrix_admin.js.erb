@@ -22,6 +22,6 @@ function setActiveNav(obj_id){
 
 function imgError(image) {
   image.onerror = "";
-  image.src = '<%= image_url "img/girl.jpg" %>';
+  image.src = '<%= asset_url "img/girl.jpg" %>';
   return true;
 }
