@@ -60,12 +60,14 @@ class Admin::InfoFlowsController < Admin::BaseController
   def destroy_column
     @column = Column.find params[:column_id]
     @info_flow.columns.delete(@column)
+    @info_flow.update_info_flows_cache
     redirect_to columns_and_ads_admin_info_flow_path(@info_flow)
   end
 
   def destroy_ad
     @ad = Ad.find params[:ad_id]
     @info_flow.ads.delete(@ad)
+    @info_flow.update_info_flows_cache
     redirect_to columns_and_ads_admin_info_flow_path(@info_flow, anchor: 'info_flow_ads')
   end
 
