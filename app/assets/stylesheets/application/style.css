@@ -1432,24 +1432,32 @@ input[type=search] {
 .content .posts {
   padding-top: 20px;
   padding-bottom: 20px;
-  border-bottom: 1px solid #e6eaed; }
-  .content .posts .left-col {
-    position: relative; }
-    .content .posts .left-col .feature-img {
+  border-bottom: 1px solid #e6eaed;
+}
+.content .posts .left-col {
+    position: relative;
+}
+.content .posts .left-col .feature-img {
       width: 60px;
-      height: 60px; }
-      @media screen and (min-width: 30.0625em) {
-        .content .posts .left-col .feature-img {
-          width: 180px;
-          height: 120px; } }
-  .content .posts .right-col {
-    margin-left: 70px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    /* number of lines to show */
-    -webkit-box-orient: vertical; }
+      height: 60px;
+ }
+
+@media screen and (min-width: 30.0625em) {
+  .content .posts .left-col .feature-img {
+      width: 180px;
+      height: 120px;
+   }
+}
+.content .posts .right-col {
+  margin-left: 70px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  /* number of lines to show */
+  -webkit-box-orient: vertical;
+  margin-left: 200px;
+}
     @media screen and (min-width: 30.0625em) {
       .content .posts .right-col {
         margin-left: 200px; } }

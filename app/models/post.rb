@@ -23,7 +23,10 @@
 #  views_count    :integer          default(0)
 #
 
+require 'action_view'
 class Post < ActiveRecord::Base
+  include ActionView::Helpers::DateHelper
+
   paginates_per 20
   mount_uploader :cover, BaseUploader
 
@@ -49,6 +52,10 @@ class Post < ActiveRecord::Base
 
   def self.today
     self.created_on(Date.today)
+  end
+
+  def huamn_created_at
+    distance_of_time_in_words_to_now(self.created_at)
   end
 
   private

@@ -20,9 +20,18 @@ class InfoFlow < ActiveRecord::Base
   after_destroy :destroy_info_flows_cache
 
   def posts_with_ads(page_num)
-    posts = Post.where(:column_id => self.columns).order("created_at desc").page(page_num)
+    posts = Post.where(:column_id => self.columns).includes(:author, :column).order("created_at desc").page(page_num)
+    posts_with_associations = JSON.parse posts.to_json(
+      :except => [:content],
+      :methods => [:huamn_created_at],
+      :include => {
+        :author => {
+          :only => [], :methods => [:name] },
+        :column => {
+          :only => [:id, :name]
+          }})
     ads = get_ads_with_period_of posts
-    flow = mix_posts_and_ads posts, ads
+    flow = mix_posts_and_ads posts_with_associations, ads
     flow = mix_seperate_by_date flow, posts
 
     [flow, posts.total_count]
