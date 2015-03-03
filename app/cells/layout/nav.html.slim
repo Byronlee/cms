@@ -128,8 +128,9 @@ header.header.header-normal
         li
           a.main-nav__item href="#" 关于我们
     .search.left
-      form action="/search"
-        input type="search" placeholder="搜索"
+      form name="search_baidu" target="_blank" onsubmit="return goSearch(this)"
+        input name="word_display" type="search" placeholder="搜索"
+        input name="word" type="hidden"
     nav.second-nav
       ul
         li
