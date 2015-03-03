@@ -28,7 +28,7 @@ class InfoFlow < ActiveRecord::Base
         :author => {
           :only => [], :methods => [:name] },
         :column => {
-          :only => [:id, :name]
+          :only => [:id, :name, :slug]
           }})
     ads = get_ads_with_period_of posts
     flow = mix_posts_and_ads posts_with_associations, ads
