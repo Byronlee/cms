@@ -2,10 +2,14 @@
 
 升级老版UI.
 
-### 需要单独做得
+### TODO lIST
 
-* 最新评论-缓存
+* ~~最新评论-缓存~~
 * ~~ info-flow删除ad or column时，更新缓存 ~~
 * ~~ info-flow缓存时，添加author和column信息 ~~
 * ~~ posts show author nil -> exception ~~
 * ~~ comments author nil -> exception ~~
+
+* 首页topic删除
+* tags -> add
+* 热门文章 -> add
