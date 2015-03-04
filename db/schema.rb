@@ -10,6 +10,7 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
+
 ActiveRecord::Schema.define(version: 20150303150232) do
 
   # These are extensions that must be enabled in order to support this database
@@ -46,6 +47,7 @@ ActiveRecord::Schema.define(version: 20150303150232) do
     t.string   "cover"
     t.string   "icon"
     t.integer  "posts_count"
+    t.string   "slug"
   end
 
   create_table "columns_info_flows", force: true do |t|
