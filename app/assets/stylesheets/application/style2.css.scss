@@ -955,10 +955,12 @@ figure {
     display: inline-block;
     border-radius: 3px;
     border: 2px solid #51aded;
-    -webkit-font-smoothing: subpixel-antialiased; }
+    -webkit-font-smoothing: subpixel-antialiased;
+  }
     .second-nav .second-nav__login:hover {
       background: #51aded;
-      color: #fff; }
+      color: #fff;
+    }
     @media screen and (min-width: 75.0625em) {
       .second-nav .second-nav__login {
         margin-left: 10px; } }
