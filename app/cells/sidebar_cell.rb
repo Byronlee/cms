@@ -1,10 +1,17 @@
 class SidebarCell < Cell::Rails
-  def ad
+  def ad_top
+    render
+  end
+
+  def ad_middle
     render
   end
 
   def hot_post
     render
+  end
+
+  def sponsor
   end
 
   def apps

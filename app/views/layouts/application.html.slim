@@ -20,9 +20,10 @@ html.no-js
       .main
         = yield
       .sidebar
-        = render_cell :sidebar, :ad
+        = render_cell :sidebar, :ad_top
         = render_cell :sidebar, :hot_post
-        = render_cell :sidebar, :apps
+        = render_cell :sidebar, :ad_middle
+        = render_cell :sidebar, :sponsor
         = render_cell :sidebar, :excellent_comments
 
     = analytics_init if Rails.env.production?
