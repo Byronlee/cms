@@ -7,7 +7,8 @@
         .postmeta
           a[href="#"]
             = item.user.name
-            |  • 1小时前
+            |  •
+            =  item.human_created_at
         .commemt-main
           p  = item.content
         .opts
