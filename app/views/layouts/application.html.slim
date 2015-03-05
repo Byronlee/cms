@@ -14,6 +14,7 @@ html.no-js
     = javascript_include_tag "#{Settings.oauth.krypton.host}/assets/helper.js"
     = html_import_tag 'application'
     = csrf_meta_tags
+    |<script type="text/javascript" src="http://cbjs.baidu.com/js/m.js"></script>
   body#home
     = render_cell :layout, :nav, current_user: current_user
     .container.row
