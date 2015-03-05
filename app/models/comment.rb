@@ -15,8 +15,11 @@
 #  state            :string(255)
 #
 
+require 'action_view'
 class Comment < ActiveRecord::Base
+  include ActionView::Helpers::DateHelper
   include AASM
+
   aasm.attribute_name :state
   paginates_per 20
 
@@ -28,6 +31,9 @@ class Comment < ActiveRecord::Base
 
   before_save :set_is_long_attribute
   before_save :set_state
+
+  after_save :update_excellent_comments_cache
+  after_destroy :update_excellent_comments_cache
 
   scope :order_by_content, -> {
     includes(:commentable, user:[:krypton_authentication])
@@ -62,6 +68,10 @@ class Comment < ActiveRecord::Base
     [:published, :prepublished].include? self.state.to_sym
   end
 
+  def human_created_at
+    distance_of_time_in_words_to_now(self.created_at)
+  end
+
   private
 
   def set_is_long_attribute
@@ -75,5 +85,10 @@ class Comment < ActiveRecord::Base
     elsif self.user.may_prepublish?
       self.state = 'prepublished'
     end
+  end
+
+  def update_excellent_comments_cache
+    logger.info "perform the worker to update excellent comments cache"
+    logger.info ExcellentCommentsComponentWorker.perform_async
   end
 end

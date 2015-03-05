@@ -1,0 +1,17 @@
+<polymer-element name="excellent-comments">
+  <template>
+    <link rel="stylesheet" href="excellent-comments.css" />
+
+    <h2>优质评论</h2>
+
+    <template repeat="{{comment in comments}}">
+      <div><span>{{comment.user.name}}</span> * <span>{{comment.human_created_at}}</span></div>
+      <div>{{comment.content}}</div>
+      <div>评论于
+        <a ref="/posts/{{comment.commentable.id}}" href="javacript:void(0)" onclick="performLinkWithRel(this)" target="_blank">{{comment.commentable.title}}</a>
+      </div>
+    </template>
+  </template>
+
+  <script src="excellent-comments.js"></script>
+</polymer-element>

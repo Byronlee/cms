@@ -1,4 +1,4 @@
-<% if current_user %>
+ <% if current_user %>
   Hi, <%= current_user.name %> <%= link_to "注销", destroy_user_session_path, method: :delete %>
 <% else %>
   <%= link_to "Sign in through Krypton", user_omniauth_authorize_path(provider: :krypton) %>
@@ -240,3 +240,6 @@
 </div>
 <!-- app-section-header-startup-union END -->
 
+<!-- excellent-comments BEGIN -->
+<excellent-comments></excellent-comments>
+<!-- excellent-comments END -->
