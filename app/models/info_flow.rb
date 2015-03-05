@@ -23,7 +23,7 @@ class InfoFlow < ActiveRecord::Base
     posts = Post.where(:column_id => self.columns).includes(:author, :column).order("created_at desc").page(page_num)
     posts_with_associations = JSON.parse posts.to_json(
       :except => [:content],
-      :methods => [:huamn_created_at],
+      :methods => [:human_created_at],
       :include => {
         :author => {
           :only => [], :methods => [:name] },

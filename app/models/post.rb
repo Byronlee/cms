@@ -54,7 +54,7 @@ class Post < ActiveRecord::Base
     self.created_on(Date.today)
   end
 
-  def huamn_created_at
+  def human_created_at
     distance_of_time_in_words_to_now(self.created_at)
   end
 
