@@ -14,11 +14,12 @@ settings.next = {
     host: "https://next.36kr.com/oauth/token",
     token_params: {grant_type: "client_credentials",
                    client_id: "32b4474696ff04185b62f78f1d9f6c1ecccd26551111eeb195864c2cf2b737aa",
-                   client_secret: "e38e3ed327e7815c22ac49ffcd016209f2dc60e671d08f1e7e810d049e851130" 
+                   client_secret: "e38e3ed327e7815c22ac49ffcd016209f2dc60e671d08f1e7e810d049e851130"
                   },
     collection_api: "https://next.36kr.com/api/v1/posts/collections"
 }
 
+# 读者, 运营, 作者, 编辑, 管理员, 投稿
 settings.roles =  [:reader, :operator, :writer, :editor, :admin, :contributor]
 
 settings.cookie = {

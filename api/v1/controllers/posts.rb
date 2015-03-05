@@ -75,13 +75,17 @@ module V1
         params do
           requires :title,    type: String,   desc: '标题'
           requires :content,  type: String,   desc: '内容'
-          requires :user_id,  type: Integer,  desc: '用户id'
+          requires :uid,  type: Integer,  desc: '用户id'
           optional :source,   type: String,   desc: '来源id'
         end
         post 'new' do
-          @post = Post.new params.slice(*KEYS)
+          user = Authentication.where(uid: params[:uid].to_s).first
+          post_params = params.slice(*KEYS)
+          post_params = post_params.merge({user_id: user.id}) if user
+          @post = Post.new post_params
           if @post.save
-            present @post, with: Entities::Post
+            post_type = user.blank? ? 'contributor' : user.role
+            return { published: true, id: @post.id, type: post_type }
           else
             error!({ error: @post.errors.full_messages }, 400)
           end
