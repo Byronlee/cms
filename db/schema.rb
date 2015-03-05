@@ -47,7 +47,6 @@ ActiveRecord::Schema.define(version: 20150303150232) do
     t.string   "cover"
     t.string   "icon"
     t.integer  "posts_count"
-    t.string   "slug"
   end
 
   create_table "columns_info_flows", force: true do |t|
@@ -78,13 +77,6 @@ ActiveRecord::Schema.define(version: 20150303150232) do
 
   create_table "info_flows", force: true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "info_flows_columns", force: true do |t|
-    t.integer  "info_flow_id"
-    t.integer  "column_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

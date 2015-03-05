@@ -80,6 +80,7 @@ module V1
         end
         post 'new' do
           user = Authentication.where(uid: params[:uid].to_s).first
+          # TODO 如果没有User，应该创建user
           post_params = params.slice(*KEYS)
           post_params = post_params.merge({user_id: user.id}) if user
           @post = Post.new post_params
