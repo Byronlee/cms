@@ -30,7 +30,6 @@ class CommentsController < ApplicationController
 
   def create
     @commentable = find_commentable
-    binding.pry
     @comment = @commentable.comments.build(comment_params)
     @comment.user = current_user
     if @comment.save

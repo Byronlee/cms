@@ -9,7 +9,10 @@
 * ~~ info-flow缓存时，添加author和column信息 ~~
 * ~~ posts show author nil -> exception ~~
 * ~~ comments author nil -> exception ~~
-
-* 首页topic删除
+* ~~首页topic删除~~
 * tags -> add
 * 热门文章 -> add
+
+* 今日更新（先暂时按照时间倒叙）
+* 热门文章（先暂时按照时间倒叙）
+* 一周热点（先暂时按照时间倒叙）

@@ -22,6 +22,7 @@ class Column < ActiveRecord::Base
   validates :name,      length: { maximum: 10 }
   validates :slug,      length: { maximum: 50 }
   validates :introduce, length: { maximum: 140 }
+  validates_uniqueness_of :slug
 
   has_many :posts, dependent: :destroy
   has_many :contributors, class_name: User.to_s, foreign_key:'user_ids'
