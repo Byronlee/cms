@@ -2,15 +2,19 @@
   <template>
     <link rel="stylesheet" href="today-lastest.css" />
     <div class="section aside-today">
-    <h2 class="aside-today__title">今日更新<span>+{{posts_count || 0}}</span></h2>
-    <ul class="aside-today__list">
-      <template repeat="{{post in posts}}">
-        <li>
-          <div class="topic"><span><a target="_blank" ref="/columns/{{post.column.slug}}" href="javacript:void(0)" onclick="performLinkWithRel(this)" class="cn-news">{{post.column.name}}</a> / {{post.column.slug}}</span></div>
-          <h1><a ref="/posts/{{post.id}}" href="javacript:void(0)" onclick="performLinkWithRel(this)" title="{{post.title}}">{{post.title}}</a></h1>
-        </li>
-      </template>
-    </ul>
+      <h2 class="aside-today__title">今日更新<span>+{{posts_count || 0}}</span></h2>
+      <ul class="aside-today__list">
+        <template repeat="{{post in posts}}">
+          <li>
+            <div class="topic">
+              <span><a target="_blank" ref="/columns/{{post.column.slug}}" href="javacript:void(0)" onclick="performLinkWithRel(this)" class="{{post.column.slug}}">{{post.column.name}}</a> / {{post.column.slug}}</span>
+            </div>
+            <h1>
+              <a ref="/posts/{{post.id}}" href="javacript:void(0)" onclick="performLinkWithRel(this)" title="{{post.title}}">{{post.title}}</a>
+            </h1>
+          </li>
+        </template>
+      </ul>
     </div>
   </template>
 
