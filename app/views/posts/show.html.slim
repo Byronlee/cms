@@ -26,6 +26,9 @@ div class="bloc l-bloc"
 
 javascript:
   $(document).ready(function(ret, status){
+    $.post("#{update_views_count_post_path(@post)}", function(){
+    });
+
     $.get("/posts/#{@post.id}/comments.js", function(){
     });
   });

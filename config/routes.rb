@@ -60,6 +60,7 @@ Rails.application.routes.draw do
   end
 
   resources :posts, :only => [:show, :index] do
+    post :update_views_count, on: :member
     resources :comments, :only => [:index, :create] do
       get :normal_list, on: :collection
     end
