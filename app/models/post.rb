@@ -19,7 +19,7 @@
 #  source         :string(255)
 #  comments_count :integer
 #  md_content     :text
-#  old_post_id    :integer
+#  url_code       :integer
 #  views_count    :integer          default(0)
 #
 

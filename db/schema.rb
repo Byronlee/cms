@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150306060254) do
+ActiveRecord::Schema.define(version: 20150306092115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,7 +47,6 @@ ActiveRecord::Schema.define(version: 20150306060254) do
     t.string   "cover"
     t.string   "icon"
     t.integer  "posts_count"
-    t.string   "slug"
   end
 
   create_table "columns_info_flows", force: true do |t|
@@ -78,13 +77,6 @@ ActiveRecord::Schema.define(version: 20150306060254) do
 
   create_table "info_flows", force: true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "info_flows_columns", force: true do |t|
-    t.integer  "info_flow_id"
-    t.integer  "column_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -132,7 +124,7 @@ ActiveRecord::Schema.define(version: 20150306060254) do
     t.string   "source"
     t.integer  "comments_count"
     t.text     "md_content"
-    t.integer  "old_post_id"
+    t.integer  "url_code"
     t.integer  "views_count",    default: 0
   end
 
