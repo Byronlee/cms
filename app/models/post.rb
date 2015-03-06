@@ -54,8 +54,10 @@ class Post < ActiveRecord::Base
   private
 
   def update_today_lastest_cache
-    logger.info "perform the worker to update today lastest cache"
-    logger.info TodayLastestComponentWorker.perform_async
+    if !self.views_count_changed?
+      logger.info "perform the worker to update today lastest cache"
+      logger.info TodayLastestComponentWorker.perform_async
+    end
   end
 
   def update_hot_posts_cache

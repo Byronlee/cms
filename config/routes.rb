@@ -56,6 +56,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:index]
     resources :posts do
       get :today_lastest, on: :collection
+      get :hot_posts, on: :collection
     end
   end
 
