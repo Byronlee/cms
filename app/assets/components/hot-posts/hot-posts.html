@@ -1,0 +1,19 @@
+<polymer-element name="hot-posts">
+  <template>
+    <link rel="stylesheet" href="hot-posts.css" />
+
+    <h2>热门文章</h2>
+    <template repeat="{{post in posts}}">
+      <div>
+        <img src="{{post.cover.url}}" />
+      </div>
+      <div>
+        <a ref="/posts/{{post.id}}" href="javacript:void(0)" onclick="performLinkWithRel(this)" target="_blank">
+          {{post.title}}
+        </a>
+      </div>
+    </template>
+  </template>
+
+  <script src="hot-posts.js"></script>
+</polymer-element>

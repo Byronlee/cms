@@ -1,0 +1,6 @@
+/*
+ *= require application/style
+ */
+:host {
+  display: block;
+}
