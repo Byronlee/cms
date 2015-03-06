@@ -34,5 +34,6 @@ FactoryGirl.define do
     must_read 'true'
     state 'draft'
     source 'writer'
+    views_count 0
   end
 end

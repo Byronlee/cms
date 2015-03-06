@@ -56,10 +56,12 @@ Rails.application.routes.draw do
     resources :comments, only: [:index]
     resources :posts do
       get :today_lastest, on: :collection
+      get :hot_posts, on: :collection
     end
   end
 
   resources :posts, :only => [:show, :index] do
+    post :update_views_count, on: :member
     resources :comments, :only => [:index, :create] do
       get :normal_list, on: :collection
     end

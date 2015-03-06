@@ -8,6 +8,7 @@ tr
   td
     span class='badge badge-warning'
       = link_to post.comments_count.to_i, admin_post_comments_path(post)
+  td = post.views_count
   td
     a.tip-top data-original-title="编辑" href= edit_admin_post_path(post)
       i.icon-pencil
