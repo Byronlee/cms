@@ -1,21 +1,24 @@
-h4.header-sperator  优质评论
-div#comments-excellent
-  - @comments.each do |comment|
-    div.row
-      div style="overflow:hidden"
-        div.col-sm-10
-          div
-            h4  = comment.user.name
-          div = comment.content
-        div.col-sm-2
-          img.img-circle onerror="imgError(this);" src= "#{comment.user.avatar}"
-      div#comment-time-info
-        = time_ago_in_words(comment.created_at)
-h4.header-sperator  更多评论
-div#comments-normal style="display:none"
-div#actions
-  button#toggleNormalComments class="btn btn-primary" onClick="getNormalList(this, '#{commentable_type}', #{commentable_id})"  = "Expand All #{comments_normal_count} Comments"
-  button#toggleFormBtn class="btn btn-primary btn-warning" onClick="toggleCommentForm();"
-    |Comment&nbsp;
-    span#toggleFormIcon
-      span.caret
+- @comments.each do | item |
+    #comment-.comment.cf
+      .avatar.left
+        a[href=""]
+          img[src="/assets/original/a-1.jpg" alt=""]
+      .comment-wrapper
+        .postmeta
+          a[href="#"]
+            = item.user.name
+            |  •
+            =  item.human_created_at
+        .commemt-main
+          p  = item.content
+        .opts
+          ul
+            li
+              a.like[href=""]
+                i.icon-heart
+                | 19
+            li
+              a.reply[href=""]
+                i.icon-reply
+                | 0
+
