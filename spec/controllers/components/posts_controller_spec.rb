@@ -10,4 +10,12 @@ describe Components::PostsController do
     end
   end
 
+  describe "GET 'hot_posts'" do
+    it "returns http success" do
+      get 'hot_posts'
+      response.should be_success
+      expect(response.header["Content-Type"]).to eq("application/json; charset=utf-8")
+    end
+  end
+
 end
