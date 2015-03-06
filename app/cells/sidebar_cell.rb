@@ -7,7 +7,11 @@ class SidebarCell < Cell::Rails
     render
   end
 
-  def hot_post
+  def hot_posts
+    render
+  end
+
+  def new_posts
     render
   end
 

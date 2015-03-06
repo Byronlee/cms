@@ -18,14 +18,7 @@ html.no-js
   body#home
     = render_cell :layout, :nav, current_user: current_user
     .container.row
-      .main
-        = yield
-      .sidebar
-        = render_cell :sidebar, :ad_top
-        = render_cell :sidebar, :hot_post
-        = render_cell :sidebar, :ad_middle
-        = render_cell :sidebar, :sponsor
-        = render_cell :sidebar, :excellent_comments
+      = yield
 
     = analytics_init if Rails.env.production?
     = render_cell :layout, :footer

@@ -3262,6 +3262,15 @@ img.mfp-img {
  font-weight: bold;
 }
 
+.sidebar .thumb-60 img{
+   width: 60px;
+   height: 60px;
+}
+
+.sidebar h1{
+  font-size: 14px;
+}
+
 @media screen and (max-width: 800px) and (orientation: landscape), screen and (max-height: 300px) {
   .mfp-img-mobile .mfp-image-holder {
     padding-left: 0;
