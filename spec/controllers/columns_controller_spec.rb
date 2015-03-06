@@ -10,8 +10,11 @@ describe ColumnsController do
   end
 
   describe "GET 'show'" do
+    let!(:column){
+      create(:column)
+    }
     it "returns http success" do
-      get 'show'
+      get 'show', slug:column.slug
       response.should be_success
     end
   end
