@@ -14,8 +14,8 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
-  namespace :admin do
-    root to: redirect("/admin/dashboard")
+  namespace :admin, path: "/krypton_d29tZW5qaW5ncmFuZmFubGV6aGVtZWRpamlkZWN1b3d1" do
+    root to: redirect("/krypton_d29tZW5qaW5ncmFuZmFubGV6aGVtZWRpamlkZWN1b3d1/dashboard")
     resources :dashboard, :pages, :newsflashes
     resources :users, :ads
     resources :head_lines, except: [:show]
