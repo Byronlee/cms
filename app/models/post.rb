@@ -20,6 +20,7 @@
 #  comments_count :integer
 #  md_content     :text
 #  old_post_id    :integer
+#  views_count    :integer          default(0)
 #
 
 class Post < ActiveRecord::Base
