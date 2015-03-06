@@ -4,12 +4,12 @@ class TodayLastestComponentWorker < BaseWorker
     posts_count = Post.today.count
     Redis::HashKey.new('posts')['today_lastest'] =
      [
-      :posts => posts.to_json(
-        :only => [:title],
+      :posts => JSON.parse(posts.to_json(
+        :only => [:id, :title],
         :include => {
           :column => {
-            :only => [:name]}}),
+            :only => [:id, :name, :slug]}})),
       :posts_count => posts_count
-    ]
+    ].to_json
   end
 end

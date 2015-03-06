@@ -54,6 +54,9 @@ Rails.application.routes.draw do
     resources :head_lines, only: [:index]
     resources :info_flows, only: [:index]
     resources :comments, only: [:index]
+    resources :posts do
+      get :today_lastest, on: :collection
+    end
   end
 
   resources :posts, :only => [:show, :index] do
