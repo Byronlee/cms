@@ -18,6 +18,7 @@ div.container-fluid
     div clas="widget-content nopadding"
       = simple_form_for [:admin, @column], html:{class:"form-horizontal"} do | f |
         = f.input :name
+        = f.input :slug
         = f.input :icon
         = f.input :cover
         = f.input :introduce, as: :text, :input_html => { 'rows' => 3}

@@ -19,10 +19,14 @@
 #  source         :string(255)
 #  comments_count :integer
 #  md_content     :text
-#  old_post_id    :integer
+#  url_code       :integer
+#  views_count    :integer          default(0)
 #
 
+require 'action_view'
 class Post < ActiveRecord::Base
+  include ActionView::Helpers::DateHelper
+
   paginates_per 20
   mount_uploader :cover, BaseUploader
 
@@ -37,4 +41,37 @@ class Post < ActiveRecord::Base
   belongs_to :column, counter_cache: true
   belongs_to :author, class_name: User.to_s, foreign_key: 'user_id'
   has_many :comments, as: :commentable, dependent: :destroy
+
+  after_save :update_today_lastest_cache, :update_hot_posts_cache
+  after_destroy :update_today_lastest_cache, :update_hot_posts_cache
+
+  scope :created_on, ->(date) {
+    where(:created_at => date.beginning_of_day..date.end_of_day)
+  }
+  scope :hot_posts, -> { order("views_count desc, created_at desc") }
+
+  def self.today
+    self.created_on(Date.today)
+  end
+
+  def human_created_at
+    distance_of_time_in_words_to_now(self.created_at)
+  end
+
+  private
+
+  def update_today_lastest_cache
+    if !self.views_count_changed?
+      logger.info "perform the worker to update today lastest cache"
+      logger.info TodayLastestComponentWorker.perform_async
+    end
+  end
+
+  def update_hot_posts_cache
+    if self.views_count_changed?
+      logger.info "perform the worker to update hot posts cache"
+      logger.info HotPostsComponentWorker.perform_async
+    end
+  end
+
 end

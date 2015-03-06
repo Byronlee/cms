@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150303150232) do
+ActiveRecord::Schema.define(version: 20150306092115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -124,7 +124,8 @@ ActiveRecord::Schema.define(version: 20150303150232) do
     t.string   "source"
     t.integer  "comments_count"
     t.text     "md_content"
-    t.integer  "old_post_id"
+    t.integer  "url_code"
+    t.integer  "views_count",    default: 0
   end
 
   create_table "taggings", force: true do |t|

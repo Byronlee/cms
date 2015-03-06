@@ -18,7 +18,7 @@ describe Admin::PostsController do
       expect{
         delete :destroy, :id => comment.commentable
       }.to change(Post, :count).by(-1)
-      expect(comments.blank?).should be_true
+      expect(comments.blank?).to be_true
       expect(response).to redirect_to(post_path(comment.commentable))
     end
   end

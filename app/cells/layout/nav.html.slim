@@ -1,0 +1,110 @@
+header.header.header-normal.scrolled
+  .inner.row
+    h1.logo
+      a href=root_path
+        span 36kr
+    nav.toggle-nav.cf
+      ul.left
+        li
+          a.toggle__main.icon-menu href="javascript:void(0)"
+            span 导航
+        li
+          a.toggle__search.icon-search href="javascript:void(0)"
+            span 搜索
+      a.toggle__submit.right href="" 寻求报道
+    nav.main-nav.left
+      ul
+        li.drop-1.drop
+          a.hasdropdown.main-nav__item href="/category" 分类浏览
+          .dropdown.dropdown-normal
+            .dropdown-list.dropdown__list
+              section
+                h2 Category
+                ul.dropdown__category.cf
+                  li
+                    a href=  column_path('cn-startups') 国内公司
+                  li
+                    a href=  column_path('us-startups') 国外公司
+                  li
+                    a href=  column_path('cn-news') 国内资讯
+                  li
+                    a href=  column_path('breaking') 国外资讯
+                  li
+                    a href=  column_path('krweekly') 氪周刊
+                  li
+                    a href=  page_path('krmonthly') 氪月刊
+                  li
+                    a href=  column_path('column') 专栏
+                  li
+                    a href=  column_path('archives') 存档
+              section.more
+                a href="" 查看更多精彩文章
+        li
+          a.main-nav__item href="http://www.36kr.net/?utm_source=36kr.com" 氪加
+        li
+          a.main-nav__item href="http://next.36kr.com/posts?utm_source=36kr.com" NEXT
+        li.drop-2.drop
+          a.hasdropdown.main-nav__item href="javascript:;" 更多产品
+          .dropdown.dropdown-normal
+            .dropdown-list.main-nav__list
+              section.dropdown__events.cf
+                .product-logo.product-krspace.left
+                .intro
+                  h3
+                    a href="http://space.36kr.com/?utm_source=36kr.com" 氪空间
+                  span.bio 创业公司第一轮融资的地方
+              section.dropdown__events.cf
+                .product-logo.product-next.left
+                .intro
+                  h3
+                    a href="http://next.36kr.com/?utm_source=36kr.com" NEXT
+                  span.bio 创业公司第一轮融资的地方
+              section.dropdown__events.cf
+                .product-logo.product-krplus.left
+                .intro
+                  h3
+                    a href="http://www.36kr.net/?utm_source=36kr.com" 36氪加
+                  span.bio 优秀创业者集聚地
+              section.dropdown__events.cf
+                .product-logo.product-wise.left
+                .intro
+                  h3
+                    a href="" WISE
+                  span.bio 互联网创业峰会
+              section.dropdown__events.cf
+                .product-logo.product-beiji.left
+                .intro
+                  h3
+                    a href="" 北极社区
+                  span.bio 创业者互动社区
+    .search.left
+      form name="search_baidu" target="_blank" onsubmit="return goSearch(this)"
+        input name="word_display" type="search" placeholder="搜索"
+        input name="word" type="hidden"
+    nav.second-nav
+      ul
+        li
+          a.second-nav__submit href="http://localhost:3000/pages/contribute" 投稿
+        li
+          a.second-nav__request href="http://report.36kr.com" 寻求报道
+        li.avatar.drop
+          - if @current_user
+            a.second-nav__account.cf href="javascript:void(0)"
+              img.avatar-small.left alt="Violin" height="24" src="http://a.36krcnd.com/user/default_avatars/Violin.png!avatar" width="24"
+                span.right  = @current_user.name
+            div.dropdown.dropdown-account
+              div.dropdown-list.account__list.dropdown__list
+                section
+                  ul.dropdown-menu
+                    li.first
+                      a href="/chad_liu"  我的主页
+                    li
+                      a href="/notifications"  通知中心 +0
+                    li
+                      a href="/account/edit"  个人设置
+                    li
+                      a href="/chad_liu/favorites" data-no-turbolink="true"  我的收藏
+                    li.last
+                      = link_to "注销登录", destroy_user_session_path, method: :delete, class:"dropdown_login_out_link", rel:"nofollow"
+          - else
+            a.second-nav__login.overlay href="#{user_omniauth_authorize_path(provider: :krypton)}"  登录

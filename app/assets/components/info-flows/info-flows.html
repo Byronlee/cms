@@ -1,77 +1,49 @@
 <polymer-element name="info-flows">
   <template>
     <link rel="stylesheet" href="info-flows.css" />
-
-    <div class="bloc l-bloc " id="news-category-nav">
-    <div class="container bloc-sm">
-      <div class="row">
-        <div class="col-sm-12">
-          <a href="index.html" class="btn btn-wire btn-rd pull-right">ALL NEWS ( {{totle_count}} +)</a>
-          <h3 class="text-left mg-md">
-            <strong>STARTUPS NEWS</strong>
-          </h3>
+    <div class="content">
+      <div class="content-wrapper">
+        <h2 class="lastest">lastest news</h2>
+        <div class="articles">
+          <template repeat="{{item in posts_with_ads}}">
+            <template bind if="{{ item.position == null && item.type != 'seperate' }}">
+              <article class="posts post-1 cf">
+                <div class="info cf">
+                  <div class="topic left">
+                    <span>
+                      <a class="startups" ref="/columns/{{item.column.slug}}" href="javacript:void(0)" onclick="performLinkWithRel(this)" > {{item.column.name}} </a> / {{item.column.slug}}
+                    </span>
+                  </div>
+                  <div class="postmeta right">
+                    <a href="#"> {{item.author.name}} </a> •  {{item.human_created_at}}
+                  </div>
+                </div>
+                <div class="left left-col">
+                  <div class="meta">
+                    <a title="评论次数" ref="{{item.title_link}}" href="javacript:void(0)" onclick="performLinkWithRel(this)" >
+                      <i class="icon icon-share"></i>
+                      {{item.comments_count || 0}}
+                    </a>
+                  </div>
+                  <div class="image feature-img thumb-180">
+                    <img src="{{item.cover.url}}" alt="" />
+                  </div>
+                </div>
+                <div class="right-col">
+                  <h1>
+                    <a ref="{{item.title_link}}" href="javacript:void(0)" onclick="performLinkWithRel(this)" >{{item.title}}</a>
+                    <p>{{item.summary}}</p>
+                  </h1>
+                </div>
+              </article>
+            </template>
+            <template bind if="{{ item.position != null }}">
+              this is ad position
+            </template>
+          </template>
         </div>
       </div>
     </div>
-  </div>
-
-  <!-- startup-news-section -->
-  <template repeat="{{item in posts_with_ads}}">
-    <template bind if="{{ item.position == null && item.type != 'seperate' }}">
-      <div class="bloc l-bloc " id="startup-news-section">
-        <div class="container bloc-sm">
-          <div class="row">
-            <div class="col-sm-4">
-              <a ref='{{item.title_link}}' href="javacript:void(0)" onclick="performLinkWithRel(this)" target="_blank">
-                <img src='{{item.cover.url}}', class: 'mg-md', style="width: 230, height: 153" />
-              </a>
-            </div>
-            <div class="col-sm-8">
-              <h3 class="mg-lg">
-                <a ref='{{item.title_link}}' href="javacript:void(0)" onclick="performLinkWithRel(this)" target="_blank">
-                  {{item.title}}
-                </a>
-              </h3>
-               <p class="mg-md">
-                {{item.summary}}
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </template>
-    <template bind if="{{ item.type == 'seperate' }}">
-       <div class="bloc l-bloc " id="startup-news-section">
-        <div class="container bloc-sm">
-          <div class="row">
-            <div class="fake-legend">
-              <span>{{item.date}}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </template>
-    <template bind if="{{ item.position != null }}">
-       <div class="bloc l-bloc " id="startup-news-section">
-        <div class="container bloc-sm">
-          <div class="row">
-            <div class="col-sm-4">
-              <img src='/assets/img/mountainsdusk.jpg', class: 'mg-md', style="width: 230, height: 153" />
-            </div>
-            <div class="col-sm-8">
-              <h3 class="mg-lg">
-                AD
-              </h3>
-              <p class="mg-md">
-                this is ad position
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </template>
-  </template>
-  <!-- startup-news-section END -->
   </template>
 
   <script src="info-flows.js"></script>

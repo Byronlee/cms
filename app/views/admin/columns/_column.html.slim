@@ -5,6 +5,7 @@ tr
       img class="img-circle" style="width:50px; height:50px;" onerror="imgError(this)" src="#{column.icon_url}"
       |&nbsp;&nbsp;
       = link_to column.name
+  td = column.slug
   td = column.introduce
   td
     span class="badge badge-info"

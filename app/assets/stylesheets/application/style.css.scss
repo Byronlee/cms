@@ -293,9 +293,6 @@ img.mg-lg{
 }
 
 
-
-
-
 /* Image frame */
 .img-frame,.img-frame-md,.img-frame-lg,.img-frame-rd,.img-frame-rd-md,.img-frame-rd-lg{
 	background:#FFF;
@@ -384,6 +381,19 @@ img, video, object, embed, iframe {
 
 .breaking {
   color: #66bc4e !important;
+}
+
+
+sup {
+  top: -0.5em;
+}
+
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+  left: 5px;
 }
 
 /* Mobile adjustments */

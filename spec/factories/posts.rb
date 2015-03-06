@@ -19,7 +19,8 @@
 #  source         :string(255)
 #  comments_count :integer
 #  md_content     :text
-#  old_post_id    :integer
+#  url_code       :integer
+#  views_count    :integer          default(0)
 #
 
 FactoryGirl.define do
@@ -33,5 +34,6 @@ FactoryGirl.define do
     must_read 'true'
     state 'draft'
     source 'writer'
+    views_count 0
   end
 end

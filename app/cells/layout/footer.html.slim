@@ -1,0 +1,142 @@
+footer.footer
+  .row
+    .footer-36kr
+      h3 = t('site.name')
+      ul
+        li
+          a href="/about" 关于36氪
+        li
+          a href="http://space.36kr.com" class="external" target="_blank" 氪空间
+          sup NEW!
+        li
+          a href="/hire" 加入我们
+        li
+          a href="http://report.36kr.com" class="external" target="_blank" 寻求报道
+        li
+          a href="/contact-us/" 联系我们
+        li
+          a href="/sub/" 客户端下载
+        li
+          |投诉邮箱：
+          a href="mailto:ceo@36kr.com" ceo@36kr.com
+        </ul>
+    .footer-subscribe
+      h3 订阅
+      ul
+        li
+          a href="/sub/" RSS订阅
+        li
+          a href="/sub/" 邮箱订阅
+        li
+          a href="/sub/" 线下活动订阅
+        li
+        li
+          a href="http://weibo.com/wow36kr" class="external" target="_blank" 官方微博
+        li
+          a href="https://twitter.com/36kr" class="external" target="_blank" Twitter
+    .footer-partner
+      h3 合作伙伴
+      ul.cf
+        li
+          a href="http://www.aliyun.com" class="external" target="_blank"
+            img src="http://uploads.36krcnd.com/upload/file/76c4d88140f85a190647dc00cd9d6c35.png" width="86" height="21"
+        li
+          a href="http://www.qcloud.com/?from=36kr" class="external" target="_blank"
+            img src="http://a.36krcnd.com/photo/2014/dd9cae66e3cc32be4ef4cf849c22d70b.png" alt=""
+        li
+          a href="http://qingcloud.com" class="external" target="_blank"
+            img src="http://a.36krcnd.com/photo/2014/fac4daea3163cbb72b12613365297d66.png" alt=""
+        li
+          a href="http://upyun.com" class="external" target="_blank"
+            img src="http://a.36krcnd.com/photo/2014/ba639550940bf943fb0467c5ea14fbc6.png" alt=""
+        li
+          a href="http://qiniu.com" class="external" target="_blank"
+            img src="http://a.36krcnd.com/photo/2014/ce210c6ddb324544e23102af0539ec5c.png" alt=""
+        li
+          a href="http://dnspod.cn" class="external" target="_blank"
+            img src="http://a.36krcnd.com/photo/2014/0ae4f92e9796a8a8a8cfe97a2c29d1b2.png" alt=""
+    .footer-copyright
+      p
+        |本站由
+        a href="http://webluker.com" class="external" target="_blank"  WebLuker
+        |提供 CDN 加速服务，开发协作工具由
+        a href="http://fengche.co" class="external" target="_blank" Fengche.co
+        |提供。我们使用
+        a href="https://slack.com/r/024gqt7g-025leep4" class="external" target="_blank" Slack
+        |进行沟通。
+      p
+        |Powered By
+        a title="36氪网站最初采用 Ruby China 开源代码构建" href="http://ruby-china.org/" class="external" target="_blank"  Ruby China
+      p ©2011-2015 36氪
+      p 京ICP备12031756号
+      p 京公网安备11010802012285号
+#panel-login.panel.mfp-hide
+  form name="loginForm"
+    h3 无需注册，直接使用社交账号登录
+    section.login-social.cf
+      a.login-social__weibo href="/auth/weibo"
+        i.icon-social-weibo 微博
+      a.login-social__qq href="/auth/qq"
+        i.icon-social-qq QQ
+      a.login-social__renren href="/auth/renren"
+        i.icon-social-renren 人人
+      a.login-social__github href="/auth/github"
+        i.icon-social-github GitHub
+    hr
+    section.login-section
+      .form.login
+        .login__email
+          input spellcheck="false" type="email" placeholder="邮箱" name="username"
+          i.icon-login-mail
+        .login__password
+          input focus-on="suggestion:accepted" type="password" placeholder="密码" name="password"
+          i.icon-lock
+        .login__links.cf
+          p.left
+            a href="" 忘记密码？
+          button.submit.right type="submit" 登录
+      hr
+      .register__links.cf
+        p.left 没有帐号？
+          a.login__register-btn href="javascript:void(0)" 注册
+    section.register-section
+      .form.register
+        .register__username
+          input spellcheck="false" type="text" placeholder="用户名" name="username"
+          i.icon-user
+        .register__email
+          input spellcheck="false" type="email" placeholder="邮箱" name="username"
+          i.icon-login-mail
+        .register__password
+          input focus-on="suggestion:accepted" type="password" placeholder="密码" name="password"
+          i.icon-lock
+        .login__links.cf
+          p.left 已有帐号？
+            a.register__login-btn href="javascript:void(0)" 登录
+          button.submit.right type="submit" 注册
+#panel-weibo.panel.mfp-hide
+  h3 右键另存为下载到本地
+  section.longweibo-section
+    p
+      img src="/assets/original/longweibo.png" alt=""
+  hr
+  button.submit type="submit" 分享到微博
+#panel-weixin.panel.mfp-hide
+  h3 打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮
+  section.weixin-section
+    p
+      img src="/assets/original/qrcode.jpg" alt=""
+script src="http://cdn.staticfile.org/jquery/2.0.3/jquery.min.js"
+script src="/assets/ScrollToFixed/jquery-scrolltofixed-min.js"
+/ script src="/assets/widearea/minified/widearea.min.js"
+script src="/assets/tabulous/tabulous.min.js"
+script src="/assets/respond/dest/respond.min.js"
+script src="/assets/lazyloadxt/dist/jquery.lazyloadxt.min.js"
+script src="/assets/ladda/dist/spin.min.js"
+script src="/assets/ladda/dist/ladda.min.js"
+script src="/assets/magnific-popup/dist/jquery.magnific-popup.min.js"
+script src="/assets/app.js"
+/ script
+/   |  wideArea('.single-post-comment__form');
+script
+  |  $.extend($.lazyLoadXT, { onload: { addClass: 'loaded' } });

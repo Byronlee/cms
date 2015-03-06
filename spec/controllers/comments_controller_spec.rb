@@ -44,7 +44,7 @@ describe CommentsController do
       expect{
         post :create, post_id:comment.commentable, comment: attributes_for(:comment), format:'js'
       }.to change(Comment, :count).by(1)
-      expect(assigns(:comment).is_long?).should  be_false
+      expect(assigns(:comment).is_long?).to  be_false
       expect(response).to redirect_to(post_path(comment.commentable))
     end
 
@@ -53,7 +53,7 @@ describe CommentsController do
       expect{
         post :create, post_id:comment.commentable, comment:{content: 'A' * 150}, format:'js'
       }.to change(Comment, :count).by(1)
-      expect(assigns(:comment).is_long?).should  be_true
+      expect(assigns(:comment).is_long?).to  be_true
       expect(response).to redirect_to(post_path(comment.commentable))
     end
 

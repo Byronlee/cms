@@ -14,8 +14,8 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
-  namespace :admin do
-    root to: redirect("/admin/dashboard")
+  namespace :admin, path: "/krypton_d29tZW5qaW5ncmFuZmFubGV6aGVtZWRpamlkZWN1b3d1" do
+    root to: redirect("/krypton_d29tZW5qaW5ncmFuZmFubGV6aGVtZWRpamlkZWN1b3d1/dashboard")
     resources :dashboard, :pages, :newsflashes
     resources :users, :ads
     resources :head_lines, except: [:show]
@@ -50,12 +50,19 @@ Rails.application.routes.draw do
     resources :head_lines, only: [:index]
     resources :info_flows, only: [:index]
     resources :comments, only: [:index]
+    resources :posts do
+      get :today_lastest, on: :collection
+      get :hot_posts, on: :collection
+    end
   end
 
   resources :posts, :only => [:show, :index] do
+    post :update_views_count, on: :member
     resources :comments, :only => [:index, :create] do
       get :normal_list, on: :collection
     end
   end
+  resources :columns, only: [:index, :show], param: :slug
+  resources :pages, only: [:show], param: :slug
   get :feed, to: 'posts#feed', defaults: { format: :rss }
 end
