@@ -17,6 +17,6 @@
 .sidebar
   = render_cell :sidebar, :ad_top
   = render_cell :sidebar, :hot_posts
-  = render_cell :sidebar, :ad_middle
-  = render_cell :sidebar, :sponsor
-  = render_cell :sidebar, :excellent_comments
+  h3  职位精选
+  = render_cell :sidebar, :ad_middle, position: :post_show
+  = render_cell :sidebar, :new_posts
