@@ -11,26 +11,28 @@ site_colors.each do | site |
   NewsflashTopicColor.create site
 end
 
+ActiveRecord::Base.connection.execute("select setval('columns_id_seq', 1, false)")
+Column.delete_all
 columns = [
-  {id: 1, name:  '国外资讯', slug:    'breaking'},
-  {id: 2, name:  '创业公司', slug:    'startup-type'},
-  {id: 3, name:  '评论', slug:    'review'},
-  {id: 4, name:  '移动' , slug:   'mobile'},
-  {id: 5, name:  '生活方式', slug: 'digest'},
-  {id: 6, name:  '国外创业公司' , slug:   'us-startups'},
-  {id: 7, name:  '社交', slug:    'social'},
-  {id: 8, name:  '科技', slug:    'tech'},
-  {id: 9, name:  '工具', slug:    'tool'},
-  {id: 10, name:    '企业级产品' , slug:   'biz'},
-  {id: 11, name:    '国内创业公司' , slug:   'cn-startups'},
-  {id: 12, name:    '硬件' , slug:   'hardware'},
-  {id: 13, name:    '信息图' , slug:   'infographics'},
-  {id: 14, name:    '国内资讯' , slug:   'cn-news'},
-  {id: 15, name:    '存档' , slug:   'archives'},
-  {id: 16, name:    '专栏' , slug:   'column'},
-  {id: 17, name:    '36Kr' , slug:   '36kr'}
+  { name:  '国外资讯', slug:    'breaking'},
+  { name:  '创业公司', slug:    'startup-type'},
+  { name:  '评论', slug:    'review'},
+  { name:  '移动' , slug:   'mobile'},
+  { name:  '生活方式', slug: 'digest'},
+  { name:  '国外创业公司' , slug:   'us-startups'},
+  { name:  '社交', slug:    'social'},
+  { name:  '科技', slug:    'tech'},
+  { name:  '工具', slug:    'tool'},
+  { name:  '企业级产品' , slug:   'biz'},
+  { name:  '国内创业公司' , slug:   'cn-startups'},
+  { name:  '硬件' , slug:   'hardware'},
+  { name:  '信息图' , slug:   'infographics'},
+  { name:  '国内资讯' , slug:   'cn-news'},
+  { name:  '存档' , slug:   'archives'},
+  { name:  '专栏' , slug:   'column'},
+  { name:  '36Kr' , slug:   '36kr'}
 ]
 
 columns.each do | column |
-  Column.create column
+  Column.new(column).save(:validate => false)
 end
