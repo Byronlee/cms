@@ -20,6 +20,7 @@
 #  comments_count :integer
 #  md_content     :text
 #  old_post_id    :integer
+#  views_count    :integer          default(0)
 #
 
 class Post < ActiveRecord::Base
@@ -37,4 +38,22 @@ class Post < ActiveRecord::Base
   belongs_to :column, counter_cache: true
   belongs_to :author, class_name: User.to_s, foreign_key: 'user_id'
   has_many :comments, as: :commentable, dependent: :destroy
+
+  after_save :update_today_lastest_cache
+  after_destroy :update_today_lastest_cache
+
+  scope :created_on, ->(date) {
+    where(:created_at => date.beginning_of_day..date.end_of_day)
+  }
+
+  def self.today
+    self.created_on(Date.today)
+  end
+
+  private
+
+  def update_today_lastest_cache
+    logger.info "perform the worker to update today lastest cache"
+    logger.info TodayLastestComponentWorker.perform_async
+  end
 end

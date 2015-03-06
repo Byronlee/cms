@@ -22,6 +22,8 @@ div class="bloc l-bloc"
         div.col-sm-12 class="comment"
           = render 'comments/form', :commentable => @post
 
+        today-lastest
+
 javascript:
   $(document).ready(function(ret, status){
     $.get("/posts/#{@post.id}/comments.js", function(){
