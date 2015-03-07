@@ -1,2 +1,65 @@
-h1 Columns#show
-p Find me in app/views/columns/show.html.slim
+.main
+  .content
+    .content-wrapper
+      .content-wrapper-border
+        .category
+          .category-header.cf
+            .category-header__info.cf
+              h2.category-header__title.left  国内创业公司
+              div.category-header__status.right.cf
+                span.week
+                  | 21
+                  i  Weekly
+                span.total
+                  |2996
+                  i  Total
+            p.category-header__bio  ...
+          div.category-popular
+            h3
+              i.icon-hot  一周热点
+            ul.category-popular__list
+              li.cf
+                span 03/02 13:12
+                h1
+                  a href="/p/220069.html" title="SaaS+云服务的中小企业人力资源管理平台“金柚网”，从社保管理切入"  SaaS+云服务的中小企业人力资源管理平台“金柚网”，从社保管理切入
+        .articles
+          - (1..15).each do
+            article.posts.post-1.cf
+              .info.cf
+                .topic.left
+                  span
+                   a class="#{"cn-startups"}" href="/category/cn-startups"  创业公司
+                   |  /  startups
+                .postmeta.right
+                  a href="/chloe1988" class="uname user_Chloe1988" data-name="Chloe" target="_blank"  Chloe
+                  | • 02/08 12:24
+              .left.left-col
+                .meta
+                  a title="回应人数" href="/p/219566.html"
+                    i class="icon icon-share"  7
+                div.image.feature-img.thumb-180
+                  a href="/p/219566.html"
+                    img alt="Blank" class="image lazyload loaded" data-src="http://a.36krcnd.com/photo/2015/7f4c09dfe10444bb238e4c7fc4acc7e8.png!slider" src="http://a.36krcnd.com/photo/2015/7f4c09dfe10444bb238e4c7fc4acc7e8.png!slider"
+              .right-col
+                h1
+                  a href="/p/219566.html" data-no-turbolink="true" onclick="javascript:_gaq.push(['_trackPageview', '/click/index_newtab/']);" target="_blank" title="同志社交应用Blued进军世界上首个同性婚姻合法化国家荷兰"  同志社交应用Blued进军世界上首个同性婚姻合法化国家荷兰
+                p
+                  |Gay的世界很精彩，同志社交应用Blued都进军自由之都荷兰了，是国内圈里第一个。
+
+          .pagination.cf
+            ul
+              li.prev.previous_page.left
+                a rel="prev" href="/category/cn-startups/4"
+                  |← 上一页
+              li.next.next_page.right
+                a rel="next" href="/category/cn-startups/6"
+                  |下一页 →
+  .aside
+    = render_cell :sidebar, :today
+    = render_cell :sidebar, :social
+
+.sidebar
+  = render_cell :sidebar, :ad_top
+  = render_cell :sidebar, :hot_posts
+  = render_cell :sidebar, :excellent_comments
+  = render_cell :sidebar, :new_posts
