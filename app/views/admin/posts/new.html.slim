@@ -22,7 +22,7 @@ div.container-fluid
           div.controls
             = f.select :column_id, Column.all.collect{|c| [c.name, c.id]}
         = f.input :title
-        = f.input :title_link, as: :url 
+        = f.input :title_link, as: :url
         = f.input :cover
         = f.input :slug
         = f.input :summary, as: :text, :input_html => { 'rows' => 3}
