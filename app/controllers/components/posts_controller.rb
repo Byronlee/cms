@@ -8,4 +8,9 @@ class Components::PostsController < ApplicationController
     @posts = Redis::HashKey.new('posts')['hot_posts']
     render :json => @posts
   end
+
+  def weekly_hot
+    @posts = Redis::HashKey.new('posts')['weekly_hot']
+    render :json => @posts
+  end
 end

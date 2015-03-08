@@ -1,0 +1,21 @@
+<polymer-element name="weekly-newest-posts">
+  <template>
+    <link rel="stylesheet" href="weekly-newest-posts.css" />
+    <div class="category-popular">
+      <h3>
+        <i class="icon-hot">一周热点</i>
+      </h3>
+      <ul class="category-popular__list">
+        <template repeat="{{post in posts}}">
+          <li class="cf">
+            <span> 03/02 13:12</span>
+            <h1>
+              <a ref="/posts/{{post.id}}" href="javacript:void(0)" onclick="performLinkWithRel(this)"  title="{{post.title}}">{{post.title}}</a>
+            </h1>
+          </li>
+      </template>
+      </ul>
+    </div>
+  </template>
+  <script src="weekly-newest-posts.js"></script>
+</polymer-element>

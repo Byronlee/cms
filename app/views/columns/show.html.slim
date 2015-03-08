@@ -14,15 +14,8 @@
                   = @posts.total_count
                   i  Total
             p.category-header__bio  ...
-          div.category-popular
-            h3
-              i.icon-hot  一周热点
-            ul.category-popular__list
-              li.cf
-                span 03/02 13:12
-                h1
-                  a href="/p/220069.html" title="SaaS+云服务的中小企业人力资源管理平台“金柚网”，从社保管理切入"  SaaS+云服务的中小企业人力资源管理平台“金柚网”，从社保管理切入
-        .articles
+          weekly-newest-posts
+          articles
           - @posts.each do |post|
             article.posts.post-1.cf
               .info.cf
