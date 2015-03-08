@@ -1,2 +1,8 @@
 section#sidebar-ad
-  <script type="text/javascript">BAIDU_CLB_fillSlot("495283");</script>
+  - if @position == :home_page
+    <script type="text/javascript">BAIDU_CLB_fillSlot("495283");</script>
+  - elsif @position == :post_show
+    <script type="text/javascript">BAIDU_CLB_fillSlot("495283");</script>
+  - else
+    |&nbsp;
+

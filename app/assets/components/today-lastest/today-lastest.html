@@ -1,23 +1,21 @@
 <polymer-element name="today-lastest">
   <template>
     <link rel="stylesheet" href="today-lastest.css" />
-
-    <h2>今日更新  +{{posts_count || 0}}</h2>
-    <template repeat="{{post in posts}}">
-      <div>
-        <span>
-          <a ref="/columns/{{post.column.id}}" href="javacript:void(0)" onclick="performLinkWithRel(this)" target="_blank">
-            {{post.column.name}}
-          </a>
-        </span>
-        /
-        <span>{{posts.column.slug}}</span></div>
-      <div>
-        <a ref="/posts/{{post.id}}" href="javacript:void(0)" onclick="performLinkWithRel(this)" target="_blank">
-          {{post.title}}
-        </a>
-      </div>
-    </template>
+    <div class="section aside-today">
+      <h2 class="aside-today__title">今日更新<span>+{{posts_count || 0}}</span></h2>
+      <ul class="aside-today__list">
+        <template repeat="{{post in posts}}">
+          <li>
+            <div class="topic">
+              <span><a target="_blank" ref="/columns/{{post.column.slug}}" href="javacript:void(0)" onclick="performLinkWithRel(this)" class="{{post.column.slug}}">{{post.column.name}}</a> / {{post.column.slug}}</span>
+            </div>
+            <h1>
+              <a ref="/posts/{{post.id}}" href="javacript:void(0)" onclick="performLinkWithRel(this)" title="{{post.title}}">{{post.title}}</a>
+            </h1>
+          </li>
+        </template>
+      </ul>
+    </div>
   </template>
 
   <script src="today-lastest.js"></script>

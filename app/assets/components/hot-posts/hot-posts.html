@@ -1,18 +1,18 @@
 <polymer-element name="hot-posts">
   <template>
     <link rel="stylesheet" href="hot-posts.css" />
-
-    <h2>热门文章</h2>
-    <template repeat="{{post in posts}}">
-      <div>
-        <img src="{{post.cover.url}}" />
+    <section class="sidebar sidebar-popular cf">
+      <h3>热门文章</h3>
+      <div class="sidebar-popular__list">
+        <template repeat="{{post in posts}}">
+          <article class="sidebar-popular__posts cf">
+            <div class="meta"></div>
+            <div class="image thumb-60 left"><img src="{{post.cover.url}}" alt=""></div>
+            <h1><a ref="/posts/{{post.id}}" href="javacript:void(0)" onclick="performLinkWithRel(this)" title="{{post.title}}">{{post.title}}<a></h1>
+          </article>
+        </template>
       </div>
-      <div>
-        <a ref="/posts/{{post.id}}" href="javacript:void(0)" onclick="performLinkWithRel(this)" target="_blank">
-          {{post.title}}
-        </a>
-      </div>
-    </template>
+    </section>
   </template>
 
   <script src="hot-posts.js"></script>

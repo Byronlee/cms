@@ -10,6 +10,7 @@
 #  cover       :string(255)
 #  icon        :string(255)
 #  posts_count :integer
+#  slug        :string(255)
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

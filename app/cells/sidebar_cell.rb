@@ -3,11 +3,16 @@ class SidebarCell < Cell::Rails
     render
   end
 
-  def ad_middle
+  def ad_middle(args)
+    @position = args[:position]
     render
   end
 
-  def hot_post
+  def hot_posts
+    render
+  end
+
+  def new_posts
     render
   end
 

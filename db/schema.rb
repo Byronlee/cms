@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20150306092115) do
     t.string   "cover"
     t.string   "icon"
     t.integer  "posts_count"
+    t.string   "slug"
   end
 
   create_table "columns_info_flows", force: true do |t|

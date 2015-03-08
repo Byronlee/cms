@@ -13,3 +13,10 @@
   .aside
     = render_cell :sidebar, :today
     = render_cell :sidebar, :social
+
+.sidebar
+  = render_cell :sidebar, :ad_top
+  = render_cell :sidebar, :hot_posts
+  h3  职位精选
+  = render_cell :sidebar, :ad_middle, position: :post_show
+  = render_cell :sidebar, :new_posts

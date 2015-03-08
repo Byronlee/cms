@@ -3258,6 +3258,24 @@ img.mfp-img {
 .mfp-gallery .mfp-image-holder .mfp-figure {
   cursor: pointer; }
 
+.aside-today .topic{
+ font-weight: bold;
+}
+
+.sidebar .thumb-60 img{
+   width: 60px;
+   height: 60px;
+}
+
+.sidebar h1{
+  font-size: 14px;
+}
+
+.posts .info .thumb-180 img{
+   width: 180px;
+   height: 120px;
+}
+
 @media screen and (max-width: 800px) and (orientation: landscape), screen and (max-height: 300px) {
   .mfp-img-mobile .mfp-image-holder {
     padding-left: 0;
