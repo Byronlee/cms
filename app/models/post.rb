@@ -43,8 +43,8 @@ class Post < ActiveRecord::Base
   belongs_to :author, class_name: User.to_s, foreign_key: 'user_id'
   has_many :comments, as: :commentable, dependent: :destroy
 
-  after_save :update_today_lastest_cache, :update_hot_posts_cache
-  after_destroy :update_today_lastest_cache, :update_hot_posts_cache
+  after_save :update_today_lastest_cache, :update_hot_posts_cache, :update_weekly_hot
+  after_destroy :update_today_lastest_cache, :update_hot_posts_cache, :update_weekly_hot
 
   scope :created_on, ->(date) {
     where(:created_at => date.beginning_of_day..date.end_of_day)
@@ -62,15 +62,19 @@ class Post < ActiveRecord::Base
   private
 
   def update_today_lastest_cache
-    return if slef.views_count_changed?
+    return if self.views_count_changed?
     logger.info 'perform the worker to update today lastest cache'
     logger.info TodayLastestComponentWorker.perform_async
   end
 
   def update_hot_posts_cache
-    return unless self.views_count_changed?
     logger.info 'perform the worker to update hot posts cache'
     logger.info HotPostsComponentWorker.perform_async
+  end
+
+  def update_weekly_hot
+    logger.info 'perform the worker to update weekly newest cache'
+    logger.info WeeklyHotPostsComponentWorker.perform_async(id)
   end
 
 end
