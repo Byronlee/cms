@@ -20,3 +20,9 @@
   h3  职位精选
   = render_cell :sidebar, :ad_middle, position: :post_show
   = render_cell :sidebar, :new_posts
+
+javascript:
+  $(document).ready(function(ret, status){
+    $.post("/posts/#{@post.id}/update_views_count", function(){
+    });
+  });

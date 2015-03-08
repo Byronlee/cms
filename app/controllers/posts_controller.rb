@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   load_and_authorize_resource
+  skip_before_action :verify_authenticity_token, only: [:update_views_count]
 
   def show
   end
@@ -13,7 +14,7 @@ class PostsController < ApplicationController
     end
     Redis::HashKey.new('posts')["views_count_#{params[:id]}"] = views_count.next
     PostViewsCountComponentWorker.perform_async(params[:id])
-    render :json => {:success => "true"}.to_json
+    render :json => { :success => 'true' }.to_json
   end
 
   def feed

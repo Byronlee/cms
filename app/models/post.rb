@@ -74,7 +74,7 @@ class Post < ActiveRecord::Base
 
   def update_weekly_hot
     logger.info 'perform the worker to update weekly newest cache'
-    logger.info WeeklyHotPostsComponentWorker.perform_async(id)
+    logger.info WeeklyHotPostsComponentWorker.perform_async(column_id)
   end
 
 end
