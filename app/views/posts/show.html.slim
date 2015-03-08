@@ -23,6 +23,6 @@
 
 javascript:
   $(document).ready(function(ret, status){
-    $.post("/posts/#{@post.id}/update_views_count", function(){
+    $.post("#{update_views_count_post_path(@post)}", function(){
     });
   });
