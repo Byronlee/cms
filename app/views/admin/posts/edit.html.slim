@@ -22,12 +22,13 @@ div.container-fluid
           div.controls
             = f.select :column_id, Column.all.collect{|c| [c.name, c.id]}
         = f.input :title
-        = f.input :title_link, as: :url 
+        = f.input :title_link, as: :url
         = f.input :cover
-        = f.input :slug  
+        = f.input :slug
         = f.input :summary, as: :text, :input_html => { 'rows' => 3}
         = f.input :content, :input_html => { 'rows' => 6}
+        = f.input :tag_list
         div.form-actions
           = f.button :submit, data: { disable_with: "submitting..." }, class:"btn btn-primary"
 
-= render 'layouts/set_active_nav', :active_id => "nav_posts"          
+= render 'layouts/set_active_nav', :active_id => "nav_posts"

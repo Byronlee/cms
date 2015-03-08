@@ -9,14 +9,15 @@ class Admin::PostsController < Admin::BaseController
     end
   end
 
-  def update
-    @post.update(post_params)
-    respond_with @post, location: admin_posts_path
-  end
-
   def create
     @post.author = current_user
     @post.save
+    respond_with @post, location: admin_posts_path
+  end
+
+  def update
+    binding.pry
+    @post.update(post_params)
     respond_with @post, location: admin_posts_path
   end
 
@@ -33,6 +34,6 @@ class Admin::PostsController < Admin::BaseController
   private
 
   def post_params
-    params.require(:post).permit(:column_id, :title, :content, :slug, :summary, :title_link, :cover) if params[:post]
+    params.require(:post).permit(:column_id, :title, :content, :slug, :summary, :title_link, :cover, :tag_list) if params[:post]
   end
 end

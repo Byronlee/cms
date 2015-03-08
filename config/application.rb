@@ -50,6 +50,6 @@ module Kr
     end
 
     # ActsAsTaggableOn config
-    ActsAsTaggableOn.delimiter = [',', '，', '|']
+    #ActsAsTaggableOn.delimiter = [',', '，', '|']
   end
 end

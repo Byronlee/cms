@@ -31,7 +31,7 @@ gem 'enumerize'
 gem "carrierwave", "~> 0.10.0"
 gem 'carrierwave-upyun', '~> 0.1.6'
 gem "mini_magick", "~> 3.7.0"
-gem "acts-as-taggable-on", "~> 3.2.6"
+gem "acts-as-taggable-on", "~> 3.4"
 gem "cancancan", "~> 1.8.2"
 gem "fume-cancan", "~> 0.0.3"
 gem "rails-i18n", "~> 4.0.2"
