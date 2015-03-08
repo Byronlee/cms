@@ -14,12 +14,6 @@ class Admin::PostsController < Admin::BaseController
     respond_with @post, location: admin_posts_path
   end
 
-  def create
-    @post.author = current_user
-    @post.save
-    respond_with @post, location: admin_posts_path
-  end
-
   def show
     @post = Post.includes(:author, :column).find(params[:id])
     @host = request.host_with_port
