@@ -48,28 +48,30 @@ class Post < ActiveRecord::Base
   scope :created_on, ->(date) {
     where(:created_at => date.beginning_of_day..date.end_of_day)
   }
-  scope :hot_posts, -> { order("views_count desc, created_at desc") }
+  scope :hot_posts, -> { order('views_count desc, created_at desc') }
+
+  acts_as_taggable
 
   def self.today
-    self.created_on(Date.today)
+    created_on(Date.today)
   end
 
   def human_created_at
-    distance_of_time_in_words_to_now(self.created_at)
+    distance_of_time_in_words_to_now(created_at)
   end
 
   private
 
   def update_today_lastest_cache
     if !self.views_count_changed?
-      logger.info "perform the worker to update today lastest cache"
+      logger.info 'perform the worker to update today lastest cache'
       logger.info TodayLastestComponentWorker.perform_async
     end
   end
 
   def update_hot_posts_cache
     if self.views_count_changed?
-      logger.info "perform the worker to update hot posts cache"
+      logger.info 'perform the worker to update hot posts cache'
       logger.info HotPostsComponentWorker.perform_async
     end
   end
