@@ -50,11 +50,8 @@ class Post < ActiveRecord::Base
     where(:created_at => date.beginning_of_day..date.end_of_day)
   }
   scope :hot_posts, -> { order('views_count desc, created_at desc') }
-<<<<<<< HEAD
-=======
 
   acts_as_taggable
->>>>>>> 3d7b0ea8b44063e53d346bf42215619335916cea
 
   def self.today
     created_on(Date.today)
