@@ -19,7 +19,6 @@ class Krypton::Passport
       end
       return {}
     end
-    end
 
     def find(key)
       access_token.get("/api/v1/users/show", { id: key })
