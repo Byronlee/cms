@@ -1,3 +1,5 @@
+ActiveRecord::Base.connection.execute("select setval('newsflash_topic_colors_id_seq', 1, false)")
+NewsflashTopicColor.delete_all
 site_colors = [
   { site_name: 'Google',   color: '#ddd'  },
   { site_name: 'Baidu',    color: '#000'  },
