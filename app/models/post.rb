@@ -27,6 +27,7 @@ require 'action_view'
 class Post < ActiveRecord::Base
   include ActionView::Helpers::DateHelper
 
+  by_star_field :created_at
   paginates_per 20
   mount_uploader :cover, BaseUploader
 

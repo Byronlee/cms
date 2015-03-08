@@ -65,6 +65,8 @@ GEM
       thread_safe (~> 0.3, >= 0.3.1)
     bcrypt (3.1.9)
     builder (3.2.2)
+    by_star (2.2.1)
+      activesupport
     cancancan (1.8.4)
     capistrano (3.2.1)
       i18n
@@ -498,6 +500,7 @@ DEPENDENCIES
   acts_as_graph_object
   ancestry (~> 2.1.0)
   annotate
+  by_star
   cancancan (~> 1.8.2)
   capistrano-bundler
   capistrano-rails

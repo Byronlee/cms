@@ -38,6 +38,7 @@ gem "rails-i18n", "~> 4.0.2"
 gem "activerecord-typedstore", "0.5.0"
 gem "opengraph_parser"
 gem 'aasm'
+gem 'by_star'
 
 # views
 gem "simple_form", "~> 3.0.1"

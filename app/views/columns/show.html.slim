@@ -8,7 +8,7 @@
               h2.category-header__title.left  国内创业公司
               div.category-header__status.right.cf
                 span.week
-                  | 21
+                  = @column.weekly_posts_count
                   i  Weekly
                 span.total
                   = @posts.total_count

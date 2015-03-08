@@ -25,9 +25,12 @@ class Column < ActiveRecord::Base
   validates_uniqueness_of :slug
 
   has_many :posts, dependent: :destroy
-  has_many :contributors, class_name: User.to_s, foreign_key:'user_ids'
+  has_many :contributors, class_name: User.to_s, foreign_key: :user_ids
   has_and_belongs_to_many :info_flows
 
   scope :info_flows, -> { where(in_info_flow: true) }
 
+  def weekly_posts_count
+    posts.by_week.count
+  end
 end
