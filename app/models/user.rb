@@ -77,6 +77,13 @@ class User < ActiveRecord::Base
     [:editor].include? self.role.to_sym
   end
 
+  def self.find_by_origin_ids(krypton_id)
+    emails = Krypton::Passport.get_origin_ids(krypton_id).map do |provider, uid|
+      "#{provider}+#{uid}@36kr.com"
+    end
+    User.where(email: emails).first
+  end
+
   protected
 
   def email_required?
