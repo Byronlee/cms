@@ -23,37 +23,37 @@
                 h1
                   a href="/p/220069.html" title="SaaS+云服务的中小企业人力资源管理平台“金柚网”，从社保管理切入"  SaaS+云服务的中小企业人力资源管理平台“金柚网”，从社保管理切入
         .articles
-          - (1..15).each do
+          - @posts.each do |post|
             article.posts.post-1.cf
               .info.cf
                 .topic.left
                   span
-                   a class="#{"cn-startups"}" href="/category/cn-startups"  创业公司
-                   |  /  startups
+                   a class="#{@column.slug}" href="/category/#{@column.slug}"  = @column.name
+                   |  /  #{@column.slug}
                 .postmeta.right
-                  a href="/chloe1988" class="uname user_Chloe1988" data-name="Chloe" target="_blank"  Chloe
-                  | • 02/08 12:24
+                  a href="/chloe1988" class="uname user_Chloe1988" data-name="Chloe" target="_blank"
+                    = post.author.try(:name)
+                  |  •  #{post.human_created_at}
               .left.left-col
                 .meta
-                  a title="回应人数" href="/p/219566.html"
-                    i class="icon icon-share"  7
+                  a title="评论数量" href= post_path(post)
+                    i class="icon icon-share"
+                    = post.comments_count || 0
                 div.image.feature-img.thumb-180
                   a href="/p/219566.html"
-                    img alt="Blank" class="image lazyload loaded" data-src="http://a.36krcnd.com/photo/2015/7f4c09dfe10444bb238e4c7fc4acc7e8.png!slider" src="http://a.36krcnd.com/photo/2015/7f4c09dfe10444bb238e4c7fc4acc7e8.png!slider"
+                    img alt="Blank" class="image lazyload loaded" data-src="#{post.cover_url}" src="#{post.cover_url}"
               .right-col
                 h1
-                  a href="/p/219566.html" data-no-turbolink="true" onclick="javascript:_gaq.push(['_trackPageview', '/click/index_newtab/']);" target="_blank" title="同志社交应用Blued进军世界上首个同性婚姻合法化国家荷兰"  同志社交应用Blued进军世界上首个同性婚姻合法化国家荷兰
+                  a href="#{post_path(post)}" data-no-turbolink="true" onclick="javascript:_gaq.push(['_trackPageview', '/click/index_newtab/']);" target="_blank" title="#{post.title}"  = post.title
                 p
-                  |Gay的世界很精彩，同志社交应用Blued都进军自由之都荷兰了，是国内圈里第一个。
+                  = post.summary
 
           .pagination.cf
             ul
               li.prev.previous_page.left
-                a rel="prev" href="/category/cn-startups/4"
-                  |← 上一页
+                = link_to_previous_page @posts, '← 上一页', rel: "prev"
               li.next.next_page.right
-                a rel="next" href="/category/cn-startups/6"
-                  |下一页 →
+                = link_to_next_page @posts, '下一页 →', rel: "next"
   .aside
     = render_cell :sidebar, :today
     = render_cell :sidebar, :social

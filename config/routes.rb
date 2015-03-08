@@ -62,7 +62,8 @@ Rails.application.routes.draw do
       get :normal_list, on: :collection
     end
   end
-  resources :columns, only: [:index, :show], param: :slug
+  resources :columns, only: [:index]
+  match '/columns/:slug(/:page)', :controller => 'columns', :action => 'show', via: :get
   resources :pages, only: [:show], param: :slug
   get :feed, to: 'posts#feed', defaults: { format: :rss }
 end
