@@ -1,8 +1,10 @@
 class Krypton::Passport
   class << self
+    include Rails.application.routes.url_helpers
     def invite(email)
       access_token.post("/api/v1/users/invite", params: {
         email: email,
+        redirect_uri: root_url,
         notification: {
           subject: Settings.users.invitation.subject,
           body: Settings.users.invitation.body,
