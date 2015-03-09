@@ -38,8 +38,8 @@ class Post < ActiveRecord::Base
   belongs_to :author, class_name: User.to_s, foreign_key: 'user_id'
   has_many :comments, as: :commentable, dependent: :destroy
 
-  after_save :update_today_lastest_cache, :update_hot_posts_cache, :update_weekly_hot
-  after_destroy :update_today_lastest_cache, :update_hot_posts_cache, :update_weekly_hot
+  after_save :update_today_lastest_cache, :update_hot_posts_cache, :update_weekly_hot, :update_info_flows_cache
+  after_destroy :update_today_lastest_cache, :update_hot_posts_cache, :update_weekly_hot, :update_info_flows_cache
 
   scope :created_on, ->(date) {
     where(:created_at => date.beginning_of_day..date.end_of_day)
@@ -72,6 +72,12 @@ class Post < ActiveRecord::Base
   def update_weekly_hot
     logger.info 'perform the worker to update weekly newest cache'
     logger.info WeeklyHotPostsComponentWorker.perform_async(column_id)
+  end
+
+  def update_info_flows_cache
+    self.column && self.column.info_flows.each do | info_flow |
+      info_flow.update_info_flows_cache
+    end
   end
 
 end

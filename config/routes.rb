@@ -67,4 +67,8 @@ Rails.application.routes.draw do
   match '/columns/:slug(/:page)', :controller => 'columns', :action => 'show', via: :get
   resources :pages, only: [:show], param: :slug
   get :feed, to: 'posts#feed', defaults: { format: :rss }
+  resources :info_flow, only: [] do
+    get :lastest, on: :collection
+    get :lastest_cache, on: :collection
+  end
 end

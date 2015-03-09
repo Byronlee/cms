@@ -1,6 +1,7 @@
 .main
   head-lines
-  info-flows
+  / info-flows
+  div.contetn#lastest
   .aside
     = render_cell :sidebar, :tags
     = render_cell :sidebar, :social
@@ -10,3 +11,9 @@
   = render_cell :sidebar, :ad_middle, position: :home_page
   = render_cell :sidebar, :sponsor
   = render_cell :sidebar, :excellent_comments
+
+javascript:
+  $(document).ready(function(ret, status){
+    $.get('/info_flow/lastest_cache.js', function(){
+    });
+  });

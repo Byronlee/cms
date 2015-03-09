@@ -14,4 +14,15 @@ class Ad < ActiveRecord::Base
 
   validates :position, :content, presence: true
   validates_uniqueness_of :position
+
+  after_save :update_info_flows_cache
+  after_destroy :update_info_flows_cache
+
+  private
+
+  def update_info_flows_cache
+    self.info_flows.each do | info_flow |
+      info_flow.update_info_flows_cache
+    end
+  end
 end
