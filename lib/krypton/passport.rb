@@ -1,14 +1,20 @@
 class Krypton::Passport
   class << self
     def invite(email)
-      access_token.post("/api/v1/users/invite", {
-        email: email
+      access_token.post("/api/v1/users/invite", params: {
+        email: email,
+        notification: {
+          subject: Settings.users.invitation.subject,
+          body: Settings.users.invitation.body,
+        }
       }).parsed
+      true
     rescue OAuth2::Error => e
       case e.response.status
       when 422
         # email 有误(格式不正确 / 用户已经存在)
       end
+      return false
     end
 
     def get_origin_ids(uid)
