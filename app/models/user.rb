@@ -18,6 +18,8 @@
 #  updated_at             :datetime
 #  role                   :string(255)
 #  authentication_token   :string(255)
+#  name                   :string(255)
+#  bio                    :text
 #
 
 class User < ActiveRecord::Base
