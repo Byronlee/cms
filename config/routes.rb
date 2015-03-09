@@ -69,6 +69,5 @@ Rails.application.routes.draw do
   get :feed, to: 'posts#feed', defaults: { format: :rss }
   resources :info_flow, only: [] do
     get :lastest, on: :collection
-    get :lastest_cache, on: :collection
   end
 end
