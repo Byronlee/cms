@@ -1,14 +1,12 @@
-- @comments.each do | item |
-    #comment-.comment.cf
+- @comments.each_with_index do | item, index |
+    .comment.cf id="comment-#{index}"
       .avatar.left
         a[href=""]
           img[src="/assets/original/a-1.jpg" alt=""]
       .comment-wrapper
         .postmeta
           a[href="#"]
-            = item.user.name
-            |  •
-            =  item.human_created_at
+            = "#{item.user.name} • #{item.human_created_at}"
         .commemt-main
           p  = item.content
         .opts
@@ -20,5 +18,5 @@
             li
               a.reply[href=""]
                 i.icon-reply
-                | 0
+                = "#{index.next}楼"
 
