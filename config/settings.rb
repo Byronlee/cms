@@ -29,7 +29,7 @@ settings.cookie = {
 
 settings.users = {
   invitation: {
-    subject: "36氪：羊年 Duang 一下，我们给你准备好了更好的账号登录体验(需要您确认)",
-    body: File.read(Rails.root.join("doc/mails/invitation.md"))
+    subject: '36氪：羊年 Duang 一下，我们给你准备好了更好的账号登录体验(需要您确认)',
+    body: File.read(Rails.root.join('doc/mails/invitation.md'))
   }
 }
