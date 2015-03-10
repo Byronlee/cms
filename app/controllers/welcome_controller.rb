@@ -4,6 +4,7 @@ class WelcomeController < ApplicationController
   def index
     flow_name = params[:info_flow_name] || '主站'
     @posts = Post.limit(20)
-    @posts_with_ads = JSON.parse Redis::HashKey.new('info_flow')[flow_name]
+    flow_data = Redis::HashKey.new('info_flow')[flow_name]
+    @posts_with_ads = flow_data.nil? ? {} : JSON.parse(Redis::HashKey.new('info_flow')[flow_name])
   end
 end
