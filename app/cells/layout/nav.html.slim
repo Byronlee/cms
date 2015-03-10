@@ -87,8 +87,8 @@ header.header.header-normal.scrolled
           a.second-nav__submit href="http://localhost:3000/pages/contribute" 投稿
         li
           a.second-nav__request href="http://report.36kr.com" 寻求报道
-        li.avatar
-          - if @current_user
+        - if @current_user
+          li.avatar.drop
             a.second-nav__account.cf href="javascript:void(0)"
               img.avatar-small.left alt="Violin" height="24" src="http://a.36krcnd.com/user/default_avatars/Violin.png!avatar" width="24"
                 span.right  = @current_user.name
@@ -106,5 +106,6 @@ header.header.header-normal.scrolled
                       a href="/chad_liu/favorites" data-no-turbolink="true"  我的收藏
                     li.last
                       = link_to "注销登录", destroy_user_session_path, method: :delete, class:"dropdown_login_out_link", rel:"nofollow"
-          - else
-            a.second-nav__login.overlay href="#{user_omniauth_authorize_path(provider: :krypton)}"  登录
+        - else
+          li
+            a.second-nav__login href="#{user_omniauth_authorize_path(provider: :krypton)}"  登录
