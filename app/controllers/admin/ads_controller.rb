@@ -2,7 +2,7 @@ class Admin::AdsController < Admin::BaseController
   load_and_authorize_resource
 
   def index
-    @ads = Ad.order('created_at desc').page params[:page]
+    @ads = Ad.order('position asc').page params[:page]
   end
 
   def update

@@ -2,20 +2,25 @@
 #
 # Table name: posts
 #
-#  id         :integer          not null, primary key
-#  title      :string(255)
-#  summary    :string(255)
-#  content    :text
-#  title_link :string(255)
-#  must_read  :boolean
-#  slug       :string(255)
-#  state      :string(255)
-#  draft_key  :string(255)
-#  column_id  :integer
-#  user_id    :integer
-#  created_at :datetime
-#  updated_at :datetime
-#  cover      :string(255)
+#  id             :integer          not null, primary key
+#  title          :string(255)
+#  summary        :text
+#  content        :text
+#  title_link     :string(255)
+#  must_read      :boolean
+#  slug           :string(255)
+#  state          :string(255)
+#  draft_key      :string(255)
+#  column_id      :integer
+#  user_id        :integer
+#  created_at     :datetime
+#  updated_at     :datetime
+#  cover          :string(255)
+#  source         :string(255)
+#  comments_count :integer
+#  md_content     :text
+#  url_code       :integer
+#  views_count    :integer          default(0)
 #
 
 require 'action_view'
@@ -38,8 +43,8 @@ class Post < ActiveRecord::Base
   belongs_to :author, class_name: User.to_s, foreign_key: 'user_id'
   has_many :comments, as: :commentable, dependent: :destroy
 
-  after_save :update_today_lastest_cache, :update_hot_posts_cache, :update_weekly_hot
-  after_destroy :update_today_lastest_cache, :update_hot_posts_cache, :update_weekly_hot
+  after_save :update_today_lastest_cache, :update_hot_posts_cache, :update_weekly_hot, :update_info_flows_cache
+  after_destroy :update_today_lastest_cache, :update_hot_posts_cache, :update_weekly_hot, :update_info_flows_cache
 
   scope :created_on, ->(date) {
     where(:created_at => date.beginning_of_day..date.end_of_day)
@@ -72,6 +77,12 @@ class Post < ActiveRecord::Base
   def update_weekly_hot
     logger.info 'perform the worker to update weekly newest cache'
     logger.info WeeklyHotPostsComponentWorker.perform_async(column_id)
+  end
+
+  def update_info_flows_cache
+    self.column && self.column.info_flows.each do | info_flow |
+      info_flow.update_info_flows_cache
+    end
   end
 
 end

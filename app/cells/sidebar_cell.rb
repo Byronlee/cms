@@ -1,5 +1,6 @@
 class SidebarCell < Cell::Rails
-  def ad_top
+  def ad_top(args)
+    @position = args[:position]
     render
   end
 
