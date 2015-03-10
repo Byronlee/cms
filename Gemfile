@@ -25,7 +25,7 @@ gem 'redis-stat'
 gem 'newrelic-redis'
 gem 'sidekiq', '~> 3.1.2'
 gem 'faraday', '~> 0.9.0'
-
+gem 'ruby-progressbar', "~> 1.7.1"
 # models
 gem "ancestry", "~> 2.1.0"
 gem 'enumerize'
