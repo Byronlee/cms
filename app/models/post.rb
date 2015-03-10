@@ -80,7 +80,7 @@ class Post < ActiveRecord::Base
   end
 
   def update_info_flows_cache
-    self.column && self.column.info_flows.each do | info_flow |
+    self.column && self.column.info_flows.each do |info_flow|
       info_flow.update_info_flows_cache
     end
   end

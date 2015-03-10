@@ -29,7 +29,7 @@
                   |  •  #{post.human_created_at}
               .left.left-col
                 .meta
-                  a title="评论数量" href= post_path(post)
+                  a title="评论数量" href= post.title_link || post_path(post)
                     i class="icon icon-share"
                     = post.comments_count || 0
                 div.image.feature-img.thumb-180
@@ -37,7 +37,7 @@
                     img alt="Blank" class="image lazyload loaded" data-src="#{post.cover_url}" src="#{post.cover_url}"
               .right-col
                 h1
-                  a href="#{post_path(post)}" data-no-turbolink="true" onclick="javascript:_gaq.push(['_trackPageview', '/click/index_newtab/']);" target="_blank" title="#{post.title}"  = post.title
+                  a href="#{post.title_link || post_path(post)}" data-no-turbolink="true" onclick="javascript:_gaq.push(['_trackPageview', '/click/index_newtab/']);" target="_blank" title="#{post.title}"  = post.title
                 p
                   = post.summary
 
