@@ -62,6 +62,7 @@ gem 'newrelic_rpm'
 gem 'slack-notifier'
 gem 'exception_notification'
 gem 'httparty'
+gem 'intercom-rails'
 
 # api
 gem 'grape' , "~> 0.10.1"

@@ -213,6 +213,8 @@ GEM
     i18n (0.7.0)
     ice_nine (0.11.1)
     insensitive_hash (0.3.3)
+    intercom-rails (0.2.27)
+      activesupport (> 3.0)
     jbuilder (2.2.6)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -534,6 +536,7 @@ DEPENDENCIES
   guard-rspec
   hashie (~> 3.3.2)
   httparty
+  intercom-rails
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks (~> 2.0.2)
