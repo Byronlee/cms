@@ -7,6 +7,9 @@
 #  order_num  :integer
 #  created_at :datetime
 #  updated_at :datetime
+#  title      :string(255)
+#  type       :string(255)
+#  image      :string(255)
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

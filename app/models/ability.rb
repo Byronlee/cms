@@ -23,11 +23,11 @@ class Ability
   end
 
   # 编辑
-  def editor
+  def editor(user)
   end
 
   # 管理员
-  def admin
+  def admin(user)
     can :manage, :all
   end
 

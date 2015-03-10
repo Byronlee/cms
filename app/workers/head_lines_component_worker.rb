@@ -1,14 +1,27 @@
 class HeadLinesComponentWorker < BaseWorker
   def perform
-    head_lines = HeadLine.order('updated_at desc').limit(5)
-    head_lines = head_lines.sort { |a, b| b.order_num.to_i <=> a.order_num.to_i }
-    @collections = head_lines.inject([]) do | result, head_line |
-      result << prase(head_line.url)
-    end
-    Redis::HashKey.new('head_lines')['list'] = @collections.to_json
+    fetch_meta_info
+    cache_top_list_to_redis
   end
 
   private
+
+  def fetch_meta_info
+    HeadLine.order('created_at asc').each do |head_line|
+      next if head_line.title.present?
+      metas = prase(head_line.url)
+      head_line.title = metas[:title]
+      head_line.type = metas[:type]
+      head_line.image = metas[:image]
+      head_line.save
+    end
+  end
+
+  def cache_top_list_to_redis
+    head_lines = HeadLine.order('updated_at desc').limit(5)
+    head_lines = head_lines.sort { |a, b| b.order_num.to_i <=> a.order_num.to_i }
+    Redis::HashKey.new('head_lines')['list'] = head_lines.to_json
+  end
 
   def prase(url)
     og = OpenGraph.new(url)
