@@ -3,7 +3,7 @@
 # Table name: users
 #
 #  id                     :integer          not null, primary key
-#  email                  :string(255)
+#  email                  :string(255)      default("")
 #  phone                  :string(255)
 #  encrypted_password     :string(255)      default(""), not null
 #  reset_password_token   :string(255)
@@ -75,6 +75,13 @@ class User < ActiveRecord::Base
 
   def may_prepublish?
     [:editor].include? self.role.to_sym
+  end
+
+  def self.find_by_origin_ids(krypton_id)
+    emails = Krypton::Passport.get_origin_ids(krypton_id).map do |provider, uid|
+      "#{provider}+#{uid}@36kr.com"
+    end
+    User.where(email: emails).first
   end
 
   protected

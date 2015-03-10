@@ -42,4 +42,6 @@ Rails.application.configure do
     # Google Analytics
   GA.tracker = 'UA-42863591-3'
 
+  Rails.application.routes.default_url_options[:host] = "localhost:3000"
+  config.action_mailer.default_url_options = { host: "localhost:3000" }
 end

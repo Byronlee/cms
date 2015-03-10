@@ -3,11 +3,13 @@ require 'securerandom'
 FactoryGirl.define do
   factory :authentication do
     user
-    auth do
+    sequence(:raw) do |n| n
       {
         "provider" => "krpton",
         "uid" => SecureRandom.hex(32),
         "info" => {
+          "email" => "email#{n}@example.com",
+          "phone" => 13412345678 + n,
           "nickname" => "Byronlee",
           "sex" => 1,
           "province" => "Beijing",
@@ -18,8 +20,8 @@ FactoryGirl.define do
         }
       }
     end
-    uid { auth["uid"] }
-    provider { auth["provider"] }
+    uid { raw["uid"] }
+    provider { raw["provider"] }
 
   end
 end

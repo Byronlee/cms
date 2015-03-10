@@ -3,7 +3,7 @@
 # Table name: users
 #
 #  id                     :integer          not null, primary key
-#  email                  :string(255)
+#  email                  :string(255)      default("")
 #  phone                  :string(255)
 #  encrypted_password     :string(255)      default(""), not null
 #  reset_password_token   :string(255)
@@ -26,7 +26,7 @@ require 'spec_helper'
 
 describe User do
 	let(:user) { create :user }
-	
+
 	it "用户默认角色是reader" do
 		expect(user.role).to eql("reader")
 		expect(user.role.reader?).to be_true
