@@ -9,7 +9,7 @@ namespace :users do
     total_count = conditions.count
     puts "共需邀请 #{total_count} 位用户"
     succesed = failed = 0
-    progressbar = ProgressBar.create total: total_count, length: 40
+    progressbar = ProgressBar.create total: total_count
     conditions.find_each do |user|
       progressbar.increment
       if Krypton::Passport.invite(user.email)
