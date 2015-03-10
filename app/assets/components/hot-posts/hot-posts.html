@@ -7,7 +7,7 @@
         <template repeat="{{post in posts}}">
           <article class="sidebar-popular__posts cf">
             <div class="meta"></div>
-            <div class="image thumb-60 left"><img src="{{post.cover.url}}" alt=""></div>
+            <div class="image thumb-60 left"><img src="{{post.cover_real_url}}" alt=""></div>
             <h1><a ref="/posts/{{post.id}}" href="javacript:void(0)" onclick="performLinkWithRel(this)" title="{{post.title}}">{{post.title}}<a></h1>
           </article>
         </template>

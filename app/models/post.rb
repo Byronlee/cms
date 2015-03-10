@@ -32,7 +32,7 @@ class Post < ActiveRecord::Base
   mount_uploader :cover, BaseUploader
 
   validates_presence_of :title, :content
-  validates_presence_of :summary, :title_link, :slug, if: -> { persisted? }
+  validates_presence_of :summary, :slug, if: -> { persisted? }
 
   validates :slug,    length: { maximum: 14 }
   validates :summary, length: { maximum: 40 }
@@ -59,6 +59,11 @@ class Post < ActiveRecord::Base
 
   def human_created_at
     distance_of_time_in_words_to_now(created_at)
+  end
+
+  def cover_real_url
+    return nil if cover_identifier.nil?
+    cover_identifier.include?('http://') ? cover_identifier : cover_url
   end
 
   private
