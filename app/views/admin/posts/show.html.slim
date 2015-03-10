@@ -19,20 +19,20 @@ div#content-header
 div.container-fluid
   = bootstrap_flash
   div.span12
-    img src==@post.cover_url
+    img src==@post.cover_real_url
 
   div.span12 style="margin-top:20px;"
     span
       b
-        |所属专栏： 
+        |所属专栏：
       = @post.column.try(:name)
     span style="margin-left:20px;"
       b
-        |作者： 
+        |作者：
       = @post.author.try(:name)
     span style="margin-left:20px;"
       b
-        |创建时间： 
+        |创建时间：
       = @post.created_at
 
   div.span12 style="margin-top:20px;"

@@ -32,7 +32,7 @@ class Post < ActiveRecord::Base
   mount_uploader :cover, BaseUploader
 
   validates_presence_of :title, :content
-  validates_presence_of :summary, :title_link, :slug, if: -> { persisted? }
+  validates_presence_of :summary, :slug, if: -> { persisted? }
 
   validates :slug,    length: { maximum: 14 }
   validates :summary, length: { maximum: 40 }
@@ -61,6 +61,11 @@ class Post < ActiveRecord::Base
     distance_of_time_in_words_to_now(created_at)
   end
 
+  def cover_real_url
+    return nil if cover_identifier.nil?
+    cover_identifier.include?('http://') ? cover_identifier : cover_url
+  end
+
   private
 
   def update_today_lastest_cache
@@ -80,7 +85,7 @@ class Post < ActiveRecord::Base
   end
 
   def update_info_flows_cache
-    self.column && self.column.info_flows.each do | info_flow |
+    self.column && self.column.info_flows.each do |info_flow|
       info_flow.update_info_flows_cache
     end
   end

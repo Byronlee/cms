@@ -16,7 +16,6 @@ class Admin::PostsController < Admin::BaseController
   end
 
   def update
-    binding.pry
     @post.update(post_params)
     respond_with @post, location: admin_posts_path
   end
