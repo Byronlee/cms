@@ -1,2 +1,11 @@
-h1 InfoFlow#index
-p Find me in app/views/info_flow/index.html.slim
+.main
+  = render 'info_flow/list', :posts_with_ads => @posts_with_ads, :pagination => true, :prev_page => @prev_page, :next_page => @next_page
+  .aside
+    = render_cell :sidebar, :today
+    = render_cell :sidebar, :social
+
+.sidebar
+  = render_cell :sidebar, :ad_top, position: :column_show
+  = render_cell :sidebar, :hot_posts
+  = render_cell :sidebar, :excellent_comments
+  = render_cell :sidebar, :new_posts

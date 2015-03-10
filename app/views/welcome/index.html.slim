@@ -1,7 +1,7 @@
 .main
   head-lines
   / info-flows
-  = render 'info_flow/list', :posts_with_ads => @posts_with_ads["posts_with_ads"]
+  = render 'info_flow/list', :posts_with_ads => @posts_with_ads["posts_with_ads"], :pagination => false
   .aside
     = render_cell :sidebar, :tags
     = render_cell :sidebar, :social

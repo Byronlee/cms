@@ -40,11 +40,20 @@
     </div>
     <div class="pagination cf">
       <ul>
-        <li class="next next_page right">
-          <a rel="next" href="<%=  %>">
-            More <i class="icon-next"></i>
-          </a>
-        </li>
+        <% unless pagination %>
+          <li class="next next_page right">
+            <a rel="next" href="/info_flow/lastest">
+              More <i class="icon-next"></i>
+            </a>
+          </li>
+        <% else %>
+         <li class="prev previous_page left">
+            <%= link_to '← 上一页', "/info_flow/lastest/#{prev_page}", rel:"prev" if prev_page %>
+          </li>
+          <li class="next next_page right">
+            <%= link_to '下一页 →', "/info_flow/lastest/#{next_page}", rel:"next" if next_page %>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>
