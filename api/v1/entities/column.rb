@@ -9,6 +9,8 @@ module V1
       expose :icon,       documentation: ''
       expose :created_at, documentation: ''
       expose :updated_at, documentation: ''
+      expose :posts_count,documentation: ''
+      expose :slug, documentation: ''
     end
   end
 end

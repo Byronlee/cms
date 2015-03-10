@@ -4,6 +4,9 @@ module V1
       format_with(:iso8601) {|t| t.iso8601 if t }
       expose :id
       expose :url
+      expose :title
+      expose :type
+      expose :image
       expose :order_num
       expose :created_at
       expose :updated_at
