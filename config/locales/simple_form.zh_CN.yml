@@ -20,6 +20,9 @@ zh-CN:
       head_line:
         url: 网址
         order_num: 序号
+        title: 文章标题
+        post_type: 文章类型
+        image: 图片链接
       column:
         name: 专栏名称
         introduce: 专栏介绍

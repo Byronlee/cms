@@ -11,7 +11,7 @@ class HeadLinesComponentWorker < BaseWorker
       next if head_line.title.present?
       metas = prase(head_line.url)
       head_line.title = metas[:title]
-      head_line.type = metas[:type]
+      head_line.post_type = metas[:type]
       head_line.image = metas[:image]
       head_line.save
     end
