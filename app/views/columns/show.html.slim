@@ -15,38 +15,39 @@
                   i  Total
             p.category-header__bio  ...
           weekly-newest-posts
-          articles
-          - @posts.each do |post|
-            article.posts.post-1.cf
-              .info.cf
-                .topic.left
-                  span
-                   a class="#{@column.slug}" href="/category/#{@column.slug}"  = @column.name
-                   |  /  #{@column.slug}
-                .postmeta.right
-                  a href="/chloe1988" class="uname user_Chloe1988" data-name="Chloe" target="_blank"
-                    = post.author.try(:name)
-                  |  •  #{post.human_created_at}
-              .left.left-col
-                .meta
-                  a title="评论数量" href="#{post.title_link || post_path(post)}"
-                    i class="icon icon-share"
-                    = post.comments_count || 0
-                div.image.feature-img.thumb-180
-                  a href="/p/219566.html"
-                    img alt="Blank" class="image lazyload loaded" data-src="#{post.cover_real_url}" src="#{post.cover_real_url}"
-              .right-col
-                h1
-                  a href="#{post.title_link || post_path(post)}" data-no-turbolink="true" onclick="javascript:_gaq.push(['_trackPageview', '/click/index_newtab/']);" target="_blank" title="#{post.title}"  = post.title
-                p
-                  = post.summary
+          div.articles
+            articles
+              - @posts.each do |post|
+                article.posts.post-1.cf
+                  .info.cf
+                    .topic.left
+                      span
+                        a class="#{@column.slug}" href="/category/#{@column.slug}"  = @column.name
+                        |  /  #{@column.slug}
+                    .postmeta.right
+                      a href="/chloe1988" class="uname user_Chloe1988" data-name="Chloe" target="_blank"
+                        = post.author.try(:name)
+                      |  •  #{post.human_created_at}
+                  .left.left-col
+                    .meta
+                      a title="评论数量" href="#{post.title_link || post_path(post)}"
+                        i class="icon icon-share"
+                        = post.comments_count || 0
+                    div.image.feature-img.thumb-180
+                      a href="/p/219566.html"
+                        img alt="Blank" class="image lazyload loaded" data-src="#{post.cover_real_url}" src="#{post.cover_real_url}"
+                  .right-col
+                    h1
+                      a href="#{post.title_link || post_path(post)}" data-no-turbolink="true" onclick="javascript:_gaq.push(['_trackPageview', '/click/index_newtab/']);" target="_blank" title="#{post.title}"  = post.title
+                    p
+                      = raw post.summary
 
-          .pagination.cf
-            ul
-              li.prev.previous_page.left
-                = link_to_previous_page @posts, '← 上一页', rel: "prev"
-              li.next.next_page.right
-                = link_to_next_page @posts, '下一页 →', rel: "next"
+            .pagination.cf
+              ul
+                li.prev.previous_page.left
+                  = link_to_previous_page @posts, '← 上一页', rel: "prev"
+                li.next.next_page.right
+                  = link_to_next_page @posts, '下一页 →', rel: "next"
   .aside
     = render_cell :sidebar, :today
     = render_cell :sidebar, :social
