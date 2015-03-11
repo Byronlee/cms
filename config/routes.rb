@@ -2,6 +2,8 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
 
+  get 'tags/show'
+
   mount API::API => '/'
   mount GrapeSwaggerRails::Engine => '/api/a14f30b8405857de59e098af4d1d07bda752a2dc'
   mount Sidekiq::Web => '/sidekiq'
@@ -68,4 +70,6 @@ Rails.application.routes.draw do
   resources :pages, only: [:show], param: :slug
   get :feed, to: 'posts#feed', defaults: { format: :rss }
   match '/info_flow/lastest(/:page)', :controller => 'info_flow', :action => 'lastest', via: :get
+  match '/tag/:tag', :controller => 'tags', :action => 'show', via: :get
+
 end
