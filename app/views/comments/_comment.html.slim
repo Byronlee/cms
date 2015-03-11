@@ -1,0 +1,12 @@
+- comment ||= @comment
+.comment.cf id="comment-#{comment.id}"
+  .avatar.left
+    a[href=""]
+      img[src="/assets/original/a-1.jpg" alt=""]
+  .comment-wrapper
+    .postmeta
+      a.user_info_name[href="#"] = comment.user.try(:name)
+      = " • #{comment.human_created_at}"
+    .commemt-main
+      p  = comment.content
+    .opts

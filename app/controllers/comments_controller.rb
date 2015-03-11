@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
 
   def index
     @commentable = find_commentable
-    @comments = @commentable.comments.order('created_at asc')
+    @comments = @commentable.comments.order('created_at desc')
       .includes(:commentable, user:[:krypton_authentication])
     #   .excellent.order('created_at asc')
     # @comments_normal_count = @commentable.comments
@@ -32,7 +32,8 @@ class CommentsController < ApplicationController
     @commentable = find_commentable
     @comment = @commentable.comments.build(comment_params)
     @comment.user = current_user
-    render :json => { 'result' => 'success' }
+    @comment.save
+    render '_comment', :layout => false
     # if @comment.save
     #   redirect_to :back, :flash => { :info => '创建评论成功' }
     # else
