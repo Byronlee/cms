@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150310111853) do
+ActiveRecord::Schema.define(version: 20150311051351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,13 +85,6 @@ ActiveRecord::Schema.define(version: 20150310111853) do
     t.datetime "updated_at"
   end
 
-  create_table "info_flows_columns", force: true do |t|
-    t.integer  "info_flow_id"
-    t.integer  "column_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "newsflash_topic_colors", force: true do |t|
     t.string   "site_name"
     t.string   "color"
@@ -131,7 +124,7 @@ ActiveRecord::Schema.define(version: 20150310111853) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "cover"
+    t.text     "cover"
     t.string   "source"
     t.integer  "comments_count"
     t.text     "md_content"

@@ -15,7 +15,7 @@
 #  user_id        :integer
 #  created_at     :datetime
 #  updated_at     :datetime
-#  cover          :string(255)
+#  cover          :text
 #  source         :string(255)
 #  comments_count :integer
 #  md_content     :text
