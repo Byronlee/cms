@@ -5,7 +5,7 @@
         .category
           .category-header.cf
             .category-header__info.cf
-              h2.category-header__title.left  = @tag
+              h2.category-header__title.left  = show_tag_name(@tag)
               div.category-header__status.right.cf
                 span.week
                   = @column.try(:weekly_posts_count) || 0
