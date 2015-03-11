@@ -1,0 +1,8 @@
+- content_for :og_meta do
+  meta property="og:title-liuwm" content== @post.title
+  meta property="og:type" content="article"
+  meta property="og:url" content== post_url(@post)
+  meta property="og:image" content== "http://#{@host}#{@post.cover_real_url}"
+  meta property="og:image:secure_url" content= "http://#{@host}#{@post.cover_real_url}"
+  meta property="og:image:type" content== @post.cover.try(:content_type)
+  meta property="og:image:is_display_title" content="true"

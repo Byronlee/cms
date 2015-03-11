@@ -9,6 +9,9 @@ html.no-js
     = render_cell :head, :ipad_retina_media
     = render_cell :head, :twitter_card_meta
     = render_cell :head, :facebook_open_graph_meta
+    /!--opengraph meata start
+    = content_for?(:og_meta) ? yield(:og_meta) : ''
+    /!--opengraph meata end
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
     = javascript_include_tag "#{Settings.oauth.krypton.host}/assets/helper.js"
