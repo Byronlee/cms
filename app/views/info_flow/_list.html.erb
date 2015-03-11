@@ -41,11 +41,13 @@
     <div class="pagination cf">
       <ul>
         <% unless pagination %>
+          <% if posts_with_ads.present? %>
           <li class="next next_page right">
             <a rel="next" href="/info_flow/lastest">
               More <i class="icon-next"></i>
             </a>
           </li>
+          <% end %>
         <% else %>
          <li class="prev previous_page left">
             <%= link_to '← 上一页', "/info_flow/lastest/#{prev_page}", rel:"prev" if prev_page %>
