@@ -1,0 +1,20 @@
+- comment ||= @comment
+.comment.cf id="comment-"
+  .avatar.left
+    a[href=""]
+      img[src="/assets/original/a-1.jpg" alt=""]
+  .comment-wrapper
+    .postmeta
+      a[href="#"]
+        = "#{comment.user.name} • #{comment.human_created_at}"
+    .commemt-main
+      p  = comment.content
+    .opts
+      ul
+        li
+          a.like[href=""]
+            i.icon-heart
+            | 19
+        li
+          a.reply[href=""]
+            i.icon-reply
