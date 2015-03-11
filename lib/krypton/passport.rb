@@ -1,4 +1,16 @@
 class Krypton::Passport
+  def initialize(access_token_hash)
+    @access_token_hash = access_token_hash
+  end
+
+  def me
+    Hashie::Mash.new access_token.get("/api/v1/users/me").parsed
+  end
+
+  def access_token
+    @access_token ||= OAuth2::AccessToken.new self.class.client, @access_token_hash
+  end
+
   class << self
     include Rails.application.routes.url_helpers
     def invite(email)
@@ -20,7 +32,7 @@ class Krypton::Passport
     end
 
     def get_origin_ids(uid)
-      access_token.get("/api/v1/users/#{uid}/origin_ids").parsed
+      Hashie::Mash.new access_token.get("/api/v1/users/#{uid}/origin_ids").parsed
     rescue OAuth2::Error => e
       case e.response.status
       when 404
@@ -29,7 +41,7 @@ class Krypton::Passport
     end
 
     def find(key)
-      access_token.get("/api/v1/users/show", { id: key })
+      Hashie::Mash.new access_token.get("/api/v1/users/show", params: { id: key }).parsed
     rescue OAuth2::Error => e
       case e.response.status
       when 404
@@ -39,11 +51,14 @@ class Krypton::Passport
       end
     end
 
+    def client
+      @client ||= OAuth2::Client.new(Settings.oauth.krypton.app_id, Settings.oauth.krypton.secret,
+        site: Settings.oauth.krypton.host)
+    end
+
   private
     def access_token
       @access_token ||= begin
-        client = OAuth2::Client.new(Settings.oauth.krypton.app_id, Settings.oauth.krypton.secret,
-          site: Settings.oauth.krypton.host)
         if json = $redis.get(:krypton_passport_access_token)
           access_token = OAuth2::AccessToken.from_hash client, JSON.parse(json)
         else
