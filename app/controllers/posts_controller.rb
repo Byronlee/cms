@@ -3,6 +3,7 @@ class PostsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:update_views_count]
 
   def show
+    @post = Post.find_by_url_code(params[:url_code])
     @host = request.host_with_port
   end
 

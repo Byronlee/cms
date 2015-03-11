@@ -9,8 +9,8 @@ xml.rss :version => "2.0" do
         xml.title feed.title
         xml.description feed.content
         xml.pubDate feed.created_at.to_s(:rfc822)
-        xml.link post_url(feed)
-        xml.guid post_url(feed)
+        xml.link post_path(feed)
+        xml.guid post_path(feed)
       end
     end
   end

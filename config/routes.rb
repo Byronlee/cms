@@ -59,7 +59,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :posts, :only => [:show, :index] do
+  resources :posts, :only => [:index] do
     post :update_views_count, on: :member
     resources :comments, :only => [:index, :create] do
       get :normal_list, on: :collection
@@ -67,6 +67,7 @@ Rails.application.routes.draw do
   end
   resources :columns, only: [:index]
   match '/columns/:slug(/:page)', :controller => 'columns', :action => 'show', via: :get
+  match '/p/(:url_code).html' => "posts#show", via: :get, as: :post_show_by_url_code
   resources :pages, only: [:show], param: :slug
   get :feed, to: 'posts#feed', defaults: { format: :rss }
   match '/info_flow/lastest(/:page)', :controller => 'info_flow', :action => 'lastest', via: :get

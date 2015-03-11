@@ -1,5 +1,6 @@
 class PostCell < Cell::Rails
   helper PostsHelper
+  helper ApplicationHelper
 
   def header(args)
     @post = args[:post]
