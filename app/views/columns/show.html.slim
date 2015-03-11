@@ -14,7 +14,9 @@
                   = @posts.try(:total_count)
                   i  Total
             p.category-header__bio  ...
-          weekly-newest-posts
+
+          = render 'posts/weekly_hot'
+
           div.articles
             articles
               = render @posts

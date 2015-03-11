@@ -27,7 +27,7 @@ require 'action_view'
 class Post < ActiveRecord::Base
   include ActionView::Helpers::DateHelper
 
-  by_star_field :created_at
+  by_star_field '"posts".created_at'
   paginates_per 20
   mount_uploader :cover, BaseUploader
 
@@ -43,8 +43,8 @@ class Post < ActiveRecord::Base
   belongs_to :author, class_name: User.to_s, foreign_key: 'user_id'
   has_many :comments, as: :commentable, dependent: :destroy
 
-  after_save :update_today_lastest_cache, :update_hot_posts_cache, :update_weekly_hot, :update_info_flows_cache
-  after_destroy :update_today_lastest_cache, :update_hot_posts_cache, :update_weekly_hot, :update_info_flows_cache
+  after_save :update_today_lastest_cache, :update_hot_posts_cache, :update_info_flows_cache
+  after_destroy :update_today_lastest_cache, :update_hot_posts_cache, :update_info_flows_cache
 
   scope :created_on, ->(date) {
     where(:created_at => date.beginning_of_day..date.end_of_day)
@@ -79,10 +79,10 @@ class Post < ActiveRecord::Base
     logger.info HotPostsComponentWorker.perform_async
   end
 
-  def update_weekly_hot
-    logger.info 'perform the worker to update weekly newest cache'
-    logger.info WeeklyHotPostsComponentWorker.perform_async(column_id)
-  end
+  # def update_weekly_hot
+  #   logger.info 'perform the worker to update weekly newest cache'
+  #   logger.info WeeklyHotPostsComponentWorker.perform_async(column_id)
+  # end
 
   def update_info_flows_cache
     self.column && self.column.info_flows.each do |info_flow|
