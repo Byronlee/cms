@@ -1,4 +1,6 @@
 class HeadCell < Cell::Rails
+  helper ApplicationHelper
+
   def basic_info
     render
   end
@@ -23,11 +25,18 @@ class HeadCell < Cell::Rails
     render
   end
 
-  def twitter_card_meta
+  def twitter_card_meta(args)
+    @post = args[:post]
     render
   end
 
-  def facebook_open_graph_meta
+  def facebook_open_graph_meta(args)
+    @post = args[:post]
+    render
+  end
+
+  def weibo_card_meta(args)
+    @post = args[:post]
     render
   end
 
