@@ -59,23 +59,23 @@ class User < ActiveRecord::Base
   end
 
   def name
-    if self.krypton_authentication && self.krypton_authentication.info["name"].present?
-      self.krypton_authentication.info["name"]
+    if krypton_authentication && krypton_authentication.info['name'].present?
+      krypton_authentication.info['name']
     else
-      self.phone || self.email
+      phone || email
     end
   end
 
   def avatar
-    return self.krypton_authentication.info["image"] if self.krypton_authentication && self.krypton_authentication.info["image"].present?
+    return krypton_authentication.info['image'] if krypton_authentication && krypton_authentication.info['image'].present?
   end
 
-  def may_publish?
-    [:admin, :writer].include? self.role.to_sym
+  def can_publish_comment?
+    [:admin, :writer].include? role.to_sym
   end
 
-  def may_prepublish?
-    [:editor].include? self.role.to_sym
+  def can_prepublish_comment?
+    [:editor].include? role.to_sym
   end
 
   def self.find_by_origin_ids(krypton_id)
