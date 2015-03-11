@@ -39,14 +39,15 @@ columns.each do | column |
   Column.new(column).save(:validate => false)
 end
 
-# 创建Page
-
 pages = [
-{title: '36氪投稿细则', slug: 'contribute', body: Settings.contribute },
-{title: '关于36氪',    slug: 'about',      body: Settings.about },
-{title: '36氪招聘',    slug: 'hire',       body: Settings.hire },
-
+  {title: '36氪投稿细则', slug: 'contribute', body: Settings.contribute },
+  {title: '关于36氪',    slug: 'about',      body: Settings.about },
+  {title: '36氪招聘',    slug: 'hire',       body: Settings.hire }
 ]
+
+pages.each do | page |
+  Page.create!(page)
+end
 
 
 
