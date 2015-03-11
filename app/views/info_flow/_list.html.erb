@@ -29,8 +29,8 @@
             <div class="right-col">
               <h1>
                 <a href="<%= item["title_link"] || post_path(item["url_code"]) %>" ><%= item["title"] %></a>
-                <p><%= item["summary"] %></p>
               </h1>
+              <p><%= raw(item["summary"]) %></p>
             </div>
           </article>
         <% elsif item["position"] != nil %>
