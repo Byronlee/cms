@@ -38,3 +38,37 @@ columns = [
 columns.each do | column |
   Column.new(column).save(:validate => false)
 end
+
+# 创建Page
+
+pages = [
+{title: '36氪投稿细则', slug: 'contribute', body: Settings.contribute },
+
+
+
+
+
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
