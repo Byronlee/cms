@@ -8,10 +8,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       authentication.update_attributes omniauth: omniauth
       flash[:notice] = "Signed in successfully."
       sign_in_and_redirect_to_iframe_or_parent(authentication.user)
-    elsif current_user
-      current_user.authentications.create! omniauth: omniauth
-      flash[:notice] = "Authentication successful."
-      sign_in_and_redirect_to_iframe_or_parent(authentication.user)
     # 根据邮箱进行匹配找到老用户并绑定
     elsif omniauth["info"]["email"].present? && (user = User.find_by_email(omniauth["info"]["email"]))
       user.authentications.create! omniauth: omniauth
