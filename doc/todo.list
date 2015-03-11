@@ -1,29 +1,6 @@
+
 ## 36krx2015 - 老版UI
 
 升级老版UI.
 
 ### TODO lIST
-
-* ~~最新评论-缓存~~
-* ~~ info-flow删除ad or column时，更新缓存 ~~
-* ~~ info-flow缓存时，添加author和column信息 ~~
-* ~~ posts show author nil -> exception ~~
-* ~~ comments author nil -> exception ~~
-* ~~首页topic删除~~
-* tags -> add
-* 热门文章 -> add
-
-* 今日更新（先暂时按照时间倒叙）
-* 热门文章（先暂时按照时间倒叙）
-* 一周热点（先暂时按照时间倒叙）
-
-
-1. 用户下我的收藏必须要做
-2. tags功能
-3. 微信 二维码 社会和分享
-4. 显示column 社区新帖 startup-X 8点一氪 的最新文章
-5. 广告迁移
-6. 用户信息显示
-7. 相关的文章-按tags
-8. 评论
-9. column详情页面

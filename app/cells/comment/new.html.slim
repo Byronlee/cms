@@ -4,7 +4,7 @@ h2
   | )
 .single-post-comment-reply
   .single-post-comment__form.cf
-    form.comment action="/posts/#{@post.id}/comments" method="post"
+    form.comment_form action="/posts/#{@post.id}/comments" method="post" data-remote="true"
       = hidden_field_tag :authenticity_token, form_authenticity_token
       textarea#post.textarea name="comment[content]" placeholder="你怎么看？" data-widearea="enable"
     span.tip.right
@@ -24,7 +24,16 @@ h2
 
   javascript:
     $(document).ready(function(){
-      $(".ladda-label").click(function(){
-        $("form.comment").submit()
-      })
-    });
+      $(".comment-submit-btn").click(function(){
+        var frm = $('form.comment_form');
+        $.ajax({
+            type: frm.attr('method'),
+            url: frm.attr('action'),
+            data: frm.serialize(),
+            success: function (data) {
+              $('.single-post-comment__comments').prepend(data);
+              frm[0].reset();
+            }
+        });
+     });
+   });
