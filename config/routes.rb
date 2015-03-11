@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     resources :columns do
       resources :posts, only: [:index], on: :collection
     end
-    resources :posts do
+    resources :posts, except: [:show] do
       resources :comments, only: [:index], on: :collection
     end
     resources :comments do
