@@ -17,6 +17,7 @@ class HeadLine < ActiveRecord::Base
 
   validates :url, presence: true
   validates_uniqueness_of :url
+  validates :url, :url => { :allow_blank => true }
 
   after_destroy :fetch_remote_metas
   after_save :fetch_remote_metas

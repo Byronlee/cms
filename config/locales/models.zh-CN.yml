@@ -16,3 +16,9 @@ zh-CN:
             published: 已发布
             republished: 预发布
             rejected: 已屏蔽
+      errors:
+        models:
+          head_line:
+            attributes:
+              url:
+                url: URL格式不正确
