@@ -23,10 +23,4 @@ class PostCell < Cell::Rails
     @post = args[:post]
     render
   end
-
-  def og_meta(args)
-    @post = args[:post]
-    @host = args[:host]
-    render
-  end
 end
