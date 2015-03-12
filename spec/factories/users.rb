@@ -21,7 +21,7 @@
 #  name                                :string(255)
 #  bio                                 :text
 #  krypton_passport_invitation_sent_at :datetime
-#  tagline                             :string(255)
+#  tagline                             :text
 #
 
 FactoryGirl.define do

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150312005420) do
+ActiveRecord::Schema.define(version: 20150312055352) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,13 +85,6 @@ ActiveRecord::Schema.define(version: 20150312005420) do
     t.datetime "updated_at"
   end
 
-  create_table "info_flows_columns", force: true do |t|
-    t.integer  "info_flow_id"
-    t.integer  "column_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "newsflash_topic_colors", force: true do |t|
     t.string   "site_name"
     t.string   "color"
@@ -137,6 +130,7 @@ ActiveRecord::Schema.define(version: 20150312005420) do
     t.text     "md_content"
     t.integer  "url_code"
     t.integer  "views_count",    default: 0
+    t.text     "catch_title"
   end
 
   create_table "taggings", force: true do |t|
@@ -178,7 +172,7 @@ ActiveRecord::Schema.define(version: 20150312005420) do
     t.string   "name"
     t.text     "bio"
     t.datetime "krypton_passport_invitation_sent_at"
-    t.string   "tagline"
+    t.text     "tagline"
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree

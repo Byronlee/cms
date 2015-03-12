@@ -21,6 +21,7 @@
 #  md_content     :text
 #  url_code       :integer
 #  views_count    :integer          default(0)
+#  catch_title    :text
 #
 
 require 'action_view'
