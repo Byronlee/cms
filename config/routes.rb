@@ -67,7 +67,7 @@ Rails.application.routes.draw do
   end
   resources :columns, only: [:index]
   match '/columns/:slug(/:page)', :controller => 'columns', :action => 'show', via: :get
-  match '/p/(:url_code).html' => "posts#show", via: :get, as: :post_show_by_url_code
+  match '/p/(:url_code).html' => 'posts#show', via: :get, as: :post_show_by_url_code
   resources :pages, only: [:show], param: :slug
   get :feed, to: 'posts#feed', defaults: { format: :rss }
   match '/info_flow/lastest(/:page)', :controller => 'info_flow', :action => 'lastest', via: :get

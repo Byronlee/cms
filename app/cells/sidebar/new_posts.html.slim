@@ -11,7 +11,7 @@ section.sidebar-tab
       - Post.tagged_with("startup").limit(10) do | post |
         li
           h2
-            a[href="#{post.title_link || post_path(post)}" title="#{post.title}"] = post.title
+            a[href="#{post_url(post)}" title="#{post.title}"] = post.title
     span.tabulousclear
   #tab-815.sidebar-tab__815.tabs-pane
     ul

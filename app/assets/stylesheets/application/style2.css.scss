@@ -2174,7 +2174,13 @@ a:visited .new {
         margin-right: 0; } }
 
 .single-post-relate__image {
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+}
+
+.single-post-relate__image img{
+  width: 186px;
+  height: 124px;
+}
 
 .single-post-relate__title:hover {
   color: #51aded; }
@@ -2446,24 +2452,30 @@ a:visited .new {
 
 .sidebar {
   min-width: 280px;
-  display: none; }
-  .sidebar section {
-    font-size: 14px;
-    font-size: 1.4rem;
-    line-height: 1.5;
-    margin-bottom: 30px;
-    position: relative; }
-  .sidebar h3 {
-    color: #fff;
-    font-size: 12px;
-    font-size: 1.2rem;
-    font-weight: 600;
-    text-align: center;
-    line-height: 28px;
-    background: #51aded;
-    width: 86px;
-    height: 28px;
-    text-shadow: 0 0 2px rgba(0, 0, 0, 0.3); }
+  display: none;
+}
+
+.sidebar section {
+  font-size: 14px;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.sidebar h3 {
+  color: #fff;
+  font-size: 12px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+  line-height: 28px;
+  background: #51aded;
+  width: 86px;
+  height: 28px;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+}
+
   @media screen and (min-width: 75.0625em) {
     .sidebar {
       float: left;

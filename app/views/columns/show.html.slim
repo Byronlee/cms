@@ -11,10 +11,12 @@
                   = @column.try(:weekly_posts_count) || 0
                   i  Weekly
                 span.total
-                  = @posts.try(:total_count)
+                  = @posts.try(:total_count) || 0
                   i  Total
-            p.category-header__bio = @column.slug
-          weekly-newest-posts
+            p.category-header__bio = @column.try(:slug)
+
+        = render 'posts/weekly_hot'
+
         .articles
           - @posts.each do |post|
             article.posts.post-1.cf
@@ -29,7 +31,7 @@
                   |  •  #{post.human_created_at}
               .left.left-col
                 .meta
-                  a title="评论数量" href="#{post.title_link || post_path(post)}"
+                  a title="评论数量" href="#{post_url(post)}"
                     i class="icon icon-share"
                     = post.comments_count || 0
                 div.image.feature-img.thumb-180
@@ -37,7 +39,7 @@
                     img alt="Blank" class="image lazyload loaded" data-src="#{post.cover_real_url}" src="#{post.cover_real_url}"
               .right-col
                 h1
-                  a href="#{post.title_link || post_path(post)}" data-no-turbolink="true" onclick="javascript:_gaq.push(['_trackPageview', '/click/index_newtab/']);" target="_blank" title="#{post.title}"  = post.title
+                  a href="#{post_url(post)}" data-no-turbolink="true" onclick="javascript:_gaq.push(['_trackPageview', '/click/index_newtab/']);" target="_blank" title="#{post.title}"  = post.title
                 p
                   = post.summary
             .pagination.cf

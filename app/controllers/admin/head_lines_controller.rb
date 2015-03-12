@@ -10,6 +10,10 @@ class Admin::HeadLinesController < Admin::BaseController
     respond_with @head_line, location: admin_head_lines_path
   end
 
+  def new
+    @head_line = HeadLine.new(:url => params[:url])
+  end
+
   def create
     @head_line.save
     respond_with @head_line, location: admin_head_lines_path

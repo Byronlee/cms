@@ -1,23 +1,27 @@
 <polymer-element name="excellent-comments">
   <template>
     <link rel="stylesheet" href="excellent-comments.css" />
-    <section class="sidebar-comments">
-      <h3>优质评论</h3>
-      <div class="sidebar-comments__list">
-        <template repeat="{{comment in comments}}">
-          <div class="postmeta">
-            <a href="#">{{comment.user.name}} • {{comment.human_created_at}}</a>
-          </div>
-          <div class="sidebar-comments__comment">
-            <p>{{comment.content}}</p>
-          </div>
-          <div class="sidebar-comments__title">
-            评论于
-            <a ref="/posts/{{comment.commentable.id}}" href="javacript:void(0)" onclick="performLinkWithRel(this)" target="_blank">{{comment.commentable.title}}</a>
-          </div>
-        </template>
-      </div>
-    </section>
+    <div class="sidebar">
+      <section class="sidebar-comments">
+        <h3>优质评论</h3>
+        <div class="sidebar-comments__list">
+          <template repeat="{{comment in comments}}">
+            <div class="comment-1">
+              <div class="postmeta">
+                <a href="javascript:void(0)">{{comment.user.name || '匿名用户'}}</a> • {{comment.human_created_at}}
+              </div>
+              <div class="sidebar-comments__comment">
+                {{comment.content}}
+              </div>
+              <div class="sidebar-comments__title">
+                评论于
+                <a ref="/p/{{comment.commentable.url_code}}.html" href="javacript:void(0)" onclick="performLinkWithRel(this)" target="_blank">{{comment.commentable.title}}</a>
+              </div>
+            </div>
+          </template>
+        </div>
+      </section>
+    </div>
   </template>
 
   <script src="excellent-comments.js"></script>
