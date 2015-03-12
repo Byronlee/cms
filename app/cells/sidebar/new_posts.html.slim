@@ -8,14 +8,14 @@ section.sidebar-tab
         | 8点1氪
   #tab-36krplus.sidebar-tab__36krplus.tabs-pane
     ul
-      - Post.tagged_with("startup").limit(10) do | post |
+      - Post.tagged_with("startup").limit(10).each do | post |
         li
           h2
             a[href="#{post_url(post)}" title="#{post.title}"] = post.title
     span.tabulousclear
   #tab-815.sidebar-tab__815.tabs-pane
     ul
-      - Newsflash.limit(7) do | np |
+      - Newsflash.limit(7).each do | np |
         li
           h2
             a[href="#{np.news_url}" target="_blank"]
