@@ -20,6 +20,7 @@ class SidebarCell < Cell::Rails
   end
 
   def sponsor
+    render
   end
 
   def apps
