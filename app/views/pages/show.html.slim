@@ -2,4 +2,4 @@
   article.single-post-article
     .content-wrapper-single
        section.article
-          = raw(@page.body)
+          = raw(@page.try(:body))

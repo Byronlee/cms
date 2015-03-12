@@ -1,6 +1,6 @@
 tr
-  td = link_to post.id, post_url(post)
-  td = link_to post.title, post_url(post)
+  td = link_to post.id, post_url(post), target:'_new'
+  td = link_to post.title, post_url(post), target:'_new'
   td = post.author.try(:name)
   td = link_to post.column.try(:name), admin_column_posts_path(post.column)
   td = post.created_at
