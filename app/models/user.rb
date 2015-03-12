@@ -21,6 +21,7 @@
 #  name                                :string(255)
 #  bio                                 :text
 #  krypton_passport_invitation_sent_at :datetime
+#  tagline                             :string(255)
 #
 
 class User < ActiveRecord::Base
@@ -67,7 +68,8 @@ class User < ActiveRecord::Base
   end
 
   def avatar
-    return krypton_authentication.info['image'] if krypton_authentication && krypton_authentication.info['image'].present?
+    return Settings.default_avatar unless self.krypton_authentication && self.krypton_authentication.info["image"].present?
+    self.krypton_authentication.info['image']
   end
 
   def can_publish_comment?
