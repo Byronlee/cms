@@ -644,7 +644,23 @@ settings.hire = '<section class="article">
 
             </section>'
 
+settings.krmonthly = '<h4>氪月报：</h4>
+<p>36氪推出的电子刊物，每月一期，旨在汇总过去一个月36氪的精彩文章，同时为一些平时没有时间阅读新闻的朋友提供“懒人包”。</p>
 
+<p>月报以1024*768分辨率制作，在100％比例或全屏下能获得最佳阅读体验。</p>
+
+<p>您可以将《氪月报》下载至您的iPad或Kindle等大荧幕手持设备中，方便在出行时阅读。</p>
+<h4>下载方式：</h4>
+<p>微盘下载<br>
+读览天下的客户端中搜索“氪月报”下载。</p>
+<h4>订阅方式：</h4>
+<p>订阅:发送空⽩白邮件到[techfollower+subscribe@googlegroups.com]即可 。<br>
+退订:发送空⽩白邮件到[techfollower+unsubscribe@googlegroups.com]即可。</p>
+<h4>联系我们：</h4>
+<p>如果你对本栏目有任何的建议，欢迎反馈给我们，非常感谢。<br>
+我们的邮箱是 <a href="mailto:wow+krweekly@36kr.com">wow@36kr.com</a>。</p>
+
+<p>36氪电子杂志（多看平台）：<a href="http://book.duokan.com/dkdetail.html?book_id=70e8461248ef11e2b5b200163e0123ac&amp;title=36%E6%B0%AA%EF%BC%882012.12%EF%BC%89&amp;classify=%E6%8E%A8%E8%8D%90%E9%98%85%E8%AF%BB&amp;from=dkbargain.html" class="external" target="_blank">第一期</a>、<a href="http://book.duokan.com/dkdetail.html?book_id=d8032ee2608811e2957400163e0123ac&amp;title=36%E6%B0%AA%EF%BC%882013.1%EF%BC%89" class="external" target="_blank">第二期</a>、<a href="http://book.duokan.com/dkdetail.html?book_id=f0ffa464797111e2b27a00163e0123ac&amp;title=36%E6%B0%AA%EF%BC%882013.2%EF%BC%89" class="external" target="_blank">第三期</a></p>'
 
 
 
