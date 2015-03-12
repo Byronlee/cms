@@ -17,6 +17,7 @@ class HeadLine < ActiveRecord::Base
 
   validates :url, presence: true
   validates_uniqueness_of :url
+  validates :url, :url => { :allow_blank => true }
 
   after_destroy :fetch_remote_metas
   after_save :fetch_remote_metas
@@ -24,6 +25,7 @@ class HeadLine < ActiveRecord::Base
   private
 
   def fetch_remote_metas
+    return if title.present?
     logger.info 'perform the worker to fetch remote metas'
     logger.info HeadLinesComponentWorker.perform_async
   end

@@ -30,15 +30,15 @@ header.header.header-normal.scrolled
                   li
                     a href="/columns/breaking" 国外资讯
                   li
-                    a href="/columns/krweekly" 氪周刊
+                    a href="/tag/krweekly" 氪周刊
                   li
                     a href=  page_path('krmonthly') 氪月刊
                   li
                     a href="/columns/column" 专栏
                   li
                     a href="/columns/archives" 存档
-              section.more
-                a href="" 查看更多精彩文章
+              section.more style="padding-top:5px; padding-bottom:10px;"
+                a href="javascript:void(0)" style="visibility:hidden; margin:0; heigth:10px;" 查看更多精彩文章
         li
           a.main-nav__item href="http://www.36kr.net/?utm_source=36kr.com" 氪加
         li
@@ -46,7 +46,7 @@ header.header.header-normal.scrolled
         li.drop-2.drop
           a.hasdropdown.main-nav__item href="javascript:;" 更多产品
           .dropdown.dropdown-normal
-            .dropdown-list.main-nav__list
+            .dropdown-list.main-nav__list.dropdown__list
               section.dropdown__events.cf
                 .product-logo.product-krspace.left
                 .intro
@@ -69,14 +69,9 @@ header.header.header-normal.scrolled
                 .product-logo.product-wise.left
                 .intro
                   h3
-                    a href="" WISE
+                    a href="http://www.36kr.com/tag/wise%202014" WISE
                   span.bio 互联网创业峰会
-              section.dropdown__events.cf
-                .product-logo.product-beiji.left
-                .intro
-                  h3
-                    a href="" 北极社区
-                  span.bio 创业者互动社区
+
     .search.left
       form name="search_baidu" target="_blank" onsubmit="return goSearch(this)"
         input name="word_display" type="search" placeholder="搜索"
@@ -90,7 +85,7 @@ header.header.header-normal.scrolled
         - if @current_user
           li.avatar.drop
             a.second-nav__account.cf href="javascript:void(0)"
-              img.avatar-small.left alt="Violin" height="24" src="http://a.36krcnd.com/user/default_avatars/Violin.png!avatar" width="24"
+              img.avatar-small.left alt="Violin" height="24" src="#{@current_user.avatar}" width="24"
                 span.right  = @current_user.name
             div.dropdown.dropdown-account
               div.dropdown-list.account__list.dropdown__list

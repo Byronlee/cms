@@ -30,7 +30,7 @@ class Comment < ActiveRecord::Base
   belongs_to :user
 
   before_save :set_is_long_attribute
-  before_save :set_state
+  before_create :set_state
 
   after_save :update_excellent_comments_cache
   after_destroy :update_excellent_comments_cache
@@ -75,20 +75,21 @@ class Comment < ActiveRecord::Base
   private
 
   def set_is_long_attribute
-    self.is_long = self.content.length > 140
-    return true
+    self.is_long = content.length > 140
+    true
   end
 
   def set_state
-    if self.user.may_publish?
+    return unless new_record?
+    if user.can_publish_comment?
       self.state = 'published'
-    elsif self.user.may_prepublish?
+    elsif user.can_prepublish_comment?
       self.state = 'prepublished'
     end
   end
 
   def update_excellent_comments_cache
-    logger.info "perform the worker to update excellent comments cache"
+    logger.info 'perform the worker to update excellent comments cache'
     logger.info ExcellentCommentsComponentWorker.perform_async
   end
 end

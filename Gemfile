@@ -42,6 +42,7 @@ gem "activerecord-typedstore", "0.5.0"
 gem "opengraph_parser"
 gem 'aasm'
 gem 'by_star'
+gem "validate_url"
 
 # views
 gem "simple_form", "~> 3.0.1"
