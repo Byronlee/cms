@@ -17,14 +17,7 @@ module V1
           post = params[:type].classify.constantize.find params[:pid]
           @comments = post.comments
           .includes(:commentable, user:[:krypton_authentication])
-          .order('created_at desc')
-          .page(params[:page]).per(params[:per_page])
-          #@comments = post.comments
-          #.includes(:commentable, user:[:krypton_authentication])
-          #.where(Comment.normal.or(
-          #  Comment.normal_selfown(current_user ? current_user.id : 0)
-          #))
-          #.order("created_at asc").page(params[:page]).per(params[:per_page])
+          .order('created_at desc').page(params[:page]).per(params[:per_page])
           present @comments, with: Entities::Comment
         end
 
@@ -37,9 +30,8 @@ module V1
         post ':pid/new' do
           post = params[:type].classify.constantize.find params[:pid]
           @comment = post.comments.build params.slice(*KEYS)
-          #@comment = CommentsComponentWorker.perform_async(params)
-          #@comment = CommentsComponentWorker.new.perform(params)
           if @comment.save
+            #CommentsComponentWorker.perform_async(params, @comment)
             CommentsComponentWorker.new.perform(params, @comment)
             present @comment, with: Entities::Comment
           else
