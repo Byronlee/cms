@@ -5,9 +5,9 @@
 
   function resize() {
     if ($window.width() < 934) {
-        return $('.aside-social').removeClass('aside-fixed');
+      return $('.aside-social').removeClass('aside-fixed');
     }
-    $('.aside-social').addClass('aside-fixed');
+    //$('.aside-social').addClass('aside-fixed');
    }
    $window
        .resize(resize)
@@ -52,8 +52,8 @@
 
   //sticky, offset = header height - 1
   $('.aside-fixed').scrollToFixed({
-    marginTop: $('.header').outerHeight() - 1,
-    dontCheckForPositionFixedSupport: true
+    marginTop: 200 - 1,
+    dontCheckForPositionFixedSupport: false
   });
 
 
