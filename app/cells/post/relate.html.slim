@@ -2,7 +2,7 @@ section.single-post-relate
   ul.cf
     - @post.find_related_tags.limit(3).each do | post |
       li
-        a[href="#{post.title_link || post_path(post)}"]
+        a[href="#{ post_url(post)}"]
         .single-post-relate__image
           img[src="#{post.cover_real_url}" alt="#{post.title}"]
         .single-post-relate__title
