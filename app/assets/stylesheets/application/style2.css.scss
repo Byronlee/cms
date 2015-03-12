@@ -2174,7 +2174,13 @@ a:visited .new {
         margin-right: 0; } }
 
 .single-post-relate__image {
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+}
+
+.single-post-relate__image img{
+  width: 186px;
+  height: 124px;
+}
 
 .single-post-relate__title:hover {
   color: #51aded; }
