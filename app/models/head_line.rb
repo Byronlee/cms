@@ -25,7 +25,6 @@ class HeadLine < ActiveRecord::Base
   private
 
   def fetch_remote_metas
-    return if title.present?
     logger.info 'perform the worker to fetch remote metas'
     logger.info HeadLinesComponentWorker.perform_async
   end
