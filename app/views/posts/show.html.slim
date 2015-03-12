@@ -10,7 +10,7 @@
       = render_cell :post, :author, post: @post
       = render_cell :post, :relate, post: @post
       section.single-post-comment
-        = render_cell :comment, :new, post: @post
+        = render_cell :comment, :new, post: @post, current_user: @current_user
         = render_cell :comment, :index, post: @post
   .aside
     = render_cell :sidebar, :today

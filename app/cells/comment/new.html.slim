@@ -12,12 +12,12 @@ h2
   .single-post-comment__bottom.cf
     .meta.left.cf
       .avatar.left
-        a href=""
-          img[src="#{@post.author.try(:avatar)}" alt=""]
+        a href="javascript:void(0)"
+          img[src="#{@current_user.try(:avatar)}" alt=""]
       span.username.right
-        | signed as
-        a[href=""]
-          = @post.author.try(:name)
+        | signed as &nbsp;
+        a[href="javascript:void(0)"]
+          = @current_user.try(:name)
     button.ladda-button.comment-submit-btn.right[data-style="slide-down" data-spinner-size="32"]
       span.ladda-label
         | 提交评论
