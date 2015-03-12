@@ -6,14 +6,15 @@ $(document).ready(function()
 	$('#scroll-hero').click(function()
 	{
 		$('html,body').animate({scrollTop: $("#hero-bloc").height()}, 'slow');
-	});	
+	});
+
 });
 
-// Window resize 
+// Window resize
 $(window).resize(function()
 {
-	$('.hero').css('height', ($(window).height() - $('header').outerHeight()) + 'px'); // Refresh hero height  	
-}); 
+	$('.hero').css('height', ($(window).height() - $('header').outerHeight()) + 'px'); // Refresh hero height
+});
 
 // Scroll to target
 function scrollToTarget(D)
