@@ -1,14 +1,17 @@
 section.single-post-author-social
   .single-post-author.cf
-    .single-post-author__avatar.left
-      .avatar
-        a[href=""]
-          img[src="/assets/original/author.jpg" alt=""]
-    .single-post-author__info
-      h3.single-post-author__name
-        a[href=""]
-          = @post.author.try(:name)
-      span.single-post-author__label
-        | 北美负责
-      p.single-post-author__bio
-        | 可罗可御，可宅可 Geek
+    - if @user.blank?
+     p style="text-align:center;" 36氪
+    - else
+      .single-post-author__avatar.left
+        .avatar
+          a[href="javascript:void(0)"]
+            img[src="#{@user.avatar}" alt="#{@user.name}"]
+      .single-post-author__info
+        h3.single-post-author__name
+          a[href="javascript:void(0)"]
+            = @user.try(:name)
+        span.single-post-author__label
+          = @user.role_text
+        p.single-post-author__bio
+          = @user.tagline || "36氪，关于互联网创业"

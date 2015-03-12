@@ -18,7 +18,8 @@ class PostCell < Cell::Rails
   end
 
   def author(args)
-    @post = args[:post]
+   # @user = args[:post].author
+   @user = User.first
     render
   end
 

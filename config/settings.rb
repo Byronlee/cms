@@ -33,3 +33,5 @@ settings.users = {
     body: File.read(Rails.root.join('doc/mails/invitation.md'))
   }
 }
+
+settings.default_avatar = 'http://a.36krcnd.com/user/default_avatars/Violin.png!avatar'
