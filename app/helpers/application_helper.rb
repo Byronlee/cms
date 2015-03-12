@@ -17,4 +17,9 @@ module ApplicationHelper
     url_code = (arg.class.to_s == 'Fixnum' ? arg : arg.url_code)
     post_show_by_url_code_path(url_code)
   end
+
+  def post_url(arg)
+    url_code = (arg.class.to_s == 'Fixnum' ? arg : arg.url_code)
+    post_show_by_url_code_url(url_code)
+  end
 end

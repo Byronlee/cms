@@ -10,6 +10,9 @@ tr
       = link_to post.comments_count.to_i, admin_post_comments_path(post)
   td = post.views_count
   td
+    a.tip-top data-original-title="添加到头条" href= new_admin_head_line_path(:url => post_url(post))
+      i.icon-star
+    |&nbsp;&nbsp;
     a.tip-top data-original-title="编辑" href= edit_admin_post_path(post)
       i.icon-pencil
     |&nbsp;&nbsp;
