@@ -1,4 +1,6 @@
 class PostCell < Cell::Rails
+  helper PostsHelper
+
   def header(args)
     @post = args[:post]
     render

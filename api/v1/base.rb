@@ -2,6 +2,7 @@ require_relative 'mesh'
 require_relative 'errors'
 require_relative 'helpers'
 require_relative 'formatter'
+require_relative 'passport'
 
 class ::V1::Base < Grape::API
   prefix 'api'

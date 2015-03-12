@@ -1,11 +1,11 @@
 - comment ||= @comment
 .comment.cf id="comment-#{comment.id}"
   .avatar.left
-    a[href=""]
-      img[src="/assets/original/a-1.jpg" alt=""]
+    a[href="javascript:void(0)"]
+      img[src="#{avatar_url comment.user.try(:avatar)}" alt=""]
   .comment-wrapper
     .postmeta
-      a.user_info_name[href="#"] = comment.user.try(:name)
+      a.user_info_name[href="javascript:void(0)"] = comment.user.try(:name) || '匿名用户'
       = " • #{comment.human_created_at}"
     .commemt-main
       p  = comment.content

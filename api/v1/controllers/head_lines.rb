@@ -1,7 +1,7 @@
 module V1
   module Controllers
     class HeadLines < ::V1::Base
-      KEYS = [:url, :order_num]
+      KEYS = [:url, :title, :post_type, :image ,:order_num]
 
       desc 'Head line Feature'
       resource :head_lines do
@@ -44,6 +44,9 @@ module V1
         desc 'Create a new head line'
         params do
           requires :url, type: String, desc: '链接'
+          requires :title, type: String, desc: '标题'
+          requires :image, type: String, desc: '图片链接'
+          requires :post_type, type: String, default: 'article' , desc: 'article,vedio...'
           requires :order_num, type: Integer, desc: '位置'
         end
         post 'new' do
@@ -59,6 +62,9 @@ module V1
         params do
           requires :id, desc: '编号'
           requires :url, type: String, desc: '链接'
+          requires :title, type: String, desc: '标题'
+          requires :image, type: String, desc: '图片链接'
+          requires :post_type, type: String, default: 'article' , desc: 'article,vedio...'
           requires :order_num, type: Integer, desc: '位置'
         end
         patch ':id' do

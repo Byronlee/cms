@@ -1,4 +1,4 @@
-class Krypton::Passport
+class V1::Passport
   def initialize(access_token_hash)
     @access_token_hash = access_token_hash
   end

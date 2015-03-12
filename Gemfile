@@ -22,10 +22,12 @@ gem "redis", "~> 3.0.1"
 gem 'redis-objects', '~> 1.0.1'
 gem 'redis-namespace', "~> 1.5.1"
 gem 'redis-stat'
+gem 'typhoeus'
 gem 'newrelic-redis'
 gem 'sidekiq', '~> 3.1.2'
 gem 'faraday', '~> 0.9.0'
 gem 'ruby-progressbar', "~> 1.7.1"
+
 # models
 gem "ancestry", "~> 2.1.0"
 gem 'enumerize'
@@ -40,6 +42,7 @@ gem "activerecord-typedstore", "0.5.0"
 gem "opengraph_parser"
 gem 'aasm'
 gem 'by_star'
+gem "validate_url"
 
 # views
 gem "simple_form", "~> 3.0.1"
