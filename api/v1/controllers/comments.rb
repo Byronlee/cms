@@ -35,15 +35,16 @@ module V1
           optional :content, type: String, desc: '内容'
         end
         post ':pid/new' do
+          post = params[:type].classify.constantize.find params[:pid]
+          @comment = post.comments.build params.slice(*KEYS)
           #@comment = CommentsComponentWorker.perform_async(params)
-          @comment = CommentsComponentWorker.new.perform(params)
-#=begin
-          if @comment
+          #@comment = CommentsComponentWorker.new.perform(params)
+          if @comment.save
+            CommentsComponentWorker.new.perform(params, @comment)
             present @comment, with: Entities::Comment
           else
             error!({ error: @comment.errors.full_messages }, 400)
           end
-#=end
         end
 
       end
