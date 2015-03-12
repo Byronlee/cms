@@ -42,12 +42,12 @@
                   a href="#{post_url(post)}" data-no-turbolink="true" onclick="javascript:_gaq.push(['_trackPageview', '/click/index_newtab/']);" target="_blank" title="#{post.title}"  = post.title
                 p
                   = post.summary
-            .pagination.cf
-              ul
-                li.prev.previous_page.left
-                  = link_to_previous_page @posts, '← 上一页', rel: "prev" if @posts.present?
-                li.next.next_page.right
-                  = link_to_next_page @posts, '下一页 →', rel: "next" if @posts.present?
+          .pagination.cf
+            ul
+              li.prev.previous_page.left
+                = link_to_previous_page @posts, '← 上一页', rel: "prev" if @posts.present?
+              li.next.next_page.right
+                = link_to_next_page @posts, '下一页 →', rel: "next" if @posts.present?
   .aside
     = render_cell :sidebar, :today
     = render_cell :sidebar, :social
