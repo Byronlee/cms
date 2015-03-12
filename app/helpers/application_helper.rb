@@ -7,4 +7,9 @@ module ApplicationHelper
       tag_name
     end
   end
+
+  def avatar_url(avatar)
+    return avatar if avatar
+    asset_url "original/a-#{rand(1..3)}.jpg"
+  end
 end

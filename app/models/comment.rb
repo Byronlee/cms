@@ -81,6 +81,7 @@ class Comment < ActiveRecord::Base
 
   def set_state
     return unless new_record?
+    return if user.nil?
     if user.can_publish_comment?
       self.state = 'published'
     elsif user.can_prepublish_comment?
