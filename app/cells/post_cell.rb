@@ -1,5 +1,6 @@
 class PostCell < Cell::Rails
   helper PostsHelper
+  helper ApplicationHelper
 
   def header(args)
     @post = args[:post]
@@ -17,7 +18,8 @@ class PostCell < Cell::Rails
   end
 
   def author(args)
-    @post = args[:post]
+   # @user = args[:post].author
+   @user = User.first
     render
   end
 

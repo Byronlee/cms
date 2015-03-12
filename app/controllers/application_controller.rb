@@ -16,4 +16,8 @@ class ApplicationController < ActionController::Base
       sign_out(current_user)
     end
   end
+
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_path
+  end
 end

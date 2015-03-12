@@ -1,7 +1,7 @@
 - content_for :og_meta do
   meta property="og:title" content== @post.title
   meta property="og:type" content="article"
-  meta property="og:url" content== admin_post_url(@post)
+  meta property="og:url" content== admin_post_path(@post)
   meta property="og:image" content== "http://#{@host}#{@post.cover_real_url}"
   meta property="og:image:secure_url" content= "http://#{@host}#{@post.cover_real_url}"
   meta property="og:image:type" content== @post.cover.try(:content_type)

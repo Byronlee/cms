@@ -4,6 +4,6 @@ section.single-post-relate
       li
         a[href="#{post.title_link || post_path(post)}"]
         .single-post-relate__image
-          img[src="#{post.cover}" alt=""]
+          img[src="#{post.cover.url}" alt="#{post.title}"]
         .single-post-relate__title
           h3 = post.title

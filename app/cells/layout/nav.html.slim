@@ -4,14 +4,7 @@ header.header.header-normal.scrolled
       a href=root_path
         span 36kr
     nav.toggle-nav.cf
-      ul.left
-        li
-          a.toggle__main.icon-menu href="javascript:void(0)"
-            span 导航
-        li
-          a.toggle__search.icon-search href="javascript:void(0)"
-            span 搜索
-      a.toggle__submit.right href="" 寻求报道
+      a.toggle__submit.right href="/pages/contribute" 寻求报道
     nav.main-nav.left
       ul
         li.drop-1.drop
@@ -79,7 +72,7 @@ header.header.header-normal.scrolled
     nav.second-nav
       ul
         li
-          a.second-nav__submit href="http://localhost:3000/pages/contribute" 投稿
+          a.second-nav__submit href="/pages/contribute" 投稿
         li
           a.second-nav__request href="http://report.36kr.com" 寻求报道
         - if @current_user
@@ -100,7 +93,8 @@ header.header.header-normal.scrolled
                     /li
                       a href="/chad_liu/favorites" data-no-turbolink="true"  我的收藏
                     li.last
-                      = link_to "注销登录", destroy_user_session_path, method: :delete, class:"dropdown_login_out_link", rel:"nofollow"
+                      = link_to("注销登录", "javascript:void(0)", :class => "dropdown_login_out_link", method: "delete" )
         - else
           li
             a.second-nav__login href="#{user_omniauth_authorize_path(provider: :krypton)}"  登录
+        = link_to "", destroy_user_session_path, method: :delete, class:"login_out_link", rel:"nofollow"

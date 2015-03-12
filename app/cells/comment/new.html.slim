@@ -13,11 +13,11 @@ h2
     .meta.left.cf
       .avatar.left
         a href=""
-          img[src="/assets/original/avatar.jpg" alt=""]
+          img[src="#{@post.author.try(:avatar)}" alt=""]
       span.username.right
         | signed as
         a[href=""]
-          |  chad
+          = @post.author.try(:name)
     button.ladda-button.comment-submit-btn.right[data-style="slide-down" data-spinner-size="32"]
       span.ladda-label
         | 提交评论

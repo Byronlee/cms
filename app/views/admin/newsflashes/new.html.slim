@@ -15,6 +15,12 @@ div#content-header
 div.container-fluid
   = bootstrap_flash
   div.widget-box
+    .well
+      p #标题# 内容........内容 http://baidu.com
+      p ----
+      p 1. 小点1
+      p 2. 小点2
+      p 3. 小点3
     div clas="widget-content nopadding"
       - unless @newsflash.errors.blank?
         = debug @newsflash.errors.messages

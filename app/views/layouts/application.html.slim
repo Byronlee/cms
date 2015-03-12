@@ -7,8 +7,10 @@ html.no-js
     = render_cell :head, :iphone_media
     = render_cell :head, :ipad_media
     = render_cell :head, :ipad_retina_media
-    = render_cell :head, :twitter_card_meta
-    = render_cell :head, :facebook_open_graph_meta
+
+    = render_cell :head, :twitter_card_meta, post: @post if @post
+    = render_cell :head, :facebook_open_graph_meta, post: @post if @post
+    = render_cell :head, :weibo_card_meta, post: @post if @post
     /!--opengraph meata start
     = content_for?(:og_meta) ? yield(:og_meta) : ''
     /!--opengraph meata end
