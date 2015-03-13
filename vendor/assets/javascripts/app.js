@@ -56,10 +56,6 @@
     dontCheckForPositionFixedSupport: false
   });
 
-
-  //tabs
-  $('.sidebar-tab').tabulous();
-
   //remove added class when scroll or chick everywhere else
   $('.dropdown__list, .panel').on('click', function(e) {
     e.stopPropagation();
