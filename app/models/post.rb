@@ -28,10 +28,12 @@
 require 'action_view'
 class Post < ActiveRecord::Base
   include ActionView::Helpers::DateHelper
+  include AASM
 
   by_star_field '"posts".created_at'
   paginates_per 20
   mount_uploader :cover, BaseUploader
+  aasm.attribute_name :state
 
   validates_presence_of :title, :content
   validates_presence_of :summary, :slug, if: -> { persisted? }
@@ -54,6 +56,15 @@ class Post < ActiveRecord::Base
   scope :hot_posts, -> { order('views_count desc, created_at desc') }
 
   acts_as_taggable
+
+  aasm do
+    state :reviewing, :initial => true
+    state :published
+
+    event :publish do
+      transitions :from => [:reviewing], :to => :published
+    end
+  end
 
   def self.today
     created_on(Date.today)

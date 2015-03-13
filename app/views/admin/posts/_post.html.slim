@@ -4,7 +4,8 @@ tr
   td = post.author.try(:name)
   td = link_to post.column.try(:name), admin_column_posts_path(post.column)
   td = post.created_at
-  td = post.state
+  td
+    span class='badge badge-warning' = display_state(post.state)
   td
     span class='badge badge-warning'
       = link_to post.comments_counts.to_i, admin_post_comments_path(post)
