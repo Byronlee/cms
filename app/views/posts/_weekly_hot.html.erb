@@ -6,7 +6,7 @@
   <ul class="category-popular__list">
     <% @weekly_hot_posts.each do |post| %>
       <li class="cf">
-        <span> 03/02 13:12</span>
+        <span><%= post.created_at.strftime('%m/%d %H:%M') %></span>
         <h1>
           <a href="<%= post_url post %>" title="<%= post.title %>"><%= post.title %></a>
         </h1>
