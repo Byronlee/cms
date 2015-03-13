@@ -42,7 +42,7 @@ class InfoFlow < ActiveRecord::Base
       :methods => [:human_created_at, :cover_real_url],
       :include => {
         :author => {
-          :only => [], :methods => [:name] },
+          :only => [], :methods => [:display_name] },
         :column => {
           :only => [:id, :name, :slug]
           }})

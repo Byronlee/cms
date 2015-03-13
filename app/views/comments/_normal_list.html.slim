@@ -2,7 +2,7 @@
   div.row
     div.col-sm-10
       div
-        h4  = comment.user.name
+        h4  = comment.user.display_name
       div
       - if comment.may_display?
         = comment.content

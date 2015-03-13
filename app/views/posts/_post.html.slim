@@ -6,7 +6,7 @@ article.posts.post-1.cf
         |  /  #{post.column.try(:slug)}
     .postmeta.right
       a href="/chloe1988" class="uname user_Chloe1988" data-name="Chloe" target="_blank"
-        = post.author.try(:name)
+        = post.author.try(:display_name)
       |  •  #{post.human_created_at}
   .left.left-col
     .meta
@@ -14,7 +14,7 @@ article.posts.post-1.cf
         i class="icon icon-share"
         = post.comments_count || 0
     div.image.feature-img.thumb-180
-      a href="/p/219566.html"
+      a href="#{post_url(post)}"
         img alt="Blank" class="image lazyload loaded" data-src="#{post.cover_real_url}" src="#{post.cover_real_url}"
   .right-col
     h1
