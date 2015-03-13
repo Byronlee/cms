@@ -23,12 +23,14 @@
                 </a>
               </div>
               <div class="image feature-img thumb-180">
-                <img src="<%= item["cover_real_url"] %>" alt="" />
+                <a href="<%= item["title_link"].present? ? item["title_link"] : post_url(item["url_code"]) %>">
+                  <img src="<%= item["cover_real_url"] %>" alt="" />
+                </a>
               </div>
             </div>
             <div class="right-col">
               <h1>
-                <a href="<%= item["title_link"].present? ? item["title_link"] : post_url(item["url_code"]) %>" ><%= item["title"] %></a>
+                <a href="<%= item["title_link"].present? ? item["title_link"] : post_url(item["url_code"]) %>" target="new" ><%= item["title"] %></a>
               </h1>
               <p><%= raw(item["summary"]) %></p>
             </div>
