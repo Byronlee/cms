@@ -67,6 +67,11 @@ class Post < ActiveRecord::Base
     cover_identifier.include?('http://') ? cover_identifier : cover_url
   end
 
+  def comments_counts
+     update_attribute(:comments_count ,comments.size) if comments_count.nil?
+     comments_count
+  end
+
   private
 
   def update_today_lastest_cache
