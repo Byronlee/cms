@@ -12,7 +12,7 @@
                 <img src="{{post.cover_real_url}}" alt="">
               </div>
               <h1>
-                <a ref="/p/{{ post.url_code }}.html" href="javacript:void(0)" onclick="performLinkWithRel(this)" title="{{post.title}}">{{post.title}}</a>
+                <a ref="{{(post.title_link == null || post.title_link == '') ? ('/p/' + post.url_code + '.html') : post.title_link }}" href="javacript:void(0)" onclick="performLinkWithRel(this)" title="{{post.title}}">{{post.title}}</a>
               </h1>
             </article>
           </template>

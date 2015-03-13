@@ -11,7 +11,7 @@
           <li class="cf">
             <span> 03/02 13:12</span>
             <h1>
-              <a ref="/posts/{{post.id}}" href="javacript:void(0)" onclick="performLinkWithRel(this)"  title="{{post.title}}">{{post.title}}</a>
+              <a ref="{{(post.title_link == null || post.title_link == '') ? ('/p/' + post.url_code + '.html') : post.title_link }}" href="javacript:void(0)" onclick="performLinkWithRel(this)"  title="{{post.title}}">{{post.title}}</a>
             </h1>
           </li>
       </template>

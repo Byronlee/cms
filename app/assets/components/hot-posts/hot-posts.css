@@ -3,6 +3,6 @@
  */
 :host {
   display: block;
-  z-index: 1000000;
+  z-index: 999;
   position: relative;
 }
