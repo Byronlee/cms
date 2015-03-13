@@ -22,6 +22,7 @@
 #  url_code       :integer
 #  views_count    :integer          default(0)
 #  catch_title    :text
+#  published_at   :datetime
 #
 
 require 'action_view'
