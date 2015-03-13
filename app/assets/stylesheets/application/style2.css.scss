@@ -687,45 +687,69 @@ figure {
 .icons-rss {
   background-position: -96px 0; }
 
-.startups {
-  color: #ff905a !important; }
-  .startups:hover {
-    color: #ff6e27 !important; }
 
-.products {
-  color: #66bc4e !important; }
-  .products:hover {
-    color: #509c3b !important; }
+/*Topic Colors*/
 
-.apps {
-  color: #3c8fe6 !important; }
-  .apps:hover {
-    color: #1b75d4 !important; }
+/*Topic colors*/
+$startups               : #ff905a;
+$products               : #66bc4e;
+$apps                   : #3c8fe6;
+$websites               : #5856d6;
+$brands                 : #ff3b30;
+$people                 : #ffcc00;
+$devices                : #19d5fd;
+$technology             : #34aadc;
 
-.websites {
-  color: #5856d6 !important; }
-  .websites:hover {
-    color: #3331c8 !important; }
+.startups, .us-startups, .cn-startups, .startup-type {
+  color: $startups !important;
+  &:hover {
+    color: darken($startups, 10) !important;
+  }
+}
+.products, .breaking, .hardware {
+  color: $products !important;
+  &:hover {
+    color: darken($products, 10) !important;
+  }
+}
+.apps, .cn-news, .tool {
+  color: $apps !important;
+  &:hover {
+    color: darken($apps, 10) !important;
+  }
+}
+.websites, .column, .infographics {
+  color: $websites !important;
+  &:hover {
+    color: darken($websites, 10) !important;
+  }
+}
+.brands, .digest , .review{
+  color: $brands !important;
+  &:hover {
+    color: darken($brands, 10) !important;
+  }
+}
+.people, .cn-startups, .mobile {
+  color: $people !important;
+  &:hover {
+    color: darken($people, 10) !important;
+  }
+}
+.devices, .archives, .social {
+  color: $devices !important;
+  &:hover {
+    color: darken($devices, 10) !important;
+  }
+}
+.technology, .tech, .biz {
+  color: $technology !important;
+  &:hover {
+    color: darken($technology, 10) !important;
+  }
+}
 
-.brands {
-  color: #ff3b30 !important; }
-  .brands:hover {
-    color: #fc0d00 !important; }
 
-.people {
-  color: #ffcc00 !important; }
-  .people:hover {
-    color: #cca300 !important; }
-
-.devices {
-  color: #19d5fd !important; }
-  .devices:hover {
-    color: #02bae1 !important; }
-
-.technology {
-  color: #34aadc !important; }
-  .technology:hover {
-    color: #218ebd !important; }
 
 .header-normal {
   border-bottom: 1px solid #e6eaed; }
@@ -3297,20 +3321,22 @@ img.mfp-img {
   font-size: 14px;
 }
 
+/* column style */
+/*
 .posts .thumb-180 img{
    width: 180px;
    height: 120px;
 }
 
-.breaking {
+.products, .breaking {
   color: #66bc4e !important;
 }
 
-.column{
+.websites, .column{
   color: #5856d6 !important;
 }
 
-.cn-news {
+.apps, .cn-news {
   color: #3c8fe6 !important;
 }
 
@@ -3325,6 +3351,23 @@ img.mfp-img {
 .startups {
   color: #ff905a !important;
 }
+
+.technology {
+  color: #34aadc !important;
+}
+
+.devices, .archives {
+  color: #19d5fd !important;
+}
+
+.people, .cn-startups {
+  color: #fc0 !important;
+}
+
+.brands, .digest {
+  color: #ff3b30 !important;
+}
+*/
 
 @media screen and (max-width: 800px) and (orientation: landscape), screen and (max-height: 300px) {
   .mfp-img-mobile .mfp-image-holder {
