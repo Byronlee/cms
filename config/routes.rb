@@ -6,7 +6,6 @@ Rails.application.routes.draw do
 
   mount API::API => '/'
   mount GrapeSwaggerRails::Engine => '/api/a14f30b8405857de59e098af4d1d07bda752a2dc'
-  mount Sidekiq::Web => '/sidekiq'
 
   devise_for :users, controllers: {
     sessions: 'users/sessions',
@@ -17,6 +16,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   namespace :admin, path: '/krypton_d29tZW5qaW5ncmFuZmFubGV6aGVtZWRpamlkZWN1b3d1' do
+    mount Sidekiq::Web => '/sidekiq'
     root to: redirect('/krypton_d29tZW5qaW5ncmFuZmFubGV6aGVtZWRpamlkZWN1b3d1/dashboard')
     resources :dashboard, :pages, :newsflashes
     resources :users, :ads
