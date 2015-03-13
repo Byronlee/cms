@@ -1,3 +1,10 @@
+
+function message(data){
+  $.get("users/messages", {data: data}, function(html){
+    $("li.notice").html(html)
+  })
+}
+
 function imgError(image) {
   image.onerror = "";
   image.src = '<%= image_url "img/logo.png" %>';
