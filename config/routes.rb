@@ -2,6 +2,8 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
 
+  get 'users/messages'
+
   get 'tags/show'
 
   mount API::API => '/'

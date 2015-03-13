@@ -17,9 +17,9 @@ html.no-js
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
     = javascript_include_tag "#{Settings.oauth.krypton.host}/assets/helper.js"
+    script src="http://rong.36kr.com/api/message/count?callback=message"
     = html_import_tag 'application'
     = csrf_meta_tags
-    |<script type="text/javascript" src="http://cbjs.baidu.com/js/m.js"></script>
   body#home
     = render_cell :layout, :nav, current_user: current_user
     .container.row
