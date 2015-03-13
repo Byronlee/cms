@@ -19,6 +19,10 @@ class PostsController < ApplicationController
     render :json => { :success => 'true' }.to_json
   end
 
+  def get_comments_count
+    render :json => @post.comments_count
+  end
+
   def feed
     @feeds = Post.limit(20)
   end

@@ -1,6 +1,6 @@
 h2
   | 文章评论(
-  span = @post.comments_counts.to_i
+  span.comment_form_count = @post.comments_counts.to_i
   | )
 .single-post-comment-reply
   .single-post-comment__form.cf
@@ -33,6 +33,16 @@ h2
             success: function (data) {
               $('.single-post-comment__comments').prepend(data);
               frm[0].reset();
+
+               $.ajax({
+                  type: 'GET',
+                  url: '#{ get_comments_count_post_path(@post) }',
+                  data: {'id':'#{@post.id}'},
+                  success: function (comments_count) {
+                    $('.comment_form_count').text(comments_count)
+                  }
+              });
+
             }
         });
      });
