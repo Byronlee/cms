@@ -3405,3 +3405,49 @@ img.mfp-img {
   padding-bottom: 10px;
   margin-bottom: 10px;
 }
+
+
+.sidebar-tab {
+  min-height: 400px;
+  border: 1px solid #ddd;
+}
+.sidebar-tab__tabs {
+  a {
+    display: block;
+    color: #51aded;
+    font-weight: bold;
+  }
+  li {
+    float: left;
+    width: 50%;
+    text-align: center;
+    line-height: 34px;
+    border-bottom: 1px solid #ddd;
+  }
+  .tab-36krplus {
+    width: 92px !important;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+  }
+}
+
+.tabs a.active {
+  background: #e6eaed;
+  color: #747f8c !important;
+}
+
+.tabs a, .tabs button {
+  cursor: pointer;
+}
+
+.sidebar-tab__tabs a {
+  display: block;
+  color: #51aded;
+  font-weight: bold;
+}
+
+.sidebar-tab__wrapper a {
+  padding-left: 5px;
+  margin-left: -5px;
+  border-left: 4px solid #51aded;
+}

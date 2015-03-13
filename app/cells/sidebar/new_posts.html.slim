@@ -1,23 +1,24 @@
-section.sidebar-tab style="border: 1px solid #e6eaed;"
-  ul#sideHotPosts.sidebar-tab__tabs.cf.tabs.nav.nav-tabs
-    li.tab-36krplus style="margin-top: 0px; border-left: 0px; "
-      a[href="#tab-36krplus" title=""]
+section.sidebar-tab
+  ul.sidebar-tab__tabs.cf.tabs
+    li.tab-forum
+      a[data-target="#tab-forum" title=""]
         | Startup-X
-    li.tab-815 style="margin-top: 0px;"
-      a[href="#tab-815" title=""]
+    li.tab-815
+      a.active[data-target="#tab-815" title=""]
         | 8点1氪
-  #tab-36krplus.sidebar-tab__36krplus.tabs-pane
-    ul
-      - Post.tagged_with("startup").limit(10).each do | post |
-        li
-          h2
-            a[href="#{post_url(post)}" title="#{post.title}"] = post.title
+  #tabs-content.sidebar-tab__wrapper
+    #tab-forum.sidebar-tab__forum.tabs-pane
+      ul
+        - Post.tagged_with("startup").limit(10).each do | post |
+          li
+            h2
+              a[href="#{post_url(post)}" title="#{post.title}"] = post.title
     span.tabulousclear
-  #tab-815.sidebar-tab__815.tabs-pane
-    ul
-      - Newsflash.limit(7).each do | np |
-        li
-          h2
-            a[href="#{np.news_url}" target="_blank"]
+    #tab-815.sidebar-tab__815.tabs-pane.active
+      ul
+        - Newsflash.limit(7).each do | np |
+          li
+            h2
+              a[href="#{np.news_url}" target="_blank"]
               = np.description_text
     span.tabulousclear
