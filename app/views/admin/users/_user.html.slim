@@ -1,12 +1,12 @@
 tr
   td = user.id
-  td = user.name
+  td = user.display_name
   td = user.email
   td = user.phone
   td = user.role_text
   td = user.sign_in_count
   td = user.last_sign_in_at
   td = user.last_sign_in_ip
-  th 
+  th
     a.tip-top data-original-title="编辑" href= edit_admin_user_path(user)
       i.icon-pencil

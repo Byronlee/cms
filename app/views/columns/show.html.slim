@@ -33,9 +33,9 @@
                 .meta
                   a title="评论数量" href="#{post_url(post)}"
                     i class="icon icon-share"
-                    = post.comments_count || 0
+                    = post.comments_counts || 0
                 div.image.feature-img.thumb-180
-                  a href="/p/219566.html"
+                  a href="#{post_url(post)}"
                     img alt="Blank" class="image lazyload loaded" data-src="#{post.cover_real_url}" src="#{post.cover_real_url}"
               .right-col
                 h1
@@ -44,10 +44,20 @@
                   = post.summary
           .pagination.cf
             ul
-              li.prev.previous_page.left
-                = link_to_previous_page @posts, '← 上一页', rel: "prev" if @posts.present?
-              li.next.next_page.right
-                = link_to_next_page @posts, '下一页 →', rel: "next" if @posts.present?
+              - if @posts.present?
+                - if @posts.prev_page
+                  li.prev.previous_page.left
+                    = link_to_previous_page @posts, '← 上一页', rel: "prev"
+                - else
+                  li.prev.previous_page.left.disabled
+                    = link_to '← 上一页', '#', rel: "prev"
+
+                - if @posts.next_page
+                  li.next.next_page.right
+                    = link_to_next_page @posts, '下一页 →', rel: "next"
+                - else
+                  li.next.next_page.right.disabled
+                    = link_to '下一页 →', '#', rel: "next"
   .aside
     = render_cell :sidebar, :today
     = render_cell :sidebar, :social

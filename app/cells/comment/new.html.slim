@@ -1,6 +1,6 @@
 h2
   | 文章评论(
-  span = @post.comments_count.to_i
+  span = @post.comments_counts.to_i
   | )
 .single-post-comment-reply
   .single-post-comment__form.cf
@@ -17,7 +17,7 @@ h2
       span.username.right
         | signed as &nbsp;
         a[href="javascript:void(0)"]
-          = @current_user.try(:name)
+          = @current_user.try(:display_name)
     button.ladda-button.comment-submit-btn.right[data-style="slide-down" data-spinner-size="32"]
       span.ladda-label
         | 提交评论

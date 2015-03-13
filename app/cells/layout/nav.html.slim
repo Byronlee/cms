@@ -79,7 +79,7 @@ header.header.header-normal.scrolled
           li.avatar.drop
             a.second-nav__account.cf href="javascript:void(0)"
               img.avatar-small.left alt="Violin" height="24" src="#{avatar_url @current_user.try(:avatar)}" width="24"
-                span.right  = @current_user.name
+                span.right  = @current_user.display_name
             div.dropdown.dropdown-account
               div.dropdown-list.account__list.dropdown__list
                 section

@@ -7,7 +7,7 @@ class ExcellentCommentsComponentWorker < BaseWorker
         :include => {
           :user => {
             :only => [],
-            :methods => :name},
+            :methods => [:display_name]},
           :commentable =>{
             :only => [:id, :title, :url_code]}})
   end

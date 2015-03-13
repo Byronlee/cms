@@ -2482,17 +2482,20 @@ a:visited .new {
       display: block;
       width: 280px; } }
 
-.sidebar-popular__list {
+.sidebar-popular__list, .sidebar-sponsored__list {
   border-top: 1px solid #51aded;
-  padding-top: 10px; }
-  .sidebar-popular__list h1 {
-    margin-left: 70px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    /* number of lines to show */
-    -webkit-box-orient: vertical; }
+  padding-top: 10px;
+}
+
+.sidebar-popular__list h1 {
+  margin-left: 70px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
 
 .sidebar-popular__posts {
   border-bottom: 1px solid #e6eaed;

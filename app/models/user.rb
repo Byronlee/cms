@@ -59,11 +59,11 @@ class User < ActiveRecord::Base
     (authentications.empty? || !password.blank?) && super
   end
 
-  def name
+  def display_name
     if krypton_authentication && krypton_authentication.info['name'].present?
       krypton_authentication.info['name']
     else
-      phone || email
+      name.present? ? name : '匿名用户'
     end
   end
 

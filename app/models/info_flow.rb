@@ -39,10 +39,10 @@ class InfoFlow < ActiveRecord::Base
   def get_associations_of(posts)
     JSON.parse posts.to_json(
       :except => [:content],
-      :methods => [:human_created_at, :cover_real_url],
+      :methods => [:human_created_at, :cover_real_url, :comments_counts],
       :include => {
         :author => {
-          :only => [], :methods => [:name] },
+          :only => [], :methods => [:display_name] },
         :column => {
           :only => [:id, :name, :slug]
           }})
