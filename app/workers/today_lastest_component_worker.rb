@@ -5,7 +5,7 @@ class TodayLastestComponentWorker < BaseWorker
     Redis::HashKey.new('posts')['today_lastest'] =
      [
       :posts => JSON.parse(posts.to_json(
-        :only => [:id, :title],
+        :only => [:id, :title, :url_code],
         :include => {
           :column => {
             :only => [:id, :name, :slug]}})),
