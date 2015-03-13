@@ -7,7 +7,7 @@ tr
   td = post.state
   td
     span class='badge badge-warning'
-      = link_to post.comments_count.to_i, admin_post_comments_path(post)
+      = link_to post.comments_counts.to_i, admin_post_comments_path(post)
   td = post.views_count
   td
     a.tip-top data-original-title="添加到头条" href= new_admin_head_line_path(:url => post_url(post))
