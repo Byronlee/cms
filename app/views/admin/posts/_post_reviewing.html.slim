@@ -6,12 +6,8 @@ tr
   td = post.created_at
   td = display_state(post.state)
   td
-    span class='badge badge-warning'
-      = link_to post.comments_counts.to_i, admin_post_comments_path(post)
-  td = post.views_count
-  td
-    a.tip-top data-original-title="添加到头条" href= new_admin_head_line_path(:url => post_url(post))
-      i.icon-star
+    a.tip-top data-original-title="发布" href= new_admin_head_line_path(:url => post_url(post))
+      i.icon-ok
     |&nbsp;&nbsp;
     a.tip-top data-original-title="编辑" href= edit_admin_post_url(post)
       i.icon-pencil

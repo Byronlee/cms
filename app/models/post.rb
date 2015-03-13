@@ -53,6 +53,8 @@ class Post < ActiveRecord::Base
   scope :created_on, ->(date) {
     where(:created_at => date.beginning_of_day..date.end_of_day)
   }
+  scope :reviewing, ->{ where(:state => :reviewing)}
+  scope :published, ->{ where(:state => :published)}
   scope :hot_posts, -> { order('views_count desc, created_at desc') }
 
   acts_as_taggable

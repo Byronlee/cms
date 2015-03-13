@@ -3,9 +3,17 @@ class Admin::PostsController < Admin::BaseController
 
   def index
     if(params[:column_id] && column = Column.find(params[:column_id]))
-      @posts = column.posts.order('updated_at desc').includes(:author, :column).page params[:page]
+      @posts = column.posts.published.order('updated_at desc').includes(:author, :column).page params[:page]
     else
-      @posts = Post.order('updated_at desc').includes(:author, :column).page params[:page]
+      @posts = Post.published.order('updated_at desc').includes(:author, :column).page params[:page]
+    end
+  end
+
+  def reviewing
+    if(params[:column_id] && column = Column.find(params[:column_id]))
+      @posts = column.posts.reviewing.order('updated_at desc').includes(:author, :column).page params[:page]
+    else
+      @posts = Post.reviewing.order('updated_at desc').includes(:author, :column).page params[:page]
     end
   end
 

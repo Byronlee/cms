@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     end
     resources :posts, except: [:show] do
       resources :comments, only: [:index], on: :collection
+      get :reviewing, on: :collection
     end
     resources :comments do
       member do
