@@ -15,7 +15,7 @@
               </div>
               <div class="sidebar-comments__title">
                 评论于
-                <a ref="/p/{{comment.commentable.url_code}}.html" href="javacript:void(0)" onclick="performLinkWithRel(this)" target="_blank">{{comment.commentable.title}}</a>
+                <a ref="{{(comment.commentable.title_link == null || comment.commentable.title_link == '') ? ('/p/' + comment.commentable.url_code + '.html') : comment.commentable.title_link }}" href="javacript:void(0)" onclick="performLinkWithRel(this)" target="_blank">{{comment.commentable.title}}</a>
               </div>
             </div>
           </template>
@@ -25,4 +25,5 @@
   </template>
 
   <script src="excellent-comments.js"></script>
-</polymer-element>
+</polymer-ele'ent>
+'
