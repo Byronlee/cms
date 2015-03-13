@@ -14,7 +14,7 @@ section.single-post-share.cf
           i.icon.icon-share
           span
         .single-post-social__popup
-          a.weibo[ref="nofollow" href="http://share.baidu.com/s?type=text&searchPic=0&sign=on&to=tsina&url=#{post_url(@post)}&title=#{(truncate(@post.title, :length => 300)).html_safe}%>&key=595885820" target="_blank"]
+          a.weibo[ref="nofollow" href="http://share.baidu.com/s?type=text&searchPic=0&sign=on&to=tsina&url=#{post_url(@post)}&title=#{(truncate(@post.title, :length => 300)).html_safe}&key=595885820" target="_blank"]
             i.icon-social-weibo
           a.qq[ref="nofollow" href="http://connect.qq.com/widget/shareqq/index.html?url=#{post_url(@post)}&title=#{(truncate(@post.title, :length => 300)).html_safe}&source=shareqq&desc=刚看到这篇文章不错，推荐给你看看～" target="_blank"]
             i.icon-social-qq
