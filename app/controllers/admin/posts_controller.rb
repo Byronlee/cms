@@ -2,14 +2,14 @@ class Admin::PostsController < Admin::BaseController
   load_and_authorize_resource
 
   def index
-    if(params[:column_id] && column = Column.find(params[:column_id]))
+    if(params[:column_id] && column = Column.find(params[:column_id]) )
       @posts = column.posts.published.order('updated_at desc').includes(:author, :column).page params[:page]
     else
       @posts = Post.published.order('updated_at desc').includes(:author, :column).page params[:page]
     end
   end
 
-  def reviewing
+  def reviewings
     if(params[:column_id] && column = Column.find(params[:column_id]))
       @posts = column.posts.reviewing.order('updated_at desc').includes(:author, :column).page params[:page]
     else

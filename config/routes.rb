@@ -24,11 +24,14 @@ Rails.application.routes.draw do
     resources :users, :ads
     resources :head_lines, except: [:show]
     resources :columns do
-      resources :posts, only: [:index], on: :collection
+      resources :posts, only: [:index], on: :collection do
+        get :reviewings, on: :collection
+      end
     end
-    resources :posts, except: [:show] do
+    resources :posts do
       resources :comments, only: [:index], on: :collection
-      get :reviewing, on: :collection
+      get :reviewings, on: :collection
+      post :publish, on: :member
     end
     resources :comments do
       member do

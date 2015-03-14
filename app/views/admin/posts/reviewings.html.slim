@@ -6,8 +6,8 @@ div#content-header
       | 首页
     a.current href="#"
       i.icon-file
-      | 文章管理
-  <h1>文章管理</h1>
+      | 文章审查管理
+  <h1>文章审查管理</h1>
 /!End-breadcrumbs
 
 div.container-fluid
@@ -37,4 +37,4 @@ div.container-fluid
       div class="pagination pagination-table"
         = paginate @posts
 
-= render 'layouts/set_active_nav', :active_id => "nav_posts_reviewing"
+= render 'layouts/set_active_nav', :active_id => "nav_posts_reviewings"

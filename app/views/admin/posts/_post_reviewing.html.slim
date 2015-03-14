@@ -1,12 +1,15 @@
 tr
-  td = link_to post.id, post_url(post), target:'_new'
-  td = link_to post.title, post_url(post), target:'_new'
+  td = link_to post.id, admin_post_path(post)
+  td = link_to post.title, admin_post_path(post)
   td = post.author.try(:name)
-  td = link_to post.column.try(:name), admin_column_posts_path(post.column)
+  td = link_to post.column.try(:name), reviewings_admin_column_posts_path(post.column)
   td = post.created_at
   td = display_state(post.state)
   td
-    a.tip-top data-original-title="发布" href= new_admin_head_line_path(:url => post_url(post))
+    a.tip-top data-original-title="快速发布" href= admin_post_path(post)
+      i.icon-plane
+    |&nbsp;&nbsp;
+    a.tip-top data-original-title="审查" href= admin_post_path(post)
       i.icon-ok
     |&nbsp;&nbsp;
     a.tip-top data-original-title="编辑" href= edit_admin_post_url(post)
