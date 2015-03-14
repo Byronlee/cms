@@ -77,6 +77,7 @@ Rails.application.routes.draw do
   match '/columns/:slug(/:page)', :controller => 'columns', :action => 'show', via: :get
   match '/category/:slug(/:page)', :controller => 'columns', :action => 'show', via: :get
   match '/p/(:url_code).html' => 'posts#show', via: :get, as: :post_show_by_url_code
+  match '/p/preview/(:key).html' => 'posts#preview', via: :get, as: :preview_post_by_key
   resources :pages, only: [:show], param: :slug
   get :feed, to: 'posts#feed', defaults: { format: :rss }
   match '/info_flow/lastest(/:page)', :controller => 'info_flow', :action => 'lastest', via: :get

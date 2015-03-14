@@ -19,6 +19,7 @@ class Admin::PostsController < Admin::BaseController
 
   def create
     @post.author = current_user
+    @post.key = SecureRandom.uuid
     @post.save
     respond_with @post, location: admin_posts_path
   end
@@ -42,7 +43,7 @@ class Admin::PostsController < Admin::BaseController
   end
 
   def do_publish
-    redirect_to reviewings_admin_posts_path, :error => "文章状态不合法，不能发布！" unless @post.may_publish?
+    redirect_to reviewings_admin_posts_path, :notice => "文章状态不合法，不能发布！" unless @post.may_publish?
     @post.publish
     if @post.save
       redirect_to reviewings_admin_posts_path, :notice => "文章发布成功"

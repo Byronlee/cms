@@ -23,6 +23,7 @@
 #  views_count    :integer          default(0)
 #  catch_title    :text
 #  published_at   :datetime
+#  key            :string(255)
 #
 
 FactoryGirl.define do

@@ -3,14 +3,15 @@ tr
   td = link_to post.title, admin_post_path(post)
   td = post.author.try(:name)
   td = link_to post.column.try(:name), reviewings_admin_column_posts_path(post.column)
+  td = post.key
   td = post.created_at
   td = display_state(post.state)
   td
     = link_to publish_admin_post_path(post), class: 'tip-top', 'data-original-title' => "快速发布"
       i.icon-plane
     |&nbsp;&nbsp;
-    a.tip-top data-original-title="审查" href= admin_post_path(post)
-      i.icon-ok
+    a.tip-top data-original-title="预览" target="_new" href= preview_post_by_key_path(key: post.key )
+      i.icon-eye-open
     |&nbsp;&nbsp;
     a.tip-top data-original-title="编辑" href= 'http://writer.36kr.com'
       i.icon-pencil
