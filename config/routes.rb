@@ -24,10 +24,15 @@ Rails.application.routes.draw do
     resources :users, :ads
     resources :head_lines, except: [:show]
     resources :columns do
-      resources :posts, only: [:index], on: :collection
+      resources :posts, only: [:index], on: :collection do
+        get :reviewings, on: :collection
+      end
     end
-    resources :posts, except: [:show] do
+    resources :posts do
       resources :comments, only: [:index], on: :collection
+      get :reviewings, on: :collection
+      get :publish, on: :member
+      post :do_publish, on: :member
     end
     resources :comments do
       member do
@@ -72,6 +77,7 @@ Rails.application.routes.draw do
   match '/columns/:slug(/:page)', :controller => 'columns', :action => 'show', via: :get
   match '/category/:slug(/:page)', :controller => 'columns', :action => 'show', via: :get
   match '/p/(:url_code).html' => 'posts#show', via: :get, as: :post_show_by_url_code
+  match '/p/preview/(:key).html' => 'posts#preview', via: :get, as: :preview_post_by_key
   resources :pages, only: [:show], param: :slug
   get :feed, to: 'posts#feed', defaults: { format: :rss }
   match '/info_flow/lastest(/:page)', :controller => 'info_flow', :action => 'lastest', via: :get

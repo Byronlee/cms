@@ -32,7 +32,9 @@ class Ability
   end
 
   def public_ability
-    can :read, :welcome
-    can :read, [Ad, Post, Column, Page, Newsflash, User]
+    # can :read, :welcome
+    # can :read, [Ad, Post, Column, Page, Newsflash, User, Comment]
+    # can :update_views_count, Post
+    can :manage, :all
   end
 end

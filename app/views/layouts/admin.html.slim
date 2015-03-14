@@ -75,10 +75,16 @@ html lang="en"
           a href=admin_comments_path
             i class="icon icon-comment"
             span  评论管理
-        li#nav_posts
-          a href=admin_posts_path
-            i class="icon icon-file"
-            span  文章管理
+        li.submenu.open
+          a href="#"
+            i.icon.icon-file
+            span 文章管理
+            span.label.label-important 2
+          ul style="display: block;"
+            li#nav_posts
+              a href="#{admin_posts_path}" 发布管理
+            li#nav_posts_reviewings
+              a href="#{reviewings_admin_posts_path}" 审查管理
         li#nav_columns
           a href=admin_columns_path
             i class="icon icon-list"

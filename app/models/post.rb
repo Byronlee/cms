@@ -23,23 +23,26 @@
 #  views_count    :integer          default(0)
 #  catch_title    :text
 #  published_at   :datetime
+#  key            :string(255)
 #
 
 require 'action_view'
 class Post < ActiveRecord::Base
   include ActionView::Helpers::DateHelper
+  include AASM
 
   by_star_field '"posts".created_at'
   paginates_per 20
   mount_uploader :cover, BaseUploader
+  aasm.attribute_name :state
 
-  validates_presence_of :title, :content
-  validates_presence_of :summary, :slug, if: -> { persisted? }
+  # validates_presence_of :title, :content
+  # validates_presence_of :summary, :slug, if: -> { persisted? }
 
-  validates :slug,    length: { maximum: 14 }
-  validates :summary, length: { maximum: 40 }
-  validates :title,   length: { maximum: 40 }
-  validates :content, length: { maximum: 10_000 }
+  # validates :slug,    length: { maximum: 14 }
+  # validates :summary, length: { maximum: 40 }
+  # validates :title,   length: { maximum: 40 }
+  # validates :content, length: { maximum: 10_000 }
 
   belongs_to :column, counter_cache: true
   belongs_to :author, class_name: User.to_s, foreign_key: 'user_id'
@@ -51,9 +54,20 @@ class Post < ActiveRecord::Base
   scope :created_on, ->(date) {
     where(:created_at => date.beginning_of_day..date.end_of_day)
   }
+  scope :reviewing, ->{ where(:state => :reviewing)}
+  scope :published, ->{ where(:state => :published)}
   scope :hot_posts, -> { order('views_count desc, created_at desc') }
 
   acts_as_taggable
+
+  aasm do
+    state :reviewing, :initial => true
+    state :published
+
+    event :publish do
+      transitions :from => [:reviewing], :to => :published
+    end
+  end
 
   def self.today
     created_on(Date.today)

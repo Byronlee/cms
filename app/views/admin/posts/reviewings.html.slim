@@ -6,8 +6,8 @@ div#content-header
       | 首页
     a.current href="#"
       i.icon-file
-      | 文章发布管理
-  <h1>文章发布管理</h1>
+      | 文章审查管理
+  <h1>文章审查管理</h1>
 /!End-breadcrumbs
 
 div.container-fluid
@@ -25,17 +25,17 @@ div.container-fluid
         thead
           tr role="row"
             th style="width:5%" ID
-            th style="width:30%" 标题
-            th style="width:8%" 作者
-            th style="width:8%" 专栏
-            th style="width:14%" 创建时间
-            th style="width:8%" 状态
-            th style="width:8%" 评论
-            th style="width:7%" 浏览量
-            th style="width:12%" 操作
+            th style="width:25%" 标题
+            th style="width:10%" 作者
+            th style="width:10%" 专栏
+            th style="width:18%" KEY
+            th style="width:12%" 创建时间
+            th style="width:10%" 状态
+            th style="width:10%" 操作
         tbody
-          = render @posts
+        - @posts.each do |post|
+          = render partial: "post_reviewing", locals:{post:post}
       div class="pagination pagination-table"
         = paginate @posts
 
-= render 'layouts/set_active_nav', :active_id => "nav_posts"
+= render 'layouts/set_active_nav', :active_id => "nav_posts_reviewings"

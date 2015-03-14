@@ -4,7 +4,7 @@ tr
   td = post.author.try(:name)
   td = link_to post.column.try(:name), admin_column_posts_path(post.column)
   td = post.created_at
-  td = post.state
+  td = display_state(post.state)
   td
     span class='badge badge-warning'
       = link_to post.comments_counts.to_i, admin_post_comments_path(post)
@@ -13,7 +13,10 @@ tr
     a.tip-top data-original-title="添加到头条" href= new_admin_head_line_path(:url => post_url(post))
       i.icon-star
     |&nbsp;&nbsp;
-    a.tip-top data-original-title="编辑" href= edit_admin_post_url(post)
+    a.tip-top data-original-title="编辑发布信息" href= edit_admin_post_url(post)
+      i.icon-cog
+    |&nbsp;&nbsp;
+    a.tip-top data-original-title="编辑文章" href= "http://writer.36kr.com"
       i.icon-pencil
     |&nbsp;&nbsp;
     a.tip-top data-original-title="删除" data-method="delete" data-confirm="确定删除文章 #{post.title} ？" href= admin_post_url(post)

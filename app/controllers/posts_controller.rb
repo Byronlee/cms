@@ -7,6 +7,16 @@ class PostsController < ApplicationController
     @host = request.host_with_port
   end
 
+  def preview
+    @post = Post.find_by_key(params[:key])
+    return redirect_to :back, :notice => '该文章已删除或不存在，不提供预览' unless @post
+    if @post.try(:state) == 'reviewing'
+      render :show
+    else
+      redirect_to :back, :notice => '该文章已发布，不提供预览'
+    end
+  end
+
   def update_views_count
     views_count = Redis::HashKey.new('posts')["views_count_#{params[:id]}"]
     if views_count.nil?

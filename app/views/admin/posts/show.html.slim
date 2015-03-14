@@ -6,9 +6,9 @@ div#content-header
     a.tip-bottom title="回到首页" href= admin_root_path
       i.icon-home
       | 首页
-    a.tip-bottom title="回到文章管理列表页面" href= admin_posts_path
+    a.tip-bottom title="回到文章审查管理列表页面" href= reviewings_admin_posts_path
       i.icon-file
-      | 文章管理
+      | 文章审查管理
     a.current href="#"
       = @post.title
   h1
@@ -36,6 +36,18 @@ div.container-fluid
       = @post.created_at
 
   div.span12 style="margin-top:20px;"
+    = raw display_post_content @post.content, @post.cover_real_url
 
+    = link_to do_publish_admin_post_path(@post), method: 'POST', class: 'btn btn-primary'
+      i.icon-plane
+      |&nbsp;快速发布
+    |&nbsp;&nbsp;
+    = link_to 'http://writer.36kr.com', class: 'btn btn-primary'
+      i.icon-pencil
+      |&nbsp;编辑
+    |&nbsp;&nbsp;
+    = link_to :back, class: 'btn btn-primary'
+      i.icon-circle
+      |&nbsp;返回
 
-    = @post.content
+= render 'layouts/set_active_nav', :active_id => "nav_posts_reviewings"

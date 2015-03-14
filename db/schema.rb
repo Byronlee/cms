@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150313110203) do
+ActiveRecord::Schema.define(version: 20150314093733) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -132,6 +132,7 @@ ActiveRecord::Schema.define(version: 20150313110203) do
     t.integer  "views_count",    default: 0
     t.text     "catch_title"
     t.datetime "published_at"
+    t.string   "key"
   end
 
   create_table "taggings", force: true do |t|
