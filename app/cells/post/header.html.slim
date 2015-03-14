@@ -1,6 +1,6 @@
 section.single-post-header
   .single-post-header__headline
-    img.image.lazyload width="620" height="337" alt="" data-src= @post.cover_real_url
+    img.image width="620" height="337" alt="" src= @post.cover_real_url
   header.single-post-header__meta
     .single-post__postmeta
       a href="#" #{@post.author.try(:display_name)}
