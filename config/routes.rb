@@ -31,7 +31,8 @@ Rails.application.routes.draw do
     resources :posts do
       resources :comments, only: [:index], on: :collection
       get :reviewings, on: :collection
-      post :publish, on: :member
+      get :publish, on: :member
+      post :do_publish, on: :member
     end
     resources :comments do
       member do

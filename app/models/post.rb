@@ -35,13 +35,13 @@ class Post < ActiveRecord::Base
   mount_uploader :cover, BaseUploader
   aasm.attribute_name :state
 
-  validates_presence_of :title, :content
-  validates_presence_of :summary, :slug, if: -> { persisted? }
+  # validates_presence_of :title, :content
+  # validates_presence_of :summary, :slug, if: -> { persisted? }
 
-  validates :slug,    length: { maximum: 14 }
-  validates :summary, length: { maximum: 40 }
-  validates :title,   length: { maximum: 40 }
-  validates :content, length: { maximum: 10_000 }
+  # validates :slug,    length: { maximum: 14 }
+  # validates :summary, length: { maximum: 40 }
+  # validates :title,   length: { maximum: 40 }
+  # validates :content, length: { maximum: 10_000 }
 
   belongs_to :column, counter_cache: true
   belongs_to :author, class_name: User.to_s, foreign_key: 'user_id'

@@ -6,13 +6,13 @@ tr
   td = post.created_at
   td = display_state(post.state)
   td
-    a.tip-top data-original-title="快速发布" href= admin_post_path(post)
+    = link_to publish_admin_post_path(post), class: 'tip-top', 'data-original-title' => "快速发布"
       i.icon-plane
     |&nbsp;&nbsp;
     a.tip-top data-original-title="审查" href= admin_post_path(post)
       i.icon-ok
     |&nbsp;&nbsp;
-    a.tip-top data-original-title="编辑" href= edit_admin_post_url(post)
+    a.tip-top data-original-title="编辑" href= 'http://writer.36kr.com'
       i.icon-pencil
     |&nbsp;&nbsp;
     a.tip-top data-original-title="删除" data-method="delete" data-confirm="确定删除文章 #{post.title} ？" href= admin_post_url(post)

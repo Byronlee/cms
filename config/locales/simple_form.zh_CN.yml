@@ -68,7 +68,7 @@ zh-CN:
     submit:
       post:
         create: '创建文章'
-        update: '更新文章'
+        update: '更新文章发布信息'
       column:
         create: '创建专栏'
         update: '更新专栏'

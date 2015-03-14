@@ -38,6 +38,19 @@ class Admin::PostsController < Admin::BaseController
     redirect_to :back
   end
 
+  def publish
+  end
+
+  def do_publish
+    redirect_to reviewings_admin_posts_path, :error => "文章状态不合法，不能发布！" unless @post.may_publish?
+    @post.publish
+    if @post.save
+      redirect_to reviewings_admin_posts_path, :notice => "文章发布成功"
+    else
+      render :publish
+    end
+  end
+
   private
 
   def post_params
