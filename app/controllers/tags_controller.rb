@@ -1,7 +1,8 @@
 class TagsController < ApplicationController
   def show
     @tag = params[:tag]
-    @posts = Post.tagged_with(params[:tag])
+    @posts = Post.published
+      .tagged_with(params[:tag])
       .order('created_at desc')
       .includes(:column, author:[:krypton_authentication])
       .page(params[:page]).per(15)

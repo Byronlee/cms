@@ -5,7 +5,7 @@ class ColumnsController < ApplicationController
   def show
     @column = Column.find_by_slug(params[:slug])
     if @column
-      @posts = @column.posts
+      @posts = @column.posts.published
         .order('created_at desc')
         .includes(:column, author:[:krypton_authentication])
         .page(params[:page]).per(15)
