@@ -1,6 +1,7 @@
 <polymer-element name="today-lastest">
   <template>
     <link rel="stylesheet" href="today-lastest.css" />
+    <link rel="import" href="juicy-html.html" />
     <div class="section aside-today">
       <h2 class="aside-today__title">今日更新<span>+{{posts_count || 0}}</span></h2>
       <ul class="aside-today__list">
@@ -10,7 +11,9 @@
               <span><a target="_blank" ref="/columns/{{post.column.slug}}" href="javacript:void(0)" onclick="performLinkWithRel(this)" class="{{post.column.slug}}">{{post.column.name}}</a> / {{post.column.slug}}</span>
             </div>
             <h1>
-              <a ref="{{(post.title_link == null || post.title_link == '') ? ('/p/' + post.url_code + '.html') : post.title_link }}" href="javacript:void(0)" onclick="performLinkWithRel(this)" title="{{post.title}}">{{post.title}}</a>
+              <a ref="{{(post.title_link == null || post.title_link == '') ? ('/p/' + post.url_code + '.html') : post.title_link }}" href="javacript:void(0)" onclick="performLinkWithRel(this)" onmouseover="javascript:this.title=this.children[1].innerHTML">
+                <template is="juicy-html" content="{{post.title}}"></template>
+              </a>
             </h1>
           </li>
         </template>

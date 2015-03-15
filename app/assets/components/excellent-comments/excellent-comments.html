@@ -1,6 +1,7 @@
 <polymer-element name="excellent-comments">
   <template>
     <link rel="stylesheet" href="excellent-comments.css" />
+    <link rel="import" href="juicy-html.html" />
     <div class="sidebar">
       <section class="sidebar-comments">
         <h3>优质评论</h3>
@@ -13,11 +14,13 @@
                 <abbr class="timeago" title="{{comment.created_at}}">{{comment.human_created_at}}</abbr>
               </div>
               <div class="sidebar-comments__comment">
-                {{comment.content}}
+                <template is="juicy-html" content="{{comment.content}}"></template>
               </div>
               <div class="sidebar-comments__title">
                 评论于
-                <a ref="{{(comment.commentable.title_link == null || comment.commentable.title_link == '') ? ('/p/' + comment.commentable.url_code + '.html') : comment.commentable.title_link }}" href="javacript:void(0)" onclick="performLinkWithRel(this)" >{{comment.commentable.title}}</a>
+                <a ref="{{(comment.commentable.title_link == null || comment.commentable.title_link == '') ? ('/p/' + comment.commentable.url_code + '.html') : comment.commentable.title_link }}" href="javacript:void(0)" onclick="performLinkWithRel(this)" >
+                  <template is="juicy-html" content="{{comment.commentable.title}}"></template>
+                </a>
               </div>
             </div>
           </template>

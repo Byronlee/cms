@@ -1,6 +1,7 @@
 <polymer-element name="hot-posts">
   <template>
     <link rel="stylesheet" href="hot-posts.css" />
+    <link rel="import" href="juicy-html.html" />
     <div class="sidebar">
       <section class="sidebar-popular cf">
         <h3>热门文章</h3>
@@ -12,7 +13,9 @@
                 <img src="{{post.cover_real_url}}" alt="">
               </div>
               <h1>
-                <a ref="{{(post.title_link == null || post.title_link == '') ? ('/p/' + post.url_code + '.html') : post.title_link }}" href="javacript:void(0)" onclick="performLinkWithRel(this)" title="{{post.title}}">{{post.title}}</a>
+                <a ref="{{(post.title_link == null || post.title_link == '') ? ('/p/' + post.url_code + '.html') : post.title_link }}" href="javacript:void(0)" onclick="performLinkWithRel(this)" onmouseover="javascript:this.title=this.children[1].innerHTML">
+                  <template is="juicy-html" content="{{post.title}}"></template>
+                </a>
               </h1>
             </article>
           </template>
