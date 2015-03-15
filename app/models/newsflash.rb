@@ -11,6 +11,7 @@
 #  news_summaries           :string(255)      default([]), is an Array
 #  created_at               :datetime
 #  updated_at               :datetime
+#  user_id                  :integer
 #
 
 class Newsflash < ActiveRecord::Base
