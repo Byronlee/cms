@@ -3,6 +3,9 @@ ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
 fetch(:linked_files).concat %w{
   config/database.yml
+  config/redis.yml
+  config/sidekiq.yml
+  config/newrelic.yml
   config/settings.local.rb
   config/secrets.yml
 }
@@ -29,3 +32,4 @@ namespace :deploy do
 end
 
 load "config/deploy/recipes/notification.rb"
+
