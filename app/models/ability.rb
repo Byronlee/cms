@@ -43,6 +43,13 @@ class Ability
 
   # 编辑
   def editor(user)
+    can :read, :dashboard
+    can :manage, Post
+    can :manage, Newsflash
+    can :manage, Column
+    can :manage, Comment
+    can :manage, HeadLine
+    can :manage, Page
   end
 
   # 管理员
