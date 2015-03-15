@@ -39,6 +39,8 @@ columns.each do | column |
   Column.new(column).save(:validate => false)
 end
 
+ActiveRecord::Base.connection.execute("select setval('pages_id_seq', 1, false)")
+Page.delete_all
 pages = [
   { title: '36氪投稿细则', slug: 'contribute',  body: Settings.contribute },
   { title: '关于36氪',    slug: 'about',       body: Settings.about },
@@ -49,26 +51,6 @@ pages = [
 pages.each do | page |
   Page.create!(page)
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
