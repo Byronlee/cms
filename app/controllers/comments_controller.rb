@@ -29,6 +29,7 @@ class CommentsController < ApplicationController
   end
 
   def create
+    return render :nothing => true unless current_user && params[:comment][:content].present?
     @commentable = find_commentable
     @comment = @commentable.comments.build(comment_params)
     @comment.user = current_user

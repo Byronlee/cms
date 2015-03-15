@@ -1,4 +1,6 @@
 class CommentCell < Cell::Rails
+  helper ApplicationHelper
+
   def index(args)
     @post = args[:post]
     render

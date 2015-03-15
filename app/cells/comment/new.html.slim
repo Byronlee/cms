@@ -7,24 +7,33 @@ h2
     form.comment_form action="/posts/#{@post.id}/comments" method="post" data-remote="true"
       = hidden_field_tag :authenticity_token, form_authenticity_token
       textarea#post.textarea name="comment[content]" placeholder="你怎么看？" data-widearea="enable"
-    span.tip.right
+    span.tip.right style="display:none"
       | 请回复有价值的信息，无意义的评论将很快被删除，账号将被禁止发言
   .single-post-comment__bottom.cf
-    .meta.left.cf
-      .avatar.left
-        a href="javascript:void(0)"
-          img[src="#{@current_user.try(:avatar)}" alt=""]
-      span.username.right
-        | signed as &nbsp;
-        a[href="javascript:void(0)"]
-          = @current_user.try(:display_name)
-    button.ladda-button.comment-submit-btn.right[data-style="slide-down" data-spinner-size="32"]
-      span.ladda-label
-        | 提交评论
+    - if @current_user
+      .meta.left.cf
+        .avatar.left
+          a href="javascript:void(0)"
+            img[src="#{avatar_url @current_user.try(:avatar)}" alt=""]
+        span.username.right
+          | signed as &nbsp;
+          a[href="javascript:void(0)"]
+            = @current_user.try(:display_name)
+      button.ladda-button.comment-submit-btn.right[data-style="slide-down" data-spinner-size="32"]
+        span.ladda-label
+          | 提交评论
+    - else
+      .meta.left.cf
+        a href="#{user_omniauth_authorize_path(provider: :krypton)}" class="" 登录
+        | 后参与讨论
+      button.ladda-button.comment-submit-btn.right.comment-submit-btn-disabled[data-style="slide-down" data-spinner-size="32"]
+        span.ladda-label
+          | 提交评论
 
   javascript:
     $(document).ready(function(){
       $(".comment-submit-btn").click(function(){
+        if(#{@current_user.present?} == false || $('form.comment_form > #post').val() == "") return;
         var frm = $('form.comment_form');
         $.ajax({
             type: frm.attr('method'),
