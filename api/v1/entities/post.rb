@@ -21,6 +21,10 @@ module V1
       expose :source     , documentation: '来源'
       expose :comments_count , documentation: '评论计数'
       expose :views_count    , documentation: '来源计数'
+      expose :catch_title    , documentation: ''
+      expose :published_at   , documentation: ''
+      expose :key            , documentation: ''
+      expose :remark         , documentation: ''
     end
   end
 end

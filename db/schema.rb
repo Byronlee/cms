@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150314093733) do
+ActiveRecord::Schema.define(version: 20150315093556) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -133,6 +133,7 @@ ActiveRecord::Schema.define(version: 20150314093733) do
     t.text     "catch_title"
     t.datetime "published_at"
     t.string   "key"
+    t.text     "remark"
   end
 
   create_table "taggings", force: true do |t|

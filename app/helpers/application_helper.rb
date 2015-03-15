@@ -14,7 +14,7 @@ module ApplicationHelper
   end
 
   def post_url(arg)
-    retuen arg.title_link unless arg.try(:title_link).blank?
+    return arg.title_link unless arg.try(:title_link).blank?
     url_code = (arg.class.to_s == 'Fixnum' ? arg : arg.url_code)
     post_show_by_url_code_url(url_code)
   end

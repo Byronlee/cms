@@ -87,6 +87,10 @@ class User < ActiveRecord::Base
     User.where(email: emails).first
   end
 
+  def editable
+    Settings.editable_roles.include? role.to_sym
+  end
+
   protected
 
   def email_required?

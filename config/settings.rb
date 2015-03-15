@@ -1,3 +1,5 @@
+settings.site = 'https://www.36kr.com'
+
 settings.oauth = {
   krypton: {
     app_id: '9767d4838b9664ca33a1630f6a7889d8b78a1dfd0bcf4b257a3c95122bf9ceaa',
@@ -22,6 +24,7 @@ settings.next = {
 
 # 读者, 运营, 作者, 编辑, 管理员, 投稿
 settings.roles =  [:reader, :operator, :writer, :editor, :admin, :contributor]
+settings.editable_roles =  [:operator, :writer, :editor, :admin]
 
 settings.cookie = {
   domain: '.36kr.com'

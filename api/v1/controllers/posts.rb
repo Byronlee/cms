@@ -2,7 +2,8 @@ module V1
   module Controllers
     class Posts < ::V1::Base
       KEYS = [:id, :title, :created_at, :updated_at, :summary, :content,:title_link,
-        :must_read, :slug, :state, :draft_key, :cover, :user_id, :source]
+        :must_read, :slug, :state, :draft_key, :cover, :user_id, :source,
+        :column_id, :remark]
       STATE = ['publish', 'draft', 'archived', 'login']
 
       desc 'Posts Feature'
@@ -75,17 +76,28 @@ module V1
         params do
           requires :title,    type: String,   desc: '标题'
           requires :content,  type: String,   desc: '内容'
-          requires :uid,  type: Integer,  desc: '用户id'
+          requires :uid,      type: Integer,  desc: '用户id'
+          requires :column_id,type: Integer,  desc: '专栏id'
           optional :source,   type: String,   desc: '来源id'
+          optional :cover,    type: String,   desc: '图片封面url'
+          optional :remark,   type: String,   desc: '备注'
         end
         post 'new' do
-          user = Authentication.where(uid: params[:uid].to_s).first.user
-          # TODO 如果没有User，应该创建user
           post_params = params.slice(*KEYS)
-          post_params = post_params.merge({user_id: user.id}) if user
+          auth = Authentication.where(uid: params[:uid].to_s).first
+          unless auth.blank?
+            post_params.merge!({user_id: auth.user.id})
+          else
+            # TODO 如果没有User，应该创建user
+          end
           @post = Post.new post_params
-          post_type = user.blank? ? 'contributor' : user.role
-          return { published: !!@post.save, id: @post.id, type: post_type, msg:  @post.errors.full_messages }
+          if @post.save
+            review_url = "#{Settings.site}/p/preview/#{@post.key}.html"
+            admin_edit_post_url = "#{Settings.site}/posts/#{@post.id}/#{@post.key}" if auth.present? and auth.user.editable
+            return {status: true, data: {key: @post.key, published_id: @post.id}, review_url: review_url, admin_edit_post_url: admin_edit_post_url}
+          else
+            return {status: false, msg: @post.errors.full_messages }
+          end
         end
 
         # Update a post
@@ -102,8 +114,11 @@ module V1
           requires :id, desc: '编号'
           requires :title,    type: String,   desc: '标题'
           requires :content,  type: String,   desc: '内容'
-          requires :user_id,  type: Integer,  desc: '用户id'
+          requires :uid,      type: Integer,  desc: '用户id'
+          requires :column_id,type: Integer,  desc: '专栏id'
           optional :source,   type: String,   desc: '来源id'
+          optional :cover,    type: String,   desc: '图片封面url'
+          optional :remark,   type: String,   desc: '备注'
         end
         patch ':id' do
           @post = Post.find(params[:id])
@@ -124,6 +139,21 @@ module V1
             not_found!
           end
         end
+
+        # use key list get post list
+        desc '批量获取文章'
+        params do
+          requires :keys, desc: '逗号分割,例如: 6bb59157-e1f9-45c3-af14-93bc1ba6b710,0d9d97dd-7474-4a81-b960-5cb1fc2c7ce8,c58cae26-3630-4a8e-9a1a-002c3d771e00'
+        end
+        post ':keys' do
+          unless params[:keys].blank?
+            @posts = Post.where(key: params[:keys].split(','))
+          else
+            @posts = []
+          end
+          present @posts, with: Entities::Post
+        end
+
 
       end
 

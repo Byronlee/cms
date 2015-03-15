@@ -24,6 +24,7 @@
 #  catch_title    :text
 #  published_at   :datetime
 #  key            :string(255)
+#  remark         :text
 #
 
 FactoryGirl.define do
