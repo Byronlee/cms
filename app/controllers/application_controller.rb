@@ -17,8 +17,12 @@ class ApplicationController < ActionController::Base
   #   end
   # end
 
-  rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_path
+  rescue_from CanCan::AccessDenied do |ex|
+    if request.env['HTTP_REFERER']
+      redirect_to :back, :alert => ex.message
+    else
+      redirect_to root_path
+    end
   end
 
   private

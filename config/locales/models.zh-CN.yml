@@ -22,3 +22,5 @@ zh-CN:
             attributes:
               url:
                 url: URL格式不正确
+    unauthorized:
+      default: 您没有权限访问此页面!
