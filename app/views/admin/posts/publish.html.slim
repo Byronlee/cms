@@ -29,5 +29,6 @@ div.container-fluid
         = f.input :tag_list
         div.form-actions
           = f.submit '发布文章', data: { disable_with: "submitting..." }, class:"btn btn-primary"
+          = f.submit '保存信息', data: { disable_with: "submitting..." }, class:"btn btn-warning"
 
 = render 'layouts/set_active_nav', :active_id => "nav_posts_reviewings"

@@ -79,17 +79,13 @@ module V1
           optional :source,   type: String,   desc: '来源id'
         end
         post 'new' do
-          user = Authentication.where(uid: params[:uid].to_s).first
+          user = Authentication.where(uid: params[:uid].to_s).first.user
           # TODO 如果没有User，应该创建user
           post_params = params.slice(*KEYS)
           post_params = post_params.merge({user_id: user.id}) if user
           @post = Post.new post_params
-          if @post.save
-            post_type = user.blank? ? 'contributor' : user.role
-            return { published: true, id: @post.id, type: post_type }
-          else
-            error!({ error: @post.errors.full_messages }, 400)
-          end
+          post_type = user.blank? ? 'contributor' : user.role
+          return { published: !!@post.save, id: @post.id, type: post_type, msg:  @post.errors.full_messages }
         end
 
         # Update a post
