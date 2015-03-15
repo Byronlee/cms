@@ -85,16 +85,14 @@ module V1
         post 'new' do
           post_params = params.slice(*KEYS)
           auth = Authentication.where(uid: params[:uid].to_s).first
-          unless auth.blank?
-            post_params.merge!({user_id: auth.user.id})
-          else
-            # TODO 如果没有User，应该创建user
-          end
+          post_params.merge!({user_id: auth.user.id}) unless auth.blank?
           @post = Post.new post_params
           if @post.save
             review_url = "#{Settings.site}/p/preview/#{@post.key}.html"
-            review_url = "#{Settings.site}/p/#{@post.id}.html" if auth.present? and auth.user.editable
-            admin_edit_post_url = "#{Settings.site}/krypton_d29tZW5qaW5ncmFuZmFubGV6aGVtZWRpamlkZWN1b3d1/posts/#{@post.id}/edit" if auth.present? and auth.user.editable
+            if auth.present? and auth.user.editable
+              review_url = "#{Settings.site}/p/#{@post.id}.html"
+              admin_edit_post_url = "#{Settings.site}/krypton_d29tZW5qaW5ncmFuZmFubGV6aGVtZWRpamlkZWN1b3d1/posts/#{@post.id}/edit"
+            end
             return {status: true, data: {key: @post.key, published_id: @post.id}, review_url: review_url, admin_edit_post_url: admin_edit_post_url}
           else
             return {status: false, msg: @post.errors.full_messages }
@@ -123,8 +121,14 @@ module V1
         end
         patch ':id' do
           @post = Post.find(params[:id])
-          @post.update_attributes params.slice(*KEYS)
-          present @post, with: Entities::Post
+          user = @post.try(:user)
+          review_url = "#{Settings.site}/p/preview/#{@post.key}.html"
+          if user and user.editable
+            review_url = "#{Settings.site}/p/#{@post.id}.html"
+            admin_edit_post_url = "#{Settings.site}/krypton_d29tZW5qaW5ncmFuZmFubGV6aGVtZWRpamlkZWN1b3d1/posts/#{@post.id}/edit"
+          end
+          @post.update_attributes params.slice(*KEYS) rescue return {status: false, msg: '更新内容过长!' }
+          return {status: true, review_url: review_url, admin_edit_post_url: admin_edit_post_url}
         end
 
         # Delete post. Available only for admin
