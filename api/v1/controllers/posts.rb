@@ -128,7 +128,7 @@ module V1
             admin_edit_post_url = "#{Settings.site}/krypton_d29tZW5qaW5ncmFuZmFubGV6aGVtZWRpamlkZWN1b3d1/posts/#{@post.id}/edit"
           end
           @post.update_attributes params.slice(*KEYS) rescue return {status: false, msg: '更新失败!' }
-          return {status: true, review_url: review_url, admin_edit_post_url: admin_edit_post_url}
+          return {status: true, data: {key: @post.key, published_id: @post.id}, review_url: review_url, admin_edit_post_url: admin_edit_post_url}
         end
 
         # Delete post. Available only for admin
