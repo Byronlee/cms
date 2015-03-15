@@ -38,7 +38,7 @@ class Ability
     can [:read, :reviewings], Post
     can :manage, Post, :user_id => user.id
     can :manage, Newsflash
-    # can :read, Comment, :commentable => { :user_id => user.id }
+    can :read, Comment, :commentable_type => 'Post', :commentable_id => user.posts.pluck(:id)
   end
 
   # 编辑
