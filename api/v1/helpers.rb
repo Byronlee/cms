@@ -16,8 +16,14 @@ module V1
       attrs
     end
 
-    def warden
-      env['warden']
+    def authenticated_tmp
+      if params[:access_token].present? or params[:api_key].present?
+        params[:access_token] == '501Cd1AvUL4AxxVEX60gCFJK7HCd9y8ySDvG29Je' or
+        params[:api_key] == '501Cd1AvUL4AxxVEX60gCFJK7HCd9y8ySDvG29Je' ?
+          true : false
+      else
+        false
+      end
     end
 
     def authenticated
@@ -27,6 +33,10 @@ module V1
 
     def current_user
       warden.user || @user
+    end
+
+    def warden
+      env['warden']
     end
 
   end

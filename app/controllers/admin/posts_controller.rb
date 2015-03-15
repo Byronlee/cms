@@ -43,10 +43,15 @@ class Admin::PostsController < Admin::BaseController
   end
 
   def do_publish
-    redirect_to reviewings_admin_posts_path, :notice => "文章状态不合法，不能发布！" unless @post.may_publish?
-    @post.publish
+    if params[:operate_type] == "publish"
+      redirect_to reviewings_admin_posts_path, :notice => "文章状态不合法，不能发布！" unless @post.may_publish?
+      @post.publish
+      success_msg = "文章发布成功"
+    else
+      success_msg = "文章保存成功"
+    end
     if @post.save
-      redirect_to reviewings_admin_posts_path, :notice => "文章发布成功"
+      redirect_to reviewings_admin_posts_path, :notice => success_msg
     else
       render :publish
     end

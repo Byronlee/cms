@@ -4,5 +4,6 @@ section.single-post-header
   header.single-post-header__meta
     .single-post__postmeta
       a href="#" #{@post.author.try(:display_name)}
-      |&nbsp;•&nbsp;#{@post.human_created_at}
+      |&nbsp;•&nbsp;
+      abbr.timeago title="#{@post.created_at}"  = @post.human_created_at
     h1.single-post__title = @post.title

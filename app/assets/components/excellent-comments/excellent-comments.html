@@ -8,7 +8,9 @@
           <template repeat="{{comment in comments}}">
             <div class="comment-1">
               <div class="postmeta">
-                <a href="javascript:void(0)">{{comment.user.display_name || '匿名用户'}}</a> • {{comment.human_created_at}}
+                <a href="javascript:void(0)">{{comment.user.display_name || '匿名用户'}}</a>
+                &nbsp;•&nbsp;
+                <abbr class="timeago" title="{{comment.created_at}}">{{comment.human_created_at}}</abbr>
               </div>
               <div class="sidebar-comments__comment">
                 {{comment.content}}

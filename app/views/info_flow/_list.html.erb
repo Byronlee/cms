@@ -12,7 +12,9 @@
                 </span>
               </div>
               <div class="postmeta right">
-                <a href="#"> <%= item["author"] && item["author"]["display_name"] %> </a> •  <%= item["human_created_at"] %>
+                <a href="#"> <%= item["author"] && item["author"]["display_name"] %> </a>
+                 •
+                <abbr class="timeago" title="<%= item["created_at"]%>"><%= item["human_created_at"] %></abbr>
               </div>
             </div>
             <div class="left left-col">

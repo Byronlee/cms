@@ -24,9 +24,9 @@ class ::V1::Base < Grape::API
     #rack_response({message: '500 Internal Server Error', status: 500}, 500)
   end
 
-#  before do
-#    error!("401 Unauthorized", 401) unless authenticated
-#  end
+  before do
+    error!("401 Unauthorized", 401) unless authenticated_tmp
+  end
 
   helpers ::V1::Helpers
 
