@@ -28,7 +28,8 @@
                 .postmeta.right
                   a href="/chloe1988" class="uname user_Chloe1988" data-name="Chloe" target="_blank"
                     = post.author.try(:name)
-                  |  •  #{post.human_created_at}
+                  |&nbsp;•&nbsp;
+                  abbr.timeago title="#{post.created_at}"  = post.human_created_at
               .left.left-col
                 .meta
                   a title="评论数量" href="#{post_url(post)}"

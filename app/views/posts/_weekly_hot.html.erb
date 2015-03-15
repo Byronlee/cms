@@ -6,7 +6,9 @@
   <ul class="category-popular__list">
     <% @weekly_hot_posts.each do |post| %>
       <li class="cf">
-        <span><%= post.created_at.strftime('%m/%d %H:%M') %></span>
+        <span>
+          <abbr class="timeago" title="<%= post.created_at %>"><%= post.created_at.strftime('%m/%d %H:%M') %></abbr>
+        </span>
         <h1>
           <a href="<%= post_url post %>" title="<%= post.title %>"><%= post.title %></a>
         </h1>
