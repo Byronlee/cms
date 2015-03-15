@@ -93,7 +93,7 @@ module V1
           @post = Post.new post_params
           if @post.save
             review_url = "#{Settings.site}/p/preview/#{@post.key}.html"
-            review_url = "#{Settings.site}/p/#{@post.id}.html" if auth.user.editable
+            review_url = "#{Settings.site}/p/#{@post.id}.html" if auth.present? and auth.user.editable
             admin_edit_post_url = "#{Settings.site}/krypton_d29tZW5qaW5ncmFuZmFubGV6aGVtZWRpamlkZWN1b3d1/posts/#{@post.id}/edit" if auth.present? and auth.user.editable
             return {status: true, data: {key: @post.key, published_id: @post.id}, review_url: review_url, admin_edit_post_url: admin_edit_post_url}
           else
