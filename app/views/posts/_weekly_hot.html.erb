@@ -10,7 +10,7 @@
           <abbr class="timeago" title="<%= post.created_at %>"><%= post.created_at.strftime('%m/%d %H:%M') %></abbr>
         </span>
         <h1>
-          <a href="<%= post_url post %>" title="<%= post.title %>"><%= post.title %></a>
+          <a href="<%= post_url post %>" title="<%= raw post.title %>"><%= raw post.title %></a>
         </h1>
       </li>
   <% end %>

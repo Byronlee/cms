@@ -6,4 +6,4 @@ section.single-post-header
       a href="#" #{@post.author.try(:display_name)}
       |&nbsp;•&nbsp;
       abbr.timeago title="#{@post.created_at}"  = @post.human_created_at
-    h1.single-post__title = @post.title
+    h1.single-post__title = raw(@post.title)

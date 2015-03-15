@@ -1,6 +1,6 @@
 tr
   td = comment.id
-  td = link_to comment.commentable.try(:title),  polymorphic_url(comment.commentable)
+  td = link_to raw(comment.commentable.try(:title)),  polymorphic_url(comment.commentable)
   td
     = truncate(comment.content, length:60){ link_to '(Show All)', "##{comment.id}", 'data-toggle' => "collapse", class:"collapsed" }
     |&nbsp;&nbsp;

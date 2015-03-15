@@ -14,19 +14,19 @@ section.single-post-share.cf
           i.icon.icon-share
           span
         .single-post-social__popup
-          a.weibo[ref="nofollow" href="http://share.baidu.com/s?type=text&searchPic=0&sign=on&to=tsina&url=#{post_url(@post)}&title=#{(truncate(@post.title, :length => 300)).html_safe}&key=595885820" target="_blank"]
+          a.weibo[ref="nofollow" href="http://share.baidu.com/s?type=text&searchPic=0&sign=on&to=tsina&url=#{post_url(@post)}&title=#{(truncate(raw(@post.title), :length => 300)).html_safe}&key=595885820" target="_blank"]
             i.icon-social-weibo
-          a.qq[ref="nofollow" href="http://connect.qq.com/widget/shareqq/index.html?url=#{post_url(@post)}&title=#{(truncate(@post.title, :length => 300)).html_safe}&source=shareqq&desc=刚看到这篇文章不错，推荐给你看看～" target="_blank"]
+          a.qq[ref="nofollow" href="http://connect.qq.com/widget/shareqq/index.html?url=#{post_url(@post)}&title=#{(truncate(raw(@post.title), :length => 300)).html_safe}&source=shareqq&desc=刚看到这篇文章不错，推荐给你看看～" target="_blank"]
             i.icon-social-qq
-          a.twitter[ref="nofollow" href="http://share.baidu.com/s?type=text&searchPic=0&sign=on&to=twi&url=#{post_url(@post)}&title=#{(truncate(@post.title, :length => 300)).html_safe}&key=" target="_blank"]
+          a.twitter[ref="nofollow" href="http://share.baidu.com/s?type=text&searchPic=0&sign=on&to=twi&url=#{post_url(@post)}&title=#{(truncate(raw(@post.title), :length => 300)).html_safe}&key=" target="_blank"]
             i.icon-social-twitter
           a.evernote[ref="nofollow" href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title);}})();" target="_blank"]
             i.icon-social-evernote
-          a.douban[ref="nofollow" href="http://share.baidu.com/s?type=text&searchPic=0&sign=on&to=douban&url=#{post_url(@post)}&title=#{(truncate(@post.title, :length => 300)).html_safe}" target="_blank"]
+          a.douban[ref="nofollow" href="http://share.baidu.com/s?type=text&searchPic=0&sign=on&to=douban&url=#{post_url(@post)}&title=#{(truncate(raw(@post.title), :length => 300)).html_safe}" target="_blank"]
             i.icon-social-douban
-          a.renren[ref="nofollow" href="http://share.baidu.com/s?type=text&searchPic=0&sign=on&to=renren&url=#{post_url(@post)}&title=#{(truncate(@post.title, :length => 300)).html_safe}" target="_blank"]
+          a.renren[ref="nofollow" href="http://share.baidu.com/s?type=text&searchPic=0&sign=on&to=renren&url=#{post_url(@post)}&title=#{(truncate(raw(@post.title), :length => 300)).html_safe}" target="_blank"]
             i.icon-social-renren
-          a.mail[ref="nofollow" href="mailto:?subject=[36氪]好文分享：#{(truncate(@post.title, :length => 300)).html_safe}&body=#{post_url(@post)}" target="_blank"]
+          a.mail[ref="nofollow" href="mailto:?subject=[36氪]好文分享：#{(truncate(raw(@post.title), :length => 300)).html_safe}&body=#{post_url(@post)}" target="_blank"]
             i.icon-mail
   .single-post-share-list
     ul.cf
@@ -35,7 +35,7 @@ section.single-post-share.cf
       li
         a.weixin.overlay[href="#panel-weixin"] 分享到微信
       /li
-        a.qq.overlay[ref="nofollow" href="http://connect.qq.com/widget/shareqq/index.html?url=#{post_url(@post)}&title=#{(truncate(@post.title, :length => 300)).html_safe}&source=shareqq&desc=刚看到这篇文章不错，推荐给你看看～"] 分享到QQ
+        a.qq.overlay[ref="nofollow" href="http://connect.qq.com/widget/shareqq/index.html?url=#{post_url(@post)}&title=#{(truncate(raw(@post.title), :length => 300)).html_safe}&source=shareqq&desc=刚看到这篇文章不错，推荐给你看看～"] 分享到QQ
 #panel-weixin.panel.mfp-hide
   h3 打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮
   section.weixin-section

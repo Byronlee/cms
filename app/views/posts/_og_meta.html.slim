@@ -1,5 +1,5 @@
 - content_for :og_meta do
-  meta property="og:title" content== @post.title
+  meta property="og:title" content== raw(@post.title)
   meta property="og:type" content="article"
   meta property="og:url" content== post_url(@post)
   meta property="og:image" content== "#{@post.cover_real_url}"

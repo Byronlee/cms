@@ -10,9 +10,9 @@ div#content-header
       i.icon-file
       | 文章审查管理
     a.current href="#"
-      = @post.title
+      = raw(@post.title)
   h1
-    = @post.title
+    = raw(@post.title)
 /!End-breadcrumbs
 
 
