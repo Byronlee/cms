@@ -121,7 +121,7 @@ module V1
         end
         patch ':id' do
           @post = Post.find(params[:id])
-          user = @post.try(:user)
+          user = @post.author
           review_url = "#{Settings.site}/p/preview/#{@post.key}.html"
           if user and user.editable
             review_url = "#{Settings.site}/p/#{@post.id}.html"
