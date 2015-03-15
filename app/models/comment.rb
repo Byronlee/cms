@@ -39,7 +39,8 @@ class Comment < ActiveRecord::Base
     includes(:commentable, user:[:krypton_authentication])
     .order('char_length(content) desc')
   }
-  scope :excellent, -> { where(is_excellent: true, state:[:published, :prepublished]) }
+  # scope :excellent, -> { where(is_excellent: true, state:[:published, :prepublished]) }
+  scope :excellent, -> { where(is_excellent: true) }
   scope :normal, -> {
     where(is_excellent: [false, nil], state:[:published, :prepublished])
     .where_values.reduce(:and)
