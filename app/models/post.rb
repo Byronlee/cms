@@ -50,6 +50,7 @@ class Post < ActiveRecord::Base
 
   after_save :update_today_lastest_cache, :update_hot_posts_cache, :update_info_flows_cache
   after_destroy :update_today_lastest_cache, :update_hot_posts_cache, :update_info_flows_cache
+  before_create :generate_key
 
   scope :created_on, ->(date) {
     where(:created_at => date.beginning_of_day..date.end_of_day)
@@ -109,6 +110,10 @@ class Post < ActiveRecord::Base
     self.column && self.column.info_flows.each do |info_flow|
       info_flow.update_info_flows_cache
     end
+  end
+
+  def generate_key
+    self.key = SecureRandom.uuid
   end
 
 end
