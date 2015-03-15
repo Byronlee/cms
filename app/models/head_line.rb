@@ -10,6 +10,7 @@
 #  title      :string(255)
 #  post_type  :string(255)
 #  image      :string(255)
+#  user_id    :integer
 #
 
 class HeadLine < ActiveRecord::Base
@@ -18,6 +19,8 @@ class HeadLine < ActiveRecord::Base
   validates :url, presence: true
   validates_uniqueness_of :url
   validates :url, :url => { :allow_blank => true }
+
+  belongs_to :user
 
   after_destroy :fetch_remote_metas
   after_save :fetch_remote_metas

@@ -1,13 +1,16 @@
 /!breadcrumbs
 div#content-header
   div#breadcrumb
-    a.tip-bottom href="#" title="Go to Home"
+    a.tip-bottom title="Go to Home" href= admin_root_path
       i.icon-home
-      |home
+      | 首页
 /!End-breadcrumbs
 
 div.container-fluid
   = bootstrap_flash
-  h1  welcome to dashboard
+  h1
+    |welcome to dashboard
+    span
+      i  ,#{@current_user.display_name}
 
-= render 'layouts/set_active_nav', :active_id => "nav_dashboard"  
+= render 'layouts/set_active_nav', :active_id => "nav_dashboard"

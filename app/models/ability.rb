@@ -4,7 +4,10 @@ class Ability
   def initialize(user, controller_namespace)
     unless controller_namespace == 'Admin'
       public_ability
-      can :create, Comment if User
+      if user
+        can :create, Comment
+        can :preview, Post
+      end
     end
     send user.role.to_sym, user if user
   end
@@ -28,6 +31,10 @@ class Ability
     # 用户 (reader)
     # 评论
     # 文章(只看)
+    can :read, :dashboard
+    can :read, User
+    can [:read, :reviewings], Post
+    can :manage, HeadLine
   end
 
   # 作者

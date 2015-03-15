@@ -15,6 +15,7 @@ class Admin::HeadLinesController < Admin::BaseController
   end
 
   def create
+    @head_line.user = current_user
     @head_line.save
     respond_with @head_line, location: admin_head_lines_path
   end

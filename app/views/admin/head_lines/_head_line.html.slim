@@ -3,6 +3,7 @@ tr
   td = link_to head_line.url, head_line.url, target:'_new'
   td = head_line.title
   td = head_line.order_num
+  td = head_line.user.try(:display_name)
   td = head_line.created_at
   td
     a.tip-top data-original-title="编辑" href= edit_admin_head_line_path(head_line)
