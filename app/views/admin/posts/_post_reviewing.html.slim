@@ -1,7 +1,7 @@
 tr
   td = link_to post.id, admin_post_path(post)
   td = link_to post.title, admin_post_path(post)
-  td = post.author.try(:name)
+  td = post.author.try(:display_name)
   td
     = link_to post.column.try(:name), reviewings_admin_column_posts_path(post.column) if post.column
   td = post.key

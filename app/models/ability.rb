@@ -34,7 +34,11 @@ class Ability
 
   # 作者
   def writer(user)
-    #不能进入后台， 可以评论
+    can :read, :dashboard
+    can [:read, :reviewings], Post
+    can :manage, Post, :user_id => user.id
+    can :manage, Newsflash
+    # can :read, Comment, :commentable => { :user_id => user.id }
   end
 
   # 编辑

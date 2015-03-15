@@ -12,8 +12,9 @@ tr
       span.tip-top class="badge badge-important pointer" data-original-title="优质评论"
         i.icon-thumbs-up
     |<div class="collapse" id="#{comment.id}" style="height: 0px;"><div class="widget-content"> #{ raw comment.content} </div></div>
-  td = display_state(comment.aasm.human_state)
-  td = comment.user.try(:name)
+  - if false
+    td = display_state(comment.aasm.human_state)
+  td = comment.user.try(:display_name)
   td = comment.created_at
   td
     - if can? :set_excellent, comment
