@@ -18,6 +18,8 @@ class Ability
   # 投稿者
   def contributor(user)
     can :read, :dashboard
+    can [:read, :create], Newsflash
+    can :manage, Newsflash, :user_id => user.id
   end
 
   # 运营
@@ -46,5 +48,6 @@ class Ability
      can :read, :welcome
      can :read, [Ad, Post, Column, Page, Newsflash, User, Comment]
      can :update_views_count, Post
+     cannot :create, Comment
   end
 end
