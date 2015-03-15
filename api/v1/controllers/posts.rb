@@ -127,7 +127,7 @@ module V1
             review_url = "#{Settings.site}/p/#{@post.id}.html"
             admin_edit_post_url = "#{Settings.site}/krypton_d29tZW5qaW5ncmFuZmFubGV6aGVtZWRpamlkZWN1b3d1/posts/#{@post.id}/edit"
           end
-          @post.update_attributes params.slice(*KEYS) rescue return {status: false, msg: '更新内容过长!' }
+          @post.update_attributes params.slice(*KEYS) rescue return {status: false, msg: '更新失败!' }
           return {status: true, review_url: review_url, admin_edit_post_url: admin_edit_post_url}
         end
 
