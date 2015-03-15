@@ -10,6 +10,7 @@
 #  title      :string(255)
 #  post_type  :string(255)
 #  image      :string(255)
+#  user_id    :integer
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

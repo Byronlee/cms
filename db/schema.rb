@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 20150315093556) do
     t.string   "title"
     t.string   "post_type"
     t.string   "image"
+    t.integer  "user_id"
   end
 
   create_table "info_flows", force: true do |t|
@@ -101,6 +102,7 @@ ActiveRecord::Schema.define(version: 20150315093556) do
     t.string   "news_summaries",           default: [], array: true
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "pages", force: true do |t|

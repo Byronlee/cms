@@ -1,11 +1,11 @@
 class Admin::CommentsController < Admin::BaseController
-  load_and_authorize_resource
+  load_and_authorize_resource :comment
 
   def index
     if @commentable = find_commentable
-      @comments = @commentable.comments.order_by_content.page params[:page]
+      @comments = @commentable.comments.accessible_by(current_ability).order_by_content.page params[:page]
     else
-      @comments = Comment.order_by_content.page params[:page]
+      @comments = Comment.accessible_by(current_ability).order_by_content.page params[:page]
     end
   end
 

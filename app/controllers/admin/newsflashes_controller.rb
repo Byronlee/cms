@@ -7,12 +7,19 @@ class Admin::NewsflashesController < Admin::BaseController
 
   def update
     @newsflash.update newsflash_params
+    flash[:notice] = '更新成功'
     respond_with @newsflash, location: admin_newsflashes_path
   end
 
   def create
-    @newsflash.save
+    @newsflash.author = current_user
+    flash[:notice] = '创建成功' if @newsflash.save
     respond_with @newsflash, location: admin_newsflashes_path
+  end
+
+  def destroy
+    @newsflash.destroy
+    redirect_to :back, :notice => '删除成功'
   end
 
   def newsflash_params
