@@ -4,11 +4,9 @@ class Ability
   def initialize(user, controller_namespace)
     unless controller_namespace == 'Admin'
       public_ability
-      if user
-        can :create, Comment
-        can :preview, Post
-      end
+      can :create, Comment if user
     end
+    can :preview, Post
     send user.role.to_sym, user if user
   end
 

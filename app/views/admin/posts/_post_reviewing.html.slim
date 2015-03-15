@@ -8,14 +8,18 @@ tr
   td = post.created_at
   td = display_state(post.state)
   td
-    = link_to publish_admin_post_path(post), class: 'tip-top', 'data-original-title' => "快速发布"
-      i.icon-plane
-    |&nbsp;&nbsp;
-    a.tip-top data-original-title="预览" target="_new" href= preview_post_by_key_path(key: post.key )
-      i.icon-eye-open
-    |&nbsp;&nbsp;
-    a.tip-top data-original-title="编辑" href= 'http://writer.36kr.com'
-      i.icon-pencil
-    |&nbsp;&nbsp;
-    a.tip-top data-original-title="删除" data-method="delete" data-confirm="确定删除文章 #{post.title} ？" href= admin_post_url(post)
-      i.icon-remove
+    - if can? :do_publish, post
+      = link_to publish_admin_post_path(post), class: 'tip-top', 'data-original-title' => "快速发布"
+        i.icon-plane
+      |&nbsp;&nbsp;
+    - if can? :preview, post
+      a.tip-top data-original-title="预览" target="_new" href= preview_post_by_key_path(key: post.key )
+        i.icon-eye-open
+      |&nbsp;&nbsp;
+    - if can? :edit, post
+      a.tip-top data-original-title="编辑" href= 'http://writer.36kr.com'
+        i.icon-pencil
+      |&nbsp;&nbsp;
+    - if can? :destroy, :post
+      a.tip-top data-original-title="删除" data-method="delete" data-confirm="确定删除文章 #{post.title} ？" href= admin_post_url(post)
+        i.icon-remove
