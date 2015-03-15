@@ -146,7 +146,7 @@ module V1
         params do
           requires :keys, desc: '逗号分割,例如: 6bb59157-e1f9-45c3-af14-93bc1ba6b710,0d9d97dd-7474-4a81-b960-5cb1fc2c7ce8,c58cae26-3630-4a8e-9a1a-002c3d771e00'
         end
-        post ':keys' do
+        post 'keys' do
           unless params[:keys].blank?
             @posts = Post.where(key: params[:keys].split(','))
           else
