@@ -25,14 +25,11 @@ class Ability
 
   # 运营
   def operator(user)
-    # 头条（all）
-    # 用户 (reader)
-    # 评论
-    # 文章(只看)
     can :read, :dashboard
     can :read, User
     can [:read, :reviewings], Post
     can :manage, HeadLine
+    can :manage, Comment
   end
 
   # 作者
