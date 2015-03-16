@@ -4,7 +4,10 @@ class Ability
   def initialize(user, controller_namespace)
     unless controller_namespace == 'Admin'
       public_ability
-      can :create, Comment if user
+      if user
+        can :create, Comment
+        can :get_comments_count, Post
+      end
     end
     can :preview, Post
     send user.role.to_sym, user if user
@@ -60,7 +63,7 @@ class Ability
   def public_ability
      can :read, :welcome
      can :read, [Ad, Post, Column, Page, Newsflash, User, Comment]
-     can :update_views_count, Post
+     can [:update_views_count, :news, :feed], Post
      cannot :create, Comment
   end
 end
