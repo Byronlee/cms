@@ -62,7 +62,6 @@ Rails.application.routes.draw do
     resources :posts do
       get :today_lastest, on: :collection
       get :hot_posts, on: :collection
-      get :new_posts, on: :collection
       get :weekly_hot, on: :collection
     end
   end
