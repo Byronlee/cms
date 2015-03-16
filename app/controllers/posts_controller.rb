@@ -17,6 +17,13 @@ class PostsController < ApplicationController
     end
   end
 
+  def news
+    result = JSON.parse Redis::HashKey.new('posts')['new_posts']
+    @posts = result["posts"] || []
+    @newsflashes = result["newsflashes"] || []
+    render '_news', :layout => false
+  end
+
   def update_views_count
     views_count = Redis::HashKey.new('posts')["views_count_#{params[:id]}"]
     if views_count.nil?
