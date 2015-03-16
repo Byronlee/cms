@@ -25,8 +25,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  private
-
   def current_ability
     # I am sure there is a slicker way to capture the controller namespace
     controller_name_segments = params[:controller].split('/')
