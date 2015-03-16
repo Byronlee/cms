@@ -19,6 +19,6 @@ section.sidebar-tab
         - Newsflash.limit(7).each do | np |
           li
             h2
-              a[href="#{np.news_url}" title="#{np.hash_title}" target="_blank"]
-                = np.hash_title
+              a[href="#{np.news_url}" title="#{raw(np.hash_title)}" target="_blank"]
+                = raw np.hash_title
     span.tabulousclear
