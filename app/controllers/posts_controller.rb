@@ -1,10 +1,10 @@
 class PostsController < ApplicationController
-  load_and_authorize_resource
+  load_resource :only => [:get_comments_count]
+  authorize_resource
   skip_before_action :verify_authenticity_token, only: [:update_views_count]
 
   def show
     @post = Post.find_by_url_code(params[:url_code])
-    @host = request.host_with_port
   end
 
   def preview
@@ -32,7 +32,10 @@ class PostsController < ApplicationController
       views_count = views_count.to_i
     end
     Redis::HashKey.new('posts')["views_count_#{params[:id]}"] = views_count.next
-    PostViewsCountComponentWorker.perform_async(params[:id])
+    if(views_count.next % Settings.post_views_count_cache == 0)
+      logger.info 'sync the views count from redis cache to postgres'
+      PostViewsCountComponentWorker.perform_async(params[:id])
+    end
     render :json => { :success => 'true' }.to_json
   end
 

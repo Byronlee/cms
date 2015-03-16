@@ -40,3 +40,5 @@ settings.users = {
 settings.default_avatar = 'http://a.36krcnd.com/user/default_avatars/Violin.png!avatar'
 
 settings.kr_messages_api = 'http://rong.36kr.com/api/message/count'
+
+settings.post_views_count_cache = 100
