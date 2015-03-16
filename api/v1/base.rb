@@ -15,13 +15,17 @@ class ::V1::Base < Grape::API
     rack_response({message: '404 Not found !', status: 404}, 404)
   end
 
+  rescue_from Grape::Exceptions::ValidationErrors do |e|
+    error_response(message: e.message, status: 406)
+  end
+
   rescue_from :all do |exception|
     trace = exception.backtrace
     message = "\n#{exception.class} (#{exception.message}):\n"
     message << exception.annoted_source_code.to_s if exception.respond_to?(:annoted_source_code)
     message << "  " << trace.join("\n  ")
     API.logger.add Logger::FATAL, message
-    #rack_response({message: '500 Internal Server Error', status: 500}, 500)
+    rack_response({message: '500 Internal Server Error', status: 500}, 500)
   end
 
   before do
