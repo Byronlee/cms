@@ -17,7 +17,7 @@ tr
         i.icon-eye-open
       |&nbsp;&nbsp;
     - if can? :edit, post
-      a.tip-top data-original-title="编辑" href= 'http://writer.36kr.com'
+      a.tip-top data-original-title="编辑" href= "http://writer.36kr.com/posts/#{post.id}/#{post.key}/"
         i.icon-pencil
       |&nbsp;&nbsp;
     - if can? :destroy, :post
