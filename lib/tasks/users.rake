@@ -3,7 +3,7 @@ namespace :users do
   task invite_ghosts: :environment do
     conditions = User.where(krypton_passport_invitation_sent_at: nil).
       where.not(id: Authentication.where(provider: :krypton).select(:user_id).distinct)
-    [:weibo, :qq].each do |provider|
+    [:weibo, :qq, :github, :renren].each do |provider|
       conditions = conditions.where("email not like '#{provider}+%@36kr.com'")
     end
     total_count = conditions.count

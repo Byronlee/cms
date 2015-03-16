@@ -16,7 +16,7 @@ class Krypton::Passport
     def invite(email)
       access_token.post("/api/v1/users/invite", params: {
         email: email,
-        redirect_uri: root_url,
+        redirect_uri: 'https://test.36kr.com',
         notification: {
           subject: Settings.users.invitation.subject,
           body: Settings.users.invitation.body,
