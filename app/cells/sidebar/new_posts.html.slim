@@ -7,18 +7,15 @@ section.sidebar-tab
       a.active[data-target="#tab-815" title=""]
         | 8点1氪
   #tabs-content.sidebar-tab__wrapper
-    #tab-forum.sidebar-tab__forum.tabs-pane
-      ul
-        - Post.tagged_with("startup").limit(10).each do | post |
-          li
-            h2
-              a[href="#{post_url(post)}" title="#{raw(post.title)}"] = raw(post.title)
-    span.tabulousclear
-    #tab-815.sidebar-tab__815.tabs-pane.active
-      ul
-        - Newsflash.limit(7).each do | np |
-          li
-            h2
-              a[href="#{np.news_url}" title="#{np.hash_title}" target="_blank"]
-                = np.hash_title
-    span.tabulousclear
+
+javascript:
+  $(document).ready(function(){
+    $.ajax({
+        type: "GET",
+        url: "/posts/news",
+        data: {},
+        success: function (data) {
+          $('#tabs-content').prepend(data);
+        }
+    });
+  });

@@ -6,8 +6,7 @@ class Admin::NewsflashesController < Admin::BaseController
   end
 
   def update
-    @newsflash.update newsflash_params
-    flash[:notice] = '更新成功'
+    flash[:notice] = '更新成功' if @newsflash.update newsflash_params
     respond_with @newsflash, location: admin_newsflashes_path
   end
 

@@ -1,0 +1,15 @@
+#tab-forum.sidebar-tab__forum.tabs-pane
+  ul
+    - @posts.each do | post |
+      li
+        h2
+          a[href="#{post["get_access_url"]}" title="#{raw(post["title"] || "")}"] = raw(post["title"] || "")
+span.tabulousclear
+#tab-815.sidebar-tab__815.tabs-pane.active
+  ul
+    - @newsflashes.each do | np |
+      li
+        h2
+          a[href="#{np["news_url"]}" title="#{raw(np["hash_title"])}" target="_blank"]
+            = raw np["hash_title"]
+span.tabulousclear

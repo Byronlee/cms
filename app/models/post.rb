@@ -30,6 +30,8 @@
 require 'action_view'
 class Post < ActiveRecord::Base
   include ActionView::Helpers::DateHelper
+  include Rails.application.routes.url_helpers
+  include ApplicationHelper
   include AASM
 
   by_star_field '"posts".created_at'
@@ -49,8 +51,8 @@ class Post < ActiveRecord::Base
   belongs_to :author, class_name: User.to_s, foreign_key: 'user_id'
   has_many :comments, as: :commentable, dependent: :destroy
 
-  after_save :update_today_lastest_cache, :update_hot_posts_cache, :update_info_flows_cache
-  after_destroy :update_today_lastest_cache, :update_hot_posts_cache, :update_info_flows_cache
+  after_save :update_today_lastest_cache, :update_hot_posts_cache, :update_info_flows_cache, :update_new_posts_cache
+  after_destroy :update_today_lastest_cache, :update_hot_posts_cache, :update_info_flows_cache, :update_new_posts_cache
   before_create :generate_key
 
   scope :created_on, ->(date) {
@@ -79,6 +81,10 @@ class Post < ActiveRecord::Base
     distance_of_time_in_words_to_now(created_at)
   end
 
+  def get_access_url
+    post_url(self)
+  end
+
   def cover_real_url
     return nil if cover_identifier.nil?
     cover_identifier.include?('http://') ? cover_identifier : cover_url
@@ -100,6 +106,11 @@ class Post < ActiveRecord::Base
   def update_hot_posts_cache
     logger.info 'perform the worker to update hot posts cache'
     logger.info HotPostsComponentWorker.perform_async
+  end
+
+  def update_new_posts_cache
+    logger.info 'perform the worker to update new posts cache'
+    logger.info NewPostsComponentWorker.perform_async
   end
 
   # def update_weekly_hot

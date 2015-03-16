@@ -27,6 +27,8 @@ class Newsflash < ActiveRecord::Base
   acts_as_taggable
 
   before_validation :prase_original_input
+  after_save :update_new_flash_cache
+  after_destroy :update_new_flash_cache
 
   def prase_original_input
     inputs = original_input.split(/---{0,}/)
@@ -45,5 +47,10 @@ class Newsflash < ActiveRecord::Base
   def prase_summaries_from_original_input(input)
     summaries = input.split(/n\d[\.|\．]/).select { |s| !s.blank? }
     self.news_summaries = summaries
+  end
+
+  def update_new_flash_cache
+    logger.info 'perform the worker to update new flash cache'
+    logger.info NewPostsComponentWorker.perform_async
   end
 end
