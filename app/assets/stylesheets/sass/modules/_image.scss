@@ -46,7 +46,7 @@ figure.small-left {
 	}
 }
 
-.lazyload {	
+.lazyload {
 	opacity: 0;
 }
 .lazyload.loaded {
@@ -77,7 +77,7 @@ figure.small-left {
   top: -3px;
   width: 22px;
   height: 22px;
-  @include retina-image(spinner, 22px 22px);
+  @include retina-image('../images/spinner', 22px 22px);
 }
 .loaded + .spinner {
 	opacity: 0;

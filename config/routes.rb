@@ -57,8 +57,6 @@ Rails.application.routes.draw do
 
   namespace :components do
     get '/next/collections', to: 'next#collections', as: :next_collections
-    resources :head_lines, only: [:index]
-    resources :info_flows, only: [:index]
     resources :comments, only: [:index]
     resources :posts do
       get :today_lastest, on: :collection
