@@ -1,3 +1,12 @@
 /*
  *= require sass/style.scss
+ *= require_self
  */
+
+abbr.timeago {
+  border-bottom-width: 0;
+}
+
+.thumb-180 img{
+  width:100%; height:100%;
+}

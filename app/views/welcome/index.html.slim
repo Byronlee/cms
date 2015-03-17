@@ -1,6 +1,6 @@
 .main
   = render 'welcome/head_line', :head_lines => @head_lines
-  = render 'info_flow/list', :posts_with_ads => @posts_with_ads["posts_with_ads"], :pagination => false
+  = render 'welcome/list', :posts_with_ads => @posts_with_ads, :prev_page => @prev_page, :next_page => @next_page
   .aside
     = render_cell :sidebar, :tags
     = render_cell :sidebar, :social
