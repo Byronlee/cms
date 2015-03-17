@@ -1,6 +1,8 @@
-meta name="twitter:card" content="#{@post.summary}"
+/!-- Twitter Card --
+/!-- https://dev.twitter.com/docs/cards --
+meta name="twitter:card" content="#{raw @post.summary}"
 meta name="twitter:site" content="36氪"
 meta name="twitter:url" content="#{post_url(@post)}"
 meta name="twitter:title" content="#{raw @post.title}"
-meta name="twitter:description" content="#{@post.summary}"
+meta name="twitter:description" content="#{raw @post.summary}"
 meta name="twitter:image" content="#{@post.cover_real_url}"

@@ -1,0 +1,75 @@
+/*
+ *= require_tree ./css
+ *= require ./font-awesome/css/font-awesome
+ *= require_self
+ */
+
+ .navbar-inverse{
+  background-color: rgb(31,38,45) !important;
+ }
+
+#user-nav{
+  z-index: 0 !important;
+}
+
+.control-group{
+  padding-right: 10%;
+}
+
+.control-group textarea, .control-group input{
+  width: 100%;
+}
+
+.control-group input{
+  width: 100%;
+  height: auto !important;
+  line-height: 25px !important;
+}
+
+.pagination-table{
+  float: right;
+  margin: 10px 0;
+}
+
+.auto-popover, .pointer{
+  cursor: pointer;
+}
+
+.thumbnails li .label{
+  position: absolute;
+  padding: 5px;
+  top: -10px;
+  right: -5px;
+  cursor: pointer;
+}
+
+.thumbnails li img{
+  height: 160px;
+  width: 100%;
+}
+
+.thumbnails li .descripiton{
+  background-color: #3e3e3e;
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+  color: #fff;
+  margin-top: -40px;
+  height: 40px;
+}
+
+.thumbnails li .descripiton h5{
+  margin: 0 auto;
+  padding: 10px 5px;
+}
+
+#s2id_custom-multiselect-headers{
+  visibility: hidden;
+}
+
+.ms-container{
+  width: 80%;
+}
+
+.search-input-header{
+  width: 95%;
+}

@@ -1,0 +1,33 @@
+<polymer-element name="excellent-comments">
+  <template>
+    <link rel="stylesheet" href="excellent-comments.css" />
+    <link rel="import" href="juicy-html.html" />
+    <div class="sidebar">
+      <section class="sidebar-comments">
+        <h3>优质评论</h3>
+        <div class="sidebar-comments__list">
+          <template repeat="{{comment in comments}}">
+            <div class="comment-1">
+              <div class="postmeta">
+                <a href="javascript:void(0)">{{comment.user.display_name || '匿名用户'}}</a>
+                &nbsp;•&nbsp;
+                <abbr class="timeago" title="{{comment.created_at}}">{{comment.human_created_at}}</abbr>
+              </div>
+              <div class="sidebar-comments__comment">
+                <template is="juicy-html" content="{{comment.content}}"></template>
+              </div>
+              <div class="sidebar-comments__title">
+                评论于
+                <a ref="{{(comment.commentable.title_link == null || comment.commentable.title_link == '') ? ('/p/' + comment.commentable.url_code + '.html') : comment.commentable.title_link }}" href="javacript:void(0)" onclick="performLinkWithRel(this)" >
+                  <template is="juicy-html" content="{{comment.commentable.title}}"></template>
+                </a>
+              </div>
+            </div>
+          </template>
+        </div>
+      </section>
+    </div>
+  </template>
+
+  <script src="excellent-comments.js"></script>
+</polymer-element>

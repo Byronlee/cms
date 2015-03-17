@@ -1,0 +1,15 @@
+/* tada */
+$tada_scale: .2;
+$tada_rotate: 3deg;
+
+@include keyframes(tada) {
+	0% { @include transform(scale(1)); }	
+	10%, 20% { @include transform(scale(#{1 - $tada_scale}) rotate(-$tada_rotate)); }
+	30%, 50%, 70%, 90% { @include transform(scale(#{1 + $tada_scale}) rotate($tada_rotate)); }
+	40%, 60%, 80% { @include transform(scale(#{1 + $tada_scale}) rotate(-$tada_rotate)); }
+	100% { @include transform(scale(1) rotate(0)); }
+}
+
+.tada {
+	@include animation(tada);
+}

@@ -1,0 +1,56 @@
+//Horizontal Vertical Center
+@mixin center($width, $height) {
+	position: absolute;
+	width: $width;
+	height: $height;
+	left: 50%;
+	top: 50%;
+	margin: -$height/2 0 0 -$width/2;
+}
+
+// Center-align a block level element
+// ----------------------------------
+@mixin center-block() {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+//Absolute
+@mixin absolute($top:false,$right:false,$bottom:false,$left:false) {
+  position:absolute;
+  @if $top    { top:$top; }
+  @if $left   { left:$left; }
+  @if $bottom { bottom:$bottom; }
+  @if $right  { right:$right; }
+}
+
+//Relative
+@mixin relative($top:false,$right:false,$bottom:false,$left:false) {
+  position:relative;
+  @if $top    { top:$top; }
+  @if $left   { left:$left; }
+  @if $bottom { bottom:$bottom; }
+  @if $right  { right:$right; }
+}
+
+//Move
+@mixin move-up($x) {
+  position:relative;
+  top:-$x;
+}
+
+@mixin move-down($x) {
+  position:relative;
+  top:$x;
+}
+
+@mixin move-left($x) {
+  position:relative;
+  left:-$x;
+}
+
+@mixin move-right($x) {
+  position:relative;
+  left:$x;
+}

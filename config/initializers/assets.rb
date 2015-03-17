@@ -9,19 +9,5 @@ Rails.application.config.assets.version = '1.0'
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
-Rails.application.config.assets.precompile += %w( admin.css admin.js )
-Rails.application.config.assets.precompile += %w( matrix_admin/matrix_admin.css matrix_admin/matrix_admin.js
-                                                  ScrollToFixed/jquery-scrolltofixed-min.js
-                                                  respond/dest/respond.min.js
-                                                  lazyloadxt/dist/jquery.lazyloadxt.min.js
-                                                  opensans/OpenSansLight.woff
-                                                  opensans/OpenSans.woff
-                                                  opensans/OpenSansBold.woff
-                                                  36kr/36kr.eot
-                                                  36kr/36kr.svg
-                                                  36kr/36kr.ttf
-                                                  36kr/36kr.woff
-                                                  ladda/dist/ladda.min.js
-                                                  ladda/dist/spin.min.js
-                                                  magnific-popup/dist/jquery.magnific-popup.min.js
-                                                  app.js )
+Rails.application.config.assets.precompile += %w( matrix_admin/matrix_admin.css matrix_admin/matrix_admin.js )
+Rails.application.config.assets.precompile += %w( vender/html5shiv/dist/html5shiv.js )

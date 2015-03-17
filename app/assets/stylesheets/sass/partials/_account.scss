@@ -1,0 +1,24 @@
+//Account
+
+.simple_form {
+	input[type="text"],
+	textarea {
+		border: none;
+		background: $secondary-color;
+		color: $text-color;
+	}
+	input {
+		padding: 4px;
+		height: 32px;
+	}
+}
+.control-label {
+	float: left;
+	width: 100px;
+	line-height: 32px;
+	text-align: right;
+	margin-right: 10px;
+}
+.control-group {
+	margin-bottom: 20px;
+}

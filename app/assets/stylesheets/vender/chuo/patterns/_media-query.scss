@@ -1,0 +1,20 @@
+//MEDIA QUERY
+//via：http://alwaystwisted.com/post.php?s=2013-04-01-my-media-query-mixin
+//使用px定义breakpoint，输出em. eg: @include mq(320) -> @media screen and (min-width: 20em)
+
+@mixin mq($point, $IE9: false, $query1: min, $query2: width) {
+    @if $IE9 == true{
+        .lt-ie9 & {
+            @content;
+        }
+        @media screen and (#{$query1}-#{$query2}: $point / $base-font-size +em) {
+            @content;
+        }
+    }
+
+    @else {
+        @media screen and (#{$query1}-#{$query2}: $point / $base-font-size +em) {
+            @content;
+        }
+    }
+}

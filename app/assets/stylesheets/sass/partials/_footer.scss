@@ -1,0 +1,51 @@
+//Footer
+
+.footer {
+	padding: 40px 0;
+	width: 100%;
+	border-top: 1px solid #373a3c;
+	background: $footer-color;
+	color: rgba(236,235,231,0.5);
+	h3 {
+		@include font-size(16);
+		margin-bottom: 10px;
+		color: #fff;
+	}
+	li {
+		@include font-size(14);
+		line-height: 2;
+	}
+	a {
+		color: rgba(178, 193, 212, 0.92);
+		&:hover {
+			border-bottom: 1px solid rgba(172, 172, 164, .7);
+		};
+	}
+	.row > div {
+		@include media($tablet) {
+
+		}
+		@include media($desktop) {
+			@include span-columns(2 of 8);
+		}
+		@include media($max) {
+			@include span-columns(3);
+		}
+		margin-bottom: 20px;
+	}
+	
+	.footer-partner li {
+		margin-bottom: 20px;
+	}
+	.footer-partner a {
+		border-bottom: none;
+	}
+	
+	.footer-copyright {
+		margin-top: 20px;
+		p {
+			@include font-size(12);
+			margin-bottom: 10px;
+		}
+	}
+}

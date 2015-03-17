@@ -1,0 +1,100 @@
+//rem font-size with px fallback
+@mixin font-size($font-size: 16) {
+  font-size: #{$font-size}px;
+  font-size: #{$font-size/10}rem;
+}
+
+@mixin font-size-2($sizeValue: 12 ){
+  font-size: $sizeValue + px;
+  font-size: (0.125 * $sizeValue) + rem;
+}
+
+//Line Height
+@mixin line-height($heightValue: 12 ){
+  line-height: $heightValue + px;
+  line-height: (0.125 * $heightValue) + rem;
+}
+
+//Letterpress style
+@mixin letterpress($opacity){
+    text-shadow: white($opacity) 0 1px 0;
+}
+
+//Word Wrapping
+@mixin word-wrap() {
+   -ms-word-break: break-all;
+  		 word-break: break-all;
+       word-break: break-word;
+        word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+//Hyphens
+@mixin hyphens($val:auto) {
+  -webkit-hyphens: $val;
+     -moz-hyphens: $val;
+      -ms-hyphens: $val;
+       -o-hyphens: $val;
+          hyphens: $val;
+}
+
+// CSS image replacement
+// -------------------------
+// Source: https://github.com/h5bp/html5-boilerplate/commit/aa0396eae757
+@mixin hide-text {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+
+//Justify
+@mixin justify-text {
+	@include hyphens(auto);
+	text-align:justify;
+}
+
+// Text overflow
+// -------------------------
+// Requires inline-block or block for proper styling
+@mixin text-overflow() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+@mixin line-overflow($line) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $line; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
+
+//Text selection
+@mixin text-selection {
+  ::selection      { @content; }
+  ::-moz-selection { @content; }
+}
+
+//  Nicer text rendering in webkit and gecko
+//  @see http://www.aestheticallyloyal.com/public/optimize-legibility/
+//  @see http://files.christophzillgens.com/webkit-font-smoothing.html
+@mixin text-rendering {
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+//  Prevents the resizing of text. Useful for mobile web apps
+@mixin fixed-sized-text {
+	-webkit-text-size-adjust: none;
+		  -ms-text-size-adjust: none;
+}
+
+//Text shadow
+@mixin text-shadow($x: 2px, $y: 2px, $blur: 5px, $color: rgba(0,0,0,.4)) {
+    text-shadow: $x $y $blur $color;
+}

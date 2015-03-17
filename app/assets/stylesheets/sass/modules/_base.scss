@@ -1,0 +1,64 @@
+html {
+	font-size: 62.5%;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-overflow-scrolling: touch;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	-ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  @include font-size(16);
+  @include word-wrap();
+  @include media($mobilemax2) {
+  	@include hyphens(auto);
+  }
+  background: $bg-color;
+  color: $text-color;
+  font-family: $opensans;
+}
+
+input {
+	@include placeholder {
+	    @include font-size(13);
+	    color: #747f8c;
+	}
+}
+
+::selection {
+	background-color: $tertiary-color;
+	color: #fff;
+	text-shadow: 0 1px 0 rgba(0, 0, 0, .3);
+}
+
+::-moz-selection {
+	background-color: $tertiary-color;
+	color: #fff;
+	text-shadow: 0 1px 0 rgba(0, 0, 0, .3);
+}
+
+img::selection {
+    background: transparent;
+}
+
+img::-moz-selection {
+    background: transparent;
+}
+
+.left {
+	float: left;
+}
+.right {
+	float: right;
+}
+.cf {
+	@include cf;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: bold;
+}

@@ -1,0 +1,22 @@
+.pop {
+  display: block;
+  -webkit-animation-name: pop;
+  -webkit-animation-duration: .6s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease-in-out;
+  }
+
+@include keyframes pop {
+  from {
+      @include transform(scale(.4));
+      opacity: 0;
+  }
+  46% {
+      @include transform(scale(1.15));
+      opacity: 1;
+  }
+  to {
+      @include transform(scale(1));
+      opacity: 1;
+  }
+}

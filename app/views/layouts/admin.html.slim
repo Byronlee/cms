@@ -34,7 +34,7 @@ html lang="en"
         li#profile-messages class="dropdown"
           a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"
             i class="icon icon-user"
-            span class="text" = " Welcome #{@current_user.display_name}"
+            span class="text" = " Welcome #{@current_user.try(:display_name)}"
         li
           a title="" target="_blank" href= root_path
             i class="icon icon-share-alt"

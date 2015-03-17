@@ -1,0 +1,20 @@
+@mixin popup($width: 130px, $height: 30px) {
+  display: inline-block;
+  position: relative;
+  width: $width;
+  height: $height;
+  padding: 0;
+  margin: 20px;
+  border-radius: 4px;
+  border: 1px solid #212121;
+  @include background-clip(padding-box);
+  @include box-shadow(0 1px 1px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.1));
+  @include background-image(linear-gradient(bottom, rgba(0,0,0,.9) 0%, rgba(36,36,36,.9) 42.99%, rgba(81,81,81,.9) 100%));
+  .arrow {
+     @include arrow(16px, 6px, down, black(.8));
+     position: absolute;
+     left: 30px;
+     bottom: -6px;
+  }
+}
+

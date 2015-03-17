@@ -1,0 +1,175 @@
+@import "master";
+
+html {
+	font-size: 62.5%;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  @include font-size(16);
+  @include word-wrap();
+  @include hyphens(auto);
+  background: $bg-color;
+  color: $text-color;
+	font-family: "Helvetica Neue", Arial, "Microsoft YaHei", "微软雅黑", "STHeiti", sans-serif;
+}
+
+.left {
+	float: left;
+}
+.right {
+	float: right;
+}
+.cf {
+	@include cf;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: bold;
+}
+
+img, video, object, embed, iframe {
+	max-width: 100% !important;
+}
+iframe {
+	max-height: 340px;
+}
+img {
+	@include high-quality-image;
+	display:block;
+	height:auto;
+	border: 0;
+	vertical-align: middle;
+}
+
+figure {
+	@include font-size(12);
+	margin-top: 40px;
+	margin-bottom: 40px;
+	text-align: center;
+	figcaption {
+		margin-top: 5px;
+	}
+}
+
+.row {
+	max-width: 400px;
+	margin: 30px auto;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.content-wrapper {
+	max-width: 780px;
+	margin: 0 auto;
+}
+
+.single-post-header__headline {
+	position: relative;
+	margin-bottom: 30px;
+}
+
+.single-post-header__meta {
+	margin: 20px 0;
+}
+
+.single-post__postmeta {
+	margin-bottom: 30px;
+	@include font-size(14);
+}
+.single-post__title {
+	@include font-size(32);
+	font-weight: bold;
+	color: $tertiary-color;
+	margin-bottom: 10px;
+}
+
+.article {
+	color: #333332;
+	@include font-size(18);
+	line-height: 1.8;
+	
+	hr {
+		border: 0;
+		height: 1px;
+		width: 20%;
+		margin: 50px auto;
+		border-top: 1px solid #e4e4e4;
+	}
+	
+	a {
+		color: $primary-color;
+		border-bottom: 2px solid #eaeaea;
+		&:hover {
+			border-bottom: 2px solid #48a9ec;
+		}
+	}
+	
+	blockquote {
+		@include font-size(18);
+		font-weight: bold;
+		border-left: 6px solid $primary-color;
+		padding-left: 15px;
+		margin-left: -15px;
+	}
+	
+	img {
+		margin: 0 auto;
+	}
+	
+	ul,
+	ol {
+		list-style: square;
+		margin-left: 20px;
+	}
+}
+
+.article p,
+.article h3,
+.article h4,
+.article h5,
+.article h6,
+.article pre,
+.article ul,
+.article ol,
+.article dl,
+.article form,
+.article table,
+.article blockquote,
+.article iframe {
+	margin-bottom: 30px;
+}
+
+.header {
+	margin-bottom: 30px;
+	border-bottom: 1px solid #e6eaed;
+	padding: 0 20px 15px;
+}
+.logo {
+	width: 170px;
+	height: 30px;
+	display: inline-block;
+	@include hide-text;
+	background: url('../images/36kr-longweibo.png') no-repeat left top;
+}
+
+footer {
+	border-top: 3px solid #56AEEA;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+.footer-meta {
+	width: 70%;
+	font-size: 14px;
+	line-height: 1.5;
+	p {
+		margin-bottom: 10px;
+	}
+}
+.qrcode img {
+	width: 80px;
+	height: 80px;
+}

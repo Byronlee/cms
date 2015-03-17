@@ -1,0 +1,8 @@
+/*
+ *= require application/style2
+ */
+:host {
+  display: block;
+  z-index: 999;
+  position: relative;
+}
