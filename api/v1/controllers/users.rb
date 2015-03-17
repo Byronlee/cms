@@ -20,7 +20,7 @@ module V1
           roles = Settings.editable_roles.map(&:to_s) << 'contributor'
           @user = User.where(role: roles)
           .order('created_at desc').page(params[:page]).per(params[:per_page])
-          present :authentications, @user, with: Entities::User
+          present @user, with: Entities::User
         end
 
       end
