@@ -82,7 +82,7 @@
 		margin: -15px 0 0 -27px;
 		//background: url(36kr.svg) 0 0 no-repeat;
 		//background-size: cover;
-		@include retina-image(36kr, 55px 60px);
+		@include retina-image("../images/36kr", 55px 60px);
 	}
 }
 .header-normal .logo {
@@ -402,7 +402,7 @@ input[type=search] {
 	  top: -12px;
 	  left: 50%;
 	  margin-left: -10px;
-	  @include retina-image(triangle, 20px 12px);
+	  @include retina-image("../images/triangle", 20px 12px);
 	}
 	a {
 		color: #5F7083;
@@ -476,19 +476,19 @@ input[type=search] {
 			@include size(50);
 		}
 		.product-krspace {
-			@include retina-image(product-01, 50px 50px);
+			@include retina-image("../images/product-01", 50px 50px);
 		}
 		.product-krplus {
-			@include retina-image(product-02, 50px 50px);
+			@include retina-image("../images/product-02", 50px 50px);
 		}
 		.product-wise {
-			@include retina-image(product-03, 50px 50px);
+			@include retina-image("../images/product-03", 50px 50px);
 		}
 		.product-beiji {
-			@include retina-image(product-04, 50px 50px);
+			@include retina-image("../images/product-04", 50px 50px);
 		}
 		.product-next {
-			@include retina-image(product-05, 50px 50px);
+			@include retina-image("../images/product-05", 50px 50px);
 		}
 		.status {
 			@include font-size(11);

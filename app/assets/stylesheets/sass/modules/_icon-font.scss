@@ -1,10 +1,10 @@
 @font-face {
   font-family: "36kr";
-  src:url("../fonts/36kr/36kr.eot");
-  src:url("../fonts/36kr/36kr.eot?#iefix") format("embedded-opentype"),
-    url("../fonts/36kr/36kr.woff") format("woff"),
-    url("../fonts/36kr/36kr.ttf") format("truetype"),
-    url("../fonts/36kr/36kr.svg#36kr") format("svg");
+  src: asset-url("fonts/36kr/36kr.eot");
+  src: asset-url("fonts/36kr/36kr.eot?#iefix") format("embedded-opentype"),
+     asset-url("fonts/36kr/36kr.woff") format("woff"),
+     asset-url("fonts/36kr/36kr.ttf") format("truetype"),
+     asset-url("fonts/36kr/36kr.svg#36kr") format("svg");
   font-weight: normal;
   font-style: normal;
 

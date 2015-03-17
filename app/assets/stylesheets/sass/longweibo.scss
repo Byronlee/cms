@@ -91,7 +91,7 @@ figure {
 	color: #333332;
 	@include font-size(18);
 	line-height: 1.8;
-	
+
 	hr {
 		border: 0;
 		height: 1px;
@@ -99,7 +99,7 @@ figure {
 		margin: 50px auto;
 		border-top: 1px solid #e4e4e4;
 	}
-	
+
 	a {
 		color: $primary-color;
 		border-bottom: 2px solid #eaeaea;
@@ -107,7 +107,7 @@ figure {
 			border-bottom: 2px solid #48a9ec;
 		}
 	}
-	
+
 	blockquote {
 		@include font-size(18);
 		font-weight: bold;
@@ -115,11 +115,11 @@ figure {
 		padding-left: 15px;
 		margin-left: -15px;
 	}
-	
+
 	img {
 		margin: 0 auto;
 	}
-	
+
 	ul,
 	ol {
 		list-style: square;
@@ -153,7 +153,7 @@ figure {
 	height: 30px;
 	display: inline-block;
 	@include hide-text;
-	background: url('../images/36kr-longweibo.png') no-repeat left top;
+	background: image-url('images/36kr-longweibo.png') no-repeat left top;
 }
 
 footer {
