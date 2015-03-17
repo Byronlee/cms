@@ -80,7 +80,6 @@ Rails.application.routes.draw do
   match '/p/preview/(:key).html' => 'posts#preview', via: :get, as: :preview_post_by_key
   resources :pages, only: [:show], param: :slug
   get :feed, to: 'posts#feed', defaults: { format: :rss }
-  match '/info_flow/lastest(/:page)', :controller => 'info_flow', :action => 'lastest', via: :get
   match '/tag/:tag', :controller => 'tags', :action => 'show', via: :get
 
 end
