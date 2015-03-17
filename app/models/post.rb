@@ -54,6 +54,7 @@ class Post < ActiveRecord::Base
   after_save :update_today_lastest_cache, :update_hot_posts_cache, :update_info_flows_cache, :update_new_posts_cache
   after_destroy :update_today_lastest_cache, :update_hot_posts_cache, :update_info_flows_cache, :update_new_posts_cache
   before_create :generate_key
+  after_create :generate_url_code
 
   scope :created_on, ->(date) {
     where(:created_at => date.beginning_of_day..date.end_of_day)
@@ -128,4 +129,7 @@ class Post < ActiveRecord::Base
     self.key = SecureRandom.uuid
   end
 
+  def generate_url_code
+    self.update(url_code: self.id) if self.url_code.blank?
+  end
 end
