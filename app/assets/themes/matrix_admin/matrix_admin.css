@@ -73,3 +73,10 @@
 .search-input-header{
   width: 95%;
 }
+
+.widget-box table.table-bordered.table-striped.with-check td a i{
+  color: #666;
+  width: 15px;
+  height: 38px;
+  float: left;
+}
