@@ -2,7 +2,7 @@ class Admin::ColumnsController < Admin::BaseController
   load_and_authorize_resource
 
   def index
-    @columns = Column.order('id desc').page params[:page]
+    @columns = Column.order('order_num desc').page params[:page]
   end
 
   def update
@@ -23,6 +23,6 @@ class Admin::ColumnsController < Admin::BaseController
   private
 
   def column_params
-    params.require(:column).permit(:name, :slug, :introduce, :icon, :cover) if params[:column]
+    params.require(:column).permit(:name, :slug, :introduce, :icon, :cover, :order_num) if params[:column]
   end
 end

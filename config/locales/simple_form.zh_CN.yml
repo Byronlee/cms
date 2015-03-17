@@ -29,6 +29,7 @@ zh-CN:
         cover: 专栏图像
         icon:  专栏图标
         disable_with: '正在提交...'
+        order_num: '权重'
       user:
         role: 角色
       comment:
