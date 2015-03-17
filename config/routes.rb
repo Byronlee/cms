@@ -33,6 +33,7 @@ Rails.application.routes.draw do
       get :reviewings, on: :collection
       get :publish, on: :member
       post :do_publish, on: :member
+      get :undo_publish, on: :member
     end
     resources :comments do
       member do
