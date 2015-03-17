@@ -22,6 +22,7 @@
 #  bio                                 :text
 #  krypton_passport_invitation_sent_at :datetime
 #  tagline                             :text
+#  avatar_url                          :string(255)
 #
 
 class User < ActiveRecord::Base

@@ -3,9 +3,9 @@ module V1
 
     def action(params)
       case params[:action]
-      when 'up' then '>='
-      when 'down' then '<='
-      else '<=' end
+      when 'up' then '>'
+      when 'down' then '<'
+      else '<' end
     end
 
     def attributes_for_keys(keys)
@@ -17,10 +17,10 @@ module V1
     end
 
     def authenticated_tmp
-      if params[:access_token].present? or params[:api_key].present?
-        params[:access_token] == '501Cd1AvUL4AxxVEX60gCFJK7HCd9y8ySDvG29Je' or
-        params[:api_key] == '501Cd1AvUL4AxxVEX60gCFJK7HCd9y8ySDvG29Je' ?
-          true : false
+      p request.headers['X-Token']
+      if request.headers['X-Token'].present? or params[:api_key].present?
+        request.headers['X-Token'] == '501Cd1AvUL4AxxVEX60gCFJK7HCd9y8ySDvG29Je' or params[:api_key] == '501Cd1AvUL4AxxVEX60gCFJK7HCd9y8ySDvG29Je' ?
+         true : false
       else
         false
       end
