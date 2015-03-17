@@ -5,6 +5,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find_by_url_code(params[:url_code])
+    redirect_to root_path if @post.may_publish?
   end
 
   def preview
