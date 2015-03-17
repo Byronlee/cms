@@ -1,4 +1,4 @@
-settings.site = 'https://test.36kr.com/'
+settings.site = 'https://test.36kr.com'
 
 settings.oauth = {
   krypton: {
