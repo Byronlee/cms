@@ -21,9 +21,9 @@ html class="no-js"
     /!--opengraph meata end
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
-    / = javascript_include_tag "#{Settings.oauth.krypton.host}/assets/helper.js"
-    /= javascript_include_tag "http://cbjs.baidu.com/js/m.js"
-    /script src="http://rong.36kr.com/api/message/count?callback=message"
+    = javascript_include_tag "#{Settings.oauth.krypton.host}/assets/helper.js"
+    = javascript_include_tag "http://cbjs.baidu.com/js/m.js"
+    = javascript_include_tag "http://rong.36kr.com/api/message/count?callback=message"
     = render_cell :head, :html5
 
     = csrf_meta_tags
