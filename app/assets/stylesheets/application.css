@@ -7,6 +7,11 @@ abbr.timeago {
   border-bottom-width: 0;
 }
 
-.thumb-180 img{
+.thumb-60{
+	width: 60px;
+	height: 60px;
+}
+
+.thumb-180 img, .thumb-60 img {
   width:100%; height:100%;
 }
