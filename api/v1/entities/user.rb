@@ -9,6 +9,7 @@ module V1
       expose :tagline    , documentation: ''
       expose :bio        , documentation: ''
       expose :avatar_url , documentation: ''
+      expose :authentications, using: Entities::Authentication,  documentation: ''
 
     end
   end
