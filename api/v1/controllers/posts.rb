@@ -90,6 +90,7 @@ module V1
           if @post.save
             review_url = "#{Settings.site}/p/preview/#{@post.key}.html"
             if auth.present? and auth.user.editable
+              @post.update_attribute(:state, 'published') if auth.user.role == 'admin'
               review_url = "#{Settings.site}/p/#{@post.id}.html"
               admin_edit_post_url = "#{Settings.site}/krypton_d29tZW5qaW5ncmFuZmFubGV6aGVtZWRpamlkZWN1b3d1/posts/#{@post.id}/edit"
             end
