@@ -1,4 +1,3 @@
-
 # == Schema Information
 #
 # Table name: comments
@@ -13,6 +12,7 @@
 #  is_excellent     :boolean
 #  is_long          :boolean
 #  state            :string(255)
+#  email            :string(255)
 #
 
 require 'action_view'

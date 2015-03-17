@@ -12,6 +12,7 @@
 #  is_excellent     :boolean
 #  is_long          :boolean
 #  state            :string(255)
+#  email            :string(255)
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl
