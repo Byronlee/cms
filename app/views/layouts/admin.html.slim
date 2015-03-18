@@ -7,17 +7,14 @@ html lang="en"
     title= content_for?(:title) ? yield(:title) : "Kr"
     = csrf_meta_tags
 
-    /!--opengraph meata start
     = content_for?(:og_meta) ? yield(:og_meta) : ''
-    /!--opengraph meata end
-
     /! Le HTML5 shim, for IE6-8 support of HTML elements
     /[if lt IE 9]
       = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"
-    = stylesheet_link_tag "matrix_admin/matrix_admin", :media => "all"
     = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
 
-    = javascript_include_tag "matrix_admin/matrix_admin"
+    = stylesheet_link_tag "open_admin/open_admin", :media => "all"
+    = javascript_include_tag "oepn_admin/open_admin"
 
   body
     /!Header-part
