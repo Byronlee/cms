@@ -8,8 +8,8 @@ abbr.timeago {
 }
 
 .thumb-60{
-	width: 60px;
-	height: 60px;
+  width: 60px;
+  height: 60px;
 }
 
 .thumb-180 img, .thumb-60 img {
@@ -17,7 +17,7 @@ abbr.timeago {
 }
 
 .second-nav .second-nav__account {
-	line-height: 24px;
+  line-height: 24px;
 }
 
 .second-nav .second-nav__account img {
