@@ -23,23 +23,23 @@ module V1
           present @user, with: Entities::User
         end
 
-      #  desc 'Create a new user'
-      #  params do
-      #    optional :name, type: String, desc: '姓名'
-      #    optional :email, type: String, desc: '邮箱'
-      #    optional :bio, type: String, desc: '自我介绍'
-      #    optional :tagline, type: String, desc: '座右铭'
-      #    optional :avatar_url, type: String, desc: '头像url'
-      #  end
-      #  post 'new' do
-      #    user_params = params.slice(*KEYS)
-      #    @user = User.new user_params.merge!({password: 'VEX60gCF'})
-      #    if @user.save
-      #      present @user, with: Entities::User
-      #    else
-      #      error!({ error: @user.errors.full_messages }, 400)
-      #    end
-      #  end
+        desc 'Create a new user'
+        params do
+          optional :name, type: String, desc: '姓名'
+          optional :email, type: String, desc: '邮箱'
+          optional :bio, type: String, desc: '自我介绍'
+          optional :tagline, type: String, desc: '座右铭'
+          optional :avatar_url, type: String, desc: '头像url'
+        end
+        post 'new' do
+          user_params = params.slice(*KEYS)
+          @user = User.new user_params.merge!({password: 'VEX60gCF'})
+          if @user.save
+            present @user, with: Entities::User
+          else
+            error!({ error: @user.errors.full_messages }, 400)
+          end
+        end
 
       end
     end
