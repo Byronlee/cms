@@ -16,22 +16,29 @@ module V1
       attrs
     end
 
-    def authenticated_tmp
-      if request.headers['X-Token'].present? or params[:api_key].present?
-        request.headers['X-Token'] == '501Cd1AvUL4AxxVEX60gCFJK7HCd9y8ySDvG29Je' or params[:api_key] == '501Cd1AvUL4AxxVEX60gCFJK7HCd9y8ySDvG29Je' ?
-         true : false
-      else
-        false
-      end
+    def not_found!
+
     end
 
     def authenticated
-      return true if warden.authenticated?
-      params[:access_token] && @user = User.find_by_authentication_token(params[:access_token])
+      if request.headers['X-Token'].present? or params[:api_key].present?
+        request.headers['X-Token'] == '501Cd1AvUL4AxxVEX60gCFJK7HCd9y8ySDvG29Je' or params[:api_key] == '501Cd1AvUL4AxxVEX60gCFJK7HCd9y8ySDvG29Je' ?
+          true : false
+      else
+        false
+      end
+      #return true if warden.authenticated?
+      #params[:access_token] && @user = User.find_by_authentication_token(params[:access_token])
     end
 
     def current_user
-      warden.user || @user
+      sso_user = V1::Passport.new(params[:sso_token]).me
+      unless sso_user.is_a? TrueClass or sso_user.is_a? FalseClass
+        current_user = User.find_by_origin_ids sso_user['id']
+      else
+        User.new
+      end
+      #warden.user || @user
     end
 
     def warden
