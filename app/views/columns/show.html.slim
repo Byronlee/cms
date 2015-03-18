@@ -27,7 +27,7 @@
                    |  /  #{@column.slug}
                 .postmeta.right
                   a href="/chloe1988" class="uname user_Chloe1988" data-name="Chloe" target="_blank"
-                    = post.author.try(:name)
+                    = post.author.try(:display_name)
                   |&nbsp;•&nbsp;
                   abbr.timeago title="#{post.created_at}"  = post.human_created_at
               .left.left-col
@@ -65,6 +65,5 @@
 
 .sidebar
   = render_cell :sidebar, :ad_top, position: :column_show
-  = render_cell :sidebar, :new_posts
   = render_cell :sidebar, :hot_posts
   = render_cell :sidebar, :excellent_comments

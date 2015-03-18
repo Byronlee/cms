@@ -70,6 +70,7 @@ Rails.application.routes.draw do
     get :get_comments_count, on: :member
     get :news, on: :collection
     get :hots, on: :collection
+    get :today_lastest, on: :collection
     resources :comments, :only => [:index, :create] do
       get :normal_list, on: :collection
     end

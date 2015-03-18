@@ -1,1 +1,17 @@
-today-lastest
+<div class="section aside-today" id="section_aside-today">
+  <h2 class="aside-today__title">今日更新<span>0</span></h2>
+  <ul class="aside-today__list">
+  </ul>
+</div>
+
+javascript:
+  $(document).ready(function(){
+    $.ajax({
+        type: "GET",
+        url: "/posts/today_lastest",
+        data: {},
+        success: function (data) {
+          $('#section_aside-today').empty().prepend(data, this);
+        }
+    });
+  });

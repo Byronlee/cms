@@ -31,6 +31,19 @@ class PostsController < ApplicationController
     render '_hots', :layout => false
   end
 
+  def today_lastest
+    posts_data = Redis::HashKey.new('posts')['today_lastest']
+    if posts_data.present?
+      hash_data = JSON.parse(posts_data)[0]
+      @posts = hash_data["posts"]
+      @posts_count = hash_data["posts_count"]
+    else
+      @posts = []
+      @posts_count = 0
+    end
+    render '_today_lastest', :layout => false
+  end
+
   def update_views_count
     views_count = Redis::HashKey.new('posts')["views_count_#{params[:id]}"]
     if views_count.nil?
