@@ -11,6 +11,7 @@
 #  icon        :string(255)
 #  posts_count :integer
 #  slug        :string(255)
+#  order_num   :string(255)      default("0")
 #
 
 require 'spec_helper'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150317105245) do
+ActiveRecord::Schema.define(version: 20150317113244) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20150317105245) do
     t.string   "icon"
     t.integer  "posts_count"
     t.string   "slug"
+    t.string   "order_num",   default: "0"
   end
 
   create_table "columns_info_flows", force: true do |t|

@@ -72,6 +72,10 @@ class Post < ActiveRecord::Base
     event :publish do
       transitions :from => [:reviewing], :to => :published
     end
+
+    event :undo_publish do
+      transitions :from => [:published], :to => :reviewing
+    end
   end
 
   def self.today

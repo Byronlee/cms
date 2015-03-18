@@ -39,9 +39,6 @@ class Admin::PostsController < Admin::BaseController
     redirect_to :back
   end
 
-  def publish
-  end
-
   def do_publish
     if params[:operate_type] == "publish"
       redirect_to reviewings_admin_posts_path, :notice => "文章状态不合法，不能发布！" unless @post.may_publish?
@@ -55,6 +52,11 @@ class Admin::PostsController < Admin::BaseController
     else
       render :publish
     end
+  end
+
+  def undo_publish
+    @post.undo_publish if @post.may_undo_publish?
+    redirect_to :back
   end
 
   private
