@@ -1,0 +1,34 @@
+/* humanstxt.org */
+
+/* TEAM */
+
+	Name: 36kr
+	Site: http://36kr.com
+	Designer: @dingyi
+	Developer: @xinzhi @Byronlee @chad_lwm @xiaobo
+	Contact:
+	Twitter: http://twitter.com/wow36kr
+	Weibo: http://weibo.com/wow36kr
+	Location: Beijing, China
+
+
+/* SITE */
+
+	Development Tools:
+	Photoshop CC, Sublime Text, Espresso, CodeKit, Hammer for Mac
+
+	Online Services:
+	Typekit, Cloud.typography by H&FJ, Gauges
+
+	Server:
+	Amazon S3, Amazon CloudFront, CloudFlare, V2EDGE
+
+	Last Updated:
+	2013/09/16 12:30 AM
+
+
+/* Components */
+
+	jQuery: 				http://jquery.com
+	Modernizr: 				http://modernizr.com
+	Responsive Patterns:	http://bradfrost.github.com/this-is-responsive/patterns.html
