@@ -96,7 +96,7 @@ header.header.header-normal.scrolled
                     li.last
                       - if can? :manage, Comment
                         = link_to("后台管理", admin_dashboard_index_path, :class => "dropdown_login_out_link")
-                      = link_to("注销登录", "javascript:void(0)", :class => "dropdown_login_out_link", method: "delete" )
+                      = link_to("注销登录", "javascript:void(0)", :class => "dropdown_login_out_link login_out", method: "delete" )
         - else
           li
             a.second-nav__login href="#{user_omniauth_authorize_path(provider: :krypton)}"  登录
