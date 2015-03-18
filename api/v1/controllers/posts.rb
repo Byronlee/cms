@@ -141,8 +141,8 @@ module V1
           post = Post.find(params[:id])
           unless post.blank?
             return { status: false }
-          elsif current_user.role == 'admin' and current_user.id == post.author.id
-            post.destroy
+          else
+            post.destroy if (current_user.role == 'admin' or current_user.id == post.author.id)
             return { status: true }
           end
         end
