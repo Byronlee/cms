@@ -1,5 +1,7 @@
-meta property="og:title" content="#{@post.try(:title)}"
+/!-- Facebook Open Graph META Tags --
+/!-- http://developers.facebook.com/docs/opengraph/property-types/ --
+meta property="og:title" content="#{raw @post.try(:title) || ""}"
 meta property="og:url" content="#{post_url(@post)}"
 meta property="og:site_name" content="36氪"
-meta property="og:type" content="#{@post.column.try(:name)}"
+meta property="og:type" content="#{raw @post.column.try(:name) || ""}"
 meta property="og:image" content="#{@post.cover_real_url}"

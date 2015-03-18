@@ -1,0 +1,67 @@
+<div class="content">
+  <a name="lastest_news"></a>
+  <div class="content-wrapper">
+    <h2 class="lastest">lastest news</h2>
+    <div class="articles">
+      <% posts_with_ads.each do |item| %>
+        <% if item['position'] == nil && item["type"] != 'seperate' %>
+          <article class="posts post-1 cf">
+            <div class="info cf">
+              <div class="topic left">
+                <span>
+                  <a class="<%= item["column"]["slug"] %>" href="/columns/<%= item["column"]["slug"] %>" > <%= item["column"]["name"] %> </a> / <%= item["column"]["slug"] %>
+                </span>
+              </div>
+              <div class="postmeta right">
+                <a href="javascript:void(0)"> <%= item["author"] && item["author"]["display_name"] %> </a>
+                 •
+                <abbr class="timeago" title="<%= item["created_at"]%>"><%= item["human_created_at"] %></abbr>
+              </div>
+            </div>
+            <div class="post">
+              <div class="left left-col">
+                <div class="meta">
+                  <a title="评论次数" href="<%= item["title_link"].present? ? item["title_link"] : post_url(item["url_code"]) %>" >
+                    <i class="icon icon-share"></i>
+                    <%= item["comments_counts"] || 0 %>
+                  </a>
+                </div>
+                <div class="image feature-img thumb-180">
+                  <a href="<%= item["title_link"].present? ? item["title_link"] : post_url(item["url_code"]) %>">
+                    <img src="<%= item["cover_real_url"] %>" alt="" />
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="right-col">
+              <h1>
+                <a href="<%= item["title_link"].present? ? item["title_link"] : post_url(item["url_code"]) %>" target="new" ><%= raw item["title"] %></a>
+              </h1>
+              <p><%= raw(item["summary"]) %></p>
+            </div>
+          </article>
+        <% elsif item["position"] != nil %>
+          <%= raw item["content"] %>
+        <% end %>
+      <% end if posts_with_ads.present? %>
+    </div>
+    <div class="pagination cf">
+      <ul>
+         <% if prev_page %>
+           <li class="previous">
+             <%= link_to '← 上一页', "/?page=#{prev_page}", rel:"prev", class:"left" %>
+           </li>
+         <% else %>
+           <li class="previous disabled"><a href="#" class="left"><i class="icon-prev"></i>上一页</a></li>
+         <% end %>
+         <% if next_page %>
+           <li class="next_page">
+             <%= link_to '下一页 →', "/?page=#{next_page}", rel:"next", class:"right" if next_page %>
+           </li>
+         <% else %>
+           <li class="next_page disabled"><a href="#" class="right"><i class="icon-next"></i>下一页</a></li>
+         <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

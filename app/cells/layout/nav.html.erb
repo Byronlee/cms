@@ -1,0 +1,118 @@
+<header class="header header-normal">
+  <div class="inner row">
+    <h1 class="logo"><a href="<%= root_path %>"><span>36kr</span></a></h1>
+    <nav class="toggle-nav cf">
+      <ul class="left">
+        <li><a href="javascript:void(0)" class="toggle__main icon-menu"><span>导航</span></a></li>
+        <li><a href="javascript:void(0)" class="toggle__search icon-search"><span>搜索</span></a></li>
+      </ul>
+      <a href="/pages/contribute" class="toggle__submit right">寻求报道</a>
+    </nav>
+    <nav class="main-nav left">
+      <ul>
+        <li class="drop-1 drop">
+          <a href="/category" class="hasdropdown main-nav__item">分类浏览</a>
+          <div class="dropdown dropdown-normal">
+            <div class="dropdown-list dropdown__list">
+              <section>
+                <h2>Category</h2>
+                <ul class="dropdown__category cf">
+                  <li><a href="/columns/cn-startups">国内公司</a></li>
+                  <li><a href="/columns/us-startups">国外公司</a></li>
+                  <li><a href="/columns/cn-news">国内资讯</a></li>
+                  <li><a href="/columns/breaking">国外资讯</a></li>
+                  <li><a href="/tag/krweekly">氪周刊</a></li>
+                  <li><a href="<%= page_path('krmonthly') %>">氪周刊</a></li>
+                  <li><a href="/columns/column">专栏</a></li>
+                  <li><a href="/columns/archives">存档</a></li>
+                </ul>
+              </section>
+              <section class="more">
+                <a href="javascript:void(0)" style="visibility: hidden;">查看更多精彩文章</a>
+              </section>
+            </div>
+          </div>
+        </li>
+        <li class="main-nav--new">
+          <a href="http://www.36kr.net/?utm_source=36kr.com" class="main-nav__item">氪加</a>
+        </li>
+        <li class="main-nav--new">
+          <a href="http://next.36kr.com/posts?utm_source=36kr.com" class="main-nav__item">NEXT</a>
+        </li>
+        <li class="drop-2 drop main-nav--more">
+          <a href="javascript:;" class="hasdropdown main-nav__item">更多产品</a>
+          <div class="dropdown dropdown-normal">
+            <div class="dropdown-list dropdown__list main-nav__list">
+              <section class="dropdown__events cf">
+                <div class="product-logo product-krspace left"></div>
+                <div class="intro">
+                  <h3><a href="http://space.36kr.com/?utm_source=36kr.com">氪空间</a></h3>
+                  <span class="bio">创业公司第一轮融资的地方</span>
+                </div>
+              </section>
+              <section class="dropdown__events cf">
+                <div class="product-logo product-next left"></div>
+                <div class="intro">
+                  <h3><a href="http://next.36kr.com/?utm_source=36kr.com">NEXT</a></h3>
+                  <span class="bio">不错过任何一个新产品</span>
+                </div>
+              </section>
+              <section class="dropdown__events cf">
+                <div class="product-logo product-krplus left"></div>
+                <div class="intro">
+                  <h3><a href="http://www.36kr.net/?utm_source=36kr.com">36氪加</a></h3>
+                  <span class="bio">优秀创业者集聚地</span>
+                </div>
+              </section>
+              <section class="dropdown__events cf">
+                <div class="product-logo product-wise left"></div>
+                <div class="intro">
+                  <h3><a href="http://www.36kr.com/tag/wise%202014">WISE</a></h3>
+                  <span class="bio">互联网创业峰会</span>
+                </div>
+              </section>
+            </div>
+          </div>
+          <i class="new"></i>
+        </li>
+      </ul>
+    </nav>
+    <div class="search">
+      <form name="search_baidu" target="_blank" onsubmit="return goSearch(this)">
+        <input name="word_display" type="search" placeholder="搜索" />
+        <input name="word" type="hidden" />
+      </form>
+    </div>
+    <nav class="second-nav">
+      <ul>
+        <li><a href="/pages/contribute" class="second-nav__submit">投稿</a></li>
+        <li><a href="http://report.36kr.com" class="second-nav__request">寻求报道</a></li>
+        <% if @current_user %>
+          <li class="avatar drop">
+            <a class="second-nav__account cf" href="javascript:void(0)">
+            <img class="avatar-small left" alt="<%= @current_user.display_name %>" height="24" src="<%= avatar_url @current_user.try(:avatar) %>" width="24" />
+              <span class="right"><%= @current_user.display_name %></span>
+            </a>
+            <div class="dropdown dropdown-account">
+              <div class="dropdown-list account__list dropdown__list">
+                <section>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <%= link_to "后台管理", admin_dashboard_index_path, :class => "dropdown_login_out_link" if can? :reade, :dashboard %>
+                    </li>
+                    <li class="last">
+                       <%= link_to "注销登录", 'javascript:void(0)', method: :delete, class:"login_out_link dropdown_login_out_link", rel:"nofollow" %>
+                    </li>
+                  </ul>
+                </section>
+              </div>
+            </div>
+          </li>
+          <%= link_to "", destroy_user_session_path, method: :delete, class:"login_out_link", rel:"nofollow" %>
+        <% else %>
+          <li><a href="<%= user_omniauth_authorize_path(provider: :krypton) %>" class="second-nav__login">登录</a></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>

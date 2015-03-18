@@ -1,0 +1,21 @@
+//SVG Icons
+
+.icons-weibo,
+.icons-twitter,
+.icons-facebook,
+.icons-rss {
+  background: asset-url("images/icons.svg") no-repeat;
+}
+
+.icons-weibo {
+  background-position: 0 0;
+}
+.icons-twitter {
+  background-position: -32px 0;
+}
+.icons-facebook {
+  background-position: -64px 0;
+}
+.icons-rss {
+  background-position: -96px 0;
+}

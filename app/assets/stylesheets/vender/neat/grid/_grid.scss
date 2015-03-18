@@ -1,0 +1,9 @@
+@if $border-box-sizing == true {
+  * {
+  	&,
+  	&:before,
+  	&:after{
+  	  @include box-sizing(border-box);
+  	}
+  }
+}

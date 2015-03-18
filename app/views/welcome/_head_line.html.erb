@@ -1,0 +1,23 @@
+<div class="headline cf">
+  <% head_line_first = head_lines[0] || {} %>
+  <article class="headline__news">
+    <a href="<%= head_line_first["url"] %>" class="topic-post-big">
+      <img class="image lazyload" src="assets/images/blank.gif" data-src="<%= head_line_first["image"] %>" alt="" />
+      <span class="spinner"></span>
+      <div class="image-overlay big"></div>
+      <h1><%= head_line_first["title"] %></h1>
+    </a>
+  </article>
+  <% colors = [nil, "one", "two", "three", "four"]
+    (1..4).each do |index|
+   head_line = head_lines[index] || {} %>
+    <article class="headline__news">
+      <a href="<%= head_line["url"] %>" class="topic-post-small <%= colors[index] %>">
+        <div class="image-overlay small"></div>
+        <div class="topic-title">
+          <h1><%= head_line["title"] %></h1>
+        </div>
+      </a>
+    </article>
+  <% end %>
+</div>

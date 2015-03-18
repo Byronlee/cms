@@ -1,0 +1,150 @@
+//MIXINS
+
+@mixin debug {
+  outline: 1px solid red;
+}
+
+@mixin round($radius: 3px) {
+	-webkit-border-radius: $radius;
+	        border-radius: $radius;
+	@include background-clip(padding-box);
+}
+@mixin hidden {
+  display: none !important;
+  visibility: hidden;
+}
+
+@mixin hide-texts {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@mixin invisible {
+  visibility: hidden;
+}
+
+@mixin navigation-list {
+    list-style:none;
+    padding:0;
+    margin:0;
+    overflow:hidden;
+    > li{
+        display:block;
+        float:left;
+        margin-right: 18px;
+        &:last-child{
+            margin-right:0px;
+        }
+    }
+}
+
+// Background clipping
+// Heads up: FF 3.6 and under need "padding" instead of "padding-box"
+@mixin background-clip($clip) {
+  -webkit-background-clip: $clip;
+     -moz-background-clip: $clip;
+          background-clip: $clip;
+}
+
+// Background sizing
+@mixin background-size($width: 100%, $height: 100%) {
+     -moz-background-size: $width $height;
+  -webkit-background-size: $width $height;
+          background-size: $width $height;
+}
+
+@mixin placeholders($color: $neutralcolor) {
+  &:-moz-placeholder,
+  &::-moz-placeholder,
+  &:-ms-input-placeholder,
+  &::-webkit-input-placeholder  {
+    @include font-size(14);
+    color: $color;
+  }
+}
+
+@mixin zero {
+  margin: 0;
+  padding: 0;
+}
+
+// Webkit-style focus
+// ------------------
+@mixin tab-focus() {
+  // Default
+  outline: thin dotted #333;
+  // Webkit
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+// Resize anything
+@mixin resize($direction: both) {
+  resize: $direction; // Options: horizontal, vertical, both
+  overflow: auto; // Safari fix
+}
+
+// CSS3 Content Columns
+@mixin content-columns($columnCount, $columnGap: $gridGutterWidth) {
+  -webkit-column-count: $columnCount;
+     -moz-column-count: $columnCount;
+          column-count: $columnCount;
+  -webkit-column-gap: $columnGap;
+     -moz-column-gap: $columnGap;
+          column-gap: $columnGap;
+}
+
+// Opacity
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  -moz-opacity: $opacity;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=" + ($opacity) + ")";
+  filter: alpha(opacity=$opacity);
+}
+
+//FLIP
+@mixin flip($scaleX: -1) {
+	-moz-transform:    scaleX($scaleX);
+	-o-transform:      scaleX($scaleX);
+	-webkit-transform: scaleX($scaleX);
+	transform:         scaleX($scaleX);
+	filter:            FlipH;
+	-ms-filter:        "FlipH";
+}
+
+//ROTATE
+@mixin rotate($deg: 0, $m11: 0, $m12: 0, $m21: 0, $m22: 0) {
+     -moz-transform: rotate($deg + deg);
+       -o-transform: rotate($deg + deg);
+  -webkit-transform: rotate($deg + deg);
+      -ms-transform: rotate($deg + deg);
+          transform: rotate($deg + deg);
+             filter: progid:DXImageTransform.Microsoft.Matrix(
+                     M11=$m11, M12=$m12,M21=$m21, M22=$m22, sizingMethod='auto expand');
+               zoom: 1;
+}
+
+// Single side border-radius
+@mixin border-top-radius($radius) {
+  border-top-right-radius: $radius;
+   border-top-left-radius: $radius;
+}
+@mixin border-right-radius($radius) {
+  border-bottom-right-radius: $radius;
+     border-top-right-radius: $radius;
+}
+@mixin border-bottom-radius($radius) {
+  border-bottom-right-radius: $radius;
+   border-bottom-left-radius: $radius;
+}
+@mixin border-left-radius($radius) {
+  border-bottom-left-radius: $radius;
+     border-top-left-radius: $radius;
+}
+
+// Drop shadows
+@mixin box-shadow($shadow...) {
+  -webkit-box-shadow: $shadow; // iOS <4.3 & Android <4.1
+          box-shadow: $shadow;
+}

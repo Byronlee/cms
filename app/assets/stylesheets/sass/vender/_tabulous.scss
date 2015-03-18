@@ -1,0 +1,25 @@
+.transition {
+	@include transition(opacity .2s ease-in-out);
+}
+
+.make_transist {
+	@include transition(all .3s ease-in-out);
+}
+
+.hidescale {
+	@include opacity(0);
+}
+
+.showscale {
+	@include opacity(1);
+}
+
+a.tabulous_active {
+	background: $secondary-color;
+	color: $text-color !important;
+}
+
+.tabulousclear {
+	display: block;
+	clear: both;
+}

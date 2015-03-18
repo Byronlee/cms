@@ -1,0 +1,21 @@
+//DOUBLE BORDERS
+@mixin double-borders($colorOne: #3C3C3C, $colorTwo: #999999, $radius: 0) {
+    border: 1px solid $colorOne;
+
+    -webkit-box-shadow: 0 0 0 1px $colorTwo;
+    -moz-box-shadow:    0 0 0 1px $colorTwo;
+    box-shadow:         0 0 0 1px $colorTwo;
+
+    @include border-radius( $radius );
+}
+
+//TRIPLE BORDERS
+@mixin triple-borders($colorOne: #3C3C3C, $colorTwo: #999999, $colorThree: #000000, $radius: 0) {
+    border: 1px solid $colorOne;
+
+    @include border-radius($radius);
+
+    -webkit-box-shadow: 0 0 0 1px $colorTwo, 0 0 0 2px $colorThree;
+       -moz-box-shadow: 0 0 0 1px $colorTwo, 0 0 0 2px $colorThree;
+            box-shadow: 0 0 0 1px $colorTwo, 0 0 0 2px $colorThree;
+}

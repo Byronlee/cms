@@ -11,4 +11,8 @@ class LayoutCell < Cell::Rails
   def footer
     render
   end
+
+  def script
+    render
+  end
 end

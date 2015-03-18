@@ -1,0 +1,54 @@
+//RWD Debugger: http://offroadcode.com/blog/2012/1/24/using-css-bodybefore-to-help-responsive-design/
+@mixin rwd-debug {
+ 	body:before {   
+ 	  background: #ffc; 
+ 	  z-index: 1;  
+ 	  width: 96%;   
+ 	  padding: 1em 2%;   
+ 	  float: left;   
+ 	  clear: both;   
+ 	  font-size: 14px;   
+ 	  font-size: .875rem;       	
+ 	  content: "We're below 480px/30em"; 
+ 	}
+ 	/* 480px / 16 = 30em */
+ 	@include mq(480) { 
+ 		body:before {
+ 			content: "We're in the 480px/30em -> 600px/37.5em range";
+ 		}
+ 	}
+ 		
+ 	/* 600px / 16 = 37.5em */
+ 	@include mq(600) { 
+ 		body:before {
+ 			content: "We're in the 600px/37.5em -> 768px/48em range";
+ 		}
+ 	}
+ 	
+ 	/* 768px / 16 = 48em */
+ 	@include mq(768) { 
+ 		body:before {
+ 			content: "We're in the 768px/48em";
+ 		}
+ 	}
+ 	@include mq(1024) { 
+ 		body:before {
+ 			content: "We're in the 1024px/67.5em";
+ 		}
+ 	}
+ 	@include mq(1098) { 
+ 		body:before {
+ 			content: "We're in the 1098px";
+ 		}
+ 	}
+ 	@include mq(1210) { 
+ 		body:before {
+ 			content: "We're in the 1210px";
+ 		}
+ 	}
+ 	@include mq(1332) { 
+ 		body:before {
+ 			content: "We're in the 1332px/82.625em";
+ 		}
+ 	}
+}

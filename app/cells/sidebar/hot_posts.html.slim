@@ -1,1 +1,17 @@
-hot-posts
+<section class="sidebar-popular cf">
+  <h3>热门文章</h3>
+  <div id="hot_posts_position" class="sidebar-popular__list">
+  </div>
+</section>
+
+javascript:
+  $(document).ready(function(){
+    $.ajax({
+        type: "GET",
+        url: "/posts/hots",
+        data: {},
+        success: function (data) {
+          $('#hot_posts_position').prepend(data);
+        }
+    });
+  });

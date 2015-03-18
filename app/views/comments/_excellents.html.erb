@@ -1,0 +1,18 @@
+<% @comments.each do |comment| %>
+  <div class="comment-1">
+    <div class="postmeta">
+      <a href="javascript:void(0)"><%= comment["user"].present? ? comment["user"]["display_name"] : '匿名用户' %></a>
+      &nbsp;•&nbsp;
+      <abbr class="timeago" title="<%= comment["created_at"] %>"><%= comment["human_created_at"] %></abbr>
+    </div>
+    <div class="sidebar-comments__comment">
+      <%= raw comment["content"] %>
+    </div>
+    <div class="sidebar-comments__title">
+      评论于
+      <a href="<%= comment["commentable"]["title_link"].blank? ? ('/p/' + comment["commentable"]["url_code"].to_s + '.html') : comment["commentable"]["title_link"] %>" >
+        <%= raw comment["commentable"]["title"] %>
+      </a>
+    </div>
+  </div>
+<% end %>

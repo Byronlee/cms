@@ -1,0 +1,17 @@
+.job-list {
+	margin-bottom: 60px;
+	h2 {
+		@include font-size(20);
+		font-weight: bold;
+		margin-bottom: 20px;
+	}
+	h3 {
+		@include font-size(16);
+		font-weight: bold;
+		margin-bottom: 10px;
+	}
+}
+.job-title {
+	@include font-size(32);
+	text-align: center;
+}

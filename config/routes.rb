@@ -57,32 +57,26 @@ Rails.application.routes.draw do
 
   namespace :components do
     get '/next/collections', to: 'next#collections', as: :next_collections
-    resources :head_lines, only: [:index]
-    resources :info_flows, only: [:index]
-    resources :comments, only: [:index]
-    resources :posts do
-      get :today_lastest, on: :collection
-      get :hot_posts, on: :collection
-      get :weekly_hot, on: :collection
-    end
   end
 
   resources :posts, :only => [:index] do
     post :update_views_count, on: :member
     get :get_comments_count, on: :member
     get :news, on: :collection
+    get :hots, on: :collection
+    get :today_lastest, on: :collection
     resources :comments, :only => [:index, :create] do
       get :normal_list, on: :collection
     end
   end
   resources :columns, only: [:index]
+  match '/comments/excellents', :controller => 'comments', :action => 'execllents', via: :get
   match '/columns/:slug(/:page)', :controller => 'columns', :action => 'show', via: :get
   match '/category/:slug(/:page)', :controller => 'columns', :action => 'show', via: :get
   match '/p/(:url_code).html' => 'posts#show', via: :get, as: :post_show_by_url_code
   match '/p/preview/(:key).html' => 'posts#preview', via: :get, as: :preview_post_by_key
   resources :pages, only: [:show], param: :slug
   get :feed, to: 'posts#feed', defaults: { format: :rss }
-  match '/info_flow/lastest(/:page)', :controller => 'info_flow', :action => 'lastest', via: :get
   match '/tag/:tag', :controller => 'tags', :action => 'show', via: :get
 
 end

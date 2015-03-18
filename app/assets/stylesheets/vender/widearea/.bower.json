@@ -1,0 +1,15 @@
+{
+  "name": "widearea",
+  "homepage": "https://github.com/usablica/widearea",
+  "version": "0.3.0",
+  "_release": "0.3.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.3.0",
+    "commit": "768b5c95f6ba01ac724bd12f32a2d09d9af8cb22"
+  },
+  "_source": "git://github.com/usablica/widearea.git",
+  "_target": "~0.3.0",
+  "_originalSource": "widearea",
+  "_direct": true
+}

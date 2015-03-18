@@ -1,0 +1,10 @@
+$skew_inc: 15;
+
+@include keyframes(lightSpeedOut) {
+    0% { @include transform(translateX(0%) skewX(0deg)); opacity: 1; }
+	100% { @include transform(translateX(100%) skewX(-#{$skew_inc * 2}deg)); opacity: 0; }
+}
+
+.lightSpeedOut {
+    @include animation(lightspeedOut);
+}

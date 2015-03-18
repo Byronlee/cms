@@ -11,6 +11,6 @@ div.container-fluid
   h1
     |welcome to dashboard
     span
-      i  ,#{@current_user.display_name}
+      i  ,#{@current_user.try(:display_name)}
 
 = render 'layouts/set_active_nav', :active_id => "nav_dashboard"

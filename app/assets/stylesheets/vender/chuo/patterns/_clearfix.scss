@@ -1,0 +1,14 @@
+//CLEARFIX
+//Micro clearfix: css-101.org/articles/clearfix/latest-new-clearfix-so-far.php
+//最简化clearfix, 抛弃zoom，:before，不支持IE6/7.
+//支持IE6/7的话，请使用Nicolas Gallagher的Micro Clearfix，
+//Bourbon自带：@include clearfix;
+
+
+@mixin cf {
+	&:after {
+		content: "";
+    display: table;
+    clear: both;
+  }
+}

@@ -13,15 +13,7 @@ class HeadCell < Cell::Rails
     render
   end
 
-  def iphone_media
-    render
-  end
-
-  def ipad_media
-    render
-  end
-
-  def ipad_retina_media
+  def ios_startup
     render
   end
 
@@ -41,6 +33,10 @@ class HeadCell < Cell::Rails
   end
 
   def dns_prefetch
+    render
+  end
+
+  def html5
     render
   end
 end

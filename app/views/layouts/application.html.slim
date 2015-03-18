@@ -1,25 +1,31 @@
 doctype html
-html.no-js
+
+/!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]
+/!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]
+/!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]
+/!--[if gt IE 8]><!--
+html class="no-js"
+
   head
     = render_cell :head, :basic_info
     = render_cell :head, :ios_meta
     = render_cell :head, :ios_icons
-    = render_cell :head, :iphone_media
-    = render_cell :head, :ipad_media
-    = render_cell :head, :ipad_retina_media
+    = render_cell :head, :ios_startup
 
     = render_cell :head, :twitter_card_meta, post: @post if @post
     = render_cell :head, :facebook_open_graph_meta, post: @post if @post
     = render_cell :head, :weibo_card_meta, post: @post if @post
+    = render_cell :head, :dns_prefetch
     /!--opengraph meata start
     = content_for?(:og_meta) ? yield(:og_meta) : ''
     /!--opengraph meata end
-    = stylesheet_link_tag    'application', media: 'all'
+    = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
     = javascript_include_tag "#{Settings.oauth.krypton.host}/assets/helper.js"
     = javascript_include_tag "http://cbjs.baidu.com/js/m.js"
-    /script src="http://rong.36kr.com/api/message/count?callback=message"
-    = html_import_tag 'application'
+    = javascript_include_tag "http://rong.36kr.com/api/message/count?callback=message"
+    = render_cell :head, :html5
+
     = csrf_meta_tags
   body#home
     = render_cell :layout, :nav, current_user: current_user
@@ -28,3 +34,4 @@ html.no-js
 
     = analytics_init if Rails.env.production?
     = render_cell :layout, :footer
+    = render_cell :layout, :script
