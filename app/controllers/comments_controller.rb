@@ -42,6 +42,12 @@ class CommentsController < ApplicationController
     # end
   end
 
+  def execllents
+    comments_data = Redis::HashKey.new('comments')['excellent']
+    @comments = comments_data.present? ? JSON.parse(comments_data) : [ ]
+    render '_excellents', :layout => false
+  end
+
   private
 
   def comment_params
