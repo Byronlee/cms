@@ -17,7 +17,6 @@ module V1
     end
 
     def authenticated_tmp
-      p request.headers['X-Token']
       if request.headers['X-Token'].present? or params[:api_key].present?
         request.headers['X-Token'] == '501Cd1AvUL4AxxVEX60gCFJK7HCd9y8ySDvG29Je' or params[:api_key] == '501Cd1AvUL4AxxVEX60gCFJK7HCd9y8ySDvG29Je' ?
          true : false
