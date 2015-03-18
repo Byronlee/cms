@@ -1,7 +1,7 @@
 module V1
   module Controllers
     class Users < ::V1::Base
-      KEYS = [:email, :phone]
+      KEYS = [:name, :phone, :email, :bio, :tagline, :avatar_url]
 
       desc 'User Feature'
       resource :users do
@@ -22,6 +22,24 @@ module V1
           .order('created_at desc').page(params[:page]).per(params[:per_page])
           present @user, with: Entities::User
         end
+
+      #  desc 'Create a new user'
+      #  params do
+      #    optional :name, type: String, desc: '姓名'
+      #    optional :email, type: String, desc: '邮箱'
+      #    optional :bio, type: String, desc: '自我介绍'
+      #    optional :tagline, type: String, desc: '座右铭'
+      #    optional :avatar_url, type: String, desc: '头像url'
+      #  end
+      #  post 'new' do
+      #    user_params = params.slice(*KEYS)
+      #    @user = User.new user_params.merge!({password: 'VEX60gCF'})
+      #    if @user.save
+      #      present @user, with: Entities::User
+      #    else
+      #      error!({ error: @user.errors.full_messages }, 400)
+      #    end
+      #  end
 
       end
     end
