@@ -1,50 +1,50 @@
 //Topic Colors
 
-.startups {
-	color: $startups !important;
-	&:hover {
-		color: darken($startups, 10) !important;
-	}
+.startups, .us-startups {
+  color: $startups !important;
+  &:hover {
+    color: darken($startups, 10) !important;
+  }
 }
-.products {
-	color: $products !important;
-	&:hover {
-		color: darken($products, 10) !important;
-	}
+.products, .breaking {
+  color: $products !important;
+  &:hover {
+    color: darken($products, 10) !important;
+  }
 }
-.apps {
-	color: $apps !important;
-	&:hover {
-		color: darken($apps, 10) !important;
-	}
+.apps, .cn-news {
+  color: $apps !important;
+  &:hover {
+    color: darken($apps, 10) !important;
+  }
 }
-.websites {
-	color: $websites !important;
-	&:hover {
-		color: darken($websites, 10) !important;
-	}
+.websites, .column {
+  color: $websites !important;
+  &:hover {
+    color: darken($websites, 10) !important;
+  }
 }
-.brands {
-	color: $brands !important;
-	&:hover {
-		color: darken($brands, 10) !important;
-	}
+.brands, .digest {
+  color: $brands !important;
+  &:hover {
+    color: darken($brands, 10) !important;
+  }
 }
-.people {
-	color: $people !important;
-	&:hover {
-		color: darken($people, 10) !important;
-	}
+.people, .cn-startups {
+  color: $people !important;
+  &:hover {
+    color: darken($people, 10) !important;
+  }
 }
-.devices {
-	color: $devices !important;
-	&:hover {
-		color: darken($devices, 10) !important;
-	}
+.devices, .archives {
+  color: $devices !important;
+  &:hover {
+    color: darken($devices, 10) !important;
+  }
 }
 .technology {
-	color: $technology !important;
-	&:hover {
-		color: darken($technology, 10) !important;
-	}
+  color: $technology !important;
+  &:hover {
+    color: darken($technology, 10) !important;
+  }
 }
