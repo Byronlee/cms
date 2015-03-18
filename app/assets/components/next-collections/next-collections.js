@@ -1,4 +1,4 @@
-//= require application/kr_storage
+// require application/kr_storage
 
  (function() {
     $.get('/components/next/collections', {}, function(result){

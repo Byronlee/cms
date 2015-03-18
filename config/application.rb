@@ -51,5 +51,8 @@ module Kr
 
     # ActsAsTaggableOn config
     # ActsAsTaggableOn.delimiter = [',', '，', '|']
+
+    config.assets.enabled = true
+    config.assets.initialize_on_precompile = false
   end
 end

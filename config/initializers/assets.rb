@@ -19,4 +19,6 @@ Rails.application.config.assets.precompile += %w( vender/html5shiv/dist/html5shi
                                                   vender/ladda/dist/ladda.min.js
                                                   vender/magnific-popup/dist/jquery.magnific-popup.min.js
                                                   vender/widearea/minified/widearea.min.js
-                                                  js/app.js )
+                                                  js/app.js
+                                                  sass/style.scss
+                                                   )
