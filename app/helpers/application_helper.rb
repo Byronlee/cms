@@ -10,7 +10,7 @@ module ApplicationHelper
 
   def avatar_url(avatar)
     return avatar if avatar
-    asset_url "original/a-#{rand(1..3)}.jpg"
+    asset_url "images/a-#{rand(1..3)}.jpg"
   end
 
   def post_url(arg)
