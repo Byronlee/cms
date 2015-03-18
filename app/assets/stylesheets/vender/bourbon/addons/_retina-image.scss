@@ -3,7 +3,7 @@
     background-image: image-url("#{$filename}.#{$extension}");
   }
   @else {
-    background-image:       url("#{$filename}.#{$extension}");
+    background-image: url("#{$filename}.#{$extension}");
   }
 
   @include hidpi {
