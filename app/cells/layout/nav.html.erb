@@ -101,13 +101,14 @@
                       <%= link_to "后台管理", admin_dashboard_index_path, :class => "dropdown_login_out_link" if can? :reade, :dashboard %>
                     </li>
                     <li class="last">
-                       <%= link_to "注销登录", destroy_user_session_path, method: :delete, class:"login_out_link", rel:"nofollow" %>
+                       <%= link_to "注销登录", 'javascript:void(0)', method: :delete, class:"login_out_link dropdown_login_out_link", rel:"nofollow" %>
                     </li>
                   </ul>
                 </section>
               </div>
             </div>
           </li>
+          <%= link_to "", destroy_user_session_path, method: :delete, class:"login_out_link", rel:"nofollow" %>
         <% else %>
           <li><a href="<%= user_omniauth_authorize_path(provider: :krypton) %>" class="second-nav__login">登录</a></li>
         <% end %>
