@@ -139,11 +139,11 @@ module V1
         desc 'delete post. Available only for admin'
         delete ':id' do
           post = Post.find(params[:id])
-          unless post.blank?
-            return { status: false }
-          else
-            post.destroy if (current_user.role == 'admin' or current_user.id == post.author.id)
+          if post and (current_user.role == 'admin' or current_user.id == post.author.id)
+            post.destroy
             return { status: true }
+          else
+            return { status: false }
           end
         end
 
