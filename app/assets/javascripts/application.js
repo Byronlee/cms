@@ -15,3 +15,9 @@ function goSearch(formname)
   formname.action = url;
   return true;
 }
+
+$(document).ready(function(){
+	$('.dropdown_login_out_link').on('click', function(){
+		$('.real_login_out_link').trigger("click");
+	});
+});
