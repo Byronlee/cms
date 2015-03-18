@@ -27,3 +27,28 @@
 //
 // Example:
 // @link-color: #ff0000;
+
+@themes-main-color: #1D71B6;
+
+.navbar-default {
+  background-color: #f8f8f8;
+  border-color: #e7e7e7;
+  border-top: 3px solid @themes-main-color;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+  background-color: #f4f4f4;
+}
+
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+  background-color: @themes-main-color;
+  color: #fff;
+}
+
+.nav-pills > li > a {
+  border-radius: 0px;
+}
+
+.tooltip .tooltip-inner {
+  background-color: #222;
+}

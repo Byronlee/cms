@@ -1,13 +1,17 @@
 tr
-  td = head_line.id
-  td = link_to head_line.url, head_line.url, target:'_new'
-  td = head_line.title
+  td = image_tag head_line.image
+  td[title=head_line.title data-toggle='tooltip'] = truncate(head_line.title, length:30)
   td = head_line.order_num
-  td = head_line.url_code
-  td = head_line.user.try(:display_name)
-  td = head_line.created_at
+  td = head_line.post_type
   td
-    a.tip-top data-original-title="编辑" href= edit_admin_head_line_path(head_line)
-      i.icon-pencil.icon-operate
-    a.tip-top data-original-title="删除" data-method="delete" data-confirm="确定删除头条 #{head_line.url} ？" href= admin_head_line_path(head_line)
-      i.icon-remove.icon-operate
+    i.fa.fa-clock-o[title=head_line.created_at data-toggle='tooltip']
+    a href=head_line.url target="_new"
+      i.fa.fa-link[title=head_line.url data-toggle='tooltip']
+  td.text_center = time_ago_in_words head_line.created_at
+  td.text_center
+    a title="编辑" href= edit_admin_head_line_path(head_line)
+      i.fa.fa-pencil
+    |&nbsp;&nbsp;
+    a title="删除" data-method="delete" data-confirm="确定删除头条 #{head_line.url} ？" href= admin_head_line_path(head_line)
+      i.fa.fa-times
+  td.avatar.text_center[title=head_line.user.try(:display_name) data-toggle='tooltip'] = image_tag avatar_url(head_line.user.try(:avatar))

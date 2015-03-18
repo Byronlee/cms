@@ -25,4 +25,8 @@ module ApplicationHelper
     host = "http://#{['a', 'b', 'c', 'd', 'e'][rand(5)]}.36krcnd.com"
     "#{host}#{match[2]}!#{postfix}"
   end
+
+  def nav_active(local, target)
+    return 'active' if local == target.to_sym
+  end
 end
