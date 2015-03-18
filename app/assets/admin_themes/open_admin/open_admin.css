@@ -1,5 +1,4 @@
 /*
- *= require bootstrap_and_overrides
- *= require_tree ./stypesheets
+ *= require_tree ./stylesheets
  *= require_self
 */
