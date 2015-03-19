@@ -8,7 +8,7 @@ article.posts.post-1.cf
       a href="javascript:void(0)" class="uname user_#{post.author.try(:display_name)}" data-name="#{post.author.try(:display_name)}" target="_blank"
         = post.author.try(:display_name)
       |&nbsp;•&nbsp;
-      abbr.timeago title="#{post.created_at}"  = post.human_created_at
+      = smart_time_ago post.created_at
   .left.left-col
     .meta
       a title="评论数量" href="#{post_url(post)}"

@@ -48,7 +48,8 @@ h2
                   url: '#{ get_comments_count_post_path(@post) }',
                   data: {'id':'#{@post.id}'},
                   success: function (comments_count) {
-                    $('.comment_form_count').text(comments_count)
+                    $('.comment_form_count').text(comments_count);
+                    $(".timeago").timeago();
                   }
               });
 

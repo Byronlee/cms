@@ -6,7 +6,7 @@ section.single-post-author-social
       .single-post-author__avatar.left
         .avatar
           a[href="javascript:void(0)"]
-            img[src="#{@user.avatar}" alt="#{@user.display_name}"]
+            img[src="#{@user.avatar}" raw_iden="#{@user.try(:id)}" alt="#{@user.display_name}"]
       .single-post-author__info
         h3.single-post-author__name
           a[href="javascript:void(0)"]

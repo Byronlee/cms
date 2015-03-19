@@ -3,6 +3,7 @@
 javascript:
   $(document).ready(function(ret, status){
     $.get("/posts/#{@post.id}/comments.js", function(){
+      $(".timeago").timeago();
     });
   });
 
