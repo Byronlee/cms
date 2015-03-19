@@ -5,6 +5,7 @@ module V1
       expose :id
       expose :url
       expose :title
+      expose :url_code
       expose :post_type
       expose :image
       expose :order_num
