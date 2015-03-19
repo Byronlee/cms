@@ -22,7 +22,7 @@ tr
       a.tip-top data-original-title="编辑文章" href= "http://writer.36kr.com/posts/#{post.id}/#{post.key}/"
         i.icon-pencil.icon-operate
     - if can? :undo_publish, post
-      a.tip-top data-original-title="撤销发布" data-confirm="确定撤销发布: #{raw(post.title)} ？" href=undo_publish_admin_post_path(post)
+      a.tip-top data-original-title="撤销发布" data-method="post" data-confirm="确定撤销发布: #{raw(post.title)} ？" href=undo_publish_admin_post_path(post)
         i.icon-minus-sign.icon-operate
       |&nbsp;&nbsp;
     - if can? :destroy, post

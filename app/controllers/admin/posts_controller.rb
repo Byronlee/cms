@@ -55,7 +55,10 @@ class Admin::PostsController < Admin::BaseController
   end
 
   def undo_publish
-    @post.undo_publish if @post.may_undo_publish?
+    if @post.may_undo_publish?
+      @post.undo_publish
+      @post.save
+    end
     redirect_to :back
   end
 
