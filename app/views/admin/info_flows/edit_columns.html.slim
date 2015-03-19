@@ -1,33 +1,25 @@
-/!breadcrumbs
-div#content-header
-  div#breadcrumb
-    a.tip-bottom title="回到首页" href= admin_root_path
-      i.icon-home
-      | 首页
-    a href=admin_info_flows_path
-      i.icon-tint
-      | 信息流管理
-    a href=columns_and_ads_admin_info_flow_path(@info_flow)
-      i.icon-tasks
-      = "#{@info_flow.name}信息流"
-    a.current href="#"
-      i.icon-tasks
-      = "关联专栏"
-  <h1>关联专栏</h1>
-/!End-breadcrumbs
-
-div.container-fluid
-  = bootstrap_flash
-  div.widget-box
-    div clas="widget-content" style="padding:20px;"
-      select id="custom-multiselect-headers" multiple="multiple"
-        - @columns_in_info_flow.each do |column|
-            option value="#{column.id}" selected="selected"  ="#{column.name}"
-        - @columns.each do |column|
-            option value="#{column.id}"  ="#{column.name}"
-      div.actions style="margin-top:20px;"
-      button#multiselect-refresh class="btn btn-success" 重置
-      button#multiselect-submit class="btn btn-primary" style="margin-left:20px;" 保存修改
+.col_main
+  .main_hd
+    h2 信息流管理
+    .toolbar.border_bottom.clearfix.new
+      .pull-right
+        i.fa.fa-map-marker
+        ol.breadcrumb
+          li = link_to '信息流管理', admin_info_flows_path
+          li = link_to "#{@info_flow.name}信息流", columns_and_ads_admin_info_flow_path(@info_flow)
+          li.active 关联专栏
+  .main-body
+    div.container-fluid
+      div.widget-box
+        div clas="widget-content" style="padding:20px;"
+          select id="custom-multiselect-headers" multiple="multiple"
+            - @columns_in_info_flow.each do |column|
+                option value="#{column.id}" selected="selected"  ="#{column.name}"
+            - @columns.each do |column|
+                option value="#{column.id}"  ="#{column.name}"
+          div.actions style="margin-top:20px; text-align: center;"
+            button#multiselect-refresh class="btn btn-success" 重置
+            button#multiselect-submit class="btn btn-primary" style="margin-left:20px;" 保存修改
 
 
 

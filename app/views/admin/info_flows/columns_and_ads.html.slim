@@ -1,39 +1,30 @@
-/!breadcrumbs
-div#content-header
-  div#breadcrumb
-    a.tip-bottom title="Go to Home" href= admin_root_path
-      i.icon-home
-      | 首页
-    a href=admin_info_flows_path
-      i.icon-tint
-      | 信息流管理
-    a.current href="#"
-      i.icon-tasks
-      = "#{@info_flow.name}信息流"
-  <h1>#{@info_flow.name}信息流管理</h1>
-/!End-breadcrumbs
-
-div.container-fluid
-  = bootstrap_flash
-  div.widget-box
+.col_main.widget-box
+  .main_hd
+    h2 &nbsp;
+    .toolbar.clearfix.new
+      .pull-right style="margin-top: 40px;"
+        i.fa.fa-map-marker
+        ol.breadcrumb
+          li = link_to '信息流管理', admin_info_flows_path
+          li.active
+            = @info_flow.name
+            | 信息流
     div.widget-title
       ul class="nav nav-tabs"
         li.active
           a data-toggle="tab" href="#info_flow_columns"  专栏
         li
           a data-toggle="tab" href="#info_flow_ads"  广告位
-
+  .main-body
     div class="widget-content tab-content"
       div#info_flow_columns class="tab-pane active"
         = render 'columns'
-
       div#info_flow_ads class="tab-pane"
         = render 'ads'
 
 
-
-javascript:
-  $(document).ready(function(){
-    if(window.location.hash != "")
-      $("a[href='"+ window.location.hash +"']").click();
-  });
+    javascript:
+      $(document).ready(function(){
+        if(window.location.hash != "")
+          $("a[href='"+ window.location.hash +"']").click();
+      });
