@@ -83,7 +83,10 @@ class Post < ActiveRecord::Base
   end
 
   def human_created_at
-    distance_of_time_in_words_to_now(created_at)
+    time = distance_of_time_in_words_to_now(created_at)
+    time_arr = time.split('')
+    time_arr << '前' if time_arr.first.to_i.to_s == time_arr.first
+    time_arr.join
   end
 
   def get_access_url
