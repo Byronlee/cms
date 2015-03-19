@@ -1,36 +1,18 @@
-/!breadcrumbs
-div#content-header
-  div#breadcrumb
-    a.tip-bottom title="Go to Home" href= admin_root_path
-      i.icon-home
-      | 首页
-    a.current href="#"
-      i.icon-globe
-      | 广告位管理
-  <h1>广告位管理</h1>
-/!End-breadcrumbs
-
-div.container-fluid
-  = bootstrap_flash
-  = link_to "创建广告位", new_admin_ad_path, class:"btn btn-primary"
-
-  div.widget-box
-    div.widget-title
-      span.icon
-        i.icon-th
-      h5 = page_entries_info @ads
-
-    div class="widget-content nopadding"
-      table class="table table-bordered table-striped with-check"
-        thead
-          tr role="row"
-            th ID
-            th 位置
-            th 内容
-            th 创建时间
-            th 操作
-        tbody
-          = render @ads
-      div class="pagination pagination-table"
-        = paginate @ads
-
+.col_main
+  .main_hd
+    h2 广告位管理
+    .toolbar.border_bottom.clearfix
+      .pull-right
+         span.page_info = page_entries_info @ads
+         = link_to raw("<i class='fa fa-plus'></i>&nbsp;&nbsp;创建广告位"), new_admin_ad_path, class:"btn btn-primary"
+  table class="table"
+    thead
+      tr role="row"
+        th ID
+        th 位置
+        th 内容
+        th 创建时间
+        th 操作
+    tbody
+      = render @ads
+  = paginate @ads

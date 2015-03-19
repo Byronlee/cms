@@ -44,7 +44,7 @@ ul.nav.nav-pills.nav-stacked
     p
       i.fa.fa-volume-down
       span 推广
-    li#ads.border_bottom
+    li.border_bottom class=nav_active(:ads, @controller_name)
       a href=admin_ads_path
         span  广告位管理
   p
