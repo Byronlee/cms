@@ -1,25 +1,28 @@
 tr
-  td = link_to post.id, admin_post_path(post)
-  td = link_to raw(post.title), admin_post_path(post)
-  td = post.author.try(:display_name)
-  td
-    = link_to post.column.try(:name), reviewings_admin_column_posts_path(post.column) if post.column
-  td = post.key
-  td = post.created_at
+  td = post.id
+  td[title=raw(post.title) data-toggle='tooltip'] = link_to raw(truncate(post.title, length:23)), preview_post_by_key_path(key: post.key), target:'_new'
+  td[title=post.column.try(:name) data-toggle='tooltip']
+   = link_to raw('<i class="fa fa-folder"></i>'), reviewings_admin_column_posts_path(post.column)
+  td.text_center = time_ago_in_words post.created_at
   td = display_state(post.state)
   td
+    span class='badge badge-warning'
+      = link_to post.comments_counts.to_i, admin_post_comments_path(post)
+  td.text_center = post.views_count
+  td
     - if can? :do_publish, post
-      = link_to publish_admin_post_path(post), class: 'tip-top', 'data-original-title' => "快速发布"
-        i.icon-plane.icon-operate
+      = link_to publish_admin_post_path(post), 'title' => "快速发布"
+        i.fa.fa-plane
       |&nbsp;&nbsp;
     - if can? :preview, post
-      a.tip-top data-original-title="预览" target="_new" href= preview_post_by_key_path(key: post.key )
-        i.icon-eye-open.icon-operate
+      a title="预览" target="_new" href= preview_post_by_key_path(key: post.key )
+        i.fa.fa-eye
       |&nbsp;&nbsp;
     - if can? :edit, post
-      a.tip-top data-original-title="编辑" href= "http://writer.36kr.com/posts/#{post.id}/#{post.key}/"
-        i.icon-pencil.icon-operate
+      a title="编辑" href= "http://writer.36kr.com/posts/#{post.id}/#{post.key}/"
+        i.fa.fa-pencil
       |&nbsp;&nbsp;
     - if can? :destroy, :post
-      a.tip-top data-original-title="删除" data-method="delete" data-confirm="确定删除文章 #{raw(post.title)} ？" href= admin_post_url(post)
-        i.icon-remove.icon-operate
+      a title="删除" data-method="delete" data-confirm="确定删除文章 #{raw(post.title)} ？" href= admin_post_url(post)
+        i.fa.fa-times
+  td.avatar.text_center[title=post.author.try(:display_name) data-toggle='tooltip'] = image_tag avatar_url(post.author.try(:avatar))

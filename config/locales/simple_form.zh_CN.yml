@@ -17,6 +17,7 @@ zh-CN:
         column_id: '所属专栏'
         cover: '特色图片'
         disable_with: '正在提交...'
+        tag_list: '标签'
       head_line:
         url: 网址
         order_num: 序号

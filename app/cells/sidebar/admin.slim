@@ -16,15 +16,14 @@ ul.nav.nav-pills.nav-stacked
       a href=admin_comments_path
         span  评论管理
   - if can? :read, Post
-    li.submenu.open class=nav_active(:posts, @controller_name)
-      a href="#"
-        span 文章管理
-        span.label.label-important 2
-      ul style="display: block;"
-        li#nav_posts
-          a href="#{admin_posts_path}" 发布管理
-        li#nav_posts_reviewings
-          a href="#{reviewings_admin_posts_path}" 审查管理
+    li class=nav_active(:posts, @controller_name)
+      a href=admin_posts_path
+        span
+         |文章管理&nbsp;&nbsp;
+         |(
+         = reviewings_count
+         |)
+
   - if can? :read, Column
     li class=nav_active(:columns, @controller_name)
       a href=admin_columns_path

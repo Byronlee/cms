@@ -29,4 +29,8 @@ module ApplicationHelper
   def nav_active(local, target)
     return 'active' if local == target.to_sym
   end
+
+  def reviewings_count
+    @num ||= Post.reviewing.count
+  end
 end
