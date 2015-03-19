@@ -3,12 +3,12 @@ require_relative 'helpers'
 require_relative 'formatter'
 require_relative 'passport'
 
-class ::V1::Base < Grape::API
+class ::V2::Base < Grape::API
   prefix 'api'
-  version 'v1'
+  version 'v2'
   #format :json
-  #formatter :json, ::V1::JSendSuccessFormatter
-  #error_formatter :json, ::V1::JSendErrorFormatter
+  #formatter :json, ::V2::JSendSuccessFormatter
+  #error_formatter :json, ::V2::JSendErrorFormatter
 
   rescue_from ActiveRecord::RecordNotFound do
     rack_response({message: '404 Not found !', status: 404}, 404)
@@ -31,16 +31,16 @@ class ::V1::Base < Grape::API
     error!("401 Unauthorized", 401) unless authenticated
   end
 
-  helpers ::V1::Helpers
+  helpers ::V2::Helpers
 
-  mount ::V1::Controllers::Users
-  mount ::V1::Controllers::Posts
-  mount ::V1::Controllers::Columns
-  mount ::V1::Controllers::Comments
-  mount ::V1::Controllers::HeadLines
+  mount ::V2::Controllers::Users
+  mount ::V2::Controllers::Posts
+  mount ::V2::Controllers::Columns
+  mount ::V2::Controllers::Comments
+  mount ::V2::Controllers::HeadLines
 
   add_swagger_documentation(
-    api_version: 'v1', mount_path: 'swagger_doc',
+    api_version: 'v2', mount_path: 'swagger_doc',
     hide_documentation_path: true, include_base_url: false
   )
 
