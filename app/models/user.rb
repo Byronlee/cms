@@ -23,6 +23,7 @@
 #  krypton_passport_invitation_sent_at :datetime
 #  tagline                             :text
 #  avatar_url                          :string(255)
+#  sso_id                              :integer
 #
 
 class User < ActiveRecord::Base
@@ -52,6 +53,7 @@ class User < ActiveRecord::Base
 
   def apply_omniauth(omniauth)
     self.phone = omniauth['info']['phone'] if phone.blank?
+    self.sso_id = omniauth['uid'] if sso_id.blank?
     authentications.build provider: omniauth['provider'], uid: omniauth['uid'],
       raw: omniauth.to_hash
   end
@@ -85,7 +87,13 @@ class User < ActiveRecord::Base
     emails = Krypton::Passport.get_origin_ids(krypton_id).map do |provider, uid|
       "#{provider}+#{uid}@36kr.com"
     end
-    User.where(email: emails).first
+    user = User.where(email: emails).first
+    user.update(:sso_id, krypton_id) unless user.blank?
+    user
+  end
+
+  def self.find_by_sso_id(krypton_id)
+    User.where(sso_id: krypton_id).first
   end
 
   def editable

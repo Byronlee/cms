@@ -9,7 +9,9 @@ module V1
       expose :tagline    , documentation: ''
       expose :bio        , documentation: ''
       expose :role        , documentation: ''
+      expose :sso_id        , documentation: ''
       expose :avatar_url , documentation: ''
+      expose :authentication_token , documentation: ''
       expose :authentications, using: Entities::Authentication,  documentation: ''
 
     end

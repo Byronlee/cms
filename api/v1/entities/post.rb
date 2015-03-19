@@ -13,7 +13,7 @@ module V1
       expose :slug       , documentation: 'url别名-暂不用'
       expose :state      , documentation: '状态'
       expose :draft_key  , documentation: '草稿密匙'
-      expose :cover      , documentation: '封面图片'
+      expose :cover_real_url  , documentation: '封面图片'
       expose :user_id    , documentation: '用户'
       expose :author, using: Entities::User, documentation: '用户'
       expose :url_code   , documentation: '兼容旧站文章id'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150317113244) do
+ActiveRecord::Schema.define(version: 20150319063958) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -181,6 +181,7 @@ ActiveRecord::Schema.define(version: 20150317113244) do
     t.datetime "krypton_passport_invitation_sent_at"
     t.text     "tagline"
     t.string   "avatar_url"
+    t.integer  "sso_id"
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree

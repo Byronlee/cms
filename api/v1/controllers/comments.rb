@@ -40,16 +40,18 @@ module V1
 
         desc 'create a comments'
         params do
-          optional :sso_token, type: String, desc: 'sso_token'
+          optional :authentication_token, type: String, desc: 'authentication_token'
           optional :type, type: String, default: 'post', desc: '多态类型'
           optional :content, type: String, desc: '内容'
         end
         post ':pid/new' do
+          user = current_user
           post = params[:type].classify.constantize.find params[:pid]
           @comment = post.comments.build params.slice(*KEYS)
+          @comment.user = user
           if @comment.save
             #CommentsComponentWorker.perform_async(params, @comment)
-            CommentsComponentWorker.new.perform(params, @comment)
+            #CommentsComponentWorker.new.perform(params, @comment)
             present @comment, with: Entities::Comment
           else
             error!({ error: @comment.errors.full_messages }, 400)
