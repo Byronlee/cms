@@ -18,4 +18,11 @@ module ApplicationHelper
     url_code = (arg.class.to_s == 'Fixnum' ? arg : arg.url_code)
     post_show_by_url_code_url(url_code)
   end
+
+  def high_speed_url(raw_url, postfix)
+    match = /(http:\/\/.\.36krcnd\.com)(.*)/.match(raw_url)
+    return raw_url unless match
+    host = "http://#{['a', 'b', 'c', 'd', 'e'][rand(5)]}.36krcnd.com"
+    "#{host}#{match[2]}!#{postfix}"
+  end
 end

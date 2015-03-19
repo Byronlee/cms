@@ -96,8 +96,8 @@ class Post < ActiveRecord::Base
   end
 
   def comments_counts
-     update_attribute(:comments_count ,comments.size) if comments_count.nil?
-     comments_count
+    update_attribute(:comments_count, comments.size) if comments_count.nil?
+    comments_count
   end
 
   private

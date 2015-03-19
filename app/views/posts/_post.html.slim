@@ -5,7 +5,7 @@ article.posts.post-1.cf
         a class="#{post.column.try(:slug)}" href="/category/#{post.column.try(:slug)}"  = post.column.try(:name)
         |  /  #{post.column.try(:slug)}
     .postmeta.right
-      a href="/chloe1988" class="uname user_Chloe1988" data-name="Chloe" target="_blank"
+      a href="javascript:void(0)" class="uname user_#{post.author.try(:display_name)}" data-name="#{post.author.try(:display_name)}" target="_blank"
         = post.author.try(:display_name)
       |&nbsp;•&nbsp;
       abbr.timeago title="#{post.created_at}"  = post.human_created_at
@@ -16,7 +16,7 @@ article.posts.post-1.cf
         = post.comments_counts || 0
     div.image.feature-img.thumb-180
       a href="#{post_url(post)}"
-        img alt="Blank" class="image lazyload loaded" data-src="#{post.cover_real_url}" src="#{post.cover_real_url}"
+        img alt="Blank" class="image lazyload loaded" data-src="#{high_speed_url post.cover_real_url, 'slider'}" src="#{high_speed_url post.cover_real_url, 'slider'}"
   .right-col
     h1
       a href="#{post_url(post)}" data-no-turbolink="true" onclick="javascript:_gaq.push(['_trackPageview', '/click/index_newtab/']);" target="_blank" title="#{raw(post.title)}"  = raw(post.title)

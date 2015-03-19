@@ -28,7 +28,7 @@
                 </div>
                 <div class="image feature-img thumb-180">
                   <a href="<%= item["title_link"].present? ? item["title_link"] : post_url(item["url_code"]) %>">
-                    <img src="<%= item["cover_real_url"] %>" alt="" />
+                    <img src="<%= high_speed_url item["cover_real_url"], 'slider' %>" alt="" />
                   </a>
                 </div>
               </div>
