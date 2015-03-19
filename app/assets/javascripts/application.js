@@ -7,13 +7,20 @@ function mobilecheck(){
   return check;
 }
 
-function goSearch(formname)
+function goSearch(f)
 {
-  var url = mobilecheck() ? "http://www.baidu.com/baidu" : "http://www.baidu.com/baidu";
-  formname.method = "get";
-  document.search_baidu.word.value = document.search_baidu.word_display.value + " site:36kr.com";
-  formname.action = url;
-  return true;
+  var v = document.search_baidu.cust_data.value;
+  var d = v + "%20site:36kr.com";
+  var url = "";
+  f.method = "get";
+  if(!mobilecheck()){
+  	url = "http://www.baidu.com/baidu?word_display="+ v +"&word=" + d;
+    window.open(url, "_new");
+  }else{
+    url = "http://www.baidu.com/from=844b/s?word="+ d +"&t_kt=0&sa=is_1&ms=1&rq=" + v;
+    window.open(url, '_self');
+  }
+  return false;
 }
 
 $(document).ready(function(){
