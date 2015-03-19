@@ -1,15 +1,35 @@
-/!breadcrumbs
-div#content-header
-  div#breadcrumb
-    a.tip-bottom title="Go to Home" href= admin_root_path
-      i.icon-home
-      | 首页
-/!End-breadcrumbs
-
-div.container-fluid
-  = bootstrap_flash
-  h1
-    |welcome to dashboard
-    span
-      i  ,#{@current_user.try(:display_name)}
+div.container-fluid.dashboard
+  .col-lg-6.border_bottom.border_right
+    .main
+      span.first
+        i.fa.fa-file-text &nbsp;
+        = Post.count
+      span style="font-size: 26px;"
+        | &nbsp;/
+        = Post.published.count
+        | /
+        = Post.reviewing.count
+      span style="font-size: 17px;"
+        | / 文章
+  .col-lg-6.border_bottom
+    .main
+      span.first
+        i.fa.fa-wechat &nbsp;
+        = Comment.count
+      span style="font-size: 17px;"
+        | / 评论
+  .col-lg-6.border_right
+    .main
+      span.first
+        i.fa.fa-flickr &nbsp;
+        = Newsflash.count
+      span style="font-size: 17px;"
+        | / 快讯
+  .col-lg-6
+    .main
+      span.first
+        i.fa.fa-users &nbsp;
+        = User.count
+      span style="font-size: 17px;"
+        | / 用户
 

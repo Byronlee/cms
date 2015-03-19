@@ -21,6 +21,10 @@ body {
     padding-bottom: 10px;
 }
 
+.border_right {
+    border-right: 1px solid @border-color;
+}
+
 .text_center {
     text-align: center;
 }
@@ -237,4 +241,23 @@ body {
 a.guanlian {
     float: right;
     margin-top: -173px;
+}
+
+.dashboard {
+    margin-top: 13%;
+    .col-lg-6 {
+        width: 50%;
+        height: 150px;
+        .main {
+            margin-top: 35px;
+            text-align: center;
+            span.first {
+                font-size: 45px;
+                i {
+                    font-size: 70px;
+                    color: @themes-main-color;
+                }
+            }
+        }
+    }
 }
