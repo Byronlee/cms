@@ -5,8 +5,8 @@ tr
   td
     - if can? :edit, page
       a.tip-top data-original-title="编辑" href= edit_admin_page_path(page)
-        i.icon-pencil
+        i.icon-pencil.icon-operate
       |&nbsp;&nbsp;
     - if can? :destroy, page
       a.tip-top data-original-title="删除" data-method="delete" data-confirm="确定删除文章 #{page.title} ？" href= admin_page_path(page)
-        i.icon-remove
+        i.icon-remove.icon-operate

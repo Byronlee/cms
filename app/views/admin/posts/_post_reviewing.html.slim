@@ -10,16 +10,16 @@ tr
   td
     - if can? :do_publish, post
       = link_to publish_admin_post_path(post), class: 'tip-top', 'data-original-title' => "快速发布"
-        i.icon-plane
+        i.icon-plane.icon-operate
       |&nbsp;&nbsp;
     - if can? :preview, post
       a.tip-top data-original-title="预览" target="_new" href= preview_post_by_key_path(key: post.key )
-        i.icon-eye-open
+        i.icon-eye-open.icon-operate
       |&nbsp;&nbsp;
     - if can? :edit, post
       a.tip-top data-original-title="编辑" href= "http://writer.36kr.com/posts/#{post.id}/#{post.key}/"
-        i.icon-pencil
+        i.icon-pencil.icon-operate
       |&nbsp;&nbsp;
     - if can? :destroy, :post
       a.tip-top data-original-title="删除" data-method="delete" data-confirm="确定删除文章 #{raw(post.title)} ？" href= admin_post_url(post)
-        i.icon-remove
+        i.icon-remove.icon-operate

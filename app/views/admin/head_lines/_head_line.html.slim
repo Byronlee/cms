@@ -8,7 +8,6 @@ tr
   td = head_line.created_at
   td
     a.tip-top data-original-title="编辑" href= edit_admin_head_line_path(head_line)
-      i.icon-pencil
-    |&nbsp;&nbsp;
+      i.icon-pencil.icon-operate
     a.tip-top data-original-title="删除" data-method="delete" data-confirm="确定删除头条 #{head_line.url} ？" href= admin_head_line_path(head_line)
-      i.icon-remove
+      i.icon-remove.icon-operate

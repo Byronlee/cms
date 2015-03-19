@@ -12,21 +12,20 @@ tr
   td
     - if can? :create, HeadLine
       a.tip-top data-original-title="添加到头条" href= new_admin_head_line_path(:url => post_url(post))
-        i.icon-star
+        i.icon-star.icon-operate
       |&nbsp;&nbsp;
     - if can? :publish, post
       a.tip-top data-original-title="编辑发布信息" href= edit_admin_post_url(post)
-        i.icon-cog
+        i.icon-cog.icon-operate
       |&nbsp;&nbsp;
     - if can? :edit, post
       a.tip-top data-original-title="编辑文章" href= "http://writer.36kr.com/posts/#{post.id}/#{post.key}/"
-        i.icon-pencil
-      |&nbsp;&nbsp;
+        i.icon-pencil.icon-operate
     - if can? :undo_publish, post
       a.tip-top data-original-title="撤销发布" data-confirm="确定撤销发布: #{raw(post.title)} ？" href=undo_publish_admin_post_path(post)
-        i.icon-minus-sign
+        i.icon-minus-sign.icon-operate
       |&nbsp;&nbsp;
     - if can? :destroy, post
       a.tip-top data-original-title="删除" data-method="delete" data-confirm="确定删除文章 #{raw(post.title)} ？" href= admin_post_url(post)
-        i.icon-remove
+        i.icon-remove.icon-operate
 

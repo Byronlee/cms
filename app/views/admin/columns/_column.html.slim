@@ -13,10 +13,10 @@ tr
   td = column.created_at
   td
     a.tip-top data-original-title="文章" href= admin_column_posts_path(column)
-      i.icon-search
+      i.icon-search.icon-operate
     |&nbsp;&nbsp;
     a.tip-top data-original-title="编辑" href= edit_admin_column_path(column)
-      i.icon-pencil
+      i.icon-pencil.icon-operate
     |&nbsp;&nbsp;
     a.tip-top data-original-title="删除" data-method="delete" data-confirm="确定删除文章 #{column.name} ？" href= admin_column_path(column)
-      i.icon-remove
+      i.icon-remove.icon-operate
