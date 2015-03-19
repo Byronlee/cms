@@ -13,15 +13,12 @@ tr
     - if can? :do_publish, post
       = link_to publish_admin_post_path(post), 'title' => "快速发布"
         i.fa.fa-plane
-      |&nbsp;&nbsp;
     - if can? :preview, post
       a title="预览" target="_new" href= preview_post_by_key_path(key: post.key )
         i.fa.fa-eye
-      |&nbsp;&nbsp;
     - if can? :edit, post
       a title="编辑" href= "http://writer.36kr.com/posts/#{post.id}/#{post.key}/"
         i.fa.fa-pencil
-      |&nbsp;&nbsp;
     - if can? :destroy, :post
       a title="删除" data-method="delete" data-confirm="确定删除文章 #{raw(post.title)} ？" href= admin_post_url(post)
         i.fa.fa-times
