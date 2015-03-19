@@ -25,4 +25,21 @@ module ApplicationHelper
     host = "http://#{['a', 'b', 'c', 'd', 'e'][rand(5)]}.36krcnd.com"
     "#{host}#{match[2]}!#{postfix}"
   end
+
+  def smart_time_ago(raw_time)
+    if raw_time + 1.day < Time.now
+      raw "<abbr class=\"timeago\" title=\"#{raw_time}\">#{raw_time.strftime('%m/%d %H:%M')}</abbr>"
+    else
+      raw "<time class=\"timeago\" datetime=\"#{raw_time}\">#{relative_time(raw_time)}</time>"
+    end
+  end
+
+  private
+
+  def relative_time(raw_time)
+    time = distance_of_time_in_words_to_now(raw_time)
+    time_arr = time.split('')
+    time_arr << '前' if time_arr.first.to_i.to_s == time_arr.first
+    time_arr.join
+  end
 end

@@ -15,7 +15,7 @@
               <div class="postmeta right">
                 <a href="javascript:void(0)"> <%= item["author"] && item["author"]["display_name"] %> </a>
                  •
-                <abbr class="timeago" title="<%= item["created_at"]%>"><%= item["human_created_at"] %></abbr>
+                 <%= smart_time_ago Time.parse(item["created_at"]) %>
               </div>
             </div>
             <div class="post">

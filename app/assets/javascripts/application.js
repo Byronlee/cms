@@ -1,5 +1,7 @@
 //= require jquery
 //= require jquery_ujs
+//= require ./timeago/timeago
+//= require ./timeago/timeago.zh-cn
 
 function mobilecheck(){
   var check = false;

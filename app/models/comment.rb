@@ -69,10 +69,6 @@ class Comment < ActiveRecord::Base
     [:published, :prepublished].include? self.state.to_sym
   end
 
-  def human_created_at
-    distance_of_time_in_words_to_now(self.created_at)
-  end
-
   private
 
   def set_is_long_attribute

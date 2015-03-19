@@ -14,6 +14,7 @@ javascript:
         data: {},
         success: function (data) {
           $('.sidebar-comments__list').prepend(data);
+          $(".timeago").timeago();
         }
     });
   });

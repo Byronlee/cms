@@ -7,7 +7,7 @@
     .postmeta
       a.user_info_name[href="javascript:void(0)"] = comment.user.try(:display_name) || '匿名用户'
       |&nbsp;•&nbsp;
-      abbr class="timeago" title="#{comment.created_at}"  = comment.human_created_at
+      = smart_time_ago comment.created_at
     .commemt-main
       p  = raw comment.content
     .opts
