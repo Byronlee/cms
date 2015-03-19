@@ -26,4 +26,8 @@ class PostCell < Cell::Rails
     @post = args[:post]
     render
   end
+
+  def ad
+    render
+  end
 end
