@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: true, allow_blank: -> { phone.present? }
 
   has_many :authentications, dependent: :destroy
-  has_one :krypton_authentication, -> { where(provider: :krypton) }, class_name: Authentication.to_s
+  has_one :krypton_authentication, -> { where(provider: :krypton) }, class_name: Authentication.to_s, dependent: :destroy
   has_many :posts
   has_many :comments
 
