@@ -11,6 +11,15 @@ class SidebarCell < Cell::Rails
     render
   end
 
+  def ad_bottom(args)
+    @position = args[:position]
+    render
+  end
+
+  def ad_job
+    render
+  end
+
   def hot_posts
     render
   end
@@ -19,7 +28,7 @@ class SidebarCell < Cell::Rails
     render
   end
 
-  def sponsor
+  def ad_sponsor
     render
   end
 

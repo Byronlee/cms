@@ -23,3 +23,8 @@ abbr.timeago {
 .second-nav .second-nav__account img {
   margin-right: 5px;
 }
+
+.sidebar-popular__list, .sidebar-sponsored__list {
+  border-top: 1px solid #51aded;
+  padding-top: 10px;
+}
