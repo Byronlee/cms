@@ -20,6 +20,7 @@ html class="no-js"
     = content_for?(:og_meta) ? yield(:og_meta) : ''
     /!--opengraph meata end
     = stylesheet_link_tag 'application', media: 'all'
+    = content_for?(:canonical) ? yield(:canonical) : ''
     = javascript_include_tag 'application'
     = javascript_include_tag "#{Settings.oauth.krypton.host}/assets/helper.js"
     = javascript_include_tag "http://cbjs.baidu.com/js/m.js"

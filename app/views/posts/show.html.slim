@@ -1,4 +1,5 @@
 = render 'posts/og_meta'
+= render 'welcome/canonical', :raw_url => "http://www.36kr.com/p/#{@post.url_code}.html"
 
 .main
   .content
