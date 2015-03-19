@@ -32,12 +32,24 @@ module V1
     end
 
     def current_user
+      User.where(authentication_token: params[:authentication_token]).first
+    end
+
+    def init_and_exchange_token
       sso_user = V1::Passport.new(params[:sso_token]).me
       unless sso_user.is_a? TrueClass or sso_user.is_a? FalseClass
-        current_user = User.find_by_origin_ids sso_user['id']
-      else
-        User.new
+        # sso 有用户的情况
+        current_user = User.find_by_origin_ids(sso_user['id']) || User.find_by_sso_id(sso_user['id'])
+         if current_user.blank?
+           #sso有用户新站没有这个用户
+           user_attr = { sso_id: sso_user.id,  email: sso_user.email, name: sso_user.nickname || sso_user.username,
+             phone: sso_user.phone, avatar_url: sso_user.avatar, password: 'VEX60gCF' }
+           current_user = User.new user_attr
+         end
+      else # sso sso_token 无效或者没有用户的情况
+        current_user = User.new
       end
+      [current_user,sso_user]
       #warden.user || @user
     end
 

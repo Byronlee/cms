@@ -137,9 +137,13 @@ module V1
         # Example Request:
         #   DELETE /api/v1/posts/:id
         desc 'delete post. Available only for admin'
+        params do
+          optional :authentication_token, type: String, desc: 'authentication_token'
+        end
         delete ':id' do
+          user = current_user
           post = Post.find(params[:id])
-          if post and (current_user.role == 'admin' or current_user.id == post.author.id)
+          if user and post and post.author and (user.role == 'admin' or user.id == post.author.id)
             post.destroy
             return { status: true }
           else

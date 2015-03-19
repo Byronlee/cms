@@ -5,6 +5,16 @@ module V1
 
       desc 'User Feature'
       resource :users do
+
+        desc 'use sso access token exchange authentication token'
+        params do
+          optional :sso_token, type: String, desc: 'sso_token'
+        end
+        get 'token' do
+          users = init_and_exchange_token
+          present users[0], with: Entities::User
+        end
+
         desc 'Get user detail'
         get ':id' do
           @user = User.find(params[:id])
