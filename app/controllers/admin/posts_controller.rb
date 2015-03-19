@@ -47,7 +47,7 @@ class Admin::PostsController < Admin::BaseController
     else
       success_msg = "文章保存成功"
     end
-    if @post.save
+    if @post.update(post_params)
       redirect_to reviewings_admin_posts_path, :notice => success_msg
     else
       render :publish
