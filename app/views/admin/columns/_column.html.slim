@@ -1,22 +1,21 @@
 tr
-  td = column.id
   td
-    a href = admin_column_posts_path(column)
-      img class="img-circle" style="width:50px; height:50px;" onerror="imgError(this)" src="#{column.icon_url}"
-      |&nbsp;&nbsp;
-      = link_to column.name
+    - if column.icon.url
+      = image_tag column.icon.url
+    - else
+      p.zhulan 专栏
+  td = link_to column.name, admin_column_posts_path(column)
   td = column.slug
-  td = column.introduce
-  td
+  td[title=column.introduce data-toggle='tooltip'] = raw(truncate(column.introduce, length:20))
+  td.text_center
     span class="badge badge-info"
       = column.posts_count || 0
-  td = column.created_at
-  td
-    a.tip-top data-original-title="文章" href= admin_column_posts_path(column)
-      i.icon-search.icon-operate
-    |&nbsp;&nbsp;
-    a.tip-top data-original-title="编辑" href= edit_admin_column_path(column)
-      i.icon-pencil.icon-operate
-    |&nbsp;&nbsp;
-    a.tip-top data-original-title="删除" data-method="delete" data-confirm="确定删除文章 #{column.name} ？" href= admin_column_path(column)
-      i.icon-remove.icon-operate
+  td.text_center = column.created_at.to_s(:db)
+  td.text_center
+    - if can? :edit, column
+      a title="编辑" href= edit_admin_column_path(column)
+        i.fa.fa-pencil
+      |&nbsp;&nbsp;
+    - if can? :destroy, column
+      a title="删除" data-method="delete" data-confirm="确定删除专栏 #{column.name} ？" href= admin_column_path(column)
+        i.fa.fa-times

@@ -1,4 +1,5 @@
 @border-color: #efefef;
+@themes-main-color: #1D71B6;
 body {
     font-family: "Helvetica Neue", "Hiragino Sans GB", "Microsoft YaHei", "\9ED1\4F53", Arial, sans-serif;
     background: #e7e8eb;
@@ -17,7 +18,7 @@ body {
 // common-class begin
 .border_bottom {
     border-bottom: 1px solid @border-color;
-    padding-bottom: 15px;
+    padding-bottom: 10px;
 }
 
 .text_center {
@@ -109,6 +110,10 @@ body {
                     line-height: 40px;
                     font-size: 17px;
                 }
+                .pull-left img {
+                    width: 30px;
+                    margin-right: 5px;
+                }
             }
         }
         table {
@@ -127,12 +132,20 @@ body {
                 }
                 i {
                     font-size: 17px;
-                    width: 25px;
                     text-align: center;
                     cursor: pointer;
                     &.fa-clock-o, &.fa-link {
                         color: #aaa;
                     }
+                }
+                p.zhulan {
+                    background: @themes-main-color;
+                    height: 24px;
+                    margin-bottom: 0;
+                    text-align: center;
+                    color: #fff;
+                    font-size: 12px;
+                    line-height: 26px;
                 }
             }
         }
