@@ -1,27 +1,19 @@
-/!breadcrumbs
-div#content-header
-  div#breadcrumb
-    a.tip-bottom title="回到首页" href= admin_root_path
-      i.icon-home
-      | 首页
-    a.tip-bottom title="回到用户管理列表页面" href= admin_users_path
-      i.icon-user
-      | 用户管理
-    a.current href="#"
-      | 编辑用户信息
-  <h1>编辑用户信息</h1>
-/!End-breadcrumbs
+.col_main
+  .main_hd
+    h2 用户管理
+    .toolbar.border_bottom.clearfix.new
+      .pull-right
+        i.fa.fa-map-marker
+        ol.breadcrumb
+          li = link_to '用户管理', admin_users_path
+          li.active 编辑用户信息
+  .main-body
+    = simple_form_for [:admin, @user], html:{class:"form-horizontal"}  do | f |
+      div.control-group
+        = f.label :role
+        div.controls
+          = f.select :role, User.role.options
+      div.form-actions
+        = f.button :submit, data: { disable_with: "Submitting..." }, class:"btn btn-primary"
 
-div.container-fluid
-  = bootstrap_flash
-  div.widget-box
-    div clas="widget-content nopadding"  
-      = simple_form_for [:admin, @user], html:{class:"form-horizontal"}  do | f |
-        div.control-group
-          = f.label :role
-          div.controls
-            = f.select :role, User.role.options
-        div.form-actions
-          = f.button :submit, data: { disable_with: "Submitting..." }, class:"btn btn-primary"
 
-= render 'layouts/set_active_nav', :active_id => "nav_users"          

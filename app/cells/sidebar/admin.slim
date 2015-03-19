@@ -1,0 +1,55 @@
+ul.nav.nav-pills.nav-stacked
+  /id="#{controller_name}"
+  p
+    i.fa.fa-bars
+    span 管理
+  - if can? :read, HeadLine
+    li class=nav_active(:head_lines, @controller_name)
+      a href=admin_head_lines_path
+        span  头条管理
+  - if can? :read, Newsflash
+    li class=nav_active(:newsflashes, @controller_name)
+      a href=admin_newsflashes_path
+        span  快讯管理
+  - if can? :read, Comment
+    li class=nav_active(:comments, @controller_name)
+      a href=admin_comments_path
+        span  评论管理
+  - if can? :read, Post
+    li class=nav_active(:posts, @controller_name)
+      a href=admin_posts_path
+        span
+         |文章管理&nbsp;&nbsp;
+         |(
+         = reviewings_count
+         |)
+
+  - if can? :read, Column
+    li class=nav_active(:columns, @controller_name)
+      a href=admin_columns_path
+        span  专栏管理
+  - if can? :read, User
+    li class=nav_active(:users, @controller_name)
+      a href=admin_users_path
+        span  用户管理
+  - if can? :read, Page
+    li class=nav_active(:pages, @controller_name)
+      a href=admin_pages_path
+        span  Page管理
+  - if can? :read, InfoFlow
+    li.border_bottom class=nav_active(:info_flows, @controller_name)
+      a href=admin_info_flows_path
+        span  信息流管理
+  - if can? :read, Ad
+    p
+      i.fa.fa-volume-down
+      span 推广
+    li.border_bottom class=nav_active(:ads, @controller_name)
+      a href=admin_ads_path
+        span  广告位管理
+  p
+    i.fa.fa-cog
+    span 设置
+    li#nav_users
+      a href="javascript:void(0)"
+        span  帐号设置

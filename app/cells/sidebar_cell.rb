@@ -1,5 +1,7 @@
 class SidebarCell < Cell::Rails
   helper ApplicationHelper
+  include CanCan::ControllerAdditions
+  delegate :current_ability, :to => :controller
 
   def ad_top(args)
     @position = args[:position]
@@ -49,6 +51,11 @@ class SidebarCell < Cell::Rails
   end
 
   def today
+    render
+  end
+
+  def admin args
+    @controller_name = args[:controller_name]
     render
   end
 end

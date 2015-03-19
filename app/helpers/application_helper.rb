@@ -34,6 +34,14 @@ module ApplicationHelper
     end
   end
 
+  def nav_active(local, target)
+    return 'active' if local == target.to_sym
+  end
+
+  def reviewings_count
+    @num ||= Post.reviewing.count
+  end
+
   private
 
   def relative_time(raw_time)

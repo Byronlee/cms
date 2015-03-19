@@ -1,22 +1,16 @@
-= link_to "关联专栏", edit_columns_admin_info_flow_path(@info_flow), class:"btn btn-primary"
+= link_to "+  关联专栏", edit_columns_admin_info_flow_path(@info_flow), class:"btn btn-primary guanlian"
 
 div.widget-box
-  div.widget-title
-    span.icon
-      i.icon-th
-
   div class="widget-content"
     ul.thumbnails
       - @columns.each do |column|
-        li.span2
-          a
-            img onerror="imgError(this)" src="#{column.icon_url}"
+        li.col-lg-2
+          a href=  admin_column_posts_path(column)
+            - if column.icon_url
+              img onerror="imgError(this)" src="#{column.icon_url}"
+            - else
+             p.default-cover
+               span 专栏
           div.descripiton
             h5  = column.name
-          div.actions
-            a href=  admin_column_posts_path(column)
-              i.icon-search
-            |&nbsp;&nbsp;
-            = link_to destroy_column_admin_info_flow_path(@info_flow, column_id:column), method: :delete do
-              i.icon-remove
-          span.tip-top class="label label-important" data-placement="left" data-original-title="文章数"  = column.posts_count.to_i
+          span class="label label-danger" data-placement="left" title="文章数"  = column.posts_count.to_i

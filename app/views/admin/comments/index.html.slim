@@ -1,39 +1,18 @@
-/!breadcrumbs
-div#content-header
-  div#breadcrumb
-    a.tip-bottom title="Go to Home" href= admin_root_path
-      i.icon-home
-      | 首页
-    a.current href="#"
-      i.icon-comment
-      | 评论管理
-  <h1>评论管理</h1>
-/!End-breadcrumbs
-
-div.container-fluid
-  = bootstrap_flash
-
-  div.widget-box
-    div.widget-title
-      span.icon
-        i.icon-th
-      h5 = page_entries_info @comments
-
-    div class="widget-content nopadding"
-      table class="table table-bordered table-striped with-check"
-        thead
-          tr role="row"
-            th style="width:5%" ID
-            th style="width:20%" 文章
-            th  评论
-            - if false
-              th style="width:10%" 状态
-            th style="width:10%" 用户
-            th style="width:15%" 创建时间
-            th style="width:10%" 操作
-        tbody
-          = render @comments
-      div class="pagination pagination-table"
-        = paginate @comments
-
-= render 'layouts/set_active_nav', :active_id => "nav_comments"
+.col_main
+  .main_hd
+    h2 评论管理
+    .toolbar.border_bottom.clearfix
+      .pull-right
+         span.page_info = page_entries_info @comments
+  table class="table"
+    thead
+      tr role="row"
+        th style="width=10%" ID
+        th style="width=35%" 文章
+        th style="width=35%" 评论
+        th.text_center style="width=10%" 创建时间
+        th.text_center style="width=10%" 操作
+        th.text_center style="width=10%" 评论者
+    tbody
+      = render @comments
+  = paginate @comments

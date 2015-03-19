@@ -2,10 +2,10 @@ tr
   td = ad.id
   td = ad.position
   td style="width:50%;word-wrap:break-word;word-break:break-all;" = ad.content
-  td = ad.created_at
+  td = ad.created_at.to_s(:db)
   td
-    a.tip-top data-original-title="编辑" href= edit_admin_ad_path(ad)
-      i.icon-pencil.icon-operate
+    a title="编辑" href= edit_admin_ad_path(ad)
+      i.fa.fa-pencil
     |&nbsp;&nbsp;
-    a.tip-top data-original-title="删除" data-method="delete" data-confirm="确定删除该广告位 ？" href= admin_ad_path(ad)
-      i.icon-remove.icon-operate
+    a title="删除" data-method="delete" data-confirm="确定删除该广告位 ？" href= admin_ad_path(ad)
+      i.fa.fa-times

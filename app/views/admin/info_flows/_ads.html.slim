@@ -1,12 +1,9 @@
-= link_to "关联广告位", edit_ads_admin_info_flow_path(@info_flow), class:"btn btn-primary"
+= link_to "+  关联广告位", edit_ads_admin_info_flow_path(@info_flow), class:"btn btn-primary guanlian"
 
 div.widget-box
-    div.widget-title
-      span.icon
-        i.icon-th
-
-    div class="widget-content nopadding"
-      table class="table table-bordered table-striped with-check"
+  div class="widget-content nopadding"
+    - if @ads.present?
+      table class="table"
         thead
           tr role="row"
             th ID
@@ -14,4 +11,6 @@ div.widget-box
             th 内容
             th 操作
         tbody
-          = render 'ad', :info_flow => @info_flow
+          = render 'ad'
+    - else
+      p.text_center 暂无内容....

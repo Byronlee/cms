@@ -1,13 +1,13 @@
 tr
   td = info_flow.id
   td = link_to info_flow.name, columns_and_ads_admin_info_flow_path(info_flow)
-  td = info_flow.created_at
-  td
-    a.tip-top data-original-title="详情" href= columns_and_ads_admin_info_flow_path(info_flow)
-      i.icon-search.icon-operate
+  td = info_flow.created_at.to_s(:db)
+  td.text_center
+    a title="详情" href= columns_and_ads_admin_info_flow_path(info_flow)
+      i.fa.fa-plus-circle
     |&nbsp;&nbsp;
-    a.tip-top data-original-title="编辑" href= edit_admin_info_flow_path(info_flow)
-      i.icon-pencil.icon-operate
+    a title="编辑" href= edit_admin_info_flow_path(info_flow)
+      i.fa.fa-pencil
     |&nbsp;&nbsp;
-    a.tip-top data-original-title="删除" data-method="delete" data-confirm="确定删除该广告位 ？" href= admin_info_flow_path(info_flow)
-      i.icon-remove.icon-operate
+    a title="删除" data-method="delete" data-confirm="确定删除该广告位 ？" href= admin_info_flow_path(info_flow)
+      i.fa.fa-times

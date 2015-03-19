@@ -1,39 +1,19 @@
-/!breadcrumbs
-div#content-header
-  div#breadcrumb
-    a.tip-bottom title="Go to Home" href= admin_root_path
-      i.icon-home
-      | 首页
-    a.current href="#"
-      i.icon-bullhorn
-      | 快讯管理
-  <h1>快讯管理</h1>
-/!End-breadcrumbs
-
-div.container-fluid
-  = bootstrap_flash
-  = link_to "创建快讯", new_admin_newsflash_path, class:"btn btn-primary"
-
-  div.widget-box
-    div.widget-title
-      span.icon
-        i.icon-th
-      h5 = page_entries_info @newsflashes
-
-    div class="widget-content nopadding"
-      table class="table table-bordered table-striped with-check"
-        thead
-          tr role="row"
-            th style="width:10%" ID
-            th style="width:15%" 标题
-            th style="width:10%" 作者
-            th style="width:25%" 内容
-            th style="width:15%" 资讯连接
-            th style="width:15%" 时间
-            th style="width:10%" 操作
-        tbody
-          = render @newsflashes
-      div class="pagination pagination-table"
-        = paginate @newsflashes
-
-= render 'layouts/set_active_nav', :active_id => "nav_newsflashes"
+.col_main
+  .main_hd
+    h2 快讯管理
+    .toolbar.border_bottom.clearfix
+      .pull-right
+         span.page_info = page_entries_info @newsflashes
+         = link_to raw("<i class='fa fa-plus'></i>&nbsp;&nbsp;创建快讯"), new_admin_newsflash_path, class:"btn btn-primary"
+  table class="table"
+    thead
+      tr role="row"
+        th style="width=10%" ID
+        th style="width=40%" 标题
+        th.text_center style="width=10%" 基本信息
+        th.text_center style="width=10%" 创建时间
+        th.text_center style="width=10%" 操作
+        th.text_center style="width=10%" 创建人
+    tbody
+      = render @newsflashes
+  = paginate @newsflashes

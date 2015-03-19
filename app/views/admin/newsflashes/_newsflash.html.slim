@@ -1,15 +1,19 @@
 tr
-  td = link_to newsflash.id, admin_newsflash_path(newsflash)
-  td = link_to raw(newsflash.hash_title), admin_newsflash_path(newsflash)
-  td = newsflash.author.try(:display_name)
-  td = raw(newsflash.description_text)
-  td = newsflash.news_url
-  td = newsflash.created_at
-  td
+  td = newsflash.id
+  td[title=newsflash.hash_title data-toggle='tooltip']
+    = link_to raw(truncate(newsflash.hash_title, length:30)), admin_newsflash_path(newsflash)
+  td.text_center
+    i.fa.fa-clock-o[title=newsflash.created_at data-toggle='tooltip']
+    a href=newsflash.news_url target="_new"
+      i.fa.fa-link[title=newsflash.news_url data-toggle='tooltip']
+    i.fa.fa-file-text-o[title=raw(newsflash.description_text) data-toggle='tooltip']
+  td.text_center = time_ago_in_words newsflash.created_at
+  td.text_center
     - if can? :edit, newsflash
-      a.tip-top data-original-title="编辑" href= edit_admin_newsflash_path(newsflash)
-        i.icon-pencil.icon-operate
-      |&nbsp;&nbsp;
+      a title="编辑" href=edit_admin_newsflash_path(newsflash)
+        i.fa.fa-pencil
+        |&nbsp;&nbsp;
     - if can? :destroy, newsflash
-      a.tip-top data-original-title="删除" data-method="delete" data-confirm="确定删除快讯 #{newsflash.hash_title} ？" href= admin_newsflash_path(newsflash)
-        i.icon-remove.icon-operate
+      a title="删除" data-method="delete" data-confirm="确定删除快讯: #{newsflash.hash_title} ？" href= admin_newsflash_path(newsflash)
+        i.fa.fa-times
+  td.avatar.text_center[title=newsflash.author.try(:display_name) data-toggle='tooltip'] = image_tag avatar_url(newsflash.author.try(:avatar))

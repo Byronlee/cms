@@ -1,29 +1,18 @@
-/!breadcrumbs
-div#content-header
-  div#breadcrumb
-    a.tip-bottom title="回到首页" href= admin_root_path
-      i.icon-home
-      | 首页
-    a.tip-bottom title="回到头条管理列表页面" href= admin_head_lines_path
-      i.icon-star
-      | 头条管理
-    a.current href="#"
-      | 创建头条
-  <h1>创建头条</h1>
-/!End-breadcrumbs
-
-div.container-fluid
-  = bootstrap_flash
-  div.widget-box
-    div clas="widget-content nopadding"
-      = simple_form_for [:admin, @head_line], html:{class:"form-horizontal"} do | f |
-        = f.input :url
-        = f.input :title
-        = f.input :post_type
-        = f.input :image
-        = f.input :url_code
-        = f.input :order_num
-        div.form-actions
-          = f.button :submit, data: { disable_with: "submitting..." }, class:"btn btn-primary"
-
-= render 'layouts/set_active_nav', :active_id => "nav_head_lines"
+.col_main
+  .main_hd
+    h2 头条管理
+    .toolbar.border_bottom.clearfix.new
+      .pull-right
+        i.fa.fa-map-marker
+        ol.breadcrumb
+          li = link_to '头条管理', admin_head_lines_path
+          li.active 创建头条
+  .main-body
+    = simple_form_for [:admin, @head_line], html:{class:"form-horizontal"} do | f |
+      = f.input :post_type
+      = f.input :order_num
+      = f.input :image, input_html: {class: 'col-lg-12'}
+      = f.input :url, input_html: {class: 'col-lg-12'}
+      = f.input :title, input_html: {class: 'col-lg-12'}
+      div.form-actions
+        = f.button :submit, data: { disable_with: "submitting..." }, class:"btn btn-primary"

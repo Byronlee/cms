@@ -1,0 +1,89 @@
+@import "twitter/bootstrap/bootstrap";
+
+// Set the correct sprite paths
+@iconSpritePath: image-url("twitter/bootstrap/glyphicons-halflings.png");
+@iconWhiteSpritePath: image-url("twitter/bootstrap/glyphicons-halflings-white.png");
+
+// Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
+@fontAwesomeEotPath: font-url("fontawesome-webfont.eot");
+@fontAwesomeEotPath_iefix: font-url("fontawesome-webfont.eot?#iefix");
+@fontAwesomeWoffPath: font-url("fontawesome-webfont.woff");
+@fontAwesomeTtfPath: font-url("fontawesome-webfont.ttf");
+@fontAwesomeSvgPath: font-url("fontawesome-webfont.svg#fontawesomeregular");
+
+// Font Awesome
+@import "fontawesome/font-awesome";
+
+// Glyphicons
+//@import "twitter/bootstrap/glyphicons.less";
+
+// Your custom LESS stylesheets goes here
+//
+// Since bootstrap was imported above you have access to its mixins which
+// you may use and inherit here
+//
+// If you'd like to override bootstrap's own variables, you can do so here as well
+// See http://twitter.github.com/bootstrap/customize.html#variables for their names and documentation
+//
+// Example:
+// @link-color: #ff0000;
+
+@themes-main-color: #1D71B6;
+
+.navbar-default {
+  background-color: #f8f8f8;
+  border-color: #e7e7e7;
+  border-top: 3px solid @themes-main-color;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+  background-color: #f4f4f4;
+}
+
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+  background-color: @themes-main-color;
+  color: #fff;
+}
+
+.nav-pills > li > a {
+  border-radius: 0px;
+}
+
+.tooltip .tooltip-inner {
+  background-color: #222;
+}
+
+.breadcrumb {
+  padding: 0;
+  margin-bottom: 0px;
+  list-style: none;
+  background-color: #fff;
+  border-radius: 0px;
+  margin-left: 20px;
+}
+
+ul, ol {
+  margin-bottom: 0px;
+}
+
+input[type="file"] {
+  line-height: 9px !important;
+  margin-top: 6px;
+}
+
+.nav > li > a {
+  position: relative;
+  display: block;
+  padding: 5px 17px;
+  border: 0px solid transparent;
+}
+
+.nav-tabs li:hover, .nav-tabs li a:hover, .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+  border: 0px solid #dddddd;
+  background: #fff;
+}
+
+
+
+
+
