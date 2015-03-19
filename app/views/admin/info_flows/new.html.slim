@@ -1,24 +1,15 @@
-/!breadcrumbs
-div#content-header
-  div#breadcrumb
-    a.tip-bottom title="回到首页" href= admin_root_path
-      i.icon-home
-      | 首页
-    a.tip-bottom title="回到信息流管理列表页面" href= admin_ads_path
-      i.icon-globe
-      | 信息流管理
-    a.current href="#"
-      | 创建信息流
-  <h1>创建信息流</h1>
-/!End-breadcrumbs
+.col_main
+  .main_hd
+    h2 信息流管理
+    .toolbar.border_bottom.clearfix.new
+      .pull-right
+        i.fa.fa-map-marker
+        ol.breadcrumb
+          li = link_to '信息流管理', admin_info_flows_path
+          li.active 创建信息流
+  .main-body
+    = simple_form_for [:admin, @info_flow], html:{class:"form-horizontal"} do | f |
+      = f.input :name
+      div.form-actions
+        = f.button :submit, data: { disable_with: "Submitting..." }, class:"btn btn-primary"
 
-div.container-fluid
-  = bootstrap_flash
-  div.widget-box
-    div clas="widget-content nopadding"
-      = simple_form_for [:admin, @info_flow], html:{class:"form-horizontal"} do | f |
-        = f.input :name
-        div.form-actions
-          = f.button :submit, data: { disable_with: "Submitting..." }, class:"btn btn-primary"
-
-= render 'layouts/set_active_nav', :active_id => "nav_info_flows"

@@ -1,41 +1,30 @@
-/!breadcrumbs
-div#content-header
-  div#breadcrumb
-    a.tip-bottom title="Go to Home" href= admin_root_path
-      i.icon-home
-      | 首页
-    a.current href="#"
-      i.icon-file
-      | 文章发布管理
-  <h1>文章发布管理</h1>
-/!End-breadcrumbs
-
-div.container-fluid
-  = bootstrap_flash
-  = link_to "创建文章", "http://writer.36kr.com/posts/new", class:"btn btn-primary" if can? :create, Post
-
-  div.widget-box
-    div.widget-title
-      span.icon
-        i.icon-th
-      h5 = page_entries_info @posts
-
-    div class="widget-content nopadding"
-      table class="table table-bordered table-striped with-check"
-        thead
-          tr role="row"
-            th style="width:5%" ID
-            th style="width:27%" 标题
-            th style="width:8%" 作者
-            th style="width:8%" 专栏
-            th style="width:14%" 创建时间
-            th style="width:8%" 状态
-            th style="width:8%" 评论
-            th style="width:7%" 浏览量
-            th style="width:15%" 操作
-        tbody
-          = render @posts
-      div class="pagination pagination-table"
-        = paginate @posts
-
-= render 'layouts/set_active_nav', :active_id => "nav_posts"
+.col_main
+  .main_hd
+    h2 文章管理
+    .toolbar.border_bottom.clearfix
+      .pull-right
+         span.page_info = page_entries_info @posts
+         = link_to raw("<i class='fa fa-plus'></i>&nbsp;&nbsp;创建文章"), Settings.writer.host, class:"btn btn-primary"
+    .pull-left
+      ul
+        li.active 发布管理
+        li
+          a href="#{reviewings_admin_posts_path}" 审查管理
+          |(
+          = reviewings_count
+          |)
+  table class="table"
+    thead
+      tr role="row"
+        th style="width:5%" ID
+        th style="width:30%" 标题
+        th style="width:5%" 专栏
+        th style="width:8%" 创建时间
+        th.text_center style="width:7%" 状态
+        th style="width:5%" 评论
+        th.text_center style="width:7%" 浏览量
+        th.text_center style="width:9%" 操作&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        th style="width:3%" 作者
+    tbody
+      = render @posts
+  = paginate @posts

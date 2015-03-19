@@ -17,6 +17,7 @@ zh-CN:
         column_id: '所属专栏'
         cover: '特色图片'
         disable_with: '正在提交...'
+        tag_list: '标签'
       head_line:
         url: 网址
         order_num: 序号
@@ -24,6 +25,14 @@ zh-CN:
         post_type: 文章类型
         image: 图片链接
         url_code: CODE
+      newsflash:
+        original_input: 快讯内容
+        tag_list: 标签
+        tag: 标签
+      page:
+        title: 标题
+        slug: 英文短标题
+        body: 内容
       column:
         name: 专栏名称
         introduce: 专栏介绍

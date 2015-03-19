@@ -1,0 +1,19 @@
+<polymer-element name="page-body" attributes="page_id">
+
+  <template>
+    <link rel="stylesheet" href="page-body.css" />
+    <link rel="import" href="juicy-html.html" />
+
+    <div class="container">
+      <article class="single-post-article">
+        <div clas="content-wrapper-single">
+          <section class="article">
+            <template is="juicy-html" content="{{ page_body }}"></template>
+          </section>
+        </div>
+      </article>
+    </div>
+  </template>
+
+  <script src="page-body.js"></script>
+</polymer-element>

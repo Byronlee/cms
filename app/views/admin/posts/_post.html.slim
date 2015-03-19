@@ -1,31 +1,28 @@
 tr
-  td = link_to post.id, post_url(post), target:'_new'
-  td = link_to raw(post.title), post_url(post), target:'_new'
-  td = post.author.try(:display_name)
-  td = link_to post.column.try(:name), admin_column_posts_path(post.column)
-  td = post.created_at
+  td = post.id
+  td[title=raw(post.title) data-toggle='tooltip'] = link_to raw(truncate(post.title, length:23)), post_url(post), target:'_new'
+  td[title=post.column.try(:name) data-toggle='tooltip']
+   = link_to raw('<i class="fa fa-folder"></i>'), admin_column_posts_path(post.column)
+  td.text_center = time_ago_in_words post.created_at
   td = display_state(post.state)
   td
     span class='badge badge-warning'
       = link_to post.comments_counts.to_i, admin_post_comments_path(post)
-  td = post.views_count
+  td.text_center = post.views_count
   td
     - if can? :create, HeadLine
-      a.tip-top data-original-title="添加到头条" href= new_admin_head_line_path(:url => post_url(post))
-        i.icon-star.icon-operate
-      |&nbsp;&nbsp;
+      a title="添加到头条" href= new_admin_head_line_path(:url => post_url(post))
+        i.fa.fa-star
     - if can? :publish, post
-      a.tip-top data-original-title="编辑发布信息" href= edit_admin_post_url(post)
-        i.icon-cog.icon-operate
-      |&nbsp;&nbsp;
+      a title="编辑发布信息" href= edit_admin_post_url(post)
+        i.fa.fa-cog
     - if can? :edit, post
-      a.tip-top data-original-title="编辑文章" href= "http://writer.36kr.com/posts/#{post.id}/#{post.key}/"
-        i.icon-pencil.icon-operate
+      a title="编辑文章" href= "http://writer.36kr.com/posts/#{post.id}/#{post.key}/"
+        i.fa.fa-pencil
     - if can? :undo_publish, post
-      a.tip-top data-original-title="撤销发布" data-method="post" data-confirm="确定撤销发布: #{raw(post.title)} ？" href=undo_publish_admin_post_path(post)
-        i.icon-minus-sign.icon-operate
-      |&nbsp;&nbsp;
+      a title="撤销发布" data-confirm="确定撤销发布: #{raw(post.title)} ？" href=undo_publish_admin_post_path(post)
+        i.fa.fa-power-off
     - if can? :destroy, post
-      a.tip-top data-original-title="删除" data-method="delete" data-confirm="确定删除文章 #{raw(post.title)} ？" href= admin_post_url(post)
-        i.icon-remove.icon-operate
-
+      a title="删除" data-method="delete" data-confirm="确定删除文章 #{raw(post.title)} ？" href= admin_post_url(post)
+        i.fa.fa-remove
+  td.avatar.text_center[title=post.author.try(:display_name) data-toggle='tooltip'] = image_tag avatar_url(post.author.try(:avatar))

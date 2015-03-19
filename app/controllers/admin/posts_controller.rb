@@ -2,26 +2,19 @@ class Admin::PostsController < Admin::BaseController
   load_and_authorize_resource
 
   def index
-    if(params[:column_id] && column = Column.find(params[:column_id]) )
-      @posts = column.posts.published.order('updated_at desc').includes(:author, :column).page params[:page]
-    else
-      @posts = Post.published.order('updated_at desc').includes(:author, :column).page params[:page]
-    end
+    return column if params[:column_id].present?
+    @posts = Post.published.order('updated_at desc').includes(:author, :column).page params[:page]
+  end
+
+  def column
+    @column = Column.find(params[:column_id])
+    @posts = @column.posts.published.order('updated_at desc').includes(:author, :column).page params[:page]
+    render 'column'
   end
 
   def reviewings
-    if(params[:column_id] && column = Column.find(params[:column_id]))
-      @posts = column.posts.reviewing.order('updated_at desc').includes(:author, :column).page params[:page]
-    else
-      @posts = Post.reviewing.order('updated_at desc').includes(:author, :column).page params[:page]
-    end
-  end
-
-  def create
-    @post.author = current_user
-    @post.key = SecureRandom.uuid
-    @post.save
-    respond_with @post, location: admin_posts_path
+    @posts = Column.find(params[:column_id]).posts.reviewing rescue Post
+    @posts = @posts.reviewing.order('updated_at desc').includes(:author, :column).page params[:page]
   end
 
   def update

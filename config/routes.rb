@@ -57,6 +57,7 @@ Rails.application.routes.draw do
 
   namespace :components do
     get '/next/collections', to: 'next#collections', as: :next_collections
+    get 'pages/show', to: 'pages#show', as: :page_body
   end
 
   resources :posts, :only => [:index] do

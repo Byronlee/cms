@@ -1,36 +1,16 @@
-/!breadcrumbs
-div#content-header
-  div#breadcrumb
-    a.tip-bottom title="回到首页" href= admin_root_path
-      i.icon-home
-      | 首页
-    a.tip-bottom title="回到快讯管理列表页面" href= admin_newsflashes_path
-      i.icon-bullhorn
-      | 快讯管理
-    a.current href="#"
-      | 创建快讯
-  <h1>创建快讯章</h1>
-/!End-breadcrumbs
-
-div.container-fluid
-  = bootstrap_flash
-  div.widget-box
-    .well
-      p #标题# 内容........内容 http://baidu.com
-      p ----
-      p 1. 小点1
-      p 2. 小点2
-      p 3. 小点3
-    div clas="widget-content nopadding"
-      - unless @newsflash.errors.blank?
-        = debug @newsflash.errors.messages
-      = simple_form_for [:admin, @newsflash], html:{ class:"form-horizontal" } do | f |
-        = f.input :original_input, as: :text, :input_html => { 'rows' => 10}
-        = f.input :tag_list
-        ul
-          - NewsflashTopicColor.all.each do | item |
-            li style="width: 150px; height:20px; background-color:#{item.color}; float:left"
-              = item.site_name+"; 颜值:"+ item.color
-        div.form-actions
-          = f.button :submit, data: { disable_with: "submitting..." }, class: "btn btn-primary"
-= render 'layouts/set_active_nav', :active_id => "nav_newsflashes"
+.col_main
+  .main_hd
+    h2 快讯管理
+    .toolbar.border_bottom.clearfix.new
+      .pull-right
+        i.fa.fa-map-marker
+        ol.breadcrumb
+          li = link_to '快讯管理', admin_newsflashes_path
+          li.active 创建快讯
+  = render "newsflash_template"
+  .main-body
+    = simple_form_for [:admin, @newsflash], html:{ class:"form-horizontal" } do | f |
+      = f.input :original_input, as: :text, :input_html => { 'rows' => 10, class: 'col-lg-11'}
+      = f.input :tag_list, input_html: {class: 'col-lg-11'}
+      div.form-actions
+        = f.button :submit, data: { disable_with: "submitting..." }, class: "btn btn-primary"

@@ -4,118 +4,34 @@ html lang="en"
     meta charset="utf-8"
     meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"
     meta name="viewport" content="width=device-width, initial-scale=1.0"
-    title= content_for?(:title) ? yield(:title) : "Kr"
+    title= content_for?(:title) ? yield(:title) : "36氪"
     = csrf_meta_tags
-
-    /!--opengraph meata start
     = content_for?(:og_meta) ? yield(:og_meta) : ''
-    /!--opengraph meata end
-
     /! Le HTML5 shim, for IE6-8 support of HTML elements
     /[if lt IE 9]
       = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"
-    = stylesheet_link_tag "matrix_admin/matrix_admin", :media => "all"
     = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
-
-    = javascript_include_tag "matrix_admin/matrix_admin"
+    = stylesheet_link_tag "open_admin/open_admin", :media => "all"
+    = javascript_include_tag "open_admin/open_admin"
+    = html_import_tag 'application'
 
   body
-    /!Header-part
-    div#header
-      h1
-        a href=  admin_root_path
-          |Matrix Admin
-    /!close-Header-part
+    .navbar.navbar-default.navbar-static-top
+      .container
+        a.navbar-brand href=admin_root_path
+          .logo
+          | &nbsp;新闻 &nbsp;&nbsp;
+          small 后台管理
+        p.navbar-text.pull-right
+          = current_user.display_name
+          | &nbsp;&nbsp;
+          = link_to "返回首页", root_path
+          | &nbsp;&nbsp;
+          = link_to "注销", destroy_user_session_path, method: :delete
+    .container
+      .col-lg-2.sidepanel.sidebar-nav
+        = render_cell :sidebar, :admin, controller_name: controller_name
+      .col-lg-10
+        = yield
 
-
-    /!top-Header-menu
-    div#user-nav class="navbar navbar-inverse"
-      ul.nav
-        li#profile-messages class="dropdown"
-          a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"
-            i class="icon icon-user"
-            span class="text" = " Welcome #{@current_user.try(:display_name)}"
-        li
-          a title="" target="_blank" href= root_path
-            i class="icon icon-share-alt"
-            span.text  主站
-        li
-          a href="#{destroy_user_session_path}" data-method="delete"
-            i class="icon icon-share-alt"
-            span.text  Logout
-    /!close-top-Header-menu
-
-
-    /!sidebar-menu
-    div#sidebar
-      a.visible-phone href= admin_root_path
-        i class="icon icon-home"
-        |Dashboard
-      ul
-        - if can? :read, :dashboard
-          li#nav_dashboard
-            a href= admin_root_path
-              i class="icon icon-home"
-              span  Dashboard
-        - if can? :read, HeadLine
-          li#nav_head_lines
-            a href=admin_head_lines_path
-              i class="icon icon-star"
-              span  头条管理
-        - if can? :read, Newsflash
-          li#nav_newsflashes
-            a href=admin_newsflashes_path
-              i class="icon icon-bullhorn"
-              span  快讯管理
-        - if can? :read, Page
-          li#nav_newsflashes
-            a href=admin_pages_path
-              i class="icon icon-file"
-              span  Page管理
-        - if can? :read, InfoFlow
-          li#nav_info_flows
-            a href=admin_info_flows_path
-              i class="icon icon-tint"
-              span  信息流管理
-        - if can? :read, Comment
-          li#nav_comments
-            a href=admin_comments_path
-              i class="icon icon-comment"
-              span  评论管理
-        - if can? :read, Post
-          li.submenu.open
-            a href="#"
-              i.icon.icon-file
-              span 文章管理
-              span.label.label-important 2
-            ul style="display: block;"
-              li#nav_posts
-                a href="#{admin_posts_path}" 发布管理
-              li#nav_posts_reviewings
-                a href="#{reviewings_admin_posts_path}" 审查管理
-        - if can? :read, Column
-          li#nav_columns
-            a href=admin_columns_path
-              i class="icon icon-list"
-              span  专栏管理
-        - if can? :read, Ad
-          li#nav_ads
-            a href=admin_ads_path
-              i class="icon icon-globe"
-              span  广告位管理
-        - if can? :read, User
-          li#nav_users
-            a href=admin_users_path
-              i class="icon icon-user"
-              span  用户管理
-    /!close-sidebar-menu
-
-    div#content
-      = yield
-
-    /!Footer-part
-    div.row-fluid
-      div#footer class="span12"
-       |&copy; Company 2015 36Kr
-      = analytics_init if Rails.env.production?
-    /!end-Footer-part
+    = analytics_init if Rails.env.production?

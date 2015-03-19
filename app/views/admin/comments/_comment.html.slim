@@ -1,39 +1,30 @@
 tr
   td = comment.id
-  td = link_to raw(comment.commentable.try(:title)),  polymorphic_url(comment.commentable)
-  td
-    = truncate(comment.content, length:60){ link_to '(Show All)', "##{comment.id}", 'data-toggle' => "collapse", class:"collapsed" }
-    |&nbsp;&nbsp;
+  td[title=comment.commentable.try(:title) data-toggle='tooltip']
+    = link_to raw(truncate(comment.commentable.try(:title), length:20)),  polymorphic_url(comment.commentable)
+  td[title=raw(comment.content) data-toggle='tooltip']
+    = raw(truncate(comment.content, length:20))
     - if comment.is_long?
-      span.tip-top class="badge badge-important pointer" data-original-title="长评论"
-        |L
       |&nbsp;&nbsp;
+      span.badge.badge-important.pointer title="长评论" L
     - if comment.is_excellent?
-      span.tip-top class="badge badge-important pointer" data-original-title="优质评论"
-        i.icon-thumbs-up
-    |<div class="collapse" id="#{comment.id}" style="height: 0px;"><div class="widget-content"> #{ raw comment.content} </div></div>
-  - if false
-    td = display_state(comment.aasm.human_state)
-  td = comment.user.try(:display_name)
-  td = comment.created_at
+      |&nbsp;&nbsp;
+      span.badge.badge-important.pointer title="优质评论"
+        i.fa.fa-thumbs-up
+  td.text_center
+    i.fa.fa-clock-o[title=comment.created_at data-toggle='tooltip']
   td
     - if can? :set_excellent, comment
       - if comment.is_excellent?
-        a.tip-top data-original-title="取消优质评论" data-method="post" href= set_excellent_admin_comment_path(comment, comment:{is_excellent:false})
-          i.icon-thumbs-down.icon-operate
+        a title="取消优质评论" data-method="post" href= set_excellent_admin_comment_path(comment, comment:{is_excellent:false})
+          i.fa.fa-thumbs-down
       - else
-        a.tip-top data-original-title="置为优质评论" data-method="post" href= set_excellent_admin_comment_path(comment, comment:{is_excellent:true})
-          i.icon-thumbs-up.icon-operate
+        a title="置为优质评论" data-method="post" href= set_excellent_admin_comment_path(comment, comment:{is_excellent:true})
+          i.fa.fa-thumbs-up
       |&nbsp;&nbsp;
-    - if false #此次发版 不用者两个功能
-      - if comment.may_publish?
-        a.tip-top data-original-title="发布" data-method="post" href= do_publish_admin_comment_path(comment)
-          i.icon-ok-circle.icon-operate
-      |&nbsp;&nbsp;
-      - if comment.may_reject?
-        a.tip-top data-original-title="屏蔽" data-method="post" href= do_reject_admin_comment_path(comment)
-          i.icon-remove-circle.icon-operate
     - if can? :destroy, comment
       |&nbsp;&nbsp;
-      a.tip-top data-original-title="删除" data-method="delete" data-confirm="确定删除该评论？" href= admin_comment_path(comment)
-        i.icon-remove
+      a title="删除" data-method="delete" data-confirm="确定删除该评论？" href= admin_comment_path(comment)
+        i.fa.fa-times
+  td.avatar.text_center[title=comment.user.try(:display_name) data-toggle='tooltip'] = image_tag avatar_url(comment.user.try(:avatar))
+
