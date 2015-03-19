@@ -1,6 +1,6 @@
 GrapeSwaggerRails.options.url      = '/api/v1/swagger_doc'
 GrapeSwaggerRails.options.app_name = '36krx2015'
-GrapeSwaggerRails.options.app_url  = 'http://2015.36kr.com'
+GrapeSwaggerRails.options.app_url  = 'http://36kr.com'
 GrapeSwaggerRails.options.app_url  = 'http://localhost:3000' if Rails.env.development?
 GrapeSwaggerRails.options.api_auth     = 'api_token'
 GrapeSwaggerRails.options.api_key_type = 'query'
