@@ -28,6 +28,10 @@ zh-CN:
         original_input: 快讯内容
         tag_list: 标签
         tag: 标签
+      page:
+        title: 标题
+        slug: 英文短标题
+        body: 内容
       column:
         name: 专栏名称
         introduce: 专栏介绍

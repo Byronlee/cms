@@ -11,10 +11,6 @@ ul.nav.nav-pills.nav-stacked
     li class=nav_active(:newsflashes, @controller_name)
       a href=admin_newsflashes_path
         span  快讯管理
-  - if can? :read, Page
-    li class=nav_active(:pages, @controller_name)
-      a href=admin_pages_path
-        span  Page管理
   - if can? :read, Comment
     li class=nav_active(:comments, @controller_name)
       a href=admin_comments_path
@@ -37,6 +33,10 @@ ul.nav.nav-pills.nav-stacked
     li class=nav_active(:users, @controller_name)
       a href=admin_users_path
         span  用户管理
+  - if can? :read, Page
+    li class=nav_active(:pages, @controller_name)
+      a href=admin_pages_path
+        span  Page管理
   - if can? :read, InfoFlow
     li.border_bottom class=nav_active(:info_flows, @controller_name)
       a href=admin_info_flows_path

@@ -1,0 +1,16 @@
+/*
+ *= require sass/style.scss
+ */
+
+:host {
+  display: block;
+}
+
+.container{
+  width: 620px;
+  margin: 0 auto;
+}
+
+.container img{
+  max-width: 620px !important;
+}

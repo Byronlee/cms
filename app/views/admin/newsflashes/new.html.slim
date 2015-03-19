@@ -10,7 +10,7 @@
   = render "newsflash_template"
   .main-body
     = simple_form_for [:admin, @newsflash], html:{ class:"form-horizontal" } do | f |
-      = f.input :original_input, as: :text, :input_html => { 'rows' => 10, class: 'col-lg-9'}
-      = f.input :tag_list, input_html: {class: 'col-lg-9'}
+      = f.input :original_input, as: :text, :input_html => { 'rows' => 10, class: 'col-lg-11'}
+      = f.input :tag_list, input_html: {class: 'col-lg-11'}
       div.form-actions
         = f.button :submit, data: { disable_with: "submitting..." }, class: "btn btn-primary"
