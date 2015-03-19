@@ -24,6 +24,10 @@ zh-CN:
         post_type: 文章类型
         image: 图片链接
         url_code: CODE
+      newsflash:
+        original_input: 快讯内容
+        tag_list: 标签
+        tag: 标签
       column:
         name: 专栏名称
         introduce: 专栏介绍
