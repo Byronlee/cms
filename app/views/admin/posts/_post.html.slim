@@ -13,19 +13,15 @@ tr
     - if can? :create, HeadLine
       a title="添加到头条" href= new_admin_head_line_path(:url => post_url(post))
         i.fa.fa-star
-      |&nbsp;&nbsp;
     - if can? :publish, post
       a title="编辑发布信息" href= edit_admin_post_url(post)
         i.fa.fa-cog
-      |&nbsp;&nbsp;
     - if can? :edit, post
       a title="编辑文章" href= "http://writer.36kr.com/posts/#{post.id}/#{post.key}/"
         i.fa.fa-pencil
-      |&nbsp;&nbsp;
     - if can? :undo_publish, post
       a title="撤销发布" data-confirm="确定撤销发布: #{raw(post.title)} ？" href=undo_publish_admin_post_path(post)
-        i.fa.fa-minus-sign
-      |&nbsp;&nbsp;
+        i.fa.fa-power-off
     - if can? :destroy, post
       a title="删除" data-method="delete" data-confirm="确定删除文章 #{raw(post.title)} ？" href= admin_post_url(post)
         i.fa.fa-remove
