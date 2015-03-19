@@ -61,10 +61,10 @@ class Ability
   end
 
   def public_ability
-     can :read, :welcome
-     can :read, [Ad, Post, Column, Page, Newsflash, User]
-     can [:update_views_count, :news, :feed, :hots, :today_lastest], Post
-     can [:read, :execllents], Comment
-     cannot :create, Comment
+    can :read, :welcome
+    can :read, [Ad, Post, Column, Page, Newsflash, User]
+    can [:update_views_count, :news, :feed, :hots, :today_lastest], Post
+    can [:read, :execllents], Comment
+    cannot :create, Comment
   end
 end

@@ -34,8 +34,8 @@ section.single-post-share.cf
         /a.long-weibo.overlay[href="#panel-weibo"] 发送长微博
       li
         a.weixin.overlay[href="#panel-weixin"] 分享到微信
-      /li
-        a.qq.overlay[ref="nofollow" href="http://connect.qq.com/widget/shareqq/index.html?url=#{post_url(@post)}&title=#{(truncate(raw(@post.title), :length => 300)).html_safe}&source=shareqq&desc=刚看到这篇文章不错，推荐给你看看～"] 分享到QQ
+      li
+        a.qq[ref="nofollow" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=#{post_url(@post)}&title=#{(truncate(raw(@post.title), :length => 300)).html_safe}&source=shareqq&desc=刚看到这篇文章不错，推荐给你看看～"] 分享到QQ
 #panel-weixin.panel.mfp-hide
   h3 打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮
   section.weixin-section
