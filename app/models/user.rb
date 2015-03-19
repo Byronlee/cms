@@ -88,7 +88,7 @@ class User < ActiveRecord::Base
       "#{provider}+#{uid}@36kr.com"
     end
     user = User.where(email: emails).first
-    user.update(:sso_id, krypton_id) unless user.blank?
+    user.update_attribute(:sso_id, krypton_id) unless user.blank?
     user
   end
 
