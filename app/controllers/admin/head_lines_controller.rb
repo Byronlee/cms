@@ -28,6 +28,6 @@ class Admin::HeadLinesController < Admin::BaseController
   private
 
   def head_line_params
-    params.require(:head_line).permit(:url, :order_num, :title, :post_type, :image) if params[:head_line]
+    params.require(:head_line).permit(:url, :order_num, :title, :post_type, :image, :url_code) if params[:head_line]
   end
 end

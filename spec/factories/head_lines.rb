@@ -11,6 +11,7 @@
 #  post_type  :string(255)
 #  image      :string(255)
 #  user_id    :integer
+#  url_code   :integer
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

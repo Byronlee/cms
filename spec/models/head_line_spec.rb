@@ -11,6 +11,7 @@
 #  post_type  :string(255)
 #  image      :string(255)
 #  user_id    :integer
+#  url_code   :integer
 #
 
 require 'spec_helper'

@@ -13,6 +13,7 @@ class HeadLinesComponentWorker < BaseWorker
       head_line.title = metas[:title]
       head_line.post_type = metas[:type]
       head_line.image = metas[:image]
+      head_line.url_code = metas[:code]
       head_line.save
     end
   end
@@ -32,6 +33,11 @@ class HeadLinesComponentWorker < BaseWorker
     end
   end
 
+  def get_customer_meta_of(og, meta)
+    return nil if og.metadata[meta].blank? || og.metadata[meta].first.blank?
+    og.metadata[meta].first[:_value]
+  end
+
   def prase(url)
     return {} unless valid_of?(url)
     og = OpenGraph.new(url)
@@ -39,6 +45,7 @@ class HeadLinesComponentWorker < BaseWorker
       title: og.title,
       type: og.type,
       url: og.url,
+      code: get_customer_meta_of(og, :code),
       image: og.images.first
     }
   end

@@ -2,6 +2,7 @@
   meta property="og:title" content== raw(@post.title)
   meta property="og:type" content="article"
   meta property="og:url" content== post_url(@post)
+  meta property="og:code" content== @post.url_code
   meta property="og:image" content== "#{@post.cover_real_url}"
   meta property="og:image:secure_url" content= "#{@post.cover_real_url}"
   meta property="og:image:type" content== @post.cover.try(:content_type)

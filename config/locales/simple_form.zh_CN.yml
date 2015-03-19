@@ -23,6 +23,7 @@ zh-CN:
         title: 文章标题
         post_type: 文章类型
         image: 图片链接
+        url_code: CODE
       column:
         name: 专栏名称
         introduce: 专栏介绍
@@ -52,6 +53,7 @@ zh-CN:
         title: 文章标题
         post_type: 文章类型
         image: 图片链接
+        url_code: url code 编码
       column:
         name: '专栏名称'
         introduce: '专栏介绍'
