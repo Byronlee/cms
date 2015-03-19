@@ -28,3 +28,7 @@ abbr.timeago {
   border-top: 1px solid #51aded;
   padding-top: 10px;
 }
+
+#intercom-container{
+  display: none;
+}
