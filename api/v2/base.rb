@@ -4,6 +4,7 @@ require_relative 'formatter'
 require_relative 'passport'
 
 class ::V2::Base < Grape::API
+  content_type :json, "application/json;charset=UTF-8"
   prefix 'api'
   version 'v2'
   #format :json
