@@ -97,7 +97,7 @@
                 <section>
                   <ul class="dropdown-menu">
                     <li>
-                      <%= link_to "后台管理", admin_dashboard_index_path, :class => "dropdown_login_out_link" if can? :reade, :dashboard %>
+                      <%= link_to "后台管理", admin_dashboard_index_path, :target => "_blank" if can? :reade, :dashboard %>
                     </li>
                     <li class="last">
                        <%= link_to "注销登录", 'javascript:void(0)', method: :delete, class:"dropdown_login_out_link", rel:"nofollow" %>
