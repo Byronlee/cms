@@ -6,8 +6,9 @@ fetch(:linked_files).concat %w{
   config/redis.yml
   config/sidekiq.yml
   config/newrelic.yml
-  config/settings.local.rb
+  config/settings.rb
   config/secrets.yml
+  config/initializers/swagger.rb
 }
 
 fetch(:linked_dirs).concat %w{
