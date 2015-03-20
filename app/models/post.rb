@@ -36,7 +36,7 @@ class Post < ActiveRecord::Base
 
   by_star_field '"posts".created_at'
   paginates_per 20
-  mount_uploader :cover, BaseUploader
+  # mount_uploader :cover, BaseUploader
   aasm.attribute_name :state
 
   # validates_presence_of :title, :content
