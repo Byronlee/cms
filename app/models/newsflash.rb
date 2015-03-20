@@ -17,8 +17,8 @@
 class Newsflash < ActiveRecord::Base
   validates_presence_of :original_input, :hash_title, :description_text
 
-  validates :description_text, length: { maximum: 140 }
-  validates :hash_title,       length: { maximum: 20  }
+  validates :description_text, length: { maximum: 500 }
+  validates :hash_title,       length: { maximum: 40  }
 
   belongs_to :author, class_name: User.to_s, foreign_key: 'user_id'
   belongs_to :newsflash_topic_color
@@ -33,8 +33,8 @@ class Newsflash < ActiveRecord::Base
 
   def prase_original_input
     inputs = original_input.split(/---{0,}/)
-    prase_basic_attrs_from_original_input inputs[0]
-    prase_summaries_from_original_input inputs[1] if inputs[1]
+    prase_basic_attrs_from_original_input inputs[0].strip
+    prase_summaries_from_original_input inputs[1].strip if inputs[1]
   end
 
   private
