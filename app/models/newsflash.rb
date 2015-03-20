@@ -25,6 +25,7 @@ class Newsflash < ActiveRecord::Base
 
   paginates_per 20
   acts_as_taggable
+  by_star_field :created_at
 
   before_validation :prase_original_input
   after_save :update_new_flash_cache
