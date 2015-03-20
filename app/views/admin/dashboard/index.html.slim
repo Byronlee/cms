@@ -9,6 +9,9 @@ div.container-fluid.dashboard
         = Post.published.count
         | /
         = Post.reviewing.count
+        span style="color:green;"
+          | /
+          = Post.today.count
       span style="font-size: 17px;"
         | / 文章
   .col-lg-6.border_bottom
@@ -16,6 +19,9 @@ div.container-fluid.dashboard
       span.first
         i.fa.fa-wechat &nbsp;
         = Comment.count
+      span style="font-size: 26px; color: green;"
+        | &nbsp;/
+        = Comment.today.count
       span style="font-size: 17px;"
         | / 评论
   .col-lg-6.border_right
@@ -23,6 +29,9 @@ div.container-fluid.dashboard
       span.first
         i.fa.fa-flickr &nbsp;
         = Newsflash.count
+      span style="font-size: 26px; color: green;"
+        | &nbsp;/
+        = Newsflash.today.count
       span style="font-size: 17px;"
         | / 快讯
   .col-lg-6
@@ -30,6 +39,8 @@ div.container-fluid.dashboard
       span.first
         i.fa.fa-users &nbsp;
         = User.count
+      span style="font-size: 26px;color:green;"
+        | &nbsp;/
+        = User.today.count
       span style="font-size: 17px;"
         | / 用户
-

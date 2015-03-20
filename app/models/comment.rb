@@ -22,6 +22,7 @@ class Comment < ActiveRecord::Base
 
   aasm.attribute_name :state
   paginates_per 20
+  by_star_field :created_at
 
   validates :content, presence: true
   validates :content, length: { maximum: 3_000 }
