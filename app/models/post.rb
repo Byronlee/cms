@@ -87,8 +87,7 @@ class Post < ActiveRecord::Base
   end
 
   def cover_real_url
-    return nil if cover_identifier.nil?
-    cover_identifier.include?('http://') ? cover_identifier : cover_url
+    cover
   end
 
   def comments_counts
