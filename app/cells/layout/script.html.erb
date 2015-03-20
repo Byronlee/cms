@@ -9,13 +9,16 @@
 <%= javascript_include_tag "js/app" %>
 
 <script>
-  wideArea('.single-post-comment__form');
-</script>
+  $(document).ready(function(){
 
-<script>
-  $.extend($.lazyLoadXT, {
-    onload: { addClass: 'loaded' }
+    if($(".single-post-comment__form").length > 0){
+      wideArea('.single-post-comment__form');
+    }
+
+    $.extend($.lazyLoadXT, {
+      onload: { addClass: 'loaded' }
+    });
+
+    $(".timeago").timeago();
   });
-
-  $(".timeago").timeago();
 </script>
