@@ -17,13 +17,13 @@
       years: "年"
     },
     prefixes: {
-      lt: "不到 1",
-      about: "大约",
-      over: "超过",
-      almost: "接近",
+      lt: "1",
+      about: "",
+      over: "",
+      almost: "",
       ago: ""
     },
-    suffix: "之前"
+    suffix: "前"
   };
 
 }).call(this);
