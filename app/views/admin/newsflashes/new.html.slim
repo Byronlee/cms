@@ -8,6 +8,10 @@
           li = link_to '快讯管理', admin_newsflashes_path
           li.active 创建快讯
   = render "newsflash_template"
+  - if @newsflash.errors.messages.present?
+    div.tips
+      p
+        = @newsflash.errors.messages.first
   .main-body
     = simple_form_for [:admin, @newsflash], html:{ class:"form-horizontal" } do | f |
       = f.input :original_input, as: :text, :input_html => { 'rows' => 10, class: 'col-lg-11'}
