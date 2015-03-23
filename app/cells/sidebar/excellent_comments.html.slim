@@ -1,20 +1,19 @@
-<div class="sidebar">
-  <section class="sidebar-comments">
-    <h3>优质评论</h3>
-    <div class="sidebar-comments__list">
-    </div>
-  </section>
-</div>
+<section class="sidebar-comments">
+  <h3>优质评论</h3>
+  <div class="sidebar-comments__list">
+  </div>
 
-javascript:
-  $(document).ready(function(){
-    $.ajax({
-        type: "GET",
-        url: "/comments/excellents",
-        data: {},
-        success: function (data) {
-          $('.sidebar-comments__list').prepend(data);
-          $(".timeago").timeago();
-        }
+  javascript:
+    $(document).ready(function(){
+      $.ajax({
+          type: "GET",
+          url: "/comments/excellents",
+          data: {},
+          success: function (data) {
+            $('.sidebar-comments__list').prepend(data);
+            $(".timeago").timeago();
+          }
+      });
     });
-  });
+</section>
+
