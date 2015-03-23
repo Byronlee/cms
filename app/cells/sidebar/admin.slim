@@ -37,17 +37,20 @@ ul.nav.nav-pills.nav-stacked
       a href=admin_pages_path
         span  Page管理
   - if can? :read, InfoFlow
-    li.border_bottom class=nav_active(:info_flows, @controller_name)
+    li class=nav_active(:info_flows, @controller_name)
       a href=admin_info_flows_path
         span  信息流管理
   - if can? :read, Ad
+    .border_bottom
     p
       i.fa.fa-volume-down
       span 推广
-    li.border_bottom class=nav_active(:ads, @controller_name)
+    li class=nav_active(:ads, @controller_name)
       a href=admin_ads_path
         span  广告位管理
+  .border_bottom
   p
+
     i.fa.fa-cog
     span 设置
     li#nav_users
