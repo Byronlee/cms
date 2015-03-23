@@ -92,7 +92,7 @@ module V1
             if auth.present? and auth.user.editable
               @post.update_attribute(:state, 'published') if auth.user.role == 'admin'
               review_url = "#{Settings.site}/p/#{@post.url_code}.html"
-              admin_edit_post_url = "#{Settings.site}/krypton_d29tZW5qaW5ncmFuZmFubGV6aGVtZWRpamlkZWN1b3d1/posts/#{@post.url_code}/edit"
+              admin_edit_post_url = "#{Settings.site}/krypton/posts/#{@post.url_code}/edit"
             end
             return {status: true, data: {key: @post.key, published_id: @post.id}, review_url: review_url, admin_edit_post_url: admin_edit_post_url}
           else
