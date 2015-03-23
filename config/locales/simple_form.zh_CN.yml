@@ -42,6 +42,10 @@ zh-CN:
         order_num: '权重'
       user:
         role: 角色
+        name: 用户名称
+        email: 邮件
+        phone: 联系方式
+        tagline: 一句话介绍自己
       comment:
         content: 评论内容
       ad:
