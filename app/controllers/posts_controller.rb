@@ -54,7 +54,8 @@ class PostsController < ApplicationController
     Redis::HashKey.new('posts')["views_count_#{params[:id]}"] = views_count.next
     if(views_count.next % Settings.post_views_count_cache == 0)
       logger.info 'sync the views count from redis cache to postgres'
-      PostViewsCountComponentWorker.perform_async(params[:id])
+      # PostViewsCountComponentWorker.perform_async(params[:id])
+      PostViewsCountComponentWorker.new.perform(params[:id])
     end
     render :json => { :success => 'true' }.to_json
   end

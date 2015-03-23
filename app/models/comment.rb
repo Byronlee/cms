@@ -89,6 +89,8 @@ class Comment < ActiveRecord::Base
 
   def update_excellent_comments_cache
     logger.info 'perform the worker to update excellent comments cache'
-    logger.info ExcellentCommentsComponentWorker.perform_async
+    # logger.info ExcellentCommentsComponentWorker.perform_async
+    logger.info ExcellentCommentsComponentWorker.new.perform_async
+    true
   end
 end

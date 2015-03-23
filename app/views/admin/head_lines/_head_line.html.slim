@@ -1,6 +1,7 @@
 tr
   td = image_tag head_line.image
   td[title=head_line.title data-toggle='tooltip'] = truncate(head_line.title, length:30)
+  td = head_line.url_code
   td = head_line.order_num
   td = head_line.post_type
   td.text_center
