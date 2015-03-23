@@ -78,5 +78,5 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: Settings.site || 'https://36kr.com' }
 
   # Google Analytics
-  GA.tracker = 'UA-42863591-3'
+  GA.tracker = 'UA-1268479-12'
 end
