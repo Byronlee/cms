@@ -39,7 +39,8 @@ class Post < ActiveRecord::Base
   # mount_uploader :cover, BaseUploader
   aasm.attribute_name :state
 
-  # validates_presence_of :title, :content
+  validates_presence_of :title, :content
+  validates_uniqueness_of :title, :content
   # validates_presence_of :summary, :slug, if: -> { persisted? }
 
   # validates :slug,    length: { maximum: 14 }
