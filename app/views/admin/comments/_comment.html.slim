@@ -1,7 +1,7 @@
 tr
   td = comment.id
   td[title=comment.commentable.try(:title) data-toggle='tooltip']
-    = link_to raw(truncate(comment.commentable.try(:title), length:20)),  polymorphic_url(comment.commentable)
+    = link_to raw(truncate(comment.commentable.try(:title), length:20)),  polymorphic_url(comment.commentable), target: '_blank'
   td[title=raw(comment.content) data-toggle='tooltip']
     = raw(truncate(comment.content, length:20))
     - if comment.is_long?
