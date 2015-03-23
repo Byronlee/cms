@@ -52,8 +52,8 @@ class Post < ActiveRecord::Base
   belongs_to :author, class_name: User.to_s, foreign_key: 'user_id'
   has_many :comments, as: :commentable, dependent: :destroy
 
-  after_save :update_today_lastest_cache, :update_hot_posts_cache, :update_info_flows_cache, :update_new_posts_cache
-  after_destroy :update_today_lastest_cache, :update_hot_posts_cache, :update_info_flows_cache, :update_new_posts_cache
+  after_save :update_today_lastest_cache, :update_hot_posts_cache, :update_info_flows_cache, :update_new_posts_cache, :check_head_line_cache
+  after_destroy :update_today_lastest_cache, :update_hot_posts_cache, :update_info_flows_cache, :update_new_posts_cache, :check_head_line_cache
   before_create :generate_key
   after_create :generate_url_code
 
@@ -99,19 +99,25 @@ class Post < ActiveRecord::Base
   private
 
   def update_today_lastest_cache
-    return if self.views_count_changed?
+    return true if self.views_count_changed?
     logger.info 'perform the worker to update today lastest cache'
-    logger.info TodayLastestComponentWorker.perform_async
+    # logger.info TodayLastestComponentWorker.perform_async
+    logger.info TodayLastestComponentWorker.new.perform
+    true
   end
 
   def update_hot_posts_cache
     logger.info 'perform the worker to update hot posts cache'
-    logger.info HotPostsComponentWorker.perform_async
+    # logger.info HotPostsComponentWorker.perform_async
+    logger.info HotPostsComponentWorker.new.perform
+    true
   end
 
   def update_new_posts_cache
     logger.info 'perform the worker to update new posts cache'
-    logger.info NewPostsComponentWorker.perform_async
+    # logger.info NewPostsComponentWorker.perform_async
+    logger.info NewPostsComponentWorker.new.perform
+    true
   end
 
   # def update_weekly_hot
@@ -123,13 +129,24 @@ class Post < ActiveRecord::Base
     self.column && self.column.info_flows.each do |info_flow|
       info_flow.update_info_flows_cache
     end
+    true
   end
 
   def generate_key
     self.key = SecureRandom.uuid
+    true
   end
 
   def generate_url_code
     self.update(url_code: self.id) if self.url_code.blank?
+  end
+
+  def check_head_line_cache
+    return true if self.published?
+    HeadLine.all.each do |head_line|
+      next if head_line.url != self.get_access_url || head_line.url_code != url_code
+      head_line.destroy
+    end
+    true
   end
 end

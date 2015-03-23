@@ -30,6 +30,8 @@ class HeadLine < ActiveRecord::Base
 
   def fetch_remote_metas
     logger.info 'perform the worker to fetch remote metas'
-    logger.info HeadLinesComponentWorker.perform_async
+    # logger.info HeadLinesComponentWorker.perform_async
+    logger.info HeadLinesComponentWorker.new.perform
+    true
   end
 end
