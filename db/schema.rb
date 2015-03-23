@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150319100410) do
+ActiveRecord::Schema.define(version: 20150323172654) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,9 @@ ActiveRecord::Schema.define(version: 20150319100410) do
     t.string   "state"
     t.string   "email"
   end
+
+  add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "head_lines", force: true do |t|
     t.string   "url"
@@ -141,6 +144,12 @@ ActiveRecord::Schema.define(version: 20150319100410) do
     t.text     "remark"
   end
 
+  add_index "posts", ["column_id"], name: "index_posts_on_column_id", using: :btree
+  add_index "posts", ["created_at"], name: "index_posts_on_created_at", using: :btree
+  add_index "posts", ["key"], name: "index_posts_on_key", using: :btree
+  add_index "posts", ["url_code"], name: "index_posts_on_url_code", unique: true, using: :btree
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
+
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
@@ -188,5 +197,6 @@ ActiveRecord::Schema.define(version: 20150319100410) do
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["sso_id"], name: "index_users_on_sso_id", using: :btree
 
 end
