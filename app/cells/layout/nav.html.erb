@@ -86,8 +86,8 @@
       <ul>
         <li><a href="/pages/contribute" class="second-nav__submit">投稿</a></li>
         <li><a href="http://report.36kr.com" class="second-nav__request">寻求报道</a></li>
-        <li class="notice drop"></li>
         <% if @current_user %>
+          <li class="notice drop"></li>
           <li class="avatar drop">
             <a class="second-nav__account cf" href="javascript:void(0)">
             <img class="avatar-small left" alt="<%= @current_user.display_name %>" raw_iden="<%= @current_user.try(:id) %>" height="24" src="<%= avatar_url @current_user.try(:avatar) %>" width="24" />
