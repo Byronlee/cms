@@ -53,7 +53,7 @@ class Post < ActiveRecord::Base
   has_many :comments, as: :commentable, dependent: :destroy
 
   after_save :update_today_lastest_cache, :update_hot_posts_cache, :update_info_flows_cache, :update_new_posts_cache, :check_head_line_cache, :update_excellent_comments_cache
-  after_destroy :update_today_lastest_cache, :update_hot_posts_cache, :update_info_flows_cache, :update_new_posts_cache, :check_head_line_cache, :update_excellent_comments_cache
+  after_destroy :update_today_lastest_cache, :update_hot_posts_cache, :update_info_flows_cache, :update_new_posts_cache, :check_head_line_cache_for_destroy, :update_excellent_comments_cache
   before_create :generate_key
   after_create :generate_url_code
 
@@ -144,8 +144,15 @@ class Post < ActiveRecord::Base
   def check_head_line_cache
     return true if self.published?
     HeadLine.all.each do |head_line|
-      logger.info "#{head_line.url}  =>  #{self.get_access_url}"
-      next if head_line.url != self.get_access_url || head_line.url_code != url_code
+      next if head_line.url_code != url_code
+      head_line.destroy
+    end
+    true
+  end
+
+   def check_head_line_cache_for_destroy
+    HeadLine.all.each do |head_line|
+      next if head_line.url_code != url_code
       head_line.destroy
     end
     true
