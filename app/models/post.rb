@@ -138,7 +138,7 @@ class Post < ActiveRecord::Base
   end
 
   def generate_url_code
-    self.update(url_code: (self.id + Settings.url_code_begin )) if self.url_code.blank?
+    self.update(url_code: (self.id + 33_000)) if self.url_code.blank?
   end
 
   def check_head_line_cache
