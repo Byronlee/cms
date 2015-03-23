@@ -55,7 +55,7 @@ class PostsController < ApplicationController
     if(views_count.next % Settings.post_views_count_cache == 0)
       logger.info 'sync the views count from redis cache to postgres'
       # PostViewsCountComponentWorker.perform_async(params[:id])
-      PostViewsCountComponentWorker.new.perform(params[:id])
+      # PostViewsCountComponentWorker.new.perform(params[:id])
     end
     render :json => { :success => 'true' }.to_json
   end
