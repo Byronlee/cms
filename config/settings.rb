@@ -1,4 +1,4 @@
-settings.site = 'https://test.36kr.com'
+settings.site = 'https://36kr.com'
 settings.writer = {
   host: 'http://writer.36kr.com/posts/new'
 }
