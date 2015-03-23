@@ -25,6 +25,7 @@ gem 'redis-stat'
 gem 'typhoeus'
 gem 'newrelic-redis'
 gem 'sidekiq', '~> 3.1.2'
+gem 'sidekiq-failures'
 gem 'faraday', '~> 0.9.0'
 gem 'ruby-progressbar', "~> 1.7.1"
 

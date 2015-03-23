@@ -8,7 +8,6 @@ fetch(:linked_files).concat %w{
   config/newrelic.yml
   config/settings.rb
   config/secrets.yml
-  config/initializers/swagger.rb
 }
 
 fetch(:linked_dirs).concat %w{
