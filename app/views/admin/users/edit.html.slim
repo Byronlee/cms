@@ -13,6 +13,10 @@
         = f.label :role
         div.controls
           = f.select :role, User.role.options
+      = f.input :name, disabled: true, input_html: {value: @user.display_name }
+      = f.input :email, disabled: true
+      = f.input :phone, disabled: true
+      = f.input :tagline, disabled: true
       div.form-actions
         = f.button :submit, data: { disable_with: "Submitting..." }, class:"btn btn-primary"
 
