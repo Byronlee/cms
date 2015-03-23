@@ -47,6 +47,13 @@ ul.nav.nav-pills.nav-stacked
     li.border_bottom class=nav_active(:ads, @controller_name)
       a href=admin_ads_path
         span  广告位管理
+  - if can? :manage, :sidekiq
+    p
+      i.fa.fa-wrench
+      span 工具
+      li.border_bottom
+        a target='_blank' href= admin_sidekiq_web_path
+          span  Sidekiq
   p
     i.fa.fa-cog
     span 设置
