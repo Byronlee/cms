@@ -28,6 +28,7 @@ class Comment < ActiveRecord::Base
   validates :content, length: { maximum: 3_000 }
 
   belongs_to :commentable, :polymorphic => true, counter_cache: true
+  belongs_to :post, -> { where(comments: {commentable_type: 'Post'}) }, foreign_key: 'commentable_id'
   belongs_to :user
 
   before_save :set_is_long_attribute
@@ -41,7 +42,7 @@ class Comment < ActiveRecord::Base
     .order('char_length(content) desc')
   }
   # scope :excellent, -> { where(is_excellent: true, state:[:published, :prepublished]) }
-  scope :excellent, -> { where(is_excellent: true) }
+  scope :excellent, -> { includes(:post).where(posts: {state: :published}, is_excellent: true) }
   scope :normal, -> {
     where(is_excellent: [false, nil], state:[:published, :prepublished])
     .where_values.reduce(:and)
@@ -90,7 +91,7 @@ class Comment < ActiveRecord::Base
   def update_excellent_comments_cache
     logger.info 'perform the worker to update excellent comments cache'
     # logger.info ExcellentCommentsComponentWorker.perform_async
-    logger.info ExcellentCommentsComponentWorker.new.perform_async
+    logger.info ExcellentCommentsComponentWorker.new.perform
     true
   end
 end

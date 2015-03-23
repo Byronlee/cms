@@ -1,6 +1,6 @@
 class ExcellentCommentsComponentWorker < BaseWorker
   def perform
-    comments = Comment.excellent.order('created_at desc').limit(6)
+    comments = Comment.excellent.order('comments.created_at desc').limit(6)
     Redis::HashKey.new('comments')['excellent'] =
       comments.to_json(
         :include => {
