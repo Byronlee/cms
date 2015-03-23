@@ -3,18 +3,18 @@ class Admin::PostsController < Admin::BaseController
 
   def index
     return column if params[:column_id].present?
-    @posts = Post.published.order('updated_at desc').includes(:author, :column).page params[:page]
+    @posts = Post.published.order('id desc').includes(:author, :column).page params[:page]
   end
 
   def column
     @column = Column.find(params[:column_id])
-    @posts = @column.posts.published.order('updated_at desc').includes(:author, :column).page params[:page]
+    @posts = @column.posts.published.order('id desc').includes(:author, :column).page params[:page]
     render 'column'
   end
 
   def reviewings
     @posts = Column.find(params[:column_id]).posts.reviewing rescue Post
-    @posts = @posts.reviewing.order('updated_at desc').includes(:author, :column).page params[:page]
+    @posts = @posts.reviewing.order('id desc').includes(:author, :column).page params[:page]
   end
 
   def update

@@ -97,6 +97,9 @@
                 <section>
                   <ul class="dropdown-menu">
                     <li>
+                      <%= link_to "撰写文章", 'http://writer.36kr.com', :target => "_blank" if can? :new, Post %>
+                    </li>
+                    <li>
                       <%= link_to "后台管理", admin_dashboard_index_path, :target => "_blank" if can? :read, :dashboard %>
                     </li>
                     <li class="last">
