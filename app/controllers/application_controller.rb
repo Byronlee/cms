@@ -25,11 +25,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def current_ability
-    # I am sure there is a slicker way to capture the controller namespace
+  def controller_namespace
     controller_name_segments = params[:controller].split('/')
     controller_name_segments.pop
-    controller_namespace = controller_name_segments.join('/').camelize
+    controller_name_segments.join('/').camelize
+  end
+
+  def current_ability
     Ability.new(current_user, controller_namespace)
   end
 end

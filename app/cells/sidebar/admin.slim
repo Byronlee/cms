@@ -48,6 +48,14 @@ ul.nav.nav-pills.nav-stacked
     li class=nav_active(:ads, @controller_name)
       a href=admin_ads_path
         span  广告位管理
+  - if can? :manage, :sidekiq
+    .border_bottom
+    p
+      i.fa.fa-wrench
+      span 工具
+      li
+        a target='_blank' href= admin_sidekiq_web_path
+          span  Sidekiq
   .border_bottom
   p
 

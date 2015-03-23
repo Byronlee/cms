@@ -18,7 +18,9 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   namespace :admin, path: '/krypton' do
-    mount Sidekiq::Web => '/sidekiq'
+    authenticate :user, lambda { |u| Ability.new(u, 'Admin').can? :manage, :sidekiq } do
+      mount Sidekiq::Web => '/sidekiq'
+    end
     root to: redirect('/krypton/dashboard')
     resources :dashboard, :pages, :newsflashes
     resources :users, :ads
