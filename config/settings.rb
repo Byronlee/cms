@@ -2,6 +2,7 @@ settings.site = 'https://test.36kr.com'
 settings.writer = {
   host: 'http://writer.36kr.com/posts/new'
 }
+settings.url_code_begin = 33_000
 
 settings.oauth = {
   krypton: {
