@@ -41,7 +41,7 @@ ul.nav.nav-pills.nav-stacked
       a href=admin_info_flows_path
         span  信息流管理
   - if can? :read, Ad
-    .border_bottom
+    .deviler
     p
       i.fa.fa-volume-down
       span 推广
@@ -49,14 +49,14 @@ ul.nav.nav-pills.nav-stacked
       a href=admin_ads_path
         span  广告位管理
   - if can? :manage, :sidekiq
-    .border_bottom
+    .deviler
     p
       i.fa.fa-wrench
       span 工具
       li
         a target='_blank' href= admin_sidekiq_web_path
           span  Sidekiq
-  .border_bottom
+  .deviler
   p
 
     i.fa.fa-cog
