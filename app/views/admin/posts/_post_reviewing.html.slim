@@ -17,7 +17,7 @@ tr
       a title="预览" target="_new" href= preview_post_by_key_path(key: post.key )
         i.fa.fa-eye
     - if can? :edit, post
-      a title="编辑" href= "http://writer.36kr.com/posts/#{post.id}/#{post.key}/"
+      a title="编辑" target="_blank" href= "http://writer.36kr.com/posts/#{post.id}/#{post.key}/"
         i.fa.fa-pencil
     - if can? :destroy, :post
       a title="删除" data-method="delete" data-confirm="确定删除文章 #{raw(post.title)} ？" href= admin_post_url(post)
