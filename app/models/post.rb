@@ -144,6 +144,7 @@ class Post < ActiveRecord::Base
   def check_head_line_cache
     return true if self.published?
     HeadLine.all.each do |head_line|
+      logger.info "#{head_line.url}  =>  #{self.get_access_url}"
       next if head_line.url != self.get_access_url || head_line.url_code != url_code
       head_line.destroy
     end
