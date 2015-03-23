@@ -24,6 +24,7 @@ class Ability
     can :read, :dashboard
     can [:read, :create], Newsflash
     can :manage, Newsflash, :user_id => user.id
+    can :new, Post
   end
 
   # 运营
