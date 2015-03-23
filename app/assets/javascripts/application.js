@@ -32,7 +32,7 @@ $(document).ready(function(){
 });
 
 function message(data){
-  $.get("users/messages", {data: data}, function(html){
+  $.get("/users/messages", {data: data}, function(html){
     $("li.notice").html(html)
   })
 }
