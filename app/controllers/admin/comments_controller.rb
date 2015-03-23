@@ -3,9 +3,9 @@ class Admin::CommentsController < Admin::BaseController
 
   def index
     if @commentable = find_commentable
-      @comments = @commentable.comments.accessible_by(current_ability).order("created_at desc").page params[:page]
+      @comments = @commentable.comments.accessible_by(current_ability).order("id desc").page params[:page]
     else
-      @comments = Comment.accessible_by(current_ability).order("created_at desc").page params[:page]
+      @comments = Comment.accessible_by(current_ability).order("id desc").page params[:page]
     end
   end
 
