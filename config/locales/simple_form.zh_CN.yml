@@ -10,7 +10,7 @@ zh-CN:
     labels:
       post:
         title: '文章标题'
-        title_link: '标题连接'
+        title_link: '标题链接'
         slug: '文章短标题'
         summary: '文章摘要'
         content: '文章内容'
@@ -56,7 +56,7 @@ zh-CN:
     placeholders:
       post:
         title: '请输入40字以内的文章标题'
-        title_link: '请输入文章标题连接'
+        title_link: '站内文章无需填写'
         slug: '请输入14字以内的文章短标题'
         summary: '请输入40字以内的文章摘要'
         content: '请输入1万字以内的文章内容'
