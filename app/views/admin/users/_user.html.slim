@@ -9,7 +9,9 @@ tr
   td = user.sign_in_count
   td = user.last_sign_in_at
   td = user.last_sign_in_ip
-  th
+  td
     - if can? :edit, user
       a title="编辑" href= edit_admin_user_path(user)
         i.fa.fa-pencil
+  td.avatar.text_center = image_tag avatar_url(user.try(:avatar))
+
