@@ -29,7 +29,7 @@ class ::V1::Base < Grape::API
   end
 
   before do
-    error!("401 Unauthorized", 401) unless authenticated
+    error!("401 Unauthorized", 401) unless authenticated || options[:for] == V1::Controllers::UC
   end
 
   helpers ::V1::Helpers
@@ -39,6 +39,7 @@ class ::V1::Base < Grape::API
   mount ::V1::Controllers::Columns
   mount ::V1::Controllers::Comments
   mount ::V1::Controllers::HeadLines
+  mount ::V1::Controllers::UC
 
   add_swagger_documentation(
     api_version: 'v1', mount_path: 'swagger_doc',
