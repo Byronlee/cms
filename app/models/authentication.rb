@@ -15,6 +15,8 @@ class Authentication < ActiveRecord::Base
   belongs_to :user
   store :raw, accessors: [ :info ], coder: JSON
 
+  validates_uniqueness_of :provider, scope: :user_id
+
   def omniauth= omniauth
     self.provider = omniauth['provider']
     self.uid = omniauth['uid']
