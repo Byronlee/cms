@@ -62,7 +62,7 @@ class Post < ActiveRecord::Base
   }
   scope :reviewing, ->{ where(:state => :reviewing)}
   scope :published, ->{ where(:state => :published)}
-  scope :hot_posts, -> { order('views_count desc, created_at desc') }
+  scope :hot_posts, -> { order('id desc, views_count desc') }
 
   acts_as_taggable
 
