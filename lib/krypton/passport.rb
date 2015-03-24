@@ -13,7 +13,8 @@ class Krypton::Passport
 
   class << self
     include Rails.application.routes.url_helpers
-    def invite(email)
+
+    def invite(email, options = {})
       access_token.post("/api/v1/users/invite", params: {
         email: email,
         redirect_uri: Settings.site,
@@ -21,7 +22,7 @@ class Krypton::Passport
           subject: Settings.users.invitation.subject,
           body: Settings.users.invitation.body,
         }
-      }).parsed
+      }.merge(options)).parsed
       true
     rescue OAuth2::Error => e
       case e.response.status
