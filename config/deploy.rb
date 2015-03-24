@@ -15,7 +15,6 @@ set :linked_files, %w{
   config/database.yml
   config/redis.yml
   config/sidekiq.yml
-  config/newrelic.yml
   config/settings.rb
   config/secrets.yml
 }
