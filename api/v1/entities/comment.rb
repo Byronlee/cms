@@ -16,7 +16,7 @@ module V1
     class Comment < Grape::Entity
       format_with(:iso8601) {|t| t.iso8601 if t }
       expose :id          , documentation: 'not null, primary key'
-      expose :content     , documentation: '内容'
+      expose :content, as: :body, documentation: '内容'
 #      expose :user_id     , documentation: '用户'
       expose :user, using: Entities::User, documentation: '用户'
       expose :created_at  , documentation: ''
