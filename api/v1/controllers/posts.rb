@@ -7,7 +7,7 @@ module V1
       STATE = ['publish', 'draft', 'archived', 'login']
 
       desc 'Posts Feature'
-      resource :posts do
+      resource :topics do
 
         # Get all posts list
         # params[:page]
@@ -17,16 +17,36 @@ module V1
         #   /api/v1/posts?state=&page=1&per_page=15
         desc 'get all posts list'
         params do
+          optional :state,  type: String, default: 'published', desc: '文章状态'
           optional :page,  type: Integer, default: 1, desc: '页数'
           optional :per_page,  type: Integer, default: 30, desc: '每页记录数'
 #          optional :state,  type: String, values: STATE, default: 'publish', desc: '状态'
         end
-        get 'index' do
+        get do
           @posts = Post.all.order(created_at: :desc)
           @posts = Post.where(state: params[:state])
             .order(created_at: :desc) if STATE.include?(params[:state])
           @posts = @posts.page(params[:page]).per(params[:per_page])
           present @posts, with: Entities::Post
+        end
+
+        desc 'Get feature list'
+        get 'feature' do
+          @head_lines = HeadLine.all.order(created_at: :desc)
+            .page(params[:page]).per(params[:per_page])
+          present @head_lines, with: Entities::HeadLine
+        end
+
+        desc 'category'
+        params do
+          optional :page,  type: Integer, default: 1, desc: '页数'
+          optional :per_page,  type: Integer, default: 30, desc: '每页记录数'
+        end
+        get 'category/:tags' do
+          category = Column.find_by_slug params[:tags]
+          posts = category.posts.order(created_at: :desc)
+            .page(params[:page]).per(params[:per_page])
+          present posts, with: Entities::Post
         end
 
         # Get id posts list

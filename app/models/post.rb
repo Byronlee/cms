@@ -96,6 +96,10 @@ class Post < ActiveRecord::Base
     comments_count
   end
 
+  def column_name
+    column.name
+  end
+
   private
 
   def update_today_lastest_cache

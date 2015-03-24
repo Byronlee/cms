@@ -17,6 +17,7 @@ module V2
         #   /api/v1/posts?state=&page=1&per_page=15
         desc 'get all posts list'
         params do
+          optional :state,  type: String, default: 'published', desc: '文章状态'
           optional :page,  type: Integer, default: 1, desc: '页数'
           optional :per_page,  type: Integer, default: 30, desc: '每页记录数'
 #          optional :state,  type: String, values: STATE, default: 'publish', desc: '状态'

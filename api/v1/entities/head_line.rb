@@ -7,7 +7,7 @@ module V1
       expose :title
       expose :url_code
       expose :post_type
-      expose :image
+      expose :image, as: :feature_img
       expose :order_num
       expose :created_at
       expose :updated_at
