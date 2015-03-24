@@ -1,5 +1,6 @@
-set :scm, :git
-set :repo_url, "git@github.com:x36kr/36krx2015.git"
+#set :branch, 'staging'
+ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
+
 set :deploy_to, -> { "/home/vagrant/apps/krypton" }
 set :user, 'vagrant'
 set :use_sudo, true
