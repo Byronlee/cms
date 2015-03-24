@@ -1,3 +1,4 @@
+= render 'welcome/title', title: @column.try(:name)
 = render 'welcome/canonical', :raw_url => "http://www.36kr.com/category/#{@column.try(:slug)}"
 
 .main
