@@ -10,7 +10,7 @@ module V1
       expose :title_link , documentation: '标题链接'
       expose :column_id, as: :node_id  , documentation: '专栏编号'
       expose :column_name, as: :node_name  , documentation: '专栏编号'
-      expose :comments_counts, as: :replies_count
+      expose :comments_counts, as: :replies_count , documentation: '评论计数'
       expose :tag_list, as: :tags
       expose :must_read  , documentation: '必读文章'
       expose :slug       , documentation: 'url别名-暂不用'
@@ -21,7 +21,6 @@ module V1
       expose :author, as: :user, using: Entities::User, documentation: '用户'
       expose :url_code   , documentation: '兼容旧站文章id'
       expose :source     , documentation: '来源'
-      expose :comments_count , documentation: '评论计数'
       expose :views_count    , documentation: '来源计数'
       expose :catch_title    , documentation: '短标题'
       expose :key            , documentation: 'writer使用'
