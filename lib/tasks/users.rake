@@ -10,9 +10,13 @@ namespace :users do
     puts "共需邀请 #{total_count} 位用户"
     succesed = failed = 0
     progressbar = ProgressBar.create total: total_count
+
+    invitation_options = {}
+    invitation_options[:skip_invitation] = true if ENV["skip_invitation"] == "true"
+
     conditions.find_each do |user|
       progressbar.increment
-      if Krypton::Passport.invite(user.email)
+      if Krypton::Passport.invite(user.email, invitation_options)
         succesed += 1
         user.update krypton_passport_invitation_sent_at: Time.now
       else
