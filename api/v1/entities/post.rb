@@ -19,6 +19,7 @@ module V1
       expose :cover_real_url, as: :feature_img , documentation: '封面图片'
       expose :user_id    , documentation: '用户'
       expose :author, as: :user, using: Entities::User, documentation: '用户'
+      expose :comments, as: :replies, using: Entities::Comment, documentation: '评论'
       expose :url_code   , documentation: '兼容旧站文章id'
       expose :source     , documentation: '来源'
       expose :views_count    , documentation: '来源计数'
