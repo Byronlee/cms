@@ -3,9 +3,9 @@
 # .NET, PHP, Python and Node applications with deep visibility and low
 # overhead.  For more information, visit www.newrelic.com.
 #
-# Generated January 20, 2015
+# Generated March 24, 2015
 #
-# This configuration file is custom generated for NOON
+# This configuration file is custom generated for 36Kr
 
 
 # Here are the settings that are common to all environments
@@ -15,7 +15,7 @@ common: &default_settings
   # You must specify the license key associated with your New Relic
   # account.  This key binds your Agent's data to your account in the
   # New Relic service.
-  license_key: 'db2e3c815ced218abbd1861d6b02fbe1d604adac'
+  license_key: '5e1a0af2659051f7ceefbf5e4c70704ff4401837'
 
   # Agent Enabled (Ruby/Rails Only)
   # Use this setting to force the agent to run or not run.
@@ -49,7 +49,7 @@ common: &default_settings
   # See https://newrelic.com/docs/site/renaming-applications for more details
   # on renaming your New Relic applications.
   #
-  app_name: 36krx2015
+  app_name: krx
 
   # When "true", the agent collects performance data about your
   # application and reports this data to the New Relic service at
@@ -192,7 +192,7 @@ development:
   <<: *default_settings
   # Turn on communication to New Relic service in development mode
   monitor_mode: true
-  app_name: 36krx2015(Development)
+  app_name: krx-dev
 
   # Rails Only - when running in Developer Mode, the New Relic Agent will
   # present performance information on the last 100 transactions you have
@@ -221,4 +221,4 @@ production:
 staging:
   <<: *default_settings
   monitor_mode: true
-  app_name: 36krx2015(Staging)
+  app_name: krx-staging

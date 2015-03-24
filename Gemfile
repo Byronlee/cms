@@ -23,6 +23,7 @@ gem 'redis-objects', '~> 1.0.1'
 gem 'redis-namespace', "~> 1.5.1"
 gem 'redis-stat'
 gem 'typhoeus'
+gem 'newrelic_rpm'
 gem 'newrelic-redis'
 gem 'sidekiq', '~> 3.1.2'
 gem 'sidekiq-failures'
@@ -62,7 +63,6 @@ gem 'devise', "~> 3.4.1"
 gem 'devise-async' , "~> 0.9.0"
 gem "responders"
 gem 'omniauth-oauth2'
-gem 'newrelic_rpm'
 gem 'slack-notifier'
 gem 'exception_notification'
 gem 'httparty'
