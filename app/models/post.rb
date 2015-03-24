@@ -52,8 +52,11 @@ class Post < ActiveRecord::Base
   belongs_to :author, class_name: User.to_s, foreign_key: 'user_id'
   has_many :comments, as: :commentable, dependent: :destroy
 
-  after_save :update_today_lastest_cache, :update_hot_posts_cache, :update_info_flows_cache, :update_new_posts_cache, :check_head_line_cache, :update_excellent_comments_cache
-  after_destroy :update_today_lastest_cache, :update_hot_posts_cache, :update_info_flows_cache, :update_new_posts_cache, :check_head_line_cache_for_destroy, :update_excellent_comments_cache
+  after_save :update_today_lastest_cache, :update_hot_posts_cache, :update_info_flows_cache,
+             :update_new_posts_cache, :check_head_line_cache, :update_excellent_comments_cache,
+             :auto_generate_summary
+  after_destroy :update_today_lastest_cache, :update_hot_posts_cache, :update_info_flows_cache,
+                :update_new_posts_cache, :check_head_line_cache_for_destroy, :update_excellent_comments_cache
   before_create :generate_key
   after_create :generate_url_code
 
@@ -124,11 +127,6 @@ class Post < ActiveRecord::Base
     true
   end
 
-  # def update_weekly_hot
-  #   logger.info 'perform the worker to update weekly newest cache'
-  #   logger.info WeeklyHotPostsComponentWorker.perform_async(column_id)
-  # end
-
   def update_info_flows_cache
     self.column && self.column.info_flows.each do |info_flow|
       info_flow.update_info_flows_cache
@@ -167,5 +165,8 @@ class Post < ActiveRecord::Base
     # logger.info ExcellentCommentsComponentWorker.perform_async
     logger.info ExcellentCommentsComponentWorker.new.perform
     true
+  end
+
+  def auto_generate_summary
   end
 end
