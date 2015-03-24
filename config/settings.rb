@@ -11,7 +11,7 @@ settings.oauth = {
     host: 'https://passport.36kr.com',
     cookie: {
       name: 'krid_user_version',
-      domain: '36kr.com'
+      domain: '.36kr.com'
     }
   }
 }
