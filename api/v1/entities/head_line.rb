@@ -9,6 +9,7 @@ module V1
       expose :post_type
       expose :image, as: :feature_img
       expose :order_num
+      expose :replies_count
       expose :created_at
       expose :updated_at
       end

@@ -26,6 +26,10 @@ class HeadLine < ActiveRecord::Base
   after_destroy :fetch_remote_metas
   after_save :fetch_remote_metas
 
+  def replies_count
+    0
+  end
+
   private
 
   def fetch_remote_metas
