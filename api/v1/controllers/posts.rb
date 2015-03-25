@@ -4,7 +4,7 @@ module V1
       KEYS = [:id, :title, :created_at, :updated_at, :summary, :content,:title_link,
         :must_read, :slug, :state, :draft_key, :cover, :user_id, :source,
         :column_id, :remark]
-      STATE = ['publish', 'draft', 'archived', 'login']
+      STATE = ['published', 'draft', 'archived', 'login']
 
       desc 'Posts Feature'
       resource :topics do
