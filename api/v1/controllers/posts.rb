@@ -78,7 +78,8 @@ module V1
         #   /api/v1/posts/:id
         desc 'get post detail'
         get ":id" do
-          @post = Post.find(params[:id])
+          @post = Post.where(url_code: params[:id]).first
+          #@post = Post.find(params[:id])
           #error!("Post not found", 404) if @post.blank?
           present @post, with: Entities::Post
         end
