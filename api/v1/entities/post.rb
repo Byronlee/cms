@@ -2,7 +2,8 @@ module V1
   module Entities
     class Post < Grape::Entity
       format_with(:iso8601) {|t| t.iso8601 if t }
-      expose :id         , documentation: 'not null, primary key'
+      expose :url_code, as: :id   , documentation: '兼容旧站文章id'
+      expose :id, as: :code, documentation: 'not null, primary key'
       expose :title      , documentation: '标题'
       expose :summary, as: :excerpt, documentation: '摘要'
       expose :content, as: :body_html , documentation: '内容'
@@ -20,7 +21,6 @@ module V1
       expose :user_id    , documentation: '用户'
       expose :author, as: :user, using: Entities::User, documentation: '用户'
       expose :comments, as: :replies, using: Entities::Comment, documentation: '评论'
-      expose :url_code   , documentation: '兼容旧站文章id'
       expose :source     , documentation: '来源'
       expose :views_count    , documentation: '来源计数'
       expose :catch_title    , documentation: '短标题'
