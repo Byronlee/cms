@@ -15,7 +15,8 @@ module PostsHelper
 
   def sanitize_tags(text)
     tags = %w(a p br hr i em strong iframe embed img h1 h2 h3 h4 h5)
-    sanitize(text, tags: tags, attributes: %w(href ref target src title alt))
+    attributes = %w(href ref target src title alt width height frameborder allowfullscreen)
+    sanitize(text, tags: tags, attributes: attributes)
   end
 
 end
