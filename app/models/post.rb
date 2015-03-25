@@ -76,6 +76,9 @@ class Post < ActiveRecord::Base
 
     event :publish do
       transitions :from => [:reviewing], :to => :published
+      after do
+        self.published_at = Time.now
+      end
     end
 
     event :undo_publish do

@@ -1,6 +1,6 @@
 class TodayLastestComponentWorker < BaseWorker
   def perform
-    posts = Post.today.published.order('created_at desc').limit(6)
+    posts = Post.today.published.order('published_at desc').limit(6)
     posts_count = Post.today.published.count
     Redis::HashKey.new('posts')['today_lastest'] =
      [

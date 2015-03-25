@@ -20,7 +20,7 @@ class InfoFlow < ActiveRecord::Base
   after_destroy :destroy_info_flows_cache
 
   def posts_with_ads(page_num)
-    posts = Post.where(:column_id => columns).published.includes(:author, :column).order('created_at desc').page(page_num).per(30)
+    posts = Post.where(:column_id => columns).published.includes(:author, :column).order('published_at desc').page(page_num).per(30)
     posts_with_associations = get_associations_of(posts)
     ads = get_ads_with_period_of posts
     flow = mix_posts_and_ads posts_with_associations, ads
