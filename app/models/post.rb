@@ -42,6 +42,7 @@ class Post < ActiveRecord::Base
 
   validates_presence_of :title, :content
   validates_uniqueness_of :title, :content, :url_code
+  validates_presence_of :published_at, if: -> { self.state == "published" }
   # validates_presence_of :summary, :slug, if: -> { persisted? }
 
   # validates :slug,    length: { maximum: 14 }
