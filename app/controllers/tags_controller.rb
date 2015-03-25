@@ -3,7 +3,7 @@ class TagsController < ApplicationController
     @tag = params[:tag]
     @posts = Post.published
       .tagged_with(params[:tag])
-      .order('created_at desc')
+      .order('published_at desc')
       .includes(:column, author:[:krypton_authentication])
       .page(params[:page]).per(15)
 

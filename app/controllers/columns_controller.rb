@@ -6,7 +6,7 @@ class ColumnsController < ApplicationController
     @column = Column.find_by_slug(params[:slug])
     if @column
       @posts = @column.posts.published
-        .order('created_at desc')
+        .order('published_at desc')
         .includes(:column, author:[:krypton_authentication])
         .page(params[:page]).per(15)
       @weekly_hot_posts = @column.posts.by_week.order('views_count desc').limit 15
