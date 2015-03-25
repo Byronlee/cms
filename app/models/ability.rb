@@ -9,6 +9,7 @@ class Ability
         can :get_comments_count, Post
       end
     end
+    can [:edit, :update], User, :id => user.id if user
     can :preview, Post
     send user.role.to_sym, user if user
   end

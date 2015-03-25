@@ -1,8 +1,9 @@
 ul.nav.nav-pills.nav-stacked
   /id="#{controller_name}"
-  p
-    i.fa.fa-bars
-    span 管理
+  - if @current_user.role!="reader"
+    p
+      i.fa.fa-bars
+      span 管理
   - if can? :read, HeadLine
     li class=nav_active(:head_lines, @controller_name)
       a href=admin_head_lines_path
@@ -29,7 +30,7 @@ ul.nav.nav-pills.nav-stacked
       a href=admin_columns_path
         span  专栏管理
   - if can? :read, User
-    li class=nav_active(:users, @controller_name)
+    li class=nav_active(:users_index, (@controller_name+"_"+@action_name).to_sym)
       a href=admin_users_path
         span  用户管理
   - if can? :read, Page
@@ -56,11 +57,11 @@ ul.nav.nav-pills.nav-stacked
       li
         a target='_blank' href= admin_sidekiq_web_path
           span  Sidekiq
-  .deviler
+  - if @current_user.role!="reader"
+    .deviler
   p
-
     i.fa.fa-cog
     span 设置
-    li#nav_users
-      a href="javascript:void(0)"
-        span  帐号设置
+  li class=nav_active(:users_edit,(@controller_name+"_"+@action_name).to_sym)
+    a href=edit_admin_user_path(@current_user)
+      span  帐号设置

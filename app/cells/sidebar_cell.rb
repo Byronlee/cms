@@ -56,6 +56,8 @@ class SidebarCell < Cell::Rails
 
   def admin args
     @controller_name = args[:controller_name]
+    @current_user = args[:current_user]
+    @action_name = args[:action_name]
     render
   end
 end

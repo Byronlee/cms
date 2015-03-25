@@ -7,12 +7,16 @@ class Admin::UsersController < Admin::BaseController
 
   def update
     @user.update(user_params)
-    respond_with @user, location: admin_users_path
+    ok_url = (can? :manage, User) ? admin_users_path : edit_admin_user_path(@user)
+    respond_with @user, location: ok_url
+  end
+
+  def edit
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:role) if params[:user]
+    params.require(:user).permit(:role, :name, :email, :phone, :tagline) if params[:user]
   end
 end

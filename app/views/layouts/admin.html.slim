@@ -30,7 +30,7 @@ html lang="en"
           = link_to "注销", destroy_user_session_path, method: :delete
     .container
       .col-lg-2.sidepanel.sidebar-nav
-        = render_cell :sidebar, :admin, controller_name: controller_name
+        = render_cell :sidebar, :admin, controller_name: controller_name, action_name: action_name, current_user: current_user
       .col-lg-10
         = yield
 

@@ -2,8 +2,6 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
 
-  get 'users/messages'
-
   get 'tags/show'
 
   mount API::API => '/'
@@ -16,6 +14,10 @@ Rails.application.routes.draw do
   }
 
   root 'welcome#index'
+
+  resources :users, only: [] do
+    get :messages, on: :collection
+  end
 
   namespace :admin, path: '/krypton' do
     authenticate :user, lambda { |u| Ability.new(u, 'Admin').can? :manage, :sidekiq } do

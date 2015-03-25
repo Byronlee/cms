@@ -54,6 +54,8 @@ class User < ActiveRecord::Base
   def apply_omniauth(omniauth)
     self.phone = omniauth['info']['phone'] if phone.blank?
     self.sso_id = omniauth['uid'] if sso_id.blank?
+    self.name = omniauth['info']['nickname'] if name.blank?
+    self.email = omniauth['info']['email'] if (email.blank?&omniauth['info']['email'].present?)
     authentications.build provider: omniauth['provider'], uid: omniauth['uid'],
       raw: omniauth.to_hash
   end
@@ -63,10 +65,11 @@ class User < ActiveRecord::Base
   end
 
   def display_name
+    return name if name.present?
     if krypton_authentication && krypton_authentication.info['name'].present?
       krypton_authentication.info['name']
     else
-      name.present? ? name : '匿名用户'
+      '匿名用户'
     end
   end
 

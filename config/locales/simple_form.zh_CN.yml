@@ -42,10 +42,13 @@ zh-CN:
         order_num: '权重'
       user:
         role: 角色
-        name: 用户名称
+        name: 用户昵称
         email: 邮件
         phone: 联系方式
         tagline: 一句话介绍自己
+        id: 用户ID
+        sso: 用户中心ID
+        sso_id: 用户中心ID
       comment:
         content: 评论内容
       ad:
