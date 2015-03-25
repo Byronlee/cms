@@ -271,13 +271,13 @@
 	}
 	@include media($desktop) {
 		display: inline-block;
-		margin-left: 30px;
+		/*margin-left: 30px;*//*commented by chad*/
 		margin-top: 18px;
 		padding: 0;
 		width: 200px;
 	}
 	@include media($largedesktop) {
-		margin-left: 60px;
+		/*margin-left: 60px;*//*commented by chad*/
 	}
 }
 
