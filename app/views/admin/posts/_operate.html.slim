@@ -10,6 +10,3 @@
 - if can? :undo_publish, post
   a title="撤销发布" data-method="post" data-confirm="确定撤销发布: #{raw(post.title)} ？" href=undo_publish_admin_post_path(post)
     i.fa.fa-power-off
-- if can? :destroy, post
-  a title="删除" data-method="delete" data-confirm="确定删除文章 #{raw(post.title)} ？" href= admin_post_url(post)
-    i.fa.fa-remove
