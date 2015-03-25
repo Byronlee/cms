@@ -37,8 +37,8 @@ class User < ActiveRecord::Base
     :omniauth_providers => [:krypton]
   enumerize :role, :in => Settings.roles, :default => :reader, :methods => true, :scopes => :shallow
 
-  validates :phone, presence: true, uniqueness: true, allow_blank: -> { email.present? }
-  validates :email, presence: true, uniqueness: true, allow_blank: -> { phone.present? }
+  validates :phone, uniqueness: true, allow_blank: -> { email.present? }
+  validates :email, uniqueness: true, allow_blank: -> { phone.present? }
 
   has_many :authentications, dependent: :destroy
   has_one :krypton_authentication, -> { where(provider: :krypton) }, class_name: Authentication.to_s, dependent: :destroy
