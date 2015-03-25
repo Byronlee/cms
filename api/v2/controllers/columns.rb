@@ -6,11 +6,6 @@ module V2
       desc 'Columns Feature'
       resource :columns do
 
-        # Get all columns list
-        # params[:page]
-        # params[:per_page]: default is 30
-        # Example
-        # /api/v1/columnss?page=1&per_page=15
         desc 'get all columns list'
         params do
           optional :page,  type: Integer, default: 1, desc: '页数'
@@ -22,11 +17,6 @@ module V2
           present @columns, with: Entities::Column
         end
 
-        # Get columns detail
-        # params[:page]
-        # params[:per_page]: default is 30
-        # Example
-        # /api/v1/columns/1?page=1&per_page=15
         desc 'get post list for a column'
         params do
           optional :page,  type: Integer, default: 1, desc: '页数'
@@ -38,14 +28,6 @@ module V2
           present @posts, with: Entities::Post
         end
 
-
-        # Get id posts list
-        # params[:page]
-        # params[:per_page]: default is 30
-        # params[:action]: default('down') 'down', 'up'
-        # params[:state]: default(or empty) 'publish', 'draft', 'archived', 'login'
-        # Example
-        #   /api/v1/posts/:id/page?action=up&state=&page=1&per_page=15
         desc 'get post list by page'
         params do
           optional :page,  type: Integer, default: 1, desc: '页数'

@@ -7,7 +7,7 @@
     <% @weekly_hot_posts.each do |post| %>
       <li class="cf">
         <span>
-          <abbr class="timeago" title="<%= post.created_at %>"><%= post.created_at.strftime('%m/%d %H:%M') %></abbr>
+          <abbr class="timeago" title="<%= post.published_at %>"><%= post.created_at.strftime('%m/%d %H:%M') %></abbr>
         </span>
         <h1>
           <a href="<%= post_url post %>" title="<%= raw post.title %>"><%= raw post.title %></a>

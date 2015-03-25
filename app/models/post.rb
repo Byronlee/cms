@@ -33,6 +33,7 @@ class Post < ActiveRecord::Base
   include ActionView::Helpers::DateHelper
   include Rails.application.routes.url_helpers
   include ApplicationHelper
+  include PostsHelper
   include AASM
 
   by_star_field '"posts".created_at'
@@ -42,6 +43,7 @@ class Post < ActiveRecord::Base
 
   validates_presence_of :title, :content
   validates_uniqueness_of :title, :content, :url_code
+  validates_presence_of :published_at, if: -> { self.state == "published" }
   # validates_presence_of :summary, :slug, if: -> { persisted? }
 
   # validates :slug,    length: { maximum: 14 }
@@ -105,6 +107,10 @@ class Post < ActiveRecord::Base
 
   def column_name
     column.name
+  end
+
+  def sanitize_content
+    sanitize_tags(content)
   end
 
   private
