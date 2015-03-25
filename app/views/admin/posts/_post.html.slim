@@ -6,8 +6,8 @@ tr
   td.text_center = time_ago_in_words post.created_at
   td = display_state(post.state)
   td
-    span class='badge badge-warning'
-      = link_to post.comments_counts.to_i, admin_post_comments_path(post)
+    span class='label label-info'
+      = link_to post.comments_counts.to_i, admin_post_comments_path(post), style:"color:#fff;"
   td.text_center = post.views_count
   td
     - if can? :create, HeadLine

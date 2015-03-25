@@ -1,8 +1,8 @@
 tr
   td = post.id
-  td[title=raw(post.title) data-toggle='tooltip'] = link_to raw(truncate(post.title, length:23)), preview_post_by_key_path(key: post.key), target:'_new'
+  td[title=raw(post.title) data-toggle='tooltip'] = link_to raw(truncate(post.title, length:23)), post_url(post), target:'_new'
   td[title=post.column.try(:name) data-toggle='tooltip']
-   = link_to raw('<i class="fa fa-folder"></i>'), reviewings_admin_column_posts_path(post.column)
+   = link_to raw('<i class="fa fa-folder"></i>'), admin_column_posts_path(post.column)
   td.text_center = time_ago_in_words post.created_at
   td = display_state(post.state)
   td
@@ -10,5 +10,10 @@ tr
       = link_to post.comments_counts.to_i, admin_post_comments_path(post), style:"color:#fff;"
   td.text_center = post.views_count
   td
-    = render 'operate_reviewing', post:post
+    - if post.published?
+      = render 'operate', post:post
+    - elsif post.reviewing?
+      = render 'operate_reviewing', post:post
+    - else
+      |&nbsp;
   td.avatar.text_center[title=post.author.try(:display_name) data-toggle='tooltip'] = image_tag avatar_url(post.author.try(:avatar))
