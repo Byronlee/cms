@@ -6,7 +6,7 @@ set :notification_url, "https://hooks.slack.com/services/T024GQT7G/B038J5B03/uk2
 namespace :notification do
   task :started do
     deployer = `git config user.name`.chomp
-    text = "#{deployer} is deploying #{fetch(:application)}"
+    text = "#{deployer} is deploying #{fetch(:application)}:#{fetch(:stage)}"
     Faraday.post fetch(:notification_url), {
       payload: JSON.generate({ text: text })
     }
@@ -14,7 +14,7 @@ namespace :notification do
 
   task :finished do
     deployer = `git config user.name`.chomp
-    text = "#{deployer} deployed #{fetch(:application)} successfully"
+    text = "#{deployer} deployed #{fetch(:application)}:#{fetch(:stage)} successfully"
     Faraday.post fetch(:notification_url), {
       payload: JSON.generate({ text: text })
     }
