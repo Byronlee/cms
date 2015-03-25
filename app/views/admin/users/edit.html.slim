@@ -20,7 +20,7 @@
       = f.input :phone
       = f.input :tagline
       = f.input :id, disabled: true
-      = f.input :sso_id, disabled: true
+      = f.input :sso_id, disabled: true, input_html: { value: @user.krypton_authentication.uid }
       div.form-actions
         = f.button :submit, data: { disable_with: "Submitting..." }, class:"btn btn-primary"
 
