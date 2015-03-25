@@ -1,13 +1,14 @@
 tr
-  td = post.id
-  td[title=raw(post.title) data-toggle='tooltip'] = link_to raw(truncate(post.title, length:23)), preview_post_by_key_path(key: post.key), target:'_new'
+  td = post.url_code
+  td[title=raw(post.title) data-toggle='tooltip'] = link_to raw(truncate(post.title, length:17)), preview_post_by_key_path(key: post.key), target:'_new'
   td[title=post.column.try(:name) data-toggle='tooltip']
-   = link_to raw('<i class="fa fa-folder"></i>'), reviewings_admin_column_posts_path(post.column)
-  td.text_center = time_ago_in_words post.created_at
+   = link_to post.column.try(:name), reviewings_admin_column_posts_path(post.column)
+  td.text_center[title=post.created_at data-toggle='tooltip']
+    = time_ago_in_words post.created_at
   td = display_state(post.state)
   td
-    span class='badge badge-warning'
-      = link_to post.comments_counts.to_i, admin_post_comments_path(post)
+    span class='label label-primary'
+      = link_to post.comments_counts.to_i, admin_post_comments_path(post), style:"color:#fff;"
   td.text_center = post.views_count
   td
     - if can? :do_publish, post
@@ -22,4 +23,8 @@ tr
     - if can? :destroy, :post
       a title="删除" data-method="delete" data-confirm="确定删除文章 #{raw(post.title)} ？" href= admin_post_url(post)
         i.fa.fa-times
-  td.avatar.text_center[title=post.author.try(:display_name) data-toggle='tooltip'] = image_tag avatar_url(post.author.try(:avatar))
+  td.avatar.text_center[title=post.author.try(:display_name) data-toggle='tooltip']
+    - if (can? :manage, User)&post.author.present?
+      = link_to image_tag(avatar_url(post.author.try(:avatar))), edit_admin_user_path(post.author)
+    - else
+      = image_tag avatar_url(post.author.try(:avatar))
