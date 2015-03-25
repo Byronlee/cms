@@ -5,7 +5,7 @@ module V1
       expose :url_code, as: :id   , documentation: '兼容旧站文章id'
       expose :title      , documentation: '标题'
       expose :summary, as: :excerpt, documentation: '摘要'
-      expose :content, as: :body_html , documentation: '内容'
+      expose :sanitize_content, as: :body_html , documentation: '内容'
       expose :md_content , documentation: 'markdown内容'
       expose :title_link , documentation: '标题链接'
       expose :column_id, as: :node_id  , documentation: '专栏编号'
