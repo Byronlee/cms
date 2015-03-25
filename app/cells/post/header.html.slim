@@ -5,5 +5,5 @@ section.single-post-header
     .single-post__postmeta
       a href="#" #{@post.author.try(:display_name)}
       |&nbsp;•&nbsp;
-      = smart_time_ago(@post.created_at)
+      = smart_time_ago(@post.published_at)
     h1.single-post__title = raw(@post.title)

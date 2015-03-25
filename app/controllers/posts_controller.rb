@@ -65,6 +65,6 @@ class PostsController < ApplicationController
   end
 
   def feed
-    @feeds = Post.order("id desc").limit(20)
+    @feeds = Post.order("published_at desc").limit(20)
   end
 end
