@@ -1,5 +1,5 @@
 tr
-  td = post.id
+  td = post.url_code
   td[title=raw(post.title) data-toggle='tooltip'] = link_to raw(truncate(post.title, length:23)), post_url(post), target:'_new'
   td[title=post.column.try(:name) data-toggle='tooltip']
    = link_to raw('<i class="fa fa-folder"></i>'), admin_column_posts_path(post.column)
