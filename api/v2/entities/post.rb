@@ -1,7 +1,7 @@
 module V2
   module Entities
     class Post < Grape::Entity
-      format_with(:iso8601) {|t| t.iso8601 if t }
+      format_with(:iso_timestamp) { |dt| dt.iso8601 }
       expose :id         , documentation: 'not null, primary key'
       expose :title      , documentation: '标题'
       expose :summary    , documentation: '摘要'
@@ -23,9 +23,11 @@ module V2
       expose :catch_title    , documentation: '短标题'
       expose :key            , documentation: 'writer使用'
       expose :remark         , documentation: 'writer备注'
-      expose :published_at   , documentation: ''
-      expose :created_at , documentation: ''
-      expose :updated_at , documentation: ''
+      with_options(format_with: :iso_timestamp) do
+        expose :published_at   , documentation: ''
+        expose :created_at , documentation: ''
+        expose :updated_at , documentation: ''
+      end
     end
   end
 end

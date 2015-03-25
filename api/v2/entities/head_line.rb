@@ -1,7 +1,7 @@
 module V2
   module Entities
     class HeadLine < Grape::Entity
-      format_with(:iso8601) {|t| t.iso8601 if t }
+      format_with(:iso_timestamp) { |dt| dt.iso8601 }
       expose :id
       expose :url
       expose :title
@@ -9,8 +9,10 @@ module V2
       expose :post_type
       expose :image
       expose :order_num
-      expose :created_at
-      expose :updated_at
+      with_options(format_with: :iso_timestamp) do
+        expose :created_at
+        expose :updated_at
       end
+    end
   end
 end
