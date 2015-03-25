@@ -18,7 +18,7 @@ module V1
         end
         get 'index' do
           @columns = Column.order(id: :desc)
-            .page(params[:page]).per(params[:per_page])
+          .page(params[:page]).per(params[:per_page])
           present @columns, with: Entities::Column
         end
 
@@ -34,7 +34,7 @@ module V1
         end
         get ':id' do
           @posts = Post.where('column_id = :id', id: params[:id])
-            .page(params[:page]).per(params[:per_page])
+          .page(params[:page]).per(params[:per_page])
           present @posts, with: Entities::Post
         end
 
@@ -55,11 +55,11 @@ module V1
         get ':cid/page/:pid' do
           post = Post.find(params[:pid])
           @posts = Post.where("column_id = :cid and created_at #{action params} :date",
-            cid: post.column_id, date: post.created_at).order(created_at: :desc)
+                              cid: post.column_id, date: post.created_at).order(created_at: :desc)
           #if @posts.blank?
           #  error!("Post not found", 404)
           #else
-            @posts = @posts.page(params[:page]).per(params[:per_page] || 30)
+          @posts = @posts.page(params[:page]).per(params[:per_page] || 30)
           #end
           present @posts, with: Entities::Post
         end

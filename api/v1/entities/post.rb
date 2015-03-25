@@ -3,7 +3,6 @@ module V1
     class Post < Grape::Entity
       format_with(:iso8601) {|t| t.iso8601 if t }
       expose :url_code, as: :id   , documentation: '兼容旧站文章id'
-      expose :id, as: :code, documentation: 'not null, primary key'
       expose :title      , documentation: '标题'
       expose :summary, as: :excerpt, documentation: '摘要'
       expose :content, as: :body_html , documentation: '内容'
