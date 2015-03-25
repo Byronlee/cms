@@ -27,5 +27,8 @@
         th style="width:3%" 作者
     tbody
       - @posts.each do |post|
-        = render partial: "post_myown", locals:{post:post}
+        - if post.published?
+          = render partial: "post", locals:{post:post}
+        - elsif post.reviewing?
+          = render partial: "post_reviewing", locals:{post:post}
   = paginate @posts
