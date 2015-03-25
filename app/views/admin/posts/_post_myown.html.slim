@@ -3,7 +3,8 @@ tr
   td[title=raw(post.title) data-toggle='tooltip'] = link_to raw(truncate(post.title, length:23)), post_url(post), target:'_new'
   td[title=post.column.try(:name) data-toggle='tooltip']
    = link_to post.column.try(:name), admin_column_posts_path(post.column)
-  td.text_center = time_ago_in_words post.created_at
+  td.text_center[title=post.created_at data-toggle='tooltip']
+    = time_ago_in_words post.created_at
   td = display_state(post.state)
   td
     span class='label label-info'
