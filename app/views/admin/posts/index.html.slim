@@ -4,15 +4,19 @@
     .toolbar.border_bottom.clearfix
       .pull-right
          span.page_info = page_entries_info @posts
-         = link_to raw("<i class='fa fa-plus'></i>&nbsp;&nbsp;创建文章"), Settings.writer.host, class:"btn btn-primary"
+         - if can? :new, Post
+           = link_to raw("<i class='fa fa-plus'></i>&nbsp;&nbsp;创建文章"), Settings.writer.host, class:"btn btn-primary"
     .pull-left
       ul
-        li
-          a href="#{myown_admin_posts_path}" 我的文章
-        li.active 发布管理
-        li
-          a href="#{reviewings_admin_posts_path}" 审查管理
-            (#{reviewings_count})
+        - if can? :myown, Post
+          li
+            a href="#{myown_admin_posts_path}" 我的文章
+        - if can? :read, Post
+          li.active 发布管理
+        - if can? :reviewings, Post
+          li
+            a href="#{reviewings_admin_posts_path}" 审查管理
+              (#{reviewings_count})
   table class="table"
     thead
       tr role="row"
