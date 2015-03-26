@@ -113,6 +113,19 @@ class Post < ActiveRecord::Base
     sanitize_tags(content)
   end
 
+  def self.today_lastest
+    posts_data = Redis::HashKey.new('posts')['today_lastest']
+    if posts_data.present?
+      hash_data = JSON.parse(posts_data)[0]
+      posts = hash_data["posts"]
+      posts_count = hash_data["posts_count"]
+    else
+      posts = []
+      posts_count = 0
+    end
+    { count: posts_count, posts: posts }
+  end
+
   private
 
   def update_today_lastest_cache

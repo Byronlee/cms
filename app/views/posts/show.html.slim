@@ -16,7 +16,7 @@
         = render_cell :comment, :new, post: @post, current_user: @current_user if @post.state == 'published'
         = render_cell :comment, :index, post: @post
   .aside
-    = render_cell :sidebar, :today
+    = render_cell :sidebar, :today, posts_today_lastest: @posts_today_lastest
     = render_cell :sidebar, :social
 
 .sidebar

@@ -14,5 +14,7 @@ class ColumnsController < ApplicationController
       @posts = []
       @weekly_hot_posts = []
     end
+
+    @posts_today_lastest = Post.today_lastest
   end
 end
