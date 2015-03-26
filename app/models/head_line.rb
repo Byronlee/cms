@@ -30,6 +30,10 @@ class HeadLine < ActiveRecord::Base
     0
   end
 
+  def excerpt
+    title
+  end
+
   private
 
   def fetch_remote_metas
