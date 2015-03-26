@@ -1,10 +1,10 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
-  def failure
-    Rails.logger.error "获取通行证授权失败，错误原因：#{failure_message}"
-    flash[:alert] = "很抱歉，由于某些原因导致登录失败，请稍后重试。"
-    redirect_to root_path
-  end
+  #def failure
+  #  Rails.logger.error "获取通行证授权失败，错误原因：#{failure_message}"
+  #  flash[:alert] = "很抱歉，由于某些原因导致登录失败，请稍后重试。"
+  #  redirect_to root_path
+  #end
 
   def krypton
     omniauth = request.env["omniauth.auth"]

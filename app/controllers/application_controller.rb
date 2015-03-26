@@ -1,6 +1,13 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
+  before_action do
+    unless cookies[:hot_cleared_at]
+      cookies.clear
+      cookies[:hot_cleared_at] = Time.now.iso8601
+    end
+  end
+
    prepend_before_filter :match_krid_online_status
    skip_before_filter :match_krid_online_status, if: -> { devise_controller? }
 
