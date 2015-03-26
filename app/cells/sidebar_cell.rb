@@ -50,7 +50,9 @@ class SidebarCell < Cell::Rails
     render
   end
 
-  def today
+  def today(args)
+    @posts_count = args[:posts_today_lastest][:count]
+    @posts = args[:posts_today_lastest][:posts]
     render
   end
 
