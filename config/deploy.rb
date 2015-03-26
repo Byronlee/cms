@@ -21,7 +21,7 @@ set :linked_files, %w{
 
 set :linked_dirs, %w{tmp/cache public/uploads}
 
-set :keep_releases, 5
+set :keep_releases, 15
 
 namespace :deploy do
 
