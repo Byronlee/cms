@@ -30,10 +30,6 @@ settings.next = {
 settings.roles =  [:reader, :operator, :writer, :editor, :admin, :contributor]
 settings.editable_roles =  [:operator, :writer, :editor, :admin]
 
-settings.cookie = {
-  domain: '.36kr.com'
-}
-
 settings.users = {
   invitation: {
     subject: '36氪：羊年 Duang 一下，我们给你准备好了更好的账号登录体验(需要您确认)',

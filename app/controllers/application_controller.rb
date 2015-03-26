@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_action do
     unless cookies[:hot_cleared_at]
       cookies.clear
-      cookies[:hot_cleared_at] = Time.now.iso8601
+      cookies[:hot_cleared_at] = { value: Time.now.iso8601, domain: :all }
     end
   end
 
