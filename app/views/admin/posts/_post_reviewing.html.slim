@@ -2,10 +2,7 @@ tr
   td = post.url_code
   td[title=raw(post.title) data-toggle='tooltip'] = link_to raw(truncate(post.title, length:17)), preview_post_by_key_path(key: post.key), target:'_new'
   td[title=post.column.try(:name) data-toggle='tooltip']
-    - if can? :read, Post
-      = link_to post.column.try(:name), reviewings_admin_column_posts_path(post.column)
-    - else
-      = post.column.try(:name)
+    = link_to post.column.try(:name), reviewings_admin_column_posts_path(post.column)
   td.text_center[title=post.created_at data-toggle='tooltip']
     = time_ago_in_words post.created_at
   td = display_state(post.state)
@@ -23,7 +20,7 @@ tr
     - if can? :edit, post
       a title="编辑" target="_blank" href= "http://writer.36kr.com/posts/#{post.id}/#{post.key}/"
         i.fa.fa-pencil
-    - if can? :destroy, :post
+    - if can? :destroy, post
       a title="删除" data-method="delete" data-confirm="确定删除文章 #{raw(post.title)} ？" href= admin_post_url(post)
         i.fa.fa-times
   td.avatar.text_center[title=post.author.try(:display_name) data-toggle='tooltip']

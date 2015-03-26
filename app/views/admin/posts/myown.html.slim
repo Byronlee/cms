@@ -12,10 +12,10 @@
           li.active 我的文章
         - if can? :read, Post
           li
-            a href="#{admin_posts_path}" 发布管理
+            a href="#{admin_posts_path}" 已发布
         - if can? :reviewings, Post
           li
-            a href="#{reviewings_admin_posts_path}" 审查管理
+            a href="#{reviewings_admin_posts_path}" 待审查
               (#{reviewings_count})
   table class="table"
     thead
