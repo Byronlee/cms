@@ -45,7 +45,7 @@ module V1
         end
         get 'category/:tags' do
           category = Column.find_by_slug params[:tags]
-          posts = category.posts.order(created_at: :desc)
+          posts = category.posts.published.order(created_at: :desc)
             .page(params[:page]).per(params[:per_page])
           present posts, with: Entities::Post
         end
