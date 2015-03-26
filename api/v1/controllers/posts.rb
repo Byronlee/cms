@@ -23,6 +23,13 @@ module V1
           @posts = @posts.page(params[:page]).per(params[:per_page])
           present @posts, with: Entities::Post
         end
+        get 'index' do
+          @posts = Post.all.order(created_at: :desc)
+          @posts = Post.where(state: params[:state])
+            .order(created_at: :desc) if STATE.include?(params[:state])
+          @posts = @posts.page(params[:page]).per(params[:per_page])
+          present @posts, with: Entities::Post
+        end
 
         desc 'Get feature list'
         get 'feature' do
