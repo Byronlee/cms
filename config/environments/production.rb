@@ -74,8 +74,8 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  Rails.application.routes.default_url_options[:host] = Settings.site || 'https://36kr.com'
-  config.action_mailer.default_url_options = { host: Settings.site || 'https://36kr.com' }
+  Rails.application.routes.default_url_options[:host] = '36kr.com'
+  config.action_mailer.default_url_options = { host: '36kr.com' }
 
   # Google Analytics
   GA.tracker = 'UA-1268479-12'
