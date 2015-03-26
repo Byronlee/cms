@@ -74,7 +74,10 @@ Rails.application.routes.draw do
       get :normal_list, on: :collection
     end
   end
+
   resources :columns, only: [:index]
+  resources :errors, only: :index
+
   match '/comments/excellents', :controller => 'comments', :action => 'execllents', via: :get
   match '/columns/:slug(/:page)', :controller => 'columns', :action => 'show', via: :get
   match '/category/:slug(/:page)', :controller => 'columns', :action => 'show', via: :get
