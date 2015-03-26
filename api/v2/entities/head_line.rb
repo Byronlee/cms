@@ -1,7 +1,7 @@
 module V2
   module Entities
     class HeadLine < Grape::Entity
-      format_with(:iso_timestamp) { |dt| dt.iso8601 }
+      format_with(:iso_timestamp) { |dt| dt.iso8601 if dt }
       expose :id
       expose :url
       expose :title

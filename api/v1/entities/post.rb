@@ -1,7 +1,7 @@
 module V1
   module Entities
     class Post < Grape::Entity
-      format_with(:iso_timestamp) { |dt| dt.iso8601 }
+      format_with(:iso_timestamp) { |dt| dt.iso8601 if dt }
       expose :url_code, as: :id   , documentation: '兼容旧站文章id'
       expose :title      , documentation: '标题'
       expose :summary, as: :excerpt, documentation: '摘要'
