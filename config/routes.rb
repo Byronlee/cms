@@ -83,8 +83,15 @@ Rails.application.routes.draw do
   match '/p/(:url_code)(.:format)' => 'posts#show', via: :get, constraints: { format: '' }
   match '/p/preview/(:key).html' => 'posts#preview', via: :get, as: :preview_post_by_key
   resources :pages, only: [:show], param: :slug
-  match '/feed(/:params).:format' => redirect("/feed"), via: :get
+  match '/feed(/:params).:format' => redirect('/feed'), via: :get
   match '/feed(/:params)' => 'posts#feed', via: :get, defaults: { format: :rss }
   match '/tag/:tag', :controller => 'tags', :action => 'show', via: :get
+
+  # 兼容老站，添加特定的URL映射
+  match '/about' => redirect('/pages/about'), via: :get
+  match '/hire' => redirect('/pages/hire'), via: :get
+  match '/contribute' => redirect('/pages/contribute'), via: :get
+  match '/ad/ads' => redirect('/pages/ads'), via: :get
+  match '/ad' => redirect('/pages/ads'), via: :get
 
 end
