@@ -36,7 +36,7 @@ class Post < ActiveRecord::Base
   include PostsHelper
   include AASM
 
-  by_star_field '"posts".created_at'
+  by_star_field '"posts".published_at'
   paginates_per 20
   # mount_uploader :cover, BaseUploader
   aasm.attribute_name :state
@@ -63,8 +63,8 @@ class Post < ActiveRecord::Base
   before_save :auto_generate_summary
   after_create :generate_url_code
 
-  scope :created_on, ->(date) {
-    where(:created_at => date.beginning_of_day..date.end_of_day)
+  scope :published_on, ->(date) {
+    where(:published_at => date.beginning_of_day..date.end_of_day)
   }
   scope :reviewing, ->{ where(:state => :reviewing)}
   scope :published, ->{ where(:state => :published)}
@@ -89,7 +89,7 @@ class Post < ActiveRecord::Base
   end
 
   def self.today
-    created_on(Date.today)
+    published_on(Date.today)
   end
 
   def get_access_url

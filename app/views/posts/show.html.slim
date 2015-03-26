@@ -17,7 +17,7 @@
         = render_cell :comment, :index, post: @post
   .aside
     = render_cell :sidebar, :today
-    /= render_cell :sidebar, :social
+    = render_cell :sidebar, :social
 
 .sidebar
   = render_cell :sidebar, :ad_top, position: :post_show
