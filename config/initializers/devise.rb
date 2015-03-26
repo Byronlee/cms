@@ -233,7 +233,8 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-  config.omniauth :krypton, Settings.oauth.krypton.app_id, Settings.oauth.krypton.secret
+  config.omniauth :krypton, Settings.oauth.krypton.app_id, Settings.oauth.krypton.secret,
+    provider_ignores_state: true
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
