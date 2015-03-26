@@ -26,6 +26,7 @@ class Ability
     can [:read, :create], Newsflash
     can :manage, Newsflash, :user_id => user.id
     can [:new, :myown], Post
+    can [:read, :column, :reviewings], Post, :id => user.posts.pluck(:id)
     can :read, Comment, :commentable_type => 'Post', :commentable_id => user.posts.pluck(:id)
   end
 
