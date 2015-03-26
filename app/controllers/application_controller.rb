@@ -2,9 +2,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action do
-    unless cookies[:hot_recleared_at]
-      cookies.clear
-      cookies[:hot_recleared_at] = { value: Time.now.iso8601, domain: :all }
+    unless cookies[:_3_hot_recleared_at]
+      cookies.clear domain: :all
+      cookies[:_3_hot_recleared_at] = { value: Time.now.iso8601, domain: :all }
     end
   end
 
