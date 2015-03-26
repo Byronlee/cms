@@ -16,6 +16,7 @@ set :linked_files, %w{
   config/redis.yml
   config/sidekiq.yml
   config/settings.rb
+  config/settings.local.rb
   config/secrets.yml
 }
 

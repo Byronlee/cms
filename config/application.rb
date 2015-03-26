@@ -15,6 +15,7 @@ Bundler.require(*Rails.groups)
 
 module Kr
   class Application < Rails::Application
+    require Rails.root.join "app/models/settings"
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -27,6 +28,11 @@ module Kr
         resource '/api/*', headers: :any, methods: [:get, :post, :put, :delete, :destroy]
       end
     end
+
+    config.cache_store = :dalli_store, Settings.memcached_servers, {
+      namespace: "_krypton-#{Rails.env}",
+      expires_in: 1.hour
+    }
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.

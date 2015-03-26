@@ -4,6 +4,8 @@ settings.writer = {
 }
 settings.url_code_begin = 33_000
 
+settings.memcached_servers = [ "127.0.0.1" ]
+
 settings.oauth = {
   krypton: {
     app_id: '9767d4838b9664ca33a1630f6a7889d8b78a1dfd0bcf4b257a3c95122bf9ceaa',
