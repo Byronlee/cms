@@ -1,6 +1,12 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
+  prepend_before_action :redirect_to_no_subdomain
+  def redirect_to_no_subdomain
+    if request.path !~ /^(api|feed).*/ && (subdomain = request.subdomain).present?
+      redirect_to request.original_url.sub("#{subdomain}.36kr.com", '36kr.com')
+    end
+  end
   before_action do
     unless cookies[:_3_hot_recleared_at]
       cookies.clear domain: :all
