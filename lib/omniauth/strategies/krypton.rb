@@ -5,7 +5,7 @@ module OmniAuth
     class Krypton < OmniAuth::Strategies::OAuth2
       # change the class name and the :name option to match your application name
       option :name, :krypton
-
+      option :provider_ignores_state, true
       option :client_options, {
         site: Settings.oauth.krypton.host,
         authorize_url: "/oauth/authorize"
