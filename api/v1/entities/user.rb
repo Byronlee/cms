@@ -1,7 +1,7 @@
 module V1
   module Entities
     class User < Grape::Entity
-      format_with(:iso_timestamp) { |dt| dt.iso8601 }
+      format_with(:iso_timestamp) { |dt| dt.iso8601 if dt }
       expose :id         , documentation: 'not null, primary key'
       expose :display_name, as: :name   , documentation: '名字'
       expose :email      , documentation: '邮箱'

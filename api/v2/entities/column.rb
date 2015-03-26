@@ -1,7 +1,7 @@
 module V2
   module Entities
     class Column < Grape::Entity
-      format_with(:iso_timestamp) { |dt| dt.iso8601 }
+      format_with(:iso_timestamp) { |dt| dt.iso8601 if dt }
       expose :id,         documentation: 'not null, primary key'
       expose :name,       documentation: ''
       expose :introduce,  documentation: ''

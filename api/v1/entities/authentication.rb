@@ -1,7 +1,7 @@
 module V1
   module Entities
     class Authentication < Grape::Entity
-      format_with(:iso_timestamp) { |dt| dt.iso8601 }
+      format_with(:iso_timestamp) { |dt| dt.iso8601 if dt }
       expose :id,       documentation: ''
       expose :uid,       documentation: ''
       expose :provider,       documentation: ''
