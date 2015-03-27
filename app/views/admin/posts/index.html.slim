@@ -12,7 +12,8 @@
           li
             a href="#{myown_admin_posts_path}" 我的文章
         - if can? :read, Post
-          li.active 已发布
+          li.active
+            a href="#{admin_posts_path}" 已发布
         - if can? :reviewings, Post
           li
             a href="#{reviewings_admin_posts_path}" 待审查
@@ -33,5 +34,5 @@
         th.text_center style="width:12%" 操作&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         th style="width:5%" 作者
     tbody
-      = render @posts
+      = render @posts, link_to_published:true
   = paginate @posts

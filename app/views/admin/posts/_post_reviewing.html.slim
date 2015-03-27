@@ -2,7 +2,10 @@ tr
   td = post.url_code
   td[title=raw(post.title) data-toggle='tooltip'] = link_to raw(truncate(post.title, length:20)), preview_post_by_key_path(key: post.key), target:'_new'
   td[title=post.column.try(:name) data-toggle='tooltip']
-    = link_to post.column.try(:name), reviewings_admin_column_posts_path(post.column)
+    - unless link_to_reviewing
+      = link_to post.column.try(:name), myown_admin_posts_path(column_id: post.column)
+    - else
+      = link_to post.column.try(:name), reviewings_admin_column_posts_path(post.column)
   td.text_center[title=post.created_at data-toggle='tooltip']
     = time_ago_in_words post.created_at
   td = display_state(post.state)

@@ -9,7 +9,8 @@
     .pull-left
       ul
         - if can? :myown, Post
-          li.active 我的文章
+          li.active
+            a href="#{myown_admin_posts_path}" 我的文章
         - if can? :read, Post
           li
             a href="#{admin_posts_path}" 已发布
@@ -35,7 +36,7 @@
     tbody
       - @posts.each do |post|
         - if post.published?
-          = render partial: "post", locals:{post:post}
+          = render partial: "post", locals:{post:post, link_to_published:false}
         - elsif post.reviewing?
-          = render partial: "post_reviewing", locals:{post:post}
+          = render partial: "post_reviewing", locals:{post:post, link_to_reviewing:false}
   = paginate @posts

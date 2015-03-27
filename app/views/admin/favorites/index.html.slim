@@ -19,7 +19,8 @@
             a href="#{reviewings_admin_posts_path}" 待审查
               (#{reviewings_count})
         - if can? :favorites, Post
-          li.active 我的收藏
+          li.active
+            a href="#{admin_favorites_path}" 我的收藏
   table class="table"
     thead
       tr role="row"

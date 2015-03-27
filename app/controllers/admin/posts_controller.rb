@@ -3,8 +3,8 @@ class Admin::PostsController < Admin::BaseController
   load_and_authorize_resource
 
   def index
-    return column if params[:column_id].present?
-    @posts = Post.published.accessible_by(current_ability).order('id desc').includes({ author: :krypton_authentication }, :column).page params[:page]
+    @posts = Column.find(params[:column_id]).posts rescue Post
+    @posts = @posts.published.accessible_by(current_ability).order('id desc').includes({ author: :krypton_authentication }, :column).page params[:page]
   end
 
   def column

@@ -16,7 +16,8 @@
             a href="#{admin_posts_path}" 已发布
         - if can? :reviewings, Post
           li.active
-            |待审查(#{reviewings_count})
+            a href="#{reviewings_admin_posts_path}" 待审查
+              (#{reviewings_count})
         - if can? :favorites, Post
           li
             a href="#{admin_favorites_path}" 我的收藏
@@ -34,5 +35,5 @@
         th style="width:5%" 作者
     tbody
       - @posts.each do |post|
-        = render partial: "post_reviewing", locals:{post:post}
+        = render partial: "post_reviewing", locals:{post:post, link_to_reviewing: true}
   = paginate @posts
