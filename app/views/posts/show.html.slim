@@ -9,7 +9,12 @@
         = render_cell :post, :header, post: @post
         = render_cell :post, :content, post: @post
         = render_cell :post, :ad
-        = render_cell :post, :share, post:  @post, has_favorite: @has_favorite
+        - if (@post.author == current_user || (can? :manage, Comment))
+          hr style="border: 1px solid #eee;"
+          = link_to "编辑文章", "http://writer.36kr.com/posts/#{@post.id}/#{@post.key}/"
+          span &nbsp;|&nbsp;
+          = link_to "管理评论", admin_post_comments_path(@post)
+        = render_cell :post, :share, post:  @post
       = render_cell :post, :author, post: @post
       = render_cell :post, :relate, post: @post
       section.single-post-comment
