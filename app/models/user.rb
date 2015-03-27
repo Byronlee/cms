@@ -28,6 +28,7 @@
 
 class User < ActiveRecord::Base
   extend Enumerize
+  extend ActiveModel::Naming
   paginates_per 100
   by_star_field :created_at
   # Include default devise modules. Others available are:

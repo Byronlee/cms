@@ -30,6 +30,7 @@ settings.next = {
 
 # 读者, 运营, 作者, 编辑, 管理员, 投稿
 settings.roles =  [:reader, :operator, :writer, :editor, :admin, :contributor]
+settings.user_search_support = [['角色', 'role'], ['ID', 'id'], ['姓名', 'name'], ['电话', 'phone'], ['邮件', 'email']]
 settings.editable_roles =  [:operator, :writer, :editor, :admin]
 
 settings.users = {
