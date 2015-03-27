@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
       redirect_to request.original_url.sub("#{subdomain}.36kr.com", '36kr.com')
     end
   end
+
   before_action do
     unless cookies[:_3_hot_recleared_at]
       cookies.clear domain: :all
