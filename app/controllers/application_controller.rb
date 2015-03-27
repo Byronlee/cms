@@ -39,6 +39,15 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  rescue_from Exception do |exception|
+    flash[:kr_error] = exception if Rails.env.development?
+    redirect_to apology_errors_path
+  end
+
+  def routing_error
+    redirect_to root_path
+  end
+
   def controller_namespace
     controller_name_segments = params[:controller].split('/')
     controller_name_segments.pop
@@ -47,5 +56,10 @@ class ApplicationController < ActionController::Base
 
   def current_ability
     Ability.new(current_user, controller_namespace)
+  end
+
+  def append_info_to_payload(payload)
+    super
+    payload[:host] = request.host
   end
 end
