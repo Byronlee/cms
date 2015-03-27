@@ -2,8 +2,6 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
 
-  get 'tags/show'
-
   mount API::API => '/'
   mount GrapeSwaggerRails::Engine => '/api/a14f30b8405857de59e098af4d1d07bda752a2dc'
 
@@ -36,11 +34,11 @@ Rails.application.routes.draw do
       resources :comments, only: [:index], on: :collection
       get :reviewings, on: :collection
       get :myown, on: :collection
-      get :favorites, on: :collection
       get :publish, on: :member
       post :do_publish, on: :member
       post :undo_publish, on: :member
     end
+    resources :favorites
     resources :comments do
       member do
         post :set_excellent

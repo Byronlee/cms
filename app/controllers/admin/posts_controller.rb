@@ -23,10 +23,6 @@ class Admin::PostsController < Admin::BaseController
     @posts = @posts.where(author: current_user).order('id desc').includes({ author: :krypton_authentication }, :column).page params[:page]
   end
 
-  def favorites
-    @posts = current_user.favorites.published.order('id desc').includes({ author: :krypton_authentication }, :column).page params[:page]
-  end
-
   def update
     @post.update(post_params)
     respond_with @post, location: admin_posts_path
