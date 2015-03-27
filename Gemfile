@@ -29,7 +29,6 @@ gem 'sidekiq', '~> 3.1.2'
 gem 'sidekiq-failures'
 gem 'faraday', '~> 0.9.0'
 gem 'ruby-progressbar', "~> 1.7.1"
-gem 'ftp_sync', '~> 0.4.3'
 
 # models
 gem "ancestry", "~> 2.1.0"

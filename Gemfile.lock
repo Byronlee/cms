@@ -162,8 +162,6 @@ GEM
       multipart-post (>= 1.2, < 3)
     ffi (1.9.6)
     formatador (0.2.5)
-    ftp_sync (0.4.3)
-      net-ftp-list (>= 2.1.1)
     fume-cancan (0.0.4)
       rails
     fume-nav (0.0.3)
@@ -267,7 +265,6 @@ GEM
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     nenv (0.2.0)
-    net-ftp-list (3.2.8)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.2)
@@ -535,7 +532,6 @@ DEPENDENCIES
   exception_notification
   factory_girl_rails (~> 4.4.1)
   faraday (~> 0.9.0)
-  ftp_sync (~> 0.4.3)
   fume-cancan (~> 0.0.3)
   fume-nav (~> 0.0.2)
   fume-settable (~> 0.0.3)
