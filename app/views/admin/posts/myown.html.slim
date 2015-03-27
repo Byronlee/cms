@@ -1,6 +1,6 @@
 .col_main
   .main_hd
-    h2 文章管理
+    h2
     .toolbar.border_bottom.clearfix
       .pull-right
          span.page_info = page_entries_info @posts
@@ -32,7 +32,7 @@
         th style="width:5%" 评论
         th style="width:4%" 留言
         th.text_center style="width:7%" 浏览量
-        th.text_center style="width:9%" 操作&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        th.text_center style="width:12%" 操作&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         th style="width:3%" 作者
     tbody
       - @posts.each do |post|

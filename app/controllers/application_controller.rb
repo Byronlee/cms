@@ -42,7 +42,7 @@ class ApplicationController < ActionController::Base
   rescue_from Exception do |exception|
     flash[:kr_error] = exception if Rails.env.development?
     ExceptionNotifier.notify_exception(exception, :env => request.env)
-    redirect_to apology_errors_path
+   # redirect_to apology_errors_path
   end
 
   def routing_error
