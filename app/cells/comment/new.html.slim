@@ -3,7 +3,7 @@ h2
   span.comment_form_count = @post.comments_counts.to_i
   | )
 .single-post-comment-reply
-  .single-post-comment__form.cf
+  .single-post-comment__form.cf.require-login data-uid="#{@current_user.try(:id)}"
     form.comment_form action="/posts/#{@post.id}/comments" method="post" data-remote="true"
       = hidden_field_tag :authenticity_token, form_authenticity_token
       textarea#post.textarea name="comment[content]" placeholder="你怎么看？" data-widearea="enable"
@@ -34,12 +34,6 @@ h2
     javascript:
       $(document).ready(function(){
         $('textarea#post.textarea, button.ladda-button.comment-submit-btn').attr('disabled','disabled')
-
-        $('.single-post-comment-reply').on('click', function(){
-           if(confirm('额，亲，登录后才能评论额 ^_^')){
-              window.location.href="/users/auth/krypton"
-           }
-        })
       })
 
   javascript:

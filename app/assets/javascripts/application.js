@@ -29,6 +29,13 @@ $(document).ready(function(){
   $('.dropdown_login_out_link').on('click', function(){
     $('.real_login_out_link').trigger("click");
   });
+
+  $('.require-login').on('click', function(){
+  	if(($(".require-login").data().uid == undefined || $(".require-login").data().uid == "")
+  		&& confirm('请登录后继续操作！ (●—●)')){
+      window.location.href="/users/auth/krypton"
+    }
+  })
 });
 
 function message(data){
