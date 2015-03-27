@@ -61,6 +61,17 @@ class Admin::PostsController < Admin::BaseController
     redirect_to :back
   end
 
+  def toggle_tag
+    tag_name = 'bdnews'
+    if @post.bdnews?
+      @post.tag_list.delete(tag_name)
+    else
+      @post.tag_list << tag_name
+    end
+    @post.save
+    redirect_to :back
+  end
+
   private
 
   def post_params

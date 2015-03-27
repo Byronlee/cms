@@ -116,6 +116,10 @@ class Post < ActiveRecord::Base
     sanitize_tags(content)
   end
 
+  def bdnews?
+    tag_list.include? 'bdnews'
+  end
+
   def self.today_lastest
     posts_data = Redis::HashKey.new('posts')['today_lastest']
     if posts_data.present?

@@ -37,6 +37,7 @@ Rails.application.routes.draw do
       get :publish, on: :member
       post :do_publish, on: :member
       post :undo_publish, on: :member
+      post :toggle_tag, on: :member
     end
     resources :favorites
     resources :comments do
