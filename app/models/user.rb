@@ -44,6 +44,7 @@ class User < ActiveRecord::Base
   has_one :krypton_authentication, -> { where(provider: :krypton) }, class_name: Authentication.to_s, dependent: :destroy
   has_many :posts
   has_many :comments
+  has_and_belongs_to_many :favorites, class_name: Post.to_s, join_table: 'favorites'
 
   before_save :ensure_authentication_token
 
