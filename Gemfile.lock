@@ -247,6 +247,10 @@ GEM
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
+    lograge (0.3.1)
+      actionpack (>= 3)
+      activesupport (>= 3)
+      railties (>= 3)
     lps (0.2.1)
       option_initializer (~> 1.5.0)
     lumberjack (1.0.9)
@@ -553,6 +557,7 @@ DEPENDENCIES
   kaminari (~> 0.15.1)
   kaminari-bootstrap (~> 3.0.1)
   less-rails
+  lograge
   mini_magick (~> 3.7.0)
   minitest
   mocha (~> 1.1.0)

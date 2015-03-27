@@ -6,6 +6,8 @@ ExceptionNotification.configure do |config|
   # Ignore additional exception types.
   # ActiveRecord::RecordNotFound, AbstractController::ActionNotFound and ActionController::RoutingError are already added.
   # config.ignored_exceptions += %w{ActionView::TemplateError CustomError}
+
+  # 这里默认把路由错误给过滤掉了
   config.ignored_exceptions = []
 
   config.ignore_if do |exception, options|

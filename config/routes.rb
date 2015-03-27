@@ -76,8 +76,10 @@ Rails.application.routes.draw do
   end
 
   resources :columns, only: [:index]
-  resources :errors, only: :index
   resources :favorites, only: [:create]
+  resources :errors, only: :index do
+    get :apology, on: :collection
+  end
 
   match '/comments/excellents', :controller => 'comments', :action => 'execllents', via: :get
   match '/columns/:slug(/:page)', :controller => 'columns', :action => 'show', via: :get
@@ -98,4 +100,5 @@ Rails.application.routes.draw do
   match '/ads' => redirect('/pages/ads'), via: :get
   match '/ad' => redirect('/pages/ads'), via: :get
 
+  match '/:anything', to: 'application#routing_error', as: :route_error, :constraints => { :anything => /.*/ }, :via => [:get, :post]
 end

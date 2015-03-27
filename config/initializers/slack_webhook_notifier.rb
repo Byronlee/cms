@@ -9,7 +9,7 @@ module ExceptionNotifier
         @options = options
         @message_opts = options.fetch(:additional_parameters, {})
     end
-    
+
     def call(exception, options={})
       message = [
         "项目:  36krx2015",
@@ -19,9 +19,8 @@ module ExceptionNotifier
         "请求连接: #{options[:env]["HTTP_HOST"]}#{options[:env]["REQUEST_PATH"]}",
         "浏览器信息: #{options[:env]["HTTP_USER_AGENT"]}"
         #"Backtrack: #{ exception.backtrace[0..4].join("\n")}"
-      ].join("\n\n")
-      ExceptionNotificationWorker.perform_async(@options.to_s, message) 
+      ].join("\n")
+      ExceptionNotificationWorker.new.perform(@options.to_s, message, exception)
     end
-
   end
 end

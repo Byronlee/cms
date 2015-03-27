@@ -10,6 +10,15 @@ Rails.application.configure do
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
 
+  config.lograge.enabled = true
+  config.lograge.custom_options = lambda do |event|
+    # capture some specific timing values you are interested in
+    { :name => 'krx2015', :time => event.time, :host => event.payload[:host] }
+  end
+  # config.lograge.ignore_custom = lambda do |event|
+    # return true here if you want to ignore based on the event
+  # end
+
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
