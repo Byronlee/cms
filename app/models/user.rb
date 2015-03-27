@@ -45,7 +45,7 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :comments
   has_many :favorites
-  has_and_belongs_to_many :favorites_posts, class_name: Post.to_s, join_table: 'favorites'
+  has_and_belongs_to_many :favorite_posts, class_name: Post.to_s, join_table: 'favorites'
 
   before_save :ensure_authentication_token
 

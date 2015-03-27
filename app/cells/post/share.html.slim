@@ -5,10 +5,10 @@ section.single-post-share.cf
         a.social-btn.heart-btn[href="javascript:void(0)"]
           i.icon.icon-heart
           span 23
-      /li
+      li
         a.social-btn.star-btn[href="javascript:void(0)"]
-          i.icon.icon-star
-          span 56
+          i.icon.icon-star class="#{@has_favorite ? 'active' : ''}"
+          span = @post.favorites.count
       li
         a.social-btn.share-btn[href="javascript:void(0)"]
           i.icon.icon-share
