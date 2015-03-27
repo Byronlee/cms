@@ -37,7 +37,7 @@ class Ability
   def operator(user)
     can :read, :dashboard
     can :read, User
-    can [:read, :reviewings], Post
+    can [:read, :reviewings, :toggle_tag], Post
     can :manage, HeadLine
     can :manage, Comment
   end
@@ -70,7 +70,7 @@ class Ability
   def public_ability
     can :read, :welcome
     can :read, [Ad, Post, Column, Page, Newsflash, User]
-    can [:update_views_count, :news, :feed, :hots, :today_lastest], Post
+    can [:update_views_count, :news, :feed, :hots, :today_lastest, :feed_bdnews], Post
     can [:read, :execllents], Comment
     cannot :create, Comment
   end

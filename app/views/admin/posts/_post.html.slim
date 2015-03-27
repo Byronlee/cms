@@ -17,7 +17,7 @@ tr
     - if can? :create, HeadLine
       a title="添加到头条" href= new_admin_head_line_path(:url => post_url(post))
         i.fa.fa-star
-    - if can? :create, HeadLine
+    - if can? :toggle_tag, Post
       a title="添加到百度新闻" data-method="post" href= toggle_tag_admin_post_path(post)
         i.fa.fa-bold style="#{post.bdnews? ? 'color:#5cb85c;' : ''}"
     - if can? :publish, post

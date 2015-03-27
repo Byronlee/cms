@@ -64,6 +64,7 @@ class PostsController < ApplicationController
     @head_line = head_lines[0] || {}
     @feeds = Post.published
             .tagged_with('bdnews')
+            .includes(:column, author:[:krypton_authentication])
             .order("published_at desc").limit(29)
   end
 end
