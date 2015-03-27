@@ -1,6 +1,4 @@
-class ErrorsController < ApplicationController
-  layout false, only: :index
-
+class ErrorsController < ActionController::Base
   def index
   end
 
