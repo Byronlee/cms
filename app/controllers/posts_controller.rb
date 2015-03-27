@@ -57,4 +57,13 @@ class PostsController < ApplicationController
   def feed
     @feeds = Post.published.order("published_at desc").limit(20)
   end
+
+  def feed_bdnews
+    head_lines_data = Redis::HashKey.new('head_lines')['list']
+    head_lines = head_lines_data.present? ? JSON.parse(head_lines_data) : []
+    @head_line = head_lines[0] || {}
+    @feeds = Post.published
+            .tagged_with('bdnews')
+            .order("published_at desc").limit(29)
+  end
 end
