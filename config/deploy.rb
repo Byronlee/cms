@@ -20,7 +20,7 @@ set :linked_files, %w{
   config/secrets.yml
 }
 
-set :linked_dirs, %w{tmp/cache public/uploads}
+set :linked_dirs, %w{tmp/cache public/uploads public/logger}
 
 set :keep_releases, 15
 
