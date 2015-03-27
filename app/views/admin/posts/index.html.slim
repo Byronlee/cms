@@ -7,7 +7,7 @@
          - if can? :new, Post
            = link_to raw("<i class='fa fa-plus'></i>&nbsp;&nbsp;创建文章"), Settings.writer.host, class:"btn btn-primary"
     .pull-left
-      ul
+      ul.nav-hor
         - if can? :myown, Post
           li
             a href="#{myown_admin_posts_path}" 我的文章
@@ -18,7 +18,7 @@
           li
             a href="#{reviewings_admin_posts_path}" 待审查
               (#{reviewings_count})
-        - if can? :favorites, Post
+        - if can? :read, Favorite
           li
             a href="#{admin_favorites_path}" 我的收藏
   table class="table"
