@@ -10,10 +10,11 @@
   .main-body
     = simple_form_for [:admin, @head_line], html:{class:"form-horizontal"} do | f |
       = f.input :url, input_html: {class: 'col-lg-12'}
-      = f.input :post_type
-      = f.input :url_code
-      = f.input :order_num, input_html:{ step: 100}
-      = f.input :image, input_html: {class: 'col-lg-12'}
-      = f.input :title, input_html: {class: 'col-lg-12'}
+      - unless @head_line.new_record?
+        = f.input :post_type
+        = f.input :url_code
+        = f.input :order_num, input_html:{ step: 100}
+        = f.input :image, input_html: {class: 'col-lg-12'}
+        = f.input :title, input_html: {class: 'col-lg-12'}
       div.form-actions
         = f.button :submit, data: { disable_with: "submitting..." }, class:"btn btn-primary"

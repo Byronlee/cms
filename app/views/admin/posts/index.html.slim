@@ -25,14 +25,15 @@
     thead
       tr role="row"
         th style="width:5%" ID
-        th style="width:33%" 标题
-        th style="width:12%" 专栏
-        th style="width:10%" 创建时间
-        th.text_center style="width:5%" 状态
+        th style="width:20%" 标题
+        th style="width:10%" 专栏
+        th style="width:8%" 创建时间
+        th.text_center style="width:7%" 状态
         th style="width:5%" 评论
-        th.text_center style="width:10%" 浏览量
-        th.text_center style="width:15%" 操作&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        th style="width:5%" 作者
+        th style="width:4%" 留言
+        th.text_center style="width:7%" 浏览量
+        th.text_center style="width:9%" 操作&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        th style="width:3%" 作者
     tbody
       = render @posts, link_to_published:true
   = paginate @posts

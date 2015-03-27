@@ -28,7 +28,8 @@
 
 class User < ActiveRecord::Base
   extend Enumerize
-  paginates_per 20
+  extend ActiveModel::Naming
+  paginates_per 100
   by_star_field :created_at
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

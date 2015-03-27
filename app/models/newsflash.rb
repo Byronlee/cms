@@ -23,7 +23,7 @@ class Newsflash < ActiveRecord::Base
   belongs_to :author, class_name: User.to_s, foreign_key: 'user_id'
   belongs_to :newsflash_topic_color
 
-  paginates_per 20
+  paginates_per 100
   acts_as_taggable
   by_star_field :created_at
 

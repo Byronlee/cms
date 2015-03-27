@@ -3,11 +3,13 @@ tr
   td[title=user.display_name data-toggle='tooltip']
     = raw(truncate(user.display_name, length:10))
   td.text_center
-    i.fa.fa-envelope[title=user.email]
-    i.fa.fa-phone-square[title=user.phone]
+    - if user.email.present?
+      i.fa.fa-envelope[title=user.email]
+    - if user.email.present?
+      i.fa.fa-phone-square[title=user.phone]
   td = user.role_text
   td = user.sign_in_count
-  td = user.last_sign_in_at
+  td = time_ago_in_words user.created_at
   td = user.last_sign_in_ip
   td
     - if can? :edit, user

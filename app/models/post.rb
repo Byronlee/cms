@@ -37,7 +37,8 @@ class Post < ActiveRecord::Base
   include AASM
 
   by_star_field '"posts".published_at'
-  paginates_per 20
+  paginates_per 100
+
   # mount_uploader :cover, BaseUploader
   aasm.attribute_name :state
 
