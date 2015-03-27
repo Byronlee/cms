@@ -66,5 +66,7 @@ class PostsController < ApplicationController
             .tagged_with('bdnews')
             .includes(:column, author:[:krypton_authentication])
             .order("published_at desc").limit(29)
+
+    response.headers['content-type'] = 'application/xml'
   end
 end
