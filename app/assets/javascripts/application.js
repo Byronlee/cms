@@ -16,7 +16,7 @@ function goSearch(f)
   var url = "";
   f.method = "get";
   if(!mobilecheck()){
-  	url = "http://www.baidu.com/baidu?word_display="+ v +"&word=" + d;
+    url = "http://www.baidu.com/baidu?word_display="+ v +"&word=" + d;
     window.open(url, "_new");
   }else{
     url = "http://www.baidu.com/from=844b/s?word="+ d +"&t_kt=0&sa=is_1&ms=1&rq=" + v;
@@ -26,13 +26,32 @@ function goSearch(f)
 }
 
 $(document).ready(function(){
-	$('.dropdown_login_out_link').on('click', function(){
-		$('.real_login_out_link').trigger("click");
-	});
+  $('.dropdown_login_out_link').on('click', function(){
+    $('.real_login_out_link').trigger("click");
+  });
 });
 
 function message(data){
   $.get("/users/messages", {data: data}, function(html){
     $("li.notice").html(html)
+  })
+}
+
+function doFavorite(post_id){
+  $.post("/favorites", {"post_id": post_id}, function(result){
+    if($(".icon-star").hasClass("active")){
+      $(".icon-star").removeClass("active");
+    }
+    else{
+      $(".icon-star").addClass("active");
+    }
+
+    if(result["success"] == 'add'){
+      $("#star-count").text(result["count"]);
+      $(".icon-star").addClass("active");
+    }else if(result["success"] == 'del'){
+      $(".icon-star").removeClass("active");
+      $("#star-count").text(result["count"]);
+    }
   })
 }

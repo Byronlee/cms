@@ -16,14 +16,13 @@ ul.nav.nav-pills.nav-stacked
     li class=nav_active(:comments, @controller_name)
       a href=admin_comments_path
         span  评论管理
-  - if can? :read, Post
-    li class=nav_active(:posts, @controller_name)
-      a href=admin_posts_path
-        span
-         |文章管理&nbsp;&nbsp;
-         |(
-         = reviewings_count
-         |)
+
+  li class=nav_active([:posts, :favorites], @controller_name)
+    a href= admin_favorites_path
+      span
+        |文章管理
+        - if can?(:reviewings, Post)
+          |&nbsp;&nbsp;(#{reviewings_count})
 
   - if can? :read, Column
     li class=nav_active(:columns, @controller_name)

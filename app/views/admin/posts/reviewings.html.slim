@@ -4,28 +4,36 @@
     .toolbar.border_bottom.clearfix
       .pull-right
          span.page_info = page_entries_info @posts
-         = link_to raw("<i class='fa fa-plus'></i>&nbsp;&nbsp;创建文章"), Settings.writer.host, class:"btn btn-primary"
+         - if can? :new, Post
+           = link_to raw("<i class='fa fa-plus'></i>&nbsp;&nbsp;创建文章"), Settings.writer.host, class:"btn btn-primary"
     .pull-left
-      ul
-        li
-          a href="#{myown_admin_posts_path}" 我的文章
-        li
-          a href="#{admin_posts_path}" 发布管理
-        li.active
-          |审查管理(#{reviewings_count})
+      ul.nav-hor
+        - if can? :myown, Post
+          li
+            a href="#{myown_admin_posts_path}" 我的文章
+        - if can? :read, Post
+          li
+            a href="#{admin_posts_path}" 已发布
+        - if can? :reviewings, Post
+          li.active
+            a href="#{reviewings_admin_posts_path}" 待审查
+              (#{reviewings_count})
+        - if can? :read, Favorite
+          li
+            a href="#{admin_favorites_path}" 我的收藏
   table class="table"
     thead
       tr role="row"
         th style="width:5%" ID
-        th style="width:25%" 标题
-        th style="width:10%" 专栏
-        th style="width:8%" 创建时间
-        th.text_center style="width:7%" 状态
+        th style="width:36%" 标题
+        th style="width:12%" 专栏
+        th style="width:10%" 创建时间
+        th.text_center style="width:5%" 状态
         th style="width:5%" 评论
-        th.text_center style="width:7%" 浏览量
-        th.text_center style="width:9%" 操作&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        th style="width:3%" 作者
+        th.text_center style="width:10%" 浏览量
+        th.text_center style="width:12%" 操作&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        th style="width:5%" 作者
     tbody
       - @posts.each do |post|
-        = render partial: "post_reviewing", locals:{post:post}
+        = render partial: "post_reviewing", locals:{post:post, link_to_reviewing: true}
   = paginate @posts

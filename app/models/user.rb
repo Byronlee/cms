@@ -44,6 +44,8 @@ class User < ActiveRecord::Base
   has_one :krypton_authentication, -> { where(provider: :krypton) }, class_name: Authentication.to_s, dependent: :destroy
   has_many :posts
   has_many :comments
+  has_many :favorites
+  has_and_belongs_to_many :favorite_posts, class_name: Post.to_s, join_table: 'favorites'
 
   before_save :ensure_authentication_token
 
@@ -101,6 +103,10 @@ class User < ActiveRecord::Base
 
   def editable
     Settings.editable_roles.include? role.to_sym
+  end
+
+  def favorite_of?(post_id)
+    favorite_post_ids.include? post_id
   end
 
   protected

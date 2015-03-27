@@ -9,9 +9,12 @@ class Ability
         can :get_comments_count, Post
       end
     end
-    can [:edit, :update], User, :id => user.id if user
     can :preview, Post
-    send user.role.to_sym, user if user
+    if user
+      can [:edit, :update], User, :id => user.id
+      can :manage, Favorite, :user_id => user.id
+      send user.role.to_sym, user
+    end
   end
 
   # 读者
@@ -25,7 +28,9 @@ class Ability
     can :read, :dashboard
     can [:read, :create], Newsflash
     can :manage, Newsflash, :user_id => user.id
-    can :new, Post
+    can [:new, :myown], Post
+    can [:read, :column, :reviewings], Post, :id => user.posts.pluck(:id)
+    can :read, Comment, :commentable_type => 'Post', :commentable_id => user.posts.pluck(:id)
   end
 
   # 运营

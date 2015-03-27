@@ -36,7 +36,8 @@ module ApplicationHelper
   end
 
   def nav_active(local, target)
-    return 'active' if local == target.to_sym
+    local = [] << local unless local.class == Array
+    return 'active' if local.include? target.to_sym
   end
 
   def reviewings_count

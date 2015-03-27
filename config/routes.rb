@@ -2,8 +2,6 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
 
-  get 'tags/show'
-
   mount API::API => '/'
   mount GrapeSwaggerRails::Engine => '/api/a14f30b8405857de59e098af4d1d07bda752a2dc'
 
@@ -40,6 +38,7 @@ Rails.application.routes.draw do
       post :do_publish, on: :member
       post :undo_publish, on: :member
     end
+    resources :favorites
     resources :comments do
       member do
         post :set_excellent
@@ -77,6 +76,7 @@ Rails.application.routes.draw do
 
   resources :columns, only: [:index]
   resources :errors, only: :index
+  resources :favorites, only: [:create]
 
   match '/comments/excellents', :controller => 'comments', :action => 'execllents', via: :get
   match '/columns/:slug(/:page)', :controller => 'columns', :action => 'show', via: :get
