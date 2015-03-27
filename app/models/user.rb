@@ -105,6 +105,10 @@ class User < ActiveRecord::Base
     Settings.editable_roles.include? role.to_sym
   end
 
+  def favorite_of?(post_id)
+    favorite_post_ids.include? post_id
+  end
+
   protected
 
   def email_required?

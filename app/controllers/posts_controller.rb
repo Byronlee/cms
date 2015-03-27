@@ -5,7 +5,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find_by_url_code(params[:url_code])
-    @has_favorite = current_user.favorite_post_ids.include? @post.id
+    @has_favorite = current_user.favorite_of? @post.id
     @posts_today_lastest = Post.today_lastest
     redirect_to root_path if @post.may_publish?
   end

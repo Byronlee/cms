@@ -76,6 +76,7 @@ Rails.application.routes.draw do
 
   resources :columns, only: [:index]
   resources :errors, only: :index
+  resources :favorites, only: [:create]
 
   match '/comments/excellents', :controller => 'comments', :action => 'execllents', via: :get
   match '/columns/:slug(/:page)', :controller => 'columns', :action => 'show', via: :get
