@@ -5,6 +5,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find_by_url_code(params[:url_code])
+    return redirect_to apology_errors_path if @post.present?
     @has_favorite = current_user.favorite_of? @post rescue false
     @posts_today_lastest = Post.today_lastest
     redirect_to root_path if @post.may_publish?
