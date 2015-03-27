@@ -12,9 +12,6 @@ class Admin::UsersController < Admin::BaseController
     respond_with @user, location: ok_url
   end
 
-  def edit
-  end
-
   private
 
   def user_params
