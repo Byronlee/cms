@@ -3,7 +3,7 @@ tr
   td[title=raw(favorite.post.title) data-toggle='tooltip']
     = link_to raw(truncate(favorite.post.title, length:30)), post_url(favorite.post), target:'_blank'
   td[title=favorite.post.column.try(:name) data-toggle='tooltip']
-    = link_to favorite.post.column.try(:name), admin_column_posts_path(favorite.post.column)
+    = link_to favorite.post.column.try(:name), "/columns/#{favorite.post.column.try(:slug)}", target: '_blank'
   td.text_center[title=favorite.post.created_at data-toggle='tooltip']
     = time_ago_in_words favorite.created_at
   td
