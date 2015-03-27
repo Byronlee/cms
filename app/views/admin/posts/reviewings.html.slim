@@ -17,6 +17,9 @@
         - if can? :reviewings, Post
           li.active
             |待审查(#{reviewings_count})
+        - if can? :favorites, Post
+          li
+            a href="#{favorites_admin_posts_path}" 我的收藏
   table class="table"
     thead
       tr role="row"

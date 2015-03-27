@@ -9,7 +9,8 @@
     .pull-left
       ul
         - if can? :myown, Post
-          li.active 我的文章
+          li
+            a href="#{myown_admin_posts_path}" 我的文章
         - if can? :read, Post
           li
             a href="#{admin_posts_path}" 已发布
@@ -17,22 +18,18 @@
           li
             a href="#{reviewings_admin_posts_path}" 待审查
               (#{reviewings_count})
+        - if can? :favorites, Post
+          li.active 我的收藏
   table class="table"
     thead
       tr role="row"
-        th style="width:5%" ID
-        th style="width:36%" 标题
-        th style="width:12%" 专栏
-        th style="width:10%" 创建时间
-        th.text_center style="width:5%" 状态
-        th style="width:5%" 评论
-        th.text_center style="width:10%" 浏览量
-        th.text_center style="width:12%" 操作&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        th style="width:10%" ID
+        th style="width:50%" 标题
+        th style="width:15%" 专栏
+        th style="width:12%" 收藏时间
+        th.text_center style="width:8%" 操作&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         th style="width:5%" 作者
     tbody
       - @posts.each do |post|
-        - if post.published?
-          = render partial: "post", locals:{post:post}
-        - elsif post.reviewing?
-          = render partial: "post_reviewing", locals:{post:post}
+        = render partial: "favorite", locals:{post:post}
   = paginate @posts
