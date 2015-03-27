@@ -19,7 +19,7 @@ h2
           | signed as &nbsp;
           a[href="javascript:void(0)"]
             = @current_user.try(:display_name)
-      button.ladda-button.comment-submit-btn.right[data-style="slide-down" data-spinner-size="32"]
+      button.ladda-button.comment-submit-btn.right[ data-style="slide-down" data-spinner-size="32"]
         span.ladda-label
           | 提交评论
     - else
@@ -29,6 +29,18 @@ h2
       button.ladda-button.comment-submit-btn.right.comment-submit-btn-disabled[data-style="slide-down" data-spinner-size="32"]
         span.ladda-label
           | 提交评论
+
+  - unless @current_user.present?
+    javascript:
+      $(document).ready(function(){
+        $('textarea#post.textarea, button.ladda-button.comment-submit-btn').attr('disabled','disabled')
+
+        $('.single-post-comment-reply').on('click', function(){
+           if(confirm('额，亲，登录后才能评论额 ^_^')){
+              window.location.href="/users/auth/krypton"
+           }
+        })
+      })
 
   javascript:
     $(document).ready(function(){
