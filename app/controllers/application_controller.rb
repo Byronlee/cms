@@ -21,8 +21,8 @@ class ApplicationController < ActionController::Base
       if !current_user || # 在线状态不同步
         cookie_version.to_i != current_user.krypton_authentication.version || # 资料版本不同步
         Time.now > current_user.krypton_authentication.updated_at + 1.hour # 定时更新解决跨浏览器更新资料
-        session["omniauth.ok_url"] = request.original_url
-        Rails.logger.info "重新授权，跳转前 url: #{request.original_url}, fullpath: #{request.fullpath}"
+        session["omniauth.ok_url"] = request.url
+        Rails.logger.info "同步授权，跳转前 url：#{request.url}, fullpath: #{request.fullpath}"
         redirect_to user_omniauth_authorize_path(provider: :krypton)
       end
     elsif current_user
