@@ -12,7 +12,7 @@ class Ability
     can :preview, Post
     if user
       can [:edit, :update], User, :id => user.id
-      can :favorites, Post
+      can :manage, Favorite, :user_id => user.id
       send user.role.to_sym, user
     end
   end

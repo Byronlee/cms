@@ -17,7 +17,6 @@ ul.nav.nav-pills.nav-stacked
       a href=admin_comments_path
         span  评论管理
 
-  - if can?(:myown, Post)
     li class=nav_active(:posts, @controller_name)
       a href= myown_admin_posts_path
         span
