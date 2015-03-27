@@ -12,6 +12,9 @@ tr
   td
     span class='label label-primary'
       = link_to post.comments_counts.to_i, admin_post_comments_path(post), style:"color:#fff;"
+  td
+    - if post.remark.present?
+      i.fa.fa-lightbulb-o[title=post.remark]
   td.text_center = post.views_count
   td
     - if can? :create, HeadLine
