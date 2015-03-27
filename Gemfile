@@ -95,6 +95,10 @@ gem "twitter-bootstrap-rails"
 gem "rails-assets-html5shiv", "~> 3.7.0"
 #gem "rails-assets-respond", "~> 1.4.0"
 
+
+# log
+gem 'lograge'
+
 group :development do
   # gem "better_errors", "~> 1.1.0"
   # gem "binding_of_caller", "~> 0.7.2"
