@@ -37,8 +37,8 @@ function message(data){
   })
 }
 
-function doFavorite(post_id){
-  $.post("/favorites", {"post_id": post_id}, function(result){
+function doFavorite(url_code){
+  $.post("/favorites", {"url_code": url_code}, function(result){
     if($(".icon-star").hasClass("active")){
       $(".icon-star").removeClass("active");
     }

@@ -4,7 +4,7 @@
 #
 #  id         :integer          not null, primary key
 #  user_id    :integer
-#  post_id    :integer
+#  url_code   :integer
 #  created_at :datetime
 #  updated_at :datetime
 #
