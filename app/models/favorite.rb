@@ -10,6 +10,8 @@
 #
 
 class Favorite < ActiveRecord::Base
+  paginates_per 20
+
   belongs_to :post
   belongs_to :user
 
