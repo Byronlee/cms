@@ -2,4 +2,5 @@
 
 Rails.application.config.session_store  ActionDispatch::Session::CacheStore,
   key: '_krypton_session',
-  domain: :all
+  domain: :all,
+  expire_after: 1.years
