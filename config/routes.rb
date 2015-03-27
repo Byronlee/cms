@@ -95,7 +95,7 @@ Rails.application.routes.draw do
   match '/about' => redirect('/pages/about'), via: :get
   match '/hire' => redirect('/pages/hire'), via: :get
   match '/contribute' => redirect('/pages/contribute'), via: :get
-  match '/ad/ads' => redirect('/pages/ads'), via: :get
+  match '/ads' => redirect('/pages/ads'), via: :get
   match '/ad' => redirect('/pages/ads'), via: :get
 
 end
