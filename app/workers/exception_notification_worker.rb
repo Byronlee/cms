@@ -7,7 +7,7 @@ class ExceptionNotificationWorker < BaseWorker
   end
 
   def record_exception_to_log(message, e)
-    @file_path ||= "#{Rails.root}/public/logger/a14f30b84.log"
+    @file_path ||= "#{Rails.root}/public/logger/a14f30b84.txt"
     @logger ||= Logger.new(@file_path, 1, 1000)
     @logger.info "\n" + message
     @logger.info e.backtrace.join("\n") + "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
