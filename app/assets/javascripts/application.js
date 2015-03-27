@@ -39,6 +39,13 @@ function message(data){
 
 function doFavorite(post_id){
   $.post("/favorites", {"post_id": post_id}, function(result){
+    if($(".icon-star").hasClass("active")){
+      $(".icon-star").removeClass("active");
+    }
+    else{
+      $(".icon-star").addClass("active");
+    }
+
     if(result["success"] == 'add'){
       $("#star-count").text(result["count"]);
       $(".icon-star").addClass("active");
