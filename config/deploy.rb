@@ -26,16 +26,6 @@ set :keep_releases, 15
 
 namespace :deploy do
 
-  task :cdn do
-    on roles(fetch(:assets_roles)) do
-      within release_path do
-        with rails_env: fetch(:rails_env) do
-          execute :rake, "assets:cdn"
-        end
-      end
-    end
-  end
-
   desc "serurely manages database config file after deploy"
   task :setup_config do
     on roles(:web) do |host|
@@ -59,6 +49,17 @@ namespace :deploy do
       within release_path do
         with rails_env: fetch(:rails_env) do
           execute :rake, "db:seed"
+        end
+      end
+    end
+  end
+
+  desc "sync assets to cdns"
+  task :cdn do
+    on roles(fetch(:assets_roles)) do
+      within release_path do
+        with rails_env: fetch(:rails_env) do
+          execute :rake, "assets:cdn"
         end
       end
     end
