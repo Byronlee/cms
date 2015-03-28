@@ -14,7 +14,7 @@ sources_yaml['gem_sources'].each do |source_str|
   source source_str
 end
 
-gem 'rails', '4.1.6'
+gem 'rails', '4.1.10'
 gem 'pg', '~> 0.17.1'
 gem 'fume-settable', '~> 0.0.3'
 gem "dalli", "~> 2.7.0"
