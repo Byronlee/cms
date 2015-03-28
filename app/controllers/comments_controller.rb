@@ -14,6 +14,8 @@ class CommentsController < ApplicationController
     #   ).count
     @commentable_type = @commentable.class.to_s.downcase.pluralize
     @commentable_id = @commentable.id
+
+    render 'comments/_list', :comments => @comments, :comments_normal_count => @comments_normal_count, :commentable_type => @commentable_type, :commentable_id => @commentable_id
   end
 
   def normal_list
