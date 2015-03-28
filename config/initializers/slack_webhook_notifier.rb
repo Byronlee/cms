@@ -20,7 +20,7 @@ module ExceptionNotifier
         "浏览器信息: #{options[:env]["HTTP_USER_AGENT"]}"
         #"Backtrack: #{ exception.backtrace[0..4].join("\n")}"
       ].join("\n")
-      ExceptionNotificationWorker.new.perform(@options.to_s, message, exception)
+      # ExceptionNotificationWorker.new.perform(@options.to_s, message, exception)
     end
   end
 end
