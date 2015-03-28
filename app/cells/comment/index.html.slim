@@ -2,7 +2,7 @@
 
 javascript:
   $(document).ready(function(ret, status){
-    $.get("/posts/#{@post.id}/comments", function(html){
+    $.get("/posts/#{@post.id}/comments.js", function(html){
       $('.single-post-comment__comments').append(html);
       $(".timeago").timeago();
     });
