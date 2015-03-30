@@ -121,7 +121,7 @@
 
   //Off focus page title change
   var title = document.title;
-  var alttitle = "(·—·) | 36氪";
+  var alttitle = $('title').attr('s_t');
   window.onblur = function () { document.title = alttitle; };
   window.onfocus = function () { document.title = title; };
 

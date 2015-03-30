@@ -7,7 +7,7 @@ doctype html
 html class="no-js"
 
   head
-    title = content_for?(:title) ? yield(:title) : t('site.name')
+    = content_for?(:title) ? yield(:title) : content_tag(:title, t('site.name'), s_t: t('site.name'))
     = render_cell :head, :basic_info
     = render_cell :head, :ios_meta
     = render_cell :head, :ios_icons
