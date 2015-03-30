@@ -29,10 +29,14 @@ module Kr
       end
     end
 
-    config.cache_store = :dalli_store, Settings.memcached_servers, {
-      namespace: "_krypton-#{Rails.env}",
-      expires_in: 1.hour
+    config.cache_store = :redis_store, Settings.redis_servers.cache, {
+      namespace: "_krypton-cache-#{Rails.env}", expires_in: 1.hours
     }
+
+    #config.cache_store = :dalli_store, Settings.memcached_servers, {
+    #  namespace: "_krypton-#{Rails.env}",
+    #  expires_in: 1.hour
+    #}
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.

@@ -4,6 +4,11 @@ settings.writer = {
 }
 settings.url_code_begin = 33_000
 
+settings.redis_servers = {
+  cache: 'redis://127.0.0.1:6379/1',
+  session: 'redis://127.0.0.1:6379/2'
+}
+
 settings.memcached_servers = [ "127.0.0.1" ]
 
 settings.oauth = {

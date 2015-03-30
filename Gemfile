@@ -19,6 +19,7 @@ gem 'pg', '~> 0.17.1'
 gem 'fume-settable', '~> 0.0.3'
 gem "dalli", "~> 2.7.0"
 gem "redis", "~> 3.0.1"
+gem 'redis-rails', '~> 4.0.0'
 gem 'redis-objects', '~> 1.0.1'
 gem 'redis-namespace', "~> 1.5.1"
 gem 'redis-stat'
