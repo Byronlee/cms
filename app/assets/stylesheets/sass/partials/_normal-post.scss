@@ -40,11 +40,11 @@
 	color: #333332;
 	@include font-size(16);
 	line-height: 1.8;
-	
+
 	@include media($mobile-max1) {
 		@include font-size(18);
 	}
-	
+
 	hr {
 		border: 0;
 		height: 1px;
@@ -52,7 +52,7 @@
 		margin: 50px auto;
 		border-top: 1px solid #e4e4e4;
 	}
-	
+
 	a {
 		color: $primary-color;
 		border-bottom: 2px solid #eaeaea;
@@ -60,7 +60,7 @@
 			border-bottom: 2px solid #48a9ec;
 		}
 	}
-	
+
 	blockquote {
 		@include font-size(18);
 		font-weight: bold;
@@ -73,11 +73,11 @@
 			margin-left: -24px;
 		}
 	}
-	
+
 	img {
 		margin: 0 auto;
 	}
-	
+
 	ul,
 	ol {
 		list-style: square;
@@ -99,4 +99,19 @@
 .article blockquote,
 .article iframe {
 	margin-bottom: 30px;
+}
+
+.single-post-header__headline small, .single-header__headline-image small {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 6px 10px;
+  background: rgba(0, 0, 0, 0.6);
+  line-height: 1em;
+  font-size: 11px;
+}
+
+.single-post-header__headline small a, .single-header__headline-image small a {
+  color: rgba(255, 255, 255, 0.5);
 }

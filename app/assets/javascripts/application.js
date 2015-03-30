@@ -36,6 +36,8 @@ $(document).ready(function(){
       window.location.href="/users/auth/krypton"
     }
   })
+
+  $('.single-post-header__headline img[src*=yestone]').after('<small><a href="">Yestone.com 版权图片库</a></small>')
 });
 
 function message(data){
