@@ -47,6 +47,7 @@ class Ability
     can :read, :dashboard
     can [:read, :reviewings], Post
     can :manage, Post, :user_id => user.id
+    cannot :toggle_tag, Post
     can :manage, Newsflash
     can :read, Comment, :commentable_type => 'Post', :commentable_id => user.posts.pluck(:id)
   end
@@ -60,6 +61,7 @@ class Ability
     can :manage, Comment
     can :manage, HeadLine
     can :manage, Page
+    cannot :toggle_tag, Post
   end
 
   # 管理员
