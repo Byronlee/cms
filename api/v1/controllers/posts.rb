@@ -30,6 +30,25 @@ module V1
           @posts = @posts.page(params[:page]).per(params[:per_page])
           present @posts, with: Entities::Post
         end
+        get 'export' do
+          posts = Post.all.order(created_at: :desc)
+          posts = Post.where(state: params[:state])
+            .order(created_at: :desc) if STATE.include?(params[:state])
+          posts = posts.page(params[:page]).per(params[:per_page])
+          posts_list = []
+          posts.each do |post|
+           posts_list << {
+             id: post.id,
+             title: post.title,
+             views_count: post.views_count,
+             author: post.author.name,
+             published_at: post.published_at,
+             comments_counts: post.comments_counts,
+             column_name: post.column_name
+           }
+          end
+          posts_list
+        end
 
         desc 'Get feature list'
         get 'feature' do
