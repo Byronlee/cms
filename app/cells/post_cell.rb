@@ -26,6 +26,8 @@ class PostCell < Cell::Rails
 
   def relate(args)
     @post = args[:post]
+    @posts = @post.find_related_tags.limit(3)
+    @posts = @post.author.posts.order('created_at DESC').limit(3) if @posts.blank?
     render
   end
 

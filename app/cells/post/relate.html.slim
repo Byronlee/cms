@@ -1,6 +1,6 @@
 section.single-post-relate
   ul.cf
-    - @post.find_related_tags.limit(3).each do | post |
+    - @posts.each do | post |
       li
         a[href="#{ post_url(post)}"]
           .single-post-relate__image
