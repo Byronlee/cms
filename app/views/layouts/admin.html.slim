@@ -18,7 +18,7 @@ html lang="en"
   body
     .navbar.navbar-default.navbar-static-top
       .container
-        a.navbar-brand href=admin_root_path
+        a.navbar-brand href=((can? :read, :dashboard) ? admin_root_path : 'javascript:void(0)')
           .logo
           | &nbsp;新闻 &nbsp;&nbsp;
           small 后台管理
