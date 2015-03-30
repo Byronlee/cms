@@ -52,7 +52,7 @@ module V1
 
         desc 'Get feature list'
         get 'feature' do
-          @head_lines = HeadLine.all.order(created_at: :desc)
+          @head_lines = HeadLine.all.order(order_num: :desc)
             .page(params[:page]).per(params[:per_page])
           present @head_lines, with: Entities::HeadLine
         end
