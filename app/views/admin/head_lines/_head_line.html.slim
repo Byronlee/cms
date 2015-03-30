@@ -22,4 +22,4 @@ tr
     - if can? :destroy, head_line
       a title="删除" data-method="delete" data-confirm="确定删除头条 #{head_line.url} ？" href= admin_head_line_path(head_line)
         i.fa.fa-times
-  td.avatar.text_center[title=head_line.user.try(:display_name) data-toggle='tooltip'] = image_tag avatar_url(head_line.user.try(:avatar))
+  td.avatar.text_center[title=head_line.user.try(:display_name) data-toggle='tooltip'] = image_tag head_line.user.try(:avatar)

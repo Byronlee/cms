@@ -37,5 +37,5 @@ tr
 
   td.avatar.text_center[title=comment.user.try(:display_name) data-toggle='tooltip']
     = link_to [:admin, :comments, user_id: comment.user.id] do
-      = image_tag avatar_url(comment.user.try(:avatar))
+      = image_tag comment.user.try(:avatar)
 

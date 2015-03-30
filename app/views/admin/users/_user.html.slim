@@ -25,5 +25,5 @@ tr
           method: :put, data: { confirm: "确认禁言此用户？" } do
           i.fa.fa-ban
 
-  td.avatar.text_center = image_tag avatar_url(user.try(:avatar))
+  td.avatar.text_center = image_tag user.try(:avatar)
 

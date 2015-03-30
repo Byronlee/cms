@@ -16,4 +16,4 @@ tr
     - if can? :destroy, newsflash
       a title="删除" data-method="delete" data-confirm="确定删除快讯: #{newsflash.hash_title} ？" href= admin_newsflash_path(newsflash)
         i.fa.fa-times
-  td.avatar.text_center[title=newsflash.author.try(:display_name) data-toggle='tooltip'] = image_tag avatar_url(newsflash.author.try(:avatar))
+  td.avatar.text_center[title=newsflash.author.try(:display_name) data-toggle='tooltip'] = image_tag newsflash.author.try(:avatar)

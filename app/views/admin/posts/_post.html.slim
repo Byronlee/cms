@@ -34,6 +34,6 @@ tr
         i.fa.fa-power-off
   td.avatar.text_center[title=post.author.try(:display_name) data-toggle='tooltip']
     - if (can? :manage, User)&post.author.present?
-      = link_to image_tag(avatar_url(post.author.try(:avatar))), edit_admin_user_path(post.author)
+      = link_to image_tag(post.author.try(:avatar)), edit_admin_user_path(post.author)
     - else
-      = image_tag avatar_url(post.author.try(:avatar))
+      = image_tag post.author.try(:avatar)
