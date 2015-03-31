@@ -45,6 +45,10 @@ settings.users = {
   }
 }
 
+settings.writer_update_role_api = 'http://writer.36kr.com/api/jHcDEyl/v1/users/update_role'
+
+settings.writer_token = 'e625cf097bb338f1100b5453f68'
+
 settings.default_avatar = 'http://a.36krcnd.com/user/default_avatars/Violin.png!avatar'
 
 settings.kr_messages_api = 'http://rong.36kr.com/api/message/count'

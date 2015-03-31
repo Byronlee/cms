@@ -50,9 +50,14 @@ class User < ActiveRecord::Base
   # has_and_belongs_to_many :favorite_posts, source: :post, join_table: 'favorites'
 
   before_save :ensure_authentication_token
-
   def ensure_authentication_token
     self.authentication_token ||= generate_authentication_token
+  end
+
+  before_update :sync_role_to_writer
+  def sync_role_to_writer
+    return unless role_changed? && valid?
+    SyncRoleToWriterWorker.perform_async(krypton_authentication.uid, role)
   end
 
   def apply_omniauth(omniauth)
