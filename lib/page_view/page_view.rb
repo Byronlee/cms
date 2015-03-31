@@ -31,6 +31,14 @@ module PageView
               Redis::HashKey.new('page_views')[cache_key] = self.#{field}.to_i
             end
           end
+
+          def cache_#{field}
+            filed_name = /^cache_(.*)/i.match(__method__.to_s)[1]
+            cache_key = self.class.to_s+'#'+self.id.to_s+'#'+ filed_name
+            views_count = Redis::HashKey.new('page_views')[cache_key]
+            views_count || self.#{field}.to_i
+          end
+
         METHOD_MSG
       end
     end
