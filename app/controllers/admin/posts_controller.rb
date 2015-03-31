@@ -75,6 +75,9 @@ class Admin::PostsController < Admin::BaseController
   private
 
   def post_params
-    params.require(:post).permit(:column_id, :title, :content, :slug, :summary, :title_link, :cover, :tag_list) if params[:post]
+    if params[:post]
+      params.require(:post).permit(:column_id, :title, :content, :remark,
+        :slug, :summary, :title_link, :cover, :tag_list)
+    end
   end
 end
