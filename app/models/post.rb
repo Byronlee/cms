@@ -40,10 +40,10 @@ class Post < ActiveRecord::Base
   after_save    -> { __elasticsearch__.index_document }
   after_destroy -> { __elasticsearch__.delete_document }
 
+  by_star_field '"posts".published_at'
+  page_view_field :views_count
   paginates_per 100
   aasm.attribute_name :state
-  by_star_field '"posts".published_at'
-  # mount_uploader :cover, BaseUploader
 
   validates_presence_of :title, :content
   validates_uniqueness_of :title, :content, :url_code

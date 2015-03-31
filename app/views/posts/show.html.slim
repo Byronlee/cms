@@ -32,10 +32,3 @@
   = render_cell :sidebar, :ad_job
   /= render_cell :sidebar, :excellent_comments
   = render_cell :sidebar, :ad_bottom, position: :post_show
-
-javascript:
-  $(document).ready(function(ret, status){
-    $.post("#{update_views_count_post_path(@post)}", function(resultHtml){
-      $(".single-post-comment__comments").prepend(resultHtml);
-    });
-  });

@@ -5,6 +5,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find_by_url_code!(params[:url_code])
+    @post.increase_views_count
     @has_favorite = current_user.favorite_of? @post rescue false
     @posts_today_lastest = Post.today_lastest
     redirect_to root_path if @post.reviewing?
@@ -32,22 +33,6 @@ class PostsController < ApplicationController
     posts_data = Redis::HashKey.new('posts')['hot_posts']
     @posts = posts_data.present? ? JSON.parse(posts_data) : []
     render '_hots', :layout => false
-  end
-
-  def update_views_count
-    views_count = Redis::HashKey.new('posts')["views_count_#{params[:id]}"]
-    if views_count.nil?
-      views_count = Post.find(params[:id]).views_count.to_i
-    else
-      views_count = views_count.to_i
-    end
-    Redis::HashKey.new('posts')["views_count_#{params[:id]}"] = views_count.next
-    if(views_count.next % Settings.post_views_count_cache == 0)
-      logger.info 'sync the views count from redis cache to postgres'
-      # PostViewsCountComponentWorker.perform_async(params[:id])
-      # PostViewsCountComponentWorker.new.perform(params[:id])
-    end
-    render :json => { :success => 'true' }.to_json
   end
 
   def get_comments_count
