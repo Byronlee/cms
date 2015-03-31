@@ -43,7 +43,7 @@ window.doFavorite = (url_code) ->
   return
 
 window.baidu_search = ->
-  $form = $("#baidu_search").clone().unbind('submit', arguments.callee)
+  $form = $("#baidu_search").clone().removeAttr('onsubmit')
   $input = $form.find('input')
   value = $.trim($input.val())
   $input.val "site:36kr.com #{value}"
