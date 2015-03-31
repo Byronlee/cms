@@ -42,23 +42,21 @@ window.doFavorite = (url_code) ->
     return
   return
 
-jQuery ->
-  do ->
-    $('#baidu_search').submit ->
-      $form = $(this).clone()
-      $input = $form.find('input')
-      value = $.trim($input.val())
-      $input.val "site:36kr.com #{value}"
-      $form.submit().empty()
-      false
+window.baidu_search = ->
+  $form = $("#baidu_search").clone().unbind('submit', arguments.callee)
+  $input = $form.find('input')
+  value = $.trim($input.val())
+  $input.val "site:36kr.com #{value}"
+  $form.submit().empty()
+  false
 
-  do ->
-    $('.dropdown_login_out_link').on 'click', ->
-      $('.real_login_out_link').trigger 'click'
-      return
-    $('.require-login').on 'click', ->
-      if ($('.require-login').data().uid == undefined or $('.require-login').data().uid == '') and confirm('请登录后继续操作！ (●—●)')
-        window.location.href = '/users/auth/krypton'
-      return
-    $('.single-post-header__headline img[src*=yestone]').after '<small><a href="">Yestone.com 版权图片库</a></small>'
+jQuery ->
+  $('.dropdown_login_out_link').on 'click', ->
+    $('.real_login_out_link').trigger 'click'
     return
+  $('.require-login').on 'click', ->
+    if ($('.require-login').data().uid == undefined or $('.require-login').data().uid == '') and confirm('请登录后继续操作！ (●—●)')
+      window.location.href = '/users/auth/krypton'
+    return
+  $('.single-post-header__headline img[src*=yestone]').after '<small><a href="">Yestone.com 版权图片库</a></small>'
+  return

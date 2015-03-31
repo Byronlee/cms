@@ -89,7 +89,8 @@
         baidu_search_url = portable_device? ? "http://m.baidu.com/s" : "http://www.baidu.com/s"
         baidu_search_target = portable_device? ? "_self" : "_blank"
       %>
-      <form action="<%= baidu_search_url %>" method='GET' target="<%= baidu_search_target %>" id='baidu_search'>
+      <form action="<%= baidu_search_url %>" method='GET' target="<%= baidu_search_target %>"
+        onsubmit='return baidu_search()' id='baidu_search'>
         <input name="word" type="search" placeholder="搜索">
       </form>
     </div>
