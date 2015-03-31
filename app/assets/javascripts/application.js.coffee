@@ -6,6 +6,12 @@
 if !window.BAIDU_CLB_fillSlot || $('html').is('.portable-device')
   window.BAIDU_CLB_fillSlot = (id) ->
 
+do ->
+  _alert = alert
+  # 屏蔽百度挟持代码弹出的 alert
+  window.alert = (message) -> _alert(message) unless message.match("malicious javascript")
+
+
 mobilecheck = ->
   check = false
   ((a) ->
