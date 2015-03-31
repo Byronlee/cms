@@ -46,9 +46,11 @@
           <a href="#" class="hasdropdown main-nav__item">活动</a>
           <div class="dropdown dropdown-normal">
             <div class="dropdown-list dropdown__list main-nav__list">
-              <script type="text/javascript">BAIDU_CLB_fillSlot("1059302");</script>
-              <script type="text/javascript">BAIDU_CLB_fillSlot("1059306");</script>
-              <script type="text/javascript">BAIDU_CLB_fillSlot("1059307");</script>
+              <% unless portable_device? %>
+                <script type="text/javascript">BAIDU_CLB_fillSlot("1059302");</script>
+                <script type="text/javascript">BAIDU_CLB_fillSlot("1059306");</script>
+                <script type="text/javascript">BAIDU_CLB_fillSlot("1059307");</script>
+              <% end %>
             </div>
           </div>
         </li>

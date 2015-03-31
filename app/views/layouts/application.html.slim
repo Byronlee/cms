@@ -4,7 +4,7 @@ doctype html
 /!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]
 /!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]
 /!--[if gt IE 8]><!--
-html class="no-js"
+html class="no-js #{ "portable-device" if portable_device? }"
 
   head
     = content_for?(:title) ? yield(:title) : content_tag(:title, t('site.name'), s_t: t('site.name'))
@@ -22,9 +22,9 @@ html class="no-js"
     /!--opengraph meata end
     = stylesheet_link_tag 'application', media: 'all'
     = content_for?(:canonical) ? yield(:canonical) : ''
+    = javascript_include_tag "http://cbjs.baidu.com/js/m.js"
     = javascript_include_tag 'application'
     = javascript_include_tag "#{Settings.oauth.krypton.host}/assets/helper.js"
-    = javascript_include_tag "http://cbjs.baidu.com/js/m.js"
     = render_cell :head, :html5
 
     = csrf_meta_tags

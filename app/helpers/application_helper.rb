@@ -8,6 +8,14 @@ module ApplicationHelper
     end
   end
 
+  def in_wechat?
+    !!(request.user_agent =~ /micromessenger/i)
+  end
+
+  def portable_device?
+    (params[:portable] == "1") or !!(request.user_agent =~ /Mobile|webOS/)
+  end
+
   def avatar_url(avatar)
     return avatar if avatar
     asset_url "images/a-#{rand(1..3)}.jpg"
