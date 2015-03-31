@@ -21,19 +21,6 @@ window.mobilecheck = ->
   ) navigator.userAgent or navigator.vendor or window.opera
   check
 
-window.goSearch = (f) ->
-  v = document.search_baidu.cust_data.value
-  d = v + '%20site:36kr.com'
-  url = ''
-  f.method = 'get'
-  if !mobilecheck()
-    url = 'http://www.baidu.com/baidu?word_display=' + v + '&word=' + d
-    window.open url, '_new'
-  else
-    url = 'http://www.baidu.com/from=844b/s?word=' + d + '&t_kt=0&sa=is_1&ms=1&rq=' + v
-    window.open url, '_self'
-  false
-
 window.message = (data) ->
   $.get '/users/messages', { data: data }, (html) ->
     $('li.notice').html html
@@ -55,13 +42,23 @@ window.doFavorite = (url_code) ->
     return
   return
 
-$(document).ready ->
-  $('.dropdown_login_out_link').on 'click', ->
-    $('.real_login_out_link').trigger 'click'
+jQuery ->
+  do ->
+    $('#baidu_search').submit ->
+      $form = $(this).clone()
+      $input = $form.find('input')
+      value = $.trim($input.val())
+      $input.val "site:36kr.com #{value}"
+      $form.submit().empty()
+      false
+
+  do ->
+    $('.dropdown_login_out_link').on 'click', ->
+      $('.real_login_out_link').trigger 'click'
+      return
+    $('.require-login').on 'click', ->
+      if ($('.require-login').data().uid == undefined or $('.require-login').data().uid == '') and confirm('请登录后继续操作！ (●—●)')
+        window.location.href = '/users/auth/krypton'
+      return
+    $('.single-post-header__headline img[src*=yestone]').after '<small><a href="">Yestone.com 版权图片库</a></small>'
     return
-  $('.require-login').on 'click', ->
-    if ($('.require-login').data().uid == undefined or $('.require-login').data().uid == '') and confirm('请登录后继续操作！ (●—●)')
-      window.location.href = '/users/auth/krypton'
-    return
-  $('.single-post-header__headline img[src*=yestone]').after '<small><a href="">Yestone.com 版权图片库</a></small>'
-  return
