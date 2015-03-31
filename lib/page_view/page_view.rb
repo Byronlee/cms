@@ -17,12 +17,16 @@ module PageView
             Redis::HashKey.new('page_views')[cache_key] = views_count.next
           end
 
-          def persist_#{field}
+          def persist_#{field}(options = {})
             filed_name = /^persist_(.*)/i.match(__method__.to_s)[1]
             cache_key = self.class.to_s+'#'+self.id.to_s+'#'+ filed_name
             views_count = Redis::HashKey.new('page_views')[cache_key]
             if views_count.present? && self.#{field}.to_i < views_count.to_i
-              self.update_attribute(filed_name.to_sym, views_count.to_i)
+              unless options[:skip_callbacks]
+                self.update_attribute(filed_name.to_sym, views_count.to_i)
+              else
+                self.update_column(filed_name.to_sym, views_count.to_i)
+              end
             else
               Redis::HashKey.new('page_views')[cache_key] = self.#{field}.to_i
             end
