@@ -1,13 +1,14 @@
 - comment ||= @comment
-.comment.cf id="comment-#{comment.id}"
-  .avatar.left
-    a[href="javascript:void(0)"]
-      img[src="#{avatar_url comment.user.try(:avatar)}" raw_iden="#{comment.user.try(:id)}" alt="#{comment.user.try(:display_name) || '匿名用户'}" style="width:48px;height:48px;"]
-  .comment-wrapper
-    .postmeta
-      a.user_info_name[href="javascript:void(0)"] = comment.user.try(:display_name) || '匿名用户'
-      |&nbsp;•&nbsp;
-      = smart_time_ago comment.created_at
-    .commemt-main
-      p  = raw comment.content
-    .opts
+- unless comment.user_id == 10002
+  .comment.cf id="comment-#{comment.id}"
+    .avatar.left
+      a[href="javascript:void(0)"]
+        img[src="#{avatar_url comment.user.try(:avatar)}" raw_iden="#{comment.user.try(:id)}" alt="#{comment.user.try(:display_name) || '匿名用户'}" style="width:48px;height:48px;"]
+    .comment-wrapper
+      .postmeta
+        a.user_info_name[href="javascript:void(0)"] = comment.user.try(:display_name) || '匿名用户'
+        |&nbsp;•&nbsp;
+        = smart_time_ago comment.created_at
+      .commemt-main
+        p  = raw comment.content
+      .opts
