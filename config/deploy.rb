@@ -66,7 +66,6 @@ namespace :deploy do
   end
 
   after "deploy:migrate", "deploy:updated"
-  after "deploy:compile_assets", "deploy:cdn"
   after "newrelic:notice_deployment", "deploy:restart"
 end
 
