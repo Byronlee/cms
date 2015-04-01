@@ -5,7 +5,9 @@
   .content
     .content-wrapper
       .content-wrapper-border
-        h2.lastest style="text-transform: none;" “#{params[:q]}” 搜索结果
+        h2.lastest style="text-transform: none;"
+          |“#{params[:q]}” 搜索结果
+          span style="float:right; font-weight: normal" 记录数：#{@search.records.total}
         .articles
           - if @posts.count > 0
             - @posts.each do |post|
@@ -22,11 +24,11 @@
                     = smart_time_ago(post.published_at)
                 .left.left-col
                   div.image.feature-img.thumb-180
-                    a href="#{post_url(post)}"
+                    a href="#{post_url(post, utm_source: 'site_search')}"
                       img alt="Blank" class="image lazyload loaded" data-src="#{ high_speed_url post.cover, 'slider' }" src="#{ high_speed_url post.cover, 'slider' }"
                 .right-col
                   h1
-                    a href="#{post_url(post)}" data-no-turbolink="true" onclick="javascript:_gaq.push(['_trackPageview', '/click/index_newtab/']);" target="_blank" title="#{raw(post.title)}"  = raw(post.title)
+                    a href="#{post_url(post, utm_source:'site_search')}" data-no-turbolink="true" onclick="javascript:_gaq.push(['_trackPageview', '/click/index_newtab/']);" target="_blank" title="#{raw(post.title)}"  = raw(post.title)
                   p
                     = post.summary
           - else
@@ -34,7 +36,7 @@
               |未找到相关文章
           .pagination.cf
             ul
-              - if @posts.present?
+              - if @posts.count > 0
                 - if params[:page].to_i > 1
                   li.prev.previous_page.left
                     = link_to '← 上一页', search_path(q: params[:q], page: params[:page].to_i.pred ), rel: "prev"
@@ -42,7 +44,7 @@
                   li.prev.previous_page.left.disabled
                     = link_to '← 上一页', '#', rel: "prev"
 
-                - if params[:page].to_i < @last_page
+                - if params[:page].to_i < last_page(@search)
                   li.next.next_page.right
                     = link_to '下一页 →', search_path(q: params[:q], page: params[:page].to_i.next ), rel: "next"
                 - else

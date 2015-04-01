@@ -21,10 +21,14 @@ module ApplicationHelper
     asset_url "images/a-#{rand(1..3)}.jpg"
   end
 
-  def post_url(arg)
+  def post_url(arg, options = {})
     return arg.title_link unless arg.try(:title_link).blank?
     url_code = (arg.class.to_s == 'Fixnum' ? arg : arg.url_code)
-    post_show_by_url_code_url(url_code)
+    if options[:utm_source].blank?
+      post_show_by_url_code_url(url_code)
+    else
+      post_show_by_url_code_url(url_code, utm_source: options[:utm_source])
+    end
   end
 
   def high_speed_url(raw_url, postfix)
