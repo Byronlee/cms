@@ -159,7 +159,11 @@ class Post < ActiveRecord::Base
   end
 
   def self.search(params)
-    conditions = super(params[:q], sort: { published_at: :desc})
+    conditions = super(params[:q], sort: { published_at: :desc}, filter: {
+      terms: {
+       state: ["published"]
+      }
+    })
     conditions.page(params[:page]).per(params[:per].presence || 30)
   end
 

@@ -39,7 +39,7 @@ module ElasticsearchSearchable
       @search_definition = {
         sort: options[:sort].presence,
         query: {},
-        filter: {},
+        filter: options[:filter].presence || {},
         facets: {}
       }.compact
 
