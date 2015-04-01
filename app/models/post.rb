@@ -71,6 +71,18 @@ class Post < ActiveRecord::Base
   before_save :auto_generate_summary
   after_create :generate_url_code
 
+  after_commit on: [:create] do
+    index_document if self.published?
+  end
+
+  after_commit on: [:update] do
+    update_document if self.published?
+  end
+
+  after_commit on: [:destroy] do
+    delete_document if self.published?
+  end
+
   scope :published_on, ->(date) {
     where(:published_at => date.beginning_of_day..date.end_of_day)
   }
