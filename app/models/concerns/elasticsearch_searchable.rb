@@ -32,14 +32,16 @@ module ElasticsearchSearchable
       [q, p]
     end
 
-    def search(query=nil, options={page: 1, per_page: 30})
+    def search(query=nil, options={})
       options ||= {}
+      options[:page] = 1 if options[:page].to_i < 1
+      options[:per_page] ||= 30
       @search_definition = {
         query: {},
         filter: {},
         facets: {},
         size: options[:per_page],
-        from: options[:page] * options[:per_page]
+        from: (options[:page].to_i - 1) * options[:per_page]
       }
 
       __set_filters = lambda do |key, f|

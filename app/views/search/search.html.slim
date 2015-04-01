@@ -30,7 +30,18 @@
                   a href="#{post_url(post)}" data-no-turbolink="true" onclick="javascript:_gaq.push(['_trackPageview', '/click/index_newtab/']);" target="_blank" title="#{raw(post.title)}"  = raw(post.title)
                 p
                   = post.summary
+          .pagination.cf
+            ul
+              - if @posts.present?
+                - if params[:page].to_i > 1
+                  li.prev.previous_page.left
+                    = link_to '← 上一页', search_path(q: params[:q], page: params[:page].to_i.pred ), rel: "prev"
+                - else
+                  li.prev.previous_page.left.disabled
+                    = link_to '← 上一页', '#', rel: "prev"
 
+                li.next.next_page.right
+                  = link_to '下一页 →', search_path(q: params[:q], page: params[:page].to_i.next ), rel: "next"
   .aside
     = render_cell :sidebar, :today, posts_today_lastest: @posts_today_lastest
     = render_cell :sidebar, :social
