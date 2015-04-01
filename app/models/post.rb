@@ -61,9 +61,12 @@ class Post < ActiveRecord::Base
   has_many :favoriters, source: :user, through: :favorites, primary_key: :url_code
 
   after_save :update_today_lastest_cache, :update_hot_posts_cache, :update_info_flows_cache,
-             :update_new_posts_cache, :check_head_line_cache, :update_excellent_comments_cache
+             :update_new_posts_cache, :check_head_line_cache, :update_excellent_comments_cache,
+       after_add: -> (a, c) { Indexer.perform_async(:update,  a.class.to_s, a.id) }
+
   after_destroy :update_today_lastest_cache, :update_hot_posts_cache, :update_info_flows_cache,
-                :update_new_posts_cache, :check_head_line_cache_for_destroy, :update_excellent_comments_cache
+                :update_new_posts_cache, :check_head_line_cache_for_destroy, :update_excellent_comments_cache,
+       after_remove: -> (a, c) { Indexer.perform_async(:update,  a.class.to_s, a.id) }
   before_create :generate_key
   before_save :auto_generate_summary
   after_create :generate_url_code
