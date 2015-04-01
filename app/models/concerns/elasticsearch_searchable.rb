@@ -36,9 +36,9 @@ module ElasticsearchSearchable
       options ||= {}
       @search_definition = {
         query: {},
-        facets: {}
-        sort: options[:sort].presence,
-        filter: options[:filter].presence || {},
+        facets: {},
+        sort: options[:sort].presence || {},
+        filter: options[:filter].presence || {}
       }.compact
 
       __set_filters = lambda do |key, f|
