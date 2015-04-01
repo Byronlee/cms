@@ -42,7 +42,7 @@
                   li.prev.previous_page.left.disabled
                     = link_to '← 上一页', '#', rel: "prev"
 
-                - if params[:page].to_i > @last_page
+                - if params[:page].to_i < @last_page
                   li.next.next_page.right
                     = link_to '下一页 →', search_path(q: params[:q], page: params[:page].to_i.next ), rel: "next"
                 - else
