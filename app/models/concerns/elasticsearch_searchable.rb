@@ -37,12 +37,11 @@ module ElasticsearchSearchable
       options[:page] = 1 if options[:page].to_i < 1
       options[:per_page] ||= 30
       @search_definition = {
+        sort: options[:sort].presence,
         query: {},
         filter: {},
-        facets: {},
-        size: options[:per_page],
-        from: (options[:page].to_i - 1) * options[:per_page]
-      }
+        facets: {}
+      }.compact
 
       __set_filters = lambda do |key, f|
         @search_definition[:filter][:and] ||= []

@@ -146,8 +146,9 @@ class Post < ActiveRecord::Base
     published_on(Date.today)
   end
 
-  def self.search(params = { page: 30, page: 1})
-    super(params[:q], params.except(:q))
+  def self.search(params)
+    conditions = super(params[:q], sort: { published_at: :desc})
+    conditions.page(params[:page]).per(params[:per].presence || 30)
   end
 
   def self.find_and_order_by_ids(search)
