@@ -1,4 +1,4 @@
-= render 'welcome/title', title: params[:q]
+= render 'welcome/title', title: "搜索: #{params[:q]}"
 /= render 'welcome/canonical', :raw_url => "http://www.36kr.com/search/#{params[:q]}"
 
 .main

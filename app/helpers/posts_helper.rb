@@ -20,7 +20,7 @@ module PostsHelper
   end
 
   def onblur_title(title)
-    return title if title.length < 14
+    return "#{title} | 36氪" if title.length < 14
     title[0..7] << '...' << title[(title.length - 3)..title.length] << ' | 36氪'
   end
 end
