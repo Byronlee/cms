@@ -15,7 +15,7 @@ GIT
       grape-entity
 
 GEM
-  remote: http://rubygems.org/
+  remote: http://ruby.taobao.org/
   remote: https://rails-assets.org/
   specs:
     aasm (4.0.8)

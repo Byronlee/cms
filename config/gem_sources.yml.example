@@ -1,6 +1,5 @@
 
 ---
 gem_sources:
-  #- 'http://rubygems.org'
-  - 'http://ruby.taobao.org'
+  - 'http://rubygems.org'
   - 'https://rails-assets.org'
