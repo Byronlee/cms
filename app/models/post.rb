@@ -74,6 +74,14 @@ class Post < ActiveRecord::Base
   scope :reviewing, ->{ where(:state => :reviewing)}
   scope :published, ->{ where(:state => :published)}
   scope :hot_posts, -> { order('id desc, views_count desc') }
+  scope :order_by_ids, ->(ids){
+    order_by = ["case"]
+    ids.each_with_index.map do |id, index|
+      order_by << "WHEN id='#{id}' THEN #{index}"
+    end
+    order_by << "end"
+    order(order_by.join(" "))
+  }
 
   acts_as_taggable
 
@@ -91,14 +99,6 @@ class Post < ActiveRecord::Base
     event :undo_publish do
       transitions :from => [:published], :to => :reviewing
     end
-  end
-
-  def self.search(params = { page: 30, page: 1})
-    super(params[:q], params.except(:q))
-  end
-
-  def self.today
-    published_on(Date.today)
   end
 
   def get_access_url
@@ -137,6 +137,19 @@ class Post < ActiveRecord::Base
       posts_count = 0
     end
     { count: posts_count, posts: posts }
+  end
+
+  def self.today
+    published_on(Date.today)
+  end
+
+  def self.search(params = { page: 30, page: 1})
+    super(params[:q], params.except(:q))
+  end
+
+  def self.find_and_order_by_ids(search)
+    ids = search.map(&:id)
+    self.where(id: ids).order_by_ids(ids).includes(:column, author:[:krypton_authentication])
   end
 
   private
