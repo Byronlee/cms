@@ -29,6 +29,7 @@ gem 'sidekiq', '~> 3.1.2'
 gem 'sidekiq-failures'
 gem 'faraday', '~> 0.9.0'
 #gem 'typhoeus'
+gem "kaminari", "~> 0.15.1"
 gem 'elasticsearch-rails'
 gem 'elasticsearch-model'
 gem 'ruby-progressbar', "~> 1.7.1"
@@ -52,7 +53,6 @@ gem "validate_url"
 # views
 gem "simple_form", "~> 3.0.1"
 gem "fume-nav", "~> 0.0.2"
-gem "kaminari", "~> 0.15.1"
 gem "kaminari-bootstrap", "~> 3.0.1"
 gem 'devise-i18n', '~> 0.10.3'
 gem 'slim-rails'
