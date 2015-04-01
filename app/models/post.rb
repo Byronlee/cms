@@ -61,29 +61,19 @@ class Post < ActiveRecord::Base
   has_many :favoriters, source: :user, through: :favorites, primary_key: :url_code
 
   after_save :update_today_lastest_cache, :update_hot_posts_cache, :update_info_flows_cache,
-             :update_new_posts_cache, :check_head_line_cache, :update_excellent_comments_cache,
-       after_add: -> (a, c) { Indexer.perform_async(:update,  a.class.to_s, a.id) }
+             :update_new_posts_cache, :check_head_line_cache, :update_excellent_comments_cache
 
   after_destroy :update_today_lastest_cache, :update_hot_posts_cache, :update_info_flows_cache,
-                :update_new_posts_cache, :check_head_line_cache_for_destroy, :update_excellent_comments_cache,
-       after_remove: -> (a, c) { Indexer.perform_async(:update,  a.class.to_s, a.id) }
+                :update_new_posts_cache, :check_head_line_cache_for_destroy, :update_excellent_comments_cache
+
   before_create :generate_key
   before_save :auto_generate_summary
   after_create :generate_url_code
 
-  after_commit on: [:create] do
-    index_document if self.published?
-  end
+  after_save    -> { __elasticsearch__.index_document }
+  after_destroy -> { __elasticsearch__.delete_document }
 
-  after_commit on: [:update] do
-    update_document if self.published?
-  end
-
-  after_commit on: [:destroy] do
-    delete_document if self.published?
-  end
-
-  scope :published_on, ->(date) {
+  scope :published_on, -> (date) {
     where(:published_at => date.beginning_of_day..date.end_of_day)
   }
   scope :reviewing, ->{ where(:state => :reviewing)}
