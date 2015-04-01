@@ -7,7 +7,7 @@
       .content-wrapper-border
         h2.lastest style="text-transform: none;"
           |“#{params[:q]}” 搜索结果
-          span style="float:right; font-weight: normal" 记录数：#{@search.records.total}
+          span style="float:right; font-weight: normal" 结果数：#{@search.records.total}
         .articles
           - if @posts.count > 0
             - @posts.each do |post|
