@@ -90,7 +90,7 @@
         baidu_search_target = portable_device? ? "_self" : "_blank"
       %>
       <form action="<%= search_path %>" method='GET'>
-        <input name="q" type="search" value="<%= params[:q] %>" placeholder="搜索">
+        <input name="q" type="search" value="<%= params[:q] %>" placeholder="搜索" <%= "autofocus" if params[:q].present? %> >
       </form>
     </div>
     <nav class="second-nav">
