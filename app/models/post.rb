@@ -32,6 +32,7 @@ class Post < ActiveRecord::Base
   include ActionView::Helpers::SanitizeHelper
   include ActionView::Helpers::DateHelper
   include Rails.application.routes.url_helpers
+  include ElasticsearchSearchable
   include ApplicationHelper
   include PostsHelper
   include AASM

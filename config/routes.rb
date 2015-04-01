@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   }
 
   root 'welcome#index'
+  get 'search', to: 'search#search'
 
   resources :users, only: [] do
     get :messages, on: :collection

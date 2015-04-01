@@ -23,12 +23,14 @@ gem 'redis-rails', '~> 4.0.0'
 gem 'redis-objects', '~> 1.0.1'
 gem 'redis-namespace', "~> 1.5.1"
 gem 'redis-stat'
-gem 'typhoeus'
 gem 'newrelic_rpm'
 gem 'newrelic-redis'
 gem 'sidekiq', '~> 3.1.2'
 gem 'sidekiq-failures'
 gem 'faraday', '~> 0.9.0'
+#gem 'typhoeus'
+gem 'elasticsearch-rails'
+gem 'elasticsearch-model'
 gem 'ruby-progressbar', "~> 1.7.1"
 
 # models

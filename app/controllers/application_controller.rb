@@ -38,9 +38,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  rescue_from Exception do |exception|
-    flash[:kr_error] = exception if Rails.env.development?
-    redirect_to apology_errors_path
+  unless Rails.env.development?
+    rescue_from Exception do |exception|
+      flash[:kr_error] = exception
+      redirect_to apology_errors_path
+    end
   end
 
   def routing_error
