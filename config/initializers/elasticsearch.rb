@@ -1,8 +1,8 @@
 config = {
   host: Settings.elasticsearch_servers,
   transport_options: {
-  request: { timeout: 5 }
-},
+    request: { timeout: 10 }
+  },
 }
 
 if File.exists?("config/elasticsearch.yml")

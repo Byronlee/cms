@@ -37,11 +37,13 @@ class Post < ActiveRecord::Base
   include PostsHelper
   include AASM
 
-  by_star_field '"posts".published_at'
-  paginates_per 100
+  after_save    -> { __elasticsearch__.index_document }
+  after_destroy -> { __elasticsearch__.delete_document }
 
-  # mount_uploader :cover, BaseUploader
+  paginates_per 100
   aasm.attribute_name :state
+  by_star_field '"posts".published_at'
+  # mount_uploader :cover, BaseUploader
 
   validates_presence_of :title, :content
   validates_uniqueness_of :title, :content, :url_code
@@ -62,16 +64,11 @@ class Post < ActiveRecord::Base
 
   after_save :update_today_lastest_cache, :update_hot_posts_cache, :update_info_flows_cache,
              :update_new_posts_cache, :check_head_line_cache, :update_excellent_comments_cache
-
   after_destroy :update_today_lastest_cache, :update_hot_posts_cache, :update_info_flows_cache,
                 :update_new_posts_cache, :check_head_line_cache_for_destroy, :update_excellent_comments_cache
-
   before_create :generate_key
   before_save :auto_generate_summary
   after_create :generate_url_code
-
-  after_save    -> { __elasticsearch__.index_document }
-  after_destroy -> { __elasticsearch__.delete_document }
 
   scope :published_on, -> (date) {
     where(:published_at => date.beginning_of_day..date.end_of_day)
@@ -104,6 +101,15 @@ class Post < ActiveRecord::Base
     event :undo_publish do
       transitions :from => [:published], :to => :reviewing
     end
+  end
+
+  def self.search(params)
+    conditions = super(params[:q],
+      sort: { published_at: :desc },
+      filter: {
+        terms: { state: ["published"] }
+      })
+    conditions.page(params[:page]).per(params[:per].presence || 30)
   end
 
   def get_access_url
@@ -148,14 +154,6 @@ class Post < ActiveRecord::Base
     published_on(Date.today)
   end
 
-  def self.search(params)
-    conditions = super(params[:q], sort: { published_at: :desc}, filter: {
-      terms: {
-       state: ["published"]
-      }
-    })
-    conditions.page(params[:page]).per(params[:per].presence || 30)
-  end
 
   def self.find_and_order_by_ids(search)
     ids = search.map(&:id)
