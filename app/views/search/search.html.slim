@@ -1,0 +1,41 @@
+= render 'welcome/title', title: params[:q]
+/= render 'welcome/canonical', :raw_url => "http://www.36kr.com/search/#{params[:q]}"
+
+.main
+  .content
+    .content-wrapper
+      .content-wrapper-border
+        h2.lastest style="text-transform: none;" “#{params[:q]}” 搜索结果
+        .articles
+          - column = Column.first
+          - author = User.last
+          - @posts.each do |post|
+             article.posts.post-1.cf
+              .info.cf
+                .topic.left
+                  span
+                   a class="#{column.slug}" href="/category/#{column.slug}"  = column.name
+                   |  /  #{column.slug}
+                .postmeta.right
+                  a href="javascript:void(0)" class="uname user_#{author.try(:display_name)}" data-name="#{author.try(:display_name)}" target="_blank"
+                    = author.try(:display_name)
+                  |&nbsp;•&nbsp;
+                  = smart_time_ago(Time.parse(post.published_at))
+              .left.left-col
+                div.image.feature-img.thumb-180
+                  a href="#{post_url(post)}"
+                    img alt="Blank" class="image lazyload loaded" data-src="#{ high_speed_url post.cover, 'slider' }" src="#{ high_speed_url post.cover, 'slider' }"
+              .right-col
+                h1
+                  a href="#{post_url(post)}" data-no-turbolink="true" onclick="javascript:_gaq.push(['_trackPageview', '/click/index_newtab/']);" target="_blank" title="#{raw(post.title)}"  = raw(post.title)
+                p
+                  = post.summary
+
+  .aside
+    = render_cell :sidebar, :today, posts_today_lastest: @posts_today_lastest
+    = render_cell :sidebar, :social
+
+.sidebar
+  = render_cell :sidebar, :ad_top, position: :column_show
+  = render_cell :sidebar, :hot_posts
+  = render_cell :sidebar, :excellent_comments
