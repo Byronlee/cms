@@ -93,7 +93,7 @@ class Post < ActiveRecord::Base
     end
   end
 
-  def self.search(params = { page: Post.default_per_page, page: 1})
+  def self.search(params = { page: 30, page: 1})
     super(params[:q], params.except(:q))
   end
 
