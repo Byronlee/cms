@@ -7,27 +7,31 @@
       .content-wrapper-border
         h2.lastest style="text-transform: none;" “#{params[:q]}” 搜索结果
         .articles
-          - @posts.each do |post|
-             article.posts.post-1.cf
-              .info.cf
-                .topic.left
-                  span
-                   a class="#{post.column.slug}" href="/category/#{post.column.slug}"  = post.column.name
-                   |  /  #{post.column.slug}
-                .postmeta.right
-                  a href="javascript:void(0)" class="uname user_#{post.author.try(:display_name)}" data-name="#{post.author.try(:display_name)}" target="_blank"
-                    = post.author.try(:display_name)
-                  |&nbsp;•&nbsp;
-                  = smart_time_ago(post.published_at)
-              .left.left-col
-                div.image.feature-img.thumb-180
-                  a href="#{post_url(post)}"
-                    img alt="Blank" class="image lazyload loaded" data-src="#{ high_speed_url post.cover, 'slider' }" src="#{ high_speed_url post.cover, 'slider' }"
-              .right-col
-                h1
-                  a href="#{post_url(post)}" data-no-turbolink="true" onclick="javascript:_gaq.push(['_trackPageview', '/click/index_newtab/']);" target="_blank" title="#{raw(post.title)}"  = raw(post.title)
-                p
-                  = post.summary
+          - if @posts.count > 0
+            - @posts.each do |post|
+               article.posts.post-1.cf
+                .info.cf
+                  .topic.left
+                    span
+                     a class="#{post.column.slug}" href="/category/#{post.column.slug}"  = post.column.name
+                     |  /  #{post.column.slug}
+                  .postmeta.right
+                    a href="javascript:void(0)" class="uname user_#{post.author.try(:display_name)}" data-name="#{post.author.try(:display_name)}" target="_blank"
+                      = post.author.try(:display_name)
+                    |&nbsp;•&nbsp;
+                    = smart_time_ago(post.published_at)
+                .left.left-col
+                  div.image.feature-img.thumb-180
+                    a href="#{post_url(post)}"
+                      img alt="Blank" class="image lazyload loaded" data-src="#{ high_speed_url post.cover, 'slider' }" src="#{ high_speed_url post.cover, 'slider' }"
+                .right-col
+                  h1
+                    a href="#{post_url(post)}" data-no-turbolink="true" onclick="javascript:_gaq.push(['_trackPageview', '/click/index_newtab/']);" target="_blank" title="#{raw(post.title)}"  = raw(post.title)
+                  p
+                    = post.summary
+          - else
+            p.search_none_info
+              |未找到相关文章
           .pagination.cf
             ul
               - if @posts.present?

@@ -1,7 +1,6 @@
 class SearchController < ApplicationController
   def search
-    if params[:q]
-      search = Post.search(params)
+    if params[:q] && (search = Post.search(params)).count > 0
       @posts = Post.find_and_order_by_ids(search)
       @last_page = ((search.records.total - 1) / 30).ceil + 1
     else
