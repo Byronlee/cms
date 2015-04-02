@@ -4,11 +4,11 @@ describe PostsController do
 
   describe "GET 'show'" do
     context 'without login' do
-      let(:post){ create(:post, :published) }
-      before{ get 'show', url_code: post.url_code }
-      it{
-        response.should be_success
-        render_template :show
+      let (:post) { create(:post, :published) }
+      before { get 'show', url_code: post.url_code }
+      it {
+        should respond_with(:success)
+        should render_template(:show)
 
         post = assigns(:post)
         expect(post.cache_views_count - post.views_count).to eq(1)
