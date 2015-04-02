@@ -38,7 +38,7 @@ module V1
           posts_list = []
           posts.each do |post|
            posts_list << {
-             id: post.id,
+             id: post.url_code,
              title: post.title,
              views_count: post.views_count,
              author: post.author.name,
