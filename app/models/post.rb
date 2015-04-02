@@ -162,6 +162,16 @@ class Post < ActiveRecord::Base
     published_on(Date.today)
   end
 
+  def self.find_and_order_by_ids(search)
+    ids = search.map(&:id)
+    self.where(id: ids).order_by_ids(ids).includes(:column, author:[:krypton_authentication])
+  end
+
+  def source_urls_array
+    return [] if source_urls.blank?
+    source_urls.split
+  end
+
   private
 
   def update_today_lastest_cache
@@ -198,12 +208,7 @@ class Post < ActiveRecord::Base
     check_head_line_cache_for_destroy
   end
 
-  def source_urls_array
-    return [] if source_urls.blank?
-    source_urls.split
-  end
-
-   def check_head_line_cache_for_destroy
+  def check_head_line_cache_for_destroy
     HeadLine.all.each do |head_line|
       next if head_line.url_code != url_code
       head_line.destroy
@@ -248,7 +253,7 @@ class Post < ActiveRecord::Base
     self.source_urls = if source_type == "original"
       nil
     elsif source_urls.present?
-      self.source_urls = self.source_urls.split.map(&:strip).join(", ")
+      self.source_urls_array.join(" ")
     end
   end
 end

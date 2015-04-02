@@ -1,3 +1,5 @@
+- body_class "post-publish"
+
 .col_main
   .main_hd
     h2
@@ -15,8 +17,8 @@
       = f.input :summary, as: :text, :input_html => { 'rows' => 10, class: 'col-lg-12' }
       = f.input :tag_list, input_html: {class: 'col-lg-12'}
       = f.input :source_type, allow_blank: false, prompt: false
-      = f.input :source_urls, as: :text, input_html: { rows: 2, class: 'col-lg-12' },
-        wrapper_html: { class: "#{ "hide" unless @post.source_type == "original" }" }
+      = f.input :source_urls, as: :text, id: :source_urls, input_html: { rows: 2, class: 'col-lg-12' },
+        wrapper_html: { class: "#{ "hide" if @post.source_type == "original" }" }
       div.control-group
         = f.label :column_id
         div.controls

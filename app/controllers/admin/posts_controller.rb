@@ -61,7 +61,8 @@ class Admin::PostsController < Admin::BaseController
       :column_id, :title,
       :content, :remark,
       :slug, :summary,
-      :title_link, :cover, :tag_list
+      :title_link, :cover, :tag_list,
+      :source_type, :source_urls
     )
   end
 

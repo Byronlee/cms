@@ -51,6 +51,14 @@ module ApplicationHelper
     @num ||= Post.reviewing.count
   end
 
+  def body_class(name = nil)
+    if name.present?
+      content_for(:body_class) { name }
+    else
+      content_for(:body_class)
+    end
+  end
+
   private
 
   def relative_time(raw_time)

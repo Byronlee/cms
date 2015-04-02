@@ -15,7 +15,7 @@ html lang="en"
     = javascript_include_tag "admin"
     = html_import_tag 'application'
 
-  body
+  body class=body_class
     .navbar.navbar-default.navbar-static-top
       .container
         a.navbar-brand href=((can? :read, :dashboard) ? admin_root_path : 'javascript:void(0)')
