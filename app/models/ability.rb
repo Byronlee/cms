@@ -36,7 +36,7 @@ class Ability
   # 运营
   def operator(user)
     can :read, :dashboard
-    can :read, User
+    can [:read, :shutup], User
     can [:read, :reviewings, :toggle_tag], Post
     can :manage, HeadLine
     can :manage, Comment unless user.muted?
