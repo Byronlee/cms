@@ -25,8 +25,6 @@
 #  published_at   :datetime
 #  key            :string(255)
 #  remark         :text
-#  extra          :text
-#  source_type    :string(255)
 #
 
 FactoryGirl.define do
