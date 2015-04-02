@@ -198,7 +198,12 @@ class Post < ActiveRecord::Base
     check_head_line_cache_for_destroy
   end
 
-  def check_head_line_cache_for_destroy
+  def source_urls_array
+    return [] if source_urls.blank?
+    source_urls.split
+  end
+
+   def check_head_line_cache_for_destroy
     HeadLine.all.each do |head_line|
       next if head_line.url_code != url_code
       head_line.destroy
@@ -243,7 +248,7 @@ class Post < ActiveRecord::Base
     self.source_urls = if source_type == "original"
       nil
     elsif source_urls.present?
-      self.source_urls = self.source_urls.split.join(", ")
+      self.source_urls = self.source_urls.split.map(&:strip).join(", ")
     end
   end
 end
