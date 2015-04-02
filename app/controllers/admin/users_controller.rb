@@ -15,11 +15,13 @@ class Admin::UsersController < Admin::BaseController
 
   def shutup
     @user.shutup!
+    flash[:notice] = "禁言操作成功！"
     respond_with @user, location: ok_url_or([:admin, :users])
   end
 
   def speak
     @user.speak!
+    flash[:notice] = "解除禁言操作成功！"
     respond_with @user, location:  ok_url_or([:admin, :users])
   end
 

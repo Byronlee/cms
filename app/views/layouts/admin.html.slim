@@ -32,6 +32,7 @@ html lang="en"
       .col-lg-2.sidepanel.sidebar-nav
         = render_cell :sidebar, :admin, controller_name: controller_name, action_name: action_name, current_user: current_user
       .col-lg-10
+        = render "/admin/shared/notice"
         = yield
 
     = analytics_init if Rails.env.production?
