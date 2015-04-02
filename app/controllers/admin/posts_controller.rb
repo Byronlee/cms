@@ -4,23 +4,33 @@ class Admin::PostsController < Admin::BaseController
 
   def index
     @posts = Column.find(params[:column_id]).posts rescue Post
-    @posts = @posts.published.accessible_by(current_ability).order('published_at desc').includes({ author: :krypton_authentication }, :column).page params[:page]
+    @posts = @posts.published.accessible_by(current_ability).order('published_at desc')
+    @posts = @posts.includes({ author: :krypton_authentication }, :column).page params[:page]
   end
 
   def column
     @column = Column.find(params[:column_id])
-    @posts = @column.posts.published.accessible_by(current_ability).order('published_at desc').includes({ author: :krypton_authentication }, :column).page params[:page]
+    @posts = @column.posts.published.accessible_by(current_ability).order('published_at desc')
+    @posts = @posts.includes({ author: :krypton_authentication }, :column).page params[:page]
     render 'column'
   end
 
   def reviewings
     @posts = Column.find(params[:column_id]).posts rescue Post
-    @posts = @posts.reviewing.accessible_by(current_ability).order('id desc').includes({ author: :krypton_authentication }, :column).page params[:page]
+    @posts = @posts.reviewing.accessible_by(current_ability).order('id desc')
+    @posts = @posts.includes({ author: :krypton_authentication }, :column).page params[:page]
   end
 
   def myown
     @posts = Column.find(params[:column_id]).posts rescue Post
-    @posts = @posts.where(author: current_user).order('id desc').includes({ author: :krypton_authentication }, :column).page params[:page]
+    @posts = @posts.where(author: current_user).order('id desc')
+    @posts = @posts.includes({ author: :krypton_authentication }, :column).page params[:page]
+  end
+
+  def draft
+    @posts = Column.find(params[:column_id]).posts rescue Post
+    @posts = @posts.where(author: current_user).drafted.order('id desc')
+    @posts = @posts.includes({ author: :krypton_authentication }, :column).page params[:page]
   end
 
   def update

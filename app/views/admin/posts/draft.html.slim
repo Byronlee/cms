@@ -9,12 +9,12 @@
     .pull-left
       ul.nav-hor
         - if can? :myown, Post
-          li
+          li.active
             a href="#{draft_admin_posts_path}" 我的草稿
           li
             a href="#{myown_admin_posts_path}" 我的文章
         - if can? :read, Post
-          li.active
+          li
             a href="#{admin_posts_path}" 已发布
         - if can? :reviewings, Post
           li
@@ -27,15 +27,12 @@
     thead
       tr role="row"
         th style="width:5%" ID
-        th style="width:16%" 标题
-        th style="width:9%" 专栏
-        th.text_center style="width:8%" 发布时间
-        th.text_center style="width:5%" 状态
-        th style="width:5%" 评论
-        th style="width:4%" 留言
-        th.text_center style="width:7%" 浏览量
-        th.text_center style="width:9%" 操作&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        th style="width:33%" 标题
+        th style="width:10%" 专栏
+        th style="width:8%" 创建时间
+        th.text_center style="width:12%" 操作&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         th style="width:3%" 作者
     tbody
-      = render @posts, link_to_published:true
+      - @posts.each do |post|
+        = render partial: "draft", locals:{post:post, link_to_reviewing:false}
   = paginate @posts

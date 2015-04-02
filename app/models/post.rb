@@ -71,8 +71,9 @@ class Post < ActiveRecord::Base
   scope :published_on, -> (date) {
     where(:published_at => date.beginning_of_day..date.end_of_day)
   }
-  scope :reviewing, ->{ where(:state => :reviewing)}
-  scope :published, ->{ where(:state => :published)}
+  scope :reviewing, ->{ where(:state => :reviewing) }
+  scope :published, ->{ where(:state => :published) }
+  scope :drafted,   ->{ where(:state => :drafted) }
   scope :hot_posts, -> { order('id desc, views_count desc') }
   scope :order_by_ids, ->(ids){
     order_by = ["case"]
