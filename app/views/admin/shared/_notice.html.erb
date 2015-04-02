@@ -1,0 +1,10 @@
+<% flash.each do |type, message| %>
+  <% flash.delete(type) %>
+  <% if style = { notice: "success", error: "danger", alert: "info" }[type.to_sym] %>
+    <div class="alert alert-<%= style %> fade in">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <span class="fa fa-info"></span>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>

@@ -5,7 +5,7 @@ class Ability
     unless controller_namespace == 'Admin'
       public_ability
       if user
-        can :create, Comment
+        can :create, Comment unless user.muted?
         can :get_comments_count, Post
       end
     end
@@ -36,10 +36,10 @@ class Ability
   # 运营
   def operator(user)
     can :read, :dashboard
-    can :read, User
+    can [:read, :shutup], User
     can [:read, :reviewings, :toggle_tag], Post
     can :manage, HeadLine
-    can :manage, Comment
+    can :manage, Comment unless user.muted?
   end
 
   # 作者
@@ -58,7 +58,7 @@ class Ability
     can :manage, Post
     can :manage, Newsflash
     can :manage, Column
-    can :manage, Comment
+    can :manage, Comment unless user.muted?
     can :manage, HeadLine
     can :manage, Page
     cannot :toggle_tag, Post

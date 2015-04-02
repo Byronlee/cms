@@ -24,6 +24,7 @@
 #  tagline                             :text
 #  avatar_url                          :string(255)
 #  sso_id                              :integer
+#  muted_at                            :datetime
 #
 
 require 'spec_helper'

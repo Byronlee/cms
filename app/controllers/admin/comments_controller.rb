@@ -1,11 +1,14 @@
 class Admin::CommentsController < Admin::BaseController
   load_and_authorize_resource :comment
+  load_resource :user
 
   def index
     if @commentable = find_commentable
       @comments = @commentable.comments.accessible_by(current_ability).order("id desc").includes(user: :krypton_authentication).page params[:page]
     else
-      @comments = Comment.accessible_by(current_ability).order("id desc").includes({user: :krypton_authentication}, :commentable).page params[:page]
+      @comments = Comment.accessible_by(current_ability).order("id desc").includes({user: :krypton_authentication}, :commentable)
+      @comments = @coments.where(user_id: @user.id) if @user
+      @comments = @comments.page params[:page]
     end
   end
 
