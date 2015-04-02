@@ -19,7 +19,7 @@
 #  source         :string(255)
 #  comments_count :integer
 #  md_content     :text
-#  url_code       :integer
+#  url_code {|n| n}       :integer
 #  views_count    :integer          default(0)
 #  catch_title    :text
 #  published_at   :datetime
@@ -34,10 +34,15 @@ FactoryGirl.define do
     title 'title'
     summary 'summary'
     content 'content'
-    title_link 'title_link'
-    must_read 'true'
-    state 'draft'
+    must_read true
     source 'writer'
     views_count 0
+    url_code {|n| n}
+
+      trait :published do
+        state 'published'
+        published_at 1.hour.ago
+      end
   end
+
 end
