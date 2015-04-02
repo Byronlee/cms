@@ -44,7 +44,8 @@ module V1
              author: post.author.name,
              published_at: post.published_at,
              comments_counts: post.comments_counts,
-             column_name: post.column_name
+             column_name: post.column_name,
+             url: "#{Settings.site}/p/#{post.url_code}.html"
            }
           end
           posts_list
