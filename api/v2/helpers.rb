@@ -66,25 +66,17 @@ module V2
     end
 
     def admin_edit_post_url(post, auth)
-      if auth.present? and auth.user.editable
+      if auth.present? && auth.user.editable
         "#{Settings.site}/krypton/posts/#{post.id}/edit"
       else
         nil
       end
     end
 
-    def coming_out(post, auth, action)
-      if action.eql?('post')
-        post.drafted_to_reviewing
-        post.publish if auth.present? and auth.user.editable
-      end
-      if action.eql?('draft')
-        post.reviewing_to_drafted if post.reviewing?
-        post.publish if auth.present? and auth.user.editable
-        post.published_to_drafted if post.published?
-      end
+    def coming_out(post, auth)
+      post.review
+      post.publish if auth.present? and auth.user.editable
       post
     end
-
   end
 end

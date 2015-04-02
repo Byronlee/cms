@@ -5,7 +5,7 @@ FactoryGirl.define do
     user
     sequence(:raw) do |n| n
       {
-        "provider" => "krpton",
+        "provider" => "krypton",
         "uid" => 343,
         "info" => {
           "email" => "email#{n}@example.com",

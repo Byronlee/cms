@@ -36,7 +36,6 @@ FactoryGirl.define do
     sequence(:content) { |n| "title#{n}#{SecureRandom.uuid} fuck you" }
     title_link 'title_link'
     must_read 'true'
-    state 'drafted'
     source 'writer'
     must_read true
     sequence(:content) { |n| "content#{n}" }

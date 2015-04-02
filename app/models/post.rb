@@ -123,6 +123,14 @@ class Post < ActiveRecord::Base
     state :reviewing
     state :published
 
+    event :review do
+      transitions :from => [:drafted], :to => :reviewing
+    end
+
+    event :undo_review do
+      transitions :from => [:reviewing], :to => :drafted
+    end
+
     event :publish do
       transitions :from => [:reviewing], :to => :published
       after do
@@ -133,19 +141,6 @@ class Post < ActiveRecord::Base
     event :undo_publish do
       transitions :from => [:published], :to => :reviewing
     end
-
-    event :drafted_to_reviewing do
-      transitions :from => [:drafted], :to => :reviewing
-    end
-
-    event :reviewing_to_drafted do
-      transitions :from => [:reviewing], :to => :drafted
-    end
-
-    event :published_to_drafted do
-      transitions :from => [:published], :to => :drafted
-    end
-
   end
 
   def get_access_url

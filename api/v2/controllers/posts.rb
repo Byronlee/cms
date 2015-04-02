@@ -73,7 +73,7 @@ module V2
            return { status: false, msg: '用户无效,请登录网站激活用户 !' }
           end
           @post = Post.new post_params
-          @post = coming_out(@post, auth, action)
+          @post = coming_out(@post, auth) if action.eql?('post')
           return { status: false, msg: @post.errors.full_messages }  unless @post.save
           return { status: true,
             data: { key: @post.key, published_id: @post.id, state: @post.state },
@@ -99,7 +99,7 @@ module V2
           @post = Post.find(params[:id])
           auth = @post.author.krypton_authentication
           @post.assign_attributes(params.slice(*KEYS))
-          @post = coming_out(@post, auth, action)
+          @post = coming_out(@post, auth) if action.eql?('post') and @post.drafted?
           return { status: false, msg: @post.errors.full_messages }  unless @post.save
           return { status: true,
             data: { key: @post.key, published_id: @post.id, state: @post.state },
@@ -137,9 +137,7 @@ module V2
           end
           present @posts, with: Entities::Post
         end
-
       end
-
     end
   end
 end
