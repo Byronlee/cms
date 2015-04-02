@@ -1,10 +1,11 @@
 tr
   td = comment.id
   td[title=comment.commentable.try(:title) data-toggle='tooltip']
-    - if comment.commentable.published?
-      = link_to raw(truncate(comment.commentable.try(:title), length:20)),  polymorphic_url(comment.commentable), target: '_blank'
-    - else
-      = link_to raw(truncate(comment.commentable.try(:title), length:20)),  preview_post_by_key_path(comment.commentable.key), target: '_blank'
+    - if comment.commentable
+      - if comment.commentable.published?
+        = link_to raw(truncate(comment.commentable.try(:title), length:20)),  polymorphic_url(comment.commentable), target: '_blank'
+      - else
+        = link_to raw(truncate(comment.commentable.try(:title), length:20)),  preview_post_by_key_path(comment.commentable.key), target: '_blank'
   td[title=raw(comment.content) data-toggle='tooltip']
     = raw(truncate(comment.content, length:20))
     - if comment.is_long?
