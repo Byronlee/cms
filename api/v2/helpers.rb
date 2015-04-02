@@ -80,6 +80,7 @@ module V2
       end
       if action.eql?('draft')
         post.reviewing_to_drafted if post.reviewing?
+        post.publish if auth.present? and auth.user.editable
         post.published_to_drafted if post.published?
       end
       post

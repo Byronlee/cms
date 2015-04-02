@@ -76,7 +76,7 @@ module V2
           @post = coming_out(@post, auth, action)
           return { status: false, msg: @post.errors.full_messages }  unless @post.save
           return { status: true,
-            data: { key: @post.key, published_id: @post.id },
+            data: { key: @post.key, published_id: @post.id, state: @post.state },
             review_url: generate_review_url(@post),
             admin_edit_post_url: admin_edit_post_url(@post, auth) }
         end
@@ -102,7 +102,7 @@ module V2
           @post = coming_out(@post, auth, action)
           return { status: false, msg: @post.errors.full_messages }  unless @post.save
           return { status: true,
-            data: { key: @post.key, published_id: @post.id },
+            data: { key: @post.key, published_id: @post.id, state: @post.state },
             review_url: generate_review_url(@post),
             admin_edit_post_url: admin_edit_post_url(@post, auth) }
         end

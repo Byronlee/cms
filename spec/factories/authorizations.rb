@@ -6,7 +6,7 @@ FactoryGirl.define do
     sequence(:raw) do |n| n
       {
         "provider" => "krpton",
-        "uid" => SecureRandom.hex(32),
+        "uid" => 343,
         "info" => {
           "email" => "email#{n}@example.com",
           "phone" => 13412345678 + n,
@@ -22,6 +22,5 @@ FactoryGirl.define do
     end
     uid { raw["uid"] }
     provider { raw["provider"] }
-
   end
 end
