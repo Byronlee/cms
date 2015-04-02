@@ -57,7 +57,7 @@ class User < ActiveRecord::Base
   before_update :sync_role_to_writer
   def sync_role_to_writer
     return unless role_changed? && valid?
-    SyncRoleToWriterWorker.perform_async(krypton_authentication.uid, role)
+    SyncRoleToWriterWorker.perform_async(krypton_authentication.uid, role) rescue true
   end
 
   def apply_omniauth(omniauth)
