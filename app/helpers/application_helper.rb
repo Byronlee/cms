@@ -59,6 +59,15 @@ module ApplicationHelper
     end
   end
 
+  def get_url_domain(url)
+    return "" if url.blank?
+
+    url = URI::encode(url)
+    URI.parse(url).host.gsub(/www\./i, "")
+  rescue
+    return ""
+  end
+
   private
 
   def relative_time(raw_time)
