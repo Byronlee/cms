@@ -8,7 +8,6 @@ class PostsController < ApplicationController
     @post.increase_views_count
     @has_favorite = current_user.favorite_of? @post rescue false
     @posts_today_lastest = Post.today_lastest
-    redirect_to root_path if @post.reviewing?
   end
 
   def preview
