@@ -30,23 +30,18 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  rescue_from CanCan::AccessDenied do |ex|
-    if request.env['HTTP_REFERER']
-      redirect_to :back, :alert => ex.message
+  rescue_from CanCan::AccessDenied do
+    if current_user
+      respond_to do |format|
+        format.html { render file: 'errors/forbidden', status: :forbidden, layout: nil }
+        format.all { render nothing: true, status: :forbidden }
+      end
     else
-      redirect_to root_path
+      respond_to do |format|
+        format.html { redirect_to new_user_session_path(ok_url: params[:ok_url]) }
+        format.all { render nothing: true, status: :unauthorized }
+      end
     end
-  end
-
-  unless Rails.env.development?
-    rescue_from Exception do |exception|
-      flash[:kr_error] = exception
-      redirect_to apology_errors_path
-    end
-  end
-
-  def routing_error
-    redirect_to root_path
   end
 
   def controller_namespace
