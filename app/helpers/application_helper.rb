@@ -16,11 +16,6 @@ module ApplicationHelper
     (params[:portable] == "1") or !!(request.user_agent =~ /Mobile|webOS/)
   end
 
-  def avatar_url(avatar)
-    return avatar if avatar
-    asset_url "images/a-#{rand(1..3)}.jpg"
-  end
-
   def post_url(arg, options = {})
     return arg.title_link unless arg.try(:title_link).blank?
     url_code = (arg.class.to_s == 'Fixnum' ? arg : arg.url_code)
