@@ -37,11 +37,20 @@ class Post < ActiveRecord::Base
   include Tire::Model::Callbacks
   include ApplicationHelper
   include PostsHelper
+  extend Enumerize
   include AASM
 
   by_star_field '"posts".published_at'
   page_view_field :views_count, interval: 600
   paginates_per 100
+
+  enumerize :source_type, in: [:original, :translation, :reference], default: :original
+
+  typed_store :extra do |s|
+    s.text :source_urls, default: ""
+  end
+
+  # mount_uploader :cover, BaseUploader
   aasm.attribute_name :state
 
   validates_presence_of :title, :content
@@ -227,5 +236,14 @@ class Post < ActiveRecord::Base
       self.remark = ''
     end
     self.remark += "[#{Time.now}]#{User.current.id} - #{User.current.display_name} edited"
+  end
+
+  before_save :autoset_source_info
+  def autoset_source_info
+    self.source_urls = if source_type == "original"
+      nil
+    elsif source_urls.present?
+      self.source_urls = self.source_urls.split.join(", ")
+    end
   end
 end

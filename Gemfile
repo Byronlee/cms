@@ -35,7 +35,7 @@ gem 'ruby-progressbar', "~> 1.7.1"
 
 # models
 gem "ancestry", "~> 2.1.0"
-gem 'enumerize'
+gem 'enumerize', "~> 0.11.0"
 gem "carrierwave", "~> 0.10.0"
 gem 'carrierwave-upyun', '~> 0.1.6'
 gem "mini_magick", "~> 3.7.0"

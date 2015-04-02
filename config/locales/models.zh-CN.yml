@@ -1,26 +1,31 @@
 zh-CN:
-    enumerize:
-      user:
-        role:
-          reader: 读者
-          operator: 运营人员
-          writer: 作者
-          editor: 编辑
-          admin: 管理员
-          contributor: 投稿作者
-    activerecord:
-      attributes:
-        comment:
-          state:
-            reviewing: 审核中
-            published: 已发布
-            republished: 预发布
-            rejected: 已屏蔽
-      errors:
-        models:
-          head_line:
-            attributes:
-              url:
-                url: URL格式不正确
-    unauthorized:
-      default: 您没有权限访问此页面!
+  enumerize:
+    post:
+      source_type:
+        original: 原创文章
+        translation: 来自编译
+        reference: 参考来源
+    user:
+      role:
+        reader: 读者
+        operator: 运营人员
+        writer: 作者
+        editor: 编辑
+        admin: 管理员
+        contributor: 投稿作者
+  activerecord:
+    attributes:
+      comment:
+        state:
+          reviewing: 审核中
+          published: 已发布
+          republished: 预发布
+          rejected: 已屏蔽
+    errors:
+      models:
+        head_line:
+          attributes:
+            url:
+              url: URL格式不正确
+  unauthorized:
+    default: 您没有权限访问此页面!
