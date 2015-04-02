@@ -32,9 +32,6 @@ h2
       .meta.left.cf
         a href="#{user_omniauth_authorize_path(provider: :krypton)}" class="" 登录
         | 后参与讨论
-      button.ladda-button.comment-submit-btn.right.comment-submit-btn-disabled[data-style="slide-down" data-spinner-size="32"]
-        span.ladda-label
-          | 提交评论
 
   - unless @current_user.present?
     javascript:
