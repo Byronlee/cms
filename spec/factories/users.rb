@@ -24,6 +24,7 @@
 #  tagline                             :text
 #  avatar_url                          :string(255)
 #  sso_id                              :integer
+#  muted_at                            :datetime
 #
 
 FactoryGirl.define do
@@ -31,5 +32,9 @@ FactoryGirl.define do
     sequence(:email) { |n| "name#{n}@36kr.com" }
     sequence(:phone) { |n| "1388015659#{n}" }
     password { email }
+
+    trait :admin do
+      role :admin
+    end
   end
 end

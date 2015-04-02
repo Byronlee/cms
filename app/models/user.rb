@@ -24,6 +24,7 @@
 #  tagline                             :text
 #  avatar_url                          :string(255)
 #  sso_id                              :integer
+#  muted_at                            :datetime
 #
 
 class User < ActiveRecord::Base
@@ -110,6 +111,18 @@ class User < ActiveRecord::Base
 
   def editable
     Settings.editable_roles.include? role.to_sym
+  end
+
+  def muted?
+    !!muted_at
+  end
+
+  def shutup!
+    self.update muted_at: Time.now
+  end
+
+  def speak!
+    self.update muted_at: nil
   end
 
   def favorite_of?(post)

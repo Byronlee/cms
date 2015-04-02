@@ -15,5 +15,15 @@ tr
     - if can? :edit, user
       a title="编辑" href= edit_admin_user_path(user)
         i.fa.fa-pencil
+    - if can? :shutup, user
+      - if user.muted?
+        = link_to speak_admin_user_path(user, ok_url: request.fullpath), title: "解除禁言",
+          method: :put, data: { confirm: "确认解禁此用户？" } do
+          i.fa.fa-child
+      - else
+        = link_to shutup_admin_user_path(user, ok_url: request.fullpath), title: "禁言",
+          method: :put, data: { confirm: "确认禁言此用户？" } do
+          i.fa.fa-ban
+
   td.avatar.text_center = image_tag avatar_url(user.try(:avatar))
 

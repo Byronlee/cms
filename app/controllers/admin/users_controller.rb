@@ -1,5 +1,6 @@
 class Admin::UsersController < Admin::BaseController
-  load_and_authorize_resource
+  load_resource
+  authorize_resource
 
   def index
     @users = (simple_search if can_search? rescue @users)
@@ -12,7 +13,17 @@ class Admin::UsersController < Admin::BaseController
     respond_with @user, location: ok_url
   end
 
-  private
+  def shutup
+    @user.shutup!
+    respond_with @user, location: ok_url_or([:admin, :users])
+  end
+
+  def speak
+    @user.speak!
+    respond_with @user, location:  ok_url_or([:admin, :users])
+  end
+
+private
 
   def user_params
     params.require(:user).permit(:role, :name, :email, :phone, :tagline) if params[:user]

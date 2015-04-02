@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  prepend_before_action :match_krid_online_status, unless: -> { devise_controller? }
+  prepend_before_action :match_krid_online_status, unless: -> { devise_controller? || Rails.env.test? }
   prepend_before_action :redirect_to_no_subdomain # i'll run first
 
   def redirect_to_no_subdomain
@@ -51,11 +51,17 @@ class ApplicationController < ActionController::Base
   end
 
   def current_ability
-    Ability.new(current_user, controller_namespace)
+    @current_ability ||= Ability.new(current_user, controller_namespace)
   end
 
   def append_info_to_payload(payload)
     super
     payload[:host] = request.host
   end
+
+  def ok_url_or(url)
+    params[:ok_url] || url
+  end
+  helper_method :ok_url_or
+
 end
