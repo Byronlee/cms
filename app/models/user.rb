@@ -85,7 +85,9 @@ class User < ActiveRecord::Base
   end
 
   def avatar
-    if email.present?
+    if krypton_authentication && krypton_authentication.info['image'].present?
+      return krypton_authentication.info['image']
+    elsif email.present?
       if /^weibo\+(\d+)@36kr\.com/ =~ email # weibo user
         return "http://tp3.sinaimg.cn/#{$1}/50/1"
       elsif /^qq\+(\w+)@36kr\.com/ =~ email # qq user
@@ -93,8 +95,6 @@ class User < ActiveRecord::Base
       else
         return "http://9429127371.a.uxengine.net/avatar/#{Digest::MD5.hexdigest(email)}.png?s=48&d=identicon&r=PG"
       end
-    elsif krypton_authentication && krypton_authentication.info.present?
-      return krypton_authentication.info['image']
     end
 
     ActionController::Base.helpers.asset_url "images/a-#{rand(1..3)}.jpg"
