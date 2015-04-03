@@ -36,34 +36,35 @@ module ElasticsearchSearchable
       options ||= {}
       @search_definition = {
         query: {},
-        facets: {},
         sort: options[:sort].presence || {},
-        filter: options[:filter].presence || {}
+        filter: options[:filter].presence || {},
+        facets: {}
       }.compact
 
       __set_filters = lambda do |key, f|
         @search_definition[:filter][:and] ||= []
         @search_definition[:filter][:and]  |= [f]
-        @search_definition[:facets][key.to_sym][:facet_filter][:and] ||= []
-        @search_definition[:facets][key.to_sym][:facet_filter][:and]  |= [f]
+        #@search_definition[:facets][key.to_sym][:facet_filter][:and] ||= []
+        #@search_definition[:facets][key.to_sym][:facet_filter][:and]  |= [f]
       end
 
-      @search_definition[:facets] = search_facet_fields.each_with_object({}) do |a,hsh|
-        hsh[a.to_sym] = {
-          terms: {
-            field: a
-          },
-          facet_filter: {}
-        }
-      end
+      #@search_definition[:facets] = search_facet_fields.each_with_object({}) do |a,hsh|
+      #  hsh[a.to_sym] = {
+      #    terms: {
+      #      field: a
+      #    },
+      #    facet_filter: {}
+      #  }
+      #end
 
       unless query.blank?
         @search_definition[:query] = {
           bool: {
-            should: [
+            must: [
               { multi_match: {
                   query: query,
-                  fields: search_text_fields,
+                  #fields: search_text_fields,
+                  fields: ['title'],
                   operator: 'and'
                 }
               }
