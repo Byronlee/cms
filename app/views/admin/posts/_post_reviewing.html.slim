@@ -15,7 +15,7 @@ tr
   td.text_center
     - if post.remark.present?
       i.fa.fa-lightbulb-o[title=post.remark]
-  td.text_center = post.views_count
+  td.text_center = post.cache_views_count
   td
     - if can? :do_publish, post
       = link_to publish_admin_post_path(post), 'title' => "快速发布"

@@ -73,7 +73,6 @@ Rails.application.routes.draw do
   end
 
   resources :posts, :only => [:index] do
-    post :update_views_count, on: :member
     get :get_comments_count, on: :member
     get :news, on: :collection
     get :hots, on: :collection

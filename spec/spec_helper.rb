@@ -49,4 +49,10 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   ActiveRecord::Migration.maintain_test_schema!
   config.include RSpec::Rails::RequestExampleGroup, type: :request, file_path: /spec\/api/
+
+  config.before(:all) {
+    $redis.flushdb
+    # load Rails.root + "db/seeds.rb"
+    # User.current = create :user
+  }
 end

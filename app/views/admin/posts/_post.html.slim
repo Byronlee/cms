@@ -15,7 +15,7 @@ tr
   td
     - if post.remark.present?
       i.fa.fa-lightbulb-o[title=post.remark]
-  td.text_center = post.views_count
+  td.text_center = post.cache_views_count
   td
     - if can? :create, HeadLine
       a title="添加到头条" href= new_admin_head_line_path(:url => post_url(post))

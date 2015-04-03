@@ -40,10 +40,10 @@ class Post < ActiveRecord::Base
   after_save    -> { __elasticsearch__.index_document }
   after_destroy -> { __elasticsearch__.delete_document }
 
+  by_star_field '"posts".published_at'
+  page_view_field :views_count
   paginates_per 100
   aasm.attribute_name :state
-  by_star_field '"posts".published_at'
-  # mount_uploader :cover, BaseUploader
 
   validates_presence_of :title, :content
   validates_uniqueness_of :title, :content, :url_code
@@ -63,9 +63,9 @@ class Post < ActiveRecord::Base
   has_many :favoriters, source: :user, through: :favorites, primary_key: :url_code
 
   after_save :update_today_lastest_cache, :update_hot_posts_cache, :update_info_flows_cache,
-             :update_new_posts_cache, :check_head_line_cache, :update_excellent_comments_cache
+             :check_head_line_cache, :update_excellent_comments_cache
   after_destroy :update_today_lastest_cache, :update_hot_posts_cache, :update_info_flows_cache,
-                :update_new_posts_cache, :check_head_line_cache_for_destroy, :update_excellent_comments_cache
+                :check_head_line_cache_for_destroy, :update_excellent_comments_cache
   before_create :generate_key
   before_save :auto_generate_summary
   after_create :generate_url_code
@@ -177,14 +177,15 @@ class Post < ActiveRecord::Base
     true
   end
 
-  def update_new_posts_cache
-    logger.info 'perform the worker to update new posts cache'
-    # logger.info NewPostsComponentWorker.perform_async
-    logger.info NewPostsComponentWorker.new.perform
-    true
-  end
+  # def update_new_posts_cache
+  #   logger.info 'perform the worker to update new posts cache'
+  #   # logger.info NewPostsComponentWorker.perform_async
+  #   logger.info NewPostsComponentWorker.new.perform
+  #   true
+  # end
 
   def update_info_flows_cache
+    return true if self.views_count_changed?
     self.column && self.column.info_flows.each do |info_flow|
       info_flow.update_info_flows_cache
     end
@@ -201,6 +202,7 @@ class Post < ActiveRecord::Base
   end
 
   def check_head_line_cache
+    return true if self.views_count_changed?
     return true if self.published?
     HeadLine.all.each do |head_line|
       next if head_line.url_code != url_code
@@ -218,6 +220,7 @@ class Post < ActiveRecord::Base
   end
 
    def update_excellent_comments_cache
+    return true if self.views_count_changed?
     logger.info 'perform the worker to update excellent comments cache'
     # logger.info ExcellentCommentsComponentWorker.perform_async
     logger.info ExcellentCommentsComponentWorker.new.perform

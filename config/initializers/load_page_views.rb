@@ -1,0 +1,1 @@
+require File.expand_path('../../../lib/page_view/page_view', __FILE__)
