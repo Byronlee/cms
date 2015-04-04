@@ -70,4 +70,5 @@ namespace :deploy do
 end
 
 load "config/deploy/recipes/notification.rb"
+load "config/deploy/recipes/tire.rb"
 
