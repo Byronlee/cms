@@ -32,13 +32,11 @@ class Post < ActiveRecord::Base
   include ActionView::Helpers::SanitizeHelper
   include ActionView::Helpers::DateHelper
   include Rails.application.routes.url_helpers
-  include ElasticsearchSearchable
+  include Tire::Model::Search
+  include Tire::Model::Callbacks
   include ApplicationHelper
   include PostsHelper
   include AASM
-
-  after_save    -> { __elasticsearch__.index_document }
-  after_destroy -> { __elasticsearch__.delete_document }
 
   by_star_field '"posts".published_at'
   page_view_field :views_count
@@ -87,6 +85,35 @@ class Post < ActiveRecord::Base
 
   acts_as_taggable
 
+  mapping do
+     indexes :id,             index:    :not_analyzed
+
+     indexes :title,          analyzer: 'snowball',   boost:    100
+     indexes :summary,        analyzer: 'snowball',   boost:    50
+     indexes :body,           analyzer: 'snowball',   boost:    30
+
+     indexes :state,          type:     'string',     analyzer: 'keyword'
+     indexes :published_at,   type:     'date'
+     indexes :created_at,     type:     'date'
+     indexes :updated_at,     type:     'date'
+  end
+
+  def self.search(params)
+    tire.search(load: true, page: params[:page], per_page: 30) do
+      query do
+        boolean do
+          must {
+            string params[:query].presence || "*", default_operator: "AND"
+          }
+          must {
+            term :state, :published
+          }
+        end
+      end
+      sort { by :published_at, "desc" }
+    end
+  end
+
   aasm do
     state :reviewing, :initial => true
     state :published
@@ -101,15 +128,6 @@ class Post < ActiveRecord::Base
     event :undo_publish do
       transitions :from => [:published], :to => :reviewing
     end
-  end
-
-  def self.search(params)
-    conditions = super(params[:q],
-      sort: { published_at: :desc },
-      filter: {
-        terms: { state: ["published"] }
-      })
-    conditions.page(params[:page]).per(params[:per].presence || 30)
   end
 
   def get_access_url

@@ -30,8 +30,7 @@ gem 'sidekiq-failures'
 gem 'faraday', '~> 0.9.0'
 #gem 'typhoeus'
 gem "kaminari", "~> 0.15.1"
-gem 'elasticsearch-rails'
-gem 'elasticsearch-model'
+gem "tire", "~> 0.6.2"
 gem 'ruby-progressbar', "~> 1.7.1"
 
 # models

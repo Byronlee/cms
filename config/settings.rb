@@ -9,7 +9,7 @@ settings.redis_servers = {
   session: 'redis://127.0.0.1:6379/2'
 }
 
-settings.elasticsearch_servers = [ 'http://2015.36kr.com:9200' ]
+settings.elasticsearch_server = '2015.36kr.com:9200'
 
 settings.oauth = {
   krypton: {
