@@ -89,8 +89,8 @@ class Post < ActiveRecord::Base
      indexes :id,             index:    :not_analyzed
 
      indexes :title,          analyzer: 'snowball',   boost:    100
-     indexes :summary,        analyzer: 'snowball',   boost:    50
-     indexes :content,        analyzer: 'snowball',   boost:    30
+     # indexes :summary,        analyzer: 'snowball',   boost:    50
+     # indexes :content,        analyzer: 'snowball',   boost:    30
 
      indexes :state,          type:     'string',     analyzer: 'keyword'
      indexes :published_at,   type:     'date'
