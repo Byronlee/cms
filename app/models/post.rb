@@ -111,8 +111,10 @@ class Post < ActiveRecord::Base
           }
         end
       end
-      sort { by :published_at, "desc" }
-      sort { by :_score }
+      sort {
+        by :published_at, :desc
+        by :_score, :desc
+      }
     end
   end
 
