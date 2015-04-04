@@ -100,6 +100,7 @@ class Post < ActiveRecord::Base
 
   def self.search(params)
     tire.search(load: true, page: params[:page], per_page: 30) do
+      min_score 1
       query do
         boolean do
           must {
@@ -111,6 +112,7 @@ class Post < ActiveRecord::Base
         end
       end
       sort { by :published_at, "desc" }
+      sort { by :_score }
     end
   end
 
