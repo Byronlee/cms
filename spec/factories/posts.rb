@@ -31,11 +31,12 @@ FactoryGirl.define do
   factory :post do
     author
     column
-    title 'title'
-    summary 'summary'
-    content 'content'
-    must_read true
+    sequence(:title) { |n| "title #{n}" }
+    sequence(:summary) { |n| "summary#{n}" }
     source 'writer'
+    must_read true
+    sequence(:content) { |n| "content#{n}" }
+    sequence(:slug) { |n| "slug#{n}" }
     views_count 0
     url_code {|n| n}
 

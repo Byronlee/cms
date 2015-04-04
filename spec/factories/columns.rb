@@ -20,12 +20,12 @@ FactoryGirl.define do
   factory :column do
     name "国内创业公司"
     introduce "简介"
-    slug "cn-startups"
+    sequence(:slug) { |n| "slug#{n}" }
   end
 
   factory :column2, class:Column do
     name "国外创业公司"
     introduce "简介"
-    slug "us-startups"
+    sequence(:slug) { |n| "slug#{n}" }
   end
 end
