@@ -103,7 +103,7 @@ class Post < ActiveRecord::Base
       query do
         boolean do
           must {
-            string params[:query].presence || "*", default_operator: "AND"
+            string params[:q].presence || "*", default_operator: "AND"
           }
           must {
             term :state, :published
