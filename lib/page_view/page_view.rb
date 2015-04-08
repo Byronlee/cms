@@ -29,6 +29,13 @@ module PageView
             (views_count.presence || self.#{field}).to_i
           end
 
+          def persist_#{field}
+            views_count = cache_#{field}
+            persist_to_#{field}(views_count)
+            update_cache_#{field}_time
+            views_count
+          end
+
           private
 
           def cache_#{field}_time
@@ -58,6 +65,7 @@ module PageView
           end
 
           def persist_to_#{field}(views_count)
+            return unless views_count.to_i > self.#{field}
             self.update_attribute(:#{field}, views_count.to_i)
           end
         RUBY
