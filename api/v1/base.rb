@@ -29,7 +29,7 @@ class ::V1::Base < Grape::API
   end
 
   before do
-    error!("401 Unauthorized", 401) unless authenticated || options[:for] == V1::Controllers::UC || options[:for] == V1::Controllers::Weibo
+    error!("401 Unauthorized", 401) unless authenticated || options[:for] == V1::Controllers::UC || options[:for] == V1::Controllers::Weibo || options[:for] == V1::Controllers::Search
   end
 
   helpers ::V1::Helpers
