@@ -2,7 +2,7 @@ module PageView
   module ActiveRecord
     ###
     # usage: page_view_field :views_count, interval: 600
-    #        page_view_field :views_count, :api_hits_count, interval: 600
+    #        page_view_field [:views_count, :api_hits_count], interval: 600
     # interval: unit is seconds, default is 600 seconds, in other word, 10 minutes
     ###
     def page_view_field(fields, options = {})
