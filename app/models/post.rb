@@ -99,7 +99,7 @@ class Post < ActiveRecord::Base
   end
 
   def self.search(params)
-    tire.search(load: true, page: params[:page], per_page: 30) do
+    tire.search(load: true, page: params[:page], per_page: params[:per_page] || 30) do
       min_score 1
       query do
         boolean do

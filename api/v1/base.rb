@@ -39,6 +39,7 @@ class ::V1::Base < Grape::API
   mount ::V1::Controllers::Columns
   mount ::V1::Controllers::Comments
   mount ::V1::Controllers::HeadLines
+  mount ::V1::Controllers::Search
   mount ::V1::Controllers::UC
   mount ::V1::Controllers::Weibo
 
