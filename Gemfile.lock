@@ -588,7 +588,7 @@ DEPENDENCIES
   minitest
   mocha (~> 1.1.0)
   newrelic-redis
-  newrelic_rpm
+  newrelic_rpm (~> 3.11.1.284)
   omniauth-oauth2
   opengraph_parser
   pg (~> 0.17.1)
