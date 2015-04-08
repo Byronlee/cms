@@ -39,7 +39,7 @@ class Post < ActiveRecord::Base
   include AASM
 
   by_star_field '"posts".published_at'
-  page_view_field :views_count
+  page_view_field :views_count, interval: 600
   paginates_per 100
   aasm.attribute_name :state
 
