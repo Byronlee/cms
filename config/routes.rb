@@ -100,6 +100,7 @@ Rails.application.routes.draw do
   match '/contribute' => redirect('/pages/contribute'), via: :get
   match '/ads' => redirect('/pages/ads'), via: :get
   match '/ad' => redirect('/pages/ads'), via: :get
+  match '/account' => redirect('/pages/app'), via: :get
 
   %w(404 500).each do |code|
     match code, to: "errors#render_#{code}", via: [:get, :post, :put, :delete]
