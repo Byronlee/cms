@@ -16,3 +16,11 @@ jQuery ->
 
   #搜索点击
   $("#search_input_field").focus         -> ga('send', 'event', 'link', 'search#focus',                      ga_user_id)
+
+  #翻页点击
+  $('#info_flows_prev_link').click       -> ga('send', 'event', 'link', 'paginate#info_flows#previous',     ga_user_id)
+  $('#info_flows_next_link').click       -> ga('send', 'event', 'link', 'paginate#info_flows#next',         ga_user_id)
+  $('#columns_prev_link').click          -> ga('send', 'event', 'link', 'paginate#columns#previous',        ga_user_id)
+  $('#columns_next_link').click          -> ga('send', 'event', 'link', 'paginate#columns#next',            ga_user_id)
+  $('#tag_prev_link').click              -> ga('send', 'event', 'link', 'paginate#tag#previous',            ga_user_id)
+  $('#tag_next_link').click              -> ga('send', 'event', 'link', 'paginate#tag#next',                ga_user_id)

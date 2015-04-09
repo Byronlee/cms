@@ -43,17 +43,17 @@
       <ul>
          <% if prev_page %>
            <li class="previous">
-             <%= link_to '← 上一页', "/?page=#{prev_page}", rel:"prev", class:"left" %>
+             <%= link_to '← 上一页', "/?page=#{prev_page}", rel:"prev", class:"left", id:"info_flows_prev_link" %>
            </li>
          <% else %>
-           <li class="previous disabled"><a href="#" class="left"><i class="icon-prev"></i>上一页</a></li>
+           <li class="previous disabled"><a href="#" class="left" id="info_flows_prev_link"><i class="icon-prev"></i>上一页</a></li>
          <% end %>
          <% if next_page %>
            <li class="next_page">
-             <%= link_to '下一页 →', "/?page=#{next_page}", rel:"next", class:"right" if next_page %>
+             <%= link_to '下一页 →', "/?page=#{next_page}", rel:"next", class:"right", id:"info_flows_next_link" if next_page %>
            </li>
          <% else %>
-           <li class="next_page disabled"><a href="#" class="right"><i class="icon-next"></i>下一页</a></li>
+           <li class="next_page disabled"><a href="#" class="right" id="info_flows_next_link"><i class="icon-next"></i>下一页</a></li>
          <% end %>
       </ul>
     </div>

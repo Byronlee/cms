@@ -27,17 +27,17 @@
                 - if @posts.present?
                   - if @posts.prev_page
                     li.prev.previous_page.left
-                      = link_to_previous_page @posts, '← 上一页', rel: "prev"
+                      = link_to_previous_page @posts, '← 上一页', rel: "prev", id: "tag_prev_link"
                   - else
                     li.prev.previous_page.left.disabled
-                      = link_to '← 上一页', '#', rel: "prev"
+                      = link_to '← 上一页', '#', rel: "prev", id: "tag_prev_link"
 
                   - if @posts.next_page
                     li.next.next_page.right
-                      = link_to_next_page @posts, '下一页 →', rel: "next"
+                      = link_to_next_page @posts, '下一页 →', rel: "next", id: "tag_next_link"
                   - else
                     li.next.next_page.right.disabled
-                      = link_to '下一页 →', '#', rel: "next"
+                      = link_to '下一页 →', '#', rel: "next", id: "tag_next_link"
   .aside
     = render_cell :sidebar, :today, posts_today_lastest: @posts_today_lastest
     = render_cell :sidebar, :social
