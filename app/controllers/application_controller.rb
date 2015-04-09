@@ -10,13 +10,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  before_action do
-    unless cookies[:_3_hot_recleared_at]
-      cookies.clear domain: :all
-      cookies[:_3_hot_recleared_at] = { value: Time.now.iso8601, domain: :all }
-    end
-  end
-
   def match_krid_online_status
     if (cookie_version = cookies[Settings.oauth.krypton.cookie.name]).present?
       if !current_user || # 在线状态不同步
