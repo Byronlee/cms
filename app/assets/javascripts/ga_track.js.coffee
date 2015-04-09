@@ -25,6 +25,11 @@ jQuery ->
   $('#tag_prev_link').click              -> ga('send', 'event', 'link', 'paginate#tag#previous',            ga_user_id)
   $('#tag_next_link').click              -> ga('send', 'event', 'link', 'paginate#tag#next',                ga_user_id)
 
+  #新闻标题点击
+  $(".info_flow_news_title").click       -> ga('send', 'event', 'link', 'news#info_flows#title',            ga_user_id)
+  #新闻图片点击
+  $(".info_flow_news_image").click       -> ga('send', 'event', 'link', 'news#info_flows#image',            ga_user_id)
+
   #注销点击
   $('.dropdown_login_out_link').click    -> ga('send', 'event', 'link', 'logout#top_nav',                   ga_user_id);
 

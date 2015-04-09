@@ -21,7 +21,7 @@
             <div class="post">
               <div class="left left-col">
                 <div class="image feature-img thumb-180">
-                  <a href="<%= item["title_link"].present? ? item["title_link"] : post_url(item["url_code"]) %>">
+                  <a href="<%= item["title_link"].present? ? item["title_link"] : post_url(item["url_code"]) %>" class="info_flow_news_image">
                     <img src="<%= high_speed_url item["cover_real_url"], 'slider' %>" alt="" />
                   </a>
                 </div>
@@ -29,7 +29,7 @@
             </div>
             <div class="right-col">
               <h1>
-                <a href="<%= item["title_link"].present? ? item["title_link"] : post_url(item["url_code"]) %>" target="_blank" ><%= raw item["title"] %></a>
+                <a href="<%= item["title_link"].present? ? item["title_link"] : post_url(item["url_code"]) %>" target="_blank" class="info_flow_news_title"><%= raw item["title"] %></a>
               </h1>
               <p><%= raw(item["summary"]) %></p>
             </div>
