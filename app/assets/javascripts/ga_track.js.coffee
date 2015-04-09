@@ -24,3 +24,7 @@ jQuery ->
   $('#columns_next_link').click          -> ga('send', 'event', 'link', 'paginate#columns#next',            ga_user_id)
   $('#tag_prev_link').click              -> ga('send', 'event', 'link', 'paginate#tag#previous',            ga_user_id)
   $('#tag_next_link').click              -> ga('send', 'event', 'link', 'paginate#tag#next',                ga_user_id)
+
+  #客户端下载
+  $('#app_download_top_nav').click       -> ga('send', 'event', 'link', 'app_download#top_nav',             ga_user_id)
+  $('#app_download_footer').click        -> ga('send', 'event', 'link', 'app_download#footer',              ga_user_id)
