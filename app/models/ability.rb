@@ -61,6 +61,7 @@ class Ability
     can :manage, Comment unless user.muted?
     can :manage, HeadLine
     can :manage, Page
+    can :change_author, Post
     cannot :toggle_tag, Post
   end
 

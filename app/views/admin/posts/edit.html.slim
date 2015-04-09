@@ -20,7 +20,8 @@
           = f.select :column_id, Column.all.collect{|c| [c.name, c.id]}
       = f.input :title_link, as: :url, input_html: {class: 'col-lg-12'}
       = f.input :cover, input_html: {class: 'col-lg-12', style: "height: 33px; line-height: 4px; resize: none;"}
-      = f.input :user_id
+      - if can? :change_author, @post
+        = f.input :user_id
       div.form-actions
         = f.button :submit, data: { disable_with: "submitting..." }, class:"btn btn-primary"
 
