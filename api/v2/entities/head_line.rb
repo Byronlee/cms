@@ -2,9 +2,10 @@ module V2
   module Entities
     class HeadLine < Grape::Entity
       format_with(:iso_timestamp) { |dt| dt.iso8601 if dt }
-      expose :url_code, as: :id   , documentation: '兼容旧站文章id'
+      expose :id
       expose :url
       expose :title
+      expose :url_code
       expose :post_type
       expose :image
       expose :order_num
