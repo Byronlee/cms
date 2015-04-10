@@ -19,7 +19,26 @@ module V1
           @posts = Post.where(state: params[:state])
             .order(created_at: :desc) if STATE.include?(params[:state])
           @posts = @posts.page(params[:page]).per(params[:per_page])
-          present @posts, with: Entities::Post
+          #present @posts, with: Entities::Post
+          posts_list = []
+          @posts.each do |post|
+            posts_list << {
+              id: post.url_code,
+              title: post.title,
+              feature_img: post.cover_real_url,
+              excerpt: post.summary,
+              created_at: post.created_at.iso8601,
+              updated_at: post.updated_at.iso8601,
+              replied_at: post.updated_at.iso8601,
+              replies_count: post.comments_counts,
+              node_id: post.column_id,
+              node_name: post.column_name,
+              tags: post.tag_list,
+              user: post.author,
+              replies: post.comments
+            }
+          end
+          posts_list
         end
 
         params do

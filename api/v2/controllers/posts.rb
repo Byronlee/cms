@@ -44,6 +44,14 @@ module V2
         # Get post detail
         desc 'get post detail'
         get ":id" do
+          @post = Post.find params[:id]
+          #error!("Post not found", 404) if @post.blank?
+          present @post, with: Entities::Post
+        end
+
+        # Get post detail
+        desc 'get post detail'
+        get "/krplus/:id" do
           #@post = Post.find_by_url_code(params[:id])
           @post = Post.where(url_code: params[:id]).first
           #error!("Post not found", 404) if @post.blank?
@@ -102,7 +110,7 @@ module V2
           @post = coming_out(@post, auth) if action.eql?('post') and @post.drafted?
           return { status: false, msg: @post.errors.full_messages }  unless @post.save
           return { status: true,
-            data: { key: @post.key, published_id: @post.url_code, state: @post.state },
+            data: { key: @post.key, published_id: @post.id, state: @post.state },
             review_url: generate_review_url(@post),
             admin_edit_post_url: admin_edit_post_url(@post, auth) }
         end
