@@ -58,3 +58,7 @@ settings.default_avatars = [
 settings.kr_messages_api = 'http://rong.36kr.com/api/message/count'
 
 settings.post_views_count_cache = 100
+
+settings.ga = {
+  tracker: 'UA-1268479-12'
+}

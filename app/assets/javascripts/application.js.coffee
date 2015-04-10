@@ -1,5 +1,6 @@
 #= require jquery
 #= require jquery_ujs
+#= require ga_track
 #= require ./timeago/timeago
 #= require ./timeago/timeago.zh-cn
 

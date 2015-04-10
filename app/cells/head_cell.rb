@@ -39,4 +39,9 @@ class HeadCell < Cell::Rails
   def html5
     render
   end
+
+  def ga(args)
+    @current_user = args[:current_user]
+    render
+  end
 end

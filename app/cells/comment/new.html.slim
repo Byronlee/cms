@@ -30,7 +30,7 @@ h2
           = link_to "hello+account@36kr.com", "mailto:hello+account@36kr.com?subject=36Kr帐号解禁申请"
     - else
       .meta.left.cf
-        a href="#{user_omniauth_authorize_path(provider: :krypton)}" class="" 登录
+        a href="#{user_omniauth_authorize_path(provider: :krypton)}" class="login_before_comment" 登录
         | 后参与讨论
 
   - unless @current_user.present?
