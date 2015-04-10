@@ -14,11 +14,8 @@ class PostsController < ApplicationController
     @post = Post.find_by_key(params[:key])
     @posts_today_lastest = Post.today_lastest
     return redirect_to :back, :notice => '该文章已删除或不存在，不提供预览' unless @post
-    if @post.try(:state) == 'reviewing'
-      render :show
-    else
-      redirect_to :back, :notice => '该文章已发布，不提供预览'
-    end
+    return redirect_to post_show_by_url_code_url(@post.url_code) if @post.published?
+    render :show
   end
 
   def news
