@@ -14,7 +14,7 @@ module V2
           #optional :action,  type: String, default: 'down', desc: '下翻页 down 和 上翻页 up'
         end
         get ':pid' do
-          post = params[:type].classify.constantize.find params[:pid]
+          post = params[:type].classify.constantize.find_by_url_code params[:pid]
           @comments = post.comments
           .includes(:commentable, user:[:krypton_authentication])
           .order('created_at desc').page(params[:page]).per(params[:per_page])
@@ -29,7 +29,7 @@ module V2
           optional :action,  type: String, default: 'down', desc: '下翻页 down 和 上翻页 up'
         end
         get ':cid/page/:pid' do
-          post = params[:type].classify.constantize.find params[:pid]
+          post = params[:type].classify.constantize.find_by_url_code params[:pid]
           @comments = post.comments
           .where("commentable_id = :pid and created_at #{action params} :date",
             pid: post.id, date: post.comments.find(params[:cid]).created_at)
@@ -46,7 +46,7 @@ module V2
         end
         post ':pid/new' do
           user = current_user
-          post = params[:type].classify.constantize.find params[:pid]
+          post = params[:type].classify.constantize.find_by_url_code params[:pid]
           @comment = post.comments.build params.slice(*KEYS)
           @comment.user = user
           if @comment.save
