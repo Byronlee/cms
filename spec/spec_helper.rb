@@ -51,7 +51,7 @@ RSpec.configure do |config|
   config.include RSpec::Rails::RequestExampleGroup, type: :request, file_path: /spec\/api/
 
   config.before(:all) {
-    $redis.flushdb
+    $redis.keys.each { |key| $redis.del key }
     # load Rails.root + "db/seeds.rb"
     # User.current = create :user
   }
