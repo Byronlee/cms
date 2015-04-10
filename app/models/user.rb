@@ -97,7 +97,7 @@ class User < ActiveRecord::Base
       end
     end
 
-    ActionController::Base.helpers.asset_url "images/a-#{rand(1..3)}.jpg"
+    Settings.default_avatars.sample
   end
 
   def can_publish_comment?
