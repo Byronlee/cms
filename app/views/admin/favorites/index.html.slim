@@ -10,6 +10,8 @@
       ul.nav-hor
         - if can? :myown, Post
           li
+            a href="#{draft_admin_posts_path}" 我的草稿
+          li
             a href="#{myown_admin_posts_path}" 我的文章
         - if can? :read, Post
           li

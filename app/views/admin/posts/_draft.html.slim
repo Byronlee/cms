@@ -1,0 +1,25 @@
+tr
+  td = post.url_code
+  td[title=raw(post.title) data-toggle='tooltip'] = link_to raw(truncate(post.title, length:30)), preview_post_by_key_path(key: post.key), target:'_new'
+  td[title=post.column.try(:name) data-toggle='tooltip']
+    - unless link_to_reviewing
+      = link_to post.column.try(:name), myown_admin_posts_path(column_id: post.column)
+    - else
+      = link_to post.column.try(:name), reviewings_admin_column_posts_path(post.column)
+  td.text_center[title=post.created_at data-toggle='tooltip']
+    = time_ago_in_words post.created_at
+  td.text_center
+    - if can? :preview, post
+      a title="预览" target="_new" href= preview_post_by_key_path(key: post.key )
+        i.fa.fa-eye
+    - if can? :edit, post
+      a title="编辑" target="_blank" href= "http://writer.36kr.com/posts/#{post.id}/#{post.key}/"
+        i.fa.fa-pencil
+    - if can? :destroy, post
+      a title="删除" data-method="delete" data-confirm="确定删除文章 #{raw(post.title)} ？" href= admin_post_url(post)
+        i.fa.fa-times
+  td.avatar.text_center[title=post.author.try(:display_name) data-toggle='tooltip']
+    - if (can? :manage, User)&post.author.present?
+      = link_to image_tag(post.author.try(:avatar)), edit_admin_user_path(post.author)
+    - else
+      = image_tag post.author.try(:avatar)

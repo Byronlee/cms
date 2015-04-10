@@ -24,7 +24,7 @@ class ::V2::Base < Grape::API
     message = "\n#{exception.class} (#{exception.message}):\n"
     message << exception.annoted_source_code.to_s if exception.respond_to?(:annoted_source_code)
     message << "  " << trace.join("\n  ")
-    API.logger.add Logger::FATAL, message
+    API::API.logger.add Logger::FATAL, message
     rack_response({message: '500 Internal Server Error', status: 500}, 500)
   end
 

@@ -53,60 +53,58 @@ module V2
         # Create a new post
         desc 'create a new post'
         params do
-          requires :title,    type: String,   desc: '标题'
-          requires :content,  type: String,   desc: '内容'
-          requires :uid,      type: Integer,  desc: '用户id'
-          requires :column_id,type: Integer,  desc: '专栏id'
-          optional :source,   type: String,   desc: '来源id'
-          optional :cover,    type: String,   desc: '图片封面url'
-          optional :remark,   type: String,   desc: '备注'
+          requires :title,     type: String,   desc: '标题'
+          requires :content,   type: String,   desc: '内容'
+          requires :uid,       type: Integer,  desc: '用户SSO_ID'
+          requires :column_id, type: Integer,  desc: '专栏id'
+          requires :post_type, type: String,   desc: '草稿draft还是文章post'
+          optional :source,    type: String,   desc: '来源id'
+          optional :cover,     type: String,   desc: '图片封面url'
+          optional :remark,    type: String,   desc: '备注'
         end
         post 'new' do
+          action = params[:post_type]
+          return { status: false, msg: '所传参数不合法!' }  unless %w(draft post).include?(action)
           post_params = params.slice(*KEYS)
           auth = Authentication.where(uid: params[:uid].to_s).first
-          post_params.merge!({user_id: auth.user.id}) unless auth.blank?
-          @post = Post.new post_params
-          if @post.save
-            review_url = "#{Settings.site}/p/preview/#{@post.key}.html"
-            if auth.present? and auth.user.editable
-              #@post.update_attribute(:state, 'published')
-              @post.publish
-              @post.save!
-              review_url = "#{Settings.site}/p/#{@post.url_code}.html"
-              admin_edit_post_url = "#{Settings.site}/krypton/posts/#{@post.id}/edit"
-            end
-            return {status: true, data: {key: @post.key, published_id: @post.id}, review_url: review_url, admin_edit_post_url: admin_edit_post_url}
+          unless auth.blank?
+            post_params.merge!(user_id: auth.user.id)
           else
-            return {status: false, msg: @post.errors.full_messages }
+           return { status: false, msg: '用户无效,请登录网站激活用户 !' }
           end
+          @post = Post.new post_params
+          @post = coming_out(@post, auth) if action.eql?('post')
+          return { status: false, msg: @post.errors.full_messages }  unless @post.save
+          return { status: true,
+            data: { key: @post.key, published_id: @post.id, state: @post.state },
+            review_url: generate_review_url(@post),
+            admin_edit_post_url: admin_edit_post_url(@post, auth) }
         end
 
         # Update a post
         desc 'update a post'
         params do
           requires :id, desc: '编号'
-          requires :title,    type: String,   desc: '标题'
-          requires :content,  type: String,   desc: '内容'
-          requires :uid,      type: Integer,  desc: '用户id'
-          requires :column_id,type: Integer,  desc: '专栏id'
-          optional :source,   type: String,   desc: '来源id'
-          optional :cover,    type: String,   desc: '图片封面url'
-          optional :remark,   type: String,   desc: '备注'
+          requires :title,     type: String,   desc: '标题'
+          requires :content,   type: String,   desc: '内容'
+          requires :column_id, type: Integer,  desc: '专栏id'
+          requires :post_type, type: String,   desc: '草稿draft还是文章post'
+          optional :source,    type: String,   desc: '来源id'
+          optional :cover,     type: String,   desc: '图片封面url'
+          optional :remark,    type: String,   desc: '备注'
         end
         patch ':id' do
-          #@post = Post.find(params[:id])
-          @post = Post.where(url_code: params[:id]).first
-          user = @post.author
-          if user and user.editable
-            admin_edit_post_url = "#{Settings.site}/krypton/posts/#{@post.id}/edit"
-          end
-          if @post.published?
-            review_url = "#{Settings.site}/p/#{@post.url_code}.html"
-          else
-            review_url = "#{Settings.site}/p/preview/#{@post.key}.html"
-          end
-          @post.update_attributes params.slice(*KEYS) rescue return {status: false, msg: '更新失败!' }
-          return {status: true, data: {key: @post.key, published_id: @post.id}, review_url: review_url, admin_edit_post_url: admin_edit_post_url}
+          action = params[:post_type]
+          return { status: false, msg: '所传参数不合法!' }  unless %w(draft post).include?(action)
+          @post = Post.find(params[:id])
+          auth = @post.author.krypton_authentication
+          @post.assign_attributes(params.slice(*KEYS))
+          @post = coming_out(@post, auth) if action.eql?('post') and @post.drafted?
+          return { status: false, msg: @post.errors.full_messages }  unless @post.save
+          return { status: true,
+            data: { key: @post.key, published_id: @post.id, state: @post.state },
+            review_url: generate_review_url(@post),
+            admin_edit_post_url: admin_edit_post_url(@post, auth) }
         end
 
         # Delete post. Available only for admin
@@ -139,9 +137,7 @@ module V2
           end
           present @posts, with: Entities::Post
         end
-
       end
-
     end
   end
 end

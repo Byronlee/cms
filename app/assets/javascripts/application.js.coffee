@@ -59,5 +59,5 @@ jQuery ->
     if ($('.require-login').data().uid == undefined or $('.require-login').data().uid == '') and confirm('请登录后继续操作！ (●—●)')
       window.location.href = '/users/auth/krypton'
     return
-  $('.single-post-header__headline img[src*=yestone]').after '<small><a href="">Yestone.com 版权图片库</a></small>'
+  $('.single-post-header__headline img[src*=yestone]').after '<small><a href="http://yestone.com/?utm_source=36kr.com">图片: Yestone.com 版权图片库</a></small>'
   return

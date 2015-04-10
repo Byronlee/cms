@@ -33,6 +33,7 @@ module V2
 
     def current_user
       User.where(authentication_token: params[:authentication_token]).first
+      #warden.user || @user
     end
 
     def init_and_exchange_token
@@ -50,12 +51,32 @@ module V2
         current_user = User.new
       end
       [current_user,sso_user]
-      #warden.user || @user
     end
 
     def warden
       env['warden']
     end
 
+    def generate_review_url(post)
+      if post.published?
+        "#{Settings.site}/p/#{post.url_code}.html"
+      else
+        "#{Settings.site}/p/preview/#{post.key}.html"
+      end
+    end
+
+    def admin_edit_post_url(post, auth)
+      if auth.present? && auth.user.editable
+        "#{Settings.site}/krypton/posts/#{post.id}/edit"
+      else
+        nil
+      end
+    end
+
+    def coming_out(post, auth)
+      post.review
+      post.publish if auth.present? and auth.user.editable
+      post
+    end
   end
 end

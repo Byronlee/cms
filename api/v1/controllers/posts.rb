@@ -4,7 +4,7 @@ module V1
       KEYS = [:id, :title, :created_at, :updated_at, :summary, :content,:title_link,
         :must_read, :slug, :state, :draft_key, :cover, :user_id, :source,
         :column_id, :remark]
-      STATE = ['published', 'draft', 'archived', 'login']
+      STATE = ['published', 'drafted', 'archived', 'login']
 
       desc 'Posts Feature'
       resource :topics do
@@ -14,24 +14,51 @@ module V1
           optional :state,  type: String, default: 'published', desc: '文章状态'
           optional :page,  type: Integer, default: 1, desc: '页数'
           optional :per_page,  type: Integer, default: 30, desc: '每页记录数'
-#          optional :state,  type: String, values: STATE, default: 'publish', desc: '状态'
         end
         get do
-          @posts = Post.all.order(created_at: :desc)
           @posts = Post.where(state: params[:state])
             .order(created_at: :desc) if STATE.include?(params[:state])
           @posts = @posts.page(params[:page]).per(params[:per_page])
           present @posts, with: Entities::Post
+        end
+
+        params do
+          optional :state,  type: String, default: 'published', desc: '文章状态'
+          optional :page,  type: Integer, default: 1, desc: '页数'
+          optional :per_page,  type: Integer, default: 30, desc: '每页记录数'
         end
         get 'index' do
-          @posts = Post.all.order(created_at: :desc)
           @posts = Post.where(state: params[:state])
             .order(created_at: :desc) if STATE.include?(params[:state])
           @posts = @posts.page(params[:page]).per(params[:per_page])
-          present @posts, with: Entities::Post
+          posts_list = []
+          @posts.each do |post|
+            posts_list << {
+              id: post.url_code,
+              title: post.title,
+              feature_img: post.cover_real_url,
+              excerpt: post.summary,
+              created_at: post.created_at.iso8601,
+              updated_at: post.updated_at.iso8601,
+              replied_at: post.updated_at.iso8601,
+              replies_count: post.comments_counts,
+              node_id: post.column_id,
+              node_name: post.column_name,
+              tags: post.tag_list,
+              user: post.author,
+              replies: post.comments
+            }
+          end
+          posts_list
+#          present @posts, with: Entities::Post
+        end
+
+        params do
+          optional :state,  type: String, default: 'published', desc: '文章状态'
+          optional :page,  type: Integer, default: 1, desc: '页数'
+          optional :per_page,  type: Integer, default: 30, desc: '每页记录数'
         end
         get 'export' do
-          posts = Post.all.order(created_at: :desc)
           posts = Post.where(state: params[:state])
             .order(created_at: :desc) if STATE.include?(params[:state])
           posts = posts.page(params[:page]).per(params[:per_page])
@@ -52,6 +79,10 @@ module V1
         end
 
         desc 'Get feature list'
+        params do
+          optional :page,  type: Integer, default: 1, desc: '页数'
+          optional :per_page,  type: Integer, default: 30, desc: '每页记录数'
+        end
         get 'feature' do
           @head_lines = HeadLine.all.order(order_num: :desc)
             .page(params[:page]).per(params[:per_page])
@@ -114,7 +145,7 @@ module V1
           optional :page,  type: Integer, default: 1, desc: '页数'
           optional :per_page,  type: Integer, default: 30, desc: '每页记录数'
           optional :action,  type: String, default: 'down', desc: "下翻页 down 和 上翻页 up"
-#          requires :state, type: String, values: STATE, default: 'draft', desc: '状态'
+#          requires :state, type: String, values: STATE, default: 'published', desc: '状态'
         end
         get ":id/page" do
           post = Post.find(params[:id])
