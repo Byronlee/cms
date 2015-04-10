@@ -35,11 +35,8 @@ FactoryGirl.define do
     summary 'summary'
     sequence(:content) { |n| "title#{n}#{SecureRandom.uuid} fuck you" }
     title_link 'title_link'
-    must_read 'true'
     source 'writer'
     must_read true
-    sequence(:content) { |n| "content#{n}" }
-    sequence(:slug) { |n| "slug#{n}" }
     views_count 0
     url_code {|n| n}
 
