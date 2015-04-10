@@ -15,10 +15,8 @@ module V2
           optional :state,  type: String, default: 'published', desc: '文章状态'
           optional :page,  type: Integer, default: 1, desc: '页数'
           optional :per_page,  type: Integer, default: 30, desc: '每页记录数'
-#          optional :state,  type: String, values: STATE, default: 'publish', desc: '状态'
         end
         get 'index' do
-          @posts = Post.all.order(created_at: :desc)
           @posts = Post.where(state: params[:state])
             .order(created_at: :desc) if STATE.include?(params[:state])
           @posts = @posts.page(params[:page]).per(params[:per_page])
@@ -31,10 +29,10 @@ module V2
           optional :page,  type: Integer, default: 1, desc: '页数'
           optional :per_page,  type: Integer, default: 30, desc: '每页记录数'
           optional :action,  type: String, default: 'down', desc: "下翻页 down 和 上翻页 up"
-#          requires :state, type: String, values: STATE, default: 'draft', desc: '状态'
         end
         get ":id/page" do
-          post = Post.find(params[:id])
+          #post = Post.find_by_url_code(params[:id])
+          post = Post.where(url_code: params[:id]).first
           unless post.blank?
             @posts = Post.where("created_at #{action params} :date", date: post.created_at)
               .order(created_at: :desc)
@@ -46,7 +44,8 @@ module V2
         # Get post detail
         desc 'get post detail'
         get ":id" do
-          @post = Post.find(params[:id])
+          #@post = Post.find_by_url_code(params[:id])
+          @post = Post.where(url_code: params[:id]).first
           #error!("Post not found", 404) if @post.blank?
           present @post, with: Entities::Post
         end
@@ -95,7 +94,8 @@ module V2
           optional :remark,   type: String,   desc: '备注'
         end
         patch ':id' do
-          @post = Post.find(params[:id])
+          #@post = Post.find(params[:id])
+          @post = Post.where(url_code: params[:id]).first
           user = @post.author
           if user and user.editable
             admin_edit_post_url = "#{Settings.site}/krypton/posts/#{@post.id}/edit"
@@ -116,7 +116,8 @@ module V2
         end
         delete ':id' do
           user = current_user
-          post = Post.find(params[:id])
+          #post = Post.find(params[:id])
+          post = Post.where(url_code: params[:id]).first
           if user and post and post.author and (user.role == 'admin' or user.id == post.author.id)
             post.destroy
             return { status: true }
@@ -138,7 +139,6 @@ module V2
           end
           present @posts, with: Entities::Post
         end
-
 
       end
 
