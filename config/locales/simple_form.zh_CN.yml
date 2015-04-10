@@ -18,6 +18,7 @@ zh-CN:
         cover: '特色图片'
         disable_with: '正在提交...'
         tag_list: '标签'
+        user_id: '作者ID'
       head_line:
         url: 网址
         order_num: 序号

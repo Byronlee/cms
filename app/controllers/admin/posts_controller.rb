@@ -25,6 +25,7 @@ class Admin::PostsController < Admin::BaseController
 
   def update
     @post.update(post_params)
+    @post.update_attribute(:user_id, params[:post][:user_id]) if can? :change_author, @post
     respond_with @post, location: admin_posts_path
   end
 
@@ -75,9 +76,7 @@ class Admin::PostsController < Admin::BaseController
   private
 
   def post_params
-    if params[:post]
-      params.require(:post).permit(:column_id, :title, :content, :remark,
-        :slug, :summary, :title_link, :cover, :tag_list)
-    end
+    params.require(:post).permit(:column_id, :title, :content, :remark,
+      :slug, :summary, :title_link, :cover, :tag_list)
   end
 end
