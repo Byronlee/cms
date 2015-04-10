@@ -62,3 +62,7 @@ settings.post_views_count_cache = 100
 settings.ga = {
   tracker: 'UA-1268479-12'
 }
+
+settings.page_views = {
+  persist: false
+}

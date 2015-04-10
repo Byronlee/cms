@@ -17,7 +17,7 @@ module PageView
             views_count = update_cache_#{field.to_s}(views_count)
             if cache_#{field}_time.nil?
               update_cache_#{field}_time
-            elsif Time.parse(cache_#{field}_time) + #{options[:interval]}.seconds <= Time.now
+            elsif(Settings.page_views.persist && (Time.parse(cache_#{field}_time) + #{options[:interval]}.seconds <= Time.now))
               persist_to_#{field}(views_count)
               update_cache_#{field}_time
             end
