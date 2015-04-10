@@ -49,7 +49,11 @@ settings.writer_update_role_api = 'http://writer.36kr.com/api/jHcDEyl/v1/users/u
 
 settings.writer_token = 'e625cf097bb338f1100b5453f68'
 
-settings.default_avatar = 'http://a.36krcnd.com/user/default_avatars/Violin.png!avatar'
+settings.default_avatars = [
+  'http://a.36krcnd.com/nil_class/48147b7f-5f11-4008-b09d-a3d22ee0a2cb/a-1.jpg.jpg',
+  'http://a.36krcnd.com/nil_class/1897ffab-0a89-431e-9c80-81357507c321/a-2.jpg.jpg',
+  'http://a.36krcnd.com/nil_class/0731b96a-6686-4516-83e7-fa9acd5a96c1/a-3.jpg.jpg'
+]
 
 settings.kr_messages_api = 'http://rong.36kr.com/api/message/count'
 
