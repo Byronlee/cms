@@ -9,8 +9,7 @@ class PostsController < ApplicationController
   end
 
   def preview
-    @post = Post.find_by_key(params[:key])
-    return redirect_to :back, :notice => '该文章已删除或不存在，不提供预览' unless @post
+    @post = Post.find_by_key!(params[:key])
     return redirect_to post_show_by_url_code_url(@post.url_code) if @post.published?
     render :show
   end
