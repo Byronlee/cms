@@ -20,6 +20,10 @@ module V2
 
     end
 
+    def warden
+      env['warden']
+    end
+
     def authenticated
       if request.headers['X-Token'].present? or params[:api_key].present?
         request.headers['X-Token'] == '501Cd1AvUL4AxxVEX60gCFJK7HCd9y8ySDvG29Je' or params[:api_key] == '501Cd1AvUL4AxxVEX60gCFJK7HCd9y8ySDvG29Je' ?
@@ -28,11 +32,11 @@ module V2
         false
       end
       #return true if warden.authenticated?
-      #params[:access_token] && @user = User.find_by_authentication_token(params[:access_token])
     end
 
     def current_user
-      User.where(authentication_token: params[:authentication_token]).first
+      init_and_exchange_token
+      #User.where(authentication_token: params[:authentication_token]).first
       #warden.user || @user
     end
 
@@ -51,10 +55,6 @@ module V2
         current_user = User.new
       end
       [current_user,sso_user]
-    end
-
-    def warden
-      env['warden']
     end
 
     def generate_review_url(post)

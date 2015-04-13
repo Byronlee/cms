@@ -50,7 +50,7 @@ module V2
         end
 
         # Get post detail
-        desc 'get post detail'
+        desc 'get post detail for krplus'
         get "/krplus/:id" do
           #@post = Post.find_by_url_code(params[:id])
           @post = Post.where(url_code: params[:id]).first
