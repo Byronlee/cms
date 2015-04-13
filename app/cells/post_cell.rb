@@ -13,9 +13,9 @@ class PostCell < Cell::Rails
   end
 
   def share(args)
-    @post = args[:post]
-    @has_favorite = args[:has_favorite]
     @user = args[:user]
+    @post = args[:post]
+    @has_favorite = @user.favorite_of? @post rescue false
     render
   end
 

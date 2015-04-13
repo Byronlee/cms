@@ -6,7 +6,6 @@ class PostsController < ApplicationController
   def show
     @post = Post.find_by_url_code!(params[:url_code])
     @post.increase_views_count
-    @has_favorite = current_user.favorite_of? @post rescue false
   end
 
   def preview
