@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150402071454) do
+ActiveRecord::Schema.define(version: 20150413101302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -115,7 +115,7 @@ ActiveRecord::Schema.define(version: 20150402071454) do
     t.text     "description_text"
     t.string   "news_url"
     t.integer  "newsflash_topic_color_id"
-    t.string   "news_summaries",           default: [], array: true
+    t.string   "news_summaries",           limit: 5000, default: [], array: true
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
@@ -206,7 +206,6 @@ ActiveRecord::Schema.define(version: 20150402071454) do
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["sso_id"], name: "index_users_on_sso_id", using: :btree
 
