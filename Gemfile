@@ -48,6 +48,7 @@ gem "opengraph_parser"
 gem 'aasm'
 gem 'by_star'
 gem "validate_url"
+gem 'github-markdown'
 
 # views
 gem "simple_form", "~> 3.0.1"

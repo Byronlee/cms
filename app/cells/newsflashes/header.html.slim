@@ -1,0 +1,10 @@
+section.single-post-header
+  .single-post-header__headline
+    - if false
+      img.image width="620" height="337" alt="" src= '#'
+  header.single-post-header__meta
+    .single-post__postmeta
+      a href="#" #{@newsflash.author.try(:display_name)}
+      |&nbsp;•&nbsp;
+      = smart_time_ago @newsflash.created_at
+    h1.single-post__title = raw("8点1氪：#{@newsflash.hash_title}")
