@@ -8,17 +8,16 @@
 #  description_text         :text
 #  news_url                 :string(255)
 #  newsflash_topic_color_id :integer
-#  news_summaries           :string(255)      default([]), is an Array
+#  news_summaries           :string(5000)     default([]), is an Array
 #  created_at               :datetime
 #  updated_at               :datetime
 #  user_id                  :integer
 #
 
 class Newsflash < ActiveRecord::Base
-  validates_presence_of :original_input, :hash_title, :description_text
+  validates_presence_of :original_input, :hash_title
 
   validates :description_text, length: { maximum: 500 }
-  validates :hash_title,       length: { maximum: 40  }
 
   belongs_to :author, class_name: User.to_s, foreign_key: 'user_id'
   belongs_to :newsflash_topic_color

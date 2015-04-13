@@ -19,7 +19,7 @@
 #  source         :string(255)
 #  comments_count :integer
 #  md_content     :text
-#  url_code {|n| n}       :integer
+#  url_code       :integer
 #  views_count    :integer          default(0)
 #  catch_title    :text
 #  published_at   :datetime
