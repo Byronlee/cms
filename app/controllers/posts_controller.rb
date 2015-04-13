@@ -14,13 +14,6 @@ class PostsController < ApplicationController
     render :show
   end
 
-  def news
-    result = JSON.parse Redis::HashKey.new('posts')['new_posts']
-    @posts = result["posts"] || []
-    @newsflashes = result["newsflashes"] || []
-    render '_news', :layout => false
-  end
-
   def hots
     posts_data = Redis::HashKey.new('posts')['hot_posts']
     @posts = posts_data.present? ? JSON.parse(posts_data) : []

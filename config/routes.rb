@@ -79,6 +79,7 @@ Rails.application.routes.draw do
 
   resources :posts, :only => [:index] do
     get :news, on: :collection
+    get :get_comments_count, on: :member
     get :hots, on: :collection
     resources :comments, :only => [:index, :create]
   end

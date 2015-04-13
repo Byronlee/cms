@@ -186,24 +186,15 @@ class Post < ActiveRecord::Base
   def update_today_lastest_cache
     return true if self.views_count_changed?
     logger.info 'perform the worker to update today lastest cache'
-    # logger.info TodayLastestComponentWorker.perform_async
     logger.info TodayLastestComponentWorker.new.perform
     true
   end
 
   def update_hot_posts_cache
     logger.info 'perform the worker to update hot posts cache'
-    # logger.info HotPostsComponentWorker.perform_async
     logger.info HotPostsComponentWorker.new.perform
     true
   end
-
-  # def update_new_posts_cache
-  #   logger.info 'perform the worker to update new posts cache'
-  #   # logger.info NewPostsComponentWorker.perform_async
-  #   logger.info NewPostsComponentWorker.new.perform
-  #   true
-  # end
 
   def update_info_flows_cache
     return true if self.views_count_changed?

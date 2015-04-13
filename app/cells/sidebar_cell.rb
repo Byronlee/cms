@@ -28,10 +28,6 @@ class SidebarCell < Cell::Rails
     render
   end
 
-  def new_posts
-    render
-  end
-
   def ad_sponsor
     render
   end
