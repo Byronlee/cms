@@ -7,12 +7,10 @@ class PostsController < ApplicationController
     @post = Post.find_by_url_code!(params[:url_code])
     @post.increase_views_count
     @has_favorite = current_user.favorite_of? @post rescue false
-    @posts_today_lastest = Post.today_lastest
   end
 
   def preview
     @post = Post.find_by_key(params[:key])
-    @posts_today_lastest = Post.today_lastest
     return redirect_to :back, :notice => '该文章已删除或不存在，不提供预览' unless @post
     return redirect_to post_show_by_url_code_url(@post.url_code) if @post.published?
     render :show
