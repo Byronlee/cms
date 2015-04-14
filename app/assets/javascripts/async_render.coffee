@@ -1,7 +1,7 @@
 class AsymcRender
   constructor: (@stack) ->
     @stack =  [
-      ['/posts/hots', '#hot_posts_position']
+      ['/asynces/posts/hots', '#hot_posts_position']
     ]
 
   run: (url, destination)->

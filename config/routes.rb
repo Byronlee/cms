@@ -77,9 +77,12 @@ Rails.application.routes.draw do
     get 'pages/show', to: 'pages#show', as: :page_body
   end
 
+  namespace :asynces do
+    get '/posts/hots', to: 'posts#hots', as: :posts_hots
+  end
+
   resources :posts, :only => [:index] do
     get :news, on: :collection
-    get :get_comments_count, on: :member
     get :hots, on: :collection
     resources :comments, :only => [:index, :create]
   end

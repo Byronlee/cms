@@ -1,0 +1,14 @@
+- @posts.each do |post|
+  article.sidebar-popular__posts.cf
+    .meta
+    .image.thumb-60.left
+      |  <img src="
+      = high_speed_url post["cover_real_url"], 'square'
+      | " alt=""> 
+    h1
+      |  <a href="
+      = post["title_link"].blank? ? ('/p/' + post["url_code"].to_s + '.html') : post["title_link"]
+      | " title="
+      = raw post["title"]
+      | "> 
+      = raw post["title"]
