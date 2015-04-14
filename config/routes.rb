@@ -82,6 +82,7 @@ Rails.application.routes.draw do
   namespace :asynces do
     resources :posts, :only => [] do
       get :hots, on: :collection
+      resources :comments, :only => [:index, :create]
     end
 
     resources :comments, :only => [] do
@@ -89,10 +90,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :posts, :only => [:index] do
-    get :news, on: :collection
-    resources :comments, :only => [:index, :create]
-  end
+  resources :posts, :only => [:index]
 
   resources :columns, only: [:index]
   resources :favorites, only: [:create]
