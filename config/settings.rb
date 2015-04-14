@@ -64,7 +64,7 @@ settings.ga = {
 }
 
 settings.page_views = {
-  persist: false
+  persist: true
 }
 
 settings.fileupload = {
