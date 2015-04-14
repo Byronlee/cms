@@ -33,14 +33,15 @@ describe PostsController do
 
   describe "GET 'feed'" do
     context 'rss' do
-      let(:post) { create(:post, :published) }
-      before { get 'feed' }
       it do
+        post = create :post, :published
+        get 'feed', :format => :rss
+        expect(assigns(:feeds)).to eq [post]
         should respond_with(:success)
-        expect(assigns(:feeds)).to eql [post]
       end
     end
   end
+
 
   describe "GET 'feed_bdnews'" do
     context 'rss' do
@@ -48,12 +49,12 @@ describe PostsController do
       before do
         post.tag_list = 'bdnews'
         post.save
-        get 'feed_bdnews'
+        get 'feed_bdnews', :format => :rss
       end
       it do
         should respond_with(:success)
-        expect(assigns(:feeds)).to eql [post]
-        expect(response.headers['content-type']).to eql 'application/xml'
+        expect(assigns(:feeds)).to eq [post]
+        expect(response.headers['content-type']).to eq 'application/xml'
       end
     end
   end

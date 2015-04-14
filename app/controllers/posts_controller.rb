@@ -15,7 +15,6 @@ class PostsController < ApplicationController
 
   def feed
     @feeds = Post.published.order('published_at desc').limit(20)
-    respond_to :rss
   end
 
   def feed_bdnews
