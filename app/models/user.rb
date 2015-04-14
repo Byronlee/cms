@@ -150,8 +150,8 @@ class User < ActiveRecord::Base
     self.update muted_at: nil
   end
 
-  def favorite_of?(post)
-    Favorite.find_by_url_code_and_user_id(post.url_code, id)
+  def like?(post)
+    !!Favorite.find_by_url_code_and_user_id(post.url_code, id)
   end
 
   protected
@@ -168,5 +168,4 @@ class User < ActiveRecord::Base
       break token unless User.where(authentication_token: token).first
     end
   end
-
 end

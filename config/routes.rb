@@ -88,12 +88,13 @@ Rails.application.routes.draw do
     resources :comments, :only => [] do
       get :excellents, on: :collection
     end
+
+    resources :favorites, only: [:create]
   end
 
   resources :posts, :only => [:index]
 
   resources :columns, only: [:index]
-  resources :favorites, only: [:create]
 
   match '/comments/excellents', :controller => 'comments', :action => 'execllents', via: :get
   match '/columns/:slug(/:page)', :controller => 'columns', :action => 'show', via: :get
