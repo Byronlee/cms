@@ -2,5 +2,4 @@ section.article
   - @newsflashes.each_with_index do |newsflash, index|
     p
       strong = newsflash.hash_title unless index == 0
-    - newsflash.news_summaries.each do |item|
-     = GitHub::Markdown.render_gfm(item).html_safe
+    = GitHub::Markdown.render_gfm(newsflash.news_summaries.to_s).html_safe

@@ -1,7 +1,7 @@
 class ChangeColumnOfNewsSummariesOnNewsflashes < ActiveRecord::Migration
   def up
     change_table :newsflashes do |t|
-      t.change :news_summaries, :string, limit: 5000, :array => true, default: []
+      t.change :news_summaries, :string, limit: 8000, :array => false, default: nil
     end
   end
 

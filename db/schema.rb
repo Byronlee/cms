@@ -115,7 +115,7 @@ ActiveRecord::Schema.define(version: 20150413101302) do
     t.text     "description_text"
     t.string   "news_url"
     t.integer  "newsflash_topic_color_id"
-    t.string   "news_summaries",           limit: 5000, default: [], array: true
+    t.string   "news_summaries",           limit: 8000
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
