@@ -24,10 +24,6 @@ class SidebarCell < Cell::Rails
     render
   end
 
-  def hot_posts
-    render
-  end
-
   def ad_sponsor
     render
   end
@@ -41,11 +37,6 @@ class SidebarCell < Cell::Rails
   end
 
   def social
-    render
-  end
-
-  def today
-    @posts = PostService.today_lastest
     render
   end
 

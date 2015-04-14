@@ -21,12 +21,12 @@
         = render_cell :comment, :new, post: @post, current_user: current_user if @post.published?
         = render_cell :comment, :index, post: @post
   .aside
-    = render_cell :sidebar, :today
+    = render_cell :post, :today
     = render_cell :sidebar, :social
 
 .sidebar
   = render_cell :sidebar, :ad_top, position: :post_show
-  = render_cell :sidebar, :hot_posts
+  = render_cell :post, :hot
   = render_cell :sidebar, :ad_middle, position: :post_show
   = render_cell :sidebar, :ad_job
   = render_cell :sidebar, :ad_bottom, position: :post_show

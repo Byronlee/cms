@@ -39,11 +39,10 @@
                     li.next.next_page.right.disabled
                       = link_to '下一页 →', '#', rel: "next", id: "tag_next_link"
   .aside
-    = render_cell :sidebar, :today
+    = render_cell :post, :today
     = render_cell :sidebar, :social
 
 .sidebar
   = render_cell :sidebar, :ad_top, position: :column_show
-  /= render_cell :sidebar, :new_posts
-  = render_cell :sidebar, :hot_posts
+  = render_cell :post, :hot
   = render_cell :comment, :excellent

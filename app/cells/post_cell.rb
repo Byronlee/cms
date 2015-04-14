@@ -34,4 +34,13 @@ class PostCell < Cell::Rails
   def ad
     render
   end
+
+  def hot
+    render
+  end
+
+  def today
+    @posts = PostService.today_lastest
+    render
+  end
 end
