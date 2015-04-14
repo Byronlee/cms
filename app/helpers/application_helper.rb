@@ -33,9 +33,9 @@ module ApplicationHelper
     "#{host}#{match[2]}!#{postfix}"
   end
 
-  def smart_time_ago(raw_time)
+  def smart_time_ago(raw_time, days_distance = 1)
     return raw_time if raw_time.blank?
-    if raw_time + 1.day < Time.now
+    if raw_time + days_distance.day < Time.now
       raw "<abbr class=\"timeago\" title=\"#{raw_time}\">#{raw_time.strftime('%Y/%m/%d %H:%M')}</abbr>"
     else
       raw "<time class=\"timeago\" datetime=\"#{raw_time}\">#{relative_time(raw_time)}</time>"

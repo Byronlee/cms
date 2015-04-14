@@ -2,7 +2,7 @@ class Admin::NewsflashesController < Admin::BaseController
   load_and_authorize_resource
 
   def index
-    @newsflashes = @newsflashes.page params[:page]
+    @newsflashes = @newsflashes.order("created_at desc").includes({ author: :krypton_authentication }).page params[:page]
   end
 
   def update
@@ -22,6 +22,6 @@ class Admin::NewsflashesController < Admin::BaseController
   end
 
   def newsflash_params
-    params.require(:newsflash).permit(:original_input, :tag_list, :newsflash_topic_color_id)
+    params.require(:newsflash).permit(:original_input, :tag_list, :newsflash_topic_color_id, :cover)
   end
 end

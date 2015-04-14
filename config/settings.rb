@@ -66,3 +66,9 @@ settings.ga = {
 settings.page_views = {
   persist: false
 }
+
+settings.fileupload = {
+  url: 'http://writer.36kr.com/api/jHcDEyl/v1/images/create',
+  token: 'e625cf097bb338f1100b5453f68',
+  source: '36kr.com'
+}

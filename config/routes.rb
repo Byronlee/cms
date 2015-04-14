@@ -94,6 +94,8 @@ Rails.application.routes.draw do
   match '/feed(/:params).:format' => redirect('/feed'), via: :get
   match '/feed(/:params)' => 'posts#feed', via: :get, defaults: { format: :rss }
   match '/tag/:tag', :controller => 'tags', :action => 'show', via: :get
+  match '/clipped/:year/:month/:day', :controller => 'newsflashes', :action => 'index', via: :get, as: :newsflashes_of_day
+  match '/clipped/:id', :controller => 'newsflashes', :action => 'show', via: :get, as: :newsflash_show
 
   # 兼容老站，添加特定的URL映射
   match '/about' => redirect('/pages/about'), via: :get

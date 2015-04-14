@@ -8,17 +8,17 @@
 #  description_text         :text
 #  news_url                 :string(255)
 #  newsflash_topic_color_id :integer
-#  news_summaries           :string(255)      default([]), is an Array
+#  news_summaries           :string(8000)
 #  created_at               :datetime
 #  updated_at               :datetime
 #  user_id                  :integer
+#  cover                    :string(255)
 #
 
 class Newsflash < ActiveRecord::Base
-  validates_presence_of :original_input, :hash_title, :description_text
+  validates_presence_of :original_input, :hash_title
 
   validates :description_text, length: { maximum: 500 }
-  validates :hash_title,       length: { maximum: 40  }
 
   belongs_to :author, class_name: User.to_s, foreign_key: 'user_id'
   belongs_to :newsflash_topic_color
@@ -34,7 +34,7 @@ class Newsflash < ActiveRecord::Base
   def prase_original_input
     inputs = original_input.split(/---{0,}/)
     prase_basic_attrs_from_original_input inputs[0].strip
-    prase_summaries_from_original_input inputs[1].strip if inputs[1]
+    self.news_summaries = inputs[1].strip if inputs[1]
   end
 
   private
@@ -43,11 +43,6 @@ class Newsflash < ActiveRecord::Base
     return unless !!(/^#(.+??)#(.+??)$/ =~ input)
     valid_url = URI.extract(input).last
     self.hash_title, self.description_text, self.news_url = $1, $2.gsub(valid_url.to_s, ''), valid_url
-  end
-
-  def prase_summaries_from_original_input(input)
-    summaries = input.split(/n\d[\.|\．]/).select { |s| !s.blank? }
-    self.news_summaries = summaries
   end
 
   def update_new_flash_cache

@@ -48,6 +48,7 @@ gem "opengraph_parser"
 gem 'aasm'
 gem 'by_star'
 gem "validate_url"
+gem 'github-markdown'
 
 # views
 gem "simple_form", "~> 3.0.1"
@@ -59,6 +60,7 @@ gem 'polymer-rails', '~> 0.2.8'
 gem 'acts_as_graph_object'
 # gem 'google-analytics-rails'
 gem 'cells'
+gem "jquery-fileupload-rails"
 
 # controllers
 gem 'devise', "~> 3.4.1"
