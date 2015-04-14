@@ -13,4 +13,8 @@ class CommentCell < Cell::Rails
     @current_user = args[:current_user]
     render
   end
+
+  def excellent
+    render
+  end
 end

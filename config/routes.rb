@@ -1,6 +1,6 @@
 require 'sidekiq/web'
 
-# TODO 路由测试
+# TODO路由测试
 
 Rails.application.routes.draw do
   API::API.logger Rails.logger
@@ -82,6 +82,10 @@ Rails.application.routes.draw do
   namespace :asynces do
     resources :posts, :only => [] do
       get :hots, on: :collection
+    end
+
+    resources :comments, :only => [] do
+      get :excellents, on: :collection
     end
   end
 

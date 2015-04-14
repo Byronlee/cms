@@ -36,10 +36,6 @@ class SidebarCell < Cell::Rails
     render
   end
 
-  def excellent_comments
-    render
-  end
-
   def tags
     render
   end

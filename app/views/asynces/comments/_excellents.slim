@@ -1,0 +1,14 @@
+- @comments.each do |comment|
+  .comment-1
+    .postmeta
+      a[href="javascript:void(0)"]
+        = comment["user"].present? ? comment["user"]["display_name"] : '匿名用户'
+      |   • 
+      = smart_time_ago Time.parse(comment["created_at"])
+    .sidebar-comments__comment
+      = raw comment["content"]
+    .sidebar-comments__title
+      |  评论于 <a href="
+      = comment["commentable"]["title_link"].blank? ? ('/p/' + comment["commentable"]["url_code"].to_s + '.html') : comment["commentable"]["title_link"]
+      | " >
+      = raw comment["commentable"]["title"]

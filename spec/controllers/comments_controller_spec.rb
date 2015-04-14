@@ -13,6 +13,7 @@ describe CommentsController do
     comment2
   }
 
+
   before(:each) do
     controller.stub(:current_user).and_return(user)
     comment.update_attributes({:is_excellent => true, :state => 'published'})

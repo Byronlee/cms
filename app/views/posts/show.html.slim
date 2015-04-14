@@ -18,7 +18,7 @@
       = render_cell :post, :author, post: @post
       = render_cell :post, :relate, post: @post
       section.single-post-comment
-        = render_cell :comment, :new, post: @post, current_user: current_user if @post.state == 'published'
+        = render_cell :comment, :new, post: @post, current_user: current_user if @post.published?
         = render_cell :comment, :index, post: @post
   .aside
     = render_cell :sidebar, :today
@@ -26,9 +26,7 @@
 
 .sidebar
   = render_cell :sidebar, :ad_top, position: :post_show
-  /= render_cell :sidebar, :new_posts
   = render_cell :sidebar, :hot_posts
   = render_cell :sidebar, :ad_middle, position: :post_show
   = render_cell :sidebar, :ad_job
-  /= render_cell :sidebar, :excellent_comments
   = render_cell :sidebar, :ad_bottom, position: :post_show
