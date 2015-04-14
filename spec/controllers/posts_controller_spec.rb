@@ -42,7 +42,6 @@ describe PostsController do
     end
   end
 
-
   describe "GET 'feed_bdnews'" do
     context 'rss' do
       let(:post) { create(:post, :published) }

@@ -18,7 +18,7 @@
                   i  Total
             p.category-header__bio = @column.try(:slug)
 
-        = render 'posts/weekly_hot'
+        = render_cell :column, :weekly_hot_posts, column: @column
 
         .articles
           - @posts.each do |post|
