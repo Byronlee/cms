@@ -2,8 +2,6 @@ module V1
   module Controllers
     class Weibo < ::V1::Base
       format :json
-      #prefix ''
-      #version 'v1', using: :header, vendor: '', cacade: false
 
       resource :linkcard do
 

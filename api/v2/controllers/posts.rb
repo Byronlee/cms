@@ -31,7 +31,6 @@ module V2
           optional :action,  type: String, default: 'down', desc: "下翻页 down 和 上翻页 up"
         end
         get ":id/page" do
-          #post = Post.find_by_url_code(params[:id])
           post = Post.where(url_code: params[:id]).first
           unless post.blank?
             @posts = Post.where("created_at #{action params} :date", date: post.created_at)
@@ -44,7 +43,7 @@ module V2
         # Get post detail
         desc 'get post detail'
         get ":id" do
-          @post = Post.find params[:id]
+          @post = Post.where(url_code: params[:id]).first
           #error!("Post not found", 404) if @post.blank?
           present @post, with: Entities::Post
         end
@@ -52,7 +51,6 @@ module V2
         # Get post detail
         desc 'get post detail for krplus'
         get "/krplus/:id" do
-          #@post = Post.find_by_url_code(params[:id])
           @post = Post.where(url_code: params[:id]).first
           #error!("Post not found", 404) if @post.blank?
           present @post, with: Entities::Post
@@ -122,7 +120,6 @@ module V2
         end
         delete ':id' do
           user = current_user
-          #post = Post.find(params[:id])
           post = Post.where(url_code: params[:id]).first
           if user and post and post.author and (user.role == 'admin' or user.id == post.author.id)
             post.destroy

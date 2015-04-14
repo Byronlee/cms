@@ -28,7 +28,6 @@ module V1
         false
       end
       #return true if warden.authenticated?
-      #params[:access_token] && @user = User.find_by_authentication_token(params[:access_token])
     end
 
     def current_user
