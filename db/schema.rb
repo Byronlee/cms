@@ -153,6 +153,8 @@ ActiveRecord::Schema.define(version: 20150414041101) do
     t.datetime "published_at"
     t.string   "key"
     t.text     "remark"
+    t.text     "extra"
+    t.string   "source_type"
   end
 
   add_index "posts", ["column_id"], name: "index_posts_on_column_id", using: :btree
