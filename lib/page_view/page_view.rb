@@ -29,9 +29,9 @@ module PageView
             (views_count.presence || self.#{field}).to_i
           end
 
-          def persist_#{field}
+          def persist_#{field}(options = {})
             views_count = cache_#{field}
-            persist_to_#{field}(views_count)
+            persist_to_#{field}(views_count, options)
             update_cache_#{field}_time
             views_count
           end
@@ -64,9 +64,13 @@ module PageView
             Redis::HashKey.new('page_views')[#{field}_time_key] = Time.now
           end
 
-          def persist_to_#{field}(views_count)
+          def persist_to_#{field}(views_count, options)
             return unless views_count.to_i > self.#{field}
-            self.update_attribute(:#{field}, views_count.to_i)
+            unless options[:skip_callbacks]
+              self.update_attribute(:#{field}, views_count.to_i)
+            else
+              self.update_column(:#{field}, views_count.to_i)
+            end
           end
         RUBY
 
