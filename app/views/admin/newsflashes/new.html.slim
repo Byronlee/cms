@@ -25,7 +25,7 @@
           - else
             a href="#"
               span class="slug" + 点击上传头图
-      input[id="fileupload" type="file" name="file" data-url="http://writer.36kr.com/api/jHcDEyl/v1/images/create" data-sequential-uploads="true" data-form-data='{"token": "e625cf097bb338f1100b5453f68","source": "36kr.com"}']
+      input[id="fileupload" type="file" name="file" data-url="#{Settings.fileupload.url}" data-sequential-uploads="true" data-form-data='{"token": "#{Settings.fileupload.token}","source": "#{Settings.fileupload.source}"}']
 
       div.form-actions
         = f.button :submit, data: { disable_with: "submitting..." }, class: "btn btn-primary"
