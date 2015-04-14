@@ -30,4 +30,31 @@ describe PostsController do
       end
     end
   end
+
+  describe "GET 'feed'" do
+    context 'rss' do
+      let(:post) { create(:post, :published) }
+      before { get 'feed' }
+      it do
+        should respond_with(:success)
+        expect(assigns(:feeds)).to eql [post]
+      end
+    end
+  end
+
+  describe "GET 'feed_bdnews'" do
+    context 'rss' do
+      let(:post) { create(:post, :published) }
+      before do
+        post.tag_list = 'bdnews'
+        post.save
+        get 'feed_bdnews'
+      end
+      it do
+        should respond_with(:success)
+        expect(assigns(:feeds)).to eql [post]
+        expect(response.headers['content-type']).to eql 'application/xml'
+      end
+    end
+  end
 end

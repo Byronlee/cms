@@ -14,15 +14,14 @@ class PostsController < ApplicationController
   end
 
   def feed
-    @feeds = Post.published.order("published_at desc").limit(20)
+    @feeds = Post.published.order('published_at desc').limit(20)
+    respond_to :rss
   end
 
   def feed_bdnews
-    @feeds = Post.published
-            .tagged_with('bdnews')
-            .includes(:column, author:[:krypton_authentication])
-            .order("published_at desc").limit(30)
-
+    @feeds = Post.published.tagged_with('bdnews')
+    @feeds = @feeds.includes(:column, author: [:krypton_authentication])
+    @feeds = @feeds.order('published_at desc').limit(30)
     response.headers['content-type'] = 'application/xml'
   end
 end
