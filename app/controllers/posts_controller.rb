@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-  load_resource :only => [:get_comments_count]
   authorize_resource
   skip_before_action :verify_authenticity_token, only: [:update_views_count]
 

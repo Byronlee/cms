@@ -78,12 +78,13 @@ Rails.application.routes.draw do
   end
 
   namespace :asynces do
-    get '/posts/hots', to: 'posts#hots', as: :posts_hots
+    resources :posts, :only => [] do
+      get :hots, on: :collection
+    end
   end
 
   resources :posts, :only => [:index] do
     get :news, on: :collection
-    get :hots, on: :collection
     resources :comments, :only => [:index, :create]
   end
 

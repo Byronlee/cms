@@ -6,7 +6,7 @@ class Ability
       public_ability
       if user
         can :create, Comment unless user.muted?
-        can :get_comments_count, Post
+        can :comments_count, Post
       end
     end
     can :preview, Post
