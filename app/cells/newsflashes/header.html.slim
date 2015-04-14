@@ -7,4 +7,5 @@ section.single-post-header
       a href="#" #{@newsflash && @newsflash.author.try(:display_name)}
       |&nbsp;•&nbsp;
       = smart_time_ago @newsflash.try(:created_at)
+    a name= @newsflash.try(:id)
     h1.single-post__title = raw("8点1氪：#{@newsflash.try(:hash_title)}")
