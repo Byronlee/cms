@@ -1,11 +1,14 @@
-= render 'welcome/title', title: @newsflashes.first.try(:hash_title)
+= render 'welcome/title', title: "8点1氪：#{@newsflashes.first.try(:hash_title)}"
 
 .main
   .content
     .content-wrapper
       article.single-post
-        = render_cell :newsflashes, :header, newsflash: @newsflashes.first
-        = render_cell :newsflashes, :content, newsflashes: @newsflashes
+        - if @newsflashes.present?
+          = render_cell :newsflashes, :header, newsflash: @newsflashes.first
+          = render_cell :newsflashes, :content, newsflashes: @newsflashes
+        - else
+          = render_cell :newsflashes, :tips
   .aside
     = render_cell :sidebar, :today, posts_today_lastest: @posts_today_lastest
     = render_cell :sidebar, :social
