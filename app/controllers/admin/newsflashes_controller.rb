@@ -22,6 +22,6 @@ class Admin::NewsflashesController < Admin::BaseController
   end
 
   def newsflash_params
-    params.require(:newsflash).permit(:original_input, :tag_list, :newsflash_topic_color_id)
+    params.require(:newsflash).permit(:original_input, :tag_list, :newsflash_topic_color_id, :cover)
   end
 end

@@ -12,6 +12,7 @@
 #  created_at               :datetime
 #  updated_at               :datetime
 #  user_id                  :integer
+#  cover                    :string(255)
 #
 
 class Newsflash < ActiveRecord::Base

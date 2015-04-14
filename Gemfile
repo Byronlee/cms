@@ -60,6 +60,7 @@ gem 'polymer-rails', '~> 0.2.8'
 gem 'acts_as_graph_object'
 # gem 'google-analytics-rails'
 gem 'cells'
+gem "jquery-fileupload-rails"
 
 # controllers
 gem 'devise', "~> 3.4.1"
