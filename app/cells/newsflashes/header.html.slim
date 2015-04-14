@@ -1,6 +1,6 @@
 section.single-post-header
   .single-post-header__headline
-    - if @newsflash && @newsflash.cover
+    - if @newsflash && @newsflash.cover.present?
       img.image width="620" height="337" alt="" src= '#{@newsflash.cover}'
   header.single-post-header__meta
     .single-post__postmeta
