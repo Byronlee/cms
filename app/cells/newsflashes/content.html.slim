@@ -4,4 +4,4 @@ section.article
       a name = newsflash.id
     p
       strong = newsflash.hash_title unless index == 0
-    = GitHub::Markdown.render_gfm(newsflash.news_summaries.to_s).html_safe
+    = GitHub::Markdown.render_gfm(newsflash.news_summaries.to_s + "[[扩展连接]](#{newsflash.news_url})").html_safe
