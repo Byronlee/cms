@@ -1,16 +1,12 @@
 class AsymcRender
   constructor: (@stack) ->
-    @stack =  [
-      ['/asynces/posts/hots', '#hot_posts_position']
-    ]
-
-  run: (url, destination)->
-    $.get url, {}, (data)->
-      $(destination).html(data)
+    @stack =  $('div[async=true]')
 
   render: ->
-    for key, val of @stack
-      @run(val[0], val[1])
+    $.each @stack, (key, obj)->
+      $.get $(obj).attr('async-url'), {}, (data)->
+        $(obj).html(data)
+        eval($(obj).attr('async-callback')) if $(obj).attr('async-callback')
 
 jQuery ->
   asymc_render = new AsymcRender
