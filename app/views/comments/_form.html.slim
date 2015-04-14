@@ -12,7 +12,7 @@ div#commentForm class="widget-content nopadding" style="display:#{(flash[:info] 
       - if current_user
         |"sign as #{current_user.display_name}"
       - else
-        = link_to "请先登录再评论", user_omniauth_authorize_path(provider: :krypton), class:"linkForSign btn btn-primary"
+        = link_to "请先登录再评论", new_user_session_path(ok_url: request.fullpath), class:"linkForSign btn btn-primary"
 
       = f.button :submit, data: { disable_with: "submitting..." }, class:"btn btn-primary", id:"commentSubmit"
 

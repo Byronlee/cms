@@ -131,9 +131,9 @@
               </div>
             </div>
           </li>
-          <%= link_to "", destroy_user_session_path, method: :delete, class:"real_login_out_link", rel:"nofollow" %>
+          <%= link_to "", destroy_user_session_path(ok_url: request.fullpath), method: :delete, class:"real_login_out_link", rel:"nofollow" %>
         <% else %>
-          <li><a href="<%= user_omniauth_authorize_path(provider: :krypton) %>" class="second-nav__login">登录</a></li>
+          <li><a href="<%= new_user_session_path(ok_url: request.fullpath) %>" class="second-nav__login">登录</a></li>
         <% end %>
       </ul>
     </nav>

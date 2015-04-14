@@ -3,7 +3,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def failure
     Rails.logger.error "获取通行证授权失败，错误原因：#{failure_message}"
     flash[:alert] = "很抱歉，由于某些原因导致登录失败，请稍后重试。失败原因: #{failure_message}"
-    redirect_to errors_path
+    redirect_to root_path
   end
 
   def krypton
@@ -46,7 +46,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def after_sign_in_path_for(resource)
-    session.delete("omniauth.ok_url") || super
+    if previous_url = $redis.get("omniauth_krypton_ok-url_of_#{params[:state]}")
+      $redis.del "omniauth_krypton_ok-url_of_#{params[:state]}"
+      previous_url
+    else
+      super
+    end
   end
 
   def sign_in_and_redirect_to_iframe_or_parent(user)
