@@ -12,4 +12,12 @@ class CacheClient
   def today_lastest
     Redis::HashKey.new('posts')['today_lastest']
   end
+
+  def info_flow
+    Redis::HashKey.new('info_flow')[InfoFlow::DEFAULT_INFOFLOW]
+  end
+
+  def head_lines
+    Redis::HashKey.new('head_lines')['list']
+  end
 end

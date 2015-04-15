@@ -19,6 +19,9 @@ class InfoFlow < ActiveRecord::Base
   after_save :update_info_flows_cache
   after_destroy :destroy_info_flows_cache
 
+  DEFAULT_INFOFLOW = '主站'
+  # TODO 迁移到settings
+
   def posts_with_ads(page_num)
     posts = Post.where(:column_id => columns).published.includes(:author, :column).order('published_at desc').page(page_num).per(30)
     posts_with_associations = get_associations_of(posts)
@@ -46,8 +49,9 @@ class InfoFlow < ActiveRecord::Base
         :author => {
           :only => [], :methods => [:display_name] },
         :column => {
-          :only => [:id, :name, :slug]
-          }})
+          :only => [:id, :name, :slug] }
+        }
+      )
   end
 
   def get_ads_with_period_of(posts)
