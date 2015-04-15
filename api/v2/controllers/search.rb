@@ -1,6 +1,6 @@
-module V1
+module V2
   module Controllers
-    class Search < ::V1::Base
+    class Search < ::V2::Base
 
       desc 'search'
       resource :search do
@@ -19,10 +19,10 @@ module V1
             posts_list << {
               id: post.url_code,
               title: post.title,
-              node_id: post.column_id,
-              node_name: post.column_name,
-              feature_img: post.cover_real_url,
-              created_at: post.created_at.iso8601,
+              column_id: post.column_id,
+              column_name: post.column_name,
+              cover_real_url: post.cover_real_url,
+              published_at: post.published_at.iso8601,
               updated_at: post.updated_at.iso8601
             }
           end

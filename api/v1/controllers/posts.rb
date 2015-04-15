@@ -3,6 +3,73 @@ module V1
     class Posts < ::V1::Base
       STATE = ['published', 'drafted', 'archived', 'login']
 
+      desc 'posts news flash'
+      resource :posts do
+
+        desc 'get all news flash list'
+        params do
+          optional :page,  type: Integer, default: 1, desc: '页数'
+          optional :per_page,  type: Integer, default: 30, desc: '每页记录数'
+        end
+        get ':year/:month' do
+          news = Newsflash.includes(author:[:krypton_authentication])
+            .by_month(params[:month] ,year: params[:year], field: :created_at)
+            .order('created_at asc')
+            .page(params[:page]).per(params[:per_page])
+          news_list = []
+          news.each do |new|
+            news_list << {
+              id: new.id,
+              title: new.hash_title,
+              summary: new.news_summaries,
+              source_url: new.news_url,
+              created_at: new.created_at.iso8601,
+              updated_at: new.updated_at.iso8601
+            }.merge(
+              user: { id: new.user_id,
+               login: new.author.name,
+               name: new.author.name,
+               email: new.author.email,
+               avatar_url: new.author.avatar
+             }
+            )
+          end
+          news_list
+        end
+
+        desc 'get all news flash list'
+        params do
+          optional :page,  type: Integer, default: 1, desc: '页数'
+          optional :per_page,  type: Integer, default: 30, desc: '每页记录数'
+        end
+        get ':year/:month/:day' do
+          news = Newsflash.includes(author:[:krypton_authentication])
+            .by_day("#{params[:year]}-#{params[:month]}-#{params[:day]}", field: :created_at)
+            .order('created_at asc')
+            .page(params[:page]).per(params[:per_page])
+          news_list = []
+          news.each do |new|
+            news_list << {
+              id: new.id,
+              title: new.hash_title,
+              summary: new.news_summaries,
+              source_url: new.news_url,
+              created_at: new.created_at.iso8601,
+              updated_at: new.updated_at.iso8601
+            }.merge(
+              user: { id: new.user_id,
+               login: new.author.name,
+               name: new.author.name,
+               email: new.author.email,
+               avatar_url: new.author.avatar
+             }
+            )
+          end
+          news_list
+        end
+
+      end
+
       desc 'Posts Feature'
       resource :topics do
 
@@ -13,8 +80,8 @@ module V1
           optional :per_page,  type: Integer, default: 30, desc: '每页记录数'
         end
         get do
-          @posts = Post.where(state: params[:state])
-            .order(created_at: :desc) if STATE.include?(params[:state])
+          @posts = Post.includes(:comments, author:[:krypton_authentication])
+            .where(state: params[:state]).order(published_at: :desc)
           @posts = @posts.page(params[:page]).per(params[:per_page])
           #present @posts, with: Entities::Post
           posts_list = []
@@ -44,9 +111,9 @@ module V1
           optional :per_page,  type: Integer, default: 30, desc: '每页记录数'
         end
         get 'index' do
-          @posts = Post.where(state: params[:state])
-            .order(created_at: :desc) if STATE.include?(params[:state])
-          @posts = @posts.page(params[:page]).per(params[:per_page])
+          @posts = Post.includes(:comments, author:[:krypton_authentication])
+            .where(state: params[:state]).order(published_at: :desc)
+            .page(params[:page]).per(params[:per_page])
           posts_list = []
           @posts.each do |post|
             posts_list << {
@@ -76,7 +143,8 @@ module V1
           optional :per_page,  type: Integer, default: 30, desc: '每页记录数'
         end
         get 'export' do
-          posts = Post.where(state: params[:state]).order(created_at: :desc)
+          posts = Post.includes(:comments, author:[:krypton_authentication])
+            .where(state: params[:state]).order(created_at: :desc)
           date = params[:date]
           unless date.blank?
             ym = date.split('-')
@@ -117,7 +185,7 @@ module V1
         end
         get 'category/:tags' do
           category = Column.find_by_slug params[:tags]
-          posts = category.posts.published.order(created_at: :desc)
+          posts = category.posts.published.order(published_at: :desc)
             .page(params[:page]).per(params[:per_page])
           #present posts, with: Entities::Post
           posts_list = []

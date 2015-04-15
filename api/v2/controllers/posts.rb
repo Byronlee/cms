@@ -4,7 +4,7 @@ module V2
       KEYS = [:id, :title, :created_at, :updated_at, :summary, :content,:title_link,
         :must_read, :slug, :state, :draft_key, :cover, :user_id, :source,
         :column_id, :remark]
-      STATE = ['published', 'draft', 'archived', 'login']
+      STATE = ['published', 'drafted', 'archived']
 
       desc 'Posts Feature'
       resource :posts do
@@ -17,9 +17,10 @@ module V2
           optional :per_page,  type: Integer, default: 30, desc: '每页记录数'
         end
         get 'index' do
-          @posts = Post.where(state: params[:state])
-            .order(created_at: :desc) if STATE.include?(params[:state])
-          @posts = @posts.page(params[:page]).per(params[:per_page])
+          @posts = Post.includes(author:[:krypton_authentication])
+          .where(state: params[:state])
+          .order(published_at: :desc)
+          .page(params[:page]).per(params[:per_page])
           present @posts, with: Entities::Post
         end
 
@@ -33,8 +34,8 @@ module V2
         get ":id/page" do
           post = Post.where(url_code: params[:id]).first
           unless post.blank?
-            @posts = Post.where("created_at #{action params} :date", date: post.created_at)
-              .order(created_at: :desc)
+            @posts = Post.where("published_at #{action params} :date", date: post.published_at)
+              .order(published_at: :desc)
             @posts = @posts.page(params[:page]).per(params[:per_page] || 30)
           end
           present @posts, with: Entities::Post
@@ -132,7 +133,7 @@ module V2
         # use key list get post list
         desc '批量获取文章'
         params do
-          requires :keys, desc: '逗号分割,例如: 6bb59157-e1f9-45c3-af14-93bc1ba6b710,0d9d97dd-7474-4a81-b960-5cb1fc2c7ce8,c58cae26-3630-4a8e-9a1a-002c3d771e00'
+          requires :keys, desc: '逗号分割,例如: xxx,ooo'
         end
         post 'keys' do
           unless params[:keys].blank?
