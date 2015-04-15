@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe PagesController do
-
   describe "GET 'show'" do
     let(:page) { create :page }
 
