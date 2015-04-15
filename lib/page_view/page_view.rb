@@ -64,7 +64,7 @@ module PageView
             Redis::HashKey.new('page_views')[#{field}_time_key] = Time.now
           end
 
-          def persist_to_#{field}(views_count, options)
+          def persist_to_#{field}(views_count, options = {})
             return unless views_count.to_i > self.#{field}
             unless options[:skip_callbacks]
               self.update_attribute(:#{field}, views_count.to_i)
