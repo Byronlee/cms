@@ -21,6 +21,19 @@ describe Admin::PostsController do
       expect(comments.blank?).to be_true
       expect(response).to redirect_to(post_path(comment.commentable))
     end
+
+  describe "GET 'draft'" do
+    let!(:comment){ create(:post, :drafted) }
+
+    context "contributor can access draft page"
+      login_user :contributor
+
+      before{ get 'draft' }
+      it do
+        should respond_with(:success)
+        should render_template(:draft)
+      end
+    end
   end
 
 end

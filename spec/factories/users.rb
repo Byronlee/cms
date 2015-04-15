@@ -36,5 +36,9 @@ FactoryGirl.define do
     trait :admin do
       role :admin
     end
+
+    trait :contributor do
+      role :contributor
+    end
   end
 end

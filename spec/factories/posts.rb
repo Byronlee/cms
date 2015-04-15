@@ -42,10 +42,15 @@ FactoryGirl.define do
     views_count 0
     url_code {|n| n}
 
-      trait :published do
-        state 'published'
-        published_at 1.hour.ago
-      end
+    trait :published do
+      state 'published'
+      published_at 1.hour.ago
+    end
+
+    trait :drafted do
+      state 'drafted'
+      published_at nil
+    end
   end
 
 end
