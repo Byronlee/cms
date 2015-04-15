@@ -8,4 +8,8 @@ class CacheClient
   def excellent_comments
     Redis::HashKey.new('comments')['excellent']
   end
+
+  def today_lastest
+    Redis::HashKey.new('posts')['today_lastest']
+  end
 end

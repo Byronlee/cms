@@ -82,6 +82,7 @@ Rails.application.routes.draw do
   namespace :asynces do
     resources :posts, :only => [] do
       get :hots, on: :collection
+      get :today, on: :collection
       resources :comments, :only => [:index, :create]
     end
 

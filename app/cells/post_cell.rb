@@ -40,7 +40,6 @@ class PostCell < Cell::Rails
   end
 
   def today
-    @posts = PostService.today_lastest
     render
   end
 end
