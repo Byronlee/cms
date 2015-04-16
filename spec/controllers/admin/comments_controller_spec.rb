@@ -13,6 +13,13 @@ describe Admin::CommentsController do
       expect(response).to render_template(:admin)
       expect(assigns(:comments)).to eq([comment])
     end
+
+    it "returns http success" do
+      get 'index', post_id: comment.commentable.id
+      response.should be_success
+      expect(response).to render_template(:admin)
+      expect(assigns(:comments)).to eq([comment])
+    end
   end
 
   describe "DELETE 'destroy'" do

@@ -33,25 +33,60 @@
 require "spec_helper"
 
 describe Post do
-  describe "#autoset_source_info" do
-    let(:source_urls) {
-      %{
-        http://google.com/ooxx
-        http://com.google/ooxx
-      }
-    }
-    context "original" do
-      let(:post) { create :post, source_type: :original, source_urls: source_urls }
-      it { expect(post.source_urls).to be_blank }
-    end
-    context "translation" do
-      let(:post) { create :post, source_type: :translation, source_urls: source_urls }
-      it { expect(post.source_urls).to be_present }
+  include Rails.application.routes.url_helpers
+
+  describe '#get_assess_url' do
+    before do
+      @post = create :post, :published, title_link: nil
     end
 
-    context "reference" do
-      let(:post) { create :post, source_type: :translation, source_urls: source_urls }
-      it { expect(post.source_urls).to be_present }
+    it do
+      expect(@post.get_access_url).to eq 'http://localhost:3000' + post_show_by_url_code_path(@post.url_code)
+    end
+  end
+
+  describe '#column_name' do
+    before do
+      @post = create :post, :published
+    end
+
+    it do
+      expect(@post.column_name).to eq @post.column.name
+    end
+  end
+
+  describe '#auto_generate_summary' do
+    before do
+      @post = create :post, :published, content: 'ssssssss. asdfasdfasdf', summary: nil
+    end
+
+    it do
+      expect(@post.summary).to eq 'ssssssss.'
+    end
+  end
+
+  describe '#check_head_line_cache_for_destroy' do
+    before do
+      @post = create :post, :published
+      @head_line = create :head_line, url_code: @post.url_code
+    end
+
+    it do
+      @post.destroy
+      expect(HeadLine.find_by_url_code(@post.url_code)).to eq nil
+    end
+  end
+
+  describe '#check_head_line_cache' do
+    before do
+      @post = create :post, :published
+      @head_line = create :head_line, url_code: @post.url_code
+    end
+
+    it do
+      @post.undo_publish
+      @post.save
+      expect(HeadLine.find_by_url_code(@post.url_code)).to eq nil
     end
   end
 end

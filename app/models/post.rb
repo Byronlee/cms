@@ -49,12 +49,6 @@ class Post < ActiveRecord::Base
   validates_presence_of :title, :content
   validates_uniqueness_of :title, :content, :url_code
   validates_presence_of :published_at, if: -> { self.state == "published" }
-  # validates_presence_of :summary, :slug, if: -> { persisted? }
-
-  # validates :slug,    length: { maximum: 14 }
-  # validates :summary, length: { maximum: 40 }
-  # validates :title,   length: { maximum: 40 }
-  # validates :content, length: { maximum: 10_000 }
 
   belongs_to :column, counter_cache: true
   belongs_to :author, class_name: User.to_s, foreign_key: 'user_id'
@@ -77,22 +71,12 @@ class Post < ActiveRecord::Base
   scope :published, -> { where(:state => :published) }
   scope :drafted,   -> { where(:state => :drafted) }
   scope :hot_posts, -> { order('id desc, views_count desc') }
-  scope :order_by_ids, ->(ids){
-    order_by = ["case"]
-    ids.each_with_index.map do |id, index|
-      order_by << "WHEN id='#{id}' THEN #{index}"
-    end
-    order_by << "end"
-    order(order_by.join(" "))
-  }
 
   acts_as_taggable
 
   mapping do
     indexes :id,             index:    :not_analyzed
     indexes :title,          analyzer: 'snowball',   boost:    100
-    # indexes :summary,        analyzer: 'snowball',   boost:    50
-    # indexes :content,        analyzer: 'snowball',   boost:    30
     indexes :state,          type:     'string',     analyzer: 'keyword'
     indexes :published_at,   type:     'date'
     indexes :created_at,     type:     'date'
@@ -104,18 +88,14 @@ class Post < ActiveRecord::Base
       min_score 1
       query do
         boolean do
-          must {
-            string params[:q].presence || "*", default_operator: "AND"
-          }
-          must {
-            term :state, :published
-          }
+          must { string params[:q].presence || "*", default_operator: "AND" }
+          must { term :state, :published }
         end
       end
-      sort {
+      sort do
         by :published_at, :desc
         by :_score, :desc
-      }
+      end
     end
   end
 
@@ -144,6 +124,7 @@ class Post < ActiveRecord::Base
     end
   end
 
+  # TODO: 这是只为API提供使用，应该重构删除
   def get_access_url
     post_url(self)
   end
@@ -157,6 +138,7 @@ class Post < ActiveRecord::Base
     comments_count
   end
 
+  # TODO: 这是只为API提供使用，应该重构删除
   def column_name
     column.name
   end
@@ -171,11 +153,6 @@ class Post < ActiveRecord::Base
 
   def self.today
     published_on(Date.today)
-  end
-
-  def self.find_and_order_by_ids(search)
-    ids = search.map(&:id)
-    self.where(id: ids).order_by_ids(ids).includes(:column, author:[:krypton_authentication])
   end
 
   private
@@ -195,9 +172,7 @@ class Post < ActiveRecord::Base
 
   def update_info_flows_cache
     return true if self.views_count_changed?
-    self.column && self.column.info_flows.each do |info_flow|
-      info_flow.update_info_flows_cache
-    end
+    self.column && self.column.info_flows.map(&:update_info_flows_cache)
     true
   end
 
@@ -213,11 +188,7 @@ class Post < ActiveRecord::Base
   def check_head_line_cache
     return true if self.views_count_changed?
     return true if self.published?
-    HeadLine.all.each do |head_line|
-      next if head_line.url_code != url_code
-      head_line.destroy
-    end
-    true
+    check_head_line_cache_for_destroy
   end
 
   def check_head_line_cache_for_destroy
@@ -229,9 +200,8 @@ class Post < ActiveRecord::Base
   end
 
   def update_excellent_comments_cache
-    return true if self.views_count_changed?
+    return true if views_count_changed?
     logger.info 'perform the worker to update excellent comments cache'
-    # logger.info ExcellentCommentsComponentWorker.perform_async
     logger.info ExcellentCommentsComponentWorker.new.perform
     true
   end

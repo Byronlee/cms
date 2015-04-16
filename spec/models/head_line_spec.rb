@@ -19,4 +19,18 @@ require 'spec_helper'
 
 describe HeadLine do
   pending "add some examples to (or delete) #{__FILE__}"
+
+  describe '#replice_count' do
+    before do
+      @head_lines = create :head_line
+    end
+
+    it do
+      expect(@head_lines.replies_count).to eq 0
+    end
+
+    it do
+      expect(@head_lines.title).to eq @head_lines.title
+    end
+  end
 end

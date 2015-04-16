@@ -8,10 +8,6 @@ module SignInHelper
     end
   end
 
-  def dislogin
-    before(:each) { sign_out(session_user) }
-  end
-
   def login_admin_user
     before(:each) do
       @request.env['devise.mapping'] = Devise.mappings[:user]

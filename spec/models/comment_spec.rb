@@ -18,5 +18,22 @@
 require 'spec_helper'
 
 describe Comment do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'auto set is long comment' do
+    let(:comment) { create :comment, content: '4' * 141 }
+
+    it do
+      expect(comment.is_long).to be true
+    end
+  end
+
+  describe 'order_by_content' do
+    before do
+      @comment_s =  create :comment, content: '4' * 3
+      @comment_l =  create :comment, content: '3' * 10
+    end
+
+    it do
+      expect(Comment.order_by_content.first.content.length).to eq 10
+    end
+  end
 end

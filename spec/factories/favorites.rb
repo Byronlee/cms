@@ -13,7 +13,7 @@
 
 FactoryGirl.define do
   factory :favorite do
-    user_id ""
+    user
     url_code 1
   end
 end

@@ -14,6 +14,14 @@ describe Admin::HeadLinesController do
     end
   end
 
+  describe "GET 'new'" do
+    it "returns http success" do
+      get :new
+      response.should be_success
+      expect(response).to render_template('admin/head_lines/new')
+    end
+  end
+
   describe "PATCH 'update'" do
     context "when params is valid" do
       let!(:head_line) { create(:head_line) }

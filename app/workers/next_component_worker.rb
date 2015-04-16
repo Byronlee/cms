@@ -8,7 +8,7 @@ class NextComponentWorker < BaseWorker
   private
 
   def token
-    JSON.parse(Faraday.new(:url => Settings.next.host).post do | req |
+    JSON.parse(Faraday.new(:url => Settings.next.host).post do |req|
       req.headers['Content-Type'] = 'application/json'
       req.body = Settings.next.token_params.to_json
     end.body)
