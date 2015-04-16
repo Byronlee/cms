@@ -28,10 +28,6 @@ class SidebarCell < Cell::Rails
     render
   end
 
-  def apps
-    render
-  end
-
   def tags
     render
   end
