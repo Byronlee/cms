@@ -1,24 +1,14 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(user, controller_namespace)
-    unless controller_namespace == 'Admin'
-      public_ability
-      if user
-        can :create, Comment unless user.muted?
-        can :comments_count, Post
-      end
-    end
-    can :preview, Post
-    if user
-      can [:edit, :update], User, :id => user.id
-      can :manage, Favorite, :user_id => user.id
-      send user.role.to_sym, user
-    end
+  def initialize(user, _controller_namespace)
+    return anonymous if user.blank?
+    public_ability(user)
+    send user.role.to_sym, user
   end
 
   # 读者
-  def reader(user)
+  def reader(_user)
     # 不能进入后台
     # 可以评论
   end
@@ -69,14 +59,24 @@ class Ability
   end
 
   # 管理员
-  def admin(user)
+  def admin(_user)
     can :manage, :all
   end
 
-  def public_ability
+  def public_ability(user)
+    anonymous
+    can :create, Comment unless user.muted?
+    can :comments_count, Post
+    can :preview, Post
+    can [:edit, :update], User, :id => user.id
+    can :manage, Favorite, :user_id => user.id
+  end
+
+  def anonymous
     can :read, :welcome
+    can :index, :welcome
     can :read, [Ad, Post, Column, Page, Newsflash, User]
-    can [:update_views_count, :news, :feed, :hots, :today_lastest, :feed_bdnews], Post
+    can [:news, :feed, :hots, :today_lastest, :feed_bdnews], Post
     can [:read, :execllents], Comment
     can :changes, :welcome
     cannot :create, Comment
