@@ -1,9 +1,10 @@
 require 'spec_helper'
 
 describe Admin::AdsController do
+  login_admin_user
 
   describe "GET 'index'" do
-    let!(:ad){ create(:ad) }
+    let!(:ad) { create(:ad) }
 
     it "returns http success" do
       get 'index'
@@ -14,23 +15,23 @@ describe Admin::AdsController do
   end
 
   describe "PATCH 'update'" do
-    context "when params is valid" do
-      let!(:ad){ create(:ad) }
-      let(:position){ 4 }
+    context 'when params is valid' do
+      let!(:ad) { create(:ad) }
+      let(:position) { 4 }
 
       it "returns http rediect" do
-        patch :update, id:ad, ad: {:position => position}
+        patch :update, id: ad, ad: { :position => position }
         expect(response.status).to eq(302)
-        ad.reload.position.should == position
+        expect(ad.reload.position).to eq position
         expect(response).to redirect_to(admin_ads_path)
       end
     end
 
     context "when params is invalid" do
-      let!(:ad){ create(:ad) }
+      let!(:ad) { create(:ad) }
 
-       it "returns back for position and content being necessary" do
-        patch :update, id:ad, ad: {:position => nil, :content => nil}
+      it "returns back for position and content being necessary" do
+        patch :update, id: ad, ad: { :position => nil, :content => nil }
         assigns(:ad).errors.empty?.should_not be_true
         assigns(:ad).errors[:position].empty?.should_not be_true
         assigns(:ad).errors[:content].empty?.should_not be_true
@@ -41,7 +42,7 @@ describe Admin::AdsController do
 
       it "returns back for position being uniquee" do
         create :ad2
-        patch :update, id:ad, ad: {:position => attributes_for(:ad2)[:position] }
+        patch :update, id: ad, ad: { :position => attributes_for(:ad2)[:position] }
         assigns(:ad).errors.empty?.should_not be_true
         assigns(:ad).errors[:position].empty?.should_not be_true
         assigns(:ad).errors[:content].empty?.should be_true
@@ -49,51 +50,50 @@ describe Admin::AdsController do
         assigns(:ad).errors[:position].first.should match(/已经被使/)
       end
     end
-   end
-
-   describe "POST 'create'" do
-     context "when params is valid" do
-       it "returns http rediect" do
-         expect{
-           post 'create', :ad => attributes_for(:ad2)
-         }.to change(Ad, :count).by(1)
-         expect(response.status).to eq(302)
-         expect(response).to redirect_to(admin_ads_path)
-       end
-     end
-
-     context "when params is invalid" do
-       it "returns back for url being necessary" do
-         post 'create', :ad => {:position => nil, :content => nil}
-         assigns(:ad).errors.empty?.should_not be_true
-         assigns(:ad).errors[:position].empty?.should_not be_true
-         assigns(:ad).errors[:content].empty?.should_not be_true
-
-         assigns(:ad).errors[:position].first.should match(/不能为空字符/)
-         assigns(:ad).errors[:content].first.should match(/不能为空字符/)
-       end
-
-       it "returns back for url being uniquee" do
-         create :ad2
-         post 'create', :ad => attributes_for(:ad2)
-         assigns(:ad).errors.empty?.should_not be_true
-         assigns(:ad).errors[:position].empty?.should_not be_true
-         assigns(:ad).errors[:content].empty?.should be_true
-
-         assigns(:ad).errors[:position].first.should match(/已经被使用/)
-       end
-     end
   end
 
-   describe "DELETE 'destroy'" do
-    before{  @ad = create :ad }
-    it "returns http rediect" do
-      request.env["HTTP_REFERER"] = admin_ads_path # for redicect :back
-      expect{
-        delete :destroy, :id => @ad
-      }.to change(Ad, :count).by(-1)
-      expect(response).to redirect_to(admin_ads_path)
+  describe "POST 'create'" do
+    context "when params is valid" do
+      it "returns http rediect" do
+        expect do
+          post 'create', :ad => attributes_for(:ad2)
+        end.to change(Ad, :count).by(1)
+        expect(response.status).to eq(302)
+        expect(response).to redirect_to(admin_ads_path)
+      end
+    end
+
+    context "when params is invalid" do
+      it "returns back for url being necessary" do
+        post 'create', :ad => { :position => nil, :content => nil }
+        assigns(:ad).errors.empty?.should_not be_true
+        assigns(:ad).errors[:position].empty?.should_not be_true
+        assigns(:ad).errors[:content].empty?.should_not be_true
+
+        assigns(:ad).errors[:position].first.should match(/不能为空字符/)
+        assigns(:ad).errors[:content].first.should match(/不能为空字符/)
+      end
+
+      it "returns back for url being uniquee" do
+        create :ad2
+        post 'create', :ad => attributes_for(:ad2)
+        assigns(:ad).errors.empty?.should_not be_true
+        assigns(:ad).errors[:position].empty?.should_not be_true
+        assigns(:ad).errors[:content].empty?.should be_true
+
+        assigns(:ad).errors[:position].first.should match(/已经被使用/)
+      end
     end
   end
 
+  describe "DELETE 'destroy'" do
+    before { @ad = create :ad }
+    it "returns http rediect" do
+      request.env["HTTP_REFERER"] = admin_ads_path
+      expect do
+        delete :destroy, :id => @ad
+      end.to change(Ad, :count).by(-1)
+      expect(response).to redirect_to(admin_ads_path)
+    end
+  end
 end

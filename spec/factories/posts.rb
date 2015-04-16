@@ -56,5 +56,9 @@ FactoryGirl.define do
     trait :reviewing do
       state 'reviewing'
     end
+
+    trait :draft do
+      state 'drafted'
+    end
   end
 end
