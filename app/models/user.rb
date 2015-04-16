@@ -63,6 +63,16 @@ class User < ActiveRecord::Base
     SyncRoleToWriterWorker.perform_async(krypton_authentication.uid, role) rescue true
   end
 
+  def self.current
+    Thread.current[:user]
+  end
+
+  def self.current=(user)
+    raise(ArgumentError,
+        "Invalid user. Expected an object of class 'User', got #{user.inspect}") unless user.is_a?(User)
+    Thread.current[:user] = user
+  end
+
   def apply_omniauth(omniauth)
     self.phone = omniauth['info']['phone'] if phone.blank?
     self.sso_id = omniauth['uid'] if sso_id.blank?

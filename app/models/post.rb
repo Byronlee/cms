@@ -68,7 +68,7 @@ class Post < ActiveRecord::Base
   after_destroy :update_today_lastest_cache, :update_hot_posts_cache, :update_info_flows_cache,
                 :check_head_line_cache_for_destroy, :update_excellent_comments_cache
   before_create :generate_key
-  before_save :auto_generate_summary
+  before_save :auto_generate_summary, :record_laster_update_user
   after_create :generate_url_code
 
   scope :published_on, -> (date) {
@@ -266,5 +266,18 @@ class Post < ActiveRecord::Base
     return true if summary.present?
     self.summary = /^(.*?[。|；|!|?|？|！|.])/imx.match(strip_tags(content))[1] rescue true
     true
+  end
+
+  def record_laster_update_user
+    return true if new_record? || User.current.blank?
+    return true unless title_changed? || summary_changed? || content_changed? ||
+                       title_link_changed? || slug_changed? || state_changed? ||
+                       draft_key_changed? || column_id_changed? || user_id_changed? ||
+                       cover_changed? || source_changed? || md_content_changed? ||
+                       url_code_changed?
+    return true if self.user_id == User.current.id
+
+    self.remark += "\r\n" if self.remark.present?
+    self.remark += "[#{Time.now}]#{User.current.id} - #{User.current.display_name} edited"
   end
 end
