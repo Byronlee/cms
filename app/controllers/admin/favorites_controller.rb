@@ -4,7 +4,7 @@ class Admin::FavoritesController < Admin::BaseController
   def index
     @favorites = current_user.favorites
                 .joins("inner join posts on posts.url_code = favorites.url_code and posts.state = 'published'")
-                .order('id desc').includes({post: :column}, :user).page params[:page]
+                .order('id desc').includes({post: [:column, {author: :krypton_authentication}]}, {user: :krypton_authentication}).page params[:page]
   end
 
   def destroy
