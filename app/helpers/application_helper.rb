@@ -38,7 +38,7 @@ module ApplicationHelper
     if raw_time + days_distance.day < Time.now
       raw "<abbr class=\"timeago\" title=\"#{raw_time}\">#{raw_time.strftime('%Y/%m/%d %H:%M')}</abbr>"
     else
-      raw "<time class=\"timeago\" datetime=\"#{raw_time}\">#{relative_time(raw_time)}</time>"
+      raw "<time class=\"timeago\" title=\"#{raw_time}\" datetime=\"#{raw_time}\">#{relative_time(raw_time)}</time>"
     end
   end
 

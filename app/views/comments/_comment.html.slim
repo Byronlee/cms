@@ -1,6 +1,6 @@
 - comment ||= @comment
 - unless comment.user_id == 10002
-  .comment.cf id="comment-#{comment.id}"
+  .comment.cf.comment_details data-comment-id="#{comment.id}"
     .avatar.left
       a[href="javascript:void(0)"]
         img[src="#{comment.user.try(:avatar)}" raw_iden="#{comment.user.try(:id)}" alt="#{comment.user.try(:display_name) || '匿名用户'}" style="width:48px;height:48px;"]
