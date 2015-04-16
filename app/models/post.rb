@@ -59,7 +59,6 @@ class Post < ActiveRecord::Base
   belongs_to :column, counter_cache: true
   belongs_to :author, class_name: User.to_s, foreign_key: 'user_id'
   has_many :comments, as: :commentable, dependent: :destroy
-  # has_and_belongs_to_many :favoriters, primary_key: :url_code, class_name: User.to_s, join_table: 'favorites', foreign_key: :url_code
   has_many :favorites, foreign_key: :url_code, primary_key: :url_code, dependent: :destroy
   has_many :favoriters, source: :user, through: :favorites, primary_key: :url_code
 
@@ -74,9 +73,9 @@ class Post < ActiveRecord::Base
   scope :published_on, -> (date) {
     where(:published_at => date.beginning_of_day..date.end_of_day)
   }
-  scope :reviewing, ->{ where(:state => :reviewing) }
-  scope :published, ->{ where(:state => :published) }
-  scope :drafted,   ->{ where(:state => :drafted) }
+  scope :reviewing, -> { where(:state => :reviewing) }
+  scope :published, -> { where(:state => :published) }
+  scope :drafted,   -> { where(:state => :drafted) }
   scope :hot_posts, -> { order('id desc, views_count desc') }
   scope :order_by_ids, ->(ids){
     order_by = ["case"]
@@ -90,16 +89,14 @@ class Post < ActiveRecord::Base
   acts_as_taggable
 
   mapping do
-     indexes :id,             index:    :not_analyzed
-
-     indexes :title,          analyzer: 'snowball',   boost:    100
-     # indexes :summary,        analyzer: 'snowball',   boost:    50
-     # indexes :content,        analyzer: 'snowball',   boost:    30
-
-     indexes :state,          type:     'string',     analyzer: 'keyword'
-     indexes :published_at,   type:     'date'
-     indexes :created_at,     type:     'date'
-     indexes :updated_at,     type:     'date'
+    indexes :id,             index:    :not_analyzed
+    indexes :title,          analyzer: 'snowball',   boost:    100
+    # indexes :summary,        analyzer: 'snowball',   boost:    50
+    # indexes :content,        analyzer: 'snowball',   boost:    30
+    indexes :state,          type:     'string',     analyzer: 'keyword'
+    indexes :published_at,   type:     'date'
+    indexes :created_at,     type:     'date'
+    indexes :updated_at,     type:     'date'
   end
 
   def self.search(params)

@@ -21,8 +21,6 @@ class Ad < ActiveRecord::Base
   private
 
   def update_info_flows_cache
-    info_flows.each do |info_flow|
-      info_flow.update_info_flows_cache
-    end
+    info_flows.map(&:update_info_flows_cache)
   end
 end
