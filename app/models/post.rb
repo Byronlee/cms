@@ -246,7 +246,7 @@ class Post < ActiveRecord::Base
     true
   end
 
-   def check_head_line_cache_for_destroy
+  def check_head_line_cache_for_destroy
     HeadLine.all.each do |head_line|
       next if head_line.url_code != url_code
       head_line.destroy
@@ -254,7 +254,7 @@ class Post < ActiveRecord::Base
     true
   end
 
-   def update_excellent_comments_cache
+  def update_excellent_comments_cache
     return true if self.views_count_changed?
     logger.info 'perform the worker to update excellent comments cache'
     # logger.info ExcellentCommentsComponentWorker.perform_async
