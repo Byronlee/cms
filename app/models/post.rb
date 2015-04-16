@@ -27,6 +27,7 @@
 #  remark         :text
 #  extra          :text
 #  source_type    :string(255)
+#  favorites_count :integer
 #
 
 require 'action_view'
@@ -59,7 +60,7 @@ class Post < ActiveRecord::Base
   belongs_to :author, class_name: User.to_s, foreign_key: 'user_id'
   has_many :comments, as: :commentable, dependent: :destroy
   # has_and_belongs_to_many :favoriters, primary_key: :url_code, class_name: User.to_s, join_table: 'favorites', foreign_key: :url_code
-  has_many :favorites, foreign_key: :url_code, primary_key: :url_code
+  has_many :favorites, foreign_key: :url_code, primary_key: :url_code, dependent: :destroy
   has_many :favoriters, source: :user, through: :favorites, primary_key: :url_code
 
   after_save :update_today_lastest_cache, :update_hot_posts_cache, :update_info_flows_cache,

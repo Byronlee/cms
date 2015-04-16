@@ -27,6 +27,7 @@
 #  remark         :text
 #  extra          :text
 #  source_type    :string(255)
+#  favorites_count :integer
 #
 
 FactoryGirl.define do

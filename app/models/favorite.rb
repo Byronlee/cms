@@ -12,7 +12,7 @@
 class Favorite < ActiveRecord::Base
   paginates_per 20
 
-  belongs_to :post, foreign_key: :url_code, primary_key: :url_code
+  belongs_to :post, foreign_key: :url_code, primary_key: :url_code, counter_cache: true
   belongs_to :user, counter_cache: true
 
   validates :url_code, :user_id, presence: true

@@ -8,7 +8,7 @@ section.single-post-share.cf
       li
         a.social-btn.star-btn.require-login[href="javascript:void(0)" onclick="doFavorite(#{@post.url_code})" data-uid="#{@user.try(:id)}"]
           i.icon.icon-star class="#{@has_favorite ? 'active' : ''}"
-          span#star-count =  @post.favoriters.count
+          span#star-count =  @post.favorites_count
       li
         a.social-btn.share-btn[href="javascript:void(0)"]
           i.icon.icon-share
