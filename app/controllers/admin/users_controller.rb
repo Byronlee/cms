@@ -25,7 +25,7 @@ class Admin::UsersController < Admin::BaseController
     respond_with @user, location:  ok_url_or([:admin, :users])
   end
 
-private
+  private
 
   def user_params
     params.require(:user).permit(:role, :name, :email, :phone, :tagline) if params[:user]

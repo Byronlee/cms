@@ -1,36 +1,22 @@
 
 class Admin::PostsController < Admin::BaseController
   load_and_authorize_resource
+  before_action :check_column_post, only: [:index, :reviewings, :myown, :draft]
 
   def index
-    @posts = Column.find(params[:column_id]).posts rescue Post
-    @posts = @posts.published.accessible_by(current_ability).order('published_at desc')
-    @posts = @posts.includes({ author: :krypton_authentication }, :column, :tags).page params[:page]
-  end
-
-  def column
-    @column = Column.find(params[:column_id])
-    @posts = @column.posts.published.accessible_by(current_ability).order('published_at desc')
-    @posts = @posts.includes({ author: :krypton_authentication }, :column).page params[:page]
-    render 'column'
+    @posts = page.call @posts.published.accessible_by(current_ability).order('published_at desc'), params[:page]
   end
 
   def reviewings
-    @posts = Column.find(params[:column_id]).posts rescue Post
-    @posts = @posts.reviewing.accessible_by(current_ability).order('id desc')
-    @posts = @posts.includes({ author: :krypton_authentication }, :column).page params[:page]
+    @posts = page.call @posts.reviewing.accessible_by(current_ability).order('id desc'), params[:page]
   end
 
   def myown
-    @posts = Column.find(params[:column_id]).posts rescue Post
-    @posts = @posts.where(author: current_user).order('id desc')
-    @posts = @posts.includes({ author: :krypton_authentication }, :column).page params[:page]
+    @posts = page.call @posts.where(author: current_user).order('id desc'), params[:page]
   end
 
   def draft
-    @posts = Column.find(params[:column_id]).posts rescue Post
-    @posts = @posts.where(author: current_user).drafted.order('id desc')
-    @posts = @posts.includes({ author: :krypton_authentication }, :column).page params[:page]
+    @posts = page.call @posts.where(author: current_user).drafted.order('id desc'), params[:page]
   end
 
   def update
@@ -50,43 +36,40 @@ class Admin::PostsController < Admin::BaseController
   end
 
   def do_publish
-    if params[:operate_type] == 'publish'
-      redirect_to reviewings_admin_posts_path, :notice => '文章状态不合法，不能发布！' unless @post.may_publish?
-      @post.publish
-      success_msg = '文章发布成功'
-    else
-      success_msg = '文章保存成功'
-    end
-    if @post.update(post_params)
-      redirect_to reviewings_admin_posts_path, :notice => success_msg
-    else
-      render :publish
-    end
+    @post.publish if params[:operate_type].eql?('publish')
+    @post.update!(post_params)
+    redirect_to reviewings_admin_posts_path, :notice => '操作成功!'
   end
 
   def undo_publish
-    if @post.may_undo_publish?
-      @post.undo_publish
-      @post.save
-    end
+    @post.undo_publish
+    @post.save!
     redirect_to :back
   end
 
   def toggle_tag
     tag_name = 'bdnews'
-    if @post.bdnews?
-      @post.tag_list.delete(tag_name)
-    else
-      @post.tag_list << tag_name
-    end
-    @post.save
+    @post.bdnews? ? @post.tag_list.delete(tag_name) : @post.tag_list << tag_name
+    @post.save!
     redirect_to :back
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:column_id, :title, :content, :remark,
-      :slug, :summary, :title_link, :cover, :tag_list)
+    params.require(:post).permit(
+      :column_id, :title,
+      :content, :remark,
+      :slug, :summary,
+      :title_link, :cover, :tag_list
+    )
+  end
+
+  def page
+    -> (posts, page_num) { posts.includes({ author: :krypton_authentication }, :column, :tags).page page_num }
+  end
+
+  def check_column_post
+    @posts = Column.find!(params[:column_id]).posts rescue Post
   end
 end

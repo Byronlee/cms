@@ -28,7 +28,7 @@ class Comment < ActiveRecord::Base
   validates :content, length: { maximum: 3_000 }
 
   belongs_to :commentable, :polymorphic => true, counter_cache: true
-  belongs_to :post, -> { where(comments: {commentable_type: 'Post'}) }, foreign_key: 'commentable_id'
+  belongs_to :post, -> { where(comments: { commentable_type: 'Post' }) }, foreign_key: 'commentable_id'
   belongs_to :user
 
   before_save :set_is_long_attribute
@@ -38,17 +38,17 @@ class Comment < ActiveRecord::Base
   after_destroy :update_excellent_comments_cache
 
   scope :order_by_content, -> {
-    includes(:commentable, user:[:krypton_authentication])
+    includes(:commentable, user: [:krypton_authentication])
     .order('char_length(content) desc')
   }
   # scope :excellent, -> { where(is_excellent: true, state:[:published, :prepublished]) }
-  scope :excellent, -> { includes(:post).where(posts: {state: :published}, is_excellent: true) }
+  scope :excellent, -> { includes(:post).where(posts: { state: :published }, is_excellent: true) }
   scope :normal, -> {
-    where(is_excellent: [false, nil], state:[:published, :prepublished])
+    where(is_excellent: [false, nil], state: [:published, :prepublished])
     .where_values.reduce(:and)
   }
   scope :normal_selfown, -> (user_id) {
-    where(is_excellent: [false, nil], user_id:user_id)
+    where(is_excellent: [false, nil], user_id: user_id)
     .where_values.reduce(:and)
   }
 

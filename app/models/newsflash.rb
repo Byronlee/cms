@@ -47,7 +47,6 @@ class Newsflash < ActiveRecord::Base
 
   def update_new_flash_cache
     logger.info 'perform the worker to update new flash cache'
-    # logger.info NewPostsComponentWorker.perform_async
     logger.info NewPostsComponentWorker.new.perform
     true
   end
