@@ -18,7 +18,7 @@ FactoryGirl.define do
   end
 
   factory :ad2, class: Ad do
-    sequence(:position) { |n| n * 10 }
+    position 10
     content "ad second"
   end
 end

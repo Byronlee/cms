@@ -18,7 +18,7 @@
 require 'spec_helper'
 
 describe HeadLine do
-  pending "add some examples to (or delete) #{__FILE__}"
+  # pending "add some examples to (or delete) #{__FILE__}"
 
   describe '#replice_count' do
     before do

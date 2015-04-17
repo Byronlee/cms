@@ -32,10 +32,10 @@ describe Users::OmniauthCallbacksController do
           }
         }
         before { post :krypton }
-        it {
+        it do
           should respond_with(:redirect)
-          expect(user.reload.authentications.first.uid).to eq(authentication.uid)
-        }
+          expect(user.reload.authentications.first.uid).to eq(authentication.uid.to_s)
+        end
       end
     end
   end
