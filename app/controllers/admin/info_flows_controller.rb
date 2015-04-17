@@ -36,42 +36,39 @@ class Admin::InfoFlowsController < Admin::BaseController
   end
 
   def update_columns
-    if params[:column_ids]
-      ActiveRecord::Base.transaction do
-        @info_flow.columns.clear
-        @info_flow.columns << Column.where(id: params[:column_ids])
-        @info_flow.update_info_flows_cache
-      end
-    end
-    render :json => { 'result' => 'sucess' }
+    update_association('columns', params['column_ids']) if params[:column_ids]
   end
 
   def update_ads
-    if params[:ad_ids]
-      ActiveRecord::Base.transaction do
-        @info_flow.ads.clear
-        @info_flow.ads << Ad.where(id: params[:ad_ids])
-        @info_flow.update_info_flows_cache
-      end
-    end
-    render :json => { 'result ' => 'sucess' }
+    update_association('ads', params['ad_ids']) if params[:ad_ids]
   end
 
   def destroy_column
-    @column = Column.find params[:column_id]
-    @info_flow.columns.delete(@column)
-    @info_flow.update_info_flows_cache
+    destroy_association('columns', params[:column_id])
     redirect_to columns_and_ads_admin_info_flow_path(@info_flow)
   end
 
   def destroy_ad
-    @ad = Ad.find params[:ad_id]
-    @info_flow.ads.delete(@ad)
-    @info_flow.update_info_flows_cache
+    destroy_association('ads', params[:ad_id])
     redirect_to columns_and_ads_admin_info_flow_path(@info_flow, anchor: 'info_flow_ads')
   end
 
   private
+
+  def destroy_association(associations, id)
+    @obj = associations.chop.classify.constantize.find(id)
+    @info_flow.send(associations.to_sym).send(:delete, @obj)
+    @info_flow.update_info_flows_cache
+  end
+
+  def update_association(associations, ids)
+    ActiveRecord::Base.transaction do
+      @obj = associations.chop.classify.constantize
+      @info_flow.send associations.concat('=').to_sym, @obj.where(id: ids)
+      @info_flow.update_info_flows_cache
+    end
+    render :json => { 'result' => 'sucess' }
+  end
 
   def info_flow_params
     params.require(:info_flow).permit(:name) if params[:info_flow]
