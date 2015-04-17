@@ -31,7 +31,11 @@ Rails.application.routes.draw do
       end
     end
     resources :ads
-    resources :head_lines, except: [:show]
+    resources :head_lines, except: [:show] do
+      get :archives, on: :collection
+      post :archive, on: :member
+      post :publish, on: :member
+    end
     resources :columns do
       resources :posts, only: [:index], on: :collection do
         get :reviewings, on: :collection

@@ -15,11 +15,10 @@ tr
       i.fa.fa-link[title=head_line.url data-toggle='tooltip']
   td.text_center = time_ago_in_words head_line.created_at
   td.text_center
-    - if can? :edit, head_line
-      a title="编辑" href= edit_admin_head_line_path(head_line)
-        i.fa.fa-pencil
-      |&nbsp;&nbsp;
-    - if can? :archived, head_line
-      a title="归档" data-method="post" data-confirm="确定归档头条 #{head_line.url} ？" href= archive_admin_head_line_path(head_line)
-        i.fa.fa-power-off
+    - if can? :publish, head_line
+      a title="发布" data-method="post" href= publish_admin_head_line_path(head_line)
+        i.fa.fa-plane
+    - if can? :destroy, head_line
+      a title="删除" data-method="delete" data-confirm="确定删除头条 #{head_line.url} ？" href= admin_head_line_path(head_line)
+        i.fa.fa-times
   td.avatar.text_center[title=head_line.user.try(:display_name) data-toggle='tooltip'] = image_tag head_line.user.try(:avatar)

@@ -60,6 +60,6 @@ class ApplicationController < ActionController::Base
   private
 
   def set_current_user_info
-    User.current = current_user
+    User.current = current_user if current_user
   end
 end
