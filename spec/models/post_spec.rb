@@ -89,4 +89,14 @@ describe Post do
       expect(HeadLine.find_by_url_code(@post.url_code)).to eq nil
     end
   end
+
+  describe '#sanitize_content' do
+    before do
+      @post = create :post, :published
+    end
+
+    it do
+      expect(@post.sanitize_content).to match(/fuck you/)
+    end
+  end
 end

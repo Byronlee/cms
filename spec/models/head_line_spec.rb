@@ -30,7 +30,7 @@ describe HeadLine do
     end
 
     it do
-      expect(@head_lines.title).to eq @head_lines.title
+      expect(@head_lines.excerpt).to eq @head_lines.title
     end
   end
 end

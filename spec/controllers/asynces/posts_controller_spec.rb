@@ -27,7 +27,7 @@ describe Asynces::PostsController do
   end
 
   describe "GET 'today'" do
-    let(:post) { create :post }
+    let!(:post) { create :post }
 
     before do
       get :today
