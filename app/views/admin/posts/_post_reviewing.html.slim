@@ -10,7 +10,7 @@ tr
     = time_ago_in_words post.created_at
   td.text_center = display_state(post.state)
   td
-    span class='label label-primary'
+    span class='badge badge-primary'
       = link_to post.comments_counts.to_i, admin_post_comments_path(post), style:"color:#fff;"
   td.text_center
     - if post.remark.present?

@@ -10,11 +10,11 @@ tr
     = raw(truncate(comment.content, length:20))
     - if comment.is_long?
       |&nbsp;&nbsp;
-      span.badge.badge-important.pointer title="长评论" L
+      span.badge.badge-success.pointer title="长评论" L
     - if comment.is_excellent?
       |&nbsp;&nbsp;
-      span.badge.badge-important.pointer title="优质评论"
-        i.fa.fa-thumbs-up
+      span.badge.badge-success.pointer title="优质评论"
+        i.fa.fa-thumbs-up style="font-size:14px;"
   td.text_center
     i.fa.fa-clock-o[title=comment.created_at data-toggle='tooltip']
   td

@@ -8,7 +8,8 @@ tr
     - if user.email.present?
       i.fa.fa-phone-square[title=user.phone]
   td = user.role_text
-  td = user.favorites_count.to_i
+  td
+    span class="badge badge-info" = user.favorites_count.to_i
   td[title=user.created_at data-toggle='tooltip'] = smart_time_ago user.created_at, 30
   td
     - if can? :edit, user
