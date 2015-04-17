@@ -9,7 +9,6 @@
 #
 
 class InfoFlow < ActiveRecord::Base
-
   validates :name, presence: true
   validates_uniqueness_of :name
 
@@ -19,8 +18,7 @@ class InfoFlow < ActiveRecord::Base
   after_save :update_info_flows_cache
   after_destroy :destroy_info_flows_cache
 
-  DEFAULT_INFOFLOW = '主站'
-  # TODO 迁移到settings
+  DEFAULT_INFOFLOW = Settings.default_info_flow
 
   def posts_with_ads(page_num)
     posts = Post.where(:column_id => columns).published.includes(:author, :column).order('published_at desc').page(page_num).per(30)
@@ -34,7 +32,6 @@ class InfoFlow < ActiveRecord::Base
 
   def update_info_flows_cache
     logger.info "perform the worker to update info flows of #{name}"
-    # logger.info InfoFlowsComponentWorker.perform_async(name)
     logger.info InfoFlowsComponentWorker.new.perform(name)
     true
   end
@@ -58,7 +55,7 @@ class InfoFlow < ActiveRecord::Base
     post_begin = posts.offset_value
     post_end = [posts.current_page * posts.limit_value, posts.total_count].min
     ads = self.ads.where(:position => post_begin..post_end).order('position desc')
-    ads.collect{ |ad| ad.position -= post_begin; ad } # 减去分页造成的偏移
+    ads.collect { |ad| ad.position -= post_begin; ad } # 减去分页造成的偏移
   end
 
   def mix_posts_and_ads(posts, ads)
