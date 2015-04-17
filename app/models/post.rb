@@ -169,7 +169,7 @@ class Post < ActiveRecord::Base
   end
 
   def bdnews?
-    tag_list.include? 'bdnews'
+    tags.map(&:name).include? 'bdnews'
   end
 
   def self.today_lastest
