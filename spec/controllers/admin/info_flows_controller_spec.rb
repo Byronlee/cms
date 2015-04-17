@@ -90,4 +90,113 @@ describe Admin::InfoFlowsController do
       expect(response).to redirect_to(admin_info_flows_path)
     end
   end
+
+  describe "GET 'columns_and_ads'" do
+    before do
+      @info_flow = create(:info_flow)
+      @info_flow.columns = [(create :column)]
+      @info_flow.ads = [(create :ad)]
+    end
+
+    it "returns http success" do
+      get 'columns_and_ads', id: @info_flow.id
+      response.should be_success
+      expect(response).to render_template(:admin)
+      expect(assigns(:info_flow)).to eq(@info_flow)
+      expect(assigns(:columns)).to eq(@info_flow.columns)
+      expect(assigns(:ads)).to eq(@info_flow.ads)
+    end
+  end
+
+  describe "GET 'edit_columns'" do
+    before do
+      @info_flow = create(:info_flow)
+      @info_flow.columns = [(create :column)]
+      @column = create :column
+    end
+
+    it "returns http success" do
+      get 'edit_columns', id: @info_flow.id
+      response.should be_success
+      expect(response).to render_template(:admin)
+      expect(assigns(:info_flow)).to eq(@info_flow)
+      expect(assigns(:columns_in_info_flow)).to eq(@info_flow.columns)
+      expect(assigns(:columns)).to eq([@column])
+    end
+  end
+
+  describe "GET 'edit_ads'" do
+    before do
+      @info_flow = create(:info_flow)
+      @ad = create :ad
+      @info_flow.ads = [(create :ad)]
+    end
+
+    it "returns http success" do
+      get 'edit_ads', id: @info_flow.id
+      response.should be_success
+      expect(response).to render_template(:admin)
+      expect(assigns(:info_flow)).to eq(@info_flow)
+      expect(assigns(:ads)).to eq([@ad])
+      expect(assigns(:ads_in_info_flow)).to eq(@info_flow.ads)
+    end
+  end
+
+  describe "POST 'update_columns'" do
+    before do
+      @info_flow = create(:info_flow)
+      @column = create :column
+    end
+
+    it "returns json success" do
+      post 'update_columns', id: @info_flow.id, column_ids: [@column.id]
+      response.should be_success
+      expect(response.header["Content-Type"]).to eq("application/json; charset=utf-8")
+      expect(response.body).to eq "{\"result\":\"sucess\"}"
+      expect(assigns(:info_flow).columns).to eq([@column])
+    end
+  end
+
+  describe "POST 'update_ads'" do
+    before do
+      @info_flow = create(:info_flow)
+      @ad = create :ad
+    end
+
+    it "returns json success" do
+      post 'update_ads', id: @info_flow.id, ad_ids: [@ad.id]
+      response.should be_success
+      expect(response.header["Content-Type"]).to eq("application/json; charset=utf-8")
+      expect(response.body).to eq "{\"result\":\"sucess\"}"
+      expect(assigns(:info_flow).ads).to eq([@ad])
+    end
+  end
+
+  describe "DELETE 'destroy_column'" do
+    before do
+      @info_flow = create(:info_flow)
+      @column = create :column
+      @info_flow.columns = [@column]
+    end
+
+    it "returns json success" do
+      delete 'destroy_column', id: @info_flow.id, column_id: @column.id
+      expect(assigns(:info_flow).columns).to eq([])
+      expect(response).to redirect_to columns_and_ads_admin_info_flow_path(@info_flow)
+    end
+  end
+
+  describe "DELETE 'destroy_ad'" do
+    before do
+      @info_flow = create(:info_flow)
+      @ad = create :ad
+      @info_flow.ads = [@ad]
+    end
+
+    it "returns json success" do
+      delete 'destroy_ad', id: @info_flow.id, ad_id: @ad.id
+      expect(assigns(:info_flow).ads).to eq([])
+      expect(response).to redirect_to columns_and_ads_admin_info_flow_path(@info_flow, anchor: 'info_flow_ads')
+    end
+  end
 end
