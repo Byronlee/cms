@@ -17,6 +17,9 @@ FactoryGirl.define do
           "country" => "CN",
           "headimgurl" => "http://wx.qlogo.cn/mmopen/Zb0bdiau0sxVmcZkvD9OWvG6efGcvY0s4GykjAR8RCXPpwK4RXVhdyvlFbcDShN8dqoVbQOGqmCzwibQR4HPxz9Q/0",
           "name" => "Byronlee"
+        },
+        "extra" => {
+          "version" => 1
         }
       }
     end

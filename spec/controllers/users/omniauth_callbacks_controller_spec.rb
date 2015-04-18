@@ -8,6 +8,24 @@ describe Users::OmniauthCallbacksController do
 
   describe "GET 'krypton'" do
     before { request.env['omniauth.auth'] = authentication.raw }
+
+    context "sign in" do
+      let(:authentication) { create :authentication }
+      before { get :krypton }
+      it {
+        should respond_with(:redirect)
+        expect(controller.current_user).not_to be_nil
+      }
+    end
+
+    context "new user" do
+      let(:authentication) { build :authentication }
+      before { get :krypton }
+      it {
+        should respond_with(:redirect)
+        expect(controller.current_user).not_to be_nil
+      }
+    end
     context "not bound" do
       context "already has user with same email(for data migration)" do
         let(:user) { create :user }
@@ -20,6 +38,7 @@ describe Users::OmniauthCallbacksController do
         it {
           should respond_with(:redirect)
           expect(user.reload.authentications).not_to be_empty
+          expect(controller.current_user).not_to be_nil
         }
       end
       context "already has user with email mocked by sns id" do
@@ -32,10 +51,11 @@ describe Users::OmniauthCallbacksController do
           }
         }
         before { post :krypton }
-        it do
+        it {
           should respond_with(:redirect)
           expect(user.reload.authentications.first.uid).to eq(authentication.uid.to_s)
-        end
+          expect(controller.current_user).not_to be_nil
+        }
       end
     end
   end
