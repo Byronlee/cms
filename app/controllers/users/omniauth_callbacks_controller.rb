@@ -41,7 +41,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def sign_in_and_redirect_to_iframe_or_parent(user)
-    sign_in(user, bypass: true)
+    sign_in(user)
     redirect_to after_sign_in_path_for(user)
   end
 end

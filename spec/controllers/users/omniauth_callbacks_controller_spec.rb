@@ -20,6 +20,7 @@ describe Users::OmniauthCallbacksController do
 
     context "new user" do
       let(:authentication) { build :authentication }
+      before { allow(Krypton::Passport).to receive(:get_origin_ids) { { } } }
       before { get :krypton }
       it {
         should respond_with(:redirect)
