@@ -78,6 +78,7 @@ class Ability
     can :read, [Ad, Post, Column, Page, Newsflash, User]
     can [:update_views_count, :news, :feed, :hots, :today_lastest, :feed_bdnews], Post
     can [:read, :execllents], Comment
+    can :changes, :welcome
     cannot :create, Comment
   end
 end

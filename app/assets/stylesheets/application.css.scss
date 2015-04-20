@@ -36,3 +36,14 @@ abbr.timeago {
 .search_none_info{
   margin-top: 20px;
 }
+
+.changes-details{
+  ol{
+    list-style: decimal-leading-zero;
+  }
+  h1{
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #9c9c9c;
+  }
+}
