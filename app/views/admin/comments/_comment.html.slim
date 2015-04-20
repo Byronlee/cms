@@ -15,8 +15,9 @@ tr
       |&nbsp;&nbsp;
       span.badge.badge-success.pointer title="优质评论"
         i.fa.fa-thumbs-up style="font-size:14px;"
-    div.comment_details_in_row[id="comment-#{comment.id}" style="display:none;"]
-      = raw(comment.content)
+    - if comment.content.length > 20
+      div.comment_details_in_row[id="comment-#{comment.id}" style="display:none;"]
+        = raw(comment.content)
   td.text_center
     i.fa.fa-clock-o[title=comment.created_at data-toggle='tooltip']
   td
