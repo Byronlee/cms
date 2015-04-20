@@ -5,7 +5,7 @@ class Admin::PostsController < Admin::BaseController
   def index
     @posts = Column.find(params[:column_id]).posts rescue Post
     @posts = @posts.published.accessible_by(current_ability).order('published_at desc')
-    @posts = @posts.includes({ author: :krypton_authentication }, :column).page params[:page]
+    @posts = @posts.includes({ author: :krypton_authentication }, :column, :tags).page params[:page]
   end
 
   def column

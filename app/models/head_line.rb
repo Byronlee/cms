@@ -12,9 +12,12 @@
 #  image      :string(255)
 #  user_id    :integer
 #  url_code   :integer
+#  state      :string(255)
 #
 
 class HeadLine < ActiveRecord::Base
+  include AASM
+  aasm.attribute_name :state
   paginates_per 20
 
   validates :url, presence: true
@@ -25,6 +28,22 @@ class HeadLine < ActiveRecord::Base
 
   after_destroy :fetch_remote_metas
   after_save :fetch_remote_metas
+
+  scope :published, ->{ where(:state => :published) }
+  scope :archived, ->{ where(:state => :archived) }
+
+  aasm do
+    state :published, :initial => true
+    state :archived
+
+    event :publish do
+      transitions :from => [:archived], :to => :published
+    end
+
+    event :archive do
+      transitions :from => [:published], :to => :archived
+    end
+  end
 
   def replies_count
     0

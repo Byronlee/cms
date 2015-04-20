@@ -2,7 +2,11 @@ class Admin::HeadLinesController < Admin::BaseController
   load_and_authorize_resource
 
   def index
-    @head_lines = HeadLine.order('updated_at desc').includes(user: :krypton_authentication).page params[:page]
+    @head_lines = HeadLine.published.order('updated_at desc').includes(user: :krypton_authentication).page params[:page]
+  end
+
+  def archives
+    @head_lines = HeadLine.archived.order('updated_at desc').includes(user: :krypton_authentication).page params[:page]
   end
 
   def update
@@ -22,6 +26,22 @@ class Admin::HeadLinesController < Admin::BaseController
 
   def destroy
     @head_line.destroy
+    redirect_to :back
+  end
+
+  def archive
+    if @head_line.may_archive?
+      @head_line.archive
+      @head_line.save
+    end
+    redirect_to :back
+  end
+
+  def publish
+    if @head_line.may_publish?
+      @head_line.publish
+      @head_line.save
+    end
     redirect_to :back
   end
 

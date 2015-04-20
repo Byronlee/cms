@@ -6,15 +6,18 @@ tr
         = link_to raw(truncate(comment.commentable.try(:title), length:20)),  polymorphic_url(comment.commentable), target: '_blank'
       - else
         = link_to raw(truncate(comment.commentable.try(:title), length:20)),  preview_post_by_key_path(comment.commentable.key), target: '_blank'
-  td[title=raw(comment.content) data-toggle='tooltip']
-    = raw(truncate(comment.content, length:20))
+  td.word-break
+    = raw(truncate(comment.content, length:20, escape: false, omission: '...'){ link_to "more", "javascript:$('#comment-#{comment.id}').toggle();" })
     - if comment.is_long?
       |&nbsp;&nbsp;
-      span.badge.badge-important.pointer title="长评论" L
+      span.badge.badge-success.pointer title="长评论" L
     - if comment.is_excellent?
       |&nbsp;&nbsp;
-      span.badge.badge-important.pointer title="优质评论"
-        i.fa.fa-thumbs-up
+      span.badge.badge-success.pointer title="优质评论"
+        i.fa.fa-thumbs-up style="font-size:14px;"
+    - if comment.content.length > 20
+      div.comment_details_in_row[id="comment-#{comment.id}" style="display:none;"]
+        = raw(comment.content)
   td.text_center
     i.fa.fa-clock-o[title=comment.created_at data-toggle='tooltip']
   td

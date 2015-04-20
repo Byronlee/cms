@@ -31,10 +31,6 @@ class PostsController < ApplicationController
     render '_hots', :layout => false
   end
 
-  def get_comments_count
-    render :json => @post.comments_count
-  end
-
   def feed
     @feeds = Post.published.order("published_at desc").limit(20)
   end

@@ -47,21 +47,12 @@ h2
         $.ajax({
             type: frm.attr('method'),
             url: frm.attr('action'),
-            data: frm.serialize(),
+            data: frm.serialize() + "&current_maxid=" + ($(".comment_details").data('comment-id') || 0),
             success: function (data) {
               $('.single-post-comment__comments').prepend(data);
               frm[0].reset();
-
-               $.ajax({
-                  type: 'GET',
-                  url: '#{ get_comments_count_post_path(@post) }',
-                  data: {'id':'#{@post.id}'},
-                  success: function (comments_count) {
-                    $('.comment_form_count').text(comments_count);
-                    $(".timeago").timeago();
-                  }
-              });
-
+              $('.comment_form_count').text($(".comments_total_count").data('total-count') || 0);
+              $(".timeago").timeago();
             }
         });
      });

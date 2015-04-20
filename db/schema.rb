@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150414041101) do
+ActiveRecord::Schema.define(version: 20150417093657) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(version: 20150414041101) do
     t.string   "image"
     t.integer  "user_id"
     t.integer  "url_code"
+    t.string   "state"
   end
 
   create_table "info_flows", force: true do |t|
@@ -148,13 +149,14 @@ ActiveRecord::Schema.define(version: 20150414041101) do
     t.integer  "comments_count"
     t.text     "md_content"
     t.integer  "url_code"
-    t.integer  "views_count",    default: 0
+    t.integer  "views_count",     default: 0
     t.text     "catch_title"
     t.datetime "published_at"
     t.string   "key"
     t.text     "remark"
     t.text     "extra"
     t.string   "source_type"
+    t.integer  "favorites_count"
   end
 
   add_index "posts", ["column_id"], name: "index_posts_on_column_id", using: :btree
@@ -206,9 +208,11 @@ ActiveRecord::Schema.define(version: 20150414041101) do
     t.string   "avatar_url"
     t.integer  "sso_id"
     t.datetime "muted_at"
+    t.integer  "favorites_count"
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["sso_id"], name: "index_users_on_sso_id", using: :btree
 

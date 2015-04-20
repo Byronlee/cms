@@ -25,6 +25,7 @@
 #  avatar_url                          :string(255)
 #  sso_id                              :integer
 #  muted_at                            :datetime
+#  favorites_count                     :integer
 #
 
 class User < ActiveRecord::Base
@@ -60,6 +61,18 @@ class User < ActiveRecord::Base
   def sync_role_to_writer
     return unless role_changed? && valid?
     SyncRoleToWriterWorker.perform_async(krypton_authentication.uid, role) rescue true
+  end
+
+  # TODO: 监听字段来源于配置
+  # TODO: 记录字段变更记录应该独立相关的服务，或者使用观察者模式来处理
+  def self.current
+    Thread.current[:user]
+  end
+
+  def self.current=(user)
+    raise(ArgumentError,
+        "Invalid user. Expected an object of class 'User', got #{user.inspect}") unless user.is_a?(User)
+    Thread.current[:user] = user
   end
 
   def apply_omniauth(omniauth)

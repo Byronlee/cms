@@ -40,6 +40,7 @@ class Ability
     can [:read, :shutup], User
     can [:read, :reviewings, :toggle_tag], Post
     can :manage, HeadLine
+    cannot :destroy, HeadLine
     can :manage, Comment unless user.muted?
   end
 
@@ -61,6 +62,7 @@ class Ability
     can :manage, Column
     can :manage, Comment unless user.muted?
     can :manage, HeadLine
+    cannot :destroy, HeadLine
     can :manage, Page
     can :change_author, Post
     cannot :toggle_tag, Post

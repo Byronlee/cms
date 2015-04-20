@@ -13,4 +13,4 @@ tr
       = link_to ['admin', favorite], method: :delete, title: '删除', data: {confirm: "确定删除收藏: #{raw(favorite.post.title)} ？"} do
         i.fa.fa-times
   td.avatar.text_center[title=favorite.post.author.try(:display_name) data-toggle='tooltip']
-      = image_tag favorite.post.author.try(:avatar)
+      = image_tag favorite.post.author.try(:avatar), alt: ''

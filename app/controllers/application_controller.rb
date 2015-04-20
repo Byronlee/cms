@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   prepend_before_action :match_krid_online_status, unless: -> { devise_controller? || Rails.env.test? }
   prepend_before_action :redirect_to_no_subdomain # i'll run first
+  before_filter :set_current_user_info
 
   def redirect_to_no_subdomain
     if request.path !~ /^(api|feed).*/ && (subdomain = request.subdomain).present? && subdomain == 'www'
@@ -56,4 +57,10 @@ class ApplicationController < ActionController::Base
   end
   helper_method :ok_url_or
 
+  private
+
+  # TODO: 重构移除
+  def set_current_user_info
+    User.current = current_user if current_user
+  end
 end

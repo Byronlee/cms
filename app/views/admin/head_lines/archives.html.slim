@@ -8,9 +8,9 @@
 
     .pull-left
       ul.nav-hor
-        li.active
-          a href="#{admin_head_lines_path}" 当前
         li
+          a href="#{admin_head_lines_path}" 当前
+        li.active
           a href="#{archives_admin_head_lines_path}" 归档
 
   table class="table"
@@ -25,5 +25,6 @@
         th.text_center style="width=10%" 操作
         th.text_center style="width=10%" 创建人
     tbody
-      = render @head_lines
+      - @head_lines.each do |head_line|
+        = render partial: "head_line_archive", locals:{head_line:head_line}
   = paginate @head_lines

@@ -7,11 +7,13 @@
   table class="table"
     thead
       tr role="row"
-        th style="width=10%" ID
-        th style="width=35%" 文章
-        th style="width=35%" 评论
+        th style="width=5%" ID
+        th style="width=25%" 文章
+        th style="width=35%"
+          | 评论
+          = link_to '(展开所有隐藏评论)', "javascript:javascript:$('.comment_details_in_row').toggle();"
         th.text_center style="width=10%" 创建时间
-        th.text_center style="width=10%" 操作
+        th.text_center style="width=15%" 操作
         th.text_center style="width=10%" 评论者
     tbody
       = render @comments

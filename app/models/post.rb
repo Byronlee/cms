@@ -2,31 +2,32 @@
 #
 # Table name: posts
 #
-#  id             :integer          not null, primary key
-#  title          :string(255)
-#  summary        :text
-#  content        :text
-#  title_link     :string(255)
-#  must_read      :boolean
-#  slug           :string(255)
-#  state          :string(255)
-#  draft_key      :string(255)
-#  column_id      :integer
-#  user_id        :integer
-#  created_at     :datetime
-#  updated_at     :datetime
-#  cover          :text
-#  source         :string(255)
-#  comments_count :integer
-#  md_content     :text
-#  url_code       :integer
-#  views_count    :integer          default(0)
-#  catch_title    :text
-#  published_at   :datetime
-#  key            :string(255)
-#  remark         :text
-#  extra          :text
-#  source_type    :string(255)
+#  id              :integer          not null, primary key
+#  title           :string(255)
+#  summary         :text
+#  content         :text
+#  title_link      :string(255)
+#  must_read       :boolean
+#  slug            :string(255)
+#  state           :string(255)
+#  draft_key       :string(255)
+#  column_id       :integer
+#  user_id         :integer
+#  created_at      :datetime
+#  updated_at      :datetime
+#  cover           :text
+#  source          :string(255)
+#  comments_count  :integer
+#  md_content      :text
+#  url_code        :integer
+#  views_count     :integer          default(0)
+#  catch_title     :text
+#  published_at    :datetime
+#  key             :string(255)
+#  remark          :text
+#  extra           :text
+#  source_type     :string(255)
+#  favorites_count :integer
 #
 
 require 'action_view'
@@ -59,7 +60,7 @@ class Post < ActiveRecord::Base
   belongs_to :author, class_name: User.to_s, foreign_key: 'user_id'
   has_many :comments, as: :commentable, dependent: :destroy
   # has_and_belongs_to_many :favoriters, primary_key: :url_code, class_name: User.to_s, join_table: 'favorites', foreign_key: :url_code
-  has_many :favorites, foreign_key: :url_code, primary_key: :url_code
+  has_many :favorites, foreign_key: :url_code, primary_key: :url_code, dependent: :destroy
   has_many :favoriters, source: :user, through: :favorites, primary_key: :url_code
 
   after_save :update_today_lastest_cache, :update_hot_posts_cache, :update_info_flows_cache,
@@ -67,7 +68,7 @@ class Post < ActiveRecord::Base
   after_destroy :update_today_lastest_cache, :update_hot_posts_cache, :update_info_flows_cache,
                 :check_head_line_cache_for_destroy, :update_excellent_comments_cache
   before_create :generate_key
-  before_save :auto_generate_summary
+  before_save :auto_generate_summary, :record_laster_update_user
   after_create :generate_url_code
 
   scope :published_on, -> (date) {
@@ -168,7 +169,7 @@ class Post < ActiveRecord::Base
   end
 
   def bdnews?
-    tag_list.include? 'bdnews'
+    tags.map(&:name).include? 'bdnews'
   end
 
   def self.today_lastest
@@ -187,7 +188,6 @@ class Post < ActiveRecord::Base
   def self.today
     published_on(Date.today)
   end
-
 
   def self.find_and_order_by_ids(search)
     ids = search.map(&:id)
@@ -245,7 +245,7 @@ class Post < ActiveRecord::Base
     true
   end
 
-   def check_head_line_cache_for_destroy
+  def check_head_line_cache_for_destroy
     HeadLine.all.each do |head_line|
       next if head_line.url_code != url_code
       head_line.destroy
@@ -253,7 +253,7 @@ class Post < ActiveRecord::Base
     true
   end
 
-   def update_excellent_comments_cache
+  def update_excellent_comments_cache
     return true if self.views_count_changed?
     logger.info 'perform the worker to update excellent comments cache'
     # logger.info ExcellentCommentsComponentWorker.perform_async
@@ -265,5 +265,20 @@ class Post < ActiveRecord::Base
     return true if summary.present?
     self.summary = /^(.*?[。|；|!|?|？|！|.])/imx.match(strip_tags(content))[1] rescue true
     true
+  end
+
+  # TODO: 监听字段来源于配置
+  # TODO: 记录字段变更记录应该独立相关的服务，或者使用观察者模式来处理
+  def record_laster_update_user
+    return true if new_record? || User.current.blank?
+    return true unless title_changed? || summary_changed? || content_changed? ||
+                       title_link_changed? || slug_changed? || state_changed? ||
+                       draft_key_changed? || column_id_changed? || user_id_changed? ||
+                       cover_changed? || source_changed? || md_content_changed? ||
+                       url_code_changed?
+    return true if self.user_id == User.current.id
+
+    self.remark += "\r\n" if self.remark.present?
+    self.remark += "[#{Time.now}]#{User.current.id} - #{User.current.display_name} edited"
   end
 end
