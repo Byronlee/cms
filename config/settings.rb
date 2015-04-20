@@ -72,3 +72,5 @@ settings.fileupload = {
   token: 'e625cf097bb338f1100b5453f68',
   source: '36kr.com'
 }
+
+settings.favorite_beggin_time = '2015-03-28 23:59:59.000000'
