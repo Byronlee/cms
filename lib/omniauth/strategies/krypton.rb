@@ -42,6 +42,9 @@ module OmniAuth
       def authorize_params
         params = super
         session['omniauth.state'] = params[:state] = "iframe" if request.params["theme"] == "iframe"
+        if request.params["ok_url"].present?
+          $redis.set "omniauth_krypton_ok-url_of_#{params[:state]}", request.params["ok_url"]
+        end
         params
       end
     end
