@@ -154,8 +154,6 @@ ActiveRecord::Schema.define(version: 20150417093657) do
     t.datetime "published_at"
     t.string   "key"
     t.text     "remark"
-    t.text     "extra"
-    t.string   "source_type"
     t.integer  "favorites_count"
   end
 
@@ -212,7 +210,6 @@ ActiveRecord::Schema.define(version: 20150417093657) do
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["sso_id"], name: "index_users_on_sso_id", using: :btree
 

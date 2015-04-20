@@ -22,7 +22,8 @@ module V1
 
     def authenticated
       if request.headers['X-Token'].present? or params[:token].present?
-        request.headers['X-Token'] == '501Cd1AvUL4AxxVEX60gCFJK7HCd9y8ySDvG29Je' or params[:token] == '734dca654f1689f727cc:32710' ?
+        request.headers['X-Token'] == Settings.api.v1.XToken \
+          or params[:token] == Settings.api.v1.token ?
           true : false
       else
         false

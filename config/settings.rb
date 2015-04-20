@@ -11,6 +11,17 @@ settings.redis_servers = {
 
 settings.elasticsearch_server = 'http://2015.36kr.com:9200'
 
+settings.api = {
+  v1: {
+    XToken: '501Cd1AvUL4AxxVEX60gCFJK7HCd9y8ySDvG29Je',
+    token: '734dca654f1689f727cc:32710'
+  },
+  v2: {
+    XToken: '501Cd1AvUL4AxxVEX60gCFJK7HCd9y8ySDvG29Je',
+    api_key: '501Cd1AvUL4AxxVEX60gCFJK7HCd9y8ySDvG29Je'
+  }
+}
+
 settings.oauth = {
   krypton: {
     app_id: '9767d4838b9664ca33a1630f6a7889d8b78a1dfd0bcf4b257a3c95122bf9ceaa',
