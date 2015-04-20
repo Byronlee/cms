@@ -1,0 +1,7 @@
+= render 'welcome/title', title: '更新日志'
+
+.container style="margin: 0 auto;"
+  article.single-post-article
+    .content-wrapper-single
+       section.article.changes-details
+          = raw(@changes)

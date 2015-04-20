@@ -17,4 +17,9 @@ class WelcomeController < ApplicationController
     head_lines_data = Redis::HashKey.new('head_lines')['list']
     @head_lines = head_lines_data.present? ? JSON.parse(Redis::HashKey.new('head_lines')['list']) : []
   end
+
+  def changes
+    change_content = File.read(File.expand_path('../../../doc/changes.md', __FILE__))
+    @changes = GitHub::Markdown.render_gfm(change_content).html_safe
+  end
 end
