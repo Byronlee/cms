@@ -30,6 +30,7 @@ class Ability
     can :manage, Newsflash, :user_id => user.id
     can [:new, :myown], Post
     can [:read, :column, :reviewings], Post, :id => user.posts.pluck(:id)
+    can :manage, Post, :id => user.posts.drafted.pluck(:id)
     can :read, Comment, :commentable_type => 'Post', :commentable_id => user.posts.pluck(:id)
   end
 
