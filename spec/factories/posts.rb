@@ -32,14 +32,11 @@ FactoryGirl.define do
   factory :post do
     author
     column
-    sequence(:title) { |n| "title #{n}" }
+    sequence(:title) { |n| "title#{SecureRandom.uuid}#{n} fuck you" }
     sequence(:slug) { |n| "slug#{n}" }
     summary { "#{title}'s summary" }
     content { "#{title}'s content" }
     sequence(:title_link) { |n| "http://com.google.com/#{n}" }
-    must_read true
-    state 'published'
-    published_at { Time.now }
     source 'writer'
     must_read true
     views_count 0
