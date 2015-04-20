@@ -43,13 +43,17 @@ module V2
     def init_and_exchange_token
       sso_user = V2::Passport.new(params[:sso_token]).me
       unless sso_user.is_a? TrueClass or sso_user.is_a? FalseClass
-        # sso 有用户的情况
-        current_user = User.find_by_origin_ids(sso_user['id']) || User.find_by_sso_id(sso_user['id'])
+        # 新站有用户的情况
+        current_user =  User.find_by_sso_id(sso_user['id']) || User.find_by_origin_ids(sso_user['id'])
          if current_user.blank?
-           #sso有用户新站没有这个用户
-           user_attr = { sso_id: sso_user.id,  email: sso_user.email, name: sso_user.nickname || sso_user.username,
-             phone: sso_user.phone, avatar_url: sso_user.avatar, password: 'VEX60gCF' }
-           current_user = User.create user_attr
+           # 新站没有用户的情况
+           current_user = User.find_or_create_by(sso_id: sso_user.id) do |u|
+             u.email = sso_user.email
+             u.name = sso_user.nickname || sso_user.username
+             u.phone = sso_user.phone
+             u.avatar_url = sso_user.avatar
+             u.password = 'VEX60gCF'
+           end
          end
       else # sso sso_token 无效或者没有用户的情况
         current_user = User.new
