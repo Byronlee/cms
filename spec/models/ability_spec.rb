@@ -39,7 +39,6 @@ describe Ability do
     it do
       should be_able_to :index, :welcome
       should be_able_to :create, Comment
-      should be_able_to :comments_count, Post
       should be_able_to :preview, Post
       should be_able_to :edit, user
       should be_able_to :update, user

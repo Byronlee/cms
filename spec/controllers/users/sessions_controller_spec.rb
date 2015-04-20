@@ -16,5 +16,4 @@ describe Users::SessionsController do
       it { should redirect_to(user_omniauth_authorize_path(provider: :krypton)) }
     end
   end
-
 end

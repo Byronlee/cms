@@ -66,7 +66,6 @@ class Ability
   def public_ability(user)
     anonymous
     can :create, Comment unless user.muted?
-    can :comments_count, Post
     can :preview, Post
     can [:edit, :update], User, :id => user.id
     can :manage, Favorite, :user_id => user.id

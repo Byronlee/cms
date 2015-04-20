@@ -192,7 +192,7 @@ describe Admin::PostsController do
     it "post tag not include bdnews, return include" do
       request.env["HTTP_REFERER"] = reviewings_admin_posts_path
       post :toggle_tag, id: @post.id
-      expect(assigns(:post).bdnews?).to be true
+      expect(assigns(:post).reload.bdnews?).to be true
       expect(response).to redirect_to(reviewings_admin_posts_path)
     end
 
@@ -201,7 +201,7 @@ describe Admin::PostsController do
       @post.tag_list = 'bdnews'
       @post.save
       post :toggle_tag, id: @post.id
-      expect(assigns(:post).bdnews?).to be false
+      expect(assigns(:post).reload.bdnews?).to be false
       expect(response).to redirect_to(reviewings_admin_posts_path)
     end
   end

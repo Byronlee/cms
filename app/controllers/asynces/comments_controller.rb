@@ -11,10 +11,12 @@ class Asynces::CommentsController < ApplicationController
   def create
     return render :nothing => true unless current_user && params[:comment][:content].present?
     @commentable = find_commentable
-    @comment = @commentable.comments.build(comment_params)
-    @comment.user = current_user
-    @comment.save
-    render '_comment', :layout => false
+    comment = @commentable.comments.build(comment_params)
+    comment.user = current_user
+    comment.save
+    @comments = @commentable.comments.where("id > ?", params[:current_maxid]).order('created_at desc')
+    @comments = @comments.includes(:commentable, user: [:krypton_authentication])
+    render 'list', comments: @comments, commentable: @commentable, layout: false
   end
 
   def excellents

@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: authentications
+#
+#  id         :integer          not null, primary key
+#  uid        :string(255)
+#  provider   :string(255)
+#  raw        :text
+#  user_id    :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 require 'securerandom'
 
 FactoryGirl.define do

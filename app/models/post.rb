@@ -223,7 +223,11 @@ class Post < ActiveRecord::Base
                        url_code_changed?
     return true if self.user_id == User.current.id
 
-    self.remark += "\r\n" if self.remark.present?
+    if self.remark.present?
+      self.remark += "\r\n"
+    else
+      self.remark = ''
+    end
     self.remark += "[#{Time.now}]#{User.current.id} - #{User.current.display_name} edited"
   end
 end

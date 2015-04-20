@@ -42,10 +42,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def sign_in_and_redirect_to_iframe_or_parent(user)
     sign_in(user, bypass: true)
-    # if params[:state] == "iframe"
-    #   render html: "<script>parent.location.reload();</script>".html_safe
-    # else
-      redirect_to after_sign_in_path_for(user)
-    # end
+    redirect_to after_sign_in_path_for(user)
   end
 end

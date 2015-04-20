@@ -13,19 +13,6 @@ describe Asynces::PostsController do
     end
   end
 
-  describe "GET 'commets_count'" do
-    let(:post) { create :post }
-
-    before do
-      get :comments_count, id: post.id
-    end
-
-    it 'return http success' do
-      expect(response).to be_success
-      response.header['Content-Type'].should include 'application/json'
-    end
-  end
-
   describe "GET 'today'" do
     let!(:post) { create :post }
 
