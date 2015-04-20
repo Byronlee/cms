@@ -1,0 +1,11 @@
+machine:
+  ruby:
+    version: 2.1.1
+  services:
+    - elasticsearch
+database:
+  post:
+    - bundle exec rake db:migrate
+notify:
+  webhooks:
+    - url: https://hooks.slack.com/services/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
