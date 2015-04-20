@@ -7,7 +7,7 @@ tr
     - else
       = link_to post.column.try(:name), admin_column_posts_path(post.column)
   td.text_center[title=post.created_at data-toggle='tooltip']
-    = time_ago_in_words post.published_at
+    = time_ago_in_words post.published_at rescue ''
   td.text_center = display_state(post.state)
   td
     span class='badge badge-primary'
