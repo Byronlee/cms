@@ -3,6 +3,8 @@ class SidebarCell < Cell::Rails
   include CanCan::ControllerAdditions
   delegate :current_ability, :to => :controller
 
+  # TODO: 去掉每个Action都必写的render
+
   def ad_top(args)
     @position = args[:position]
     render
@@ -22,23 +24,7 @@ class SidebarCell < Cell::Rails
     render
   end
 
-  def hot_posts
-    render
-  end
-
-  def new_posts
-    render
-  end
-
   def ad_sponsor
-    render
-  end
-
-  def apps
-    render
-  end
-
-  def excellent_comments
     render
   end
 
@@ -50,13 +36,7 @@ class SidebarCell < Cell::Rails
     render
   end
 
-  def today(args)
-    @posts_count = args[:posts_today_lastest][:count]
-    @posts = args[:posts_today_lastest][:posts]
-    render
-  end
-
-  def admin args
+  def admin(args)
     @controller_name = args[:controller_name]
     @current_user = args[:current_user]
     @action_name = args[:action_name]

@@ -63,10 +63,6 @@ settings.ga = {
   tracker: 'UA-1268479-12'
 }
 
-settings.page_views = {
-  persist: true
-}
-
 settings.fileupload = {
   url: 'http://writer.36kr.com/api/jHcDEyl/v1/images/create',
   token: 'e625cf097bb338f1100b5453f68',
@@ -74,3 +70,7 @@ settings.fileupload = {
 }
 
 settings.favorite_beggin_time = '2015-03-28 23:59:59.000000'
+
+settings.page_views = { persist: false }
+
+settings.default_info_flow = '主站'

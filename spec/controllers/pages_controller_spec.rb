@@ -1,12 +1,13 @@
 require 'spec_helper'
 
 describe PagesController do
-
   describe "GET 'show'" do
-    it "returns http success" do
-      get 'show', slug: attributes_for(:page)[:slug]
+    let(:page) { create :page }
+
+    it 'returns http success' do
+      get 'show', slug: page.slug
       response.should be_success
+      expect(assigns(:page)).to eq page
     end
   end
-
 end

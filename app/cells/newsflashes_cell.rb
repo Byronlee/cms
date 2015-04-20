@@ -14,5 +14,4 @@ class NewsflashesCell < Cell::Rails
   def tips
     render
   end
-
 end

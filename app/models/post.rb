@@ -49,17 +49,10 @@ class Post < ActiveRecord::Base
   validates_presence_of :title, :content
   validates_uniqueness_of :title, :content, :url_code
   validates_presence_of :published_at, if: -> { self.state == "published" }
-  # validates_presence_of :summary, :slug, if: -> { persisted? }
-
-  # validates :slug,    length: { maximum: 14 }
-  # validates :summary, length: { maximum: 40 }
-  # validates :title,   length: { maximum: 40 }
-  # validates :content, length: { maximum: 10_000 }
 
   belongs_to :column, counter_cache: true
   belongs_to :author, class_name: User.to_s, foreign_key: 'user_id'
   has_many :comments, as: :commentable, dependent: :destroy
-  # has_and_belongs_to_many :favoriters, primary_key: :url_code, class_name: User.to_s, join_table: 'favorites', foreign_key: :url_code
   has_many :favorites, foreign_key: :url_code, primary_key: :url_code, dependent: :destroy
   has_many :favoriters, source: :user, through: :favorites, primary_key: :url_code
 
@@ -74,32 +67,20 @@ class Post < ActiveRecord::Base
   scope :published_on, -> (date) {
     where(:published_at => date.beginning_of_day..date.end_of_day)
   }
-  scope :reviewing, ->{ where(:state => :reviewing) }
-  scope :published, ->{ where(:state => :published) }
-  scope :drafted,   ->{ where(:state => :drafted) }
+  scope :reviewing, -> { where(:state => :reviewing) }
+  scope :published, -> { where(:state => :published) }
+  scope :drafted,   -> { where(:state => :drafted) }
   scope :hot_posts, -> { order('id desc, views_count desc') }
-  scope :order_by_ids, ->(ids){
-    order_by = ["case"]
-    ids.each_with_index.map do |id, index|
-      order_by << "WHEN id='#{id}' THEN #{index}"
-    end
-    order_by << "end"
-    order(order_by.join(" "))
-  }
 
   acts_as_taggable
 
   mapping do
-     indexes :id,             index:    :not_analyzed
-
-     indexes :title,          analyzer: 'snowball',   boost:    100
-     # indexes :summary,        analyzer: 'snowball',   boost:    50
-     # indexes :content,        analyzer: 'snowball',   boost:    30
-
-     indexes :state,          type:     'string',     analyzer: 'keyword'
-     indexes :published_at,   type:     'date'
-     indexes :created_at,     type:     'date'
-     indexes :updated_at,     type:     'date'
+    indexes :id,             index:    :not_analyzed
+    indexes :title,          analyzer: 'snowball',   boost:    100
+    indexes :state,          type:     'string',     analyzer: 'keyword'
+    indexes :published_at,   type:     'date'
+    indexes :created_at,     type:     'date'
+    indexes :updated_at,     type:     'date'
   end
 
   def self.search(params)
@@ -107,18 +88,14 @@ class Post < ActiveRecord::Base
       min_score 1
       query do
         boolean do
-          must {
-            string params[:q].presence || "*", default_operator: "AND"
-          }
-          must {
-            term :state, :published
-          }
+          must { string params[:q].presence || "*", default_operator: "AND" }
+          must { term :state, :published }
         end
       end
-      sort {
+      sort do
         by :published_at, :desc
         by :_score, :desc
-      }
+      end
     end
   end
 
@@ -147,6 +124,7 @@ class Post < ActiveRecord::Base
     end
   end
 
+  # TODO: 这是只为API提供使用，应该重构删除
   def get_access_url
     post_url(self)
   end
@@ -160,6 +138,7 @@ class Post < ActiveRecord::Base
     comments_count
   end
 
+  # TODO: 这是只为API提供使用，应该重构删除
   def column_name
     column.name
   end
@@ -172,26 +151,8 @@ class Post < ActiveRecord::Base
     tags.map(&:name).include? 'bdnews'
   end
 
-  def self.today_lastest
-    posts_data = Redis::HashKey.new('posts')['today_lastest']
-    if posts_data.present?
-      hash_data = JSON.parse(posts_data)[0]
-      posts = hash_data["posts"]
-      posts_count = hash_data["posts_count"]
-    else
-      posts = []
-      posts_count = 0
-    end
-    { count: posts_count, posts: posts }
-  end
-
   def self.today
     published_on(Date.today)
-  end
-
-  def self.find_and_order_by_ids(search)
-    ids = search.map(&:id)
-    self.where(id: ids).order_by_ids(ids).includes(:column, author:[:krypton_authentication])
   end
 
   private
@@ -199,30 +160,19 @@ class Post < ActiveRecord::Base
   def update_today_lastest_cache
     return true if self.views_count_changed?
     logger.info 'perform the worker to update today lastest cache'
-    # logger.info TodayLastestComponentWorker.perform_async
     logger.info TodayLastestComponentWorker.new.perform
     true
   end
 
   def update_hot_posts_cache
     logger.info 'perform the worker to update hot posts cache'
-    # logger.info HotPostsComponentWorker.perform_async
     logger.info HotPostsComponentWorker.new.perform
     true
   end
 
-  # def update_new_posts_cache
-  #   logger.info 'perform the worker to update new posts cache'
-  #   # logger.info NewPostsComponentWorker.perform_async
-  #   logger.info NewPostsComponentWorker.new.perform
-  #   true
-  # end
-
   def update_info_flows_cache
     return true if self.views_count_changed?
-    self.column && self.column.info_flows.each do |info_flow|
-      info_flow.update_info_flows_cache
-    end
+    self.column && self.column.info_flows.map(&:update_info_flows_cache)
     true
   end
 
@@ -238,11 +188,7 @@ class Post < ActiveRecord::Base
   def check_head_line_cache
     return true if self.views_count_changed?
     return true if self.published?
-    HeadLine.all.each do |head_line|
-      next if head_line.url_code != url_code
-      head_line.destroy
-    end
-    true
+    check_head_line_cache_for_destroy
   end
 
   def check_head_line_cache_for_destroy
@@ -254,9 +200,8 @@ class Post < ActiveRecord::Base
   end
 
   def update_excellent_comments_cache
-    return true if self.views_count_changed?
+    return true if views_count_changed?
     logger.info 'perform the worker to update excellent comments cache'
-    # logger.info ExcellentCommentsComponentWorker.perform_async
     logger.info ExcellentCommentsComponentWorker.new.perform
     true
   end
@@ -278,7 +223,11 @@ class Post < ActiveRecord::Base
                        url_code_changed?
     return true if self.user_id == User.current.id
 
-    self.remark += "\r\n" if self.remark.present?
+    if self.remark.present?
+      self.remark += "\r\n"
+    else
+      self.remark = ''
+    end
     self.remark += "[#{Time.now}]#{User.current.id} - #{User.current.display_name} edited"
   end
 end

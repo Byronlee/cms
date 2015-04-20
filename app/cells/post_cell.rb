@@ -13,9 +13,9 @@ class PostCell < Cell::Rails
   end
 
   def share(args)
-    @post = args[:post]
-    @has_favorite = args[:has_favorite]
     @user = args[:user]
+    @post = args[:post]
+    @has_favorite = @user.like? @post rescue false
     render
   end
 
@@ -32,6 +32,14 @@ class PostCell < Cell::Rails
   end
 
   def ad
+    render
+  end
+
+  def hot
+    render
+  end
+
+  def today
     render
   end
 end

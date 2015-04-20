@@ -41,7 +41,7 @@ FactoryGirl.define do
     source 'writer'
     must_read true
     views_count 0
-    url_code {|n| n}
+    url_code { |n| n }
 
     trait :published do
       state 'published'
@@ -52,6 +52,13 @@ FactoryGirl.define do
       state 'drafted'
       published_at nil
     end
-  end
 
+    trait :reviewing do
+      state 'reviewing'
+    end
+
+    trait :draft do
+      state 'drafted'
+    end
+  end
 end

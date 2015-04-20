@@ -11,9 +11,9 @@ Bundler.require(*Rails.groups)
 
 module Kr
   class Application < Rails::Application
-    require Rails.root.join "app/models/settings"
+    require Rails.root.join 'app/models/settings'
 
-    config.autoload_paths += %W(#{config.root}/api #{config.root}/lib)
+    config.autoload_paths += %W(#{config.root}/api #{config.root}/lib #{config.root}/services #{config.root}/observers)
 
     config.middleware.use Rack::Cors do
       allow do
@@ -42,9 +42,5 @@ module Kr
     end
 
     config.exceptions_app = self.routes
-
-    # ActsAsTaggableOn config
-    # ActsAsTaggableOn.delimiter = [',', '，', '|']
-
   end
 end

@@ -13,12 +13,12 @@
 
 FactoryGirl.define do
   factory :ad do
-    position 2
+    sequence(:position) { |n| n }
     content "ad first"
   end
 
-  factory :ad2, class:Ad do
-    position 4
+  factory :ad2, class: Ad do
+    position 10
     content "ad second"
   end
 end

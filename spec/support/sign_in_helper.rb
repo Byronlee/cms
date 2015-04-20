@@ -3,18 +3,14 @@ module SignInHelper
     let(:session_user) { create :user, *args }
 
     before(:each) do
-      @request.env["devise.mapping"] = Devise.mappings[:user]
+      @request.env['devise.mapping'] = Devise.mappings[:user]
       sign_in(session_user)
     end
   end
 
-  def dislogin
-    before(:each) { sign_out(session_user) }
-  end
-
   def login_admin_user
     before(:each) do
-      @request.env["devise.mapping"] = Devise.mappings[:user]
+      @request.env['devise.mapping'] = Devise.mappings[:user]
       user = create(:user, :admin)
       sign_in(user)
     end

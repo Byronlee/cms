@@ -5,7 +5,7 @@ h2
 .single-post-comment-reply
   - if can? :create, Comment
     .single-post-comment__form.cf.require-login data-uid="#{@current_user.try(:id)}"
-      form.comment_form action="/posts/#{@post.id}/comments" method="post" data-remote="true"
+      form.comment_form action="/asynces/posts/#{@post.id}/comments" method="post" data-remote="true"
         = hidden_field_tag :authenticity_token, form_authenticity_token
         textarea#post.textarea name="comment[content]" placeholder="你怎么看？" data-widearea="enable"
       span.tip.right style="display:none"

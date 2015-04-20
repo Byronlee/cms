@@ -34,23 +34,15 @@ class User < ActiveRecord::Base
 
   paginates_per 100
   by_star_field :created_at
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :omniauthable,
-    :recoverable, :rememberable, :trackable, :validatable,
-    :omniauth_providers => [:krypton]
-  enumerize :role, :in => Settings.roles, :default => :reader, :methods => true, :scopes => :shallow
 
-  #validates :phone, uniqueness: true, allow_blank: -> { email.present? }
-  #validates :email, uniqueness: true, allow_blank: -> { phone.present? }
+  devise :database_authenticatable, :omniauthable, :recoverable, :rememberable, :trackable, :validatable, :omniauth_providers => [:krypton]
+  enumerize :role, :in => Settings.roles, :default => :reader, :methods => true, :scopes => :shallow
 
   has_many :authentications, dependent: :destroy
   has_one :krypton_authentication, -> { where(provider: :krypton) }, class_name: Authentication.to_s, dependent: :destroy
   has_many :posts
   has_many :comments
   has_many :favorites
-  # has_many :favorite_posts, class: Post.to_s, through: :favorites
-  # has_and_belongs_to_many :favorite_posts, source: :post, join_table: 'favorites'
 
   before_save :ensure_authentication_token
   def ensure_authentication_token
@@ -79,7 +71,7 @@ class User < ActiveRecord::Base
     self.phone = omniauth['info']['phone'] if phone.blank?
     self.sso_id = omniauth['uid'] if sso_id.blank?
     self.name = omniauth['info']['nickname'] if name.blank?
-    self.email = omniauth['info']['email'] if (email.blank?&omniauth['info']['email'].present?)
+    self.email = omniauth['info']['email'] if email.blank?&omniauth['info']['email'].present?
     authentications.build provider: omniauth['provider'], uid: omniauth['uid'],
       raw: omniauth.to_hash
   end
@@ -150,8 +142,8 @@ class User < ActiveRecord::Base
     self.update muted_at: nil
   end
 
-  def favorite_of?(post)
-    Favorite.find_by_url_code_and_user_id(post.url_code, id)
+  def like?(post)
+    !!Favorite.find_by_url_code_and_user_id(post.url_code, id)
   end
 
   protected
@@ -168,5 +160,4 @@ class User < ActiveRecord::Base
       break token unless User.where(authentication_token: token).first
     end
   end
-
 end

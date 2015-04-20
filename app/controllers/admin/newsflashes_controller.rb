@@ -2,7 +2,7 @@ class Admin::NewsflashesController < Admin::BaseController
   load_and_authorize_resource
 
   def index
-    @newsflashes = @newsflashes.order("created_at desc").includes({ author: :krypton_authentication }).page params[:page]
+    @newsflashes = @newsflashes.order("created_at desc").includes(author: :krypton_authentication).page params[:page]
   end
 
   def update

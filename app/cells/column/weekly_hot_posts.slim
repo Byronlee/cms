@@ -1,0 +1,14 @@
+.category-popular
+  h3
+    i.icon-hot
+    span
+      | 一周热点
+  ul.category-popular__list
+    - @posts.each do |post|
+      li.cf
+        span
+          abbr class="timeago" title="#{post.published_at}"
+            = post.published_at.strftime('%m/%d %H:%M')
+        h1
+          a href="#{post_url(post)}" title="#{raw post.title}"
+            = raw post.title

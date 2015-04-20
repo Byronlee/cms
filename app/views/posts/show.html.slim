@@ -14,21 +14,21 @@
           = link_to "编辑文章", "http://writer.36kr.com/posts/#{@post.id}/#{@post.key}/"
           span &nbsp;|&nbsp;
           = link_to "管理评论", admin_post_comments_path(@post)
-        = render_cell :post, :share, post:  @post, user: current_user, has_favorite:@has_favorite
-      = render_cell :post, :author, author: @post.author
+        = render_cell :post, :share, post:  @post, user: current_user
+      = render_cell :post, :author, post: @post
       = render_cell :post, :relate, post: @post
       section.single-post-comment
-        = render_cell :comment, :new, post: @post, current_user: current_user if @post.state == 'published'
+        = render_cell :comment, :new, post: @post, current_user: current_user if @post.published?
         = render_cell :comment, :index, post: @post
   .aside
-    = render_cell :sidebar, :today, posts_today_lastest: @posts_today_lastest
+    = render_cell :post, :today
     = render_cell :sidebar, :social
 
 .sidebar
   = render_cell :sidebar, :ad_top, position: :post_show
-  /= render_cell :sidebar, :new_posts
-  = render_cell :sidebar, :hot_posts
+  = render_cell :post, :hot
   = render_cell :sidebar, :ad_middle, position: :post_show
   = render_cell :sidebar, :ad_job
-  /= render_cell :sidebar, :excellent_comments
   = render_cell :sidebar, :ad_bottom, position: :post_show
+
+script src="http://krplus-cdn.b0.upaiyun.com/common-module/company-bubble/main.js"

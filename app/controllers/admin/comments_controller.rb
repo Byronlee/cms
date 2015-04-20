@@ -3,13 +3,15 @@ class Admin::CommentsController < Admin::BaseController
   load_resource :user
 
   def index
-    if @commentable = find_commentable
-      @comments = @commentable.comments.accessible_by(current_ability).order("id desc").includes(user: :krypton_authentication).page params[:page]
-    else
-      @comments = Comment.accessible_by(current_ability).order("id desc").includes({user: :krypton_authentication}, :commentable)
-      @comments = @coments.where(user_id: @user.id) if @user
-      @comments = @comments.page params[:page]
-    end
+    return commentable if find_commentable
+    @comments = Comment.accessible_by(current_ability).order("id desc").includes({ user: :krypton_authentication }, :commentable)
+    @comments = @coments.where(user_id: @user.id) if @user
+    @comments = @comments.page params[:page]
+  end
+
+  def commentable
+    @comments = find_commentable.comments.accessible_by(current_ability).order("id desc").includes(user: :krypton_authentication).page params[:page]
+    render :index
   end
 
   def set_excellent
@@ -18,18 +20,16 @@ class Admin::CommentsController < Admin::BaseController
   end
 
   def do_publish
-    if @comment.may_publish?
-      @comment.publish
-      @comment.save
-    end
+    return redirect_to :back unless @comment.may_publish?
+    @comment.publish
+    @comment.save
     redirect_to :back
   end
 
   def do_reject
-    if @comment.may_reject?
-      @comment.reject
-      @comment.save
-    end
+    return redirect_to :back unless @comment.may_reject?
+    @comment.reject
+    @comment.save
     redirect_to :back
   end
 
@@ -41,7 +41,7 @@ class Admin::CommentsController < Admin::BaseController
   private
 
   def comment_params
-    params.require(:comment).permit(:content, :is_excellent ) if params[:comment]
+    params.require(:comment).permit(:content, :is_excellent) if params[:comment]
   end
 
   def find_commentable

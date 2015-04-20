@@ -23,7 +23,7 @@ FactoryGirl.define do
     sequence(:slug) { |n| "slug#{n}" }
   end
 
-  factory :column2, class:Column do
+  factory :column2, class: Column do
     name "国外创业公司"
     introduce "简介"
     sequence(:slug) { |n| "slug#{n}" }

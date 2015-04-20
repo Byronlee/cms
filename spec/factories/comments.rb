@@ -20,10 +20,8 @@
 FactoryGirl.define do
   factory :comment do
     user
-    content "MyText"
+    content 'MyText'
 
-    factory :post_commentable do
-      association :commentable, factory: :post
-    end
+    association :commentable, factory: :post
   end
 end

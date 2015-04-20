@@ -11,5 +11,10 @@
 require 'spec_helper'
 
 describe InfoFlow do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it do
+    expect(InfoFlow::DEFAULT_INFOFLOW).to eq '主站'
+  end
+
+  describe '' do
+  end
 end

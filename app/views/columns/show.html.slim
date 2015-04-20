@@ -18,7 +18,7 @@
                   i  Total
             p.category-header__bio = @column.try(:slug)
 
-        = render 'posts/weekly_hot'
+        = render_cell :column, :weekly_hot_posts, column: @column
 
         .articles
           - @posts.each do |post|
@@ -59,10 +59,10 @@
                   li.next.next_page.right.disabled
                     = link_to '下一页 →', '#', rel: "next", id: "columns_next_link"
   .aside
-    = render_cell :sidebar, :today, posts_today_lastest: @posts_today_lastest
+    = render_cell :post, :today
     = render_cell :sidebar, :social
 
 .sidebar
   = render_cell :sidebar, :ad_top, position: :column_show
-  = render_cell :sidebar, :hot_posts
-  = render_cell :sidebar, :excellent_comments
+  = render_cell :post, :hot
+  = render_cell :comment, :excellent

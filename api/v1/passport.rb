@@ -19,6 +19,4 @@ class V1::Passport
     @client ||= OAuth2::Client.new(Settings.oauth.krypton.app_id,
         Settings.oauth.krypton.secret, site: Settings.oauth.krypton.host)
   end
-
-
 end

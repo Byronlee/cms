@@ -1,11 +1,5 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
-  def failure
-    Rails.logger.error "获取通行证授权失败，错误原因：#{failure_message}"
-    flash[:alert] = "很抱歉，由于某些原因导致登录失败，请稍后重试。失败原因: #{failure_message}"
-    redirect_to root_path
-  end
-
   def krypton
     omniauth = request.env["omniauth.auth"]
     format = params[:state] == "iframe" ? :iframe : :html
@@ -31,17 +25,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     else
       user = User.new
       user.apply_omniauth(omniauth)
-      if user.save
-        flash[:notice] = "Signed in successfully."
-        sign_in_and_redirect_to_iframe_or_parent(user)
-      else
-        session[:omniauth] = omniauth
-        if params[:state] == "iframe"
-          render html: "<script>parent.location.href = '#{new_user_registration_url}';</script>".html_safe
-        else
-          redirect_to new_user_registration_url
-        end
-      end
+      user.save
+      flash[:notice] = "Signed in successfully."
+      sign_in_and_redirect_to_iframe_or_parent(user)
     end
   end
 
@@ -56,10 +42,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def sign_in_and_redirect_to_iframe_or_parent(user)
     sign_in(user, bypass: true)
-    if params[:state] == "iframe"
-      render html: "<script>parent.location.reload();</script>".html_safe
-    else
-      redirect_to after_sign_in_path_for(user)
-    end
+    redirect_to after_sign_in_path_for(user)
   end
 end

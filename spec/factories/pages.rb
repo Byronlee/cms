@@ -14,8 +14,8 @@
 
 FactoryGirl.define do
   factory :page do
-    title "MyString"
-    body "MyText"
-    slug "MyText"
+    title 'MyString'
+    body 'MyText'
+    slug 'MyText'
   end
 end

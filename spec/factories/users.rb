@@ -38,8 +38,24 @@ FactoryGirl.define do
       role :admin
     end
 
+    trait :reader do
+      role :reader
+    end
+
     trait :contributor do
       role :contributor
+    end
+
+    trait :operator do
+      role :operator
+    end
+
+    trait :writer do
+      role :writer
+    end
+
+    trait :editor do
+      role :editor
     end
   end
 end

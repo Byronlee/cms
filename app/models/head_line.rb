@@ -29,8 +29,8 @@ class HeadLine < ActiveRecord::Base
   after_destroy :fetch_remote_metas
   after_save :fetch_remote_metas
 
-  scope :published, ->{ where(:state => :published) }
-  scope :archived, ->{ where(:state => :archived) }
+  scope :published, -> { where(:state => :published) }
+  scope :archived, -> { where(:state => :archived) }
 
   aasm do
     state :published, :initial => true
@@ -45,10 +45,12 @@ class HeadLine < ActiveRecord::Base
     end
   end
 
+  # TODO: 这是只为API提供使用，应该重构删除
   def replies_count
     0
   end
 
+  # TODO: 这是只为API提供使用，应该重构删除
   def excerpt
     title
   end
@@ -57,7 +59,6 @@ class HeadLine < ActiveRecord::Base
 
   def fetch_remote_metas
     logger.info 'perform the worker to fetch remote metas'
-    # logger.info HeadLinesComponentWorker.perform_async
     logger.info HeadLinesComponentWorker.new.perform
     true
   end

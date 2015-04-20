@@ -19,12 +19,12 @@
 
 FactoryGirl.define do
   factory :head_line do
-    url "http://localhost/admin/posts/1"
+    url "http://36kr.com/p/531980.html"
     order_num 10
   end
 
   factory :head_line2, :class => 'HeadLine' do
-    url "http://localhost/admin/posts/2"
+    url "http://3531964.html"
     order_num 10
   end
 end

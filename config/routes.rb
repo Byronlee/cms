@@ -1,5 +1,7 @@
 require 'sidekiq/web'
 
+# TODO路由测试
+
 Rails.application.routes.draw do
   API::API.logger Rails.logger
   mount API::API => '/'
@@ -7,8 +9,7 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: {
     sessions: 'users/sessions',
-    omniauth_callbacks: 'users/omniauth_callbacks',
-    registrations: 'users/registrations'
+    omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
   root 'welcome#index'
@@ -77,14 +78,23 @@ Rails.application.routes.draw do
     get 'pages/show', to: 'pages#show', as: :page_body
   end
 
-  resources :posts, :only => [:index] do
-    get :news, on: :collection
-    get :hots, on: :collection
-    resources :comments, :only => [:index, :create]
+  namespace :asynces do
+    resources :posts, :only => [] do
+      get :hots, on: :collection
+      get :today, on: :collection
+      resources :comments, :only => [:index, :create]
+    end
+
+    resources :comments, :only => [] do
+      get :excellents, on: :collection
+    end
+
+    resources :favorites, only: [:create]
   end
 
+  resources :posts, :only => [:index]
+
   resources :columns, only: [:index]
-  resources :favorites, only: [:create]
 
   match '/comments/excellents', :controller => 'comments', :action => 'execllents', via: :get
   match '/columns/:slug(/:page)', :controller => 'columns', :action => 'show', via: :get

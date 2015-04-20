@@ -13,11 +13,11 @@
 
 class Authentication < ActiveRecord::Base
   belongs_to :user
-  store :raw, accessors: [ :info ], coder: JSON
+  store :raw, accessors: [:info], coder: JSON
 
   validates_uniqueness_of :provider, scope: :user_id
 
-  def omniauth= omniauth
+  def omniauth=(omniauth)
     self.provider = omniauth['provider']
     self.uid = omniauth['uid']
     self.raw = omniauth.to_hash
@@ -27,10 +27,12 @@ class Authentication < ActiveRecord::Base
     raw[:extra][:version]
   end
 
-private
+  private
 
   def auth_client
-    @auth_client ||= OAuth2::Client.new(Settings.oauth.krypton.app_id, Settings.oauth.krypton.secret,
+    @auth_client ||= OAuth2::Client.new(
+      Settings.oauth.krypton.app_id,
+      Settings.oauth.krypton.secret,
       site: Settings.oauth.krypton.host)
   end
 

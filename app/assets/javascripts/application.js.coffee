@@ -1,6 +1,7 @@
 #= require jquery
 #= require jquery_ujs
 #= require ga_track
+#= require async_render
 #= require ./timeago/timeago
 #= require ./timeago/timeago.zh-cn
 
@@ -29,7 +30,7 @@ window.message = (data) ->
   return
 
 window.doFavorite = (url_code) ->
-  $.post '/favorites', { 'url_code': url_code }, (result) ->
+  $.post '/asynces/favorites', { 'url_code': url_code }, (result) ->
     if $('.icon-star').hasClass('active')
       $('.icon-star').removeClass 'active'
     else

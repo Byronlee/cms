@@ -32,6 +32,6 @@ class Column < ActiveRecord::Base
   scope :info_flows, -> { where(in_info_flow: true) }
 
   def weekly_posts_count
-    posts.by_week.count
+    posts.by_week.published.count
   end
 end
