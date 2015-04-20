@@ -63,6 +63,8 @@ class User < ActiveRecord::Base
     SyncRoleToWriterWorker.perform_async(krypton_authentication.uid, role) rescue true
   end
 
+  # TODO: 监听字段来源于配置
+  # TODO: 记录字段变更记录应该独立相关的服务，或者使用观察者模式来处理
   def self.current
     Thread.current[:user]
   end

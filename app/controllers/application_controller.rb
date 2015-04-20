@@ -59,6 +59,7 @@ class ApplicationController < ActionController::Base
 
   private
 
+  # TODO: 重构移除
   def set_current_user_info
     User.current = current_user if current_user
   end
