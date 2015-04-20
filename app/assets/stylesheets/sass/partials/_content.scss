@@ -164,3 +164,21 @@
 		-webkit-transform: translateZ(0);
 	}
 }
+
+.content u{
+	text-decoration: none;
+  color: #51aded;
+  border-bottom: 2px solid #eaeaea;
+  background: transparent;
+  border: 0;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  &:hover {
+    border-bottom: 2px solid #48a9ec;
+  }
+}
