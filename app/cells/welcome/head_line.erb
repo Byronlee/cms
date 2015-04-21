@@ -2,7 +2,7 @@
   <% head_line_first = @head_lines[0] || {} %>
   <article class="headline__news">
     <a href="<%= head_line_first["url"] %>" class="topic-post-big" target="_blank" id="headline_top">
-    <%= image_tag "images/blank.gif", class:"image lazyload", alt:"", data: { src: high_speed_url(head_line_first["image"], 'slider') } %>
+    <%= image_tag "blank.gif", class:"image lazyload", alt:"", data: { src: high_speed_url(head_line_first["image"], 'slider') } %>
       <span class="spinner"></span>
       <div class="image-overlay big"></div>
       <h1><%= head_line_first["title"] %></h1>
