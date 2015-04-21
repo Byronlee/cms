@@ -30,18 +30,14 @@ class Admin::HeadLinesController < Admin::BaseController
   end
 
   def archive
-    if @head_line.may_archive?
-      @head_line.archive
-      @head_line.save
-    end
+    @head_line.archive
+    @head_line.save
     redirect_to :back
   end
 
   def publish
-    if @head_line.may_publish?
-      @head_line.publish
-      @head_line.save
-    end
+    @head_line.publish
+    @head_line.save
     redirect_to :back
   end
 
