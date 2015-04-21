@@ -25,6 +25,8 @@
 #  published_at    :datetime
 #  key             :string(255)
 #  remark          :text
+#  extra           :text
+#  source_type     :string(255)
 #  favorites_count :integer
 #
 
@@ -40,6 +42,7 @@ FactoryGirl.define do
     source 'writer'
     must_read true
     views_count 0
+    source_type 'original'
     url_code { |n| n }
 
     trait :published do

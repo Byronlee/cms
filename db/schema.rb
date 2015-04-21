@@ -154,6 +154,8 @@ ActiveRecord::Schema.define(version: 20150417093657) do
     t.datetime "published_at"
     t.string   "key"
     t.text     "remark"
+    t.text     "extra"
+    t.string   "source_type"
     t.integer  "favorites_count"
   end
 
