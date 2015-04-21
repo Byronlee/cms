@@ -3,7 +3,7 @@
     background-image: image-url("#{$filename}.#{$extension}");
   }
   @else {
-    background-image: url("#{$filename}.#{$extension}");
+    background-image: image-url("#{$filename}.#{$extension}");
   }
 
   @include hidpi {
@@ -18,10 +18,10 @@
 
     @else {
       @if $retina-filename {
-        background-image: url("#{$retina-filename}.#{$extension}");
+        background-image: image-url("#{$retina-filename}.#{$extension}");
       }
       @else {
-        background-image: url("#{$filename}#{$retina-suffix}.#{$extension}");
+        background-image: image-url("#{$filename}#{$retina-suffix}.#{$extension}");
       }
     }
 
