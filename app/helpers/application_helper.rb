@@ -51,6 +51,23 @@ module ApplicationHelper
     @num ||= Post.reviewing.count
   end
 
+  def body_class(name = nil)
+    if name.present?
+      content_for(:body_class) { name }
+    else
+      content_for(:body_class)
+    end
+  end
+
+  def get_url_domain(url)
+    return "" if url.blank?
+
+    url = URI::encode(url)
+    URI.parse(url).host.gsub(/www\./i, "")
+  rescue
+    return ""
+  end
+
   private
 
   def relative_time(raw_time)

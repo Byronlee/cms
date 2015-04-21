@@ -29,4 +29,11 @@ module PostsHelper
     return "#{title} | 36氪" if title.length < 14
     title[0..7] << '...' << title[(title.length - 3)..title.length] << ' | 36氪'
   end
+
+  def display_source_urls(post)
+    post.source_urls_array.map do |url|
+      url_domain = get_url_domain(url)
+      link_to url_domain, url if url_domain.present?
+    end.compact.join("、").html_safe
+  end
 end

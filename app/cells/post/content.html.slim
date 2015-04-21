@@ -1,2 +1,12 @@
 section.article
   = raw display_post_content(@post.content, @post.cover_real_url)
+  p
+    - if @post.source_type.original?
+      | 原创文章，作者：
+      = @post.author.display_name
+    - elsif @post.source_type.translation?
+      | 本文编译自：
+      = display_source_urls(@post)
+    - elsif @post.source_type.reference?
+      | 本文参考了多个信息来源：
+      = display_source_urls(@post)

@@ -11,11 +11,11 @@ html lang="en"
     /[if lt IE 9]
       = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"
     = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
-    = stylesheet_link_tag "open_admin/open_admin", :media => "all"
-    = javascript_include_tag "open_admin/open_admin"
+    = stylesheet_link_tag "admin", :media => "all"
+    = javascript_include_tag "admin"
     = html_import_tag 'application'
 
-  body
+  body class=body_class
     .navbar.navbar-default.navbar-static-top
       .container
         a.navbar-brand href=((can? :read, :dashboard) ? admin_root_path : 'javascript:void(0)')

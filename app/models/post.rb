@@ -37,11 +37,20 @@ class Post < ActiveRecord::Base
   include Tire::Model::Callbacks
   include ApplicationHelper
   include PostsHelper
+  extend Enumerize
   include AASM
 
   by_star_field '"posts".published_at'
   page_view_field :views_count, interval: 600
   paginates_per 100
+
+  enumerize :source_type, in: [:original, :translation, :reference], default: :original
+
+  typed_store :extra do |s|
+    s.text :source_urls, default: ""
+  end
+
+  # mount_uploader :cover, BaseUploader
   aasm.attribute_name :state
 
   validates_presence_of :title, :content
@@ -153,6 +162,16 @@ class Post < ActiveRecord::Base
     published_on(Date.today)
   end
 
+  def self.find_and_order_by_ids(search)
+    ids = search.map(&:id)
+    self.where(id: ids).order_by_ids(ids).includes(:column, author:[:krypton_authentication])
+  end
+
+  def source_urls_array
+    return [] if source_urls.blank?
+    source_urls.split
+  end
+
   private
 
   def update_today_lastest_cache
@@ -227,5 +246,14 @@ class Post < ActiveRecord::Base
       self.remark = ''
     end
     self.remark += "[#{Time.now}]#{User.current.id} - #{User.current.display_name} edited"
+  end
+
+  before_save :autoset_source_info
+  def autoset_source_info
+    self.source_urls = if source_type == "original"
+      nil
+    elsif source_urls.present?
+      self.source_urls_array.join(" ")
+    end
   end
 end
