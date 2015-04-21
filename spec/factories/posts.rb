@@ -45,7 +45,6 @@ FactoryGirl.define do
     views_count 0
     source_type 'original'
     url_code { |n| n }
-
     trait :published do
       state 'published'
       published_at 1.hour.ago
@@ -62,6 +61,11 @@ FactoryGirl.define do
 
     trait :draft do
       state 'drafted'
+    end
+
+    trait :translation do
+      source_type 'translation'
+      source_urls 'http://36kr.com http://www.google.com'
     end
   end
 end

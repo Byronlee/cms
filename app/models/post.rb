@@ -172,11 +172,6 @@ class Post < ActiveRecord::Base
     published_on(Date.today)
   end
 
-  def self.find_and_order_by_ids(search)
-    ids = search.map(&:id)
-    self.where(id: ids).order_by_ids(ids).includes(:column, author: [:krypton_authentication])
-  end
-
   def source_urls_array
     return [] if source_urls.blank?
     source_urls.split
