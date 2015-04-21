@@ -136,4 +136,36 @@ describe API::API do
       end
     end
   end
+
+  describe "Test access token" do
+    it "return 401" do
+      get "/api/v2/posts/index.json?api_key=xxoo"
+      response.status.should == 401
+    end
+  end
+
+  describe "GET /api/v2/posts/index.json" do
+    it "should return an array of posts" do
+      get "/api/v2/posts/index.json?api_key=501Cd1AvUL4AxxVEX60gCFJK7HCd9y8ySDvG29Je"
+      response.status.should == 200
+      json_response.should be_an Array
+    end
+  end
+
+  describe "GET /api/v2/posts/:id" do
+      it "should return array size 30" do
+        post = create :post, url_code: 1 ,user_id: 1, state: 'published', published_at: Time.now
+        get "/api/v2/posts/#{post.url_code}.json?api_key=501Cd1AvUL4AxxVEX60gCFJK7HCd9y8ySDvG29Je"
+        response.status.should == 200
+      end
+  end
+
+  describe "GET /api/v2/posts/krplus/:id" do
+      it "should return array size 30" do
+        post = create :post, url_code: 1 ,user_id: 1, state: 'published', published_at: Time.now
+        get "/api/v2/posts/krplus/#{post.url_code}.json?api_key=501Cd1AvUL4AxxVEX60gCFJK7HCd9y8ySDvG29Je"
+        response.status.should == 200
+      end
+  end
+
 end

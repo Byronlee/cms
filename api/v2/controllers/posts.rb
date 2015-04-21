@@ -115,20 +115,20 @@ module V2
         end
 
         # Delete post. Available only for admin
-        desc 'delete post. Available only for admin'
-        params do
-          optional :authentication_token, type: String, desc: 'authentication_token'
-        end
-        delete ':id' do
-          user = current_user
-          post = Post.where(url_code: params[:id]).first
-          if user and post and post.author and (user.role == 'admin' or user.id == post.author.id)
-            post.destroy
-            return { status: true }
-          else
-            return { status: false }
-          end
-        end
+#        desc 'delete post. Available only for admin'
+#        params do
+#          optional :authentication_token, type: String, desc: 'authentication_token'
+#        end
+#        delete ':id' do
+#          user = current_user
+#          post = Post.where(url_code: params[:id]).first
+#          if user and post and post.author and (user.role == 'admin' or user.id == post.author.id)
+#            post.destroy
+#            return { status: true }
+#          else
+#            return { status: false }
+#          end
+#        end
 
         # use key list get post list
         desc '批量获取文章'

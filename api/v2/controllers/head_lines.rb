@@ -58,30 +58,30 @@ module V2
           end
         end
 
-        desc 'update a head line'
-        params do
-          requires :id, desc: '编号'
-          requires :url, type: String, desc: '链接'
-          requires :title, type: String, desc: '标题'
-          requires :image, type: String, desc: '图片链接'
-          requires :post_type, type: String, default: 'article' , desc: 'article,vedio...'
-          requires :order_num, type: Integer, desc: '位置'
-        end
-        patch ':id' do
-          @head_line = HeadLine.find(params[:id])
-          @head_line.update_attributes params.slice(*KEYS)
-          present @head_line, with: Entities::HeadLine
-        end
-
-        desc 'delete head line.available only for admin'
-        delete ':id' do
-          head_line = HeadLine.find(params[:id])
-          if head_line
-            head_line.destroy
-          else
-            not_found!
-          end
-        end
+#        desc 'update a head line'
+#        params do
+#          requires :id, desc: '编号'
+#          requires :url, type: String, desc: '链接'
+#          requires :title, type: String, desc: '标题'
+#          requires :image, type: String, desc: '图片链接'
+#          requires :post_type, type: String, default: 'article' , desc: 'article,vedio...'
+#          requires :order_num, type: Integer, desc: '位置'
+#        end
+#        patch ':id' do
+#          @head_line = HeadLine.find(params[:id])
+#          @head_line.update_attributes params.slice(*KEYS)
+#          present @head_line, with: Entities::HeadLine
+#        end
+#
+#        desc 'delete head line.available only for admin'
+#        delete ':id' do
+#          head_line = HeadLine.find(params[:id])
+#          if head_line
+#            head_line.destroy
+#          else
+#            not_found!
+#          end
+#        end
 
       end
 
