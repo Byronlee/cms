@@ -11,6 +11,7 @@ zh-CN:
       post:
         title: '文章标题'
         title_link: '标题链接'
+        remark: '备注'
         slug: '文章短标题'
         summary: '文章摘要'
         content: '文章内容'
