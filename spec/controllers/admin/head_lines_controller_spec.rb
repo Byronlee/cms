@@ -14,6 +14,17 @@ describe Admin::HeadLinesController do
     end
   end
 
+  describe "GET 'archives'" do
+    let!(:head_line) { create(:head_line, state: 'archived') }
+
+    it "returns http success" do
+      get 'archives'
+      response.should be_success
+      expect(response).to render_template(:admin)
+      expect(assigns(:head_lines)).to eq([head_line])
+    end
+  end
+
   describe "GET 'new'" do
     it "returns http success" do
       get :new
@@ -98,6 +109,26 @@ describe Admin::HeadLinesController do
       expect do
         delete :destroy, :id => @head_line
       end.to change(HeadLine, :count).by(-1)
+      expect(response).to redirect_to(admin_head_lines_path)
+    end
+  end
+
+  describe "post 'archive'" do
+    before { @head_line = create :head_line }
+    it "returns http rediect" do
+      request.env["HTTP_REFERER"] = admin_head_lines_path # for redicect :back
+      post :archive, :id => @head_line
+      expect(assigns(:head_line).state).to eq 'archived'
+      expect(response).to redirect_to(admin_head_lines_path)
+    end
+  end
+
+  describe "post 'publish'" do
+    before { @head_line = create :head_line, state: 'archived' }
+    it "returns http rediect" do
+      request.env["HTTP_REFERER"] = admin_head_lines_path # for redicect :back
+      post :publish, :id => @head_line
+      expect(assigns(:head_line).state).to eq 'published'
       expect(response).to redirect_to(admin_head_lines_path)
     end
   end
