@@ -27,7 +27,7 @@ tr
         = post.cache_views_count
   td.text_center[title=post.published_at data-toggle='tooltip']
     = time_ago_in_words post.published_at rescue ''
-  td
+  td.text_center
     - if can? :create, HeadLine
       a title="添加到头条" href= new_admin_head_line_path(:url => post_url(post))
         i.fa.fa-star

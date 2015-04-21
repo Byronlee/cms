@@ -27,7 +27,7 @@ tr
         = post.cache_views_count
   td.text_center[title=post.created_at data-toggle='tooltip']
     = time_ago_in_words post.created_at rescue ''
-  td
+  td.text_center
     - if can? :do_publish, post
       = link_to publish_admin_post_path(post), 'title' => "快速发布"
         i.fa.fa-plane
