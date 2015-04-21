@@ -10,10 +10,13 @@ describe Users::OmniauthCallbacksController do
     before { request.env['omniauth.auth'] = authentication.raw }
 
     context "sign in" do
+      let(:ok_url) { "http://google.com" }
+      let(:state) { SecureRandom.hex }
       let(:authentication) { create :authentication }
-      before { get :krypton }
+      before { $redis.set("omniauth_krypton_ok-url_of_#{state}", ok_url) }
+      before { get :krypton, state: state }
       it {
-        should respond_with(:redirect)
+        should redirect_to(ok_url)
         expect(controller.current_user).not_to be_nil
       }
     end

@@ -16,4 +16,16 @@ describe Users::SessionsController do
       it { should redirect_to(user_omniauth_authorize_path(provider: :krypton)) }
     end
   end
+
+  describe "DELETE 'destroy'" do
+    context "with ok_url" do
+      let(:ok_url) { "http://google.com" }
+      before { delete :destroy, ok_url: ok_url }
+      it { should redirect_to ok_url }
+    end
+    context "without ok_url" do
+      before { delete :destroy }
+      it { should redirect_to root_path }
+    end
+  end
 end
