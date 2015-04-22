@@ -177,7 +177,7 @@ class Post < ActiveRecord::Base
     source_urls.split
   end
 
-  def record_laster_update_user(current_user)
+  def record_laster_update_user(current_user, action_path)
     return true if new_record? || self.user_id.blank? || self.user_id == current_user.id
 
     return true unless [:title,
@@ -200,7 +200,7 @@ class Post < ActiveRecord::Base
     else
       self.remark = ''
     end
-    self.remark += "[#{Time.now}]#{current_user.id} - #{current_user.display_name} edited"
+    self.remark += "[#{Time.now}]#{current_user.id} - #{current_user.display_name} edited [#{action_path}]"
   end
 
   private
