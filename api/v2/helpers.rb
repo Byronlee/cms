@@ -59,7 +59,7 @@ module V2
       else # sso sso_token 无效或者没有用户的情况
         current_user = User.new
       end
-      [current_user,sso_user]
+      [current_user, sso_user]
     end
 
     def generate_review_url(post)
@@ -72,7 +72,11 @@ module V2
 
     def admin_edit_post_url(post, auth)
       if auth.present? && auth.user.editable
-        "#{Settings.site}/krypton/posts/#{post.id}/edit"
+        if post.published?
+          "#{Settings.site}/krypton/posts/#{post.id}/edit"
+        else
+          "#{Settings.site}/krypton/posts/#{post.id}/publish"
+        end
       else
         nil
       end
