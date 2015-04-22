@@ -2,32 +2,33 @@
 #
 # Table name: posts
 #
-#  id              :integer          not null, primary key
-#  title           :string(255)
-#  summary         :text
-#  content         :text
-#  title_link      :string(255)
-#  must_read       :boolean
-#  slug            :string(255)
-#  state           :string(255)
-#  draft_key       :string(255)
-#  column_id       :integer
-#  user_id         :integer
-#  created_at      :datetime
-#  updated_at      :datetime
-#  cover           :text
-#  source          :string(255)
-#  comments_count  :integer
-#  md_content      :text
-#  url_code        :integer
-#  views_count     :integer          default(0)
-#  catch_title     :text
-#  published_at    :datetime
-#  key             :string(255)
-#  remark          :text
-#  extra           :text
-#  source_type     :string(255)
-#  favorites_count :integer
+#  id               :integer          not null, primary key
+#  title            :string(255)
+#  summary          :text
+#  content          :text
+#  title_link       :string(255)
+#  must_read        :boolean
+#  slug             :string(255)
+#  state            :string(255)
+#  draft_key        :string(255)
+#  column_id        :integer
+#  user_id          :integer
+#  created_at       :datetime
+#  updated_at       :datetime
+#  cover            :text
+#  source           :string(255)
+#  comments_count   :integer
+#  md_content       :text
+#  url_code         :integer
+#  views_count      :integer          default(0)
+#  catch_title      :text
+#  published_at     :datetime
+#  key              :string(255)
+#  remark           :text
+#  extra            :text
+#  source_type      :string(255)
+#  favorites_count  :integer
+#  company_keywords :string(255)      default([]), is an Array
 #
 
 require 'action_view'
@@ -65,6 +66,7 @@ class Post < ActiveRecord::Base
   has_many :favorites, foreign_key: :url_code, primary_key: :url_code, dependent: :destroy
   has_many :favoriters, source: :user, through: :favorites, primary_key: :url_code
 
+  # TODO: 将所有的回调采用注册机制全部异步去处理
   after_save :update_today_lastest_cache, :update_hot_posts_cache, :update_info_flows_cache,
              :check_head_line_cache, :update_excellent_comments_cache
   after_destroy :update_today_lastest_cache, :update_hot_posts_cache, :update_info_flows_cache,
@@ -72,6 +74,12 @@ class Post < ActiveRecord::Base
   before_create :generate_key
   before_save :auto_generate_summary, :record_laster_update_user
   after_create :generate_url_code
+
+  after_save :check_company_keywords
+  def check_company_keywords
+    keywords = content.scan(/<u>(.*?)<\/u>/).flatten.select { |c| c.length < 10 }
+    self.company_keywords = keywords if keywords.present?
+  end
 
   scope :published_on, -> (date) {
     where(:published_at => date.beginning_of_day..date.end_of_day)
@@ -166,7 +174,7 @@ class Post < ActiveRecord::Base
 
   def self.find_and_order_by_ids(search)
     ids = search.map(&:id)
-    self.where(id: ids).order_by_ids(ids).includes(:column, author:[:krypton_authentication])
+    self.where(id: ids).order_by_ids(ids).includes(:column, author: [:krypton_authentication])
   end
 
   def source_urls_array

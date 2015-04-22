@@ -12,7 +12,7 @@
           li
             a href="#{draft_admin_posts_path}" 我的草稿
           li
-            a href="#{archives_admin_head_lines_path}" 我的文章
+            a href="#{myown_admin_posts_path}" 我的文章
         - if can? :read, Post
           li.active
             a href="#{admin_posts_path}" 已发布
@@ -26,15 +26,9 @@
   table class="table"
     thead
       tr role="row"
-        th style="width:5%" ID
-        th style="width:16%" 标题
-        th style="width:9%" 专栏
-        th.text_center style="width:8%" 发布时间
-        th.text_center style="width:5%" 状态
-        th style="width:5%" 评论
-        th style="width:4%" 留言
-        th.text_center style="width:7%" 浏览量
-        th.text_center style="width:9%" 操作&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        th style="width:70%"
+        th.text_center style="width:10%" 发布时间
+        th.text_center style="width:11%" 操作&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         th style="width:3%" 作者
     tbody
       = render @posts, link_to_published:true

@@ -18,8 +18,8 @@ tr
     - if comment.content.length > 20
       div.comment_details_in_row[id="comment-#{comment.id}" style="display:none;"]
         = raw(comment.content)
-  td.text_center
-    i.fa.fa-clock-o[title=comment.created_at data-toggle='tooltip']
+  td.text_center[title=comment.created_at data-toggle='tooltip']
+    = time_ago_in_words comment.created_at rescue ''
   td
     - if can? :set_excellent, comment
       - if comment.is_excellent?

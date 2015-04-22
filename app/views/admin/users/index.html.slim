@@ -6,19 +6,21 @@
          span.page_info = page_entries_info @users
          - if current_user.role.admin?
            form.form-inline.user_search
-             = select("s", "type", Settings.user_search_support)
+             button.btn.btn-primary.pull-right type="submit" 确定
              = select("s", "role", User.role.options, {}, {class: 'input-small'})
              input.input-small.hidden#s_id name='s[id]' type="text" placeholder="输入ID"
              input.input-small.hidden#s_name name='s[name]' type="text" placeholder="输入name"
              input.input-small.hidden#s_phone name='s[phone]' type="text" placeholder="输入phone"
              input.input-small.hidden#s_email name='s[email]' type="text" placeholder="输入email"
-             button.btn.btn-primary type="submit" 确定
+             input.input-small.hidden#s_sso_id name='s[sso_id]' type="text" placeholder="输入sso id"
+             = select("s", "type", Settings.user_search_support)
   table class="table"
     thead
       tr role="row"
         th ID
         th 姓名
         th.text_center 基本信息
+        th SSO_ID
         th 角色
         th 收藏
         th 创建时间
