@@ -178,29 +178,8 @@ class Post < ActiveRecord::Base
   end
 
   def record_laster_update_user(current_user, action_path)
-    return true if new_record? || self.user_id.blank? || self.user_id == current_user.id
-
-    return true unless [:title,
-     :summary,
-     :content,
-     :title_link,
-     :slug,
-     :state,
-     :draft_key,
-     :column_id,
-     :user_id,
-     :cover,
-     :source,
-     :source_type,
-     :md_content,
-     :url_code].collect{|col| eval "#{col}_changed?" }.any?
-
-    if self.remark.present?
-      self.remark += "\r\n"
-    else
-      self.remark = ''
-    end
-    self.remark += "[#{Time.now}]#{current_user.id} - #{current_user.display_name} edited [#{action_path}]"
+   return unless need_record_update_log?(current_user)
+    self.remark = self.remark.to_s + "[#{Time.now}]#{current_user.id} - #{current_user.display_name} edited [#{action_path}]\r\n"
   end
 
   private
@@ -267,5 +246,24 @@ class Post < ActiveRecord::Base
     elsif source_urls.present?
       self.source_urls_array.join(" ")
     end
+  end
+
+  def need_record_update_log?(current_user)
+    return false if new_record? || current_user.blank? || self.user_id == current_user.id
+
+    [:title,
+     :summary,
+     :content,
+     :title_link,
+     :slug,
+     :state,
+     :draft_key,
+     :column_id,
+     :user_id,
+     :cover,
+     :source,
+     :source_type,
+     :md_content,
+     :url_code].collect {  |col| eval "#{col}_changed?" }.any?
   end
 end
