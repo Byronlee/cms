@@ -14,6 +14,17 @@ describe NewsflashesController do
         expect(newsflashes).to include(newsflash)
       }
     end
+
+    context 'should render tips with no newsflash' do
+      before { get 'index', year: 2015, month: 03, day: 01 }
+      it {
+        should respond_with(:success)
+        should render_template(:index)
+
+        newsflashes = assigns(:newsflashes)
+        expect(newsflashes).to eq([])
+      }
+    end
   end
 
   describe "GET 'show'" do

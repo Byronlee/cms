@@ -72,7 +72,7 @@ class Post < ActiveRecord::Base
   after_destroy :update_today_lastest_cache, :update_hot_posts_cache, :update_info_flows_cache,
                 :check_head_line_cache_for_destroy, :update_excellent_comments_cache
   before_create :generate_key
-  before_save :auto_generate_summary, :record_laster_update_user
+  before_save :auto_generate_summary
   after_create :generate_url_code
 
   after_save :check_company_keywords
@@ -172,14 +172,14 @@ class Post < ActiveRecord::Base
     published_on(Date.today)
   end
 
-  def self.find_and_order_by_ids(search)
-    ids = search.map(&:id)
-    self.where(id: ids).order_by_ids(ids).includes(:column, author: [:krypton_authentication])
-  end
-
   def source_urls_array
     return [] if source_urls.blank?
     source_urls.split
+  end
+
+  def record_laster_update_user(current_user, action_path)
+   return unless need_record_update_log?(current_user)
+    self.remark = self.remark.to_s + "[#{Time.now}]#{current_user.id} - #{current_user.display_name} edited [#{action_path}]\r\n"
   end
 
   private
@@ -239,25 +239,6 @@ class Post < ActiveRecord::Base
     true
   end
 
-  # TODO: 监听字段来源于配置
-  # TODO: 记录字段变更记录应该独立相关的服务，或者使用观察者模式来处理
-  def record_laster_update_user
-    return true if new_record? || User.current.blank?
-    return true unless title_changed? || summary_changed? || content_changed? ||
-                       title_link_changed? || slug_changed? || state_changed? ||
-                       draft_key_changed? || column_id_changed? || user_id_changed? ||
-                       cover_changed? || source_changed? || md_content_changed? ||
-                       url_code_changed?
-    return true if self.user_id == User.current.id
-
-    if self.remark.present?
-      self.remark += "\r\n"
-    else
-      self.remark = ''
-    end
-    self.remark += "[#{Time.now}]#{User.current.id} - #{User.current.display_name} edited"
-  end
-
   before_save :autoset_source_info
   def autoset_source_info
     self.source_urls = if source_type == "original"
@@ -265,5 +246,24 @@ class Post < ActiveRecord::Base
     elsif source_urls.present?
       self.source_urls_array.join(" ")
     end
+  end
+
+  def need_record_update_log?(current_user)
+    return false if new_record? || current_user.blank? || self.user_id == current_user.id
+
+    [:title,
+     :summary,
+     :content,
+     :title_link,
+     :slug,
+     :state,
+     :draft_key,
+     :column_id,
+     :user_id,
+     :cover,
+     :source,
+     :source_type,
+     :md_content,
+     :url_code].collect {  |col| eval "#{col}_changed?" }.any?
   end
 end

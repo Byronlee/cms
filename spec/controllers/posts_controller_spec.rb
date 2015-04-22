@@ -18,6 +18,18 @@ describe PostsController do
         expect(post.cache_views_count - post.views_count).to eq(0)
       end
     end
+
+    context 'with source type of translation' do
+      let(:post) { create(:post, :published, :translation) }
+      before { get 'show', url_code: post.url_code }
+      it do
+        should respond_with(:success)
+        should render_template(:show)
+
+        post = assigns(:post)
+        expect(post.source_urls_array).to eq(['http://36kr.com', 'http://www.google.com'])
+      end
+    end
   end
 
   describe "GET 'preview'" do
