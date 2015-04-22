@@ -7,4 +7,4 @@ set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 set :rbenv_roles, :all
 
 set :ssh_options, { forward_agent: true, port: 22 }
-server 'www-data@119.254.103.241', roles: %w[web app db], primary: true #, sidekiq: true, whenever: true
+server 'www-data@staging.36kr.com', roles: %w[web app db], primary: true #, sidekiq: true, whenever: true
