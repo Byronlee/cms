@@ -113,7 +113,7 @@
 
 在本地项目根目录
 ```shell
-  $ bundle exec sidekiq -c config/sidekiq.yml
+  $ bundle exec sidekiq
 ```
 然后在浏览器访问
 ```shell
