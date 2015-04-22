@@ -38,7 +38,7 @@ tr
       a title="编辑发布信息" href= edit_admin_post_url(post)
         i.fa.fa-cog
     - if can? :edit, post
-      a title="编辑文章" target="_blank" href= "http://writer.36kr.com/posts/#{post.id}/#{post.key}/"
+      a title="编辑文章" target="_blank" href=Settings.writer_edit_path.call(post)
         i.fa.fa-pencil
     - if can? :undo_publish, post
       a title="撤销发布" data-method="post" data-confirm="确定撤销发布: #{raw(post.title)} ？" href=undo_publish_admin_post_path(post)
