@@ -26,7 +26,7 @@ describe WelcomeController do
           before { create(:authentication, user: session_user) }
           before { request.cookies[:krid_user_version] = session_user.krypton_authentication.version.to_i + 1 }
           before { get :index }
-          it { should redirect_to(user_omniauth_authorize_path(provider: :krypton)) }
+          it { should redirect_to(user_omniauth_authorize_path(provider: :krypton, ok_url: request.fullpath)) }
         end
         context "but passport offline" do
           before { create(:authentication, user: session_user) }
@@ -45,12 +45,12 @@ describe WelcomeController do
         context "with unmatched version" do
           before { request.cookies[:krid_user_version] = 1 }
           before { get :index }
-          it { should redirect_to(user_omniauth_authorize_path(provider: :krypton)) }
+          it { should redirect_to(user_omniauth_authorize_path(provider: :krypton, ok_url: request.fullpath)) }
         end
         context "but passport online" do
           before { request.cookies[:krid_user_version] = 1 }
           before { get :index }
-          it { should redirect_to(user_omniauth_authorize_path(provider: :krypton)) }
+          it { should redirect_to(user_omniauth_authorize_path(provider: :krypton, ok_url: request.fullpath)) }
         end
       end
     end
