@@ -1,21 +1,32 @@
 tr
-  td = post.url_code
-  td[title=raw(post.title) data-toggle='tooltip'] = link_to raw(truncate(post.title, length:13)), preview_post_by_key_path(key: post.key), target:'_new'
-  td[title=post.column.try(:name) data-toggle='tooltip']
-    - unless link_to_reviewing
-      = link_to post.column.try(:name), myown_admin_posts_path(column_id: post.column)
-    - else
-      = link_to post.column.try(:name), reviewings_admin_column_posts_path(post.column)
-  td.text_center[title=post.created_at data-toggle='tooltip']
-    = time_ago_in_words post.created_at
-  td.text_center = display_state(post.state)
   td
-    span class='badge badge-primary'
-      = link_to post.comments_counts.to_i, admin_post_comments_path(post), style:"color:#fff;"
-  td.text_center
-    - if post.remark.present?
-      i.fa.fa-lightbulb-o[title=post.remark]
-  td.text_center = post.cache_views_count
+    .title[title=raw(post.title) data-toggle='tooltip']
+       = link_to raw(truncate(post.title, length:42)), preview_post_by_key_path(key: post.key), target:'_new'
+    .info
+      span
+        | ID: &nbsp;
+        = post.url_code
+      span
+        | 专栏:&nbsp;
+        - unless link_to_reviewing
+          = link_to post.column.try(:name), myown_admin_posts_path(column_id: post.column)
+        - else
+          = link_to post.column.try(:name), reviewings_admin_column_posts_path(post.column)
+      span
+        | 状态: &nbsp;
+        = display_state(post.state)
+      span
+        | 评论数: &nbsp;
+        = link_to post.comments_counts.to_i, admin_post_comments_path(post)
+      - if post.remark.present?
+        span
+          | 留言: &nbsp;
+          i.fa.fa-lightbulb-o[title=post.remark]
+      span
+        | 浏览量: &nbsp;
+        = post.cache_views_count
+  td.text_center[title=post.created_at data-toggle='tooltip']
+    = time_ago_in_words post.created_at rescue ''
   td
     - if can? :do_publish, post
       = link_to publish_admin_post_path(post), 'title' => "快速发布"
@@ -31,6 +42,6 @@ tr
         i.fa.fa-times
   td.avatar.text_center[title=post.author.try(:display_name) data-toggle='tooltip']
     - if (can? :manage, User)&post.author.present?
-      = link_to image_tag(post.author.try(:avatar), alt: ''), edit_admin_user_path(post.author)
+      = link_to image_tag(post.author.try(:avatar), alt: '', class: 'spt'), edit_admin_user_path(post.author)
     - else
-      = image_tag post.author.try(:avatar), alt: ''
+      = image_tag post.author.try(:avatar), alt: '', class: 'spt'
