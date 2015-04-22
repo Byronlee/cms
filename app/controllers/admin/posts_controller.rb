@@ -3,6 +3,8 @@ class Admin::PostsController < Admin::BaseController
   load_and_authorize_resource
   before_action :check_column_post, only: [:index, :reviewings, :myown, :draft]
 
+  cache_sweeper :post_sweeper, :only => [:update, :do_publish, :undo_publish ]
+
   def index
     @posts = page.call @posts.published.accessible_by(current_ability).order('published_at desc'), params[:page]
   end

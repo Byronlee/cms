@@ -72,7 +72,7 @@ class Post < ActiveRecord::Base
   after_destroy :update_today_lastest_cache, :update_hot_posts_cache, :update_info_flows_cache,
                 :check_head_line_cache_for_destroy, :update_excellent_comments_cache
   before_create :generate_key
-  before_save :auto_generate_summary, :record_laster_update_user
+  before_save :auto_generate_summary
   after_create :generate_url_code
 
   after_save :check_company_keywords
@@ -177,6 +177,32 @@ class Post < ActiveRecord::Base
     source_urls.split
   end
 
+  def record_laster_update_user(current_user)
+    return true if new_record? || self.user_id.blank? || self.user_id == current_user.id
+
+    return true unless [:title,
+     :summary,
+     :content,
+     :title_link,
+     :slug,
+     :state,
+     :draft_key,
+     :column_id,
+     :user_id,
+     :cover,
+     :source,
+     :source_type,
+     :md_content,
+     :url_code].collect{|col| eval "#{col}_changed?" }.any?
+
+    if self.remark.present?
+      self.remark += "\r\n"
+    else
+      self.remark = ''
+    end
+    self.remark += "[#{Time.now}]#{current_user.id} - #{current_user.display_name} edited"
+  end
+
   private
 
   def update_today_lastest_cache
@@ -232,25 +258,6 @@ class Post < ActiveRecord::Base
     return true if summary.present?
     self.summary = /^(.*?[。|；|!|?|？|！|.])/imx.match(strip_tags(content))[1] rescue true
     true
-  end
-
-  # TODO: 监听字段来源于配置
-  # TODO: 记录字段变更记录应该独立相关的服务，或者使用观察者模式来处理
-  def record_laster_update_user
-    return true if new_record? || User.current.blank?
-    return true unless title_changed? || summary_changed? || content_changed? ||
-                       title_link_changed? || slug_changed? || state_changed? ||
-                       draft_key_changed? || column_id_changed? || user_id_changed? ||
-                       cover_changed? || source_changed? || md_content_changed? ||
-                       url_code_changed?
-    return true if self.user_id == User.current.id
-
-    if self.remark.present?
-      self.remark += "\r\n"
-    else
-      self.remark = ''
-    end
-    self.remark += "[#{Time.now}]#{User.current.id} - #{User.current.display_name} edited"
   end
 
   before_save :autoset_source_info
