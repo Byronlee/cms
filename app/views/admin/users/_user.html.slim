@@ -7,6 +7,7 @@ tr
       i.fa.fa-envelope[title=user.email]
     - if user.email.present?
       i.fa.fa-phone-square[title=user.phone]
+  td = user.sso_id
   td = user.role_text
   td
     span class="badge badge-info" = user.favorites_count.to_i
