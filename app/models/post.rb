@@ -77,7 +77,7 @@ class Post < ActiveRecord::Base
 
   after_save :check_company_keywords
   def check_company_keywords
-    keywords = content.scan(/<u>(.*?)<\/u>/).flatten
+    keywords = content.scan(/<u>(.*?)<\/u>/).flatten.select { |c| c.length < 10 }
     self.company_keywords = keywords if keywords.present?
   end
 
@@ -174,7 +174,7 @@ class Post < ActiveRecord::Base
 
   def self.find_and_order_by_ids(search)
     ids = search.map(&:id)
-    self.where(id: ids).order_by_ids(ids).includes(:column, author:[:krypton_authentication])
+    self.where(id: ids).order_by_ids(ids).includes(:column, author: [:krypton_authentication])
   end
 
   def source_urls_array

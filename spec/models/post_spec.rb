@@ -103,11 +103,11 @@ describe Post do
 
   describe '#check_company_keywords' do
     before do
-      @post = create :post, :published, content: '大时代发个<u>asdasdfasdf</u>sdaksdhfkajhsdfjk<u>sdfasdf</u>asdfasdfasf<u>asdfasdf<br>M/div></u>asdfasdf<u>重构人</u>asdaf'
+      @post = create :post, :published, content: '大时代发个<u>asdasdfasdf</u>sdaksdhfkajhsdfjk<u>sdfasdf</u>asdfasdfasf<u>asdfasdf<br>M/div></u>asdfasdf<u>重构人</u>asdaf<u>qerqwerqwerqwerqwerqwerqwerqw</u>'
     end
 
     it do
-      expect(@post.company_keywords).to eq ["asdasdfasdf", "sdfasdf", "asdfasdf<br>M/div>", "重构人"]
+      expect(@post.company_keywords).to eq ["sdfasdf", "重构人"]
     end
   end
 end
