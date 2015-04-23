@@ -118,6 +118,7 @@ Rails.application.routes.draw do
   match '/ads' => redirect('/pages/ads'), via: :get
   match '/ad' => redirect('/pages/ads'), via: :get
   match '/account(/*any)' => redirect('/pages/app'), via: :get
+  match '/site_map.:format' => "welcome#site_map", via: :get, constraints: { format: 'xml' }
 
   %w(404 500).each do |code|
     match code, to: "errors#render_#{code}", via: [:get, :post, :put, :delete]

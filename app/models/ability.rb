@@ -72,8 +72,7 @@ class Ability
   end
 
   def anonymous
-    can :read, :welcome
-    can :index, :welcome
+    can [:read, :site_map], :welcome
     can :read, [Ad, Post, Column, Page, Newsflash, User]
     can [:news, :feed, :hots, :today_lastest, :feed_bdnews], Post
     can [:read, :execllents], Comment
