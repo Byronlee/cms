@@ -28,7 +28,7 @@ module V2
         end
         post 'editor' do
           roles = Settings.editable_roles.map(&:to_s) << 'contributor'
-          @user = User.where(role: roles)
+          @user = User.where(role: roles).includes(:krypton_authentication)
           .order('created_at desc').page(params[:page]).per(params[:per_page])
           present @user, with: Entities::User
         end
