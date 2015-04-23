@@ -36,8 +36,10 @@ class InfoFlow < ActiveRecord::Base
     true
   end
 
-  def posts(page_num = 1, per_page = 1000)
-    Post.where(:column_id => columns).published.includes(:author, :column).order('published_at desc').page(page_num).per(per_page)
+  def posts(options = {})
+    options[:page_num] ||= 1
+    options[:per_page] ||= Settings.site_map.posts_count
+    Post.where(:column_id => columns).published.includes(:author, :column).order('published_at desc').page(options[:page_num]).per(options[:per_page])
   end
 
   private
