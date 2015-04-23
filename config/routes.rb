@@ -90,6 +90,11 @@ Rails.application.routes.draw do
     end
 
     resources :favorites, only: [:create]
+
+    resources :dashboard, :only => [] do 
+      get :chats, on: :collection
+      get :pandect, on: :collection
+    end
   end
 
   resources :posts, :only => [:index]
