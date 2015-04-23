@@ -1,5 +1,5 @@
 jQuery ->
-  # setInterval("$('text[text-anchor=end]').remove()", 0);
+  setInterval("$('text[text-anchor=end]').remove()", 0);
   $('.posts').highcharts
     chart: type: 'line'
     title: text: '最近10天各个资源趋势图'
@@ -75,89 +75,4 @@ jQuery ->
         ]
       }
     ]
-
-    categories_industry = [
-      '36氪'
-      '小米'
-      '华为'
-      'OTO'
-      '融资'
-      '百度快搜'
-      '智能手表'
-      'Appple Watch'
-      '红米手机'
-      '酒店融资'
-    ]
-    categories_search = [
-      '百度'
-      '红杉资本'
-      '融资36氪'
-      'OTO'
-      '融资'
-      '快搜'
-      '手表'
-      'Watch'
-      '红米手机连锁'
-      '酒店'
-    ]
-
-    $('.synthesis').highcharts
-      chart: type: 'bar'
-      title: text: '最近一个月热点词汇分析'
-      xAxis: [
-        {
-          categories: categories_industry
-          reversed: false
-          labels: step: 1
-        }
-        {
-          opposite: true
-          reversed: false
-          categories: categories_search
-          linkedTo: 0
-          labels: step: 1
-        }
-      ]
-      yAxis:
-        title: text: null
-        labels: formatter: ->
-          Math.abs(@value) / 50 + 'M'
-        min: -20000
-        max: 20000
-      plotOptions: series: stacking: 'normal'
-      tooltip: formatter: ->
-        '<b>' + @series.name + ': ' + @point.category + '</b><br/>' + '峰值: ' + Highcharts.numberFormat(Math.abs(@point.y), 0)
-      series: [
-        {
-          name: '行业热点词汇'
-          data: [
-            -200
-            -280
-            -580
-            -1165
-            -2565
-            -4456
-            -8244
-            -11126
-            -15259
-            -18900
-          ]
-        }
-        {
-          name: '搜索排行'
-          data: [
-            710
-            383
-            3754
-            1658
-            1543
-            8000
-            9000
-            12000
-            15000
-            18940
-          ]
-        }
-      ]
-
 
