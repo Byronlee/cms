@@ -75,4 +75,13 @@ describe WelcomeController do
     before { get :changes}
     it { should respond_with(:success) }
   end
+
+  describe "GET 'site_map'" do
+    before { create :main_site }
+    before { get 'site_map', { format: :xml} }
+    it do 
+      expect(response).to be_success
+      expect(response.headers['Content-Type']).to include 'application/xml'
+    end
+  end
 end
