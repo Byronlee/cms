@@ -4,3 +4,4 @@
 //= require twitter/bootstrap
 //= require jquery-fileupload/basic
 //= require_tree ./javascripts
+//= require highcharts
