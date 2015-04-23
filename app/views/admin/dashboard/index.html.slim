@@ -105,3 +105,9 @@ div.container-fluid.dashboard
         tbody
           = render @posts, link_to_published:true
 
+javascript:
+  sessions = JSON.parse("#{@sessions}")
+  users_data = JSON.parse("#{@users_data}")
+  comments_data = JSON.parse("#{@comments_data}")
+  posts_data = JSON.parse("#{@posts_data}")
+  date_range = JSON.parse('#{raw @date_range}')

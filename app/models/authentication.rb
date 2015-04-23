@@ -13,6 +13,7 @@
 
 class Authentication < ActiveRecord::Base
   belongs_to :user
+  by_star_field 'updated_at'
   store :raw, accessors: [:info], coder: JSON
 
   validates_uniqueness_of :provider, scope: :user_id
