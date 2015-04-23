@@ -43,7 +43,7 @@ class ::V2::Base < Grape::API
   mount ::V2::Controllers::Search
 
   add_swagger_documentation(
-    api_version: 'v2', mount_path: 'swagger_doc',
+    api_version: 'v2', mount_path: 'doc',
     hide_documentation_path: true, include_base_url: false
   )
 

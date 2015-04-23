@@ -17,8 +17,8 @@
 /tmp
 /public/uploads
 /public/assets
+/public/logger
 /coverage
-/public
 /log
 /spec/coverage/
 

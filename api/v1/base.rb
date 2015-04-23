@@ -44,7 +44,7 @@ class ::V1::Base < Grape::API
   mount ::V1::Controllers::Weibo
 
   add_swagger_documentation(
-    api_version: 'v1', mount_path: 'swagger_doc',
+    api_version: 'v1', mount_path: 'doc',
     hide_documentation_path: true, include_base_url: false
   )
 
