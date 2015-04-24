@@ -68,6 +68,10 @@ module ApplicationHelper
     return ""
   end
 
+  def check_mobile
+    request.user_agent =~ /Mobile|webOS/
+  end
+
   private
 
   def relative_time(raw_time)

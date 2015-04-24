@@ -35,7 +35,7 @@
             </div>
           </article>
         <% elsif item["position"] != nil %>
-          <%= raw item["content"] %>
+          <%= raw item["content"] if !check_mobile %>
         <% end %>
       <% end if posts_with_ads.present? %>
     </div>
