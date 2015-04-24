@@ -5,8 +5,8 @@ jQuery ->
     console.log(range)
     $('.posts').highcharts
       chart: type: 'line'
-      title: text: '最近10天各资源趋势图'
-      subtitle: text: "今日登录用户: " + sessions
+      title: text: '资源趋势图'
+      subtitle: text: "最近两周数据统计"
       xAxis: categories: range.concat(['前天', '昨天', '今天'])
       yAxis: title: text: '每日新增数量'
       plotOptions: line:

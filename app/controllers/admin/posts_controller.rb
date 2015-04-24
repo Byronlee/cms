@@ -1,6 +1,6 @@
 class Admin::PostsController < Admin::BaseController
   load_and_authorize_resource
-  before_action :check_column_post, only: [:index, :reviewings, :myown, :draft]
+  before_action :check_posts, only: [:index, :reviewings, :myown, :draft]
 
   cache_sweeper :post_sweeper, :only => [:update, :do_publish, :undo_publish]
 
@@ -81,7 +81,12 @@ class Admin::PostsController < Admin::BaseController
     -> (posts, page_num) { posts.includes({ author: :krypton_authentication }, :column, :tags).page page_num }
   end
 
-  def check_column_post
-    @posts = Column.find!(params[:column_id]).posts rescue Post
+  def check_posts
+    begin
+      @posts = Column.find(params[:column_id]).posts if params[:column_id].present?
+      @posts = User.find(params[:user_id]).posts if params[:user_id].present?
+    rescue 
+      return Post
+    end
   end
 end

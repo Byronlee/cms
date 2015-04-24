@@ -30,6 +30,7 @@ Rails.application.routes.draw do
         put :speak
         put :shutup
       end
+      resources :posts, only: [:index], on: :collection
     end
     resources :ads
     resources :head_lines, except: [:show] do

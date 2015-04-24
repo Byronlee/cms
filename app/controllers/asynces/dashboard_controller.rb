@@ -14,7 +14,6 @@ class Asynces::DashboardController < ApplicationController
 
   # TODO: 优化查询语句
   # TODO: 补充测试
-  # TODO: 润色异步填充效果
   def chart_data
     [Post, User, Comment].map do | obj | 
        time_interval.inject([]) { |sum, day| sum << obj.by_day(day).count }
