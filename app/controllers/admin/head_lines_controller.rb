@@ -2,11 +2,11 @@ class Admin::HeadLinesController < Admin::BaseController
   load_and_authorize_resource
 
   def index
-    @head_lines = HeadLine.published.order('updated_at desc').includes(user: :krypton_authentication).page params[:page]
+    @head_lines = HeadLine.published.order('order_num desc').includes(user: :krypton_authentication).page params[:page]
   end
 
   def archives
-    @head_lines = HeadLine.archived.order('updated_at desc').includes(user: :krypton_authentication).page params[:page]
+    @head_lines = HeadLine.archived.order('order_num desc').includes(user: :krypton_authentication).page params[:page]
   end
 
   def update
