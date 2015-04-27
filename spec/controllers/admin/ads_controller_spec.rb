@@ -41,8 +41,8 @@ describe Admin::AdsController do
       end
 
       it "returns back for position being uniquee" do
-        create :ad2
-        patch :update, id: ad, ad: { :position => attributes_for(:ad2)[:position] }
+        ad2 = create(:ad)
+        patch :update, id: ad, ad: { :position => ad2.position }
         assigns(:ad).errors.empty?.should_not be_true
         assigns(:ad).errors[:position].empty?.should_not be_true
         assigns(:ad).errors[:content].empty?.should be_true
@@ -56,7 +56,7 @@ describe Admin::AdsController do
     context "when params is valid" do
       it "returns http rediect" do
         expect do
-          post 'create', :ad => attributes_for(:ad2)
+          post 'create', :ad => attributes_for(:ad)
         end.to change(Ad, :count).by(1)
         expect(response.status).to eq(302)
         expect(response).to redirect_to(admin_ads_path)
@@ -75,8 +75,8 @@ describe Admin::AdsController do
       end
 
       it "returns back for url being uniquee" do
-        create :ad2
-        post 'create', :ad => attributes_for(:ad2)
+        ad = create :ad
+        post 'create', :ad => {:position => ad.position, :content => 'new content'}
         assigns(:ad).errors.empty?.should_not be_true
         assigns(:ad).errors[:position].empty?.should_not be_true
         assigns(:ad).errors[:content].empty?.should be_true

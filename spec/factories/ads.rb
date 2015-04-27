@@ -16,9 +16,4 @@ FactoryGirl.define do
     sequence(:position) { |n| n }
     content "ad first"
   end
-
-  factory :ad2, class: Ad do
-    position 10
-    content "ad second"
-  end
 end
