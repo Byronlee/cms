@@ -16,6 +16,7 @@ class Ability
 
   def define_asynces_ability(user)
     public_page_ability(user)
+    admin_page_ability(user)
   end
 
   # 用户界面权限
