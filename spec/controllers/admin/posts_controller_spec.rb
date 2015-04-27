@@ -184,6 +184,22 @@ describe Admin::PostsController do
     end
   end
 
+  describe 'published post cannot vist publish action' do
+    it do
+      p_post = create :post, :published
+      get :publish, id: p_post.id
+      expect(response).to redirect_to edit_admin_post_url(p_post)
+    end
+  end
+
+  describe 'not published post cannot vist edit action' do
+    it do
+      p_post = create :post, :reviewing
+      get :edit, id: p_post.id
+      expect(response).to redirect_to publish_admin_post_path(p_post)
+    end
+  end
+
   describe "post 'toggle_tag'" do
     before do
       @post = create :post, :published

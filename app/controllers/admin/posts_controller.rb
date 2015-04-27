@@ -28,11 +28,11 @@ class Admin::PostsController < Admin::BaseController
   end
 
   def publish
-    redirect_to root_url if @post.published?
+    return redirect_to edit_admin_post_url(@post) if @post.published?
   end
 
   def edit
-    redirect_to root_url unless @post.published?
+    return redirect_to publish_admin_post_path(@post) unless @post.published?
   end
 
   def show
