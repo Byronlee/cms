@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   authorize_resource
+  load_resource :only => :bdnews
 
   def show
     @post = Post.find_by_url_code!(params[:url_code])
@@ -14,6 +15,11 @@ class PostsController < ApplicationController
 
   def feed
     @feeds = Post.published.order('published_at desc').limit(20)
+  end
+
+  def bdnews
+    @post = Post.find_by_url_code!(params[:url_code])
+    render 'bdnews', layout: false
   end
 
   def feed_bdnews

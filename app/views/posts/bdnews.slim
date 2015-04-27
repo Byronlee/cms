@@ -1,0 +1,46 @@
+doctype html
+html
+  head
+    meta[charset="utf-8"]
+    title = @post.title
+    meta[name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"]
+    meta[name="format-detection" content="telephone=no"]
+    link[rel="stylesheet" type="text/css" href="http://m.baidu.com/static/news/sn_app_detail/css/smartnews-aio.css"]
+    style[type="text/css"]
+      |#intercom-container{display: none;}
+  body
+    #wrapper
+      .top-banner
+        img[src="http://d.36kr.com/assets/36kr_2x.png"]
+        .back-btn
+      header
+        #h_text
+          h1 = @post.title
+          #h_sub_title
+            span#h_date = @post.created_at
+      #content
+         = raw bdnews_sanitize_tags @post.content
+      #vote.vote
+        div
+          .up-box
+            span
+              em
+                | 746
+              b
+                | +1
+        div
+          .down-box
+            span
+              em
+                | 306618
+              b
+                | +1
+      section#tags.tail-section
+        h2
+          | 相关话题
+        ul
+      section#related.tail-section
+        h2
+          | 推荐新闻
+        ul
+    script[type="text/javascript" src="http://m.baidu.com/static/news/sn_app_detail/js/smartnews-aio.js"]

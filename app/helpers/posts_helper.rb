@@ -21,6 +21,15 @@ module PostsHelper
     sanitize(text, tags: tags, attributes: attributes)
   end
 
+  def bdnews_sanitize_tags(text)
+    content = remove_blank_lines(text)
+    content = sanitize(content, tags: %w(p, b, img), attributes: %w(class data-url src  data-videourl))
+    content = content.gsub('src', 'data-url').gsub('fr-fin fr-dib fr-tag', 'lazy-load')
+    content = content.gsub(/<img.*?">/) { |match| '</p><p class="p-image">' + match + '</p><p class="p-text">' }
+    content = '<p class="p-text">' + content + '</p>'
+    content.to_s.gsub('<p class="p-text"></p>', '')
+  end
+
   def remove_blank_lines(text)
     text.to_s.gsub('<p><br></p>', '')
   end
