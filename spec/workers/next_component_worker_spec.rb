@@ -14,4 +14,3 @@ describe NextComponentWorker, sidekiq: :fake do
     end
   end
 end
-
