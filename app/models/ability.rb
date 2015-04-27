@@ -1,16 +1,54 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(user, _controller_namespace)
-    return anonymous if user.blank?
-    public_ability(user)
+  def initialize(user, controller_namespace)
+    send "define_#{controller_namespace.downcase}_ability", user
+  end
+
+  def define__ability(user)
+    public_page_ability(user)
+    admin_page_ability(user)
+  end
+
+  def define_admin_ability(user)
+    admin_page_ability(user)
+  end
+
+  def define_asynces_ability(user)
+    public_page_ability(user)
+  end
+
+  # 用户界面权限
+  def public_page_ability(user)
+    anonymous
+    return unless user
+    can :create, Comment unless user.muted?
+    can :preview, Post
+  end
+
+  # 管理界面权限
+  def admin_page_ability(user)
+    return unless user
+
+    can [:edit, :update], User, :id => user.id
+    can :manage, Favorite, :user_id => user.id
+
     send user.role.to_sym, user
   end
 
+  # 未登录
+  def anonymous
+    can :read, :welcome
+    can :index, :welcome
+    can :read, [Ad, Post, Column, Page, Newsflash, User]
+    can [:news, :feed, :hots, :today_lastest, :feed_bdnews], Post
+    can [:read, :execllents], Comment
+    can :changes, :welcome
+    cannot :create, Comment
+  end
+
   # 读者
-  def reader(_user)
-    # 不能进入后台
-    # 可以评论
+  def reader(user)
   end
 
   # 投稿者
