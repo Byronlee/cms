@@ -27,6 +27,14 @@ class Admin::PostsController < Admin::BaseController
     respond_with @post, location: admin_posts_path
   end
 
+  def publish
+    redirect_to root_url if @post.published?
+  end
+
+  def edit
+    redirect_to root_url unless @post.published?
+  end
+
   def show
     @post = Post.includes(:author, :column).find(params[:id])
     @host = request.host_with_port

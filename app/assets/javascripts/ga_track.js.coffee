@@ -41,3 +41,8 @@ jQuery ->
   #客户端下载
   $('#app_download_top_nav').click       -> ga('send', 'event', 'link', 'app_download#top_nav',             ga_user_id)
   $('#app_download_footer').click        -> ga('send', 'event', 'link', 'app_download#footer',              ga_user_id)
+
+  # 融标签的相关统计
+  $('.compiled.rong-company-link').click -> ga('send', 'event', 'link', 'rong-company-link#click',          ga_user_id)
+  $('.compiled.rong-company-link').hover -> ga('send', 'event', 'hover', 'rong-company-link#hover',         ga_user_id)
+

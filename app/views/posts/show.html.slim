@@ -31,4 +31,6 @@
   = render_cell :sidebar, :ad_job
   = render_cell :sidebar, :ad_bottom, position: :post_show
 
-script src="http://krplus-cdn.b0.upaiyun.com/common-module/company-bubble/main.js"
+javascript:
+  if(!window.mobilecheck())
+    document.write('<script src="http://krplus-cdn.b0.upaiyun.com/common-module/company-bubble/main.js">');
