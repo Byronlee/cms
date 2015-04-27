@@ -12,7 +12,8 @@ module V2
           optional :per_page,  type: Integer, default: 30, desc: '每页记录数'
         end
         get 'index' do
-          @columns = Column.order(id: :desc)
+          @columns = Column.where('order_num > 0')
+            .order(order_num: :desc)
             .page(params[:page]).per(params[:per_page])
           present @columns, with: Entities::Column
         end
