@@ -10,7 +10,8 @@ tr
   td.text_center
     span class="badge badge-info"
       = column.posts_count || 0
-  td.text_center = column.created_at.to_s(:db)
+  td.text_center = column.order_num
+  td.text_center = time_ago_in_words column.created_at
   td.text_center
     - if can? :edit, column
       a title="编辑" href= edit_admin_column_path(column)
