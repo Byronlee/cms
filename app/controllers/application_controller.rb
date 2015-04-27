@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   prepend_before_action :redirect_to_no_subdomain # i'll run first
 
   def redirect_to_no_subdomain
-    if request.path !~ /^(api|feed).*/ && (subdomain = request.subdomain).present? && subdomain == 'www'
+    if request.path !~ /^\/(api|feed).*/ && (subdomain = request.subdomain).present? && subdomain == 'www'
       redirect_to request.original_url.sub("#{subdomain}.36kr.com", '36kr.com')
     end
   end
