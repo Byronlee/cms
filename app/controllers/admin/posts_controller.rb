@@ -1,4 +1,3 @@
-
 class Admin::PostsController < Admin::BaseController
   load_and_authorize_resource
   before_action :check_column_post, only: [:index, :reviewings, :myown, :draft]
@@ -46,8 +45,9 @@ class Admin::PostsController < Admin::BaseController
   end
 
   def do_publish
-    @post.publish if params[:operate_type].eql?('publish')
-    @post.update!(post_params)
+    @post.assign_attributes(post_params)
+    @post.activate_publish_schedule if params[:operate_type].eql?('publish')
+    @post.save!
     redirect_to reviewings_admin_posts_path, :notice => '操作成功!'
   end
 
@@ -71,6 +71,7 @@ class Admin::PostsController < Admin::BaseController
       :column_id, :title,
       :content, :remark,
       :slug, :summary,
+      :will_publish_at,
       :title_link, :cover, :tag_list,
       :source_type, :source_urls
     )
