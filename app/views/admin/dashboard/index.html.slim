@@ -1,92 +1,21 @@
 div.container-fluid.dashboard
-  .col-lg-6.border_bottom.border_right
-    - if can? :read, Post
-      a.dashboard_link href= admin_posts_path
-        .main
-          span.first
-            i.fa.fa-file-text &nbsp;
-            = Post.today.count
-          span style="font-size: 26px;"
-            | &nbsp;/
-            = Post.all.count
-          span style="font-size: 17px;"
-            | / 文章
-    - else
-      .main
-        span.first
-          i.fa.fa-file-text &nbsp;
-          = Post.today.count
-        span style="font-size: 26px;"
-          | &nbsp;/
-          = Post.all.count
-        span style="font-size: 17px;"
-          | / 文章
+  .col-lg-6.border_right async='true' async-url="/asynces/dashboard/pandect"
+    .spinner
+      .double-bounce1
+      .double-bounce2
+  .col-lg-6 async='true' async-url="/asynces/dashboard/chats" async-callback="window.draw_chats()"
+    .spinner
+      .double-bounce1
+      .double-bounce2
+  .col_main style="margin-top: 270px;"
+    .main_hd
+      table.spt class="table" style="float: left;"
+        thead
+          tr role="row" style="border-bottom: 5px solid #ddd;"
+            th style="width:70%" 今日文章
+            th.text_center style="width:10%" 发布时间
+            th.text_center style="width:11%" 操作&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            th style="width:5%" 作者
+        tbody
+          = render @posts, link_to_published:true
 
-  .col-lg-6.border_bottom
-    - if can? :read, Comment
-      a.dashboard_link href= admin_comments_path
-        .main
-          span.first
-            i.fa.fa-wechat &nbsp;
-            = Comment.today.count
-          span style="font-size: 26px;"
-            | &nbsp;/
-            = Comment.count
-          span style="font-size: 17px;"
-            | / 评论
-    - else
-      .main
-        span.first
-          i.fa.fa-wechat &nbsp;
-          = Comment.today.count
-        span style="font-size: 26px;"
-          | &nbsp;/
-          = Comment.count
-        span style="font-size: 17px;"
-          | / 评论
-
-  .col-lg-6.border_right
-    - if can? :read, Newsflash
-      a.dashboard_link href= admin_newsflashes_path
-        .main
-          span.first
-            i.fa.fa-flickr &nbsp;
-            = Newsflash.today.count
-          span style="font-size: 26px;"
-            | &nbsp;/
-            = Newsflash.count
-          span style="font-size: 17px;"
-            | / 快讯
-    - else
-      .main
-        span.first
-          i.fa.fa-flickr &nbsp;
-          = Newsflash.today.count
-        span style="font-size: 26px;"
-          | &nbsp;/
-          = Newsflash.count
-        span style="font-size: 17px;"
-          | / 快讯
-
-  .col-lg-6
-    - if can? :read, User
-      a.dashboard_link href= admin_users_path
-        .main
-          span.first
-            i.fa.fa-users &nbsp;
-            = User.today.count
-          span style="font-size: 26px;"
-            | &nbsp;/
-            = User.count
-          span style="font-size: 17px;"
-            | / 用户
-    - else
-      .main
-        span.first
-          i.fa.fa-users &nbsp;
-          = User.today.count
-        span style="font-size: 26px;"
-          | &nbsp;/
-          = User.count
-        span style="font-size: 17px;"
-          | / 用户

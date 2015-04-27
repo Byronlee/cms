@@ -3,4 +3,9 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require jquery-fileupload/basic
-//= require_tree ./javascripts
+//= require ./javascripts/bootstrap
+//= require ./javascripts/jquery.multi-select
+//= require ./javascripts/jquery.quicksearch
+//= require ./javascripts/open
+//= require ./javascripts/charts
+//= require highcharts

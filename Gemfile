@@ -60,6 +60,7 @@ gem 'slim-rails'
 gem 'polymer-rails', '~> 0.2.8'
 gem 'acts_as_graph_object'
 # gem 'google-analytics-rails'
+gem "highcharts-rails", "~> 3.0.0"
 gem 'cells'
 gem "jquery-fileupload-rails"
 

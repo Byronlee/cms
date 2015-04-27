@@ -1,0 +1,10 @@
+.pull-right style="  margin-top: -18px !important; color: #aaa;"
+   span 
+     | 今日登录用户：
+     = @sessions
+.posts
+javascript:
+  users_data = JSON.parse("#{@users_data}")
+  comments_data = JSON.parse("#{@comments_data}")
+  posts_data = JSON.parse("#{@posts_data}")
+  date_range = JSON.parse('#{raw @date_range}')

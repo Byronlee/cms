@@ -205,6 +205,8 @@ GEM
       rspec (>= 2.14, < 4.0)
     hashie (3.3.2)
     hashr (0.0.22)
+    highcharts-rails (3.0.10)
+      railties (>= 3.1)
     hike (1.2.3)
     hitimes (1.2.2)
     http-cookie (1.0.2)
@@ -580,6 +582,7 @@ DEPENDENCIES
   guard-livereload
   guard-rspec
   hashie (~> 3.3.2)
+  highcharts-rails (~> 3.0.0)
   httparty
   intercom-rails
   jbuilder (~> 2.0)

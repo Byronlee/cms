@@ -1,0 +1,91 @@
+.col-lg-6.border_bottom.border_right
+  - if can? :read, Post
+    a.dashboard_link href= admin_posts_path
+      .main
+        span.first
+          i.fa.fa-file-text &nbsp;
+          = Post.today.count
+        span
+          | &nbsp;/
+          = Post.all.count
+        span
+          | / 文章
+  - else
+    .main
+      span.first
+        i.fa.fa-file-text &nbsp;
+        = Post.today.count
+      span
+        | &nbsp;/
+        = Post.all.count
+      span
+        | / 文章
+
+.col-lg-6.border_bottom
+  - if can? :read, Comment
+    a.dashboard_link href= admin_comments_path
+      .main
+        span.first
+          i.fa.fa-wechat &nbsp;
+          = Comment.today.count
+        span
+          | &nbsp;/
+          = Comment.count
+        span
+          | / 评论
+  - else
+    .main
+      span.first
+        i.fa.fa-wechat &nbsp;
+        = Comment.today.count
+      span
+        | &nbsp;/
+        = Comment.count
+      span
+        | / 评论
+
+.col-lg-6.border_right
+  - if can? :read, Newsflash
+    a.dashboard_link href= admin_newsflashes_path
+      .main
+        span.first
+          i.fa.fa-flickr &nbsp;
+          = Newsflash.today.count
+        span
+          | &nbsp;/
+          = Newsflash.count
+        span
+          | / 快讯
+  - else
+    .main
+      span.first
+        i.fa.fa-flickr &nbsp;
+        = Newsflash.today.count
+      span
+        | &nbsp;/
+        = Newsflash.count
+      span
+        | / 快讯
+
+.col-lg-6
+  - if can? :read, User
+    a.dashboard_link href= admin_users_path
+      .main
+        span.first
+          i.fa.fa-users &nbsp;
+          = User.today.count
+        span
+          | &nbsp;/
+          = User.count
+        span
+          | / 用户
+  - else
+    .main
+      span.first
+        i.fa.fa-users &nbsp;
+        = User.today.count
+      span
+        | &nbsp;/
+        = User.count
+      span
+        | / 用户

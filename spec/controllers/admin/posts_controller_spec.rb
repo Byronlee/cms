@@ -61,7 +61,7 @@ describe Admin::PostsController do
       get 'myown', column_id: @post1.column.id
       response.should be_success
       expect(response).to render_template('admin/posts/myown')
-      expect(assigns(:posts).map(&:author)).to eq [@author, @author]
+      expect(assigns(:posts).map(&:author)).to eq [@author]
     end
   end
 

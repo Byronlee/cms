@@ -12,6 +12,9 @@ tr
           = link_to post.column.try(:name), myown_admin_posts_path(column_id: post.column)
         - else
           = link_to post.column.try(:name), admin_column_posts_path(post.column)
+      span 
+        | 作者: &nbsp;
+        = link_to post.author.name, admin_user_posts_path(post.author)
       span
         | 状态: &nbsp;
         = display_state(post.state)
@@ -45,6 +48,6 @@ tr
         i.fa.fa-power-off
   td.avatar.text_center[title=post.author.try(:display_name) data-toggle='tooltip']
     - if (can? :manage, User)&post.author.present?
-      = link_to image_tag(post.author.try(:avatar), alt: '', class: 'spt'), edit_admin_user_path(post.author)
+      = link_to image_tag(post.author.try(:avatar), alt: '', class: 'spt'), edit_admin_user_path(post.author), target: '_blank'
     - else
       = image_tag post.author.try(:avatar), alt: '', class: 'spt'
