@@ -25,8 +25,12 @@ tr
       span
         | 浏览量: &nbsp;
         = post.cache_views_count
+      span
+        | 创建: &nbsp;
+        i.fa.fa-clock-o style="color: #ddd;" data-toggle="tooltip" title="#{time_ago_in_words post.created_at}"
   td.text_center[title=post.created_at data-toggle='tooltip']
-    = time_ago_in_words post.created_at rescue ''
+      - wps = post.will_publish_at.past? ? '之前' : '之后' rescue ''
+      = time_ago_in_words(post.will_publish_at) + wps rescue ''
   td.text_center
     - if can? :do_publish, post
       = link_to publish_admin_post_path(post), 'title' => "快速发布"

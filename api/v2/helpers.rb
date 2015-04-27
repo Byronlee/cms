@@ -84,7 +84,7 @@ module V2
 
     def coming_out(post, auth)
       post.review
-      post.publish if auth.present? and auth.user.editable
+      post.activate_publish_schedule if auth.present? and auth.user.editable
       post
     end
   end

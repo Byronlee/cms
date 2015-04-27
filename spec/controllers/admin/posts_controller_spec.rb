@@ -127,16 +127,14 @@ describe Admin::PostsController do
 
     it "published post cannot publish, return http false" do
       p_post = create :post, :published
-      expect do
-        post :do_publish, id: p_post.id, operate_type: 'publish', post: attributes_for(:post)
-      end.to raise_error(AASM::InvalidTransition)
+      post :do_publish, id: p_post.id, operate_type: 'publish', post: attributes_for(:post)
+      expect(response).to redirect_to reviewings_admin_posts_path
     end
 
-    it "draft post cannot publish, return http false" do
+    it "draft post can publish, return http true" do
       p_post = create :post, :draft
-      expect do
-        post :do_publish, id: p_post.id, operate_type: 'publish', post: attributes_for(:post)
-      end.to raise_error(AASM::InvalidTransition)
+      post :do_publish, id: p_post.id, operate_type: 'publish', post: attributes_for(:post)
+      expect(response).to redirect_to reviewings_admin_posts_path
     end
 
     it 'reviewing post can correct publish' do
@@ -146,13 +144,31 @@ describe Admin::PostsController do
       expect(response).to redirect_to(reviewings_admin_posts_path)
     end
 
-  describe "GET 'draft'" do
-    let!(:comment){ create(:post, :drafted) }
+    it 'publish post with will_publish_at' do
+      p_post = create :post, :reviewing
+      post :do_publish, id: p_post.id, operate_type: 'publish', post: attributes_for(:post).merge(will_publish_at: 5.seconds.from_now)
+      expect(assigns(:post).published?).to be false
+      expect(assigns(:post).will_publish_at).not_to eq ''
+      expect(assigns(:post).jid).not_to eq ''
+      expect(response).to redirect_to(reviewings_admin_posts_path)
+    end
 
-    context "contributor can access draft page"
+    it 'update will_publish_at' do
+      p_post = create :post, :reviewing
+      post :do_publish, id: p_post.id, operate_type: 'publish', post: attributes_for(:post).merge(will_publish_at: 10.seconds.from_now)
+      jid = assigns(:post).jid
+      post :do_publish, id: p_post.id, operate_type: 'publish', post: attributes_for(:post).merge(will_publish_at: 5.seconds.from_now)
+      expect(assigns(:post).jid).not_to eq jid
+    end
+  end
+
+  describe "GET 'draft'" do
+    let!(:comment) { create(:post, :drafted) }
+
+    context "contributor can access draft page" do
       login_user :contributor
 
-      before{ get 'draft' }
+      before { get 'draft' }
       it do
         should respond_with(:success)
         should render_template(:draft)
@@ -181,6 +197,22 @@ describe Admin::PostsController do
       post :undo_publish, id: p_post.id
       expect(assigns(:post).reviewing?).to be true
       expect(response).to redirect_to(reviewings_admin_posts_path)
+    end
+  end
+
+  describe 'published post cannot vist publish action' do
+    it do
+      p_post = create :post, :published
+      get :publish, id: p_post.id
+      expect(response).to redirect_to edit_admin_post_url(p_post)
+    end
+  end
+
+  describe 'not published post cannot vist edit action' do
+    it do
+      p_post = create :post, :reviewing
+      get :edit, id: p_post.id
+      expect(response).to redirect_to publish_admin_post_path(p_post)
     end
   end
 

@@ -156,6 +156,7 @@ ActiveRecord::Schema.define(version: 20150422052958) do
     t.text     "remark"
     t.text     "extra"
     t.string   "source_type"
+    t.integer  "favorites_count"
     t.string   "company_keywords", default: [], array: true
   end
 

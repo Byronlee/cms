@@ -4,6 +4,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find_by_url_code!(params[:url_code])
+    return preview_post_by_key_path(key: @post.key) unless @post.published?
     @post.increase_views_count
   end
 
@@ -29,3 +30,4 @@ class PostsController < ApplicationController
     response.headers['content-type'] = 'application/xml'
   end
 end
+

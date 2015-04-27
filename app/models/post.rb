@@ -50,7 +50,9 @@ class Post < ActiveRecord::Base
   enumerize :source_type, in: [:original, :translation, :reference], default: :original
 
   typed_store :extra do |s|
-    s.text :source_urls, default: ""
+    s.text :source_urls, default: ''
+    s.datetime :will_publish_at, default: ''
+    s.string :jid,  default: ''
   end
 
   # mount_uploader :cover, BaseUploader
@@ -79,6 +81,15 @@ class Post < ActiveRecord::Base
   def check_company_keywords
     keywords = content.scan(/<u>(.*?)<\/u>/).flatten.select { |c| c.length < 10 }
     self.company_keywords = keywords if keywords.present?
+  end
+
+  def activate_publish_schedule
+    return true if self.published?
+    return self.publish if self.will_publish_at.blank?
+    Sidekiq::Queue.new("krx2015").each do |job|
+      job.delete if job.jid == self.jid
+    end
+    self.jid = PostPublishWorker.perform_at(self.will_publish_at, self.id)
   end
 
   scope :published_on, -> (date) {
@@ -130,7 +141,7 @@ class Post < ActiveRecord::Base
     end
 
     event :publish do
-      transitions :from => [:reviewing], :to => :published
+      transitions :from => [:reviewing, :drafted], :to => :published
       after do
         self.published_at = Time.now
       end
