@@ -117,6 +117,9 @@
                     <li>
                       <%= link_to "我的文章", myown_admin_posts_path, :target => "_blank" if can? :new, Post %>
                     </li>
+                    <li>
+                      <%= link_to "我的草稿", draft_admin_posts_path, :target => "_blank" if can? :new, Post %>
+                    </li>
                      <li>
                       <%= link_to "我的收藏", admin_favorites_path, :target => "_blank" if can? :reader, Favorite %>
                     </li>
