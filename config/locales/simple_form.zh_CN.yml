@@ -43,7 +43,7 @@ zh-CN:
         cover: 专栏图像
         icon:  专栏图标
         disable_with: '正在提交...'
-        order_num: '权重'
+        order_num: '序号'
       user:
         role: 角色
         name: 用户昵称
