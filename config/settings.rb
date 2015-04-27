@@ -87,3 +87,5 @@ settings.favorite_beggin_time = '2015-03-28 23:59:59.000000'
 settings.page_views = { persist: true }
 
 settings.default_info_flow = '主站'
+
+settings.site_map = { posts_count: 2000 }

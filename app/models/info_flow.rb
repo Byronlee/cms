@@ -36,6 +36,12 @@ class InfoFlow < ActiveRecord::Base
     true
   end
 
+  def posts(options = {})
+    options[:page_num] ||= 1
+    options[:per_page] ||= Settings.site_map.posts_count
+    Post.where(:column_id => columns).published.includes(:author, :column).order('published_at desc').page(options[:page_num]).per(options[:per_page])
+  end
+
   private
 
   def get_associations_of(posts)
