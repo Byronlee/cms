@@ -3,7 +3,7 @@ xml.rss :version => "2.0" do
   xml.channel do
     xml.title t('site_name')
     xml.language 'zh-cn'
-    xml.pubDate @feeds.first.published_at
+    xml.pubDate @feeds.first && @feeds.first.published_at
     xml.generator '36氪-关注互联网创业'
     xml.description t('site_description')
     xml.link t('site_link')
