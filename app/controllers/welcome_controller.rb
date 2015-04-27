@@ -15,6 +15,13 @@ class WelcomeController < ApplicationController
     render :index
   end
 
+  def archives
+    @posts = Post.published.by_year(params[:year])
+    @posts = @posts.by_month(params[:month]) if params[:month].present?
+    @posts = @posts.by_day("#{params[:year]}-#{params[:month]}-#{params[:day]}") if params[:day].present?
+    @posts = @posts.order('published_at desc').page params[:page]
+  end
+
   def changes
     change_content = File.read(File.expand_path('../../../doc/changes.md', __FILE__))
     @changes = GitHub::Markdown.render_gfm(change_content).html_safe

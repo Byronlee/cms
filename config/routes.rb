@@ -109,6 +109,7 @@ Rails.application.routes.draw do
   match '/feed(/:params)' => 'posts#feed', via: :get, defaults: { format: :rss }
   match '/tag/:tag', :controller => 'tags', :action => 'show', via: :get
   match '/clipped/:year/:month/:day', :controller => 'newsflashes', :action => 'index', via: :get, as: :newsflashes_of_day
+  match '/:year(/:month)(/:day)' => "welcome#archives", via: :get, as: :post_archives
   match '/clipped/:id', :controller => 'newsflashes', :action => 'show', via: :get, as: :newsflash_show
   match '/changes', :controller => 'welcome', :action => 'changes', via: :get, as: :changes
 
