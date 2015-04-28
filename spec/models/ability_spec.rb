@@ -26,6 +26,7 @@ describe Ability do
       should be_able_to :news, Post
       should be_able_to :feed, Post
       should be_able_to :hots, Post
+      should be_able_to :archives, Post
       should be_able_to :today_lastest, Post
       should be_able_to :feed_bdnews, Post
 

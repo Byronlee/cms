@@ -39,9 +39,9 @@ class Ability
 
   # 未登录
   def anonymous
-    can [:read, :site_map, :archives, :changes], :welcome
+    can [:read, :site_map, :changes], :welcome
     can :read, [Ad, Post, Column, Page, Newsflash, User]
-    can [:news, :feed, :hots, :today_lastest, :feed_bdnews, :bdnews], Post
+    can [:news, :feed, :hots, :today_lastest, :feed_bdnews, :bdnews, :archives], Post
     can [:read, :execllents], Comment
     cannot :create, Comment
   end

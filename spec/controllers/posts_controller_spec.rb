@@ -43,6 +43,30 @@ describe PostsController do
     end
   end
 
+  describe "GET 'archives'" do
+    before :each do
+      create :post, :published
+    end
+
+    it do
+      get :archives, :year => Date.today.year
+      expect(response).to be_success
+      expect(assigns(:posts).length).to eq 1
+    end
+
+    it do
+      get :archives, :year => Date.today.year, :month => Date.today.month
+      expect(response).to be_success
+      expect(assigns(:posts).length).to eq 1
+    end
+
+    it do
+      get :archives, :year => Date.today.year, :month => Date.today.month, :day => Date.today.day
+      expect(response).to be_success
+      expect(assigns(:posts).length).to eq 1
+    end
+  end
+
   describe "GET 'feed'" do
     context 'rss' do
       it do
