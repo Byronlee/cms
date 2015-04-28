@@ -16,9 +16,8 @@ class PostsController < ApplicationController
 
   def archives
     @posts = Post.published.by_year(params[:year])
-    @posts = @posts.by_month(params[:month]) if params[:month].present?
+    @posts = @posts.by_month(params[:month], year: params[:year]) if params[:month].present?
     @posts = @posts.by_day("#{params[:year]}-#{params[:month]}-#{params[:day]}") if params[:day].present?
-    @posts = @posts.order('published_at desc').page params[:page]
     @posts = @posts.order('published_at desc').includes({ author: :krypton_authentication }, :column).page params[:page]
   end
 
