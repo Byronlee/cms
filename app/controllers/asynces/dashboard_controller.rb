@@ -8,6 +8,7 @@ class Asynces::DashboardController < ApplicationController
   end
 
   def pandect
+    response.headers['Access-Control-Expose-Headers'] = 'Location'
     render 'pandect', layout: false
   end
 
