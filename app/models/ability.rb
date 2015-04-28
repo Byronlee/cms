@@ -101,21 +101,4 @@ class Ability
   def admin(_user)
     can :manage, :all
   end
-
-  def public_ability(user)
-    anonymous
-    can :create, Comment unless user.muted?
-    can :preview, Post
-    can [:edit, :update], User, :id => user.id
-    can :manage, Favorite, :user_id => user.id
-  end
-
-  def anonymous
-    can [:read, :site_map, :archives], :welcome
-    can :read, [Ad, Post, Column, Page, Newsflash, User]
-    can [:news, :feed, :hots, :today_lastest, :feed_bdnews], Post
-    can [:read, :execllents], Comment
-    can :changes, :welcome
-    cannot :create, Comment
-  end
 end
