@@ -126,7 +126,7 @@ Rails.application.routes.draw do
   match '/ad' => redirect('/pages/ads'), via: :get
   match '/account(/*any)' => redirect('/pages/app'), via: :get
   match '/api/site_map.:format' => "welcome#site_map", via: :get, constraints: { format: 'xml' }
-  match '/:year(/:month)(/:day)' => "posts#archives", via: :get, as: :post_archives, constraints: { year: /\d+/ }
+  match '/:year(/:month)(/:day)' => "posts#archives", via: :get, :constraints => { :year => /201\d{1}/, :month => /\d{1,2}/, :day => /\d{1,2}/ }, as: :post_archives
 
   %w(404 500).each do |code|
     match code, to: "errors#render_#{code}", via: [:get, :post, :put, :delete]
