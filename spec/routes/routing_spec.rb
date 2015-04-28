@@ -5,7 +5,7 @@ describe 'Routing' do
 
   describe 'Welcome Controller', :type => :routing do
     context '#changes' do
-      it { expect(get: '/changes').to route_to(controller: 'welcome', action: 'changes') }
+      it { expect(get: '/changelog').to route_to(controller: 'welcome', action: 'changes') }
     end
 
     context '#archive' do
@@ -31,5 +31,5 @@ describe 'Routing' do
       it { expect(get: '/baidu/1234').to route_to(controller: 'posts', action: 'bdnews', url_code: '1234') }
     end
   end
-  
+
 end
