@@ -71,18 +71,15 @@ describe PostsController do
   end
 
    describe "GET 'bdnews'" do
-    context 'rss' do
-      let(:post) { create(:post, :published) }
-      before do
-        post.tag_list = 'bdnews'
-        post.save
-        get 'feed_bdnews', :format => :rss
-      end
-      it do
-        should respond_with(:success)
-        expect(assigns(:feeds)).to eq [post]
-        expect(response.headers['content-type']).to eq 'application/xml'
-      end
+    let(:post) { create(:post, :published) }
+    before do
+      post.tag_list = 'bdnews'
+      post.save
+      get "bdnews", url_code: post.url_code
+    end
+    it do
+      should respond_with(:success)
+      expect(assigns(:post)).to eq post
     end
   end
 end

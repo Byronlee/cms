@@ -25,5 +25,11 @@ describe 'Routing' do
       it { expect(get: '/clipped/1234').to route_to(controller: 'newsflashes', action: 'show', id: '1234') }
     end
   end
+
+  describe 'Posts Controller', :type => :routing do
+    context '#bdnews' do
+      it { expect(get: '/baidu/1234').to route_to(controller: 'posts', action: 'bdnews', url_code: '1234') }
+    end
+  end
   
 end
