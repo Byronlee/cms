@@ -92,7 +92,7 @@ Rails.application.routes.draw do
 
     resources :favorites, only: [:create]
 
-    resources :dashboard, :only => [] do 
+    resources :dashboard, :only => [] do
       get :chats, on: :collection
       get :pandect, on: :collection
     end
@@ -116,7 +116,7 @@ Rails.application.routes.draw do
   match '/tag/:tag', :controller => 'tags', :action => 'show', via: :get
   match '/clipped/:year/:month/:day', :controller => 'newsflashes', :action => 'index', via: :get, as: :newsflashes_of_day
   match '/clipped/:id', :controller => 'newsflashes', :action => 'show', via: :get, as: :newsflash_show
-  match '/changes', :controller => 'welcome', :action => 'changes', via: :get, as: :changes
+  match '/changelog', :controller => 'welcome', :action => 'changes', via: :get, as: :changes
 
   # 兼容老站，添加特定的URL映射
   match '/about' => redirect('/pages/about'), via: :get
