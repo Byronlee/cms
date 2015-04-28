@@ -97,7 +97,10 @@ describe WelcomeController do
 
   describe "GET 'changes'" do
     before { get :changes }
-    it { should respond_with(:success) }
+    it do 
+      should respond_with(:success)
+      expect(assigns[:changes].present?).to eq true
+    end
   end
 
   describe "GET 'site_map'" do
