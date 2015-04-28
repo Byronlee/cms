@@ -10,5 +10,5 @@
         |&nbsp;•&nbsp;
         = smart_time_ago comment.created_at
       .commemt-main
-        p  = raw comment.content
+        p  = sanitize_tags comment.content
       .opts
