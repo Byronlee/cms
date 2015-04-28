@@ -144,11 +144,11 @@ module V1
         end
         get 'export' do
           posts = Post.includes(:comments, author:[:krypton_authentication])
-            .where(state: params[:state]).order(created_at: :desc)
+            .where(state: params[:state]).order(published_at: :desc)
           date = params[:date]
           unless date.blank?
             ym = date.split('-')
-            posts = posts.by_month(ym[1] ,year: ym[0], field: :created_at)
+            posts = posts.by_month(ym[1] ,year: ym[0], field: :published_at)
           end
           posts = posts.page(params[:page]).per(params[:per_page])
           posts_list = []
