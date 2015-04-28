@@ -12,21 +12,21 @@ tr
           = link_to post.column.try(:name), myown_admin_posts_path(column_id: post.column)
         - else
           = link_to post.column.try(:name), reviewings_admin_column_posts_path(post.column)
-      span 
+      span
         | 作者: &nbsp;
-        = link_to post.author.name, admin_user_posts_path(post.author)          
+        = link_to post.author.name, admin_user_posts_path(post.author)
       span
         | 状态: &nbsp;
         = display_state(post.state)
       span
-        | 评论数: &nbsp;
+        | 评论: &nbsp;
         = link_to post.comments_counts.to_i, admin_post_comments_path(post)
       - if post.remark.present?
         span
           | 留言: &nbsp;
           i.fa.fa-lightbulb-o[title=post.remark]
       span
-        | 浏览量: &nbsp;
+        | 浏览: &nbsp;
         = post.cache_views_count
       span
         | 创建: &nbsp;
