@@ -115,9 +115,8 @@ Rails.application.routes.draw do
   match '/feed(/:params)' => 'posts#feed', via: :get, defaults: { format: :rss }
   match '/tag/:tag', :controller => 'tags', :action => 'show', via: :get
   match '/clipped/:year/:month/:day', :controller => 'newsflashes', :action => 'index', via: :get, as: :newsflashes_of_day
-  match '/changes', :controller => 'welcome', :action => 'changes', via: :get, as: :changes
-  match '/:year(/:month)(/:day)' => "welcome#archives", via: :get, as: :post_archives
   match '/clipped/:id', :controller => 'newsflashes', :action => 'show', via: :get, as: :newsflash_show
+  match '/changes', :controller => 'welcome', :action => 'changes', via: :get, as: :changes
 
   # 兼容老站，添加特定的URL映射
   match '/about' => redirect('/pages/about'), via: :get
@@ -127,6 +126,7 @@ Rails.application.routes.draw do
   match '/ad' => redirect('/pages/ads'), via: :get
   match '/account(/*any)' => redirect('/pages/app'), via: :get
   match '/api/site_map.:format' => "welcome#site_map", via: :get, constraints: { format: 'xml' }
+  match '/:year(/:month)(/:day)' => "welcome#archives", via: :get, as: :post_archives
 
   %w(404 500).each do |code|
     match code, to: "errors#render_#{code}", via: [:get, :post, :put, :delete]
