@@ -36,9 +36,9 @@ module V2
           optional :action,  type: String, default: 'down', desc: '下翻页 down 和 上翻页 up'
         end
         get ':cid/page/:pid' do
-          post = Post.find(params[:pid])
-          @posts = Post.where("column_id = :cid and created_at #{action params} :date",
-            cid: post.column_id, date: post.created_at).order(created_at: :desc)
+          post = Post.find_by_url_code(params[:pid])
+          @posts = Post.where("column_id = :cid and published_at #{action params} :date",
+            cid: post.column_id, date: post.created_at).order(published_at: :desc)
           #if @posts.blank?
           #  error!("Post not found", 404)
           #else

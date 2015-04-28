@@ -157,7 +157,7 @@ module V1
              id: post.url_code,
              title: post.title,
              views_count: post.views_count,
-             author: post.author.name,
+             author: post.author.display_name,
              published_at: post.published_at,
              comments_counts: post.comments_counts,
              column_name: post.column_name,
