@@ -5,6 +5,7 @@ zh-CN:
         original: 原创文章
         translation: 来自编译
         reference: 参考来源
+        contribution: 来自投稿
     user:
       role:
         reader: 读者

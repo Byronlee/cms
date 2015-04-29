@@ -110,4 +110,15 @@ describe Post do
       expect(@post.company_keywords).to eq ["sdfasdf", "重构人"]
     end
   end
+
+  describe '#check_source_type' do
+    before do
+      @post = create :post, :published
+      @post.update_attribute(:source_type, 'contribution')
+    end
+
+    it do
+      expect(@post.user_id).to eq 785
+    end
+  end
 end

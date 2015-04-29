@@ -47,7 +47,7 @@ class Post < ActiveRecord::Base
   page_view_field :views_count, interval: 600
   paginates_per 100
 
-  enumerize :source_type, in: [:original, :translation, :reference], default: :original
+  enumerize :source_type, in: [:original, :translation, :reference, :contribution], default: :original
 
   typed_store :extra do |s|
     s.text :source_urls, default: ''
@@ -74,7 +74,7 @@ class Post < ActiveRecord::Base
   after_destroy :update_today_lastest_cache, :update_hot_posts_cache, :update_info_flows_cache,
                 :check_head_line_cache_for_destroy, :update_excellent_comments_cache
   before_create :generate_key
-  before_save :auto_generate_summary
+  before_save :auto_generate_summary, :check_source_type
   after_create :generate_url_code
 
   after_save :check_company_keywords
@@ -276,5 +276,11 @@ class Post < ActiveRecord::Base
      :source_type,
      :md_content,
      :url_code].collect {  |col| eval "#{col}_changed?" }.any?
+  end
+
+  def check_source_type
+    return true unless source_type.contribution?
+    return true if user_id == 785
+    self.user_id = 785
   end
 end

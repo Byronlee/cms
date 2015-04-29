@@ -20,7 +20,7 @@
       = f.input :source_type, allow_blank: false, prompt: false
       = f.input :source_urls, as: :text, id: :source_urls, input_html: { rows: 3, class: 'col-lg-12',
         value: @post.source_urls_array * "\n" },
-        wrapper_html: { class: "#{ "hide" if @post.source_type == "original" }" }
+        wrapper_html: { class: "#{ "hide" if ["original", "contribution"].include? @post.source_type }" }
       div.control-group
         = f.label :column_id
         div.controls
