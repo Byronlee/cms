@@ -1,5 +1,5 @@
 jQuery ->
-  window.draw_chats = ->
+  window.draw_charts = ->
     setInterval("$('text[text-anchor=end]').remove()", 0);
     range = date_range
     console.log(range)

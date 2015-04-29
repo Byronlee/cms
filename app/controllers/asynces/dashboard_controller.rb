@@ -1,9 +1,9 @@
 class Asynces::DashboardController < ApplicationController
-  def chats
+  def charts
     @sessions = Authentication.today.count
     @posts_data, @users_data, @comments_data = chart_data
     @date_range = (9.days.ago.to_date..3.days.ago).map { |d| d.strftime('%d/%m') }
-    render 'chats', layout: false, location: root_path
+    render 'charts', layout: false, location: root_path
   end
 
   def pandect

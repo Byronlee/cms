@@ -93,7 +93,7 @@ Rails.application.routes.draw do
     resources :favorites, only: [:create]
 
     resources :dashboard, :only => [] do
-      get :chats, on: :collection
+      get :charts, on: :collection
       get :pandect, on: :collection
     end
   end
