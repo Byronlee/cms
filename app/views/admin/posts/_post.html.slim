@@ -9,18 +9,18 @@ tr
       span
         | 专栏:&nbsp;
         - unless link_to_published
-          = link_to post.column.try(:name), myown_admin_posts_path(column_id: post.column)
+          = link_to post.column.try(:name), myown_admin_posts_path(column_id: post.column), title: '查看该专栏下所有文章'
         - else
-          = link_to post.column.try(:name), admin_column_posts_path(post.column)
+          = link_to post.column.try(:name), admin_column_posts_path(post.column), title: '查看该专栏下所有文章'
       span
         | 作者: &nbsp;
-        = link_to post.author.name, admin_user_posts_path(post.author)
+        = link_to post.author.name, admin_user_posts_path(post.author), title: '查看该作者所有文章'
       span
         | 状态: &nbsp;
         = display_state(post.state)
       span
         | 评论: &nbsp;
-        = link_to post.comments_counts.to_i, admin_post_comments_path(post)
+        = link_to post.comments_counts.to_i, admin_post_comments_path(post), title: '查看该文章所有评论'
       - if post.remark.present?
         span
           | 留言: &nbsp;
