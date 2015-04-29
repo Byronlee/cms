@@ -14,7 +14,7 @@ tr
           = link_to post.column.try(:name), reviewings_admin_column_posts_path(post.column), title: '查看该专栏下所有文章'
       span
         | 作者: &nbsp;
-        = link_to post.author.name, admin_user_posts_path(post.author), title: '查看该作者所有文章'
+        = link_to post.author.display_name, admin_user_posts_path(post.author), title: '查看该作者所有文章'
       span
         | 状态: &nbsp;
         = display_state(post.state)
