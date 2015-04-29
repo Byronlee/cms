@@ -90,7 +90,7 @@ class User < ActiveRecord::Base
       end
     end
 
-    Settings.default_avatars.sample
+    Settings.default_avatars[id % 3]
   end
 
   def can_publish_comment?
