@@ -1,6 +1,6 @@
 section.single-post-header
   .single-post-header__headline
-    img.image width="620" height="337" alt="" src= high_speed_url(@post.cover_real_url, 'heading')
+    img.image width="620" alt="" src= high_speed_url(@post.cover_real_url, 'heading')
   header.single-post-header__meta
     .single-post__postmeta
       a href="#" #{@post.author.try(:display_name)}
