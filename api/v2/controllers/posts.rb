@@ -49,14 +49,6 @@ module V2
           present @post, with: Entities::Post
         end
 
-        # Get post detail
-        desc 'get post detail for krplus'
-        get "/krplus/:id" do
-          @post = Post.where(url_code: params[:id]).first
-          #error!("Post not found", 404) if @post.blank?
-          present @post, with: Entities::Post
-        end
-
         # Create a new post
         desc 'create a new post'
         params do
