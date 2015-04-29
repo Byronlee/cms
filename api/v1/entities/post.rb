@@ -26,9 +26,9 @@ module V1
       expose :key            , documentation: 'writer使用'
       #expose :remark         , documentation: 'writer备注'
       with_options(format_with: :iso_timestamp) do
-        expose :published_at , documentation: ''
-        #expose :published_at, as: :created_at, documentation: ''
-        expose :created_at, documentation: ''
+#        expose :created_at, documentation: ''
+#        expose :published_at , documentation: ''
+        expose :published_at, as: :created_at, documentation: ''
         expose :updated_at, documentation: ''
       end
     end
