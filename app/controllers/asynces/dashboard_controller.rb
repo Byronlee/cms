@@ -1,15 +1,13 @@
 class Asynces::DashboardController < ApplicationController
   def chats
-    response.headers['Access-Control-Expose-Headers'] = 'Location'
     @sessions = Authentication.today.count
     @posts_data, @users_data, @comments_data = chart_data
     @date_range = (9.days.ago.to_date..3.days.ago).map { |d| d.strftime('%d/%m') }
-    render 'chats', layout: false
+    render 'chats', layout: false, location: root_path
   end
 
   def pandect
-    response.headers['Access-Control-Expose-Headers'] = 'Location'
-    render 'pandect', layout: false
+    render 'pandect', layout: false, location: root_path
   end
 
   private
