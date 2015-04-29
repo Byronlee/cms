@@ -160,12 +160,5 @@ describe API::API do
       end
   end
 
-  describe "GET /api/v2/posts/krplus/:id" do
-      it "should return array size 30" do
-        post = create :post, url_code: 1 ,user_id: 1, state: 'published', published_at: Time.now
-        get "/api/v2/posts/krplus/#{post.url_code}.json?api_key=501Cd1AvUL4AxxVEX60gCFJK7HCd9y8ySDvG29Je"
-        response.status.should == 200
-      end
-  end
 
 end

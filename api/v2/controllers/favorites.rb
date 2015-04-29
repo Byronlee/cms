@@ -19,7 +19,8 @@ module V2
           posts_list = []
           favorites.each do |favorite|
             posts_list << {
-              id: favorite.post.url_code,
+              id: favorite.id,
+              url_code: favorite.post.url_code,
               title: favorite.post.title,
               cover_real_url: favorite.post.cover_real_url,
               created_at: favorite.created_at.iso8601,
