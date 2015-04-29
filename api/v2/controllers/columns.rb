@@ -25,6 +25,7 @@ module V2
         end
         get ':id' do
           @posts = Post.where('column_id = :id', id: params[:id])
+            .order(published_at: :desc)
             .page(params[:page]).per(params[:per_page])
           present @posts, with: Entities::Post
         end
@@ -38,7 +39,7 @@ module V2
         get ':cid/page/:pid' do
           post = Post.find_by_url_code(params[:pid])
           @posts = Post.where("column_id = :cid and published_at #{action params} :date",
-            cid: post.column_id, date: post.created_at).order(published_at: :desc)
+            cid: post.column_id, date: post.published_at).order(published_at: :desc)
           #if @posts.blank?
           #  error!("Post not found", 404)
           #else

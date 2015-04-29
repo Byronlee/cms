@@ -35,7 +35,7 @@ module V2
           head_line = HeadLine.find params[:id]
           unless head_line.blank?
             @head_lines = HeadLine.where("created_at #{action params } :date",
-              date: head_line.created_at).order(created_at: :desc)
+              date: head_line.created_at).order('order_num desc')
             @head_lines = @head_lines.page(params[:page]).per(params[:per_page] || 30)
           end
           present @head_lines, with: Entities::HeadLine
