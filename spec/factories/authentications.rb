@@ -19,7 +19,7 @@ FactoryGirl.define do
     sequence(:raw) do |n| n
       {
         "provider" => "krypton",
-        "uid" => 343,
+        "uid" => 343 + n,
         "info" => {
           "email" => "email#{n}@example.com",
           "phone" => 13412345678 + n,

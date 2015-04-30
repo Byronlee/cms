@@ -11,7 +11,7 @@ module SignInHelper
   def login_admin_user
     before(:each) do
       @request.env['devise.mapping'] = Devise.mappings[:user]
-      user = create(:user, :admin)
+      user = create(:user_with_krypton_authentication, :admin )
       sign_in(user)
     end
   end
