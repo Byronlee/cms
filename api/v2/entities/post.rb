@@ -23,6 +23,7 @@ module V2
       expose :catch_title    , documentation: '短标题'
       expose :key            , documentation: 'writer使用'
       expose :remark         , documentation: 'writer备注'
+      expose :favoriter_sso_ids
       with_options(format_with: :iso_timestamp) do
         expose :published_at   , documentation: ''
         expose :created_at , documentation: ''
