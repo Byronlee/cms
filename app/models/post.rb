@@ -29,7 +29,7 @@
 #  source_type       :string(255)
 #  favorites_count   :integer
 #  company_keywords  :string(255)      default([]), is an Array
-#  favoriter_sso_ids :text             default([]), is an Array
+#  favoriter_sso_ids :integer          default([]), is an Array
 #
 
 require 'action_view'
