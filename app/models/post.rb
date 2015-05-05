@@ -70,10 +70,9 @@ class Post < ActiveRecord::Base
   has_many :favoriters, source: :user, through: :favorites, primary_key: :url_code
 
   # TODO: 将所有的回调采用注册机制全部异步去处理
-  # 定时：update_hot_posts_cache
-  after_save :update_today_lastest_cache, :update_hot_posts_cache, :update_info_flows_cache,
+  after_save :update_today_lastest_cache, :update_info_flows_cache,
              :check_head_line_cache, :update_excellent_comments_cache
-  after_destroy :update_today_lastest_cache, :update_hot_posts_cache, :update_info_flows_cache,
+  after_destroy :update_today_lastest_cache, :update_info_flows_cache,
                 :check_head_line_cache_for_destroy, :update_excellent_comments_cache
   before_create :generate_key
   before_save :auto_generate_summary, :check_source_type
@@ -201,12 +200,6 @@ class Post < ActiveRecord::Base
     return true unless watched_columns_changed?(:today_lastest)
     logger.info 'perform the worker to update today lastest cache'
     logger.info TodayLastestComponentWorker.new.perform
-    true
-  end
-
-  def update_hot_posts_cache
-    logger.info 'perform the worker to update hot posts cache'
-    logger.info HotPostsComponentWorker.new.perform
     true
   end
 
