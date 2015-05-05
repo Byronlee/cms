@@ -21,7 +21,9 @@ module V2
           .where(state: params[:state])
           .order(published_at: :desc)
           .page(params[:page]).per(params[:per_page])
-          present @posts, with: Entities::Post
+          cache(key: "api:v2:posts:index", etag: Time.now, expires_in: Settings.api.expires_in) do
+            present @posts, with: Entities::Post
+          end
         end
 
         # Get id posts list
@@ -33,20 +35,27 @@ module V2
         end
         get ":id/page" do
           post = Post.where(url_code: params[:id]).first
+          not_found! if post.blank?
           unless post.blank?
-            @posts = Post.where("published_at #{action params} :date", date: post.published_at)
+            @posts = Post.includes(author:[:krypton_authentication])
+              .where("published_at #{action params} :date", date: post.published_at)
               .order(published_at: :desc)
             @posts = @posts.page(params[:page]).per(params[:per_page] || 30)
           end
-          present @posts, with: Entities::Post
+          cache(key: "api:v2:posts:#{params[:id]}:page:#{params[:action]}", etag: Time.now, expires_in: Settings.api.expires_in) do
+            present @posts, with: Entities::Post
+          end
         end
 
         # Get post detail
         desc 'get post detail'
         get ":id" do
-          @post = Post.where(url_code: params[:id]).first
-          #error!("Post not found", 404) if @post.blank?
-          present @post, with: Entities::Post
+          @post = Post.includes(author:[:krypton_authentication])
+          .where(url_code: params[:id]).first
+          not_found! if @post.blank?
+          cache(key: "api:v2:posts:#{params[:id]}", etag: @post.published_at, expires_in: Settings.api.expires_in) do
+            present @post, with: Entities::Post
+          end
         end
 
         # Create a new post

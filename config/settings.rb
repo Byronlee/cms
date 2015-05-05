@@ -12,6 +12,7 @@ settings.redis_servers = {
 settings.elasticsearch_server = 'http://127.0.0.1:9200'
 
 settings.api = {
+  expires_in: 15.minutes,
   v1: {
     XToken: '501Cd1AvUL4AxxVEX60gCFJK7HCd9y8ySDvG29Je',
     token: '734dca654f1689f727cc:32710'

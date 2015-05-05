@@ -17,8 +17,11 @@ module V2
 
         desc 'Get user detail'
         get ':id' do
-          @user = User.find(params[:id])
-          present @user, with: Entities::User
+          @user = User.where(id: params[:id]).first
+          not_found! if @user.blank?
+          cache(key: "api:v2:users:#{params[:id]}", etag: @user.updated_at, expires_in: Settings.api.expires_in) do
+            present @user, with: Entities::User
+          end
         end
 
         desc 'Get admin user list'
@@ -28,9 +31,11 @@ module V2
         end
         post 'editor' do
           roles = Settings.editable_roles.map(&:to_s) << 'contributor'
-          @user = User.where(role: roles).includes(:krypton_authentication)
+          @users = User.where(role: roles).includes(:krypton_authentication)
           .order('created_at desc').page(params[:page]).per(params[:per_page])
-          present @user, with: Entities::User
+          #cache(key: "api:v2:users:editor", etag: Time.now, expires_in: Settings.api.expires_in) do
+            present @users, with: Entities::User
+          #end
         end
 
         desc 'Create a new user'

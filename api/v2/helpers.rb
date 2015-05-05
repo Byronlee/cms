@@ -16,8 +16,15 @@ module V2
       attrs
     end
 
-    def not_found!
+    def not_found!(resource = nil)
+      message = ["404"]
+      message << resource if resource
+      message << "Not Found"
+      render_api_error!(message.join(' '), 404)
+    end
 
+    def render_api_error!(message, status)
+      error!({ 'message' => message }, status)
     end
 
     def warden

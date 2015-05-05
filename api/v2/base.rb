@@ -11,6 +11,8 @@ class ::V2::Base < Grape::API
   #formatter :json, ::V2::JSendSuccessFormatter
   #error_formatter :json, ::V2::JSendErrorFormatter
 
+  include Grape::Rails::Cache
+
   rescue_from ActiveRecord::RecordNotFound do
     rack_response({message: '404 Not found !', status: 404}, 404)
   end

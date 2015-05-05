@@ -1,4 +1,4 @@
-GrapeSwaggerRails.options.url      = '/api/v1/doc'
+GrapeSwaggerRails.options.url      = '/api/v2/doc'
 GrapeSwaggerRails.options.app_name = '36krx2015'
 GrapeSwaggerRails.options.app_url  = Rails.env.production? ? Settings.site : 'http://localhost:3000'
 GrapeSwaggerRails.options.api_auth     = 'api_token'

@@ -14,15 +14,20 @@ module V2
         get 'index' do
           @head_lines = HeadLine.published.order(order_num: :desc)
             .page(params[:page]).per(params[:per_page])
-          present @head_lines, with: Entities::HeadLine
+          cache(key: "api:v2:head_lines:index", etag: Time.now, expires_in: Settings.api.expires_in) do
+            present @head_lines, with: Entities::HeadLine
+          end
         end
 
         desc 'Get head line detail'
         params do
         end
         get ':id' do
-          @head_line = HeadLine.find params[:id]
-          present @head_line, with: Entities::HeadLine
+          @head_line = HeadLine.where(id: params[:id]).first
+          not_found! if @head_line.blank?
+          cache(key: "api:v2:head_lines:#{@head_line.id}", etag: @head_line.updated_at, expires_in: Settings.api.expires_in) do
+            present @head_line, with: Entities::HeadLine
+          end
         end
 
         desc 'Get head line by page'
@@ -32,13 +37,16 @@ module V2
           optional :action,  type: String, default: 'down', desc: '下翻页 down 和 上翻页 up'
         end
         get ':id/page' do
-          head_line = HeadLine.find params[:id]
+          head_line = HeadLine.where(id: params[:id]).first
+          not_found! if head_line.blank?
           unless head_line.blank?
             @head_lines = HeadLine.where("created_at #{action params } :date",
               date: head_line.created_at).order('order_num desc')
-            @head_lines = @head_lines.page(params[:page]).per(params[:per_page] || 30)
+            @head_lines = @head_lines.page(params[:page]).per(params[:per_page])
           end
-          present @head_lines, with: Entities::HeadLine
+          cache(key: "api:v2:head_lines:#{params[:id]}:page", etag: head_line.updated_at, expires_in: Settings.api.expires_in) do
+            present @head_lines, with: Entities::HeadLine
+          end
         end
 
         desc 'Create a new head line'

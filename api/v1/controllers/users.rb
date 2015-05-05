@@ -17,8 +17,11 @@ module V1
 
         desc 'Get user detail'
         get ':id' do
-          @user = User.find(params[:id])
-          present @user, with: Entities::User
+          @user = User.where(id: params[:id]).first
+          not_found! if @user.blank?
+          cache(key: "api:v1:users:#{@user.id}", etag: @user.updated_at, expires_in: Settings.api.expires_in) do
+            present @user, with: Entities::User
+          end
         end
 
         desc 'Get admin user list'
