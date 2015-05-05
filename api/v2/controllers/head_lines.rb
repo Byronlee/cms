@@ -12,7 +12,7 @@ module V2
           optional :per_page,  type: Integer, default: 30, desc: '每页记录数'
         end
         get 'index' do
-          @head_lines = HeadLine.all.order(order_num: :desc)
+          @head_lines = HeadLine.published.order(order_num: :desc)
             .page(params[:page]).per(params[:per_page])
           present @head_lines, with: Entities::HeadLine
         end
