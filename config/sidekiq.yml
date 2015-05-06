@@ -9,3 +9,8 @@ production:
 :queues:
   - default
   - [krx2015, 2]
+  - [scheduler, 2]
+  - [third_party_writer, 2]
+  - [third_party_next, 2]
+  - [third_party_headline, 2]
+  - [third_party_sso, 2]

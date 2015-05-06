@@ -1,4 +1,6 @@
 class InfoFlowsComponentWorker < BaseWorker
+	sidekiq_options :queue => :krx2015, :backtrace => true
+	
   def perform(flow_name)
     info_flow = InfoFlow.find_by_name flow_name
     posts_with_ads, total_count = info_flow.posts_with_ads(1)

@@ -1,4 +1,6 @@
 class TodayLastestComponentWorker < BaseWorker
+  sidekiq_options :queue => :krx2015, :backtrace => true
+  
   def perform
     posts = Post.today.published.order('published_at desc').limit(6)
     posts_count = Post.today.published.count

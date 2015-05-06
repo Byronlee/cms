@@ -1,4 +1,6 @@
 class ExcellentCommentsComponentWorker < BaseWorker
+  sidekiq_options :queue => :krx2015, :backtrace => true
+  
   def perform
     comments = Comment.excellent.order('comments.created_at desc').limit(6)
     Redis::HashKey.new('comments')['excellent'] =

@@ -1,4 +1,6 @@
 class PostPublishWorker < BaseWorker
+	sidekiq_options :queue => :scheduler, :backtrace => true
+
   def perform(post_id)
     post = Post.find(post_id)
     return true if post.published? || post.will_publish_at.blank?

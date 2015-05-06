@@ -1,4 +1,6 @@
 class HotPostsComponentWorker < BaseWorker
+	sidekiq_options :queue => :krx2015, :backtrace => true
+	
   def perform
     #取最近的50篇，按照访问量排序取前6个
     post_news = Post.published.order("published_at desc").limit(50)

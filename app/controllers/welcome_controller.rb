@@ -9,7 +9,7 @@ class WelcomeController < ApplicationController
 
   def cache_index
     flow_data = CacheClient.instance.info_flow
-    @posts_with_ads = flow_data.nil? ? {} : JSON.parse(flow_data)
+    @posts_with_ads = flow_data.blank? ? {} : JSON.parse(flow_data)
     @posts_with_ads = @posts_with_ads['posts_with_ads']
     @prev_page, @next_page = nil, 2
     render :index
