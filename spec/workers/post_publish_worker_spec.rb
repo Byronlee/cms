@@ -3,7 +3,7 @@ require "spec_helper"
 describe PostPublishWorker, sidekiq: :fake do
   it { should be_retryable true }
   it { should be_retryable true }
-  it { should be_processed_in :krx2015 }
+  it { should be_processed_in :scheduler }
 
   context ".perform" do
     let(:p_post) { create :post, :published }
