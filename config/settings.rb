@@ -65,7 +65,7 @@ settings.writer_edit_path = ->(post) { "http://writer.36kr.com/posts/#{post.url_
 settings.default_avatars = [
   'http://a.36krcnd.com/nil_class/48147b7f-5f11-4008-b09d-a3d22ee0a2cb/a-1.jpg.jpg',
   'http://a.36krcnd.com/nil_class/1897ffab-0a89-431e-9c80-81357507c321/a-2.jpg.jpg',
-  'http://a.36krcnd.com/nil_class/0731b96a-6686-4516-83e7-fa9acd5a96c1/a-3.jpg.jpg'
+  'http://a.36krcnd.com/nil_class/77f40d6e-0834-47a6-b847-c7ff67160f27/h_main_KM3O_0fa60001f029111a.jpg'
 ]
 
 settings.kr_messages_api = 'http://rong.36kr.com/api/message/count'
