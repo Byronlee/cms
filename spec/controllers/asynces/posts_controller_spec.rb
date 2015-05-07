@@ -25,4 +25,15 @@ describe Asynces::PostsController do
       expect(response).to render_template('asynces/posts/today')
     end
   end
+
+  describe "GET 'today'" do
+    before do
+      get :record_post_manage_session_path, path: '/krypton/favorites'
+    end
+
+    it 'return http success' do
+      expect(response).to be_success
+      expect(assigns(:current_user).admin_post_manage_session_path).to eq '/krypton/favorites'
+    end
+  end
 end
