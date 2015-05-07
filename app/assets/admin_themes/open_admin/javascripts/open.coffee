@@ -20,3 +20,12 @@ jQuery ->
   ).bind 'fileuploadfail', (e, data) ->
     alert '上传错误，稍后再试!'
     $('.feature-img-empty a span.slug').html('+ 点击上传头图')
+
+  record_post_manage_session_path = (o)->
+    $(o).on 'click', ->
+      console.log($(o).attr('href'))
+      $.get '/asynces/posts/record_post_manage_session_path', { path: $(o).attr('href') }, ->
+
+  record_post_manage_session_path o for o in ["a[href='/krypton/posts/draft']", "a[href='/krypton/posts/myown']",
+   "a[href='/krypton/posts']", "a[href='/krypton/posts/reviewings']",
+   "a[href='/krypton/favorites']"]
