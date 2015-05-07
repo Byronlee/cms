@@ -2,7 +2,7 @@ class Admin::NewsflashesController < Admin::BaseController
   load_and_authorize_resource
 
   def index
-    @newsflashes = @newsflashes.order("created_at desc").includes(author: :krypton_authentication).page params[:page]
+    @newsflashes = @newsflashes.order("toped_at desc nulls last, created_at desc").includes(author: :krypton_authentication).page params[:page]
   end
 
   def update
@@ -28,7 +28,7 @@ class Admin::NewsflashesController < Admin::BaseController
   end
 
   def set_down
-    @newsflash.set_top
+    @newsflash.set_down
     @newsflash.save
     redirect_to :back, :notice => '取消置顶成功'
   end

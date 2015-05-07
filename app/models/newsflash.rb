@@ -40,13 +40,17 @@ class Newsflash < ActiveRecord::Base
   end
 
   def set_top
-    self.is_top = true
-    self.toped_at = Time.now
+    Newsflash.transaction do
+      self.is_top = true
+      self.toped_at = Time.now
+    end
   end
 
   def set_down
-    self.is_top = false
-    self.toped_at = nil
+    Newsflash.transaction do
+      self.is_top = false
+      self.toped_at = nil
+    end
   end
 
   private
