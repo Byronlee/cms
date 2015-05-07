@@ -45,6 +45,10 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :favorites
 
+  typed_store :extra do |s|
+    s.string :admin_post_manage_session_path,  default: ''
+  end
+
   before_save :ensure_authentication_token
   def ensure_authentication_token
     self.authentication_token ||= generate_authentication_token
