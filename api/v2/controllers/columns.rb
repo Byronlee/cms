@@ -24,7 +24,7 @@ module V2
           optional :per_page,  type: Integer, default: 30, desc: '每页记录数'
         end
         get ':id' do
-          @posts = Post.where('column_id = :id', id: params[:id])
+          @posts = Post.published.where('column_id = :id', id: params[:id])
             .order(published_at: :desc)
             .page(params[:page]).per(params[:per_page])
           present @posts, with: Entities::Post
