@@ -55,6 +55,7 @@ class Ability
     can :read, :dashboard
     can [:read, :create], Newsflash
     can :manage, Newsflash, :user_id => user.id
+    cannot [:set_top, :set_down], Newsflash 
     can [:new, :myown], Post
     can [:read, :column, :reviewings], Post, :id => user.posts.pluck(:id)
     can :manage, Post, :id => user.posts.drafted.pluck(:id)

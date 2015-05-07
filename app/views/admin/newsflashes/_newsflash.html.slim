@@ -12,14 +12,14 @@ tr
       span.label.label-success 置顶
   td.text_center data-toggle='tooltip' title="#{newsflash.created_at}" = smart_time_ago newsflash.created_at, 30
   td.text_center
-    - if can? :edit, newsflash
-      - unless newsflash.is_top?
-        = link_to set_top_admin_newsflash_path(newsflash), method: :patch, title: '置顶', 'data-toggle' => 'tooltip'
-          i.fa.fa-arrow-up
-      - else
-        = link_to set_down_admin_newsflash_path(newsflash), method: :patch, title: '取消置顶', 'data-toggle' => 'tooltip'
-          i.fa.fa-arrow-down
-        |&nbsp;&nbsp;
+    - if !newsflash.is_top? && can?(:set_top, newsflash)
+      = link_to set_top_admin_newsflash_path(newsflash), method: :patch, title: '置顶', 'data-toggle' => 'tooltip'
+        i.fa.fa-arrow-up
+      |&nbsp;&nbsp;
+    - elsif newsflash.is_top? && can?(:set_down, newsflash)
+      = link_to set_down_admin_newsflash_path(newsflash), method: :patch, title: '取消置顶', 'data-toggle' => 'tooltip'
+        i.fa.fa-arrow-down
+      |&nbsp;&nbsp;
     - if can? :edit, newsflash
       a title="编辑" data-toggle='tooltip' href=edit_admin_newsflash_path(newsflash)
         i.fa.fa-pencil
