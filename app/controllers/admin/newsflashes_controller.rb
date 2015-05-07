@@ -21,6 +21,7 @@ class Admin::NewsflashesController < Admin::BaseController
     redirect_to :back, :notice => '删除成功'
   end
 
+  private
   def newsflash_params
     params.require(:newsflash).permit(:original_input, :tag_list, :newsflash_topic_color_id, :cover)
   end
