@@ -33,11 +33,35 @@ describe Admin::NewsflashesController do
     before { create :newsflash }
 
     it "returns http success" do
-      request.env["HTTP_REFERER"] = admin_info_flows_path
+      request.env["HTTP_REFERER"] = admin_newsflashes_path
       expect do
         delete :destroy, id: Newsflash.first.id
       end.to change(Newsflash, :count).by(-1)
-      expect(response).to redirect_to(admin_info_flows_path)
+      expect(response).to redirect_to(admin_newsflashes_path)
+    end
+  end
+
+  describe "PATCH 'set_top'" do
+    let!(:newsflash){ create :newsflash }
+
+    it "returns http success" do
+      request.env["HTTP_REFERER"] = admin_newsflashes_path
+      patch :set_top, id: newsflash.id
+      expect(newsflash.reload.is_top?).to eq true
+      expect(newsflash.reload.toped_at.present?).to eq true
+      expect(response).to redirect_to(admin_newsflashes_path)
+    end
+  end
+
+  describe "PATCH 'set_top'" do
+    let!(:newsflash){ create :newsflash }
+
+    it "returns http success" do
+      request.env["HTTP_REFERER"] = admin_newsflashes_path
+      patch :set_down, id: newsflash.id
+      expect(newsflash.reload.is_top?).to eq false
+      expect(newsflash.reload.toped_at.present?).to eq false
+      expect(response).to redirect_to(admin_newsflashes_path)
     end
   end
 end
