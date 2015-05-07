@@ -39,6 +39,16 @@ class Newsflash < ActiveRecord::Base
     self.news_summaries = inputs[1].strip if inputs[1]
   end
 
+  def set_top
+    self.is_top = true
+    self.toped_at = Time.now
+  end
+
+  def set_down
+    self.is_top = false
+    self.toped_at = nil
+  end
+
   private
 
   def prase_basic_attrs_from_original_input(input)

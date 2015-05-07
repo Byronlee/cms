@@ -25,7 +25,11 @@ Rails.application.routes.draw do
     end
     root to: redirect('/krypton/dashboard')
     resources :dashboard, :pages
-    resources :newsflashes do 
+    resources :newsflashes do
+      member do
+        patch :set_top
+        patch :set_down
+      end
     end
     resources :users do
       member do
