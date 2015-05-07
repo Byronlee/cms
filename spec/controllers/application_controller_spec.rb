@@ -35,6 +35,7 @@ describe ApplicationController do
       it 'www' do
         get 'http://www.36kr.com'
         expect(response).to redirect_to('http://36kr.com/')
+        expect(response.status).to be(301)
       end
     end
   end

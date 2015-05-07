@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   def redirect_to_no_subdomain
     if request.path !~ /^\/(api|feed).*/ && (subdomain = request.subdomain).present? && subdomain == 'www'
-      redirect_to request.original_url.sub("#{subdomain}.36kr.com", '36kr.com')
+      redirect_to request.original_url.sub("#{subdomain}.36kr.com", '36kr.com'), status: :moved_permanently
     end
   end
 
