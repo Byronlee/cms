@@ -13,7 +13,10 @@ class ApplicationController < ActionController::Base
 
   def match_krid_online_status
     if (cookie_version = cookies[Settings.oauth.krypton.cookie.name]).present?
-      if !current_user || cookie_version.to_i != current_user.krypton_authentication.version
+      if !current_user \
+        || cookie_version.to_i != current_user.krypton_authentication.version \
+        || cookies[:krid_user_id].to_i != current_user.krypton_authentication.id
+
         redirect_to user_omniauth_authorize_path(provider: :krypton, ok_url: request.fullpath)
       end
     elsif current_user

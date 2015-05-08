@@ -16,15 +16,24 @@ describe WelcomeController do
       before { allow(Rails.env).to receive(:test?) { false } }
       context "online" do
         login_user
-        context "with matched version" do
+        context "with matched version and id" do
           before { create(:authentication, user: session_user) }
           before { request.cookies[:krid_user_version] = session_user.krypton_authentication.version }
+          before { request.cookies[:krid_user_id] = session_user.krypton_authentication.id }
           before { get :index }
           it { should respond_with(:success) }
         end
         context "with unmatched version" do
           before { create(:authentication, user: session_user) }
           before { request.cookies[:krid_user_version] = session_user.krypton_authentication.version.to_i + 1 }
+          before { request.cookies[:krid_user_id] = session_user.krypton_authentication.id }
+          before { get :index }
+          it { should redirect_to(user_omniauth_authorize_path(provider: :krypton, ok_url: request.fullpath)) }
+        end
+        context "with unmatched krid" do
+          before { create(:authentication, user: session_user) }
+          before { request.cookies[:krid_user_version] = session_user.krypton_authentication.version }
+          before { request.cookies[:krid_user_id] = session_user.krypton_authentication.id.to_i + 1 }
           before { get :index }
           it { should redirect_to(user_omniauth_authorize_path(provider: :krypton, ok_url: request.fullpath)) }
         end
@@ -73,7 +82,7 @@ describe WelcomeController do
 
   describe "GET 'changes'" do
     before { get :changes }
-    it do 
+    it do
       should respond_with(:success)
       expect(assigns[:changes].present?).to eq true
     end
@@ -82,7 +91,7 @@ describe WelcomeController do
   describe "GET 'site_map'" do
     before { create :main_site }
     before { get 'site_map', { format: :xml} }
-    it do 
+    it do
       expect(response).to be_success
       expect(response.headers['Content-Type']).to include 'application/xml'
     end
