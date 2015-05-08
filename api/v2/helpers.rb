@@ -49,7 +49,7 @@ module V2
     end
 
     def init_and_exchange_token
-      sso_user = V2::Passport.new(params[:sso_token]).me
+      sso_user = Krypton::Passport.new(params[:sso_token]).me
       unless sso_user.is_a? TrueClass or sso_user.is_a? FalseClass
         # 新站有用户的情况
         current_user =  User.find_by_sso_id(sso_user['id']) || User.find_by_origin_ids(sso_user['id'])

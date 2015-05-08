@@ -1,6 +1,5 @@
 require_relative 'helpers'
 require_relative 'formatter'
-require_relative 'passport'
 
 class ::V1::Base < Grape::API
   content_type :json, "application/json;charset=UTF-8"

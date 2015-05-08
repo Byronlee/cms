@@ -33,7 +33,6 @@ gem "kaminari", "~> 0.15.1"
 gem "tire", "~> 0.6.2"
 gem 'ruby-progressbar', "~> 1.7.1"
 gem 'rails-observers'
-gem 'rack-cors'
 
 # models
 gem "ancestry", "~> 2.1.0"

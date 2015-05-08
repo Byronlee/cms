@@ -19,7 +19,7 @@ module V2
           .includes(:commentable, user:[:krypton_authentication])
           .order('created_at desc').page(params[:page]).per(params[:per_page])
           not_found! if @comments.blank?
-          cache(key: "api:v2:comments:#{params[:pid]}", etag: Time.now, expires_in: Settings.api.expires_in) do
+          cache(key: "api:v2:comments:#{params[:pid]}:#{@comments.size}", etag: Time.now, expires_in: Settings.api.expires_in) do
             present @comments, with: Entities::Comment
           end
         end
