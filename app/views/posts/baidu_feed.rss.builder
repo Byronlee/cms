@@ -13,9 +13,6 @@ xml.rss :version => "2.0" do
         xml.title feed.title
         xml.category feed.column.name
         xml.description feed.summary
-        xml.content :type => "html", 'xml:base' => "http://.36kr.com/", 'xml:lang' => "zh-CN" do
-          xml.cdata! feed.content.gsub(/<u>/, '<mark>').gsub(/<\/u>/, '</mark>')
-        end
         xml.pubDate feed.published_at && feed.published_at.to_s(:rfc822)
         xml.link "http://36kr.com/baidu/#{feed.url_code}"
         xml.guid "http://36kr.com/baidu/#{feed.url_code}"
