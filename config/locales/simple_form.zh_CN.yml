@@ -66,6 +66,8 @@ zh-CN:
         link_type: 类型
         description: 简介
         image: 封面图片
+        video_url: 视频地址
+        video_duration: 视频时长
     hints:
       post:
         source_urls: "一行一个链接"

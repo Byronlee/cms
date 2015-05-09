@@ -37,6 +37,6 @@ class Admin::RelatedLinksController < Admin::BaseController
   private
 
   def related_link_params
-    params.require(:related_link).permit(:url, :title, :link_type, :image, :description) if params[:related_link]
+    params.require(:related_link).permit(:url, :title, :link_type, :image, :description, :video_url, :video_duration) if params[:related_link]
   end
 end
