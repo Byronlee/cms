@@ -68,6 +68,7 @@ class Post < ActiveRecord::Base
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :favorites, foreign_key: :url_code, primary_key: :url_code, dependent: :destroy
   has_many :favoriters, source: :user, through: :favorites, primary_key: :url_code
+  has_many :related_links, dependent: :destroy
 
   # TODO: 将所有的回调采用注册机制全部异步去处理
   after_save :update_today_lastest_cache, :update_info_flows_cache,
