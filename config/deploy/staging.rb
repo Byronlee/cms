@@ -8,7 +8,3 @@ set :rbenv_roles, :all
 
 set :ssh_options, { forward_agent: true, port: 22 }
 server 'www-data@staging.36kr.com', roles: %w[web app db], primary: true #, sidekiq: true, whenever: true
-
-namespace :deploy do
-  after "deploy:compile_assets", "deploy:cdn"
-end

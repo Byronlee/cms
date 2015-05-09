@@ -65,6 +65,29 @@ namespace :deploy do
     end
   end
 
+  desc "Modify load balancer backend for preview"
+  task :preview_lbp do
+    on roles(:app) do
+      within release_path do
+        with rails_env: fetch(:rails_env) do
+          execute :rake, "iaas:preview_lbp"
+        end
+      end
+    end
+  end
+
+  desc "Modify load balancer backend for online"
+  task :online_lbp do
+    on roles(:app) do
+      within release_path do
+        with rails_env: fetch(:rails_env) do
+          execute :rake, "iaas:online_lbp"
+        end
+      end
+    end
+  end
+
+  after "deploy:compile_assets", "deploy:cdn"
   after "deploy:migrate", "deploy:updated"
   after "newrelic:notice_deployment", "deploy:restart"
 end
