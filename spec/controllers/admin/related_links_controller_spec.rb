@@ -1,6 +1,7 @@
 require 'spec_helper'
 
-describe RelatedLinksController do
+describe Admin::RelatedLinksController do
+  login_admin_user
 
   describe "GET 'index'" do
     it "returns http success" do
