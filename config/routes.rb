@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [] do
     get :messages, on: :collection
+    get :current, on: :collection
   end
 
   namespace :admin, path: '/krypton' do
