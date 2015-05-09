@@ -12,6 +12,7 @@
 #  created_at  :datetime
 #  updated_at  :datetime
 #  post_id     :integer
+#  user_id     :integer
 #
 
 require 'spec_helper'

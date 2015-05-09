@@ -19,6 +19,7 @@ class Admin::RelatedLinksController < Admin::BaseController
   def create
     @post = Post.find params[:post_id]
     @related_link = @post.related_links.build(related_link_params)
+    @related_link.user = current_user
     @related_link.save
     redirect_to admin_post_related_links_path
   end
@@ -26,6 +27,11 @@ class Admin::RelatedLinksController < Admin::BaseController
   def update
     @related_link.update(related_link_params)
     redirect_to admin_post_related_links_path
+  end
+
+  def destroy
+    @related_link.destroy
+    redirect_to :back
   end
 
   private

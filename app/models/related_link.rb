@@ -12,6 +12,7 @@
 #  created_at  :datetime
 #  updated_at  :datetime
 #  post_id     :integer
+#  user_id     :integer
 #
 
 class RelatedLink < ActiveRecord::Base
@@ -24,4 +25,5 @@ class RelatedLink < ActiveRecord::Base
   validates_uniqueness_of :url
 
   belongs_to :post
+  belongs_to :user
 end
