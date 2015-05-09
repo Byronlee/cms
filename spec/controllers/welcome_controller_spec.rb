@@ -19,21 +19,21 @@ describe WelcomeController do
         context "with matched version and id" do
           before { create(:authentication, user: session_user) }
           before { request.cookies[:krid_user_version] = session_user.krypton_authentication.version }
-          before { request.cookies[:krid_user_id] = session_user.krypton_authentication.id }
+          before { request.cookies[:krid_user_id] = session_user.krypton_authentication.uid }
           before { get :index }
           it { should respond_with(:success) }
         end
         context "with unmatched version" do
           before { create(:authentication, user: session_user) }
           before { request.cookies[:krid_user_version] = session_user.krypton_authentication.version.to_i + 1 }
-          before { request.cookies[:krid_user_id] = session_user.krypton_authentication.id }
+          before { request.cookies[:krid_user_id] = session_user.krypton_authentication.uid }
           before { get :index }
           it { should redirect_to(user_omniauth_authorize_path(provider: :krypton, ok_url: request.fullpath)) }
         end
         context "with unmatched krid" do
           before { create(:authentication, user: session_user) }
           before { request.cookies[:krid_user_version] = session_user.krypton_authentication.version }
-          before { request.cookies[:krid_user_id] = session_user.krypton_authentication.id.to_i + 1 }
+          before { request.cookies[:krid_user_id] = session_user.krypton_authentication.uid.to_i + 1 }
           before { get :index }
           it { should redirect_to(user_omniauth_authorize_path(provider: :krypton, ok_url: request.fullpath)) }
         end
