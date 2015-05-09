@@ -105,10 +105,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :posts, :only => [:index]
-
-  resources :columns, only: [:index]
-
   match '/current_user.json', to: 'users#current', via: :get
   match '/current_user_favorites.json', to: 'users#favorites', via: :get
   match '/cancel_favorites', to: 'users#cancel_favorites', via: :get
