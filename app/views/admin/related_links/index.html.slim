@@ -1,0 +1,23 @@
+.col_main.widget-box
+  .main_hd
+    h2 &nbsp;
+    .toolbar.clearfix.new
+      .pull-right style="margin-top: 40px;"
+        p = link_to "+  添加相关链接", new_admin_post_related_link_path(@post), class:"btn btn-primary", style: "position:absolute; right: 15px;; top: 20px;"
+        i.fa.fa-map-marker
+        ol.breadcrumb
+          li = link_to '文章管理', admin_posts_path
+          li.active
+            = @post.title
+
+  table class="table"
+    thead
+      tr role="row"
+        th style="width=40%" 标题
+        th style="width=15%" 类型
+        th.text_center style="width=15%" 创建时间
+        th.text_center style="width=20%" 操作
+        th.text_center style="width=10%" 创建人
+    tbody
+      = render @related_links
+  = paginate @related_links

@@ -20,5 +20,8 @@ class RelatedLink < ActiveRecord::Base
     s.integer :video_duration, default: 0
   end
 
+  validates_presence_of :url
+  validates_uniqueness_of :url
+
   belongs_to :post
 end

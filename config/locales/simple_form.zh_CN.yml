@@ -60,6 +60,12 @@ zh-CN:
         position: 广告位
       info_flow:
         name: 名称
+      related_link:
+        url: URL
+        title: 标题
+        link_type: 类型
+        description: 简介
+        image: 封面图片
     hints:
       post:
         source_urls: "一行一个链接"
@@ -112,6 +118,9 @@ zh-CN:
       info_flow:
         create: '创建信息流'
         update: '更新信息流'
+      related_link:
+        create: '创建链接'
+        update: '更新链接'
     page_entries_info:
       one_page:
         display_entries:

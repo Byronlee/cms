@@ -50,6 +50,7 @@ Rails.application.routes.draw do
     end
     resources :posts do
       resources :comments, only: [:index], on: :collection
+      resources :related_links
       get :reviewings, on: :collection
       get :myown, on: :collection
       get :draft, on: :collection

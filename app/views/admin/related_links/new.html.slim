@@ -1,0 +1,18 @@
+.col_main
+  .main_hd
+    h2 相关链接管理
+    .toolbar.border_bottom.clearfix.new
+      .pull-right
+        i.fa.fa-map-marker
+        ol.breadcrumb
+          li = link_to @post.title, admin_post_related_links_path(@post)
+          li.active 创建链接
+  .main-body
+    = simple_form_for [:admin, @post, @related_link], html:{class:"form-horizontal"} do | f |
+      = f.input :url, input_html: {class: 'col-lg-12'}
+      = f.input :link_type
+      = f.input :title, input_html: {class: 'col-lg-12'}
+      = f.input :description, input_html: {class: 'col-lg-12'}
+      = f.input :image, input_html: {class: 'col-lg-12'}
+      div.form-actions
+        = f.button :submit, data: { disable_with: "submitting..." }, class:"btn btn-primary"
