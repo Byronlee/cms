@@ -19,8 +19,8 @@
 
 FactoryGirl.define do
   factory :related_link do
-    url "MyString"
-    title "MyString"
-    description "MyText"
+    sequence(:url) { |n| "http://36kr.com/related_link_#{n}" }
+    sequence(:title) { |n| "title_#{n}" }
+    description "this is description"
   end
 end
