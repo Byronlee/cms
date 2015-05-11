@@ -89,6 +89,7 @@ Rails.application.routes.draw do
     resources :posts, :only => [] do
       get :hots, on: :collection
       get :today, on: :collection
+      get :record_post_manage_session_path, on: :collection
       resources :comments, :only => [:index, :create]
     end
 

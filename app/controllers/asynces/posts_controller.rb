@@ -13,4 +13,10 @@ class Asynces::PostsController < ApplicationController
     @posts = { count: hash_data['posts_count'], posts: hash_data['posts'] }
     render 'today', :layout => false
   end
+
+  def record_post_manage_session_path
+    return if params[:path].blank?
+    current_user.update(admin_post_manage_session_path: params[:path])
+    render json: { status: true }
+  end
 end

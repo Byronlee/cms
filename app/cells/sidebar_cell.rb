@@ -1,5 +1,6 @@
 class SidebarCell < Cell::Rails
   helper ApplicationHelper
+  helper Admin::PostsHelper
   include CanCan::ControllerAdditions
   delegate :current_ability, :to => :controller
 
