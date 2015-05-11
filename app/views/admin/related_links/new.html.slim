@@ -27,6 +27,14 @@ javascript:
 
   $('#related_link_url').parent().append("<span><a href='javascript:void(0)' id='btn_get_og_meta' class='btn btn-primary'>获取</button></a><p style='margin-bottom:0; color: #f00;' id='error_msg'></p>");
 
+  $(document).ajaxStart( function() {
+    $('#btn_get_og_meta').removeClass('btn-primary').addClass('btn-default');
+    $('#btn_get_og_meta').text('获取中...');
+  } ).ajaxStop ( function(){
+    $('#btn_get_og_meta').removeClass('btn-default').addClass('btn-primary');
+    $('#btn_get_og_meta').text('获取');
+  });
+
   $("#btn_get_og_meta").click(function(){
      var url = "#{get_metas_info_asynces_related_links_path}";
      $.get(url, {url: $('#related_link_url').val()}, function(data) {
