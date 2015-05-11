@@ -77,6 +77,7 @@ gem 'intercom-rails'
 gem 'grape' , "~> 0.10.1"
 gem 'grape-entity' , "~> 0.4.4" # orgnize data
 gem 'grape-jbuilder' , "~> 0.2.0"
+gem 'grape_logging'
 gem 'grape-swagger', github: 'tim-vandecasteele/grape-swagger'
 gem 'grape-swagger-rails', github: 'tian-xiaobo/grape-swagger-rails'
 gem 'swagger-ui_rails'

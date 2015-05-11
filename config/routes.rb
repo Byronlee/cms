@@ -3,7 +3,6 @@ require 'sidekiq/web'
 # TODO路由测试
 
 Rails.application.routes.draw do
-  API::API.logger Rails.logger
   mount API::API => '/'
   mount GrapeSwaggerRails::Engine => '/api/a14f30b8405857de59e098af4d1d07bda752a2dc'
 
@@ -111,6 +110,7 @@ Rails.application.routes.draw do
 
   match '/current_user.json', to: 'users#current', via: :get
   match '/current_user_favorites.json', to: 'users#favorites', via: :get
+  match '/cancel_favorites', to: 'users#cancel_favorites', via: :get
   match '/comments/excellents', :controller => 'comments', :action => 'execllents', via: :get
   match '/columns/:slug(/:page)', :controller => 'columns', :action => 'show', via: :get
   match '/category/:slug(/:page)', :controller => 'columns', :action => 'show', via: :get
