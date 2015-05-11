@@ -15,6 +15,7 @@
 #  user_id     :integer
 #
 
+require 'common'
 class RelatedLink < ActiveRecord::Base
   typed_store :extra do |s|
     s.text :video_url, default: ''
@@ -26,4 +27,26 @@ class RelatedLink < ActiveRecord::Base
 
   belongs_to :post
   belongs_to :user
+
+  def self.parse_url(url)
+    return {result: false, msg: 'URL不可为空', metas: {}} unless url.present?
+    code, msg = valid_of?(url)
+    return [result: false, msg: msg, metas: {}] unless code
+    begin
+      og = OpenGraph.new(url)
+      metas = {
+        title: og.title,
+        type: og.type,
+        url: og.url,
+        description: og.description,
+        image: og.images.first,
+        video: get_customer_meta_of(og, :video),
+        video_duration: get_customer_meta_of(og, :video, :duration)
+      }
+    rescue Exception => ex
+      return {result: false, msg: ex.message, metas: {}}
+    end
+
+    {result: true, msg:'', metas: metas}
+  end
 end

@@ -99,6 +99,10 @@ Rails.application.routes.draw do
 
     resources :favorites, only: [:create]
 
+    resources :related_links, only: [] do
+      get :get_metas_info, on: :collection
+    end
+
     resources :dashboard, :only => [] do
       get :charts, on: :collection
       get :pandect, on: :collection
