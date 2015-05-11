@@ -114,6 +114,7 @@ Rails.application.routes.draw do
   match '/columns/:slug(/:page)', :controller => 'columns', :action => 'show', via: :get
   match '/category/:slug(/:page)', :controller => 'columns', :action => 'show', via: :get
   match '/p/(:url_code).html' => 'posts#show', via: :get, as: :post_show_by_url_code
+  match '/baidu/feed/' => 'posts#baidu_feed', via: :get, defaults: { format: :rss }
   match '/baidu/(:url_code)' => 'posts#bdnews', via: :get, as: :post_bdnews
   match '/p/(:url_code)(.:format)' => 'posts#show', via: :get, constraints: { format: '' }
   match '/p/preview/(:key).html' => 'posts#preview', via: :get, as: :preview_post_by_key
