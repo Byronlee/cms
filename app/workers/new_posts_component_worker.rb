@@ -1,4 +1,6 @@
 class  NewPostsComponentWorker < BaseWorker
+	sidekiq_options :queue => :krx2015, :backtrace => true
+	
   def perform
     posts = Post.select([:id, :title, :url_code, :created_at]).tagged_with("startup").order("created_at desc").limit(9)
     newsflashes = Newsflash.select([:id, :hash_title, :created_at]).order("created_at desc").limit(9)

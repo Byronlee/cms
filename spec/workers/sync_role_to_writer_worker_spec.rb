@@ -3,7 +3,7 @@ require "spec_helper"
 describe SyncRoleToWriterWorker, sidekiq: :fake do
   it { should be_retryable true }
   it { should be_retryable true }
-  it { should be_processed_in :krx2015 }
+  it { should be_processed_in :third_party_writer }
 
   context ".perform" do
     let(:user) { create :user, :admin }

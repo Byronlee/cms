@@ -70,9 +70,9 @@ class Post < ActiveRecord::Base
   has_many :favoriters, source: :user, through: :favorites, primary_key: :url_code
 
   # TODO: 将所有的回调采用注册机制全部异步去处理
-  after_save :update_today_lastest_cache, :update_hot_posts_cache, :update_info_flows_cache,
+  after_save :update_today_lastest_cache, :update_info_flows_cache,
              :check_head_line_cache, :update_excellent_comments_cache
-  after_destroy :update_today_lastest_cache, :update_hot_posts_cache, :update_info_flows_cache,
+  after_destroy :update_today_lastest_cache, :update_info_flows_cache,
                 :check_head_line_cache_for_destroy, :update_excellent_comments_cache
   before_create :generate_key
   before_save :auto_generate_summary, :check_source_type
@@ -197,20 +197,14 @@ class Post < ActiveRecord::Base
   private
 
   def update_today_lastest_cache
-    return true if self.views_count_changed?
+    return true unless watched_columns_changed?(:today_lastest)
     logger.info 'perform the worker to update today lastest cache'
     logger.info TodayLastestComponentWorker.new.perform
     true
   end
 
-  def update_hot_posts_cache
-    logger.info 'perform the worker to update hot posts cache'
-    logger.info HotPostsComponentWorker.new.perform
-    true
-  end
-
   def update_info_flows_cache
-    return true if self.views_count_changed?
+    return true unless watched_columns_changed?(:info_flows)
     self.column && self.column.info_flows.map(&:update_info_flows_cache)
     true
   end
@@ -225,21 +219,22 @@ class Post < ActiveRecord::Base
   end
 
   def check_head_line_cache
-    return true if self.views_count_changed?
+    return true unless watched_columns_changed?(:head_line)
     return true if self.published?
     check_head_line_cache_for_destroy
   end
 
   def check_head_line_cache_for_destroy
-    HeadLine.all.each do |head_line|
-      next if head_line.url_code != url_code
-      head_line.destroy
+    HeadLine.published.each do |head_line|
+      next unless head_line.post_type == 'article' && head_line.url_code == url_code
+      head_line.archive
+      head_line.save
     end
     true
   end
 
   def update_excellent_comments_cache
-    return true if views_count_changed?
+    return true unless watched_columns_changed?(:excellent_comments)
     logger.info 'perform the worker to update excellent comments cache'
     logger.info ExcellentCommentsComponentWorker.new.perform
     true
@@ -262,21 +257,24 @@ class Post < ActiveRecord::Base
 
   def need_record_update_log?(current_user)
     return false if new_record? || current_user.blank? || self.user_id == current_user.id
+    return watched_columns_changed?(:record_update)
+  end
 
-    [:title,
-     :summary,
-     :content,
-     :title_link,
-     :slug,
-     :state,
-     :draft_key,
-     :column_id,
-     :user_id,
-     :cover,
-     :source,
-     :source_type,
-     :md_content,
-     :url_code].collect {  |col| eval "#{col}_changed?" }.any?
+  # TODO: 补充相应测试
+  def watched_columns_changed?(observer = nil)
+     columns = [:title, :url_code, :title_link, :slug, :state, :published_at, :column_id]
+
+     case observer
+     when :info_flows
+       columns.concat [:summary, :user_id, :cover]
+     when :head_line
+       columns.concat [:cover]
+     when :record_update
+       columns.concat [:summary, :user_id, :cover, :content, :md_content, :draft_key, :source, :source_type]
+     when :today_lastest
+     when :excellent_comments
+     end
+     columns.collect {  |col| eval "#{col}_changed?" }.any?
   end
 
   def check_source_type

@@ -1,4 +1,6 @@
 class HeadLinesComponentWorker < BaseWorker
+  sidekiq_options :queue => :third_party_headline, :backtrace => true
+  
   def perform
     fetch_meta_info
     cache_top_list_to_redis

@@ -3,7 +3,7 @@ require "spec_helper"
 describe NextComponentWorker, sidekiq: :fake do
   it { should be_retryable true }
   it { should be_retryable true }
-  it { should be_processed_in :krx2015 }
+  it { should be_processed_in :third_party_next }
 
   context ".perform" do
     let(:next_redis_db) { Redis::HashKey.new('next') }

@@ -75,7 +75,7 @@ describe Post do
 
     it do
       @post.destroy
-      expect(HeadLine.find_by_url_code(@post.url_code)).to eq nil
+      expect(HeadLine.find_by_url_code(@post.url_code).archived?).to eq true
     end
   end
 
