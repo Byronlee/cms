@@ -260,10 +260,11 @@ class Post < ActiveRecord::Base
     return watched_columns_changed?(:record_update)
   end
 
+  # TODO: 补充相应测试
   def watched_columns_changed?(observer = nil)
      columns = [:title, :url_code, :title_link, :slug, :state, :published_at, :column_id]
 
-     case observer 
+     case observer
      when :info_flows
        columns.concat [:summary, :user_id, :cover]
      when :head_line
