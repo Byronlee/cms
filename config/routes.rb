@@ -103,6 +103,7 @@ Rails.application.routes.draw do
   resources :columns, only: [:index]
 
   match '/current_user.json', to: 'users#current', via: :get
+  match '/current_user_favorites.json', to: 'users#favorites', via: :get
   match '/comments/excellents', :controller => 'comments', :action => 'execllents', via: :get
   match '/columns/:slug(/:page)', :controller => 'columns', :action => 'show', via: :get
   match '/category/:slug(/:page)', :controller => 'columns', :action => 'show', via: :get
