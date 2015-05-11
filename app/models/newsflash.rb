@@ -13,6 +13,8 @@
 #  updated_at               :datetime
 #  user_id                  :integer
 #  cover                    :string(255)
+#  is_top                   :boolean
+#  toped_at                 :datetime
 #
 
 class Newsflash < ActiveRecord::Base
@@ -35,6 +37,20 @@ class Newsflash < ActiveRecord::Base
     inputs = original_input.split(/---{0,}/)
     prase_basic_attrs_from_original_input inputs[0].strip
     self.news_summaries = inputs[1].strip if inputs[1]
+  end
+
+  def set_top
+    Newsflash.transaction do
+      self.is_top = true
+      self.toped_at = Time.now
+    end
+  end
+
+  def set_down
+    Newsflash.transaction do
+      self.is_top = false
+      self.toped_at = nil
+    end
   end
 
   private

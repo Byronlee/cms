@@ -13,6 +13,8 @@
 #  updated_at               :datetime
 #  user_id                  :integer
 #  cover                    :string(255)
+#  is_top                   :boolean
+#  toped_at                 :datetime
 #
 
 require 'spec_helper'

@@ -26,6 +26,7 @@
 #  sso_id                              :integer
 #  muted_at                            :datetime
 #  favorites_count                     :integer
+#  extra                               :text
 #
 
 FactoryGirl.define do
