@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150430034734) do
+ActiveRecord::Schema.define(version: 20150507071325) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20150430034734) do
     t.string   "icon"
     t.integer  "posts_count"
     t.string   "slug"
-    t.integer  "order_num",   default: 0
+    t.integer  "order_num"
   end
 
   create_table "columns_info_flows", force: true do |t|
@@ -121,6 +121,8 @@ ActiveRecord::Schema.define(version: 20150430034734) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.string   "cover"
+    t.boolean  "is_top"
+    t.datetime "toped_at"
   end
 
   create_table "pages", force: true do |t|
@@ -167,6 +169,14 @@ ActiveRecord::Schema.define(version: 20150430034734) do
   add_index "posts", ["url_code"], name: "index_posts_on_url_code", unique: true, using: :btree
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
+  create_table "sponsors", force: true do |t|
+    t.string   "name"
+    t.string   "logo"
+    t.integer  "order_num"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
@@ -211,9 +221,11 @@ ActiveRecord::Schema.define(version: 20150430034734) do
     t.integer  "sso_id"
     t.datetime "muted_at"
     t.integer  "favorites_count"
+    t.text     "extra"
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["sso_id"], name: "index_users_on_sso_id", using: :btree
 

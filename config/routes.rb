@@ -24,7 +24,13 @@ Rails.application.routes.draw do
       mount Sidekiq::Web => '/sidekiq'
     end
     root to: redirect('/krypton/dashboard')
-    resources :dashboard, :pages, :newsflashes
+    resources :dashboard, :pages
+    resources :newsflashes do
+      member do
+        patch :set_top
+        patch :set_down
+      end
+    end
     resources :users do
       member do
         put :speak
