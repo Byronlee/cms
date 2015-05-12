@@ -44,6 +44,7 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :comments
   has_many :favorites
+  has_many :related_links
 
   typed_store :extra do |s|
     s.string :admin_post_manage_session_path,  default: ''

@@ -1,0 +1,66 @@
+.col_main
+  .main_hd
+    h2 相关链接管理
+    .toolbar.border_bottom.clearfix.new
+      .pull-right
+        i.fa.fa-map-marker
+        ol.breadcrumb
+          li = link_to @post.title, admin_post_related_links_path(@post)
+          li.active 创建链接
+  .main-body
+    = simple_form_for [:admin, @post, @related_link], html:{class:"form-horizontal"} do | f |
+      = f.input :url, hint: '', input_html: {class: 'col-lg-12', id: 'related_link_url', style: 'width: 80%;margin-right: 10px;'} 
+      = f.input :link_type, input_html: {id:'related_link_type'} 
+      = f.input :title, input_html: {class: 'col-lg-12', id: 'related_link_title'}
+      = f.input :description, input_html: {class: 'col-lg-12', id: 'related_link_description'}
+      = f.input :image, input_html: {class: 'col-lg-12', id: 'related_link_image'}
+      div.video_extra_info style="#{ (@related_link.link_type || '').start_with?('video') ? 'display: block' : 'display: none' }"
+        = f.input :video_url, input_html: {class: 'col-lg-12', id: 'related_link_video'}
+        = f.input :video_duration, hint: '单位: s', input_html: {type: :number, min: 0, id: 'related_link_video_duration'}
+      div.form-actions
+        = f.button :submit, data: { disable_with: "submitting..." }, class:"btn btn-primary"
+
+javascript:
+  $('#related_link_type').change(function() {
+    check_link_type();
+  });
+
+  $('#related_link_url').parent().append("<span><a href='javascript:void(0)' id='btn_get_og_meta' class='btn btn-primary'>获取</button></a><p style='margin-bottom:0; color: #f00;' id='error_msg'></p>");
+
+  $(document).ajaxStart( function() {
+    $('#btn_get_og_meta').removeClass('btn-primary').addClass('btn-default');
+    $('#btn_get_og_meta').text('获取中...');
+  } ).ajaxStop ( function(){
+    $('#btn_get_og_meta').removeClass('btn-default').addClass('btn-primary');
+    $('#btn_get_og_meta').text('获取');
+  });
+
+  $("#btn_get_og_meta").click(function(){
+     var url = "#{get_metas_info_asynces_related_links_path}";
+     $.get(url, {url: $('#related_link_url').val()}, function(data) {
+       if(data['result'] == false){
+         $('#error_msg').empty().append(data['msg']);
+       }else{
+         console.log(data);
+         metas = data['metas']
+         $("#related_link_type").val(metas['type']);
+         $("#related_link_title").val(metas['title']);
+         $("#related_link_description").val(metas['description']);
+         $("#related_link_image").val(metas['image']);
+         $("#related_link_video").val(metas['video']);
+         $("#related_link_video_duration").val(metas['video_duration']);
+         check_link_type();
+       }
+     });
+  });
+
+
+  check_link_type = function() {
+    var val = $('#related_link_type').val();
+    if(val.match("^video")){
+      $('.video_extra_info').fadeIn();
+    } else {
+      $('.video_extra_info').fadeOut();
+    }
+  };
+

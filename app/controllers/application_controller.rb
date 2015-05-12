@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def match_krid_online_status
+   def match_krid_online_status
     if (cookie_version = cookies[Settings.oauth.krypton.cookie.name]).present?
       if !current_user \
         || cookie_version.to_i != current_user.krypton_authentication.version \

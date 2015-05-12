@@ -68,5 +68,11 @@ FactoryGirl.define do
       source_type 'translation'
       source_urls 'http://36kr.com http://www.google.com'
     end
+
+    factory :post_with_related_links do
+      after(:create) do |post, evaluator|
+        create_list(:related_link, 5, post: post)
+      end
+    end
   end
 end

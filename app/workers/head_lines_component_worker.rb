@@ -1,3 +1,4 @@
+require 'common'
 class HeadLinesComponentWorker < BaseWorker
   sidekiq_options :queue => :third_party_headline, :backtrace => true
   

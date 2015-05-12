@@ -50,6 +50,7 @@ Rails.application.routes.draw do
     end
     resources :posts do
       resources :comments, only: [:index], on: :collection
+      resources :related_links
       get :reviewings, on: :collection
       get :myown, on: :collection
       get :draft, on: :collection
@@ -98,15 +99,15 @@ Rails.application.routes.draw do
 
     resources :favorites, only: [:create]
 
+    resources :related_links, only: [] do
+      get :get_metas_info, on: :collection
+    end
+
     resources :dashboard, :only => [] do
       get :charts, on: :collection
       get :pandect, on: :collection
     end
   end
-
-  resources :posts, :only => [:index]
-
-  resources :columns, only: [:index]
 
   match '/current_user.json', to: 'users#current', via: :get
   match '/current_user_favorites.json', to: 'users#favorites', via: :get

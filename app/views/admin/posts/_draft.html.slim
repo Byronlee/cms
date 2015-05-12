@@ -15,6 +15,9 @@ tr
     - if can? :edit, post
       a title="编辑" target="_blank" href=Settings.writer_edit_path.call(post)
         i.fa.fa-pencil
+    - if can? :manage, post
+      a title="相关链接" href=admin_post_related_links_path(post)
+        i.fa.fa-link
     - if can? :destroy, post
       a title="删除" data-method="delete" data-confirm="确定删除文章 #{raw(post.title)} ？" href= admin_post_url(post)
         i.fa.fa-times
