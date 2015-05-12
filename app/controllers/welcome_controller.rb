@@ -2,17 +2,42 @@ class WelcomeController < ApplicationController
   authorize_object :welcome
 
   def index
-    return cache_index if params[:page].blank? || params[:page].to_i == 1
+    return cache_index if (params[:page].blank? || params[:page].to_i == 1) && (params[:d].blank? || params[:b_url_code].blank?)
     info_flow = InfoFlow.find_by_name InfoFlow::DEFAULT_INFOFLOW
-    @posts_with_ads, @total_count, @prev_page, @next_page = info_flow.posts_with_ads(params[:page])
+    page_direction = params[:d]
+    boundary_post_url_code = params[:b_url_code]
+    @posts_with_ads, @total_count, @prev_page, @next_page, @min_url_code, @max_url_code = info_flow.posts_with_ads(params[:page], page_direction, boundary_post_url_code)
+
+    respond_to do |format|
+      format.html
+      format.json do 
+        render json: { 
+          :total_count => @total_count,
+          :min_url_code => @min_url_code,
+          :max_url_code => @max_url_code,
+          :posts_with_ads => @posts_with_ads }
+      end
+    end
   end
 
   def cache_index
     flow_data = CacheClient.instance.info_flow
-    @posts_with_ads = flow_data.blank? ? {} : JSON.parse(flow_data)
-    @posts_with_ads = @posts_with_ads['posts_with_ads']
+    cache_data = flow_data.blank? ? {} : JSON.parse(flow_data)
+    @posts_with_ads = cache_data['posts_with_ads']
     @prev_page, @next_page = nil, 2
-    render :index
+    @max_url_code = cache_data['max_url_code']
+    @min_url_code = cache_data['min_url_code']
+    
+    respond_to do |format|
+      format.html{ render :index }
+      format.json do 
+        render json: { 
+          :total_count => @total_count,
+          :min_url_code => @min_url_code,
+          :max_url_code => @max_url_code,
+          :posts_with_ads => @posts_with_ads }
+      end
+    end
   end
 
   def changes
