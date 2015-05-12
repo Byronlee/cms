@@ -26,6 +26,7 @@ html class="no-js #{ "portable-device" if portable_device? }"
     = javascript_include_tag 'application'
     = javascript_include_tag "#{Settings.oauth.krypton.host}/assets/helper.js"
     = render_cell :head, :html5
+    = render_cell :head, :baidu_statistics
 
     = csrf_meta_tags
   body#home
