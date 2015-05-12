@@ -8,4 +8,43 @@ describe UsersController do
       expect(response).to render_template('users/_messages')
     end
   end
+
+  describe "GET 'favorites'" do
+    context 'current user is nil' do
+      it do
+        get 'favorites'
+        response.should be_success
+        expect(assigns(:favorites)).to be_nil
+        expect(response).to render_template('users/favorites')
+      end
+    end
+
+    context 'current user is valid' do
+      login_admin_user
+
+      it do
+        get 'favorites'
+        response.should be_success
+        expect(assigns(:favorites).nil?).to eq false
+        expect(response).to render_template('users/favorites')
+      end
+    end
+  end
+
+  describe "GET 'cancel_favorites'" do
+    login_admin_user
+    context 'no favorites' do
+       let(:favorite){ create(:favorite) }
+       before { get 'cancel_favorites', url_code: favorite.post.url_code }
+       it { expect(assigns(:state)).to eq true }
+    end
+
+    context 'has favorites' do
+      let(:favorite) { create :favorite, user: session_user }
+      before { get 'cancel_favorites', url_code: favorite.post.url_code }
+      it { 
+        expect(assigns(:state)).to be_false 
+      } 
+    end
+  end
 end

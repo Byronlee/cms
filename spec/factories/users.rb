@@ -34,6 +34,7 @@ FactoryGirl.define do
     sequence(:email) { |n| "name#{n}@36kr.com" }
     sequence(:phone) { |n| "1388015659#{n}" }
     password { email }
+    sequence(:sso_id) {|n| n}
 
     trait :admin do
       role :admin
@@ -61,7 +62,9 @@ FactoryGirl.define do
 
     factory :user_with_krypton_authentication do
       after(:create) do |user, evaluator|
-        create_list(:authentication, 1, user: user, provider: :krypton)
+        list = create_list(:authentication, 1, user: user, provider: :krypton)
+        user.update_attribute(:sso_id, list.first.uid.to_i)
+        list
       end
     end
   end
