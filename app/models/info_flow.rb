@@ -36,7 +36,12 @@ class InfoFlow < ActiveRecord::Base
     flow = mix_posts_and_ads posts_with_associations, ads
     flow = mix_seperate_by_date flow, posts
 
-    [flow, posts.total_count, posts.prev_page, posts.next_page, posts.last.url_code, posts.first.url_code]
+    [ flow, posts.total_count,
+      posts.prev_page,
+      posts.next_page,
+      (posts.last ? posts.last.url_code : nil),
+      (posts.first ? posts.first.url_code : nil)
+     ]
   end
 
   def update_info_flows_cache

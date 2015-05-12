@@ -72,10 +72,13 @@ describe WelcomeController do
         create :main_site
       end
 
-      it do
-        get :index, page: 2
-        expect(response).to be_success
-        expect(assigns(:prev_page)).to eq 1
+      context "html" do 
+        before { get :index, page: 2}
+        it do
+          should respond_with(:success)
+          expect(assigns(:prev_page)).to eq 1
+          should render_template(:index)
+        end
       end
     end
   end
