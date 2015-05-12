@@ -30,7 +30,7 @@ zh-CN:
         image: 图片链接
         url_code: CODE
       newsflash:
-        original_input: 快讯内容
+        original_input: 内容
         tag_list: 标签
         tag: 标签
       page:
@@ -123,6 +123,9 @@ zh-CN:
       ad:
         create: '创建广告位'
         update: '更新广告位'
+      newsflash:
+        create: '创建'
+        update: '更新'
       info_flow:
         create: '创建信息流'
         update: '更新信息流'

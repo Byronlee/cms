@@ -2,11 +2,18 @@
 
 .col_main
   .main_hd
-    h2 快讯管理
-    .toolbar.border_bottom.clearfix
-      .pull-right
-         span.page_info = page_entries_info @newsflashes
-         = link_to raw("<i class='fa fa-plus'></i>&nbsp;&nbsp;创建快讯"), new_admin_newsflash_path, class:"btn btn-primary"
+    - if params[:ptype].eql? "_newsflash"
+      h2 快讯管理
+      .toolbar.border_bottom.clearfix
+        .pull-right
+           span.page_info = page_entries_info @newsflashes
+           = link_to raw("<i class='fa fa-plus'></i>&nbsp;&nbsp;创建快讯"), new_admin_newsflash_path+"?ptype=_newsflash", class:"btn btn-primary"
+    - else
+      h2 Product Note 管理
+      .toolbar.border_bottom.clearfix
+        .pull-right
+           span.page_info = page_entries_info @newsflashes
+           = link_to raw("<i class='fa fa-plus'></i>&nbsp;&nbsp;创建 Product Note"), new_admin_newsflash_path+"?ptype=_pdnote", class:"btn btn-primary"
   table class="table"
     thead
       tr role="row"
