@@ -62,7 +62,7 @@ describe Admin::RelatedLinksController do
   describe "GET 'edit'" do
     let!(:post) { create :post_with_related_links }
     it "returns http success" do
-      get :new, post_id: post.id, id: post.related_links.first.id
+      get :edit, post_id: post.id, id: post.related_links.first.id
       response.should be_success
     end
   end

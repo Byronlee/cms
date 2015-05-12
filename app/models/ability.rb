@@ -40,7 +40,7 @@ class Ability
   def anonymous
     can [:read, :site_map, :changes], :welcome
     can :read, [Ad, Post, Column, Page, Newsflash, User]
-    can [:news, :feed, :hots, :today_lastest, :feed_bdnews, :bdnews, :archives, :preview], Post
+    can [:news, :feed, :hots, :today_lastest, :feed_bdnews, :bdnews, :archives, :preview, :baidu_feed], Post
     can [:read, :execllents], Comment
     cannot :create, Comment
   end

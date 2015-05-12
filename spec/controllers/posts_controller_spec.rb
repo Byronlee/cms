@@ -78,6 +78,16 @@ describe PostsController do
     end
   end
 
+  describe "GET 'baidu_feed'" do
+    context 'rss' do
+      it do
+        post = create :post, :published
+        get 'baidu_feed', :format => :rss
+        should respond_with(:success)
+      end
+    end
+  end
+
   describe "GET 'feed_bdnews'" do
     context 'rss' do
       let(:post) { create(:post, :published) }

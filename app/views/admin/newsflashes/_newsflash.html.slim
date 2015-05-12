@@ -5,14 +5,11 @@ tr
   td.text_center
     i.gray.fa.fa-clock-o[title=newsflash.created_at data-toggle='tooltip']
     a href=newsflash.news_url target="_new"
-      i.fa.fa-link[title=newsflash.news_url data-toggle='tooltip']
-    i.fa.fa-file-text-o[title=raw(newsflash.description_text) data-toggle='tooltip']
+      i.gray.fa.fa-link[title=newsflash.news_url data-toggle='tooltip']
+    i.gray.fa.fa-file-text-o[title=raw(newsflash.description_text) data-toggle='tooltip']
   td.text_center 
     - if newsflash.is_top?
       span.label.label-success 置顶
-  td.text_center data-toggle='tooltip' title="#{newsflash.created_at}" = smart_time_ago newsflash.created_at, 30
-      i.gray.fa.fa-link[title=newsflash.news_url data-toggle='tooltip']
-    i.gray.fa.fa-file-text-o[title=raw(newsflash.description_text) data-toggle='tooltip']
   td.text_center title="#{newsflash.created_at}" = smart_time_ago newsflash.created_at, 30
   td.text_center
     - if !newsflash.is_top? && can?(:set_top, newsflash)
