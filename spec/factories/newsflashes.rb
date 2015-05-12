@@ -15,6 +15,7 @@
 #  cover                    :string(255)
 #  is_top                   :boolean
 #  toped_at                 :datetime
+#  views_count              :integer          default(0)
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl
