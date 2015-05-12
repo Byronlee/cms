@@ -9,9 +9,13 @@ ul.nav.nav-pills.nav-stacked
       a href=admin_head_lines_path
         span  头条管理
   - if can? :read, Newsflash
-    li class=nav_active(:newsflashes, @controller_name)
-      a href=admin_newsflashes_path
+    li class=nav_active(:_newsflash, params[:ptype].to_s)
+      a href=admin_newsflashes_path+"?ptype=_newsflash"
         span  快讯管理
+  - if can? :read, Newsflash
+    li class=nav_active(:_pdnote, params[:ptype].to_s)
+      a href=admin_newsflashes_path+"?ptype=_pdnote"
+        span Product Note 管理
   - if can? :read, Comment
     li class=nav_active(:comments, @controller_name)
       a href=admin_comments_path
