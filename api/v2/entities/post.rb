@@ -24,6 +24,7 @@ module V2
       expose :key            , documentation: 'writer使用'
       expose :remark         , documentation: 'writer备注'
       expose :favoriter_sso_ids
+      expose :related_links
       with_options(format_with: :iso_timestamp) do
         expose :published_at   , documentation: ''
         expose :created_at , documentation: ''

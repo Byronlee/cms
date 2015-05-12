@@ -1,3 +1,4 @@
+=begin
 require 'spec_helper'
 
 describe SearchController do
@@ -27,3 +28,4 @@ describe SearchController do
     end
   end
 end
+=end

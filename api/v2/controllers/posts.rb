@@ -17,7 +17,7 @@ module V2
           optional :per_page,  type: Integer, default: 30, desc: '每页记录数'
         end
         get 'index' do
-          @posts = Post.includes(author:[:krypton_authentication])
+          @posts = Post.includes(:related_links , author:[:krypton_authentication])
           .where(state: params[:state])
           .order(published_at: :desc)
           .page(params[:page]).per(params[:per_page])
