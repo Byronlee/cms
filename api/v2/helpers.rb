@@ -87,5 +87,6 @@ module V2
       post.activate_publish_schedule if auth.present? and auth.user.editable
       post
     end
+
   end
 end

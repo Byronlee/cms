@@ -3,7 +3,6 @@ require 'sidekiq/web'
 # TODO路由测试
 
 Rails.application.routes.draw do
-  API::API.logger Rails.logger
   mount API::API => '/'
   mount GrapeSwaggerRails::Engine => '/api/a14f30b8405857de59e098af4d1d07bda752a2dc'
 

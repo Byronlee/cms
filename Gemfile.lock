@@ -187,6 +187,8 @@ GEM
       jbuilder
       tilt
       tilt-jbuilder (>= 0.4.0)
+    grape_logging (1.0.2)
+      grape
     guard (2.12.5)
       formatador (>= 0.2.4)
       listen (~> 2.7)
@@ -579,6 +581,7 @@ DEPENDENCIES
   grape-jbuilder (~> 0.2.0)
   grape-swagger!
   grape-swagger-rails!
+  grape_logging
   guard-livereload
   guard-rspec
   hashie (~> 3.3.2)
