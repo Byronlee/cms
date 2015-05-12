@@ -15,6 +15,7 @@
 #  cover                    :string(255)
 #  is_top                   :boolean
 #  toped_at                 :datetime
+#  views_count              :integer          default(0)
 #
 
 class Newsflash < ActiveRecord::Base
@@ -28,6 +29,7 @@ class Newsflash < ActiveRecord::Base
   paginates_per 100
   acts_as_taggable
   by_star_field :created_at
+  page_view_field :views_count, interval: 600
 
   before_validation :prase_original_input
   after_save :update_new_flash_cache

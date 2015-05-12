@@ -15,6 +15,7 @@
 #  cover                    :string(255)
 #  is_top                   :boolean
 #  toped_at                 :datetime
+#  views_count              :integer          default(0)
 #
 
 require 'spec_helper'
