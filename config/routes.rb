@@ -109,6 +109,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :pages, only: [:show], param: :slug do
+    get :hire, on: :collection
+  end
+
   match '/current_user.json', to: 'users#current', via: :get
   match '/current_user_favorites.json', to: 'users#favorites', via: :get
   match '/cancel_favorites', to: 'users#cancel_favorites', via: :get
@@ -120,7 +124,6 @@ Rails.application.routes.draw do
   match '/baidu/(:url_code)' => 'posts#bdnews', via: :get, as: :post_bdnews
   match '/p/(:url_code)(.:format)' => 'posts#show', via: :get, constraints: { format: '' }
   match '/p/preview/(:key).html' => 'posts#preview', via: :get, as: :preview_post_by_key
-  resources :pages, only: [:show], param: :slug
   match '/feed/bdnews_feed_d9rIUTwdPm' => 'posts#feed_bdnews', via: :get, defaults: { format: :rss }
   match '/feed(/:params).:format' => redirect('/feed'), via: :get
   match '/feed(/:params)' => 'posts#feed', via: :get, defaults: { format: :rss }

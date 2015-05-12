@@ -1,0 +1,32 @@
+= render 'welcome/title', title: '36氪招聘'
+
+.container style="margin: 0 auto;"
+  article.single-post-article
+    .content-wrapper-single
+      section.article
+        h1 style="font-size: 3.2rem; text-align: center; " class="job-title"
+          | Work at 36Kr, we are hiring!
+        figure class="big"
+          img class="" src="http://uploads.36krcnd.com/upload/file/936800ac524263ea764bb09fd4393aa7.jpg" alt=""
+        p 简历请发到 zhaopin[at]36kr.com，标题注明：“应聘『职位』+名字”，并附带一封求职信。
+        h1 以下是我们开发申请的职位(点击标题查看职位介绍)
+        ul
+          - @jobs.each_with_index do | j, index |
+            li
+              a href="#job-#{index+1}"
+               | #
+               = index+1
+               | &nbsp;-&nbsp;
+               = j
+      section.article
+        - @pages.each_with_index do | job, index |
+          section.job-list id="job-#{index+1}"
+            h2
+              | 招聘职位 #
+              = index+1
+              |：
+              = job[0]
+            = raw job[1]
+        p 简历请发到 hr[at]36kr.com，标题注明：“应聘『职位』+名字”，并附带一封求职信。
+        figure class="big"
+          img class="" src="http://uploads.36krcnd.com/upload/file/fbc1e17b186d550829d215abd0997372.jpg" alt=""
