@@ -31,7 +31,7 @@ class RelatedLink < ActiveRecord::Base
   def self.parse_url(url)
     return {result: false, msg: 'URL不可为空', metas: {}} unless url.present?
     code, msg = valid_of?(url)
-    return [result: false, msg: msg, metas: {}] unless code
+    return {result: false, msg: msg, metas: {}} unless code
     begin
       og = OpenGraph.new(url)
       metas = {
