@@ -34,7 +34,9 @@ class Admin::RelatedLinksController < Admin::BaseController
   private
 
   def related_link_params
-    params.require(:related_link).permit(:url, :title, :link_type, :image, :description, :video_url, :video_duration) if params[:related_link]
+    params.require(:related_link).permit(:url, :title, :link_type, :image, :description,
+     :video_url, :video_duration,
+     :event_locality, :event_address, :event_starttime) if params[:related_link]
   end
 
   def find_post

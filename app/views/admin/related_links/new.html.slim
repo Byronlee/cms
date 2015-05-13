@@ -17,6 +17,10 @@
       div.video_extra_info style="#{ (@related_link.link_type || '').start_with?('video') ? 'display: block' : 'display: none' }"
         = f.input :video_url, input_html: {class: 'col-lg-12', id: 'related_link_video'}
         = f.input :video_duration, hint: '单位: s', input_html: {type: :number, min: 0, id: 'related_link_video_duration'}
+      div.event_extra_info style="#{ (@related_link.link_type || '').start_with?('event') ? 'display: block' : 'display: none' }"
+        = f.input :event_locality, input_html: {class: 'col-lg-12', id: 'related_event_locality'}
+        = f.input :event_address, input_html: {class: 'col-lg-12', id: 'related_event_address'}
+        = f.input :event_starttime, input_html: {class: 'col-lg-12', id: 'related_event_starttime'}
       div.form-actions
         = f.button :submit, data: { disable_with: "submitting..." }, class:"btn btn-primary"
 
@@ -37,9 +41,10 @@ javascript:
 
   $("#btn_get_og_meta").click(function(){
      var url = "#{get_metas_info_asynces_related_links_path}";
+     $('#error_msg').empty();
      $.get(url, {url: $('#related_link_url').val()}, function(data) {
        if(data['result'] == false){
-         $('#error_msg').empty().append(data['msg']);
+         $('#error_msg').append(data['msg']);
        }else{
          console.log(data);
          metas = data['metas']
@@ -47,8 +52,13 @@ javascript:
          $("#related_link_title").val(metas['title']);
          $("#related_link_description").val(metas['description']);
          $("#related_link_image").val(metas['image']);
+
          $("#related_link_video").val(metas['video']);
          $("#related_link_video_duration").val(metas['video_duration']);
+         
+         $("#related_event_locality").val(metas['event_locality']);
+         $("#related_event_address").val(metas['event_address']);
+         $("#related_event_starttime").val(metas['event_starttime']);
          check_link_type();
        }
      });
@@ -56,11 +66,18 @@ javascript:
 
 
   check_link_type = function() {
-    var val = $('#related_link_type').val();
-    if(val.match("^video")){
+    var video = $('#related_link_type').val();
+    if(video.match("^video")){
       $('.video_extra_info').fadeIn();
     } else {
       $('.video_extra_info').fadeOut();
+    }
+
+    var event = $('#related_link_type').val();
+    if(event.match("^event")){
+      $('.event_extra_info').fadeIn();
+    } else {
+      $('.event_extra_info').fadeOut();
     }
   };
 

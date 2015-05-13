@@ -18,8 +18,14 @@
 require 'common'
 class RelatedLink < ActiveRecord::Base
   typed_store :extra do |s|
-    s.text :video_url, default: ''
+    #video extra info
+    s.string :video_url, default: ''
     s.integer :video_duration, default: 0
+
+    #event extra info
+    s.string :event_locality, default: ''
+    s.string :event_address, default: ''
+    s.datetime :event_starttime, default: ''
   end
 
   validates_presence_of :url
@@ -41,7 +47,12 @@ class RelatedLink < ActiveRecord::Base
         description: og.description,
         image: og.images.first,
         video: get_customer_meta_of(og, :video),
-        video_duration: get_customer_meta_of(og, :video, :duration)
+
+        video_duration: get_customer_meta_of(og, :video, :duration),
+
+        event_locality: get_customer_meta_of(og, :locality),
+        event_address: get_customer_meta_of(og, :"street-address"),
+        event_starttime: get_customer_meta_of(og, :"start-time")
       }
     rescue Exception => ex
       return {result: false, msg: ex.message, metas: {}}
