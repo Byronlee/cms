@@ -66,19 +66,25 @@ describe WelcomeController do
   end
 
   describe "GET 'index'" do
-    context 'read database index' do
-      before :each do
-        create :post, :published
-        create :main_site
-      end
+    before :each do
+      create :post, :published
+      create :main_site
+    end
 
-      context "html" do 
-        before { get :index, page: 2}
-        it do
-          should respond_with(:success)
-          expect(assigns(:prev_page)).to eq 1
-          should render_template(:index)
-        end
+    context "html" do 
+      before { get :index, page: 2}
+      it do
+        should respond_with(:success)
+        expect(assigns(:prev_page)).to eq 1
+        should render_template(:index)
+      end
+    end
+
+    context 'json' do
+      before { get :index, page: 2, format: :json}
+      it do
+        should respond_with(:success)
+        expect(response.headers['Content-Type']).to include 'application/json'
       end
     end
   end
