@@ -72,6 +72,11 @@ module ApplicationHelper
     request.user_agent =~ /Mobile|webOS/
   end
 
+  def time_local_zone(time)
+    return nil if time.blank?
+    time.in_time_zone(Rails.configuration.time_zone)
+  end
+
   private
 
   def relative_time(raw_time)

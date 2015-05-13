@@ -20,7 +20,7 @@
       div.event_extra_info style="#{ (@related_link.link_type || '').start_with?('event') ? 'display: block' : 'display: none' }"
         = f.input :event_locality, input_html: {class: 'col-lg-12', id: 'related_event_locality'}
         = f.input :event_address, input_html: {class: 'col-lg-12', id: 'related_event_address'}
-        = f.input :event_starttime, input_html: {class: 'col-lg-12', id: 'related_event_starttime'}
+        = f.input :event_starttime, input_html: {value: "#{time_local_zone @related_link.event_starttime}", class: 'col-lg-12', id: 'related_event_starttime'}
       div.form-actions
         = f.button :submit, data: { disable_with: "submitting..." }, class:"btn btn-primary"
 

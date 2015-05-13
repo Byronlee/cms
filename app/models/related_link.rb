@@ -25,7 +25,7 @@ class RelatedLink < ActiveRecord::Base
     #event extra info
     s.string :event_locality, default: ''
     s.string :event_address, default: ''
-    s.datetime :event_starttime, default: ''
+    s.datetime :event_starttime, default: nil
   end
 
   validates_presence_of :url
