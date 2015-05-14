@@ -42,7 +42,6 @@ class HeadLinesComponentWorker < BaseWorker
   def prase(url)
     return {} unless valid_of?(url)
     og = OpenGraph.new(url)
-    binding.pry
     {
       title: og.title,
       type: og.type,
