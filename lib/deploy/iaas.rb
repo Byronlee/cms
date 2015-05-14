@@ -29,8 +29,8 @@ class Deploy::Iaas
   end
 
   class << self
-    def web3_lbp(zone, backend_id, policy_id)
-      url = "https://api.qingcloud.com/iaas/?action=ModifyLoadBalancerBackendAttributes&loadbalancer_backend=#{backend_id}&port=8093&weight=1&disabled=0&loadbalancer_policy_id=#{policy_id}&zone=#{zone}"
+    def web3_lbp(zone, backend_id, policy_id, weight)
+      url = "https://api.qingcloud.com/iaas/?action=ModifyLoadBalancerBackendAttributes&loadbalancer_backend=#{backend_id}&port=8093&weight=#{weight}&disabled=0&loadbalancer_policy_id=#{policy_id}&zone=#{zone}"
       signature_obj = self.new(url, KEY, SECRET)
       signature_url = signature_obj.signature
       #puts signature_url
