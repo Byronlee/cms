@@ -187,9 +187,6 @@ GEM
       jbuilder
       tilt
       tilt-jbuilder (>= 0.4.0)
-    grape-rails-cache (0.1.2)
-      activesupport
-      grape
     guard (2.12.5)
       formatador (>= 0.2.4)
       listen (~> 2.7)
@@ -576,7 +573,6 @@ DEPENDENCIES
   grape (~> 0.10.1)
   grape-entity (~> 0.4.4)
   grape-jbuilder (~> 0.2.0)
-  grape-rails-cache
   grape-swagger!
   grape-swagger-rails!
   guard-livereload
