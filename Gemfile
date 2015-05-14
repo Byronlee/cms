@@ -103,7 +103,7 @@ gem "rails-assets-html5shiv", "~> 3.7.0"
 
 
 # log
-gem 'lograge'
+# gem 'lograge'
 
 group :development do
   # gem "better_errors", "~> 1.1.0"

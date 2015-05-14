@@ -21,13 +21,10 @@ class PostsController < ApplicationController
     @posts = @posts.order('published_at desc').includes({ author: :krypton_authentication }, :column).page params[:page]
   end
 
-  def baidu_feed
-    feed
-  end
-
   def feed
     @feeds = Post.published.includes({ author: :krypton_authentication }, :column).order('published_at desc').limit(20)
   end
+  alias_method :baidu_feed, :feed
 
   def bdnews
     @post = Post.find_by_url_code!(params[:url_code])

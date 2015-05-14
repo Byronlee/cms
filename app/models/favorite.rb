@@ -12,6 +12,7 @@
 class Favorite < ActiveRecord::Base
   paginates_per 20
 
+  scope :recent, -> { order(created_at: :desc) }
   belongs_to :post, foreign_key: :url_code, primary_key: :url_code, counter_cache: true
   belongs_to :user, counter_cache: true
 

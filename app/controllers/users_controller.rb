@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   load_resource only: :current
+  load_and_authorize_resource :favorites, through: :current_user
 
   def messages
     return render :text => '', layout: false if params['data'].blank? || params['data']['code'].to_i != 0
@@ -7,13 +8,7 @@ class UsersController < ApplicationController
   end
 
   def favorites
-    unless current_user.blank?
-      @favorites = Favorite.where(user_id: current_user.id)
-      .order(created_at: :desc)
-      .page(params[:page]).per(params[:per_page])
-    else
-      @favorites = nil
-    end
+    @favorites = @favorites.recent.page(params[:page]).per(params[:per_page])
   end
 
   def cancel_favorites
