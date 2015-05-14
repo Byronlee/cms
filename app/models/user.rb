@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
   has_one :krypton_authentication, -> { where(provider: :krypton) }, class_name: Authentication.to_s, dependent: :destroy
   has_many :posts
   has_many :comments
-  has_many :favorites, -> { order(created_at: :desc) }
+  has_many :favorites
   has_many :related_links
 
   typed_store :extra do |s|

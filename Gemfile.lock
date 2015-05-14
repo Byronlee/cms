@@ -190,8 +190,6 @@ GEM
     grape-rails-cache (0.1.2)
       activesupport
       grape
-    grape_logging (1.0.3)
-      grape
     guard (2.12.5)
       formatador (>= 0.2.4)
       listen (~> 2.7)
@@ -581,7 +579,6 @@ DEPENDENCIES
   grape-rails-cache
   grape-swagger!
   grape-swagger-rails!
-  grape_logging
   guard-livereload
   guard-rspec
   hashie (~> 3.3.2)

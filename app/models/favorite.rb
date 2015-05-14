@@ -35,5 +35,4 @@ class Favorite < ActiveRecord::Base
     post.favoriter_sso_ids.delete(sso_id.to_i)
     post.update_column(:favoriter_sso_ids, post.favoriter_sso_ids)
   end
-
 end

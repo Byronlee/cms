@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   load_resource only: :current
-  load_and_authorize_resource :favorites, through: :current_user
+  load_and_authorize_resource :favorite, through: :current_user, only: :favorites, parent: false
 
   def messages
     return render :text => '', layout: false if params['data'].blank? || params['data']['code'].to_i != 0
@@ -24,5 +24,4 @@ class UsersController < ApplicationController
       end
     end
   end
-
 end
