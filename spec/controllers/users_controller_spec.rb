@@ -13,9 +13,7 @@ describe UsersController do
     context 'current user is nil' do
       it do
         get 'favorites'
-        response.should be_success
-        expect(assigns(:favorites)).to be_nil
-        expect(response).to render_template('users/favorites')
+        expect(response).to redirect_to 'http://test.host/users/sign_in'
       end
     end
 
@@ -42,9 +40,9 @@ describe UsersController do
     context 'has favorites' do
       let(:favorite) { create :favorite, user: session_user }
       before { get 'cancel_favorites', url_code: favorite.post.url_code }
-      it { 
-        expect(assigns(:state)).to be_false 
-      } 
+      it {
+        expect(assigns(:state)).to be_false
+      }
     end
   end
 end

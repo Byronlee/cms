@@ -31,7 +31,7 @@ describe Ability do
       should be_able_to :feed_bdnews, Post
 
       should be_able_to :read, Comment
-      should be_able_to :execllents, Comment
+      should be_able_to :excellents, Comment
     end
   end
 
