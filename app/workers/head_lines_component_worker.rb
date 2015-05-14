@@ -1,24 +1,22 @@
 require 'common'
 class HeadLinesComponentWorker < BaseWorker
   sidekiq_options :queue => :third_party_headline, :backtrace => true
-  
-  def perform
-    fetch_meta_info
+
+  def perform(head_line)
+    fetch_meta_info(head_line)
     cache_top_list_to_redis
   end
 
   private
 
-  def fetch_meta_info
-    HeadLine.published.where("title is null or title=''").order('created_at asc').each do |head_line|
-      metas = prase(head_line.url)
-      next if metas.blank?
-      head_line.title = metas[:title]
-      head_line.post_type = metas[:type]
-      head_line.image = metas[:image]
-      head_line.url_code = metas[:code]
-      head_line.save
-    end
+  def fetch_meta_info(head_line)
+    metas = prase(head_line.url)
+    return if metas.blank?
+    head_line.title = metas[:title]
+    head_line.post_type = metas[:type]
+    head_line.image = metas[:image]
+    head_line.url_code = metas[:code]
+    head_line.save
   end
 
   def cache_top_list_to_redis
@@ -44,6 +42,7 @@ class HeadLinesComponentWorker < BaseWorker
   def prase(url)
     return {} unless valid_of?(url)
     og = OpenGraph.new(url)
+    binding.pry
     {
       title: og.title,
       type: og.type,

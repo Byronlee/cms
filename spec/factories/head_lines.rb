@@ -20,12 +20,14 @@
 FactoryGirl.define do
   factory :head_line do
     url "http://36kr.com/p/531980.html"
+    post_type 'article'
     order_num 10
     state 'published'
   end
 
   factory :head_line2, :class => 'HeadLine' do
     url "http://3531964.html"
+    post_type 'article'
     order_num 10
     state 'published'
   end

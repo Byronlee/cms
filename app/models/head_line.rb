@@ -26,9 +26,6 @@ class HeadLine < ActiveRecord::Base
 
   belongs_to :user
 
-  after_destroy :fetch_remote_metas
-  after_save :fetch_remote_metas
-
   scope :published, -> { where(:state => :published) }
   scope :archived, -> { where(:state => :archived) }
 
@@ -45,6 +42,14 @@ class HeadLine < ActiveRecord::Base
     end
   end
 
+  after_destroy :fetch_remote_metas, if: -> { title.blank? }
+  after_save :fetch_remote_metas, if: -> { title.blank? }
+  def fetch_remote_metas
+    logger.info 'perform the worker to fetch remote metas'
+    logger.info HeadLinesComponentWorker.new.perform(self)
+    true
+  end
+
   # TODO: 这是只为API提供使用，应该重构删除
   def replies_count
     0
@@ -53,13 +58,5 @@ class HeadLine < ActiveRecord::Base
   # TODO: 这是只为API提供使用，应该重构删除
   def excerpt
     title
-  end
-
-  private
-
-  def fetch_remote_metas
-    logger.info 'perform the worker to fetch remote metas'
-    logger.info HeadLinesComponentWorker.new.perform
-    true
   end
 end
