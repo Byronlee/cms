@@ -21,9 +21,9 @@ module V2
           .where(state: params[:state])
           .order(published_at: :desc)
           .page(params[:page]).per(params[:per_page])
-          cache(key: "api:v2:posts:index", etag: Time.now, expires_in: Settings.api.expires_in) do
+          #cache(key: "api:v2:posts:index", etag: Time.now, expires_in: Settings.api.expires_in) do
             present @posts, with: Entities::Post
-          end
+          #end
         end
 
         # Get id posts list
@@ -42,9 +42,9 @@ module V2
               .order(published_at: :desc)
             @posts = @posts.page(params[:page]).per(params[:per_page] || 30)
           end
-          cache(key: "api:v2:posts:#{params[:id]}:page:#{params[:action]}", etag: Time.now, expires_in: Settings.api.expires_in) do
+          #cache(key: "api:v2:posts:#{params[:id]}:page:#{params[:action]}", etag: Time.now, expires_in: Settings.api.expires_in) do
             present @posts, with: Entities::Post
-          end
+          #end
         end
 
         # Get post detail
@@ -53,9 +53,9 @@ module V2
           @post = Post.includes(author:[:krypton_authentication])
           .where(url_code: params[:id]).first
           not_found! if @post.blank?
-          cache(key: "api:v2:posts:#{params[:id]}", etag: @post.published_at, expires_in: Settings.api.expires_in) do
+          #cache(key: "api:v2:posts:#{params[:id]}", etag: @post.published_at, expires_in: Settings.api.expires_in) do
             present @post, with: Entities::Post
-          end
+          #end
         end
 
         # Create a new post

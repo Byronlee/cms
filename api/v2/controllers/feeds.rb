@@ -12,9 +12,9 @@ module V2
         end
         get do
           info_flow = InfoFlow.find_by_name Settings.default_info_flow
-          cache(key: "api:v2:feeds:index", etag: Time.now, expires_in: Settings.api.expires_in) do
+          #cache(key: "api:v2:feeds:index", etag: Time.now, expires_in: Settings.api.expires_in) do
             info_flow = info_flow.posts_with_ads(params[:page])[0]
-          end
+          #end
           info_flow
         end
 

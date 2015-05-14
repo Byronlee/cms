@@ -11,7 +11,6 @@ module V2
           optional :type, type: String, default: 'post', desc: '多态类型'
           optional :page,  type: Integer, default: 1, desc: '页数'
           optional :per_page,  type: Integer, default: 30, desc: '每页记录数'
-          #optional :action,  type: String, default: 'down', desc: '下翻页 down 和 上翻页 up'
         end
         get ':pid' do
           post = params[:type].classify.constantize.find_by_url_code params[:pid]
@@ -19,9 +18,9 @@ module V2
           .includes(:commentable, user:[:krypton_authentication])
           .order('created_at desc').page(params[:page]).per(params[:per_page])
           not_found! if @comments.blank?
-          cache(key: "api:v2:comments:#{params[:pid]}#{@comments.last.updated_at}", etag: Time.now, expires_in: Settings.api.expires_in) do
+          #cache(key: "api:v2:comments:#{params[:pid]}#{@comments.last.updated_at}", etag: Time.now, expires_in: Settings.api.expires_in) do
             present @comments, with: Entities::Comment
-          end
+          #end
         end
 
         desc 'get post by page comments list'
@@ -39,14 +38,13 @@ module V2
             pid: post.id, date: post.comments.find(params[:cid]).created_at)
           .includes(:commentable, user:[:krypton_authentication])
           .order('created_at desc').page(params[:page]).per(params[:per_page])
-          cache(key: "api:v2:comments:#{params[:cid]}:page:#{params[:pid]}:#{@comments.last.updated_at}", etag: Time.now, expires_in: Settings.api.expires_in) do
+          #cache(key: "api:v2:comments:#{params[:cid]}:page:#{params[:pid]}:#{@comments.last.updated_at}", etag: Time.now, expires_in: Settings.api.expires_in) do
             present @comments, with: Entities::Comment
-          end
+          #end
         end
 
         desc 'create a comments'
         params do
-          #optional :authentication_token, type: String, desc: 'authentication_token'
           optional :sso_token, type: String, desc: 'sso_token'
           optional :type, type: String, default: 'post', desc: '多态类型'
           optional :content, type: String, desc: '内容'

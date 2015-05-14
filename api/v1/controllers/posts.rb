@@ -17,7 +17,7 @@ module V1
           @posts = Post.includes(:comments, author:[:krypton_authentication])
           .where(state: params[:state]).order(published_at: :desc)
           @posts = @posts.page(params[:page]).per(params[:per_page])
-          cache(key: "api:v1:topics", etag: Time.now, expires_in: Settings.api.expires_in) do
+          #cache(key: "api:v1:topics", etag: Time.now, expires_in: Settings.api.expires_in) do
             #present @posts, with: Entities::Post
             posts_list = []
             @posts.each do |post|
@@ -38,7 +38,7 @@ module V1
               }
             end
             posts_list
-          end
+          #end
         end
 
         desc 'get index posts list'
@@ -51,7 +51,7 @@ module V1
           @posts = Post.includes(:comments, author:[:krypton_authentication])
           .where(state: params[:state]).order(published_at: :desc)
           .page(params[:page]).per(params[:per_page])
-          cache(key: "api:v1:topics:index:", etag: Time.now, expires_in: Settings.api.expires_in) do
+          #cache(key: "api:v1:topics:index:", etag: Time.now, expires_in: Settings.api.expires_in) do
             posts_list = []
             @posts.each do |post|
               posts_list << {
@@ -71,8 +71,7 @@ module V1
               }
             end
             posts_list
-          #          present @posts, with: Entities::Post
-          end
+          #end
         end
 
         desc 'export all posts list'
@@ -115,9 +114,9 @@ module V1
         get 'feature' do
           @head_lines = HeadLine.published.order(order_num: :desc)
           .page(params[:page]).per(params[:per_page])
-          cache(key: "api:v1:topics:feature", etag: Time.now, expires_in: Settings.api.expires_in) do
+          #cache(key: "api:v1:topics:feature", etag: Time.now, expires_in: Settings.api.expires_in) do
             present @head_lines, with: Entities::HeadLine
-          end
+          #end
         end
 
         desc 'category'
@@ -129,8 +128,7 @@ module V1
           category = Column.find_by_slug params[:tags]
           posts = category.posts.published.order(published_at: :desc)
           .page(params[:page]).per(params[:per_page])
-          cache(key: "api:v1:topics:category:#{params[:tags]}", etag: Time.now, expires_in: Settings.api.expires_in) do
-            #present posts, with: Entities::Post
+          #cache(key: "api:v1:topics:category:#{params[:tags]}", etag: Time.now, expires_in: Settings.api.expires_in) do
             posts_list = []
             posts.each do |post|
               posts_list << {
@@ -150,7 +148,7 @@ module V1
               }
             end
             posts_list
-          end
+          #end
         end
 
         desc 'get post comments list'
@@ -183,24 +181,23 @@ module V1
                 avatar_url: replie.user.avatar
             }) if replie.user.id != 10002
           end
-          cache(key: "api:v1:topics:#{post.url_code}:replies", etag: Time.now, expires_in: Settings.api.expires_in) do
+          #cache(key: "api:v1:topics:#{post.url_code}:replies", etag: Time.now, expires_in: Settings.api.expires_in) do
             { replies: replies_list }.merge({
               id: post.url_code,
               title: post.title,
               replied_at: comments.last.created_at.iso8601,
               replies_count: comments.size
             })
-          end
+          #end
         end
 
         desc 'get post detail'
         get ":id" do
           post = Post.where(url_code: params[:id]).first
           not_found! if post.blank?
-          cache(key: "api:v1:topics:#{post.url_code}", etag: post.published_at, expires_in: Settings.api.expires_in) do
-            #error!("Post not found", 404) if @post.blank?
+          #cache(key: "api:v1:topics:#{post.url_code}", etag: post.published_at, expires_in: Settings.api.expires_in) do
             present post, with: Entities::Post
-          end
+          #end
         end
 
       end

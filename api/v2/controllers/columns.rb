@@ -15,9 +15,9 @@ module V2
           @columns = Column.where('order_num > 0')
           .order(order_num: :desc)
           .page(params[:page]).per(params[:per_page])
-          cache(key: "api:v2:columns:index", etag: Time.now, expires_in: Settings.api.expires_in) do
+          #cache(key: "api:v2:columns:index", etag: Time.now, expires_in: Settings.api.expires_in) do
             present @columns, with: Entities::Column
-          end
+          #end
         end
 
         desc 'get post list for a column'
@@ -29,9 +29,9 @@ module V2
           @posts = Post.published.where('column_id = :id', id: params[:id])
           .order(published_at: :desc)
           .page(params[:page]).per(params[:per_page])
-          cache(key: "api:v2:columns:#{params[:id]}", etag: Time.now, expires_in: Settings.api.expires_in) do
+          #cache(key: "api:v2:columns:#{params[:id]}", etag: Time.now, expires_in: Settings.api.expires_in) do
             present @posts, with: Entities::Post
-          end
+          #end
         end
 
         desc 'get post list by page'
@@ -46,9 +46,9 @@ module V2
                               cid: post.column_id, date: post.published_at)
           .order(published_at: :desc).page(params[:page]).per(params[:per_page])
 #          not_found! if @posts.blank?
-          cache(key: "api:v2:columns:#{params[:cid]}:page:#{params[:pid]}", etag: Time.now, expires_in: Settings.api.expires_in) do
+          #cache(key: "api:v2:columns:#{params[:cid]}:page:#{params[:pid]}", etag: Time.now, expires_in: Settings.api.expires_in) do
             present @posts, with: Entities::Post
-          end
+          #end
         end
 
       end

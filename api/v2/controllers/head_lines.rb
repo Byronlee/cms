@@ -14,9 +14,9 @@ module V2
         get 'index' do
           @head_lines = HeadLine.published.order(order_num: :desc)
             .page(params[:page]).per(params[:per_page])
-          cache(key: "api:v2:head_lines:index", etag: Time.now, expires_in: Settings.api.expires_in) do
+          #cache(key: "api:v2:head_lines:index", etag: Time.now, expires_in: Settings.api.expires_in) do
             present @head_lines, with: Entities::HeadLine
-          end
+          #end
         end
 
         desc 'Get head line detail'
@@ -25,9 +25,9 @@ module V2
         get ':id' do
           @head_line = HeadLine.where(id: params[:id]).first
           not_found! if @head_line.blank?
-          cache(key: "api:v2:head_lines:#{@head_line.id}", etag: @head_line.updated_at, expires_in: Settings.api.expires_in) do
+          #cache(key: "api:v2:head_lines:#{@head_line.id}", etag: @head_line.updated_at, expires_in: Settings.api.expires_in) do
             present @head_line, with: Entities::HeadLine
-          end
+          #end
         end
 
         desc 'Get head line by page'
@@ -44,9 +44,9 @@ module V2
               date: head_line.created_at).order('order_num desc')
             @head_lines = @head_lines.page(params[:page]).per(params[:per_page])
           end
-          cache(key: "api:v2:head_lines:#{params[:id]}:page", etag: head_line.updated_at, expires_in: Settings.api.expires_in) do
+          #cache(key: "api:v2:head_lines:#{params[:id]}:page", etag: head_line.updated_at, expires_in: Settings.api.expires_in) do
             present @head_lines, with: Entities::HeadLine
-          end
+          #end
         end
 
         desc 'Create a new head line'

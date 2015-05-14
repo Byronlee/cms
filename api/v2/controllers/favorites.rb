@@ -13,8 +13,7 @@ module V2
           user = current_user[0]
           favorites = Favorite.where(user_id: user.id)
           .order(created_at: :desc).page(params[:page]).per(params[:per_page])
-          cache(key: "api:v2:favorites:#{params[:sso_token]}", etag: Time.now, expires_in: Settings.api.expires_in) do
-            #present favorites, with: Entities::Favorite
+          #cache(key: "api:v2:favorites:#{params[:sso_token]}", etag: Time.now, expires_in: Settings.api.expires_in) do
             posts_list = []
             favorites.each do |favorite|
               posts_list << {
@@ -28,7 +27,7 @@ module V2
               }
             end
             posts_list
-          end
+          #end
         end
 
         params do

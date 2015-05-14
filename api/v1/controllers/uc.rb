@@ -16,7 +16,7 @@ module V1
           return { success: false, msg: '新闻数据限制在1~100，请检查！' } unless (1..100).include? params[:count].to_i
           posts = Post.all.order(created_at: :desc).limit(params[:count])
 
-          cache(key: "api:v1:uc_news", etag: Time.now, expires_in: Settings.api.expires_in) do
+          #cache(key: "api:v1:uc_news", etag: Time.now, expires_in: Settings.api.expires_in) do
             news = []
             posts.each do |post|
               news << {
@@ -34,7 +34,7 @@ module V1
               success: true,
               data: news
             }
-          end
+          #end
         end
       end
     end

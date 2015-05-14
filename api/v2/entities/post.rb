@@ -5,7 +5,7 @@ module V2
       expose :id         , documentation: 'not null, primary key'
       expose :title      , documentation: '标题'
       expose :summary    , documentation: '摘要'
-      expose :content    , documentation: '内容'
+      expose :sanitize_content, as: :content , documentation: '内容'
       expose :md_content , documentation: 'markdown内容'
       expose :title_link , documentation: '标题链接'
       expose :column_id  , documentation: '专栏编号'

@@ -17,7 +17,7 @@ module V1
           unless match_uri.nil?
             pid = match_uri[1].to_i
             @post = Post.find_by_url_code pid
-            cache(key: "api:v1:weibo:linkcard", etag: Time.now, expires_in: Settings.api.expires_in) do
+            #cache(key: "api:v1:weibo:linkcard", etag: Time.now, expires_in: Settings.api.expires_in) do
               if !@post.nil? && @post.state == "published"
                 {
                   "display_name" => "#{@post.title}",
@@ -50,7 +50,7 @@ module V1
                 "msg" => "NotFound!"
               }
               end
-            end
+            #end
           else
             {
               "errcode" => "-1",
