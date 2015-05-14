@@ -1,13 +1,14 @@
 = render 'welcome/title', title: @post.title
 = render 'posts/og_meta'
-= render 'welcome/canonical', raw_url: "http://www.36kr.com/p/#{@post.url_code}.html"
+= render 'welcome/canonical', raw_url: "http://36kr.com/p/#{@post.url_code}.html"
 
 .main
   .content
     .content-wrapper
       article.single-post
-        = render_cell :post, :header, post: @post
-        = render_cell :post, :content, post: @post
+        - cache [:content, @post] do
+          = render_cell :post, :header, post: @post
+          = render_cell :post, :content, post: @post
         = render_cell :post, :ad
         - if (@post.author == current_user || (can? :manage, Comment))
           hr style="border: 1px solid #eee;"
@@ -15,8 +16,10 @@
           span &nbsp;|&nbsp;
           = link_to "管理评论", admin_post_comments_path(@post)
         = render_cell :post, :share, post:  @post, user: current_user
+      /model 添加touch
       = render_cell :post, :author, author: @post.author
-      = render_cell :post, :relate, post: @post
+      - cache [:tag, @post] do
+        = render_cell :post, :relate, post: @post
       section.single-post-comment
         = render_cell :comment, :new, post: @post, current_user: current_user if @post.published?
         = render_cell :comment, :index, post: @post
