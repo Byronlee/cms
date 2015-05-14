@@ -41,7 +41,7 @@ class Ability
     can [:read, :site_map, :changes], :welcome
     can :read, [Ad, Post, Column, Page, Newsflash, User]
     can [:news, :feed, :hots, :today_lastest, :feed_bdnews, :bdnews, :archives, :preview, :baidu_feed], Post
-    can [:read, :execllents], Comment
+    can [:read, :excellents], Comment
     cannot :create, Comment
   end
 
@@ -54,7 +54,7 @@ class Ability
     can :read, :dashboard
     can [:read, :create], Newsflash
     can :manage, Newsflash, :user_id => user.id
-    cannot [:set_top, :set_down], Newsflash 
+    cannot [:set_top, :set_down], Newsflash
     can [:new, :myown], Post
     can [:read, :column, :reviewings], Post, :id => user.posts.pluck(:id)
     can :manage, Post, :id => user.posts.drafted.pluck(:id)
