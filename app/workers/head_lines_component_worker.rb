@@ -16,7 +16,6 @@ class HeadLinesComponentWorker < BaseWorker
     head_line.post_type = metas[:type]
     head_line.image = metas[:image]
     head_line.url_code = metas[:code]
-    head_line.save
   end
 
   def cache_top_list_to_redis

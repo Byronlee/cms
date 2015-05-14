@@ -42,8 +42,7 @@ class HeadLine < ActiveRecord::Base
     end
   end
 
-  after_destroy :fetch_remote_metas, if: -> { title.blank? }
-  after_save :fetch_remote_metas, if: -> { title.blank? }
+  before_save :fetch_remote_metas, if: -> { title.blank? }
   def fetch_remote_metas
     logger.info 'perform the worker to fetch remote metas'
     logger.info HeadLinesComponentWorker.new.perform(self)
