@@ -12,11 +12,32 @@ describe Admin::UsersController do
   end
 
   describe "patch 'update'" do
-    let(:user) { create :user }
+    context 'update user info' do
+      let(:user) { create :user }
 
-    it "returns http success" do
-      patch :update, id: user.id, user: attributes_for(:user)
-      expect(response.status).to eq 302
+      it do
+        patch :update, id: user.id, user: attributes_for(:user)
+        expect(response.status).to eq 302
+      end
+    end
+
+    context 'reader cannot edit the role' do
+      login_user(:reader)
+
+      it do
+        patch :update, id: session_user.id, user: {role: 'admin'}
+        expect(session_user.reload.role).to eq 'reader'
+        expect(response.status).to eq 302
+      end
+    end
+
+    context 'admin can edit the role' do
+      let(:user) { create :user, :reader }
+      it do
+        patch :update, id: user.id, user: {role: 'admin'}
+        expect(user.reload.role).to eq 'admin'
+        expect(response.status).to eq 302
+      end
     end
   end
 

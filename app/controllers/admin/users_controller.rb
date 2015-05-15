@@ -28,7 +28,12 @@ class Admin::UsersController < Admin::BaseController
   private
 
   def user_params
-    params.require(:user).permit(:role, :name, :email, :phone, :tagline) if params[:user]
+    return {} unless params[:user]
+    if current_user.role.admin?
+      params.require(:user).permit(:role, :name, :email, :phone, :tagline) 
+    else
+      params.require(:user).permit(:name, :email, :phone, :tagline)
+    end
   end
 
   def simple_search
