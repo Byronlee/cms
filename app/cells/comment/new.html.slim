@@ -41,18 +41,26 @@ h2
 
   javascript:
     $(document).ready(function(){
-      $(".comment-submit-btn").click(function(){
-        if(#{@current_user.present?} == false || $('form.comment_form > #post').val() == "") return;
+      $(".comment-submit-btn").click(function(o){
+        if(#{@current_user.present?} == false || $('form.comment_form #post').val() == "") return;
         var frm = $('form.comment_form');
         $.ajax({
             type: frm.attr('method'),
             url: frm.attr('action'),
             data: frm.serialize() + "&current_maxid=" + ($(".comment_details").data('comment-id') || 0),
+            beforeSend: function(){
+              $(o).attr('diabled', "true")
+              $('span.ladda-label').html('提交评论...')
+            },
             success: function (data) {
               $('.single-post-comment__comments').prepend(data);
               frm[0].reset();
               $('.comment_form_count').text($(".comments_total_count").data('total-count') || 0);
               $(".timeago").timeago();
+            },
+            complete: function(){
+              $(o).removeAttr('diabled')
+              $('span.ladda-label').html('提交评论')
             }
         });
      });
