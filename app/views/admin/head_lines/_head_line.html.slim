@@ -13,7 +13,7 @@ tr
     i.fa.fa-clock-o[title=head_line.created_at data-toggle='tooltip']
     a href=head_line.url target="_blank"
       i.fa.fa-link[title=head_line.url data-toggle='tooltip']
-  td.text_center = time_ago_in_words head_line.created_at
+  td.text_center = time_ago_in_words head_line.updated_at
   td.text_center
     - if can? :edit, head_line
       a title="编辑" href= edit_admin_head_line_path(head_line)

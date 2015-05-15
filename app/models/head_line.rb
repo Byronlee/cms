@@ -22,23 +22,26 @@ class HeadLine < ActiveRecord::Base
 
   validates :url, presence: true
   validates_uniqueness_of :url
-  validates :url, :url => { :allow_blank => true }
+  validates :url, :url => { allow_blank: true }
 
   belongs_to :user
 
-  scope :published, -> { where(:state => :published) }
-  scope :archived, -> { where(:state => :archived) }
+  scope :published, -> { where(state: :published) }
+  scope :archived, -> { where(state: :archived) }
+  scope :recent, -> { order(updated_at: :desc) }
+  scope :weight, -> { order('order_num desc nulls last') }
+  scope :related, -> { includes(user: :krypton_authentication)}
 
   aasm do
     state :published, :initial => true
     state :archived
 
     event :publish do
-      transitions :from => [:archived], :to => :published
+      transitions from: [:archived], to: :published
     end
 
     event :archive do
-      transitions :from => [:published], :to => :archived
+      transitions from: [:published], to: :archived
     end
   end
 
