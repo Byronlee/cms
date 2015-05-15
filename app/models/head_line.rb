@@ -15,12 +15,13 @@
 #  state      :string(255)
 #
 
+require 'common'
 class HeadLine < ActiveRecord::Base
   include AASM
   aasm.attribute_name :state
   paginates_per 20
 
-  validates :url, presence: true
+  validates :url, :title, presence: true
   validates_uniqueness_of :url
   validates :url, :url => { allow_blank: true }
 
@@ -45,10 +46,30 @@ class HeadLine < ActiveRecord::Base
     end
   end
 
-  before_save :fetch_remote_metas, if: -> { title.blank? }
-  def fetch_remote_metas
-    logger.info 'perform the worker to fetch remote metas'
-    logger.info HeadLinesComponentWorker.new.perform(self)
+  def self.parse_url(url)
+    return {result: false, msg: 'URL不可为空', metas: {}} unless url.present?
+    code, msg = valid_of?(url)
+    return {result: false, msg: msg, metas: {}} unless code
+    begin
+      og = OpenGraph.new(url)
+      metas = {
+        title: og.title,
+        type: og.type,
+        url: og.url,
+        description: og.description,
+        image: og.images.first,
+        code: get_customer_meta_of(og, :code)
+      }
+    rescue Exception => ex
+      return {result: false, msg: ex.message, metas: {}}
+    end
+
+    {result: true, msg:'', metas: metas}
+  end
+
+  after_save :update_head_line_cache
+  def update_head_line_cache
+    HeadLinesComponentWorker.new.perform
     true
   end
 

@@ -103,6 +103,10 @@ Rails.application.routes.draw do
       get :get_metas_info, on: :collection
     end
 
+    resources :head_lines, only: [] do
+      get :get_metas_info, on: :collection
+    end
+
     resources :dashboard, :only => [] do
       get :charts, on: :collection
       get :pandect, on: :collection

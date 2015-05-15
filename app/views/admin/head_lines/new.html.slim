@@ -11,12 +11,39 @@
           li.active 创建头条
   .main-body
     = simple_form_for [:admin, @head_line], html:{class:"form-horizontal"} do | f |
-      = f.input :url, input_html: {class: 'col-lg-12'}
-      - unless @head_line.new_record?
-        = f.input :post_type
-        = f.input :url_code
-        = f.input :order_num, input_html:{ step: 100}
-        = f.input :image, input_html: {class: 'col-lg-12'}
-        = f.input :title, input_html: {class: 'col-lg-12'}
+      = f.input :url, input_html: {class: 'col-lg-8', id: 'head_line_url'}
+      = f.input :post_type, input_html: {id: 'head_line_post_type'}
+      = f.input :url_code, input_html: {id: 'head_line_url_code'}
+      = f.input :order_num, input_html:{ step: 100, id: 'head_line_order_num'}
+      = f.input :image, input_html: {class: 'col-lg-12', id: 'head_line_image'}
+      = f.input :title, input_html: {class: 'col-lg-12', id: 'head_line_title'}
       div.form-actions
         = f.button :submit, data: { disable_with: "submitting..." }, class:"btn btn-primary"
+
+javascript:
+  $('#head_line_url').parent().append("<span style='margin-left:10px;'><a href='javascript:void(0)' id='btn_get_og_meta' class='btn btn-primary'>获取</button></a></span><p style='margin-bottom:0; color: #f00;' id='error_msg'></p>");
+
+  $(document).ajaxStart( function() {
+    $('#btn_get_og_meta').removeClass('btn-primary').addClass('btn-default');
+    $('#btn_get_og_meta').text('获取中...');
+  } ).ajaxStop ( function(){
+    $('#btn_get_og_meta').removeClass('btn-default').addClass('btn-primary');
+    $('#btn_get_og_meta').text('获取');
+  });
+
+  $("#btn_get_og_meta").click(function(){
+     var url = "#{get_metas_info_asynces_head_lines_path}";
+     $('#error_msg').empty();
+     $("#head_line_url+.help-inline").fadeOut();
+     $.get(url, {url: $('#head_line_url').val()}, function(data) {
+       if(data['result'] == false){
+         $('#error_msg').append(data['msg']);
+       }else{
+         metas = data['metas']
+         $("#head_line_post_type").val(metas['type']);
+         $("#head_line_url_code").val(metas['code']);
+         $("#head_line_image").val(metas['image']);
+         $("#head_line_title").val(metas['title']);
+       }
+     });
+  });
