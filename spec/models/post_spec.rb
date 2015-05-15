@@ -81,7 +81,7 @@ describe Post do
 
   describe '#check_head_line_cache' do
     before do
-      @post = create :post, :published
+      @post = create :post, :published, url_code: '531980'
       @head_line = create :head_line, url_code: @post.url_code
     end
 
