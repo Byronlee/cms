@@ -26,7 +26,7 @@
         section.single-post-comment
           = render_cell :comment, :new, post: @post, current_user: current_user if @post.published?
           = render_cell :comment, :index, post: @post
-  - cache [:show, :aside] do
+  - cache [:show, :aside, :cache_key_v1] do
     .aside
       = render_cell :post, :today
       = render_cell :sidebar, :social
