@@ -12,15 +12,20 @@
   .main-body
     = simple_form_for [:admin, @head_line], html:{class:"form-horizontal"} do | f |
       = f.input :url, input_html: {class: 'col-lg-8', id: 'head_line_url'}
-      = f.input :post_type, input_html: {id: 'head_line_post_type'}
-      = f.input :url_code, input_html: {id: 'head_line_url_code'}
-      = f.input :order_num, input_html:{ step: 100, id: 'head_line_order_num'}
-      = f.input :image, input_html: {class: 'col-lg-12', id: 'head_line_image'}
-      = f.input :title, input_html: {class: 'col-lg-12', id: 'head_line_title'}
+      div.head_line_details style="display:#{ @head_line.new_record? ? 'none' : 'block' }"
+        = f.input :post_type, input_html: {id: 'head_line_post_type', readonly: true}
+        = f.input :url_code, input_html: {id: 'head_line_url_code'}
+        = f.input :order_num, input_html:{ step: 100, id: 'head_line_order_num'}
+        = f.input :image, input_html: {class: 'col-lg-12', id: 'head_line_image'}
+        = f.input :title, input_html: {class: 'col-lg-12', id: 'head_line_title'}
       div.form-actions
-        = f.button :submit, data: { disable_with: "submitting..." }, class:"btn btn-primary"
+        = f.button :submit, data: { disable_with: "submitting..." }, class:"btn btn-primary head_line_submit", disabled: @head_line.title.blank?
 
 javascript:
+  $('#head_line_title').change(function() {
+    check_title();
+  });
+
   $('#head_line_url').parent().append("<span style='margin-left:10px;'><a href='javascript:void(0)' id='btn_get_og_meta' class='btn btn-primary'>获取</button></a></span><p style='margin-bottom:0; color: #f00;' id='error_msg'></p>");
 
   $(document).ajaxStart( function() {
@@ -39,11 +44,18 @@ javascript:
        if(data['result'] == false){
          $('#error_msg').append(data['msg']);
        }else{
+         $(".head_line_details").show();
          metas = data['metas']
          $("#head_line_post_type").val(metas['type']);
          $("#head_line_url_code").val(metas['code']);
          $("#head_line_image").val(metas['image']);
          $("#head_line_title").val(metas['title']);
+         check_title();
        }
      });
   });
+
+  function check_title(){
+    var title = $('#head_line_title').val();
+    $(".head_line_submit").prop('disabled', title == '' || title == undefined );
+  }
