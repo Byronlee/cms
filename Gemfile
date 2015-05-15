@@ -95,14 +95,10 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem "therubyracer"
 gem "less-rails"
 gem "twitter-bootstrap-rails"
-
-
 gem "rails-assets-html5shiv", "~> 3.7.0"
 #gem "rails-assets-respond", "~> 1.4.0"
 
-
-# log
-# gem 'lograge'
+gem 'unicorn'
 
 group :development do
   # gem "better_errors", "~> 1.1.0"
