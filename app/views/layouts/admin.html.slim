@@ -20,10 +20,11 @@ html lang="en"
       .container
         a.navbar-brand href=((can? :read, :dashboard) ? admin_root_path : 'javascript:void(0)')
           .logo
-          | &nbsp;新闻 &nbsp;&nbsp;
-          small 后台管理
+          | &nbsp; x News&nbsp;&nbsp;
+        a href=root_path target="_blank" style="float: left; padding: 15px 1px;"
+          |  → 查看首页
         p.navbar-text.pull-right
-          = link_to "← 返回", root_path, target: '_blank'
+          = link_to "← 返回", root_path
           | &nbsp;&nbsp;
           = current_user.display_name
           | &nbsp;&nbsp;
