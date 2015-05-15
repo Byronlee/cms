@@ -23,9 +23,9 @@ html lang="en"
           | &nbsp;新闻 &nbsp;&nbsp;
           small 后台管理
         p.navbar-text.pull-right
-          = current_user.display_name
+          = link_to "← 返回", root_path, target: '_blank'
           | &nbsp;&nbsp;
-          = link_to "返回首页", root_path, target: '_blank'
+          = current_user.display_name
           | &nbsp;&nbsp;
           = link_to "注销", destroy_user_session_path, method: :delete
     .container
