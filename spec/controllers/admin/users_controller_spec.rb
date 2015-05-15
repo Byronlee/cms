@@ -25,7 +25,7 @@ describe Admin::UsersController do
       login_user(:reader)
 
       it do
-        patch :update, id: session_user.id, user: {role: 'admin'}
+        patch :update, id: session_user.id, user: {role: 'admin', email: 'lby@gma.com'}
         expect(session_user.reload.role).to eq 'reader'
         expect(response.status).to eq 302
       end
@@ -34,7 +34,7 @@ describe Admin::UsersController do
     context 'admin can edit the role' do
       let(:user) { create :user, :reader }
       it do
-        patch :update, id: user.id, user: {role: 'admin'}
+        patch :update, id: user.id, user: {role: 'admin', email: 'lb@gma.com'}
         expect(user.reload.role).to eq 'admin'
         expect(response.status).to eq 302
       end
