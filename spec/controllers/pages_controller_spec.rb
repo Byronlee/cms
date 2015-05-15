@@ -10,4 +10,11 @@ describe PagesController do
       expect(assigns(:page)).to eq page
     end
   end
+
+  describe "GET 'hire'" do
+    it 'returns http success' do
+      get 'hire'
+      response.should be_success
+    end
+  end
 end
