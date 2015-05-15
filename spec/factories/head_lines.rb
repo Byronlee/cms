@@ -23,6 +23,7 @@ FactoryGirl.define do
     post_type 'article'
     order_num 10
     state 'published'
+    title 'title'
   end
 
   factory :head_line2, :class => 'HeadLine' do
@@ -30,5 +31,6 @@ FactoryGirl.define do
     post_type 'article'
     order_num 10
     state 'published'
+    title 'title'
   end
 end
