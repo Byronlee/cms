@@ -27,7 +27,7 @@
 	ul {
 		margin: 0 auto;
 		@include media($mobilemax2) {
-			width: 365px;
+			/*width: 365px;*/
 		}
 	}
 	li {
@@ -113,7 +113,7 @@
   	@include font-size(22);
   }
 }
-.icon-heart.active, 
+.icon-heart.active,
 .icon-star.active {
 	color: $primary-color;
 }
@@ -136,13 +136,13 @@
 	@include transition(all 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55));
 	pointer-events: none;
 	opacity: 0;
-	
+
 	&.active {
 	  pointer-events: auto;
 	  opacity: 1;
 	  @include transform(translateY(0) scale(1));
 	}
-	
+
 	a {
 		@include font-size(20);
 		color: #fff;
