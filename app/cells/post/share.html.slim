@@ -6,7 +6,7 @@ section.single-post-share.cf
           i.icon.icon-heart
           span 23
       li
-        a.social-btn.star-btn.require-login[href="javascript:void(0)" onclick="doFavorite(#{@post.url_code})" data-uid="#{@user.try(:id)}"]
+        a.social-btn.star-btn.require-login[href="javascript:void(0)" onclick=do_favorite(@post, @user) data-uid="#{@user.try(:id)}"]
           i.icon.icon-star class="#{@has_favorite ? 'active' : ''}"
           span#star-count =  @post.favorites_count
       li

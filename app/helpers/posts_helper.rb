@@ -45,4 +45,9 @@ module PostsHelper
       link_to url_domain, url if url_domain.present?
     end.compact.join("、").html_safe
   end
+
+  def do_favorite(post, current_user)
+    return "doFavorite(#{post.url_code})" if current_user.present?
+  end
 end
+

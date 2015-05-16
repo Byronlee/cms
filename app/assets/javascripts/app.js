@@ -115,7 +115,7 @@
   });
 
   //like and fav actions
-  $('.icon-heart, .icon-star').on('click', function() {
+  $('.icon-heart').on('click', function() {
     $(this).addClass('active');
   });
 
