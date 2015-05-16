@@ -3,6 +3,7 @@ set :scm, :git
 set :repo_url, "git@github.com:x36kr/36krx2015.git"
 set :deploy_to, "/var/www/apps/krypton"
 set :rails_env, 'production'
+set :unicorn_rack_env, 'production'
 set :ssh_options, { keys: %w{~/.ssh/id_rsa}, forward_agent: true, auth_methods: %w(publickey) }
 
 SSHKit.config.command_map[:rake]  = "bundle exec rake"
@@ -17,10 +18,11 @@ set :linked_files, %w{
   config/sidekiq.yml
   config/settings.rb
   config/settings.local.rb
+  config/unicorn/production.rb
   config/secrets.yml
 }
 
-set :linked_dirs, %w{log tmp/cache public/uploads public/logger}
+set :linked_dirs, %w{log tmp/pids tmp/logs tmp/cache tmp/sockets public/uploads}
 
 set :keep_releases, 15
 
@@ -41,6 +43,7 @@ namespace :deploy do
     on roles(:app), in: :sequence, wait: 5 do
       execute :touch, release_path.join("tmp/restart.txt")
     end
+    invoke 'unicorn:restart'
   end
 
   desc "reload the database with seed data"
