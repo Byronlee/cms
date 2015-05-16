@@ -2,11 +2,11 @@ class Admin::HeadLinesController < Admin::BaseController
   load_and_authorize_resource
 
   def index
-    @head_lines = HeadLine.published.recent.weight.related.page params[:page]
+    @head_lines = @head_lines.published.recent.weight.related.page params[:page]
   end
 
   def archives
-    @head_lines = HeadLine.archived.recent.related.page params[:page]
+    @head_lines = @head_lines.archived.recent.related.page params[:page]
   end
 
   def update
@@ -15,7 +15,7 @@ class Admin::HeadLinesController < Admin::BaseController
   end
 
   def new
-    @head_line = HeadLine.new(:url => params[:url])
+    @head_line.url = params[:url]
   end
 
   def create

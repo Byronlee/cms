@@ -47,24 +47,21 @@ class HeadLine < ActiveRecord::Base
   end
 
   def self.parse_url(url)
-    return {result: false, msg: 'URL不可为空', metas: {}} unless url.present?
-    code, msg = valid_of?(url)
-    return {result: false, msg: msg, metas: {}} unless code
-    begin
-      og = OpenGraph.new(url)
-      metas = {
-        title: og.title,
-        type: og.type,
-        url: og.url,
-        description: og.description,
-        image: og.images.first,
-        code: get_customer_meta_of(og, :code)
-      }
-    rescue Exception => ex
-      return {result: false, msg: ex.message, metas: {}}
-    end
-
-    {result: true, msg:'', metas: metas}
+    return { result: false, msg: 'URL不可为空', metas: {} } unless url.present?
+    success, msg = valid_of?(url)
+    return { result: false, msg: msg, metas: {} } unless success
+    og = OpenGraph.new(url)
+    metas = {
+      title: og.title,
+      type: og.type,
+      url: og.url,
+      description: og.description,
+      image: og.images.first,
+      code: get_customer_meta_of(og, :code)
+    }
+    { result: true, msg:'', metas: metas }
+  rescue Exception => ex
+    return { result: false, msg: ex.message, metas: {} }
   end
 
   after_save :update_head_line_cache

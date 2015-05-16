@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get 'search', to: 'search#search'
 
+  # TODO 所有的 only: [] 全部改成 namespace :users，去掉所有的 only, except
   resources :users, only: [] do
     get :messages, on: :collection
   end

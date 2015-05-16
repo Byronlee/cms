@@ -1,7 +1,7 @@
 def valid_of?(url)
   begin
     io = open(url, read_timeout: 5)
-    return true if(io.status.include?('200') || io.status.include?('301') || io.status.include?('302'))
+    [200, 301, 302].include?(io.status.first.to_i)
   rescue Exception => ex
     return [false, ex.message]
   end
