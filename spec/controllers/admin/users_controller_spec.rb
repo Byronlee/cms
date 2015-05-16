@@ -12,11 +12,20 @@ describe Admin::UsersController do
   end
 
   describe "patch 'update'" do
-    context 'update user info' do
+    context "returns http success" do
       let(:user) { create :user }
-
-      it do
+      it "returns http success" do
         patch :update, id: user.id, user: attributes_for(:user)
+        expect(response.status).to eq 302
+      end
+    end
+
+    context "admin can edit user domain" do
+      login_admin_user
+      let(:user) { create :user, domain: 'domain' }
+      it "returns http success" do
+        patch :update, id: user.id, user: { domain: 'new_domain'}
+        expect(assigns[:user].domain).to eq 'new_domain'
         expect(response.status).to eq 302
       end
     end
@@ -36,6 +45,13 @@ describe Admin::UsersController do
       it do
         patch :update, id: user.id, user: {role: 'admin', email: 'lb@gma.com'}
         expect(user.reload.role).to eq 'admin'
+    end
+
+    context "none admin cannot edit user domain" do
+      login_user :editor, domain: 'domain'
+      it "returns http success" do
+        patch :update, id: session_user.id, user: { domain: 'new_domain'}
+        expect(assigns[:user].domain).to eq 'domain'
         expect(response.status).to eq 302
       end
     end

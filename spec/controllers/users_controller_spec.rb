@@ -45,4 +45,16 @@ describe UsersController do
       }
     end
   end
+
+  describe "GET 'posts'" do
+    let(:user){ create :user, domain: 'domain' }
+    context 'returns http success' do
+      before { get 'posts', user_domain: user.domain }
+      it {
+        expect(assigns(:user)).to eq user
+        response.should be_success
+        expect(response).to render_template('users/posts')
+      }
+    end
+  end
 end
