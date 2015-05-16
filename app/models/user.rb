@@ -27,6 +27,7 @@
 #  muted_at                            :datetime
 #  favorites_count                     :integer
 #  extra                               :text
+#  domain                              :string(255)
 #
 
 class User < ActiveRecord::Base
@@ -38,6 +39,8 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable, :omniauthable, :recoverable, :rememberable, :trackable, :validatable, :omniauth_providers => [:krypton]
   enumerize :role, :in => Settings.roles, :default => :reader, :methods => true, :scopes => :shallow
+
+  validates_uniqueness_of :domain, :case_sensitive => false, if: -> { self.domain.present? }
 
   has_many :authentications, dependent: :destroy
   has_one :krypton_authentication, -> { where(provider: :krypton) }, class_name: Authentication.to_s, dependent: :destroy

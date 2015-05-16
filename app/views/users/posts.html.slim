@@ -1,12 +1,12 @@
-= render 'welcome/title', title: "搜索: #{params[:q]}"
-= render 'welcome/canonical', :raw_url => "http://36kr.com/search/#{params[:q]}"
+= render 'welcome/title', title: @user.domain
+/ = render 'welcome/canonical', :raw_url => "http://36kr.com/search/#{params[:q]}"
 
 .main
   .content
     .content-wrapper
       .content-wrapper-border
         h2.lastest style="text-transform: none;"
-          |“#{params[:q]}” 搜索结果
+          |“#{@user.display_name}” 的所有文章
           span style="float:right; font-weight: normal" 结果数：#{@posts.total_count}
         .articles
           - if @posts.count > 0
@@ -19,14 +19,14 @@
               - if @posts.any?
                 - unless @posts.first_page?
                   li.prev.previous_page.left
-                    = link_to '← 上一页', search_path(q: params[:q], page: params[:page].to_i.pred ), rel: "prev"
+                    = link_to '← 上一页', user_domain_posts_path(user_domain: params[:user_domain], page: params[:page].to_i.pred ), rel: "prev"
                 - else
                   li.prev.previous_page.left.disabled
                     = link_to '← 上一页', '#', rel: "prev"
 
                 - unless @posts.last_page?
                   li.next.next_page.right
-                    = link_to '下一页 →', search_path(q: params[:q], page: params[:page].to_i.next ), rel: "next"
+                    = link_to '下一页 →', user_domain_posts_path(user_domain: params[:user_domain], page: params[:page].to_i.next ), rel: "next"
                 - else
                   li.prev.next_page.right.disabled
                     = link_to '下一页 →', '#', rel: "prev"

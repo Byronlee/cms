@@ -50,7 +50,7 @@ class InfoFlow < ActiveRecord::Base
       :methods => [:cover_real_url, :comments_counts],
       :include => {
         :author => {
-          :only => [], :methods => [:display_name] },
+          :only => [:domain], :methods => [:display_name] },
         :column => {
           :only => [:id, :name, :slug] }
         }

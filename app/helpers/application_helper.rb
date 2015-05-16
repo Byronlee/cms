@@ -77,6 +77,11 @@ module ApplicationHelper
     time.in_time_zone(Rails.configuration.time_zone)
   end
 
+  def user_domain(domain)
+    return 'javascript:void(0)' if domain.blank?
+    user_domain_posts_path(domain)
+  end
+
   private
 
   def relative_time(raw_time)

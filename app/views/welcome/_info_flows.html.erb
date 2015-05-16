@@ -13,7 +13,7 @@
                 </span>
               </div>
               <div class="postmeta right">
-                <a href="javascript:void(0)"> <%= (item["author"] && item["author"]["display_name"]) || "匿名用户" %> </a>
+                <a href="<%= user_domain(item['author']['domain']) %>"> <%= (item["author"] && item["author"]["display_name"]) || "匿名用户" %> </a>
                  •
                  <%= smart_time_ago Time.parse(item["published_at"]) if item["published_at"].present? %>
               </div>

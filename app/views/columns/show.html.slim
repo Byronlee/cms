@@ -21,27 +21,7 @@
         = render_cell :column, :weekly_hot_posts, column: @column
 
         .articles
-          - @posts.each do |post|
-            article.posts.post-1.cf
-              .info.cf
-                .topic.left
-                  span
-                   a class="#{@column.slug}" href="/category/#{@column.slug}"  = @column.name
-                   |  /  #{@column.slug}
-                .postmeta.right
-                  a href="javascript:void(0)" class="uname user_#{post.author.try(:display_name)}" data-name="#{post.author.try(:display_name)}" target="_blank"
-                    = post.author.try(:display_name)
-                  |&nbsp;•&nbsp;
-                  = smart_time_ago(post.published_at)
-              .left.left-col
-                div.image.feature-img.thumb-180
-                  a href="#{post_url(post)}"
-                    img alt="Blank" class="image lazyload loaded" data-src="#{ high_speed_url post.cover_real_url, 'slider' }" src="#{ high_speed_url post.cover_real_url, 'slider' }"
-              .right-col
-                h1
-                  a href="#{post_url(post)}" data-no-turbolink="true" onclick="javascript:_gaq.push(['_trackPageview', '/click/index_newtab/']);" target="_blank" title="#{raw(post.title)}"  = raw(post.title)
-                p
-                  = post.summary
+          = render @posts
           .pagination.cf
             ul
               - if @posts.present?

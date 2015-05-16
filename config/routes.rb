@@ -139,6 +139,7 @@ Rails.application.routes.draw do
   match '/clipped/:year/:month/:day', :controller => 'newsflashes', :action => 'index', via: :get, as: :newsflashes_of_day
   match '/clipped/:id', :controller => 'newsflashes', :action => 'show', via: :get, as: :newsflash_show
   match '/changelog', :controller => 'welcome', :action => 'changes', via: :get, as: :changes
+  match '/posts/:user_domain', to: 'users#posts', via: :get, as: :user_domain_posts
 
   # 兼容老站，添加特定的URL映射
   match '/about' => redirect('/pages/about'), via: :get

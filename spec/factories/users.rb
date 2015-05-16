@@ -27,6 +27,7 @@
 #  muted_at                            :datetime
 #  favorites_count                     :integer
 #  extra                               :text
+#  domain                              :string(255)
 #
 
 FactoryGirl.define do

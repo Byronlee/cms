@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   load_resource only: :current
+  load_resource only: :posts, find_by: :domain, id_param: :user_domain
   load_and_authorize_resource :favorite, through: :current_user, only: :favorites, parent: false
 
   def messages
@@ -23,5 +24,9 @@ class UsersController < ApplicationController
         @state = true
       end
     end
+  end
+
+  def posts
+    @posts = @user.posts.published.includes(:author, :column).recent.page(params[:page]).per(30)
   end
 end

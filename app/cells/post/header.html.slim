@@ -3,7 +3,7 @@ section.single-post-header
     img.image width="620" alt="" src= high_speed_url(@post.cover_real_url, 'heading')
   header.single-post-header__meta
     .single-post__postmeta
-      a href="#" #{@post.author.try(:display_name)}
+      a href="#{user_domain(@post.author.try(:domain))}" #{@post.author.try(:display_name)}
       |&nbsp;•&nbsp;
       = smart_time_ago(@post.published_at)
     h1.single-post__title = raw(@post.title)

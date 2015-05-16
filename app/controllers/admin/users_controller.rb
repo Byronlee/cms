@@ -28,8 +28,16 @@ class Admin::UsersController < Admin::BaseController
   private
 
   def user_params
-    attrs = params.require(:user).permit(:name, :email, :phone, :tagline)
-    current_user.role.admin? ? attrs.merge(role: params[:user][:role]) : attrs
+    return {} unless params[:user]
+    role = current_user.role.admin? ? params.require(:user).permit(:role) : {}
+    if current_user.role.admin?
+      domain = params.require(:user).permit(:domain)
+      domain.each {|k,v| v.downcase!}
+    else
+      {}
+    end
+    other = params.require(:user).permit(:name, :email, :phone, :tagline)
+    other.merge(role).merge(domain)
   end
 
   def simple_search
