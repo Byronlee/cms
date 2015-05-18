@@ -3,7 +3,7 @@ module V2
     class Posts < ::V2::Base
       KEYS = [:id, :title, :created_at, :updated_at, :summary, :content,:title_link,
         :must_read, :slug, :state, :draft_key, :cover, :user_id, :source,
-        :column_id, :remark]
+        :column_id, :remark, :tag_list]
       STATE = ['published', 'drafted', 'archived']
 
       desc 'Posts Feature'
@@ -69,6 +69,7 @@ module V2
           optional :source,    type: String,   desc: '来源id'
           optional :cover,     type: String,   desc: '图片封面url'
           optional :remark,    type: String,   desc: '备注'
+          optional :tag_list,  type: String,   desc: 'tag'
         end
         post 'new' do
           action = params[:post_type]
@@ -101,6 +102,7 @@ module V2
           optional :source,    type: String,   desc: '来源id'
           optional :cover,     type: String,   desc: '图片封面url'
           optional :remark,    type: String,   desc: '备注'
+          optional :tag_list,  type: String,   desc: 'tag'
         end
         patch ':id' do
           action = params[:post_type]
