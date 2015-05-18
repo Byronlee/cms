@@ -90,3 +90,14 @@ settings.page_views = { persist: true }
 settings.default_info_flow = '主站'
 
 settings.site_map = { posts_count: 2000 }
+
+settings.deploy = {
+  zone: 'pek2',
+  host: [],
+  route: [],
+  loadbalancer: {},
+  firewall: {
+    weight: '1',
+    security_group_rule: 'sgr-69oawmvq'
+  }
+}

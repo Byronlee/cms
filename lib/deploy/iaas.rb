@@ -32,7 +32,7 @@ class Deploy::Iaas
   end
 
   class << self
-    def web3_lbp(zone, backend_id, policy_id, port, weight)
+    def web_lbp(zone, backend_id, policy_id, port, weight)
       url = "https://api.qingcloud.com/iaas/?action=ModifyLoadBalancerBackendAttributes&loadbalancer_backend=#{backend_id}&port=#{port}&weight=#{weight}&disabled=0&loadbalancer_policy_id=#{policy_id}&zone=#{zone}"
       signature_obj = self.new(url, KEY, SECRET)
       signature_url = signature_obj.signature
@@ -59,20 +59,24 @@ class Deploy::Iaas
       data = %x{sh "#{PATH}/run"}.split(/[\n]+/).collect {|b| b.split(' ')}
       msg = data.pop
       end_time, start_time = DateTime.strptime(data.pop[0], "%d/%b/%Y:%T"), DateTime.strptime(data.pop[0].gsub('[', ''),"%d/%b/%Y:%T")
-      frequency_ip = data.select {|x| x[0].to_i > threshold }[0]
-      frequency = frequency_ip[0]
-      ip = frequency_ip[1]
-      unless ip.blank?
-        if WHITE_LIST.include? ip
-          notification "#{host_name}: #{(end_time.to_i - start_time.to_i)/60} 分钟内 http://ip.cn/index.php?ip=#{ip} 请求次数为 #{frequency} 次 此ip为白名单允许访问 \n #{msg}"
-        else
-          notification "#{host_name}: #{(end_time.to_i - start_time.to_i)} 秒内 http://ip.cn/index.php?ip=#{ip} 请求次数为 #{frequency} 次 此ip为黑名单被封锁 \n #{msg}"
-          url = "https://api.qingcloud.com/iaas/?action=ModifySecurityGroupRuleAttributes&security_group_rule_name=#{host_name}&security_group_rule=#{security_group_rule}&priority=#{priority}&rule_action=#{rule_action}&protocol=#{protocol}&direction=#{direction}&val1=#{val1}&val2=#{val2}&val3=#{ip}&zone=#{zone}"
-          signature_obj = self.new(url, KEY, SECRET)
-          signature_url = signature_obj.signature
-          #puts signature_url
-          signature_obj.send_msg signature_url
-          apply_firewall('pek2', 'sg-do5avfp6')
+      click_ip = data.select {|x| x[0].to_i > threshold }[0]
+      unless click_ip.blank?
+        click = click_ip[0]
+        ip = click_ip[1]
+        check_time = end_time.to_i - start_time.to_i
+        frequency = click.to_i / check_time
+        if frequency > 2
+          if WHITE_LIST.include? ip
+            notification "#{host_name}: W: #{ check_time } 秒内 http://ip.cn/?ip=#{ip} 请求次数为 #{click} 次 攻击频率 #{frequency} 次/秒 此ip为白名单允许访问 \n #{msg}"
+          else
+            notification "#{host_name}: B: #{ check_time } 秒内 http://ip.cn/?ip=#{ip} 请求次数为 #{click} 次 攻击频率 #{frequency} 次/秒 此ip为黑名单被封锁 \n #{msg}"
+            url = "https://api.qingcloud.com/iaas/?action=ModifySecurityGroupRuleAttributes&security_group_rule_name=#{host_name}-auto-black&security_group_rule=#{security_group_rule}&priority=#{priority}&rule_action=#{rule_action}&protocol=#{protocol}&direction=#{direction}&val1=#{val1}&val2=#{val2}&val3=#{ip}&zone=#{zone}"
+            signature_obj = self.new(url, KEY, SECRET)
+            signature_url = signature_obj.signature
+            #puts signature_url
+            signature_obj.send_msg signature_url
+            apply_firewall('pek2', 'sg-do5avfp6')
+          end
         end
       end
 
