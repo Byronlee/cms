@@ -18,7 +18,7 @@
       = f.input :title, input_html: {class: 'col-lg-12'}
       = f.input :remark, input_html: {class: 'col-lg-12'}
       = f.input :summary, as: :text, :input_html => { 'rows' => 10, class: 'col-lg-12' }
-      = f.input :tag_list, input_html: {class: 'col-lg-12'}
+      = f.input :tag_list, input_html: {class: 'col-lg-12', data:{role:'tagsinput'}}
       = f.input :source_type, allow_blank: false, prompt: false
       = f.input :source_urls, as: :text, id: :source_urls, input_html: { rows: 3, class: 'col-lg-12',
         value: @post.source_urls_array * "\n" },

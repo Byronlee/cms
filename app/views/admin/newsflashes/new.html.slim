@@ -28,7 +28,7 @@
     = simple_form_for [:admin, @newsflash], html:{ class:"form-horizontal" } do | f |
       = f.input :original_input, as: :text, :input_html => { 'rows' => 10, class: 'col-lg-11'}
       - @newsflash.tag_list.add params[:ptype]
-      = f.input :tag_list, input_html: {class: 'col-lg-11'}
+      = f.input :tag_list, input_html: {class: 'col-lg-11', data:{role:'tagsinput'}}
       div.hidden
         = f.input :cover, input_html: {class: 'col-lg-11'}
       div.controls

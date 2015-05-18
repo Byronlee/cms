@@ -8,4 +8,5 @@
 //= require ./javascripts/jquery.quicksearch
 //= require ./javascripts/open
 //= require ./javascripts/charts
+//= require ./javascripts/tagsinput
 //= require highcharts
