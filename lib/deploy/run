@@ -1,0 +1,5 @@
+#!/bin/bash
+tail -n 200 /usr/local/var/log/nginx/krypton-access.log |awk '{print $1}' |sort |uniq -c |sort -n -r | head -n 3
+tail -n 200 /usr/local/var/log/nginx/krypton-access.log |grep `tail -n 200 /usr/local/var/log/nginx/krypton-access.log |awk '{print $1}' |sort |uniq -c |sort -n -r | head -n 1 | awk '{print $2}'` | head -n 1 |awk '{print $4}'
+date +"%d/%b/%Y:%T"
+tail -n 200 /usr/local/var/log/nginx/krypton-access.log |grep `tail -n 200 /usr/local/var/log/nginx/krypton-access.log |awk '{print $1}' |sort |uniq -c |sort -n -r | head -n 1 | awk '{print $2}'` | head -n 1

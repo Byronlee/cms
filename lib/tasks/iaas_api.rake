@@ -13,4 +13,9 @@ namespace :iaas do
     #Deploy::Iaas.web4_lbp('pek2', 'lbb-olx8pelq', '', '8098', '5')
     Deploy::Iaas.apply_policy('pek2', 'lb-ym7veism')
   end
+
+  desc 'Block ip firewall'
+  task :block_ip_firewall => :environment do
+     Deploy::Iaas.block_ip_firewall('pek2', 'sgr-69oawmvq', '1')
+  end
 end
