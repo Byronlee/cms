@@ -23,7 +23,7 @@ class InfoFlow < ActiveRecord::Base
   def posts_with_ads(page_num = 1, page_direction = nil, boundary_post_url_code = nil)
     boundary_post = Post.find_by_url_code(boundary_post_url_code) if boundary_post_url_code.present?
     
-    page_num = 1 if page_direction.present? && boundary_post.present?
+    page_num = 1 if(skip_ad = (page_direction.present? && boundary_post.present?))
     posts = Post.where(:column_id => columns).published
     if page_direction == 'next' && boundary_post.present?
       posts = posts.where('posts.published_at < ?', boundary_post.published_at)
@@ -32,9 +32,14 @@ class InfoFlow < ActiveRecord::Base
     end
     posts = posts.includes(:author, :column).order('published_at desc').page(page_num).per(30)
     posts_with_associations = get_associations_of(posts)
-    ads = get_ads_with_period_of posts
-    flow = mix_posts_and_ads posts_with_associations, ads
-    flow = mix_seperate_by_date flow, posts
+
+    unless skip_ad 
+      ads = get_ads_with_period_of posts
+      flow = mix_posts_and_ads posts_with_associations, ads
+      flow = mix_seperate_by_date flow, posts
+    else
+      flow = posts_with_associations
+    end
 
     [ flow, posts.total_count,
       posts.prev_page,
