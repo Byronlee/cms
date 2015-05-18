@@ -51,6 +51,7 @@ class User < ActiveRecord::Base
 
   typed_store :extra do |s|
     s.string :admin_post_manage_session_path,  default: ''
+    s.datetime :last_comment_at, default: Time.now
   end
 
   before_save :ensure_authentication_token
@@ -141,6 +142,10 @@ class User < ActiveRecord::Base
 
   def like?(post)
     !!Favorite.find_by_url_code_and_user_id(post.url_code, id)
+  end
+
+  def can_comment?
+    Time.now - last_comment_at > Settings.comment_time_interval
   end
 
   protected

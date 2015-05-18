@@ -101,3 +101,6 @@ settings.deploy = {
     security_group_rule: 'sgr-69oawmvq'
   }
 }
+
+settings.comment_time_interval = 30.seconds
+

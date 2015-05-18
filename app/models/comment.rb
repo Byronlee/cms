@@ -26,7 +26,6 @@ class Comment < ActiveRecord::Base
 
   validates :content, presence: true
   validates :content, length: { maximum: 3_000 }
-  validates_uniqueness_of :content
 
   belongs_to :commentable, :polymorphic => true, counter_cache: true
   belongs_to :post, -> { where(comments: { commentable_type: 'Post' }) }, foreign_key: 'commentable_id'
