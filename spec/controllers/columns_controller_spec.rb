@@ -21,7 +21,7 @@ describe ColumnsController do
     end
 
     context 'json' do
-      before { xhr :get, :show, slug: post.column.slug, page: 2, format: :json}
+      before { xhr :get, :show, slug: post.column.slug, d: 'next', b_url_code: (post.url_code + 1), format: :json}
       it do
         should respond_with(:success)
         expect(response.headers['Content-Type']).to include 'application/json'

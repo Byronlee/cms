@@ -80,7 +80,7 @@ describe WelcomeController do
     end
 
     context 'json' do
-      before { xhr :get, :index, page: 2, format: :json}
+      before { xhr :get, :index, d: 'next', b_url_code: (post.url_code + 1), format: :json}
       it do
         should respond_with(:success)
         expect(response.headers['Content-Type']).to include 'application/json'
