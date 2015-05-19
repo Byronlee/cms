@@ -29,7 +29,7 @@
                 = raw item["title"]
               .author
                 a[href="#"]
-                  span.avatar[style="b/11/e641e691-31ce-4b56-85f7-b3fd6f91db2a.png!320x320')"]
+                  span.avatar[style="background-image: url('#{item['author']['avatar']}')"]
                   span.name
                     = (item["author"] && item["author"]["display_name"]) || "匿名用户"
                 span.time
