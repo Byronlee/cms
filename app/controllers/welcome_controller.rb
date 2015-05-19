@@ -10,7 +10,7 @@ class WelcomeController < ApplicationController
 
     respond_to do |format|
       format.html do
-        if api_request?
+        if request.xhr?
           render 'welcome/_info_flows', locals: {
             :posts_with_ads => @posts_with_ads, 
             :prev_page => @prev_page, 
