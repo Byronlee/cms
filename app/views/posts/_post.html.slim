@@ -15,6 +15,6 @@ article.posts.post-1.cf
         img alt="Blank" class="image lazyload loaded" data-src="#{high_speed_url post.cover_real_url, 'slider'}" src="#{high_speed_url post.cover_real_url, 'slider'}"
   .right-col
     h1
-      a href="#{post_url(post, utm_source: utm_source)}" data-no-turbolink="true" onclick="javascript:_gaq.push(['_trackPageview', '/click/index_newtab/']);" target="_blank" title="#{raw(post.title)}"  = raw(post.title)
+      a href="#{post_url(post, utm_source: utm_source ||= nil )}" data-no-turbolink="true" onclick="javascript:_gaq.push(['_trackPageview', '/click/index_newtab/']);" target="_blank" title="#{raw(post.title)}"  = raw(post.title)
     p
       = raw post.summary
