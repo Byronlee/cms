@@ -1,0 +1,1581 @@
+@font-face {
+  font-family: 'icomoon';
+  src:url('fonts/icomoon.eot?6fbe2t');
+  src:url('fonts/icomoon.eot?#iefix6fbe2t') format('embedded-opentype'),
+    url('fonts/icomoon.woff?6fbe2t') format('woff'),
+    url('fonts/icomoon.ttf?6fbe2t') format('truetype'),
+    url('fonts/icomoon.svg?6fbe2t#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-twitter:before {
+  content: "\f099";
+}
+
+.icon-facebook:before {
+  content: "\f09a";
+}
+
+.icon-rss:before {
+  content: "\f09e";
+}
+
+.icon-weibo:before {
+  content: "\f18a";
+}
+
+.icon-qq:before {
+  content: "\f1d6";
+}
+
+.icon-weixin:before {
+  content: "\f1d7";
+}
+
+
+/**
+ * Global Reset of all HTML Elements
+ *
+ * Resetting all of our HTML Elements ensures a smoother
+ * visual transition between browsers. If you don't believe me,
+ * try temporarily commenting out this block of code, then go
+ * and look at Mozilla versus Safari, both good browsers with
+ * a good implementation of CSS. The thing is, all browser CSS
+ * defaults are different and at the end of the day if visual
+ * consistency is what we're shooting for, then we need to
+ * make sure we're resetting all spacing elements.
+ *
+ */
+/* line 14, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/reset.less */
+html,
+body {
+  border: 0;
+  font-family: "Helvetica-Neue", "Helvetica", Arial, sans-serif;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+/* line 22, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/reset.less */
+div,
+span,
+object,
+iframe,
+img,
+table,
+caption,
+thead,
+tbody,
+tfoot,
+tr,
+tr,
+td,
+article,
+aside,
+canvas,
+details,
+figure,
+hgroup,
+menu,
+nav,
+footer,
+header,
+section,
+summary,
+mark,
+audio,
+video {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+/* line 30, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/reset.less */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+address,
+cit,
+code,
+del,
+dfn,
+em,
+ins,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+b,
+i,
+hr,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+legend,
+label {
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+}
+/* line 40, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/reset.less */
+article,
+aside,
+canvas,
+figure,
+figure img,
+figcaption,
+hgroup,
+footer,
+header,
+nav,
+section,
+audio,
+video {
+  display: block;
+}
+/* line 45, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/reset.less */
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+/* line 48, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/reset.less */
+table caption,
+table th,
+table td {
+  text-align: left;
+  vertical-align: middle;
+}
+/* line 54, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/reset.less */
+a img {
+  border: 0;
+}
+/* line 58, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/reset.less */
+:focus {
+  outline: 0;
+}
+/* line 1, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+html,
+body {
+  background: #e9eaec;
+  font-family: "Lantinghei SC", "Open Sans", Arial, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 13px;
+}
+/* line 7, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+* {
+  box-sizing: border-box;
+}
+/* line 10, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+a {
+  color: #333333;
+  -webkit-transition: all 0.2s ease;
+          transition: all 0.2s ease;
+  text-decoration: none;
+}
+/* line 14, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+a:hover {
+  color: #3da9f7;
+}
+/* line 19, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.container {
+  margin: 0 auto;
+}
+@media (min-width: 1200px) {
+  /* line 22, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  .container {
+    width: 1170px;
+  }
+}
+@media (min-width: 800px) and (max-width: 1200px) {
+  /* line 25, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  .container {
+    width: 1000px;
+  }
+}
+@media (max-width: 800px) {
+  /* line 28, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  .container {
+    width: auto;
+  }
+}
+/* line 32, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.clearfix {
+  *zoom: 1;
+}
+/* line 34, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.clearfix:after {
+  content: '';
+  display: block;
+  clear: both;
+  height: 0;
+}
+/* line 42, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.rows {
+  *zoom: 1;
+}
+/* line 34, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.rows:after {
+  content: '';
+  display: block;
+  clear: both;
+  height: 0;
+}
+@media (min-width: 1200px) {
+  /* line 44, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  .rows {
+    margin-top: 30px;
+  }
+}
+@media (min-width: 800px) and (max-width: 1200px) {
+  /* line 47, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  .rows {
+    margin-top: 20px;
+  }
+}
+/* line 52, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.col-sub {
+  float: left;
+}
+@media (min-width: 1200px) {
+  /* line 54, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  .col-sub {
+    width: 330px;
+    margin-right: 30px;
+  }
+}
+@media (min-width: 800px) and (max-width: 1200px) {
+  /* line 58, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  .col-sub {
+    width: 280px;
+    margin-right: 20px;
+  }
+}
+@media (max-width: 800px) {
+  /* line 62, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  .col-sub {
+    float: none;
+  }
+}
+/* line 67, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.col-main {
+  float: right;
+}
+@media (min-width: 1200px) {
+  /* line 69, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  .col-main {
+    width: 810px;
+  }
+}
+@media (min-width: 800px) and (max-width: 1200px) {
+  /* line 72, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  .col-main {
+    width: 700px;
+  }
+}
+@media (max-width: 800px) {
+  /* line 75, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  .col-main {
+    float: none;
+  }
+}
+/* line 89, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.brand-link {
+  color: #3da9f7;
+}
+/* line 91, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.brand-link:hover {
+  color: #2c79b0;
+}
+/* line 97, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.badge-base {
+  position: relative;
+}
+/* line 99, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.badge-base:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #ffffff;
+  padding: 2px 10px;
+  font-size: 12px;
+  display: block;
+}
+/* line 110, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.badge-o2o {
+  position: relative;
+}
+/* line 99, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.badge-o2o:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #ffffff;
+  padding: 2px 10px;
+  font-size: 12px;
+  display: block;
+}
+/* line 112, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.badge-o2o:after {
+  content: "O2O";
+  background: rgba(85, 137, 194, 0.9);
+}
+/* line 117, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.badge-hardware {
+  position: relative;
+}
+/* line 99, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.badge-hardware:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #ffffff;
+  padding: 2px 10px;
+  font-size: 12px;
+  display: block;
+}
+/* line 119, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.badge-hardware:after {
+  content: "新硬件";
+  background: rgba(162, 137, 211, 0.9);
+}
+/* line 124, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.badge-social {
+  position: relative;
+}
+/* line 99, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.badge-social:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #ffffff;
+  padding: 2px 10px;
+  font-size: 12px;
+  display: block;
+}
+/* line 126, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.badge-social:after {
+  content: "社交&文创";
+  background: rgba(85, 191, 153, 0.9);
+}
+/* line 131, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.badge-enterprise {
+  position: relative;
+}
+/* line 99, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.badge-enterprise:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #ffffff;
+  padding: 2px 10px;
+  font-size: 12px;
+  display: block;
+}
+/* line 133, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.badge-enterprise:after {
+  content: "企业服务";
+  background: rgba(191, 182, 85, 0.9);
+}
+/* line 138, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.badge-sports {
+  position: relative;
+}
+/* line 99, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.badge-sports:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #ffffff;
+  padding: 2px 10px;
+  font-size: 12px;
+  display: block;
+}
+/* line 140, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.badge-sports:after {
+  content: "体育健康";
+  background: rgba(85, 191, 177, 0.9);
+}
+/* line 145, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.badge-finance {
+  position: relative;
+}
+/* line 99, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.badge-finance:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #ffffff;
+  padding: 2px 10px;
+  font-size: 12px;
+  display: block;
+}
+/* line 147, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.badge-finance:after {
+  content: "互联网金融";
+  background: rgba(191, 145, 49, 0.9);
+}
+/* line 152, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.badge-edu {
+  position: relative;
+}
+/* line 99, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.badge-edu:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #ffffff;
+  padding: 2px 10px;
+  font-size: 12px;
+  display: block;
+}
+/* line 154, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.badge-edu:after {
+  content: "在线教育";
+  background: rgba(191, 73, 106, 0.9);
+}
+/* line 159, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.badge-company {
+  position: relative;
+}
+/* line 99, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.badge-company:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #ffffff;
+  padding: 2px 10px;
+  font-size: 12px;
+  display: block;
+}
+/* line 161, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.badge-company:after {
+  content: "大公司";
+  background: rgba(127, 175, 52, 0.9);
+}
+@media (max-width: 800px) {
+  /* line 170, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  .mobile-hide {
+    display: none;
+  }
+}
+/* line 174, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.mobile-show {
+  display: none;
+}
+@media (max-width: 800px) {
+  /* line 176, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  .mobile-show {
+    display: block;
+  }
+}
+/* line 1, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/footer.less */
+footer.common-footer {
+  *zoom: 1;
+  background: #2d3237;
+  margin-top: 30px;
+}
+/* line 34, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+footer.common-footer:after {
+  content: '';
+  display: block;
+  clear: both;
+  height: 0;
+}
+/* line 6, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/footer.less */
+footer.common-footer a {
+  color: #b1d1e8;
+}
+/* line 8, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/footer.less */
+footer.common-footer a:hover {
+  color: #f8ffff;
+}
+/* line 12, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/footer.less */
+footer.common-footer .sections {
+  margin: 0 auto;
+  *zoom: 1;
+  padding: 25px 0 15px;
+}
+@media (min-width: 1200px) {
+  /* line 22, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  footer.common-footer .sections {
+    width: 1170px;
+  }
+}
+@media (min-width: 800px) and (max-width: 1200px) {
+  /* line 25, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  footer.common-footer .sections {
+    width: 1000px;
+  }
+}
+@media (max-width: 800px) {
+  /* line 28, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  footer.common-footer .sections {
+    width: auto;
+  }
+}
+/* line 34, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+footer.common-footer .sections:after {
+  content: '';
+  display: block;
+  clear: both;
+  height: 0;
+}
+/* line 16, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/footer.less */
+footer.common-footer .sections section {
+  float: left;
+}
+/* line 18, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/footer.less */
+footer.common-footer .sections section h3 {
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+/* line 24, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/footer.less */
+footer.common-footer .sections section.link-section {
+  width: 44%;
+  color: #aaaaaa;
+}
+@media (min-width: 800px) and (max-width: 1200px) {
+  /* line 26, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/footer.less */
+  footer.common-footer .sections section.link-section {
+    width: 42%;
+  }
+}
+/* line 30, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/footer.less */
+footer.common-footer .sections section.link-section .links {
+  margin-bottom: 30px;
+}
+@media (max-width: 800px) {
+  /* line 33, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/footer.less */
+  footer.common-footer .sections section.link-section {
+    float: none;
+    width: 100%;
+    text-align: center;
+  }
+}
+/* line 39, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/footer.less */
+footer.common-footer .sections section.partner-section {
+  width: 44%;
+}
+@media (max-width: 800px) {
+  /* line 170, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  footer.common-footer .sections section.partner-section {
+    display: none;
+  }
+}
+/* line 42, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/footer.less */
+footer.common-footer .sections section.partner-section ul {
+  *zoom: 1;
+  list-style: none;
+}
+/* line 34, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+footer.common-footer .sections section.partner-section ul:after {
+  content: '';
+  display: block;
+  clear: both;
+  height: 0;
+}
+/* line 45, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/footer.less */
+footer.common-footer .sections section.partner-section ul li {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+/* line 50, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/footer.less */
+footer.common-footer .sections section.partner-section ul li a {
+  opacity: 0.6;
+}
+/* line 52, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/footer.less */
+footer.common-footer .sections section.partner-section ul li a:hover {
+  opacity: 1;
+}
+/* line 59, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/footer.less */
+footer.common-footer .sections section.qr-section {
+  text-align: center;
+  color: #aaaaaa;
+}
+@media (max-width: 800px) {
+  /* line 170, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  footer.common-footer .sections section.qr-section {
+    display: none;
+  }
+}
+/* line 63, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/footer.less */
+footer.common-footer .sections section.qr-section img {
+  width: 100px;
+  margin-bottom: 20px;
+}
+/* line 71, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/footer.less */
+footer.common-footer .bottom {
+  background: #23282d;
+  line-height: 50px;
+  height: 50px;
+  color: #666666;
+  position: relative;
+}
+@media (max-width: 800px) {
+  /* line 78, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/footer.less */
+  footer.common-footer .bottom {
+    text-align: center;
+  }
+}
+/* line 81, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/footer.less */
+footer.common-footer .bottom .container {
+  position: relative;
+}
+/* line 85, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/footer.less */
+footer.common-footer .bottom .share {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+@media (max-width: 800px) {
+  /* line 170, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  footer.common-footer .bottom .share {
+    display: none;
+  }
+}
+/* line 90, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/footer.less */
+footer.common-footer .bottom .share a {
+  color: #fff;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  border-radius: 50%;
+  background: #3b4148;
+  margin-left: 10px;
+  line-height: 24px;
+  text-align: center;
+  -webkit-transition: all 0.3s ease;
+          transition: all 0.3s ease;
+}
+/* line 102, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/footer.less */
+footer.common-footer .bottom .share a.icon-weibo:hover {
+  background-color: #c02d2b;
+}
+/* line 105, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/footer.less */
+footer.common-footer .bottom .share a.icon-twitter:hover {
+  background-color: #1e92d4;
+}
+/* line 108, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/footer.less */
+footer.common-footer .bottom .share a.icon-facebook:hover {
+  background-color: #2f4485;
+}
+/* line 111, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/footer.less */
+footer.common-footer .bottom .share a.icon-rss:hover {
+  background-color: #e9640e;
+}
+/* line 6, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.mobile-nav {
+  display: none;
+  background: #f4f4f4;
+  *zoom: 1;
+}
+@media (max-width: 800px) {
+  /* line 176, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  .mobile-nav {
+    display: block;
+  }
+}
+/* line 34, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.mobile-nav:after {
+  content: '';
+  display: block;
+  clear: both;
+  height: 0;
+}
+/* line 12, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.mobile-nav a {
+  display: block;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-bottom: solid 1px #e9eaec;
+  background: #f4f4f4;
+  float: left;
+  width: 33.333%;
+  border-right: solid 1px #e9eaec;
+}
+/* line 22, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.mobile-nav a:last-of-type {
+  float: none;
+  width: auto;
+  border-right: 0;
+  overflow: hidden;
+}
+/* line 28, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.mobile-nav a.active {
+  background: #fff;
+  color: #333333;
+  cursor: default;
+}
+@media (max-width: 800px) {
+  /* line 38, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+  .index-wrap {
+    padding: 15px;
+  }
+}
+/* line 44, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .head-images {
+  *zoom: 1;
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: -10px;
+}
+/* line 34, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.index-wrap .head-images:after {
+  content: '';
+  display: block;
+  clear: both;
+  height: 0;
+}
+@media (min-width: 1200px) {
+  /* line 22, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  .index-wrap .head-images {
+    width: 1170px;
+  }
+}
+@media (min-width: 800px) and (max-width: 1200px) {
+  /* line 25, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  .index-wrap .head-images {
+    width: 1000px;
+  }
+}
+@media (max-width: 800px) {
+  /* line 28, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  .index-wrap .head-images {
+    width: auto;
+  }
+}
+@media (max-width: 800px) {
+  /* line 50, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+  .index-wrap .head-images {
+    margin-top: 0px;
+    margin-bottom: 15px;
+  }
+}
+/* line 55, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .head-images .cover-base a {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: no-repeat center center;
+  background-size: cover;
+}
+/* line 62, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .head-images .cover-base a span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 20px;
+  color: #ffffff;
+  font-size: 18px;
+  z-index: 50;
+}
+/* line 72, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .head-images .cover-base a:before {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transition: all 0.3s ease;
+          transition: all 0.3s ease;
+  background-color: rgba(0, 0, 0, 0);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), to(#000000));
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), #000000);
+  background: -o-linear-gradient(top, rgba(0, 0, 0, 0), #000000);
+  opacity: 0.6;
+  content: " ";
+  z-index: 30;
+}
+/* line 85, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .head-images .cover-base a:hover:before {
+  opacity: 1;
+}
+/* line 92, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .head-images .scrollers {
+  float: left;
+  width: 480px;
+  height: 330px;
+  position: relative;
+}
+/* line 55, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .head-images .scrollers a {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: no-repeat center center;
+  background-size: cover;
+}
+/* line 62, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .head-images .scrollers a span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 20px;
+  color: #ffffff;
+  font-size: 18px;
+  z-index: 50;
+}
+/* line 72, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .head-images .scrollers a:before {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transition: all 0.3s ease;
+          transition: all 0.3s ease;
+  background-color: rgba(0, 0, 0, 0);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), to(#000000));
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), #000000);
+  background: -o-linear-gradient(top, rgba(0, 0, 0, 0), #000000);
+  opacity: 0.6;
+  content: " ";
+  z-index: 30;
+}
+/* line 85, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .head-images .scrollers a:hover:before {
+  opacity: 1;
+}
+/* line 98, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .head-images .scrollers img {
+  display: none;
+}
+@media (min-width: 800px) and (max-width: 1200px) {
+  /* line 101, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+  .index-wrap .head-images .scrollers {
+    width: 410.25641026px;
+    height: 282.05128205px;
+  }
+}
+@media (max-width: 800px) {
+  /* line 105, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+  .index-wrap .head-images .scrollers {
+    width: auto;
+    height: auto;
+  }
+  /* line 108, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+  .index-wrap .head-images .scrollers img {
+    display: block;
+    width: 100%;
+    height: auto;
+    position: relative;
+    z-index: 20;
+  }
+}
+/* line 117, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .head-images .smaller-images {
+  margin-bottom: -10px;
+}
+@media (max-width: 800px) {
+  /* line 170, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  .index-wrap .head-images .smaller-images {
+    display: none;
+  }
+}
+/* line 120, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .head-images .smaller-images .block {
+  float: left;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  height: 160px;
+  width: 220px;
+}
+@media (min-width: 800px) and (max-width: 1200px) {
+  /* line 126, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+  .index-wrap .head-images .smaller-images .block {
+    width: 188.03418803px;
+    height: 136.75213675px;
+    margin-left: 8px;
+    margin-bottom: 8px;
+  }
+}
+/* line 132, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .head-images .smaller-images .block.wider {
+  width: 450px;
+}
+@media (min-width: 800px) and (max-width: 1200px) {
+  /* line 134, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+  .index-wrap .head-images .smaller-images .block.wider {
+    width: 384.61538462px;
+  }
+}
+/* line 55, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .head-images .smaller-images .block.article a {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: no-repeat center center;
+  background-size: cover;
+}
+/* line 62, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .head-images .smaller-images .block.article a span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 20px;
+  color: #ffffff;
+  font-size: 18px;
+  z-index: 50;
+}
+/* line 72, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .head-images .smaller-images .block.article a:before {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transition: all 0.3s ease;
+          transition: all 0.3s ease;
+  background-color: rgba(0, 0, 0, 0);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), to(#000000));
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), #000000);
+  background: -o-linear-gradient(top, rgba(0, 0, 0, 0), #000000);
+  opacity: 0.6;
+  content: " ";
+  z-index: 30;
+}
+/* line 85, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .head-images .smaller-images .block.article a:hover:before {
+  opacity: 1;
+}
+/* line 141, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .head-images .smaller-images .block.article a span {
+  font-size: 15px;
+}
+/* line 55, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .head-images .smaller-images .block.ad a {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: no-repeat center center;
+  background-size: cover;
+}
+/* line 62, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .head-images .smaller-images .block.ad a span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 20px;
+  color: #ffffff;
+  font-size: 18px;
+  z-index: 50;
+}
+/* line 72, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .head-images .smaller-images .block.ad a:before {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transition: all 0.3s ease;
+          transition: all 0.3s ease;
+  background-color: rgba(0, 0, 0, 0);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), to(#000000));
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), #000000);
+  background: -o-linear-gradient(top, rgba(0, 0, 0, 0), #000000);
+  opacity: 0.6;
+  content: " ";
+  z-index: 30;
+}
+/* line 85, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .head-images .smaller-images .block.ad a:hover:before {
+  opacity: 1;
+}
+/* line 148, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .head-images .smaller-images .block.ad a:before {
+  background-color: rgba(255, 255, 255, 0);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), to(rgba(255, 255, 255, 0.5)));
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));
+  background: -o-linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));
+  opacity: 0;
+}
+/* line 153, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .head-images .smaller-images .block.ad a:hover:before {
+  opacity: 1;
+}
+/* line 55, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .head-images .smaller-images .block.next a {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: no-repeat center center;
+  background-size: cover;
+}
+/* line 62, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .head-images .smaller-images .block.next a span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 20px;
+  color: #ffffff;
+  font-size: 18px;
+  z-index: 50;
+}
+/* line 72, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .head-images .smaller-images .block.next a:before {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transition: all 0.3s ease;
+          transition: all 0.3s ease;
+  background-color: rgba(0, 0, 0, 0);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), to(#000000));
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), #000000);
+  background: -o-linear-gradient(top, rgba(0, 0, 0, 0), #000000);
+  opacity: 0.6;
+  content: " ";
+  z-index: 30;
+}
+/* line 85, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .head-images .smaller-images .block.next a:hover:before {
+  opacity: 1;
+}
+/* line 160, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .head-images .smaller-images .block.next a {
+  background-image: url('../images/next.jpg');
+}
+/* line 163, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .head-images .smaller-images .block.next a:before {
+  background-color: rgba(255, 255, 255, 0);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), to(rgba(255, 255, 255, 0.5)));
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));
+  background: -o-linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));
+  opacity: 0;
+}
+/* line 168, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .head-images .smaller-images .block.next a:hover:before {
+  opacity: 1;
+}
+/* line 179, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .main-section {
+  margin: 0 auto;
+  *zoom: 1;
+}
+@media (min-width: 1200px) {
+  /* line 22, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  .index-wrap .main-section {
+    width: 1170px;
+  }
+}
+@media (min-width: 800px) and (max-width: 1200px) {
+  /* line 25, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  .index-wrap .main-section {
+    width: 1000px;
+  }
+}
+@media (max-width: 800px) {
+  /* line 28, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  .index-wrap .main-section {
+    width: auto;
+  }
+}
+/* line 34, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.index-wrap .main-section:after {
+  content: '';
+  display: block;
+  clear: both;
+  height: 0;
+}
+@media (min-width: 1200px) {
+  /* line 44, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  .index-wrap .main-section {
+    margin-top: 30px;
+  }
+}
+@media (min-width: 800px) and (max-width: 1200px) {
+  /* line 47, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  .index-wrap .main-section {
+    margin-top: 20px;
+  }
+}
+/* line 182, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .main-section .fast-section {
+  float: left;
+}
+@media (min-width: 1200px) {
+  /* line 54, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  .index-wrap .main-section .fast-section {
+    width: 330px;
+    margin-right: 30px;
+  }
+}
+@media (min-width: 800px) and (max-width: 1200px) {
+  /* line 58, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  .index-wrap .main-section .fast-section {
+    width: 280px;
+    margin-right: 20px;
+  }
+}
+@media (max-width: 800px) {
+  /* line 62, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  .index-wrap .main-section .fast-section {
+    float: none;
+  }
+}
+/* line 184, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .main-section .fast-section .tabs {
+  background: #f4f4f4;
+  *zoom: 1;
+}
+@media (max-width: 800px) {
+  /* line 170, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  .index-wrap .main-section .fast-section .tabs {
+    display: none;
+  }
+}
+/* line 34, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.index-wrap .main-section .fast-section .tabs:after {
+  content: '';
+  display: block;
+  clear: both;
+  height: 0;
+}
+/* line 190, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .main-section .fast-section .tabs a {
+  display: block;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-bottom: solid 1px #e9eaec;
+  background: #f4f4f4;
+}
+/* line 197, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .main-section .fast-section .tabs a:first-of-type {
+  float: left;
+  width: 50%;
+  border-right: solid 1px #e9eaec;
+}
+/* line 202, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .main-section .fast-section .tabs a.active {
+  background: #fff;
+  border-bottom: solid 1px transparent;
+  color: #333333;
+  cursor: default;
+}
+/* line 211, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .main-section .fast-section .list .wrap {
+  overflow: auto;
+}
+/* line 214, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .main-section .fast-section .list section {
+  padding: 25px;
+  background: #ffffff;
+  border-bottom: solid 1px #e9eaec;
+  cursor: pointer;
+}
+/* line 219, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .main-section .fast-section .list section:last-of-type {
+  border-bottm: 0;
+}
+/* line 223, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .main-section .fast-section .list section h3 {
+  line-height: 20px;
+  margin-bottom: 6px;
+  text-align: justify;
+  font-weight: 600;
+}
+/* line 228, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .main-section .fast-section .list section h3 span {
+  display: inline-block;
+  vertical-align: middle;
+  color: #ffffff;
+  background: #2eb971;
+  padding: 0 8px;
+  border-radius: 3px;
+  margin-right: 4px;
+  font-size: 12px;
+}
+/* line 239, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .main-section .fast-section .list section .desc {
+  display: block;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  color: #666666;
+  font-size: 12px;
+  line-height: 18px;
+  height: 36px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: justify;
+  -webkit-transition: all 0.2s ease;
+          transition: all 0.2s ease;
+}
+/* line 252, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .main-section .fast-section .list section .desc a {
+  color: #3da9f7;
+}
+/* line 91, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.index-wrap .main-section .fast-section .list section .desc a:hover {
+  color: #2c79b0;
+}
+/* line 256, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .main-section .fast-section .list section .info {
+  *zoom: 1;
+  margin-top: 6px;
+  font-size: 12px;
+  color: #aaaaaa;
+}
+/* line 34, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.index-wrap .main-section .fast-section .list section .info:after {
+  content: '';
+  display: block;
+  clear: both;
+  height: 0;
+}
+/* line 261, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .main-section .fast-section .list section .info .time {
+  float: left;
+}
+/* line 264, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .main-section .fast-section .list section .info .share {
+  float: right;
+  visibility: hidden;
+  -webkit-transition: all 0.3s ease;
+          transition: all 0.3s ease;
+  opacity: 0;
+  -webkit-transform: translate(-20px, 0);
+      -ms-transform: translate(-20px, 0);
+          transform: translate(-20px, 0);
+}
+/* line 272, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .main-section .fast-section .list section.active {
+  background-color: #f3f7fb;
+  cursor: default;
+}
+/* line 275, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .main-section .fast-section .list section.active .desc {
+  display: block;
+  overflow: visible;
+  height: auto;
+}
+/* line 281, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .main-section .fast-section .list section.active .info .share {
+  visibility: visible;
+  -webkit-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+          transform: translate(0, 0);
+  opacity: 1;
+}
+/* line 289, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .main-section .fast-section .list section.product h3 {
+  font-size: 16px;
+  margin-left: -25px;
+  padding-left: 23px;
+  border-left: solid 2px #fd9827;
+}
+/* line 295, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .main-section .fast-section .list section.product h4 {
+  margin: 15px 0 10px;
+}
+/* line 298, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .main-section .fast-section .list section.product p {
+  color: #666666;
+}
+/* line 301, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .main-section .fast-section .list section.product .pic {
+  width: 157px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+/* line 305, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .main-section .fast-section .list section.product .pic img {
+  display: block;
+  width: 100%;
+}
+@media (max-width: 800px) {
+  /* line 310, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+  .index-wrap .main-section .fast-section .list section.product {
+    margin-top: 10px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    border: 0;
+    border-radius: 2px;
+  }
+}
+/* line 319, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .main-section .fast-section a.ad {
+  width: 100%;
+  overflow: hidden;
+  display: block;
+}
+/* line 323, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .main-section .fast-section a.ad img {
+  width: 100%;
+  margin-top: 20px;
+  height: 120px;
+  display: block;
+}
+/* line 331, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .main-section .news-list {
+  float: right;
+}
+@media (min-width: 1200px) {
+  /* line 69, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  .index-wrap .main-section .news-list {
+    width: 810px;
+  }
+}
+@media (min-width: 800px) and (max-width: 1200px) {
+  /* line 72, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  .index-wrap .main-section .news-list {
+    width: 700px;
+  }
+}
+@media (max-width: 800px) {
+  /* line 75, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  .index-wrap .main-section .news-list {
+    float: none;
+  }
+}
+/* line 333, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .main-section .news-list .categories {
+  height: 40px;
+  background: #f4f4f4;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  z-index: 100;
+}
+@media (max-width: 800px) {
+  /* line 170, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  .index-wrap .main-section .news-list .categories {
+    display: none;
+  }
+}
+/* line 341, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .main-section .news-list .categories.is_stuck {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+/* line 344, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .main-section .news-list .categories a {
+  line-height: 40px;
+  display: inline-block;
+  padding: 0 18px;
+  color: #666666;
+  position: relative;
+  -webkit-transition: none;
+          transition: none;
+}
+@media (min-width: 800px) and (max-width: 1200px) {
+  /* line 351, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+  .index-wrap .main-section .news-list .categories a {
+    padding: 0 10px;
+  }
+}
+/* line 354, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .main-section .news-list .categories a:hover {
+  color: #3da9f7;
+}
+/* line 357, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .main-section .news-list .categories a:after {
+  -webkit-transform: translate(0, -8px);
+      -ms-transform: translate(0, -8px);
+          transform: translate(0, -8px);
+  opacity: 0;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  background: #3da9f7;
+  content: " ";
+  display: block;
+  margin-top: -7px;
+  margin-left: -3px;
+}
+/* line 372, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .main-section .news-list .categories a.active {
+  position: relative;
+  background: #3da9f7;
+  color: #ffffff;
+}
+/* line 376, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .main-section .news-list .categories a.active:after {
+  opacity: 1;
+  -webkit-transition: all 0.3s ease;
+          transition: all 0.3s ease;
+  -webkit-transform: rotate(45deg) translate(0, 0);
+      -ms-transform: rotate(45deg) translate(0, 0);
+          transform: rotate(45deg) translate(0, 0);
+}
+/* line 388, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .main-section .news-list .article-list .articles article {
+  *zoom: 1;
+  padding: 20px;
+  background: #fff;
+  margin-top: 20px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  border-radius: 2px;
+  -webkit-transition: all 0.4s ease;
+          transition: all 0.4s ease;
+}
+/* line 34, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.index-wrap .main-section .news-list .article-list .articles article:after {
+  content: '';
+  display: block;
+  clear: both;
+  height: 0;
+}
+@media (max-width: 800px) {
+  /* line 396, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+  .index-wrap .main-section .news-list .article-list .articles article {
+    margin-top: 15px;
+    padding: 15px 10px;
+  }
+}
+/* line 400, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .main-section .news-list .article-list .articles article:hover {
+  box-shadow: 0 0px 8px rgba(46, 143, 237, 0.3);
+}
+/* line 403, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .main-section .news-list .article-list .articles article .pic {
+  float: left;
+  margin-right: 20px;
+  width: 165px;
+  height: 120px;
+  background: no-repeat center center;
+  background-size: cover;
+}
+@media (max-width: 800px) {
+  /* line 410, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+  .index-wrap .main-section .news-list .article-list .articles article .pic {
+    width: 90px;
+    height: 65px;
+    margin-right: 10px;
+  }
+}
+/* line 416, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .main-section .news-list .article-list .articles article .desc {
+  overflow: hidden;
+}
+@media (max-width: 800px) {
+  /* line 418, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+  .index-wrap .main-section .news-list .article-list .articles article .desc {
+    position: relative;
+    top: -2px;
+  }
+}
+/* line 422, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .main-section .news-list .article-list .articles article .desc .title {
+  font-size: 18px;
+  font-weight: 600;
+}
+@media (max-width: 800px) {
+  /* line 425, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+  .index-wrap .main-section .news-list .article-list .articles article .desc .title {
+    font-size: 15px;
+    line-height: 18px;
+    max-height: 36px;
+    display: block;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-align: justify;
+  }
+}
+/* line 436, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .main-section .news-list .article-list .articles article .desc .author {
+  margin: 15px 0 8px;
+  color: #aaaaaa;
+}
+@media (max-width: 800px) {
+  /* line 438, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+  .index-wrap .main-section .news-list .article-list .articles article .desc .author {
+    margin: 6px 0 0;
+  }
+}
+/* line 442, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .main-section .news-list .article-list .articles article .desc .author a {
+  color: #3da9f7;
+}
+/* line 91, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.index-wrap .main-section .news-list .article-list .articles article .desc .author a:hover {
+  color: #2c79b0;
+}
+/* line 445, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .main-section .news-list .article-list .articles article .desc .author .avatar {
+  vertical-align: middle;
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  background: no-repeat center center;
+  background-size: cover;
+  margin-right: 6px;
+  border-radius: 50%;
+}
+@media (max-width: 800px) {
+  /* line 454, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+  .index-wrap .main-section .news-list .article-list .articles article .desc .author .avatar {
+    width: 20px;
+    height: 20px;
+  }
+}
+/* line 460, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .main-section .news-list .article-list .articles article .desc .brief {
+  color: #666666;
+}
+@media (max-width: 800px) {
+  /* line 170, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  .index-wrap .main-section .news-list .article-list .articles article .desc .brief {
+    display: none;
+  }
+}
+/* line 467, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .main-section .news-list .article-list .load-more {
+  margin-top: 20px;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  background: #cdd8e3;
+  display: block;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+/* line 476, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
+.index-wrap .main-section .news-list .article-list .load-more:hover {
+  background: #ffffff;
+}
