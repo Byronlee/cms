@@ -30,7 +30,7 @@ class InfoFlow < ActiveRecord::Base
     elsif page_direction == 'prev' && boundary_post.present?
       posts = posts.where('posts.published_at > ?', boundary_post.published_at)
     end
-    posts = posts.includes(:author, :column).order('published_at desc').page(page_num).per(30)
+    posts = posts.includes(:author, :column).recent.page(page_num).per(30)
     posts_with_associations = get_associations_of(posts)
 
     unless skip_ad 

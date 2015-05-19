@@ -72,7 +72,7 @@ describe WelcomeController do
     end
 
     context "html fragment" do 
-      before { get :index, d: 'next', b_url_code: (post.url_code + 1), format: :html}
+      before { xhr :get, :index, d: 'next', b_url_code: (post.url_code + 1), format: :html}
       it do
         should respond_with(:success)
         should render_template('welcome/_info_flows')

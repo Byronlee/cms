@@ -196,7 +196,46 @@ class Post < ActiveRecord::Base
     self.remark = self.remark.to_s + "[#{Time.now}]#{current_user.id} - #{current_user.display_name} edited [#{action_path}]\r\n"
   end
 
+  def self.paginate(posts, params)
+    if paginate_by_id_request?(params) && (boundary_post = Post.find_by_url_code(params[:b_url_code]))
+      posts = Post.paginate_by_url_code(posts, params[:d], boundary_post)
+    else
+      posts = posts.page(params[:page]).per(15)
+    end
+  end
+
   private
+
+  def self.paginate_by_id_request?(params)
+    params[:d].present? && params[:b_url_code].present?
+  end
+
+  def self.paginate_by_url_code(posts, page_direction, boundary_post)
+    if page_direction == 'next' && boundary_post.present?
+      posts = posts.where('posts.published_at < ?', boundary_post.published_at)
+    elsif page_direction == 'prev' && boundary_post.present?
+      posts = posts.where('posts.published_at > ?', boundary_post.published_at)
+    end
+    posts = posts.page(1).per(15)
+  end
+
+  def self.posts_to_json(posts)
+    posts_json = posts.to_json(
+      :except => [:content],
+      :methods => [:cover_real_url, :comments_counts],
+      :include => {
+        :author => {
+          :only => [], :methods => [:display_name] },
+        :column => {
+          :only => [:id, :name, :slug] }
+        }
+      )
+
+    { :total_count => posts.total_count,
+      :min_url_code =>  (posts.last ? posts.last.url_code : nil),
+      :max_url_code =>  (posts.first ? posts.first.url_code : nil),
+      :posts => JSON.parse(posts_json) }
+  end
 
   def update_today_lastest_cache
     return true unless watched_columns_changed?(:today_lastest)

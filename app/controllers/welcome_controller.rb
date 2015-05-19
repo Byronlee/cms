@@ -2,7 +2,7 @@ class WelcomeController < ApplicationController
   authorize_object :welcome
 
   def index
-    return cache_index if (params[:page].blank? || params[:page].to_i == 1) && !api_request?
+    return cache_index if (params[:page].blank? || params[:page].to_i == 1) && !paginate_by_id_request?
     info_flow = InfoFlow.find_by_name InfoFlow::DEFAULT_INFOFLOW
     page_direction = params[:d]
     boundary_post_url_code = params[:b_url_code]
@@ -60,7 +60,7 @@ class WelcomeController < ApplicationController
 
   private
 
-  def api_request?
+  def paginate_by_id_request?
     params[:d].present? && params[:b_url_code].present?
   end
 end
