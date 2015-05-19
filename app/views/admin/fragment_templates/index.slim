@@ -10,10 +10,10 @@
   table class="table"
     thead
       tr role="row"
-        th style="width=10%" ID
-        th style="width=65%" 名称
-        th.text_center style="width=10%" KEY
-        th.text_center style="width=10%" 操作
+        th ID
+        th 名称
+        th.text_center KEY
+        th.text_center 操作
     tbody
       - @fragment_templates.each do | t |
        td = t.id

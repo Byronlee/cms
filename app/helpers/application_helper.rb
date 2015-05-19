@@ -82,6 +82,10 @@ module ApplicationHelper
     user_domain_posts_path(domain)
   end
 
+  def render_fragment_template(key)
+    raw FragmentTemplate.find_by_key(key).display_content
+  end
+
   private
 
   def relative_time(raw_time)

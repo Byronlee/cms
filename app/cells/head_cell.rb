@@ -44,8 +44,4 @@ class HeadCell < Cell::Rails
     @current_user = args[:current_user]
     render
   end
-
-  def baidu_statistics
-    render
-  end
 end

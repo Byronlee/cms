@@ -1,62 +1,6 @@
 footer.footer
   .row
-    .footer-36kr
-      h3 = t('site.name')
-      ul
-        li
-          a href="/pages/about" 关于36氪
-        li
-          a href="http://space.36kr.com" class="external" target="_blank" 氪空间
-          sup NEW!
-        li
-          a href="/pages/hire" 加入我们
-        li
-          a href="http://report.36kr.com" class="external" target="_blank" 寻求报道
-        li
-          a href="http://download.36kr.com" class="external" target="_blank" id="app_download_footer" 客户端下载
-        li
-          |反馈建议：
-          a href="mailto:service@36kr.com" service@36kr.com
-    .footer-subscribe
-      h3 订阅
-      ul
-        li
-          a href="http://weibo.com/wow36kr" class="external" target="_blank" 官方微博
-        li
-          a href="https://twitter.com/36kr" class="external" target="_blank" Twitter
-    .footer-partner
-      h3 合作伙伴
-      ul.cf
-        li
-          a href="http://www.aliyun.com" class="external" target="_blank"
-            img src="http://uploads.36krcnd.com/upload/file/76c4d88140f85a190647dc00cd9d6c35.png" width="86" height="21"
-        li
-          a href="http://www.qcloud.com/?from=36kr" class="external" target="_blank"
-            img src="http://a.36krcnd.com/photo/2014/dd9cae66e3cc32be4ef4cf849c22d70b.png" alt=""
-        li
-          a href="https://www.qingcloud.com/?ref=36Krx2015" class="external" target="_blank"
-            img src="http://a.36krcnd.com/photo/2014/fac4daea3163cbb72b12613365297d66.png" alt=""
-        li
-          a href="http://www.yunpian.com/?ref=36Krx2015" class="external" target="_blank"
-            img src="http://a.36krcnd.com/nil_class/c289416e-0f2b-4030-845b-75c5a2c68fe6/__logo__1_.png" alt="" width="120px;"
-        li
-          a href="http://upyun.com" class="external" target="_blank"
-            img src="http://a.36krcnd.com/photo/2014/ba639550940bf943fb0467c5ea14fbc6.png" alt=""
-        li
-          a href="http://qiniu.com" class="external" target="_blank"
-            img src="http://a.36krcnd.com/photo/2014/ce210c6ddb324544e23102af0539ec5c.png" alt=""
-        li
-          a href="http://dnspod.cn" class="external" target="_blank"
-            img src="http://a.36krcnd.com/photo/2014/0ae4f92e9796a8a8a8cfe97a2c29d1b2.png" alt=""
-    .footer-copyright
-      p
-        a href="https://www.qingcloud.com/?ref=36Krx2015"
-          img width="270" height="40" src="http://a.36krcnd.com/nil_class/fb2749a2-c683-4014-a018-504d4acfe3a8/Powered_by_QingCloud_white.png"
-      p
-        |本站由<a  target="_blank" class="external" href="https://www.qingcloud.com/?ref=36Krx2015"> QingCloud </a>提供云计算服务，当前基于 <a class="external"  href="http://guides.ruby-china.org/?ref=36Krx2015">Ruby On Rails</a> 框架技术构建。我们推荐使用<a  target="_blank" class="external" href="https://slack.com/r/024gqt7g-025leep4?ref=36Krx2015" target="_blank"> Slack </a>进行沟通。
-      p ©2011-2015 36氪
-      p 京ICP备12031756号
-      p 京公网安备11010802012285号
+    = render_fragment_template :footer_body
 #panel-login.panel.mfp-hide
   form name="loginForm"
     h3 无需注册，直接使用社交账号登录
