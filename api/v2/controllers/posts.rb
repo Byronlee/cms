@@ -26,6 +26,37 @@ module V2
           #end
         end
 
+        # Get tag posts list
+        desc 'get tags posts list'
+        params do
+          optional :id,  type: Integer, desc: 'url_code'
+          optional :tag,  type: String, desc: '标签'
+          optional :page,  type: Integer, default: 1, desc: '页数'
+          optional :per_page,  type: Integer, default: 30, desc: '每页记录数'
+          optional :action,  type: String, default: 'down', desc: "下翻页 down 和 上翻页 up"
+        end
+        get "tag/page" do
+          unless params[:id].blank?
+            post = Post.where(url_code: params[:id]).first
+            not_found! if post.blank?
+            unless post.blank?
+              @posts = Post.published
+              .includes(:related_links, :column, author: [:krypton_authentication])
+              .tagged_with(params[:tag])
+              .where("published_at #{action params} :date", date: post.published_at)
+              .order('published_at desc')
+              .page(params[:page]).per(params[:per_page])
+            end
+          else
+              @posts = Post.published
+              .includes(:related_links, :column, author: [:krypton_authentication])
+              .tagged_with(params[:tag])
+              .order('published_at desc')
+              .page(params[:page]).per(params[:per_page])
+          end
+          present @posts, with: Entities::Post
+        end
+
         # Get id posts list
         desc 'get id posts for page list'
         params do
@@ -43,7 +74,7 @@ module V2
             @posts = @posts.page(params[:page]).per(params[:per_page] || 30)
           end
           #cache(key: "api:v2:posts:#{params[:id]}:page:#{params[:action]}", etag: Time.now, expires_in: Settings.api.expires_in) do
-            present @posts, with: Entities::Post
+            present @posts, with: Entities::PostDetail
           #end
         end
 
@@ -54,7 +85,7 @@ module V2
           .where(url_code: params[:id]).first
           not_found! if @post.blank?
           #cache(key: "api:v2:posts:#{params[:id]}", etag: @post.published_at, expires_in: Settings.api.expires_in) do
-            present @post, with: Entities::Post
+            present @posts, with: Entities::PostDetail
           #end
         end
 
