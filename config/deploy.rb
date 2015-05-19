@@ -43,7 +43,7 @@ namespace :deploy do
     on roles(:app), in: :sequence, wait: 5 do
       execute :touch, release_path.join("tmp/restart.txt")
     end
-    invoke 'unicorn:restart'
+    #invoke 'unicorn:restart'
   end
 
   desc "reload the database with seed data"
@@ -69,11 +69,22 @@ namespace :deploy do
   end
 
   desc "Modify load balancer backend for preview"
-  task :preview_lbp do
+  task :web3_preview_lbp do
     on roles(:app) do
       within release_path do
         with rails_env: fetch(:rails_env) do
-          execute :rake, "iaas:preview_lbp"
+          execute :rake, "iaas:web3_preview_lbp"
+        end
+      end
+    end
+  end
+
+  desc "Modify load balancer backend for preview"
+  task :web4_preview_lbp do
+    on roles(:app) do
+      within release_path do
+        with rails_env: fetch(:rails_env) do
+          execute :rake, "iaas:web4_preview_lbp"
         end
       end
     end
