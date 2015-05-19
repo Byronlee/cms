@@ -1079,7 +1079,7 @@ footer.common-footer .bottom .share a.icon-rss:hover {
 }
 /* line 160, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
 .index-wrap .head-images .smaller-images .block.next a {
-  background-image: url('../images/next.jpg');
+  background-image: url('next.jpg');
 }
 /* line 163, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
 .index-wrap .head-images .smaller-images .block.next a:before {
