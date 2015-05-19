@@ -29,7 +29,7 @@ describe TagsController do
     end
 
     context "html fragment" do 
-      before { xhr :get, :show, tag: 'fuck', d: 'next', b_url_code: (post.url_code + 1), format: :html}
+      before { xhr :get, :show, tag: 'fuck', d: 'next', b_url_code: (post.url_code + 1), format: :html }
       it do
         should respond_with(:success)
         should render_template(:partial => 'tags/_list')
@@ -37,7 +37,7 @@ describe TagsController do
     end
 
     context 'json' do
-      before { xhr :get, :show, tag: 'fuck', d: 'next', b_url_code: (post.url_code + 1), format: :json}
+      before { xhr :get, :show, tag: 'fuck', d: 'next', b_url_code: (post.url_code + 1), format: :json }
       it do
         should respond_with(:success)
         expect(response.headers['Content-Type']).to include 'application/json'

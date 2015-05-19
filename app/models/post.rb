@@ -115,12 +115,15 @@ class Post < ActiveRecord::Base
   end
 
   def self.search(params)
+    params[:page] ||= 1 if paginate_by_id_request?(params) && (boundary_post = Post.find_by_url_code(params[:b_url_code]))
     tire.search(load: true, page: params[:page], per_page: params[:per_page] || 30) do
       min_score 1
       query do
         boolean do
           must { string params[:q].presence || "*", default_operator: "AND" }
           must { term :state, :published }
+          must { range :published_at, { lt: boundary_post.published_at } } if boundary_post && params[:d] == 'next'
+          must { range :published_at, { gt: boundary_post.published_at } } if boundary_post && params[:d] == 'pre'
         end
       end
       sort do
@@ -219,8 +222,17 @@ class Post < ActiveRecord::Base
     posts = posts.page(1).per(15)
   end
 
-  def self.posts_to_json(posts)
-    posts_json = posts.to_json(
+  def self.posts_to_json(posts, from_tire = false)
+    posts_results = from_tire ? posts.results : posts
+
+    { :total_count => posts.total_count,
+      :min_url_code =>  (posts_results.last ? posts_results.last.url_code : nil),
+      :max_url_code =>  (posts_results.first ? posts_results.first.url_code : nil),
+      :posts => JSON.parse(posts_json_str(posts)) }
+  end
+
+  def self.posts_json_str(posts)
+    posts.to_json(
       :except => [:content],
       :methods => [:cover_real_url, :comments_counts],
       :include => {
@@ -230,11 +242,6 @@ class Post < ActiveRecord::Base
           :only => [:id, :name, :slug] }
         }
       )
-
-    { :total_count => posts.total_count,
-      :min_url_code =>  (posts.last ? posts.last.url_code : nil),
-      :max_url_code =>  (posts.first ? posts.first.url_code : nil),
-      :posts => JSON.parse(posts_json) }
   end
 
   def update_today_lastest_cache
