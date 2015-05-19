@@ -1,0 +1,31 @@
+= render 'welcome/title', title: '片段模板管理'
+
+.col_main
+  .main_hd
+    h2 片段模板管理
+    .toolbar.border_bottom.clearfix
+      .pull-right
+         span.page_info = page_entries_info @fragment_templates
+         = link_to raw("<i class='fa fa-plus'></i>&nbsp;&nbsp;创建片段页面"), new_admin_fragment_template_path, class:"btn btn-primary"
+  table class="table"
+    thead
+      tr role="row"
+        th style="width=10%" ID
+        th style="width=65%" 名称
+        th.text_center style="width=10%" KEY
+        th.text_center style="width=10%" 操作
+    tbody
+      - @fragment_templates.each do | t |
+       td = t.id
+       td = t.name
+       td = t.key
+       td.text_center
+          - if can? :edit, t
+            a title="编辑" href= edit_admin_fragment_template_path(t)
+              i.fa.fa-pencil
+            |&nbsp;&nbsp;
+          - if can? :destroy, t
+            a title="删除" data-method="delete" data-confirm="确定删除此片段内容 #{t.name} ？" href= admin_fragment_template_path(t)
+              i.fa.fa-times
+
+  = paginate @fragment_templates

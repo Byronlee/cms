@@ -84,6 +84,17 @@ ActiveRecord::Schema.define(version: 20150515090515) do
   add_index "favorites", ["url_code"], name: "index_favorites_on_url_code", using: :btree
   add_index "favorites", ["user_id"], name: "index_favorites_on_user_id", using: :btree
 
+  create_table "fragment_templates", force: true do |t|
+    t.string   "key"
+    t.string   "name"
+    t.text     "content"
+    t.string   "content_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "fragment_templates", ["key"], name: "index_fragment_templates_on_key", unique: true, using: :btree
+
   create_table "head_lines", force: true do |t|
     t.string   "url"
     t.integer  "order_num"
@@ -169,6 +180,14 @@ ActiveRecord::Schema.define(version: 20150515090515) do
   add_index "posts", ["key"], name: "index_posts_on_key", using: :btree
   add_index "posts", ["url_code"], name: "index_posts_on_url_code", unique: true, using: :btree
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
+
+  create_table "sponsors", force: true do |t|
+    t.string   "name"
+    t.string   "logo"
+    t.integer  "order_num"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "sponsors", force: true do |t|
     t.string   "name"

@@ -74,6 +74,10 @@ zh-CN:
         event_address: 活动地址
         event_starttime: 活动开始时间
 
+      fragment_template:
+        name: 片段名称
+        content_type: 片段类型
+        content: 片段内容
     hints:
       post:
         source_urls: "一行一个链接"
