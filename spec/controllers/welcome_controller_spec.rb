@@ -4,14 +4,6 @@ describe WelcomeController do
   include Rails.application.routes.url_helpers
 
   describe "GET 'index'" do
-    context 'read cache index' do
-      before { get :index }
-      it do
-        expect(response).to be_success
-        expect(assigns(:next_page)).to eq 2
-      end
-    end
-
     context "match_krid_online_status" do
       before { allow(Rails.env).to receive(:test?) { false } }
       context "online" do
@@ -66,17 +58,24 @@ describe WelcomeController do
   end
 
   describe "GET 'index'" do
+    let(:post){ create :post, :published }
     before :each do
-      create :post, :published
       create :main_site
     end
 
-    context "html" do 
-      before { get :index, page: 2}
+    context 'read cache index' do
+      before { get :index }
+      it do
+        expect(response).to be_success
+        expect(assigns(:next_page)).to eq 2
+      end
+    end
+
+    context "html fragment" do 
+      before { get :index, d: 'next', b_url_code: (post.url_code + 1), format: :html}
       it do
         should respond_with(:success)
-        expect(assigns(:prev_page)).to eq 1
-        should render_template(:index)
+        should render_template('welcome/_info_flows')
       end
     end
 
