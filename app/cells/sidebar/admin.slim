@@ -44,10 +44,6 @@ ul.nav.nav-pills.nav-stacked
     li class=nav_active(:info_flows, @controller_name)
       a href=admin_info_flows_path
         span  信息流管理
-  - if can? :manage, FragmentTemplate
-    li class=nav_active(:fragment_templates, @controller_name)
-      a href=admin_fragment_templates_path
-        span  片段模板管理
   - if can? :read, Ad
     .deviler
     p
