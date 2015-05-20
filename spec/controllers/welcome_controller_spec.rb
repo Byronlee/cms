@@ -75,7 +75,7 @@ describe WelcomeController do
       before { xhr :get, :index, d: 'next', b_url_code: (post.url_code + 1), format: :html}
       it do
         should respond_with(:success)
-        should render_template('welcome/_info_flows')
+        should render_template('welcome/_info_flow_items')
       end
     end
 
