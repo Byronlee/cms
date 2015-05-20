@@ -8,16 +8,12 @@ h2
       form.comment_form action="/asynces/posts/#{@post.id}/comments" method="post" data-remote="true"
         = hidden_field_tag :authenticity_token, form_authenticity_token
         textarea#post.textarea name="comment[content]" placeholder="你怎么看？" data-widearea="enable"
-      span.tip.right style="display:none"
-        | 请回复有价值的信息，无意义的评论将很快被删除，账号将被禁止发言
-  .single-post-comment__bottom.cf
+  .bottom
     - if @current_user
       - if can? :create, Comment
-        .meta.left.cf
-          .avatar.left
-            a href="javascript:void(0)"
-              img[src="#{@current_user.try(:avatar)}" alt=""]
-          span.username.right
+        .meta
+          span.avatar style="background-image: url('#{@current_user.try(:avatar)}')"
+          span
             | signed as &nbsp;
             a[href="javascript:void(0)"]
               = @current_user.try(:display_name)

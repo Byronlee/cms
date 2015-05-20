@@ -142,7 +142,7 @@ $(document).ready(function(){
     /**
      * 分类加载(TODO:需要联调加载逻辑)
      */
-    var navBarTop = $('.J_newsListNavBar').offset().top;
+    //var navBarTop = $('.J_newsListNavBar').offset().top;
     $('.J_newsListNavBar a').click(function(e){
         e.preventDefault();
 

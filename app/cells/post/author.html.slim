@@ -1,17 +1,12 @@
-section.single-post-author-social
-  .single-post-author.cf
-    - if @user.blank?
-     p style="text-align:center;" 36氪
-    - else
-      .single-post-author__avatar.left
-        .avatar
-          a[href="javascript:void(0)"]
-            img[src="#{@user.avatar}" raw_iden="#{@user.try(:id)}" alt="#{@user.display_name}"]
-      .single-post-author__info
-        h3.single-post-author__name
-          a[href="javascript:void(0)"]
-            = @user.try(:display_name)
-        span.single-post-author__label
-          = @user.role_text
-        p.single-post-author__bio
-          = @user.tagline || "36氪，关注互联网创业"
+.author
+  - if @user.blank?
+    p style="text-align:center;" 36氪
+  - else
+    span.avatar[style="background-image: url('#{@user.avatar}')"]
+    .desc
+      span.name
+        = @user.try(:display_name)
+      span.badge
+        = @user.role_text
+      .brief
+        = @user.tagline || "36氪，关注互联网创业"

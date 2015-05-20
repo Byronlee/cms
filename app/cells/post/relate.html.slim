@@ -1,10 +1,10 @@
 section.single-post-relate
-  ul.cf
+  ul
     - @posts.each do | post |
       li
         a[href="#{ post_url(post)}" target="_blank"]
-          .single-post-relate__image
-            img[src="#{ high_speed_url post.cover_real_url, 'slider'}" alt="#{raw post.title}"]
-        .single-post-relate__title
+        .image
+          img[src="#{ high_speed_url post.cover_real_url, 'slider'}" alt="#{raw post.title}"]
+        .title
           h3
             a[href="#{ post_url(post)}" title="#{raw post.title}"] = raw post.title
