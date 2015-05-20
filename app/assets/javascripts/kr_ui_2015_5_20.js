@@ -66,7 +66,7 @@ $(document).ready(function(){
     $('.J_listLoadMore').click(function(e){
         e.preventDefault();
         var trigger = $(this);
-        $.get('mock/news.html', function(list){
+        $.get("<%= root_path(d:'next', b_url_code: 532140, format: :html) %>", function(list){
             $('.J_articleList').append(list);
             $(window).trigger('scroll');
         }, 'html');
