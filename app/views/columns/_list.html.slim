@@ -1,5 +1,5 @@
 .article-list
   .articles.J_articleList
     = render @posts          
-    a.load-more.J_listLoadMore[href="javascript:void(0)"]
+    a.load-more.J_listLoadMore[href="#{ column_slug_path(slug: params[:slug], d: 'next', b_url_code: @posts.last.url_code, format: :html) }"]
       | 查看更多

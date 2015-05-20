@@ -17,5 +17,5 @@
                 = smart_time_ago Time.parse(item["published_at"]) if item["published_at"].present?
             .brief
               = raw(item["summary"])
-    a.load-more.J_listLoadMore[href="javascript:void(0)"]
+    a.load-more.J_listLoadMore[href="#{ root_path(d: 'next', b_url_code: @min_url_code, format: :html) }"]
       | 查看更多

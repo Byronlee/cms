@@ -13,8 +13,8 @@ class WelcomeController < ApplicationController
         if request.xhr?
           render 'welcome/_info_flow_items', locals: {
             :posts_with_ads => @posts_with_ads, 
-            :prev_page => @prev_page, 
-            :next_page => @next_page
+            :min_url_code => @min_url_code,
+            :max_url_code => @max_url_code
           }, layout: false 
         end
       end
@@ -41,8 +41,8 @@ class WelcomeController < ApplicationController
         if request.xhr?
           render 'welcome/_info_flow_items', locals: {
             :posts_with_ads => @posts_with_ads, 
-            :prev_page => @prev_page, 
-            :next_page => @next_page
+            :min_url_code => @min_url_code,
+            :max_url_code => @max_url_code
           }, layout: false 
         else
           render :index 
