@@ -1,7 +1,8 @@
 = render 'welcome/title', title: @page.title
 
-.container style="margin: 0 auto;"
-  article.single-post-article
-    .content-wrapper-single
-       section.article
-          = raw(@page.try(:body))
+.article-detail-wrap
+  .main-section
+    .content-wrapper.focus-edition
+      article.single-post
+        section.article
+            = raw(@page.try(:body))
