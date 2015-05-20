@@ -28,7 +28,8 @@ function initFastSection(){
         if(deviceType=='desktop'){
             var targetHeight = window.innerHeight - 210;
             var curHeight = $('.J_fastSectionList .wrap').height();
-            if(curHeight>=targetHeight){
+            !$('.J_fastSectionList .wrap').data('origin')&&$('.J_fastSectionList .wrap').data('origin', curHeight);
+            if($('.J_fastSectionList .wrap').data('origin')>=targetHeight){
                 $('.J_fastSectionList .wrap').height(targetHeight);
             }
             $('.J_fastSection').stick_in_parent(
@@ -57,6 +58,8 @@ function initFastSection(){
                 .eq(i).show()
                 .siblings().hide();
             $('.J_fastSectionList .wrap').perfectScrollbar('update');
+            $('.J_fastSectionList .wrap').data('origin','').css('height','auto');
+            setFastSection();
         });
     });
     $('.J_fastSectionList section').click(function(){
@@ -95,6 +98,12 @@ function initMobileNav(newsPanel){
         });
     });
 }
+
+// common js end
+
+
+//index js
+
 $(document).ready(function(){
 
     /**
@@ -173,3 +182,46 @@ $(document).ready(function(){
 
 
 });
+
+// artcle js
+
+$(document).ready(function(){
+
+    /**
+     * 初始化左侧
+     */
+    initFastSection();
+
+    /**
+     * 初始化移动端切换
+     */
+    initMobileNav('.content-wrapper');
+
+
+    /**
+     * 分享展开操作
+     */
+    $('.J_showAllShareBtn').click(function(e){
+        e.preventDefault();
+        $(this).siblings('.external').removeClass('external');
+        $(this).hide();
+    });
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
