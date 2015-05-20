@@ -18,8 +18,8 @@
 
 FactoryGirl.define do
   factory :column do
-    name "国内创业公司"
     introduce "简介"
+    sequence(:name) { |n| "国内创业公司#{n}" }
     sequence(:slug) { |n| "slug#{n}" }
   end
 

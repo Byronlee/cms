@@ -49,6 +49,9 @@ Rails.application.routes.draw do
         get :reviewings, on: :collection
       end
     end
+    namespace :posts do
+      resources :columns
+    end
     resources :posts do
       resources :comments, only: [:index], on: :collection
       resources :related_links

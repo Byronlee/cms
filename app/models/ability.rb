@@ -32,6 +32,7 @@ class Ability
 
     can [:edit, :update], User, :id => user.id
     can :manage, Favorite, :user_id => user.id
+    can :manage, Column
 
     send user.role.to_sym, user
   end
