@@ -5,7 +5,7 @@
         article
           a.pic[class="badge-#{item["column"]["slug"]}" href="#{(item["title_link"].present? ? item["title_link"] : post_url(item["url_code"]))}" style="background-image: url('#{(high_speed_url item["cover_real_url"], 'slider')}')"]
           .desc
-            a.title[href=(item["title_link"].present? ? item["title_link"] : post_url(item["url_code"]))]
+            a.title[href=(item["title_link"].present? ? item["title_link"] : post_url(item["url_code"])) target="_blank"]
               = raw item["title"]
             .author
               a[href="#{user_domain(item['author']['domain'])}"]
