@@ -23,6 +23,10 @@ module V2
               column_name: post.column_name,
               comments_count: post.comments.size,
               cover_real_url: post.cover_real_url,
+              author: {
+                name: post.author.display_name,
+                avatar_url: post.author.avatar
+              },
               published_at: post.published_at.iso8601,
               updated_at: post.updated_at.iso8601
             }

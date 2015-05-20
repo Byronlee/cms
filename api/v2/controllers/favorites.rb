@@ -22,6 +22,13 @@ module V2
                 title: favorite.post.title,
                 cover_real_url: favorite.post.cover_real_url,
                 favoriter_sso_ids: favorite.post.favoriter_sso_ids,
+                column_id: favorite.post.column_id,
+                column_name: favorite.post.column.name,
+                comments_count: favorite.post.comments_count,
+                author: {
+                  name: favorite.post.author.display_name,
+                  avatar_url: favorite.post.author.avatar
+                },
                 created_at: favorite.created_at.iso8601,
                 updated_at: favorite.updated_at.iso8601
               }
