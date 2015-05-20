@@ -15,7 +15,7 @@ module V2
         get ':pid' do
           post = params[:type].classify.constantize.find_by_url_code params[:pid]
           @comments = post.comments
-          .includes(:commentable, user:[:krypton_authentication])
+          .includes(:commentable)#, user:[:krypton_authentication])
           .order('created_at desc').page(params[:page]).per(params[:per_page])
           not_found! if @comments.blank?
           #cache(key: "api:v2:comments:#{params[:pid]}#{@comments.last.updated_at}", etag: Time.now, expires_in: Settings.api.expires_in) do
@@ -36,7 +36,7 @@ module V2
           @comments = post.comments
           .where("commentable_id = :pid and created_at #{action params} :date",
             pid: post.id, date: post.comments.find(params[:cid]).created_at)
-          .includes(:commentable, user:[:krypton_authentication])
+          .includes(:commentable)#, user:[:krypton_authentication])
           .order('created_at desc').page(params[:page]).per(params[:per_page])
           #cache(key: "api:v2:comments:#{params[:cid]}:page:#{params[:pid]}:#{@comments.last.updated_at}", etag: Time.now, expires_in: Settings.api.expires_in) do
             present @comments, with: Entities::Comment
