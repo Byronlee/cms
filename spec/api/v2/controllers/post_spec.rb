@@ -74,8 +74,9 @@ describe API::API do
       end
 
       it 'and param`s post_type is draft should return the post with state is draft' do
+        auth = create :authentication
         post_params = attributes_for(:post)
-        post_params = post_params.merge(post_type: 'draft', column_id: 1)
+        post_params = post_params.merge(post_type: 'draft', uid: auth.uid, column_id: 1)
         patch "/api/v2/posts/#{@post.id}.json?api_key=501Cd1AvUL4AxxVEX60gCFJK7HCd9y8ySDvG29Je", post_params
         expect(JSON.parse(response.body)['status']).to be_true
         expect(JSON.parse(response.body)['data']['state']).to eql('drafted')
@@ -83,8 +84,9 @@ describe API::API do
 
       context 'and with param`s post_type is post' do
         it 'when use can pubish should return the post with state is publish' do
+          auth = create :authentication
           post_params = attributes_for(:post)
-          post_params = post_params.merge(post_type: 'post', column_id: 1)
+          post_params = post_params.merge(post_type: 'post', uid: @post.author.krypton_authentication.uid, column_id: 1)
           @post.author.update_attributes(role: 'admin')
           patch "/api/v2/posts/#{@post.id}.json?api_key=501Cd1AvUL4AxxVEX60gCFJK7HCd9y8ySDvG29Je", post_params
           expect(JSON.parse(response.body)['status']).to be_true
@@ -92,8 +94,9 @@ describe API::API do
         end
 
         it 'when use cannot pubish should return the post with state is reviewing' do
+          auth = create :authentication
           post_params = attributes_for(:post)
-          post_params = post_params.merge(post_type: 'post', column_id: 1)
+          post_params = post_params.merge(post_type: 'post', uid: auth.uid, column_id: 1)
           @post.author.update_attributes(role: 'reader')
           patch "/api/v2/posts/#{@post.id}.json?api_key=501Cd1AvUL4AxxVEX60gCFJK7HCd9y8ySDvG29Je", post_params
           expect(JSON.parse(response.body)['status']).to be_true
@@ -114,7 +117,7 @@ describe API::API do
         it 'should return the post state is reviewing' do
           @post = create :post, user_id: @auth.user.id, state: 'reviewing'
           post_params = attributes_for(:post)
-          post_params = post_params.merge(post_type: 'post', column_id: 1)
+          post_params = post_params.merge(post_type: 'post', uid: @auth.user.id, column_id: 1)
           patch "/api/v2/posts/#{@post.id}.json?api_key=501Cd1AvUL4AxxVEX60gCFJK7HCd9y8ySDvG29Je", post_params
           expect(JSON.parse(response.body)['status']).to be_true
           expect(JSON.parse(response.body)['data']['state']).to eql('reviewing')
@@ -128,7 +131,7 @@ describe API::API do
         it 'should return the post state is pubish' do
           @post = create :post, user_id: @auth.user.id, state: 'published', published_at: Time.now
           post_params = attributes_for(:post)
-          post_params = post_params.merge(post_type: 'post', column_id: 1)
+          post_params = post_params.merge(post_type: 'post', uid: @auth.uid, column_id: 1)
           patch "/api/v2/posts/#{@post.id}.json?api_key=501Cd1AvUL4AxxVEX60gCFJK7HCd9y8ySDvG29Je", post_params
           expect(JSON.parse(response.body)['status']).to be_true
           expect(JSON.parse(response.body)['data']['state']).to eql('published')

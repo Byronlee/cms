@@ -95,6 +95,7 @@ module V2
           requires :id, desc: '编号'
           requires :title,     type: String,   desc: '标题'
           requires :content,   type: String,   desc: '内容'
+          requires :uid,       type: Integer,  desc: '用户SSO_ID'
           requires :column_id, type: Integer,  desc: '专栏id'
           requires :post_type, type: String,   desc: '草稿draft还是文章post'
           optional :source,    type: String,   desc: '来源id'
@@ -105,7 +106,8 @@ module V2
           action = params[:post_type]
           return { status: false, msg: '所传参数不合法!' }  unless %w(draft post).include?(action)
           @post = Post.find(params[:id])
-          auth = @post.author.krypton_authentication
+          #auth = @post.author.krypton_authentication
+          auth = Authentication.where(uid: params[:uid].to_s).first
           @post.assign_attributes(params.slice(*KEYS))
           @post = coming_out(@post, auth) if action.eql?('post') and @post.drafted?
           return { status: false, msg: @post.errors.full_messages }  unless @post.save
