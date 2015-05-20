@@ -1,51 +1,28 @@
 .panel[style="display: none"]
-  section.product
-    h3
-      | 新娘说
-    h4
-      | What:
-    p
-      | 一个新娘的筹婚分享社区
-    h4
-      | How:
-    p
-      | 新娘们可以在上面分享筹婚经验、Po照秀恩爱或者寻找和自己一样对婚礼筹备没头绪的小伙伴一起报团，相约探酒店，试婚纱。
-    h4
-      | Think It Twice:
-    p
-      | 婚庆作为个非常低频的消费行为，获取用户成本极高。用户积累不到位，“新娘说”上来直接做社区，除获客烧钱外，冷启动也是个很大的挑战。
-    .pic
-      img[src="http://e.36krcnd.com/nil_class/e4e52914-a456-4456-8fbb-b2868e3e86a3/_____2015-05-16___8.26.41.png!slider" alt=""]
-    .info
-      span.time
-        | 5分钟前
-      span.share
-        |  分享到:
-        a[href="icon-weixin"]
-        a[href="icon-qq"]
-  section.product
-    h3
-      | 新娘说
-    h4
-      | What:
-    p
-      | 一个新娘的筹婚分享社区
-    h4
-      | How:
-    p
-      | 新娘们可以在上面分享筹婚经验、Po照秀恩爱或者寻找和自己一样对婚礼筹备没头绪的小伙伴一起报团，相约探酒店，试婚纱。
-    h4
-      | Think It Twice:
-    p
-      | 婚庆作为个非常低频的消费行为，获取用户成本极高。用户积累不到位，“新娘说”上来直接做社区，除获客烧钱外，冷启动也是个很大的挑战。
-    .pic
-      img[src="http://e.36krcnd.com/nil_class/e4e52914-a456-4456-8fbb-b2868e3e86a3/_____2015-05-16___8.26.41.png!slider" alt=""]
-    .info
-      span.time
-        | 5分钟前
-      span.share
-        |  分享到:
-        a[href="icon-weixin"]
-        a[href="icon-qq"]
+  - @pdnotes.each do | pd |
+    section.product
+      h3 = pd.hash_title
+      h4
+        | What:
+      p = pd.description_text
+
+      h4
+        | How:
+
+      p = pd.news_summaries.strip.split(/\r\n/).delete_if(&:blank?)[0].gsub(/^-/, '' )
+
+      h4
+        | Think It Twice:
+      p = pd.news_summaries.strip.split(/\r\n/).delete_if(&:blank?)[1].gsub(/^-/, '' )
+
+      .pic
+        = image_tag pd.cover if pd.cover.present?
+      .info
+        span.time
+          = time_ago_in_words pd.created_at rescue ''
+        span.share
+          |  分享到:
+          a[href="icon-weixin"]
+          a[href="icon-qq"]
 a.ad[href="#"]
 img[src="http://e.36krcnd.com/nil_class/e4e52914-a456-4456-8fbb-b2868e3e86a3/_____2015-05-16___8.26.41.png!slider" alt=""]
