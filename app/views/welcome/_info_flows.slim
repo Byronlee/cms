@@ -1,6 +1,6 @@
 .news-list.J_articleListWrap
   .categories.J_newsListNavBar
-    a.active[href="#" data-type="0"]
+    a.active[href="#{root_path(d: 'next', b_url_code: nil, format: :html)}" data-type="0"]
       | 全部
     a[href="#{column_slug_path(slug: 'O2O')}" data-type="0"]
       | O2O
@@ -18,24 +18,5 @@
       | 在线教育
     a[href="#{column_slug_path(slug: 'major-company')}" data-type="0"]
       | 大公司
-  .article-list
-    .articles.J_articleList
-      - posts_with_ads.each do |item|
-        - if item['position'] == nil && item["type"] != 'seperate'
-          article
-            a.pic.badge-o2o[href="#{(item["title_link"].present? ? item["title_link"] : post_url(item["url_code"]))}" style="background-image: url('#{(high_speed_url item["cover_real_url"], 'slider')}')"]
-            .desc
-              a.title[href=(item["title_link"].present? ? item["title_link"] : post_url(item["url_code"]))]
-                = raw item["title"]
-              .author
-                a[href="#{user_domain(item['author']['domain'])}"]
-                  span.avatar[style="background-image: url('#{item['author']['avatar']}')"]
-                  span.name
-                    = (item["author"] && item["author"]["display_name"]) || "匿名用户"
-                span.time
-                  |&nbsp;•&nbsp;
-                  = smart_time_ago Time.parse(item["published_at"]) if item["published_at"].present?
-              .brief
-                = raw(item["summary"])
-    a.load-more.J_listLoadMore[href="javascript:void(0)"]
-      | 查看更多
+  
+  = render 'welcome/info_flow_items', :posts_with_ads => posts_with_ads, :prev_page => prev_page, :next_page => next_page

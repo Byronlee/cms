@@ -11,7 +11,7 @@ class WelcomeController < ApplicationController
     respond_to do |format|
       format.html do
         if request.xhr?
-          render 'welcome/_info_flows', locals: {
+          render 'welcome/_info_flow_items', locals: {
             :posts_with_ads => @posts_with_ads, 
             :prev_page => @prev_page, 
             :next_page => @next_page
@@ -37,7 +37,17 @@ class WelcomeController < ApplicationController
     @min_url_code = cache_data['min_url_code']
     
     respond_to do |format|
-      format.html{ render :index }
+      format.html do
+        if request.xhr?
+          render 'welcome/_info_flow_items', locals: {
+            :posts_with_ads => @posts_with_ads, 
+            :prev_page => @prev_page, 
+            :next_page => @next_page
+          }, layout: false 
+        else
+          render :index 
+        end
+      end
       format.json do 
         render json: { 
           :total_count => @total_count,

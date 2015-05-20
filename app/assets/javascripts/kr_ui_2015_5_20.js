@@ -82,8 +82,8 @@ $(document).ready(function(){
         $(this).addClass('active')
             .siblings().removeClass('active');
 
-        $.get('mock/news.html', function(list){
-            $('.J_articleList').empty().append(list);
+        $.get($(this).attr("href"), function(list){
+            $('.article-list').empty().append(list);
             window.scrollTo(0, Math.min($(window).scrollTop(),navBarTop));
         }, 'html');
     });
