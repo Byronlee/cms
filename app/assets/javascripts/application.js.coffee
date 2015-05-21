@@ -1,4 +1,8 @@
-#= require kr_ui_2015_5_20
+#= require kr_vendor
+#= require kr_index
+#= require kr_article
+#= require kr_search-result
+#= require kr_fast-section-detail
 #= require ga_track
 #= require search-result
 #= require async_render

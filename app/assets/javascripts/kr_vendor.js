@@ -43,7 +43,9 @@ function initFastSection(){
         }
         $('.J_fastSectionList .wrap').perfectScrollbar('update');
     };
-    $('.J_fastSectionList .wrap').perfectScrollbar();
+    $('.J_fastSectionList .wrap').perfectScrollbar({
+        wheelPropagation:true
+    });
     setFastSection();
     $(window).resize(setFastSection);
 
