@@ -1,5 +1,6 @@
 .index-wrap
   = render_cell :welcome, :head_line
   .main-section
-    = render 'welcome/info_flows', :posts_with_ads => @posts_with_ads, :prev_page => @prev_page, :next_page => @next_page
-    = render 'welcome/aside'
+    = render layout: 'welcome/header', locals: { data_type: 'all' } do
+      = render 'welcome/info_flow_items', :posts_with_ads => @posts_with_ads
+  = render 'welcome/aside'

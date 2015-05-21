@@ -86,6 +86,11 @@ module ApplicationHelper
     raw FragmentTemplate.find_by_key(key).display_content
   end
 
+  def active_class(current_data_type, data_type)
+    return '' unless current_data_type == data_type
+    'active'
+  end
+
   private
 
   def relative_time(raw_time)
