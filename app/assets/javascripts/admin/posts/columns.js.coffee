@@ -8,4 +8,3 @@ jQuery ->
   .on "ajax:success", ->
     ;# $(this).fadeOut()
   .on "ajax:error", ->
-    debugger

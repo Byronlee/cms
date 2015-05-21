@@ -9,7 +9,7 @@ class Admin::Posts::ColumnsController < Admin::BaseController
 
   def create
     @post = Post.find(params[:post_id])
-    @column = Column.find(params[:id])
+    @column = Column.find(params[:column_id])
     @post.update column_id: @column.id
     if @post.save
       render nothing: true
