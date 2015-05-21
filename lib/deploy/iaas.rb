@@ -67,9 +67,11 @@ class Deploy::Iaas
         frequency = click.to_i / check_time
         if frequency > 2
           if WHITE_LIST.include? ip
-            notification "#{host_name}: W: #{ check_time } 秒内 http://ip.cn/?ip=#{ip} 请求次数为 #{click} 次 攻击频率 #{frequency} 次/秒 此ip为白名单允许访问 \n #{msg}"
+            #notification "#{host_name}: W: #{ check_time } 秒内 http://ip.cn/?ip=#{ip} 请求次数为 #{click} 次 攻击频率 #{frequency} 次/秒 此ip为白名单允许访问 \n #{msg}"
+            notification2 json_msg( ip, host_name, frequency, click, check_time, msg, "#2CC99C", "白" )
           else
-            notification "#{host_name}: B: #{ check_time } 秒内 http://ip.cn/?ip=#{ip} 请求次数为 #{click} 次 攻击频率 #{frequency} 次/秒 此ip为黑名单被封锁 \n #{msg}"
+            #notification "#{host_name}: B: #{ check_time } 秒内 http://ip.cn/?ip=#{ip} 请求次数为 #{click} 次 攻击频率 #{frequency} 次/秒 此ip为黑名单被封锁 \n #{msg}"
+            notification2 json_msg( ip, host_name, frequency, click, check_time, msg, "#F35A00", "黑" )
             url = "https://api.qingcloud.com/iaas/?action=ModifySecurityGroupRuleAttributes&security_group_rule_name=#{host_name}-auto-black&security_group_rule=#{security_group_rule}&priority=#{priority}&rule_action=#{rule_action}&protocol=#{protocol}&direction=#{direction}&val1=#{val1}&val2=#{val2}&val3=#{ip}&zone=#{zone}"
             signature_obj = self.new(url, KEY, SECRET)
             signature_url = signature_obj.signature
@@ -98,6 +100,37 @@ class Deploy::Iaas
       Faraday.post url , {
         payload: JSON.generate({ text: text })
       }
+    end
+
+    def notification2 json
+      url = 'https://hooks.slack.com/services/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'
+      Faraday.post url , { payload: json }
+    end
+
+    def json_msg(*params)
+      {
+        attachments: [{
+            fallback: "防火墙告警 - IP: #{params[0]} 被加入#{params[7]}名单: http://ip.cn/?ip=#{params[0]}",
+            title: "<http://ip.cn/?ip=#{params[0]}/|IP: #{params[0]}> - 被加入#{params[7]}名单",
+            fields: [{
+              title: "主机",
+              value: "#{params[1]}",
+              short: true
+             },
+             {
+              title: "请求频率",
+              value: "#{params[2]} rps / #{params[3]} hits in #{params[4]} s",
+              short: true
+            },
+            {
+              title: "请求 Log 样例",
+              value: "#{params[5]}",
+              short: false
+            }
+          ],
+          color: "#{params[6]}"#F35A00
+      }]
+      }.to_json
     end
 
   end
