@@ -1,7 +1,7 @@
 article
   a.pic[class="badge-#{post.column.try(:slug)}" href="#{post_url(post, utm_source: utm_source ||= nil)}" style="background-image: url('#{high_speed_url post.cover_real_url, 'slider'}')"]
   .desc
-    a.title[href=post_url(post, utm_source: utm_source ||= nil)]
+    a.title[href=post_url(post, utm_source: utm_source ||= nil) target="_blank"]
       = raw post.title
     .author
       a[href="#{user_domain(post.author.try(:domain))}"]

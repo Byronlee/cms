@@ -1,21 +1,24 @@
-.article-list
-  .articles.J_articleList
-    - posts_with_ads.each do |item|
-      - if item['position'] == nil && item["type"] != 'seperate'
-        article
-          a.pic[class="badge-#{item["column"]["slug"]}" href="#{(item["title_link"].present? ? item["title_link"] : post_url(item["url_code"]))}" style="background-image: url('#{(high_speed_url item["cover_real_url"], 'slider')}')"]
-          .desc
-            a.title[href=(item["title_link"].present? ? item["title_link"] : post_url(item["url_code"])) target="_blank"]
-              = raw item["title"]
-            .author
-              a[href="#{user_domain(item['author']['domain'])}"]
-                span.avatar[style="background-image: url('#{item['author']['avatar']}')"]
-                span.name
-                  = (item["author"] && item["author"]["display_name"]) || "匿名用户"
-              span.time
-                |&nbsp;•&nbsp;
-                = smart_time_ago Time.parse(item["published_at"]) if item["published_at"].present?
-            .brief
-              = raw(item["summary"])
-    a.load-more.J_listLoadMore[href="#{ root_path(d: 'next', b_url_code: @min_url_code, format: :html) }"]
-      | 查看更多
+- if posts_with_ads.count > 0
+  - posts_with_ads.each do |item|
+    - if item['position'] == nil && item["type"] != 'seperate'
+      article
+        a.pic[class="badge-#{item["column"]["slug"]}" href="#{(item["title_link"].present? ? item["title_link"] : post_url(item["url_code"]))}" style="background-image: url('#{(high_speed_url item["cover_real_url"], 'slider')}')"]
+        .desc
+          a.title[href=(item["title_link"].present? ? item["title_link"] : post_url(item["url_code"])) target="_blank"]
+            = raw item["title"]
+          .author
+            a[href="#{user_domain(item['author']['domain'])}"]
+              span.avatar[style="background-image: url('#{item['author']['avatar']}')"]
+              span.name
+                = (item["author"] && item["author"]["display_name"]) || "匿名用户"
+            span.time
+              |&nbsp;•&nbsp;
+              = smart_time_ago Time.parse(item["published_at"]) if item["published_at"].present?
+          .brief
+            = raw(item["summary"])
+
+  a.load-more.J_listLoadMore[href="#{ root_path(d: 'next', b_url_code: @min_url_code, format: :html) }"]
+    | 查看更多
+- else
+  p.load-more
+    |没有更多文章了
