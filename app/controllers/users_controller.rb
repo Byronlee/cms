@@ -27,6 +27,18 @@ class UsersController < ApplicationController
   end
 
   def posts
-    @posts = @user.posts.published.includes(:author, :column).recent.page(params[:page]).per(30)
+    @posts = @user.posts.published.includes(:author, :column).recent
+    @posts = Post.paginate(@posts, params)
+
+    respond_to do |format|
+      format.html do
+        if request.xhr?
+          render 'users/_list', locals: { :posts => @posts }, layout: false 
+        end
+      end
+      format.json do 
+        render json: Post.posts_to_json(@posts)
+      end
+    end
   end
 end

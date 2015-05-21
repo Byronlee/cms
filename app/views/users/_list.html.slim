@@ -1,0 +1,8 @@
+- if @posts.count > 0
+  = render @posts
+
+  = link_to '查看更多', user_domain_posts_path(user_domain: params[:user_domain], d: 'next', b_url_code: @posts.last.url_code, format: :html), class: 'load-more J_listLoadMore'
+
+- else
+  p.search_none_info
+    |未找到相关文章
