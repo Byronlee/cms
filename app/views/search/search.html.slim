@@ -1,5 +1,6 @@
 = render 'welcome/title', title: "搜索: #{params[:q]}"
 = render 'welcome/canonical', :raw_url => "http://36kr.com/search/#{params[:q]}"
+= stylesheet_link_tag 'kr_search-result', media: 'all'
 
 .search-result-wrap
   .main-section
