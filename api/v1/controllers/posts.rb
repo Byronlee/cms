@@ -48,30 +48,10 @@ module V1
           optional :per_page,  type: Integer, default: 30, desc: '每页记录数'
         end
         get 'index' do
-          @posts = Post.includes(:comments, author:[:krypton_authentication])
+          posts = Post.includes(:comments, author:[:krypton_authentication])
           .where(state: params[:state]).order(published_at: :desc)
           .page(params[:page]).per(params[:per_page])
-          #cache(key: "api:v1:topics:index:", etag: Time.now, expires_in: Settings.api.expires_in) do
-            posts_list = []
-            @posts.each do |post|
-              posts_list << {
-                id: post.url_code,
-                title: post.title,
-                feature_img: post.cover_real_url,
-                excerpt: post.summary,
-                created_at: post.published_at.iso8601,
-                updated_at: post.updated_at.iso8601,
-                replied_at: post.updated_at.iso8601,
-                replies_count: post.comments_counts,
-                node_id: post.column_id,
-                node_name: post.column_name,
-                tags: post.tag_list,
-                user: post.author,
-                replies: post.comments
-              }
-            end
-            posts_list
-          #end
+          present posts, with: Entities::Post
         end
 
         desc 'export all posts list'
