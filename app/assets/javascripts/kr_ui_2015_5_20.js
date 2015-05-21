@@ -43,7 +43,9 @@ function initFastSection(){
         }
         $('.J_fastSectionList .wrap').perfectScrollbar('update');
     };
-    $('.J_fastSectionList .wrap').perfectScrollbar();
+    $('.J_fastSectionList .wrap').perfectScrollbar({
+        wheelPropagation:true
+    });
     setFastSection();
     $(window).resize(setFastSection);
 
@@ -60,6 +62,7 @@ function initFastSection(){
             $('.J_fastSectionList .wrap').perfectScrollbar('update');
             $('.J_fastSectionList .wrap').data('origin','').css('height','auto');
             setFastSection();
+            $(window).trigger('resize');
         });
     });
     $('.J_fastSectionList section').click(function(){
@@ -132,6 +135,8 @@ $(document).ready(function(){
         $('.J_listLoadMore', wrapper).click(function(e){
             e.preventDefault();
             var trigger = $(this);
+            if(trigger.hasClass('no-data'))return;
+            trigger.addClass('loading');
             $.get(trigger.attr('href'), function(list){
                 var newWrapper = trigger.parent();
                 $(list).insertAfter(trigger);
@@ -152,16 +157,20 @@ $(document).ready(function(){
      * 分类加载(TODO:需要联调加载逻辑)
      */
     //var navBarTop = $('.J_newsListNavBar').offset().top;
+    $('.J_newsListNavBar a').eq(0).data('listWrapper', $('.J_articleList').eq(0))
     $('.J_newsListNavBar a').click(function(e){
         e.preventDefault();
 
         var url = $(this).attr('href');
         var link = $(this);
 
-        $(this).addClass('active')
-            .siblings().removeClass('active');
+       if(link.siblings('.loading').length){
+          return;
+        }
 
         if(link.data('listWrapper')){
+            $(this).addClass('active')
+                .siblings().removeClass('active');
             link.data('listWrapper').show()
                 .siblings().hide();
             return;
@@ -170,10 +179,12 @@ $(document).ready(function(){
         var newWrapper = $('<div class="articles J_articleList"></div>').insertAfter($('.J_articleList').eq(0));
         link.data('listWrapper', newWrapper);
 
-        newWrapper.show()
-            .siblings().hide();
-
+        link.addClass('loading');
         $.get(url, function(list){
+            newWrapper.show()
+                .siblings().hide();
+            link.addClass('active').removeClass('loading')
+                .siblings().removeClass('active');
             newWrapper.append(list);
             bindLoadMore(newWrapper);
             window.scrollTo(0, Math.min($(window).scrollTop(),navBarTop));
@@ -182,7 +193,6 @@ $(document).ready(function(){
 
 
 });
-
 // artcle js
 
 $(document).ready(function(){
