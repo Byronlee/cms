@@ -1,11 +1,12 @@
 = render 'welcome/title', title: @column.try(:name)
 = render 'welcome/canonical', :raw_url => "http://36kr.com/category/#{@column.try(:slug)}"
+= stylesheet_link_tag 'kr_index', media: 'all'
 
 .index-wrap
   = render_cell :welcome, :head_line
   .main-section
-    .article-list
-      .articles.J_articleList
-        = render layout: 'welcome/header', locals: { data_type: @column.slug } do
-          = render 'list'
+    = render layout: 'welcome/header', locals: { data_type: @column.slug } do
+      .article-list
+        .articles.J_articleList
+		      = render 'list'
     = render 'welcome/aside'
