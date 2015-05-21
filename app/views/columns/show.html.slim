@@ -1,8 +1,9 @@
 = render 'welcome/title', title: @column.try(:name)
 = render 'welcome/canonical', :raw_url => "http://36kr.com/category/#{@column.try(:slug)}"
 
-= render_cell :welcome, :head_line
-.main-section
-  = render layout: 'welcome/header', locals: { data_type: @column.slug } do
-    = render 'list'
-  = render 'welcome/aside'
+.index-wrap
+  = render_cell :welcome, :head_line
+  .main-section
+    = render layout: 'welcome/header', locals: { data_type: @column.slug } do
+      = render 'list'
+    = render 'welcome/aside'
