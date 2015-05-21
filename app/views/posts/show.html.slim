@@ -8,6 +8,16 @@
         = render_cell :post, :header, post: @post
         = render_cell :post, :content, post: @post
         = render_cell :post, :ad
+        - cache [:show, @post, :manage, current_user]
+          - if (@post.author == current_user || (can? :manage, Comment))
+            br
+            hr style="border: 1px solid #eee;"
+            br
+            = link_to "编辑文章", Settings.writer_edit_path.call(@post)
+            span &nbsp;|&nbsp;
+            = link_to "编辑发布选项", edit_admin_post_path(@post)
+            span &nbsp;|&nbsp;
+            = link_to "管理评论", admin_post_comments_path(@post)
         = render_cell :post, :share, post:  @post, user: current_user
       = render_cell :post, :mobile_author, author: @post.author
       = render_cell :post, :relate, post: @post
