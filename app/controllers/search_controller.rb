@@ -2,7 +2,6 @@ class SearchController < ApplicationController
   def search
     @posts = Post.search(params)
 
-
     respond_to do |format|
       format.html do
         if request.xhr?

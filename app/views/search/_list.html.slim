@@ -1,22 +1,8 @@
-.articles
-  - if @posts.count > 0
-    = render @posts, utm_source: 'site_search'
-  - else
-    p.search_none_info
-      |未找到相关文章
-.pagination.cf
-  ul
-    - if @posts.any?
-      - unless @posts.first_page?
-        li.prev.previous_page.left
-          = link_to '← 上一页', search_path(q: params[:q], page: params[:page].to_i.pred ), rel: "prev"
-      - else
-        li.prev.previous_page.left.disabled
-          = link_to '← 上一页', '#', rel: "prev"
+- if @posts.count > 0
+  = render @posts, utm_source: 'site_search'
 
-      - unless @posts.last_page?
-        li.next.next_page.right
-          = link_to '下一页 →', search_path(q: params[:q], page: params[:page].to_i.next ), rel: "next"
-      - else
-        li.prev.next_page.right.disabled
-          = link_to '下一页 →', '#', rel: "prev"
+  = link_to '查看更多', search_path(q: params[:q], d: 'next', b_url_code: @posts.results.last.url_code, format: :html), class: 'load-more J_listLoadMore'
+
+- else
+  p.search_none_info
+    |未找到相关文章

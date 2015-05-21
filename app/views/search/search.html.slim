@@ -1,20 +1,19 @@
 = render 'welcome/title', title: "搜索: #{params[:q]}"
 = render 'welcome/canonical', :raw_url => "http://36kr.com/search/#{params[:q]}"
 
-.main
-  .content
-    .content-wrapper
-      .content-wrapper-border
-        h2.lastest style="text-transform: none;"
-          |“#{params[:q]}” 搜索结果
-          span style="float:right; font-weight: normal" 结果数：#{@posts.total_count}
-        
-        = render 'search/list'
-  .aside
-    = render_cell :post, :today
-    = render_cell :sidebar, :social
+.search-result-wrap
+  .main-section
+    .result-list.J_resultListWrap
+      .result-info
+        .keyword
+          em.highlight '#{params[:q]}'
+          | 搜索结果
+        .count
+          |结果数：
+          em.highlight = @posts.total_count
 
-.sidebar
-  = render_cell :sidebar, :ad_top, position: :column_show
-  = render_cell :post, :hot
-  = render_cell :comment, :excellent
+      .article-list
+        .articles.J_articleList
+          = render 'search/list'
+
+    = render 'welcome/aside'

@@ -2,4 +2,6 @@
 *= require kr_modules/font
 *= require index
 *= require article
+*= require common
+*= require search-result
 */
