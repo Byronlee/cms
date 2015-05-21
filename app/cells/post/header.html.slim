@@ -8,7 +8,7 @@ section.single-post-header
       span.name
         = @post.author.try(:display_name)
     span.time
-      | &nbsp;•&bsp;
+      | &nbsp;•&nbsp;
       = smart_time_ago(@post.published_at)
   .single-post-header__headline
     img.image[alt="" src=high_speed_url(@post.cover_real_url, 'heading')]

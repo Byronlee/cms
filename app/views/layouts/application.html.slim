@@ -1,32 +1,29 @@
 html.no-js[lang="zh-CN"]
   head
-    meta[charset="UTF-8"]
-    meta[name="viewport" content=" initial-scale=1.0, maximum-scale=1.0, user-scalable=no"]
-    title
-      | 36氪 | 关注互联网创业
-    meta[name="keywords" content="36氪, 36kr, 36tr, 创业, 想创业, 投资, 融资, 创投媒体, 创业公司, 科技新闻, 移动互联网, 资讯平台, 开放日, 互联网创业"]
-    meta[name="description" content="36氪是一个关注互联网创业的科技博客"]
-    meta[name="robots" content="noindex,nofollow"]
-    meta[name="apple-mobile-web-app-capable" content="no"]
-    meta[name="Rating" content="Safe For Kids"]
-    meta[name="revisit-after" content="1 days"]
-    meta[name="author" content=""]
-    meta[name="generator" content=""]
-    link[rel="shortcut icon" href="http://www.36kr.com/favicon.ico"]
-    link[rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png"]
-    link[rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png"]
-    link[rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png"]
-    link[rel="alternate" type="application/rss+xml" title="RSS Feed" href=""]
-    link[rel="canonical" href=""]
-    link[rel="prev" href=""]
-    link[rel="next" href=""]
-    = stylesheet_link_tag 'application'
+    = content_for?(:title) ? yield(:title) : content_tag(:title, t('site.name'), s_t: t('site.name'))
+    = render_cell :head, :basic_info
+    = render_cell :head, :ios_meta
+    = render_cell :head, :ios_icons
+    = render_cell :head, :ios_startup
+
+    = render_cell :head, :twitter_card_meta, post: @post if @post
+    = render_cell :head, :facebook_open_graph_meta, post: @post if @post
+    = render_cell :head, :weibo_card_meta, post: @post if @post
+    = render_cell :head, :dns_prefetch
+    /!--opengraph meata start
+    = content_for?(:og_meta) ? yield(:og_meta) : ''
+    /!--opengraph meata end
+    = stylesheet_link_tag 'application', media: 'all'
+    = content_for?(:canonical) ? yield(:canonical) : ''
+    = javascript_include_tag "http://cbjs.baidu.com/js/m.js"
     = javascript_include_tag 'application'
     = javascript_include_tag "#{Settings.oauth.krypton.host}/assets/helper.js"
-
+    = render_cell :head, :html5
+    = render_fragment_template :extra_metas
+    = render_fragment_template :baidu_statistics
+    = csrf_meta_tag
   body
     noscript
-
     script[src="http://krplus-cdn.b0.upaiyun.com/common-module/common-header-dev/script.js" name="news" fixed="false" local="true"]
     .mobile-nav.J_mobileNav
       a.tab.active[href="#"]

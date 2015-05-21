@@ -71,3 +71,15 @@ end
 #  Page.create!(page)
 #end
 
+
+
+# :footer_body， :baidu_statistics, :extar_metadata
+# <script>
+# var _hmt = _hmt || [];
+# (function() {
+  # var hm = document.createElement("script");
+  # hm.src = "//hm.baidu.com/hm.js?713123c60a0e86982326bae1a51083e1";
+  # var s = document.getElementsByTagName("script")[0];
+  # s.parentNode.insertBefore(hm, s);
+# })();
+# </script>
