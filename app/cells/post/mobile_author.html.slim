@@ -1,0 +1,13 @@
+section.mobile-author
+  - if @user.blank?
+    p style="text-align:center;" 36氪
+  - else
+    .author
+      span.avatar[style="background-image: url('#{@user.avatar}')"]
+      .desc
+        span.name
+          = @user.try(:display_name)
+        span.badge
+          = @user.role_text
+        .brief
+          = @user.tagline || "36氪，关注互联网创业"

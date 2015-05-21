@@ -24,6 +24,11 @@ class PostCell < Cell::Rails
     render
   end
 
+  def mobile_author(args)
+    @user = args[:author]
+    render
+  end
+
   def relate(args)
     @post = args[:post]
     @posts = @post.find_related_tags.published.where.not(id: @post.id).limit(3)
