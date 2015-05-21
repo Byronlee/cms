@@ -1492,3 +1492,7 @@ footer.common-footer .bottom .share a.icon-rss:hover {
 .share-group a.icon-add:hover {
   color: #3da9f7;
 }
+
+#intercom-launcher{
+  display: none;
+}
