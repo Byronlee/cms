@@ -55,6 +55,10 @@ class Newsflash < ActiveRecord::Base
     end
   end
 
+  def fast_type
+    tag_list.include?('_newsflash') ? 'newsflash' : 'pdnote'
+  end
+
   private
 
   def prase_basic_attrs_from_original_input(input)

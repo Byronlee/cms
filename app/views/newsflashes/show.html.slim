@@ -2,5 +2,5 @@
 .fast-section-detail-wrap
     .main-section
       .fast-section-detail.J_fastNewsDetailWrap
-         = render @newsflash
+         = render partial: @newsflash.fast_type, locals: { newsflash: @newsflash }
       = render 'welcome/aside'
