@@ -12,7 +12,7 @@
 #
 
 class FragmentTemplate < ActiveRecord::Base
-  validates_presence_of :key, :name, :content, :content_type
+  validates_presence_of :key, :name, :content_type
   validates_uniqueness_of :key
   extend Enumerize
 
