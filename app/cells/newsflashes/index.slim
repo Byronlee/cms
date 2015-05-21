@@ -7,8 +7,9 @@
         = nf.hash_title
       .desc
         = nf.description_text
-        a[href=newsflash_show_path(nf)]
-          | [原文链接]
+        - if nf.news_url.present?
+          a[href=nf.news_url]
+            | [原文链接]
       .info
         span.time
           = smart_time_ago nf.created_at
