@@ -1,3 +1,4 @@
+doctype html
 html.no-js[lang="zh-CN"]
   head
     = content_for?(:title) ? yield(:title) : content_tag(:title, t('site.name'), s_t: t('site.name'))
@@ -33,3 +34,4 @@ html.no-js[lang="zh-CN"]
       a.tab[href="#"]
         | ProDuct Note
     = yield
+    = render_cell :layout, :footer

@@ -1,5 +1,2 @@
-footer.footer
-  .row
-    = render_fragment_template :footer_body
-script
-  |  $.extend($.lazyLoadXT, { onload: { addClass: 'loaded' } });
+footer.common-footer
+  = render_fragment_template :footer_body
