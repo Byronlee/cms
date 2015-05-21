@@ -2,5 +2,5 @@
   article
     a.pic[href="#{post["title_link"].blank? ? ('/p/' + post["url_code"].to_s + '.html') : post["title_link"]}" style="background-image: url('#{high_speed_url post["cover_real_url"], 'square'}')"]
     .desc
-      a.title[href="#" title="#{raw post['title']}"]
+      a.title[href="#{post["title_link"].blank? ? ('/p/' + post["url_code"].to_s + '.html') : post["title_link"]}" title=post["title"]]
         = raw post["title"]
