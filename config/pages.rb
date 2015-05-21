@@ -663,6 +663,61 @@ settings.krmonthly = '<h4>氪月报：</h4>
 <p>36氪电子杂志（多看平台）：<a href="http://book.duokan.com/dkdetail.html?book_id=70e8461248ef11e2b5b200163e0123ac&amp;title=36%E6%B0%AA%EF%BC%882012.12%EF%BC%89&amp;classify=%E6%8E%A8%E8%8D%90%E9%98%85%E8%AF%BB&amp;from=dkbargain.html" class="external" target="_blank">第一期</a>、<a href="http://book.duokan.com/dkdetail.html?book_id=d8032ee2608811e2957400163e0123ac&amp;title=36%E6%B0%AA%EF%BC%882013.1%EF%BC%89" class="external" target="_blank">第二期</a>、<a href="http://book.duokan.com/dkdetail.html?book_id=f0ffa464797111e2b27a00163e0123ac&amp;title=36%E6%B0%AA%EF%BC%882013.2%EF%BC%89" class="external" target="_blank">第三期</a></p>'
 
 
+settings.footer_body = '
+    <div class="sections">
+        <section class="link-section">
+            <h3>36氪 让创业更简单</h3>
 
+            <div class="links">
+                <a href="#">关于36氪</a> | <a href="#">氪空间</a> | <a href="#">加入我们</a> | <a href="#">寻求报道</a> | <a href="#">客户端下载</a>
+            </div>
 
+            <div class="feedback">
+                反馈建议：<a href="mailto:service@36kr.com">service@36kr.com</a>
+            </div>
+
+        </section>
+        <section class="partner-section">
+            <h3>合作伙伴</h3>
+
+            <ul class="footer-partner">
+                <li><a href="http://www.aliyun.com" class="external" target="_blank"><img src="http://uploads.36krcnd.com/upload/file/76c4d88140f85a190647dc00cd9d6c35.png" width="86" height="21"></a></li>
+                <li><a href="http://dnspod.cn" class="external" target="_blank"><img src="http://a.36krcnd.com/photo/2014/0ae4f92e9796a8a8a8cfe97a2c29d1b2.png" alt=""></a></li>
+                <li><a href="http://qingcloud.com" class="external" target="_blank"><img src="http://a.36krcnd.com/photo/2014/fac4daea3163cbb72b12613365297d66.png" alt=""></a></li>
+                <li><a href="http://qcloud.com" class="external" target="_blank"><img src="http://a.36krcnd.com/photo/2014/dd9cae66e3cc32be4ef4cf849c22d70b.png" alt=""></a></li>
+                <li><a href="http://upyun.com" class="external" target="_blank"><img src="http://a.36krcnd.com/photo/2014/ba639550940bf943fb0467c5ea14fbc6.png" alt=""></a></li>
+                <li><a href="http://qiniu.com" class="external" target="_blank"><img src="http://a.36krcnd.com/photo/2014/ce210c6ddb324544e23102af0539ec5c.png" alt=""></a></li>
+            </ul>
+        </section>
+        <section class="qr-section">
+            <img class="qr" src="/assets/qr.png" alt="">
+            <div>扫码关注微信公众平台</div>
+        </section>
+    </div>
+    <div class="bottom">
+        <div class="container">
+            <div class="copyright">
+                <span class="mobile-hide">本站由 <a href="http://qingcloud.com">QingCloud</a> 提供云计算服务</span>
+                <span class="law">© 2011-2015 36氪  |  京ICP备12031756号 <span class="mobile-hide">|  京公网安备11010802012285号</span></span>
+            </div>
+            <div class="share">
+                <a class="icon-weibo" href="#"></a>
+                <a class="icon-twitter" href="#"></a>
+                <a class="icon-facebook" href="#"></a>
+                <a class="icon-rss" href="#"></a>
+            </div>
+        </div>
+    </div>'
+
+settings.baidu_statistics= "<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement('script');
+  hm.src = '//hm.baidu.com/hm.js?713123c60a0e86982326bae1a51083e1';
+  var s = document.getElementsByTagName('script')[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>"
+
+settings.extar_metadata= ""
 

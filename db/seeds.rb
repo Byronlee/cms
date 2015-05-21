@@ -72,8 +72,6 @@ end
 #end
 
 
-
-# :footer_body， :baidu_statistics, :extar_metadata
 # <script>
 # var _hmt = _hmt || [];
 # (function() {
@@ -83,3 +81,14 @@ end
   # s.parentNode.insertBefore(hm, s);
 # })();
 # </script>
+
+
+fragments = {
+  footer_body:      { name: "公共footer", content: Settings.footer_body, content_type: :plain }
+  baidu_statistics: { name: "百度统计", content: Settings.baidu_statistics, content_type: :plain }
+  extar_metadata:   { name: "额外的metadata", content: Settings.extar_metadata, content_type: :plain }
+}.each do |key, attributes|
+  FragmentTemplate.find_or_create_by!(key: key) do |template|
+    template.assign_attributes attributes
+  end
+end
