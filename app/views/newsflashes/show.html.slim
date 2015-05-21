@@ -1,2 +1,6 @@
-h1 Newsflashes#show
-p Find me in app/views/newsflashes/show.html.slim
+= stylesheet_link_tag 'kr_newsflashes', media: 'all'
+.fast-section-detail-wrap
+    .main-section
+      .fast-section-detail.J_fastNewsDetailWrap
+         = render @newsflash
+      = render 'welcome/aside'

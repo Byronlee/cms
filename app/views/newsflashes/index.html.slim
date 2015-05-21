@@ -1,21 +1,7 @@
+= stylesheet_link_tag 'kr_newsflashes', media: 'all'
 = render 'welcome/title', title: "8点1氪：#{@newsflashes.first.try(:hash_title)}"
-
-.main
-  .content
-    .content-wrapper
-      article.single-post
-        - if @newsflashes.present?
-          = render_cell :newsflashes, :header, newsflash: @newsflashes.first
-          = render_cell :newsflashes, :content, newsflashes: @newsflashes
-        - else
-          = render_cell :newsflashes, :tips
-  .aside
-    = render_cell :post, :today
-    = render_cell :sidebar, :social
-
-.sidebar
-  = render_cell :sidebar, :ad_top, position: :post_show
-  = render_cell :post, :hot
-  = render_cell :sidebar, :ad_middle, position: :post_show
-  = render_cell :sidebar, :ad_job
-  = render_cell :sidebar, :ad_bottom, position: :post_show
+.fast-section-detail-wrap
+    .main-section
+      .fast-section-detail.J_fastNewsDetailWrap
+        = render @newsflashes
+      = render 'welcome/aside'

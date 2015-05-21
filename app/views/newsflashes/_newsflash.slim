@@ -1,0 +1,31 @@
+- cache [:show, :newsflashes, newsflash.created_at] do
+  .fast-news
+    h3
+      = newsflash.hash_title
+    .desc
+      = newsflash.description_text
+      - if newsflash.news_url.present?
+        a[href=newsflash.news_url]
+          | [原文链接]
+    .info
+      .author
+        a[href="javascript:void(0)"]
+          span.avatar[style="background-image: url('#{newsflash.author.avatar}')"]
+          span.name
+            = newsflash.author.display_name
+        span.time
+          | &nbsp;• &nbsp;
+          = smart_time_ago newsflash.created_at
+      span.share
+        |  分享到:
+        .share-group
+          a.weixin.mobile-hide[href="javascript:void(0)" ref="nofollow" target="_blank"]
+            i.icon-weixin
+            .panel-weixin
+              section.weixin-section
+                p
+                  img[src="http://s.jiathis.com/qrcode.php?url=#{newsflash_show_path(newsflash)}via=wechat_qr"]
+              h3
+                | 打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮
+          a.weibo[href="http://share.baidu.com/s?type=text&amp;searchPic=0&amp;sign=on&amp;to=tsina&amp;url=#{newsflash_show_path(newsflash)}&amp;title=#{newsflash_show_path(newsflash.description_text)}" ref="nofollow" target="_blank"]
+            i.icon-weibo
