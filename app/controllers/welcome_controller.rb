@@ -13,7 +13,7 @@ class WelcomeController < ApplicationController
 
   def cache_index
     flow_data = CacheClient.instance.info_flow
-    cache_data = flow_data.blank? ? {} : JSON.parse(flow_data)
+    cache_data = flow_data.blank? ? {'posts_with_ads' => [] } : JSON.parse(flow_data)
     @posts_with_ads = cache_data['posts_with_ads']
     @prev_page, @next_page = nil, 2
     @max_url_code = cache_data['max_url_code']
