@@ -27,6 +27,7 @@ $(document).ready(function(){
             e.preventDefault();
             var trigger = $(this);
             if(trigger.hasClass('no-data'))return;
+            if(trigger.hasClass('loading'))return;
             trigger.addClass('loading');
             $.get(trigger.attr('href'), function(list){
                 var newWrapper = trigger.parent();

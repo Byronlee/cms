@@ -27,6 +27,7 @@ $(document).ready(function(){
             e.preventDefault();
             var trigger = $(this);
             if(trigger.hasClass('no-data'))return;
+            if(trigger.hasClass('loading'))return;
             trigger.addClass('loading');
             $.get(trigger.attr('href'), function(list){
                 var newWrapper = trigger.parent();
@@ -47,7 +48,7 @@ $(document).ready(function(){
     /**
      * 分类加载(TODO:需要联调加载逻辑)
      */
-    //var navBarTop = $('.J_newsListNavBar').offset().top;
+    var navBarTop = $('.J_newsListNavBar').offset().top;
     $('.J_newsListNavBar a').eq(0).data('listWrapper', $('.J_articleList').eq(0))
     $('.J_newsListNavBar a').click(function(e){
         e.preventDefault();

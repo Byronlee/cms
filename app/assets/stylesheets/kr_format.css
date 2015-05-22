@@ -1,0 +1,105 @@
+/* line 2, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/format.less */
+.article {
+  font-size: 17px;
+  line-height: 1.8;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+@media (max-width: 800px) {
+  /* line 7, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/format.less */
+  .article {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+}
+/* line 11, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/format.less */
+.article a {
+  color: #3da9f7;
+}
+/* line 13, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/format.less */
+.article a:hover {
+  color: #2c79b0;
+}
+/* line 17, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/format.less */
+.article u {
+  text-decoration: none;
+}
+/* line 20, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/format.less */
+.article p,
+.article h3,
+.article h4,
+.article h5,
+.article h6,
+.article pre,
+.article pre,
+.article ul,
+.article ol,
+.article dl,
+.article form,
+.article table,
+.article blockquote,
+.article iframe {
+  margin-bottom: 30px;
+}
+@media (max-width: 800px) {
+  /* line 35, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/format.less */
+  .article p,
+  .article h3,
+  .article h4,
+  .article h5,
+  .article h6,
+  .article pre,
+  .article pre,
+  .article ul,
+  .article ol,
+  .article dl,
+  .article form,
+  .article table,
+  .article blockquote,
+  .article iframe {
+    margin-bottom: 20px;
+  }
+}
+/* line 39, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/format.less */
+.article img {
+  max-width: 100%;
+}
+/* line 42, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/format.less */
+.article ul,
+.article ol {
+  list-style: square;
+  margin-left: 20px;
+}
+/* line 47, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/format.less */
+.article blockquote {
+  font-weight: 600;
+  border-left: 6px solid #3da9f7;
+  padding-left: 15px;
+  margin-left: -15px;
+}
+@media (min-width: 800px) {
+  /* line 48, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/format.less */
+  .article blockquote {
+    padding-left: 24px;
+    margin-left: -24px;
+  }
+}
+/* line 57, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/format.less */
+.article hr {
+  border: 0;
+  height: 1px;
+  width: 20%;
+  margin: 50px auto;
+  border-top: 1px solid #e4e4e4;
+}
+/* line 64, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/format.less */
+.article img {
+  margin: 0 auto;
+  display: block;
+}
+/* line 68, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/format.less */
+.article em {
+  background: #f6f6f6;
+  border-bottom: 1px solid #e4e4e4;
+  font-style: normal;
+}

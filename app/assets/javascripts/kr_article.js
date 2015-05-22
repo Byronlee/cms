@@ -20,4 +20,25 @@ $(document).ready(function(){
         $(this).hide();
     });
 
+    /**
+     * 添加收藏
+     */
+    $('.J_addFavorite').click(function(e){
+        e.preventDefault();
+        var countWrap = $(this).find('span');
+        var count = countWrap.text()-0;
+        var trigger = $(this);
+        if($(this).hasClass('is-favorite')){
+            $(this).removeClass('is-favorite');
+            trigger.removeClass('icon-fly');
+            countWrap.html(count - 1);
+        }else{
+            $(this).addClass('is-favorite');
+            countWrap.html(count + 1);
+            setTimeout(function(){
+                trigger.addClass('icon-fly');
+            },0);
+        }
+    })
+
 });
