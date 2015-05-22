@@ -1,9 +1,10 @@
 section.single-post-share
   ul.actions
     li
-      a.favorite-btn.social-btn.star-btn.require-login[onclick=do_favorite(@post, @user) data-uid="#{@user.try(:id)}" href="javascript:void(0)" ]
-        i.icon.icon-star class="#{@has_favorite ? 'active' : ''}"
-        /span#star-count =  @post.favorites_count
+      a.favorite-btn.social-btn.star-btn.J_addFavorite.require-login[ class="#{@has_favorite ? 'is-favorite' : ''}" onclick=do_favorite(@post, @user) data-uid="#{@user.try(:id)}" href="javascript:void(0)" ]
+        i.icon.icon-star
+        i.icon-star.fly
+        span =  @post.favorites_count
     li
       a.comment-btn[href="javascript:void(0)"]
         i.icon.icon-comment

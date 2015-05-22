@@ -108,10 +108,10 @@ Column.update_all(:order_num => 0)
   'finance' => {'name' => '互联网金融', 'order_num' => 300},
   'company' => {'name' => '大公司', 'order_num' => 200},
   'activity' => {'name' => '近期活动', 'order_num' => 100}
-}.each do |slug, values| 
+}.each do |slug, values|
   unless column =  Column.find_by_slug(slug)
-    puts "create #{slug} => #{name} ..."
-    Column.create!(name: values["name"], slug: slug, order_num: values["order_num"], introduce: 'columns header') 
+    puts "create #{slug} => #{values["name"]} ..."
+    Column.create!(name: values["name"], slug: slug, order_num: values["order_num"], introduce: 'columns header')
   else
     column.update_attribute(:order_num, values["order_num"]) unless column.order_num == values["order_num"]
   end

@@ -38,7 +38,7 @@ class Column < ActiveRecord::Base
 
   after_save :update_columns_header_cache
   def update_columns_header_cache
-    return true  unless [self.name_changed?, self.slug_changed?, self.order_num_changed].any?
+    return true  unless [self.name_changed?, self.slug_changed?, self.order_num_changed?].any?
     ColumnsHeaderComponentWorker.new.perform
   end
 
