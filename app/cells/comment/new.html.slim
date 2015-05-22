@@ -51,7 +51,7 @@ h2
             success: function (data) {
               $('.single-post-comment__comments').prepend(data);
               frm[0].reset();
-              $('.comment_form_count').text($(".comments_total_count").data('total-count') || 0);
+              $('.comment_total_count').text($(".comments_total_count").data('total-count') || 0);
               $(".timeago").timeago();
             },
             complete: function(){
