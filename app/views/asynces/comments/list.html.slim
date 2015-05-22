@@ -1,2 +1,2 @@
-div.comments_total_count[data-total-count="#{@commentable.reload.comments_count.to_i}"]
+div.comments_total_count[data-total-count="#{@commentable.reload.comments_count.to_i}" data-message="#{@message}"]
 = render @comments

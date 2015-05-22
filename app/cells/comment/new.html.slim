@@ -17,6 +17,8 @@ h2
             | signed as &nbsp;
             a[href="javascript:void(0)"]
               = @current_user.try(:display_name)
+          span#error_msg style="color:#f00; margin-left:15px;"
+
         button.ladda-button.comment-submit-btn.right[ data-style="slide-down" data-spinner-size="32"]
           span.ladda-label
             | 提交评论
@@ -38,7 +40,8 @@ h2
   javascript:
     $(document).ready(function(){
       $(".comment-submit-btn").click(function(o){
-        if(#{@current_user.present?} == false || $('form.comment_form #post').val() == "") return;
+        var comment_message = $('form.comment_form #post').val();
+        if(#{@current_user.present?} == false || comment_message == "") return;
         var frm = $('form.comment_form');
         $.ajax({
             type: frm.attr('method'),
@@ -50,8 +53,11 @@ h2
             },
             success: function (data) {
               $('.single-post-comment__comments').prepend(data);
-              frm[0].reset();
               $('.comment_total_count').text($(".comments_total_count").data('total-count') || 0);
+              $('#error_msg').text($(".comments_total_count").data('message'));
+              if($(".comments_total_count").data('message') == ''){
+                frm[0].reset();
+              }
               $(".timeago").timeago();
             },
             complete: function(){

@@ -9,14 +9,18 @@ class Asynces::CommentsController < ApplicationController
   end
 
   def create
-    return render :nothing => true unless current_user.can_comment? && params[:comment][:content].present?
     @commentable = find_commentable
-    comment = @commentable.comments.build(comment_params)
-    comment.user = current_user
-    current_user.update_attributes(last_comment_at: Time.now)
-    comment.save
-    @comments = @commentable.comments.where("id > ?", params[:current_maxid]).order('created_at desc')
-    @comments = @comments.includes(:commentable, user: [:krypton_authentication])
+    if current_user.can_comment? && params[:comment][:content].present?
+      comment = @commentable.comments.build(comment_params)
+      comment.user = current_user
+      current_user.update_attributes(last_comment_at: Time.now)
+      comment.save
+      @comments = @commentable.comments.where("id > ?", params[:current_maxid]).order('created_at desc')
+      @comments = @comments.includes(:commentable, user: [:krypton_authentication])
+    else
+      @comments = Comment.none
+      @message = "您刚评论了，休息 #{current_user.dist_time_from_next_comment.to_i }s 再评论吧！"
+    end
     render 'list', comments: @comments, commentable: @commentable, layout: false
   end
 

@@ -144,8 +144,12 @@ class User < ActiveRecord::Base
     !!Favorite.find_by_url_code_and_user_id(post.url_code, id)
   end
 
+  def dist_time_from_next_comment
+    Settings.comment_time_interval - (Time.now - last_comment_at)
+  end
+
   def can_comment?
-    Time.now - last_comment_at > Settings.comment_time_interval
+    dist_time_from_next_comment <= 0
   end
 
   protected
