@@ -1,5 +1,20 @@
 - if @posts.count > 0
-  = render @posts, utm_source: 'site_search'
+  - @posts.each_with_hit do |post, hit|
+    article
+      a.pic[class="badge-#{post.column.try(:slug)}" href="#{post_url(post, utm_source: utm_source ||= nil)}" style="background-image: url('#{high_speed_url post.cover_real_url, 'feature'}')"]
+      .desc
+        a.title[href=post_url(post, utm_source: 'site_search' ) target="_blank"]
+          = raw hit['highlight']['title'].first
+        .author
+          a[href="#{user_domain(post.author.try(:domain))}"]
+            span.avatar[style="background-image: url('#{post.author.avatar}')"]
+            span.name
+              = (post.author && post.author.display_name)
+          span.time
+            |&nbsp;•&nbsp;
+            = smart_time_ago post.published_at
+        .brief
+          = raw post.summary
 
   = link_to '', search_path(q: params[:q], d: 'next', b_url_code: @posts.results.last.url_code, format: :html), class: 'load-more J_listLoadMore'
 
