@@ -23,6 +23,8 @@ html.no-js[lang="zh-CN"]
     = render_fragment_template :extra_metas
     = render_fragment_template :baidu_statistics
     = csrf_meta_tag
+    = javascript_tag "window._token = '#{form_authenticity_token}'"
+    
   body
     noscript
     script[src="http://krplus-cdn.b0.upaiyun.com/common-module/common-header-dev/script.js" name="news" fixed="false" local="true"]

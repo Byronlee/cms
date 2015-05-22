@@ -28,16 +28,29 @@ window.mobilecheck = ->
   check
 
 window.doFavorite = (url_code) ->
-  $.post '/asynces/favorites', { 'url_code': url_code }, (result) ->
-    if $('.icon-star').hasClass('active')
-      $('.icon-star').removeClass 'active'
+  $.post '/asynces/favorites', { 'url_code': url_code, 'authenticity_token': window._token }, (result) ->
+    trigger = $(".J_addFavorite")
+
+    if trigger.hasClass('is-favorite')
+      trigger.removeClass 'is-favorite'
+      trigger.removeClass 'icon-fly'
     else
-      $('.icon-star').addClass 'active'
+      trigger.addClass 'is-favorite'
+      setTimeout (->
+        trigger.addClass 'icon-fly'
+        return
+      ), 0
+
     if result['success'] == 'add'
-      $('#star-count').text result['count']
-      $('.icon-star').addClass 'active'
+      trigger.addClass 'is-favorite'
+      setTimeout (->
+        trigger.addClass 'icon-fly'
+        $('#star-count').text result['count']
+        return
+      ), 0
     else if result['success'] == 'del'
-      $('.icon-star').removeClass 'active'
+      trigger.removeClass 'is-favorite'
+      trigger.removeClass 'icon-fly'
       $('#star-count').text result['count']
     return
   return
