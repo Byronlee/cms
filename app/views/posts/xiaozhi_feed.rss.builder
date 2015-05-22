@@ -18,13 +18,13 @@ xml.rss :version => "2.0" do
           xml.cdata! feed.summary
         end
         xml.content do
-          xml.cdata! feed.summary
+          xml.cdata! feed.content
         end
         xml.pubDate feed.published_at && feed.published_at.to_s(:rfc822)
         xml.link do
-          xml.cdata! "http://36kr.com/xiaozhi/#{feed.url_code}"
+          xml.cdata! "http://preview.36kr.com/xiaozhi/#{feed.url_code}"
         end
-        xml.guid "http://36kr.com/xiaozhi/#{feed.url_code}"
+        xml.guid "http://preview.36kr.com/xiaozhi/#{feed.url_code}"
         xml.source t('site_name')
         xml.author feed.author.name
         xml.tags feed.tag_list
