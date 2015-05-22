@@ -135,11 +135,11 @@ a img {
 
 @font-face {
   font-family: 'icomoon';
-  src:url('icomoon.eot?ym7hdb');
-  src:url('icomoon.eot?#iefixym7hdb') format('embedded-opentype'),
-    url('icomoon.woff?ym7hdb') format('woff'),
-    url('icomoon.ttf?ym7hdb') format('truetype'),
-    url('icomoon.svg?ym7hdb#icomoon') format('svg');
+  src:font-url('icomoon.eot?ym7hdb');
+  src:font-url('icomoon.eot?#iefixym7hdb') format('embedded-opentype'),
+    font-url('icomoon.woff?ym7hdb') format('woff'),
+    font-url('icomoon.ttf?ym7hdb') format('truetype'),
+    font-url('icomoon.svg?ym7hdb#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
