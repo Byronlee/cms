@@ -1,9 +1,9 @@
 = render 'welcome/title', title: @page.title
 = stylesheet_link_tag 'kr_article', media: 'all'
 
-.article-detail-wrap
+.pages-wrap
   .main-section
     .content-wrapper.focus-edition
       article.single-post
         section.article
-            = raw(@page.try(:body))
+          = raw(@page.try(:body))
