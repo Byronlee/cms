@@ -92,3 +92,27 @@ fragments = {
     template.assign_attributes attributes
   end
 end
+
+
+#reset  all columns order num to 0
+Column.update_all(:order_num => 0)
+#set column headers info
+{
+  'tv' => {'name' => '氪TV', 'order_num' => 1000},
+  'o2o' => {'name' => 'O2O', 'order_num' => 900},
+  'hardware' => {'name' => '新硬件', 'order_num' => 800},
+  'fun' => {'name' => 'Fun!!', 'order_num' => 700},
+  'enterprise' => {'name' => '企业服务', 'order_num' => 600},
+  'sports' => {'name' => 'Fit&Health', 'order_num' => 500},
+  'edu' => {'name' => '在线教育', 'order_num' => 400},
+  'finance' => {'name' => '互联网金融', 'order_num' => 300},
+  'company' => {'name' => '大公司', 'order_num' => 200},
+  'activity' => {'name' => '近期活动', 'order_num' => 100}
+}.each do |slug, values| 
+  unless column =  Column.find_by_slug(slug)
+    puts "create #{slug} => #{name} ..."
+    Column.create!(name: values["name"], slug: slug, order_num: values["order_num"], introduce: 'columns header') 
+  else
+    column.update_attribute(:order_num, values["order_num"]) unless column.order_num == values["order_num"]
+  end
+end

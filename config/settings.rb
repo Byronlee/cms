@@ -103,16 +103,3 @@ settings.deploy = {
 }
 
 settings.comment_time_interval = 30.seconds
-
-settings.columns_header = {
-       tv: '氪TV',
-       o2o: 'O2O',
-       hardware: '新硬件',
-       fun: 'Fun!!',
-       enterprise: '企业服务',
-       sports: 'Fit&Health',
-       edu: '在线教育',
-       finance: '互联网金融',
-       company: '大公司',
-       activity: '近期活动',
-      }

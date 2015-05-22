@@ -30,8 +30,16 @@ class Column < ActiveRecord::Base
   has_and_belongs_to_many :info_flows
 
   scope :info_flows, -> { where(in_info_flow: true) }
+  scope :headers,    -> { where("order_num > ?", 0 ).order(order_num: :desc) }
 
   def weekly_posts_count
     posts.by_week.published.count
   end
+
+  after_save :update_columns_header_cache
+  def update_columns_header_cache
+    return true  unless [self.name_changed?, self.slug_changed?, self.order_num_changed].any?
+    ColumnsHeaderComponentWorker.new.perform
+  end
+
 end

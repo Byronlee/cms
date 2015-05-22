@@ -1,7 +1,7 @@
 class WelcomeController < ApplicationController
   authorize_object :welcome
 
-  def index
+  def index  
     return cache_index if (params[:page].blank? || params[:page].to_i == 1) && !paginate_by_id_request?
     info_flow = InfoFlow.find_by_name InfoFlow::DEFAULT_INFOFLOW
     page_direction = params[:d]
@@ -12,6 +12,9 @@ class WelcomeController < ApplicationController
   end
 
   def cache_index
+    columns_data = CacheClient.instance.columns_header
+    @columns = JSON.parse(columns_data.present? ? columns_data : '{}')
+    
     flow_data = CacheClient.instance.info_flow
     cache_data = flow_data.blank? ? {'posts_with_ads' => [] } : JSON.parse(flow_data)
     @posts_with_ads = cache_data['posts_with_ads']

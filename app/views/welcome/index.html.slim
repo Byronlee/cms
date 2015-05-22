@@ -2,6 +2,8 @@
 .index-wrap
   = render_cell :welcome, :head_line
   .main-section
-    = render layout: 'welcome/header', locals: { data_type: 'all' } do
-      = render 'welcome/info_flow_lists', :posts_with_ads => @posts_with_ads
+    = render layout: 'welcome/header', locals: { data_type: 'all', columns: @columns } do
+      .article-list
+        .articles.J_articleList
+          = render 'info_flow_items', :posts_with_ads => @posts_with_ads
     = render 'welcome/aside'

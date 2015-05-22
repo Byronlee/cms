@@ -5,7 +5,7 @@
 .index-wrap
   = render_cell :welcome, :head_line
   .main-section
-    = render layout: 'welcome/header', locals: { data_type: @column.slug } do
+    = render layout: 'welcome/header', locals: { data_type: @column.slug, columns: @columns } do
       .article-list
         .articles.J_articleList
 		      = render 'list'

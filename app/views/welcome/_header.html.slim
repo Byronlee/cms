@@ -2,7 +2,7 @@
   .categories.J_newsListNavBar
     = link_to '全部', root_path(d: 'next', b_url_code: nil, format: :html), 'data-type' => 'all', class: active_class('all', data_type)
 
-    - Settings.columns_header.each do |slug, name|
-      = link_to name, column_slug_path(slug: slug), 'data-type' => slug, class: active_class(slug, data_type)
+    - columns.each do |column|
+      = link_to column["name"], column_slug_path(slug: column["slug"]), 'data-type' => column["slug"], class: active_class(column["slug"], data_type)
 
   = yield
