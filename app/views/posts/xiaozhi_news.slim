@@ -21,7 +21,7 @@ html[lang="en"]
         span.pdr20
           = t('site_name')
         span
-          = @post.published_at
+          = @post.published_at.strftime('%F %T')
     .con
       = raw @post.content
     script[language="javascript" src="http://y2.ifengimg.com/a/2015/0121/ping.js"]
