@@ -19,20 +19,33 @@ require 'common'
 class RelatedLink < ActiveRecord::Base
   typed_store :extra do |s|
     #video extra info
-    s.string :video_url, default: ''
-    s.integer :video_duration, default: 0
+    s.string :video_url
+    s.integer :video_duration
 
     #event extra info
-    s.string :event_locality, default: ''
-    s.string :event_address, default: ''
-    s.datetime :event_starttime, default: nil
+    s.string :event_locality
+    s.string :event_address
+    s.datetime :event_starttime
   end
 
   validates_presence_of :url
-  validates_uniqueness_of :url
+  validates_uniqueness_of :url, :scope => :post_id
 
   belongs_to :post
   belongs_to :user
+
+  def assign_extras(params)
+    self.extra = extra.clear()
+    case link_type
+    when /^video/
+      self.video_url = params[:video_url]
+      self.video_duration = params[:video_duration]
+    when 'event'
+      self.event_locality = params[:event_locality]
+      self.event_address = params[:event_address]
+      self.event_starttime = params[:event_starttime]
+    end
+  end
 
   def self.parse_url(url)
     return {result: false, msg: 'URL不可为空', metas: {}} unless url.present?

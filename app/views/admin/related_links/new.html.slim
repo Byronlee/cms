@@ -11,7 +11,7 @@
           li.active 创建链接
   .main-body
     = simple_form_for [:admin, @post, @related_link], html:{class:"form-horizontal"} do | f |
-      = f.input :url, hint: '', input_html: {class: 'col-lg-12', id: 'related_link_url', style: 'width: 80%;margin-right: 10px;'} 
+      = f.input :url, input_html: {class: 'col-lg-8', id: 'related_link_url'} 
       = f.input :link_type, input_html: {id:'related_link_type'} 
       = f.input :title, input_html: {class: 'col-lg-12', id: 'related_link_title'}
       = f.input :description, input_html: {class: 'col-lg-12', id: 'related_link_description'}
@@ -31,7 +31,7 @@ javascript:
     check_link_type();
   });
 
-  $('#related_link_url').parent().append("<span><a href='javascript:void(0)' id='btn_get_og_meta' class='btn btn-primary'>获取</button></a><p style='margin-bottom:0; color: #f00;' id='error_msg'></p>");
+  $('#related_link_url').parent().append("<span><a href='javascript:void(0)' id='btn_get_og_meta' class='btn btn-primary' style='margin-left: 5px;'>获取</button></a><p style='margin-bottom:0; color: #b94a48;' id='error_msg'></p>");
 
   $(document).ajaxStart( function() {
     $('#btn_get_og_meta').removeClass('btn-primary').addClass('btn-default');
@@ -44,11 +44,11 @@ javascript:
   $("#btn_get_og_meta").click(function(){
      var url = "#{get_metas_info_asynces_related_links_path}";
      $('#error_msg').empty();
+     $('span.help-inline').empty();
      $.get(url, {url: $('#related_link_url').val()}, function(data) {
        if(data['result'] == false){
          $('#error_msg').append(data['msg']);
        }else{
-         console.log(data);
          metas = data['metas']
          $("#related_link_type").val(metas['type']);
          $("#related_link_title").val(metas['title']);

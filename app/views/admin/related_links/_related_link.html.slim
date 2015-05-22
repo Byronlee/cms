@@ -3,15 +3,11 @@ tr
   td = related_link.link_type
   td.text_center = smart_time_ago related_link.created_at
   td.text_center
-    - if can? :read, related_link
-      a title="详情" href= admin_post_related_link_path(related_link.post, related_link)
-        i.fa.fa-search
-      |&nbsp;&nbsp;
     - if can? :edit, related_link
       a title="编辑" href= edit_admin_post_related_link_path(related_link.post, related_link)
         i.fa.fa-pencil
       |&nbsp;&nbsp;
     - if can? :destroy, related_link
-      = link_to [:admin, related_link.post, related_link], title: "删除", method: :delete, confirm: "确定删除链接 #{related_link.url} ？"  do
+      = link_to [:admin, related_link.post, related_link], title: "删除", method: :delete, 'data-confirm' => "确定删除链接 \"#{related_link.title}\" ？"  do
         i.fa.fa-times
   td.avatar.text_center[title=related_link.user.try(:display_name) data-toggle='tooltip'] = image_tag related_link.user.try(:avatar)
