@@ -117,6 +117,7 @@ class Post < ActiveRecord::Base
   def self.search(params)
     params[:page] ||= 1 if paginate_by_id_request?(params) && (boundary_post = Post.find_by_url_code(params[:b_url_code]))
     tire.search(load: true, page: params[:page], per_page: params[:per_page] || 30) do
+      highlight :title, options: { tag: "<em class='highlight' >" }
       min_score 1
       query do
         boolean do
