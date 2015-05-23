@@ -1,4 +1,5 @@
-set :branch, 'master'
+#set :branch, 'master'
+ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
 set :rbenv_ruby, '2.1.5'
 set :rbenv_type, :user
