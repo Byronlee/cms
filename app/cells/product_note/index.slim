@@ -1,7 +1,8 @@
 .panel[style="display: none"]
   - @pdnotes.each do | pd |
     section.product
-      h3 = pd.hash_title
+      a[href=pd.news_url target="_blank"]
+        h3 = pd.hash_title
       h4
         | What:
       p = pd.description_text
