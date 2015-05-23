@@ -19,5 +19,4 @@
 
   = link_to '', root_path(d: 'next', b_url_code: @min_url_code, format: :html), class: 'load-more J_listLoadMore'
 - else
-  p.load-more
-    |没有更多文章了
+  a.load-more.J_listLoadMore.no-data[href="javascript:void(0)"]

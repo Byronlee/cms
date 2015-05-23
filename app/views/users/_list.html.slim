@@ -4,5 +4,4 @@
   = link_to '', user_domain_posts_path(user_domain: params[:user_domain], d: 'next', b_url_code: @posts.last.url_code, format: :html), class: 'load-more J_listLoadMore'
 
 - else
-  p.load-more
-    |没有更多文章了
+  = link_to '', "javascript:void(0)", class: 'load-more J_listLoadMore no-data'
