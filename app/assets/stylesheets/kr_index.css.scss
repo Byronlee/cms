@@ -156,6 +156,7 @@ a:hover {
 /* line 115, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
 .badge-tv {
   position: relative;
+  overflow: hidden;
 }
 /* line 99, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
 .badge-tv:after {
@@ -179,6 +180,7 @@ a:hover {
 .badge-tv:after {
   content: "氪TV";
   background: #f45170;
+  z-index: 15;
 }
 /* line 121, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
 .badge-tv:before {
@@ -200,13 +202,16 @@ a:hover {
       -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   font-size: 80px;
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.5);
   -webkit-transition: all 0.4s ease;
           transition: all 0.4s ease;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 800px;
+  z-index: 10;
 }
 /* line 143, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
 .badge-tv:hover:before {
-  color: rgba(255, 255, 255, 0.8);
+  color: #ffffff;
 }
 /* line 148, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
 .badge-o2o {
@@ -635,7 +640,7 @@ a:hover {
     width: 100%;
     height: auto;
     position: relative;
-    z-index: 20;
+    z-index: 8;
   }
 }
 /* line 92, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
@@ -873,7 +878,7 @@ a:hover {
   }
 }
 /* line 157, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
-.index-wrap .main-section .fast-section {
+ .index-wrap .main-section .index-side {
   float: left;
 }
 @media (min-width: 1200px) {
@@ -885,14 +890,14 @@ a:hover {
 }
 @media (min-width: 800px) and (max-width: 1200px) {
   /* line 58, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
-  .index-wrap .main-section .fast-section {
+  .index-wrap .main-section .index-side {
     width: 280px;
     margin-right: 20px;
   }
 }
 @media (max-width: 800px) {
   /* line 62, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
-  .index-wrap .main-section .fast-section {
+  .index-wrap .main-section .index-side {
     float: none;
   }
 }

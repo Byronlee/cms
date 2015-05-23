@@ -156,6 +156,7 @@ a:hover {
 /* line 115, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
 .badge-tv {
   position: relative;
+  overflow: hidden;
 }
 /* line 99, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
 .badge-tv:after {
@@ -175,12 +176,44 @@ a:hover {
     line-height: 1.6;
   }
 }
-/* line 117, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 118, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
 .badge-tv:after {
   content: "氪TV";
   background: #f45170;
+  z-index: 15;
 }
-/* line 122, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 123, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.badge-tv:before {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: '\e605';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  font-size: 80px;
+  color: rgba(255, 255, 255, 0.5);
+  -webkit-transition: all 0.4s ease;
+          transition: all 0.4s ease;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 800px;
+  z-index: 10;
+}
+/* line 148, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.badge-tv:hover:before {
+  color: #ffffff;
+}
+/* line 153, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
 .badge-o2o {
   position: relative;
 }
@@ -202,12 +235,12 @@ a:hover {
     line-height: 1.6;
   }
 }
-/* line 124, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 155, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
 .badge-o2o:after {
   content: "O2O";
   background: #f0cc23;
 }
-/* line 129, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 160, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
 .badge-hardware {
   position: relative;
 }
@@ -229,12 +262,12 @@ a:hover {
     line-height: 1.6;
   }
 }
-/* line 131, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 162, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
 .badge-hardware:after {
   content: "新硬件";
   background: #a289df;
 }
-/* line 136, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 167, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
 .badge-fun {
   position: relative;
 }
@@ -256,12 +289,12 @@ a:hover {
     line-height: 1.6;
   }
 }
-/* line 138, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 169, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
 .badge-fun:after {
   content: "Fun!!";
   background: #ff6161;
 }
-/* line 143, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 174, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
 .badge-enterprise {
   position: relative;
 }
@@ -283,12 +316,12 @@ a:hover {
     line-height: 1.6;
   }
 }
-/* line 145, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 176, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
 .badge-enterprise:after {
   content: "企业服务";
   background: #678ce0;
 }
-/* line 150, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 181, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
 .badge-sports {
   position: relative;
 }
@@ -310,12 +343,12 @@ a:hover {
     line-height: 1.6;
   }
 }
-/* line 152, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 183, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
 .badge-sports:after {
   content: "Fit&Health";
   background: #42d1db;
 }
-/* line 158, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 189, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
 .badge-edu {
   position: relative;
 }
@@ -337,12 +370,12 @@ a:hover {
     line-height: 1.6;
   }
 }
-/* line 160, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 191, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
 .badge-edu:after {
   content: "在线教育";
   background: #51cc96;
 }
-/* line 165, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 196, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
 .badge-finance {
   position: relative;
 }
@@ -364,12 +397,12 @@ a:hover {
     line-height: 1.6;
   }
 }
-/* line 167, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 198, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
 .badge-finance:after {
   content: "互联网金融";
   background: #f28d19;
 }
-/* line 172, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 203, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
 .badge-company {
   position: relative;
 }
@@ -391,12 +424,12 @@ a:hover {
     line-height: 1.6;
   }
 }
-/* line 174, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 205, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
 .badge-company:after {
   content: "大公司";
   background: #1f90f2;
 }
-/* line 179, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 210, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
 .badge-activity {
   position: relative;
 }
@@ -418,28 +451,28 @@ a:hover {
     line-height: 1.6;
   }
 }
-/* line 181, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 212, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
 .badge-activity:after {
   content: "近期活动";
   background: #8ab724;
 }
-/* line 187, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 218, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
 .radius-box {
   border-radius: 2px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 @media (max-width: 800px) {
-  /* line 197, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 228, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
   .mobile-hide {
     display: none !important;
   }
 }
-/* line 201, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 232, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
 .mobile-show {
   display: none;
 }
 @media (max-width: 800px) {
-  /* line 203, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 234, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
   .mobile-show {
     display: block;
   }

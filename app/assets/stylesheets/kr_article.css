@@ -156,6 +156,7 @@ a:hover {
 /* line 115, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
 .badge-tv {
   position: relative;
+  overflow: hidden;
 }
 /* line 99, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
 .badge-tv:after {
@@ -200,13 +201,13 @@ a:hover {
       -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   font-size: 80px;
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.5);
   -webkit-transition: all 0.4s ease;
           transition: all 0.4s ease;
 }
 /* line 143, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
 .badge-tv:hover:before {
-  color: rgba(255, 255, 255, 0.8);
+  color: #ffffff;
 }
 /* line 148, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
 .badge-o2o {
@@ -1027,7 +1028,8 @@ a:hover {
 }
 /* line 368, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details {
-  margin-top: 15px;
+  padding-bottom: 15px;
+  padding-top: 15px;
   *zoom: 1;
 }
 /* line 34, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
