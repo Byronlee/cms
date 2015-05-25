@@ -3,3 +3,7 @@
 *= require kr_format
 *= require kr_page
 */
+
+#intercom-container{
+	display: none;
+}

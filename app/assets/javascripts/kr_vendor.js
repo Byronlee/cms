@@ -23,6 +23,28 @@ window.deviceType = $(window).width() >= 800? 'desktop':'mobile';
 $(window).resize(function(){
     window.deviceType = $(window).width() >= 800? 'desktop':'mobile';
 });
+$(document).ready(function(){
+    var toolWrap = $('.J_fixedTools');
+    if($(window).scrollTop()>200 && !toolWrap.hasClass('show')){
+        toolWrap.addClass('show');
+    }else if($(window).scrollTop()<=200 && toolWrap.hasClass('show')){
+        toolWrap.removeClass('show');
+    }
+    $(window).scroll(function(){
+        if($(window).scrollTop()>200 && !toolWrap.hasClass('show')){
+            toolWrap.addClass('show');
+        }else if($(window).scrollTop()<=200 && toolWrap.hasClass('show')){
+            toolWrap.removeClass('show');
+        }
+    });
+
+    toolWrap.find('.J_up').click(function(e){
+        e.preventDefault();
+        $('html, body').animate({
+            scrollTop:0
+        },300);
+    });
+});
 function initFastSection(){
     /**
      * 初始化侧边快速简讯部分交互

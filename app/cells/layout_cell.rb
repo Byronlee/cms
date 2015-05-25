@@ -15,4 +15,8 @@ class LayoutCell < Cell::Rails
   def script
     render
   end
+
+  def fix_tools
+    render
+  end
 end
