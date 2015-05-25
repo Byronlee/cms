@@ -671,50 +671,50 @@ settings.krmonthly <<-HTML
 HTML
 
 settings.footer_body = <<-HTML
-    <div class="sections">
-        <section class="link-section">
-            <h3>36氪 让创业更简单</h3>
+  <div class="sections">
+      <section class="link-section">
+          <h3>36氪 让创业更简单</h3>
 
-            <div class="links">
-                <a href="/about">关于36氪</a> | <a href="http://space.36kr.com/">氪空间</a> | <a href="/hire">加入我们</a> | <a href="http://report.36kr.com/">寻求报道</a> | <a href="http://download.36kr.com/">客户端下载</a>
-            </div>
+          <div class="links">
+              <a href="/about">关于36氪</a> | <a href="http://space.36kr.com/">氪空间</a> | <a href="/hire">加入我们</a> | <a href="http://report.36kr.com/">寻求报道</a> | <a href="http://download.36kr.com/">客户端下载</a>
+          </div>
 
-            <div class="feedback">
-                反馈建议：<a href="mailto:service@36kr.com">service@36kr.com</a>
-            </div>
+          <div class="feedback">
+              反馈建议：<a href="mailto:service@36kr.com">service@36kr.com</a>
+          </div>
 
-        </section>
-        <section class="partner-section">
-            <h3>合作伙伴</h3>
+      </section>
+      <section class="partner-section">
+          <h3>合作伙伴</h3>
 
-            <ul class="footer-partner">
-                <li><a href="http://www.aliyun.com/?from=36kr" class="external" target="_blank"><img src="http://a.36krcnd.com/nil_class/10e06c32-62c2-4aa6-96cc-48cf106fcac0/aly.png"></a></li>
-                <li><a href="http://dnspod.cn/?from=36kr" class="external" target="_blank"><img src="http://a.36krcnd.com/photo/2014/0ae4f92e9796a8a8a8cfe97a2c29d1b2.png" alt=""></a></li>
-                <li><a href="http://qingcloud.com/?from=36kr" class="external" target="_blank"><img src="http://a.36krcnd.com/photo/2014/fac4daea3163cbb72b12613365297d66.png" alt=""></a></li>
-                <li><a href="http://qcloud.com/?from=36kr" class="external" target="_blank"><img src="http://a.36krcnd.com/photo/2014/dd9cae66e3cc32be4ef4cf849c22d70b.png" alt=""></a></li>
-                <li><a href="http://upyun.com/?from=36kr" class="external" target="_blank"><img src="http://a.36krcnd.com/photo/2014/ba639550940bf943fb0467c5ea14fbc6.png" alt=""></a></li>
-                <li><a href="http://qiniu.com/?from=36kr" class="external" target="_blank"><img src="http://a.36krcnd.com/photo/2014/ce210c6ddb324544e23102af0539ec5c.png" alt=""></a></li>
-            </ul>
-        </section>
-        <section class="qr-section">
-            <img class="qr" src="http://kryptoners.b0.upaiyun.com/assets/qrcode-fd768734ee98a91fbfe0b2cfb594746d.jpg" alt="">
-            <div>扫码关注微信公众平台</div>
-        </section>
-    </div>
-    <div class="bottom">
-        <div class="container">
-            <div class="copyright">
-                <span class="mobile-hide">本站由 <a href="http://qingcloud.com">QingCloud</a> 提供云计算服务</span>
-                <span class="law">© 2011-2015 36氪  |  京ICP备12031756号 <span class="mobile-hide">|  京公网安备11010802012285号</span></span>
-            </div>
-            <div class="share">
-                <a class="icon-weibo" href="http://weibo.com/wow36kr"></a>
-                <a class="icon-twitter" href="https://twitter.com/36kr"></a>
-                <a class="icon-facebook" href="http://www.facebook.com/X36Kr"></a>
-                <a class="icon-rss" href="http://36kr.com/feed"></a>
-            </div>
-        </div>
-    </div>
+          <ul class="footer-partner">
+              <li><a href="http://www.aliyun.com/?from=36kr" class="external" target="_blank"><img src="http://a.36krcnd.com/nil_class/10e06c32-62c2-4aa6-96cc-48cf106fcac0/aly.png"></a></li>
+              <li><a href="http://dnspod.cn/?from=36kr" class="external" target="_blank"><img src="http://a.36krcnd.com/photo/2014/0ae4f92e9796a8a8a8cfe97a2c29d1b2.png" alt=""></a></li>
+              <li><a href="http://qingcloud.com/?from=36kr" class="external" target="_blank"><img src="http://a.36krcnd.com/photo/2014/fac4daea3163cbb72b12613365297d66.png" alt=""></a></li>
+              <li><a href="http://qcloud.com/?from=36kr" class="external" target="_blank"><img src="http://a.36krcnd.com/photo/2014/dd9cae66e3cc32be4ef4cf849c22d70b.png" alt=""></a></li>
+              <li><a href="http://upyun.com/?from=36kr" class="external" target="_blank"><img src="http://a.36krcnd.com/photo/2014/ba639550940bf943fb0467c5ea14fbc6.png" alt=""></a></li>
+              <li><a href="http://qiniu.com/?from=36kr" class="external" target="_blank"><img src="http://a.36krcnd.com/photo/2014/ce210c6ddb324544e23102af0539ec5c.png" alt=""></a></li>
+          </ul>
+      </section>
+      <section class="qr-section">
+          <img class="qr" src="http://kryptoners.b0.upaiyun.com/assets/qrcode-fd768734ee98a91fbfe0b2cfb594746d.jpg" alt="">
+          <div>扫码关注微信公众平台</div>
+      </section>
+  </div>
+  <div class="bottom">
+      <div class="container">
+          <div class="copyright">
+              <span class="mobile-hide">本站由 <a href="http://qingcloud.com">QingCloud</a> 提供云计算服务</span>
+              <span class="law">© 2011-2015 36氪  |  京ICP备12031756号 <span class="mobile-hide">|  京公网安备11010802012285号</span></span>
+          </div>
+          <div class="share">
+              <a class="icon-weibo" href="http://weibo.com/wow36kr"></a>
+              <a class="icon-twitter" href="https://twitter.com/36kr"></a>
+              <a class="icon-facebook" href="http://www.facebook.com/X36Kr"></a>
+              <a class="icon-rss" href="http://36kr.com/feed"></a>
+          </div>
+      </div>
+  </div>
 HTML
 
 settings.baidu_statistics = <<-JAVASCRIPT 
