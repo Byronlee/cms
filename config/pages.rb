@@ -1,4 +1,5 @@
-settings.contribute = '<h1 style="font-size: 3.2rem; text-align: center; " class="job-title">36氪投稿细则</h1>
+settings.contribute = <<-HTML
+<h1 style="font-size: 3.2rem; text-align: center; " class="job-title">36氪投稿细则</h1>
 <hr>
 <p>
 36氪只接受“原创”、“在36氪首发”的投稿，投稿会发布于我们的“专栏”分类，查看全部投稿请<a href="http://www.36kr.com/tag/%E6%8A%95%E7%A8%BF" target="_blank">点击这里</a>。如果是创业公司想寻求36氪报道（36氪报道均免费），请戳<a href="http://report.36kr.com" target="_blank" class="external">链接</a>。</p>
@@ -79,9 +80,11 @@ settings.contribute = '<h1 style="font-size: 3.2rem; text-align: center; " class
 
 
 </ol>
-            </section>'
+            </section>
+HTML
 
-settings.about = '<h3 id="toc_0">36氪，专注互联网创业。</h3>
+settings.about = <<-HTML 
+<h3 id="toc_0">36氪，专注互联网创业。</h3>
 
 <p>2010年12月8日，36氪作为科技媒体正式上线，其名字源于元素周期表的第36号元素“氪”，化学符号为 Kr，一个稳定、独立，不易与其他其他物质发生化学作用的元素。传说中的氪星是超人的故乡。</p>
 
@@ -170,9 +173,11 @@ settings.about = '<h3 id="toc_0">36氪，专注互联网创业。</h3>
               <p>你可以在这里找到我们： 新浪微博：@36氪；腾讯微博：@36氪；微信公众平台：搜索“36氪”或扫描下面的二维码：</p>
 
               <p>氪星正在招募包括全职作者在内的多个职位人才，如果你喜欢研究和分享新产品，对互联网创业感觉兴趣，欢迎加入我们。具体请查看加入我们。</p>
-            </section>'
+            </section>
+HTML
 
-settings.hire = '<section class="article">
+settings.hire = <<-HTML
+ <section class="article">
               <style>
 .job-list h2 {
     font-size: 20px;
@@ -642,9 +647,11 @@ settings.hire = '<section class="article">
 <img class="" src="http://uploads.36krcnd.com/upload/file/fbc1e17b186d550829d215abd0997372.jpg" alt="">
 </figure>
 
-            </section>'
+            </section>
+HTML
 
-settings.krmonthly = '<h4>氪月报：</h4>
+settings.krmonthly <<-HTML 
+<h4>氪月报：</h4>
 <p>36氪推出的电子刊物，每月一期，旨在汇总过去一个月36氪的精彩文章，同时为一些平时没有时间阅读新闻的朋友提供“懒人包”。</p>
 
 <p>月报以1024*768分辨率制作，在100％比例或全屏下能获得最佳阅读体验。</p>
@@ -660,16 +667,16 @@ settings.krmonthly = '<h4>氪月报：</h4>
 <p>如果你对本栏目有任何的建议，欢迎反馈给我们，非常感谢。<br>
 我们的邮箱是 <a href="mailto:wow+krweekly@36kr.com">wow@36kr.com</a>。</p>
 
-<p>36氪电子杂志（多看平台）：<a href="http://book.duokan.com/dkdetail.html?book_id=70e8461248ef11e2b5b200163e0123ac&amp;title=36%E6%B0%AA%EF%BC%882012.12%EF%BC%89&amp;classify=%E6%8E%A8%E8%8D%90%E9%98%85%E8%AF%BB&amp;from=dkbargain.html" class="external" target="_blank">第一期</a>、<a href="http://book.duokan.com/dkdetail.html?book_id=d8032ee2608811e2957400163e0123ac&amp;title=36%E6%B0%AA%EF%BC%882013.1%EF%BC%89" class="external" target="_blank">第二期</a>、<a href="http://book.duokan.com/dkdetail.html?book_id=f0ffa464797111e2b27a00163e0123ac&amp;title=36%E6%B0%AA%EF%BC%882013.2%EF%BC%89" class="external" target="_blank">第三期</a></p>'
+<p>36氪电子杂志（多看平台）：<a href="http://book.duokan.com/dkdetail.html?book_id=70e8461248ef11e2b5b200163e0123ac&amp;title=36%E6%B0%AA%EF%BC%882012.12%EF%BC%89&amp;classify=%E6%8E%A8%E8%8D%90%E9%98%85%E8%AF%BB&amp;from=dkbargain.html" class="external" target="_blank">第一期</a>、<a href="http://book.duokan.com/dkdetail.html?book_id=d8032ee2608811e2957400163e0123ac&amp;title=36%E6%B0%AA%EF%BC%882013.1%EF%BC%89" class="external" target="_blank">第二期</a>、<a href="http://book.duokan.com/dkdetail.html?book_id=f0ffa464797111e2b27a00163e0123ac&amp;title=36%E6%B0%AA%EF%BC%882013.2%EF%BC%89" class="external" target="_blank">第三期</a></p>
+HTML
 
-
-settings.footer_body = '
+settings.footer_body = <<-HTML
     <div class="sections">
         <section class="link-section">
             <h3>36氪 让创业更简单</h3>
 
             <div class="links">
-                <a href="#">关于36氪</a> | <a href="#">氪空间</a> | <a href="#">加入我们</a> | <a href="#">寻求报道</a> | <a href="#">客户端下载</a>
+                <a href="/about">关于36氪</a> | <a href="http://space.36kr.com/">氪空间</a> | <a href="/hire">加入我们</a> | <a href="http://report.36kr.com/">寻求报道</a> | <a href="http://download.36kr.com/">客户端下载</a>
             </div>
 
             <div class="feedback">
@@ -681,16 +688,16 @@ settings.footer_body = '
             <h3>合作伙伴</h3>
 
             <ul class="footer-partner">
-                <li><a href="http://www.aliyun.com" class="external" target="_blank"><img src="http://uploads.36krcnd.com/upload/file/76c4d88140f85a190647dc00cd9d6c35.png" width="86" height="21"></a></li>
-                <li><a href="http://dnspod.cn" class="external" target="_blank"><img src="http://a.36krcnd.com/photo/2014/0ae4f92e9796a8a8a8cfe97a2c29d1b2.png" alt=""></a></li>
-                <li><a href="http://qingcloud.com" class="external" target="_blank"><img src="http://a.36krcnd.com/photo/2014/fac4daea3163cbb72b12613365297d66.png" alt=""></a></li>
-                <li><a href="http://qcloud.com" class="external" target="_blank"><img src="http://a.36krcnd.com/photo/2014/dd9cae66e3cc32be4ef4cf849c22d70b.png" alt=""></a></li>
-                <li><a href="http://upyun.com" class="external" target="_blank"><img src="http://a.36krcnd.com/photo/2014/ba639550940bf943fb0467c5ea14fbc6.png" alt=""></a></li>
-                <li><a href="http://qiniu.com" class="external" target="_blank"><img src="http://a.36krcnd.com/photo/2014/ce210c6ddb324544e23102af0539ec5c.png" alt=""></a></li>
+                <li><a href="http://www.aliyun.com/?from=36kr" class="external" target="_blank"><img src="http://a.36krcnd.com/nil_class/10e06c32-62c2-4aa6-96cc-48cf106fcac0/aly.png"></a></li>
+                <li><a href="http://dnspod.cn/?from=36kr" class="external" target="_blank"><img src="http://a.36krcnd.com/photo/2014/0ae4f92e9796a8a8a8cfe97a2c29d1b2.png" alt=""></a></li>
+                <li><a href="http://qingcloud.com/?from=36kr" class="external" target="_blank"><img src="http://a.36krcnd.com/photo/2014/fac4daea3163cbb72b12613365297d66.png" alt=""></a></li>
+                <li><a href="http://qcloud.com/?from=36kr" class="external" target="_blank"><img src="http://a.36krcnd.com/photo/2014/dd9cae66e3cc32be4ef4cf849c22d70b.png" alt=""></a></li>
+                <li><a href="http://upyun.com/?from=36kr" class="external" target="_blank"><img src="http://a.36krcnd.com/photo/2014/ba639550940bf943fb0467c5ea14fbc6.png" alt=""></a></li>
+                <li><a href="http://qiniu.com/?from=36kr" class="external" target="_blank"><img src="http://a.36krcnd.com/photo/2014/ce210c6ddb324544e23102af0539ec5c.png" alt=""></a></li>
             </ul>
         </section>
         <section class="qr-section">
-            <img class="qr" src="/assets/qr.png" alt="">
+            <img class="qr" src="http://kryptoners.b0.upaiyun.com/assets/qrcode-fd768734ee98a91fbfe0b2cfb594746d.jpg" alt="">
             <div>扫码关注微信公众平台</div>
         </section>
     </div>
@@ -701,15 +708,17 @@ settings.footer_body = '
                 <span class="law">© 2011-2015 36氪  |  京ICP备12031756号 <span class="mobile-hide">|  京公网安备11010802012285号</span></span>
             </div>
             <div class="share">
-                <a class="icon-weibo" href="#"></a>
-                <a class="icon-twitter" href="#"></a>
-                <a class="icon-facebook" href="#"></a>
-                <a class="icon-rss" href="#"></a>
+                <a class="icon-weibo" href="http://weibo.com/wow36kr"></a>
+                <a class="icon-twitter" href="https://twitter.com/36kr"></a>
+                <a class="icon-facebook" href="http://www.facebook.com/X36Kr"></a>
+                <a class="icon-rss" href="http://36kr.com/feed"></a>
             </div>
         </div>
-    </div>'
+    </div>
+HTML
 
-settings.baidu_statistics= "<script>
+settings.baidu_statistics = <<-JAVASCRIPT 
+<script>
 var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement('script');
@@ -717,7 +726,8 @@ var _hmt = _hmt || [];
   var s = document.getElementsByTagName('script')[0];
   s.parentNode.insertBefore(hm, s);
 })();
-</script>"
+</script>
+JAVASCRIPT
 
-settings.extar_metadata= ""
+settings.extar_metadata = ""
 
