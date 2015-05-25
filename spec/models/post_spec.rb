@@ -30,6 +30,7 @@
 #  favorites_count   :integer
 #  company_keywords  :string(255)      default([]), is an Array
 #  favoriter_sso_ids :integer          default([]), is an Array
+#  column_name       :string(255)
 #
 
 require "spec_helper"

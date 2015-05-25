@@ -4,14 +4,17 @@ class NewsflashesCell < Cell::Rails
   def index(args = {})
     @newsflashes = Newsflash.tagged_with('_newsflash')
 
-    b_newsflash = Newsflash.find(params[:b_id]) if args[:b_id]
-    if b_newsflash && args[:d] == 'next'
-      @newsflashes = @newsflashes.where("newsflashes.created_at < ?", b_newsflash.created_at)
-    elsif b_newsflash && args[:d] == 'prev'
-      @newsflashes = @newsflashes.where("newsflashes.created_at > ?", b_newsflash.created_at)
+    b_normal_newsflash = Newsflash.find(params[:b_normal_id]) if args[:b_normal_id]
+    b_top_newsflash = Newsflash.find(params[:b_top_id]) if args[:b_top_id]
+    if b_normal_newsflash && args[:d] == 'next'
+      unless b_top_newsflash
+        @newsflashes = @newsflashes.where("newsflashes.created_at < ?", b_normal_newsflash.created_at).where(is_top: :false)
+      else
+        @newsflashes = @newsflashes.where("case when is_top = true then newsflashes.toped_at < ? else newsflashes.created_at < ? end", b_top_newsflash.toped_at, b_normal_newsflash.created_at)
+      end
     end
 
-    @newsflashes = @newsflashes.order(:toped_at, created_at: :desc).limit 5
+    @newsflashes = @newsflashes.top_recent.limit 5
     render
   end
 

@@ -13,7 +13,7 @@
 #  updated_at               :datetime
 #  user_id                  :integer
 #  cover                    :string(255)
-#  is_top                   :boolean
+#  is_top                   :boolean          default(FALSE)
 #  toped_at                 :datetime
 #  views_count              :integer          default(0)
 #
@@ -35,7 +35,8 @@ class Newsflash < ActiveRecord::Base
   after_save :update_new_flash_cache
   after_destroy :update_new_flash_cache
 
-  scope :recent,    -> { order('created_at desc') }
+  scope :recent,     -> { order('created_at desc') }
+  scope :top_recent, -> { order('toped_at desc nulls last, created_at desc') }
 
   def prase_original_input
     inputs = original_input.split(/---{0,}/)

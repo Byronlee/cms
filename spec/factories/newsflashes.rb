@@ -13,7 +13,7 @@
 #  updated_at               :datetime
 #  user_id                  :integer
 #  cover                    :string(255)
-#  is_top                   :boolean
+#  is_top                   :boolean          default(FALSE)
 #  toped_at                 :datetime
 #  views_count              :integer          default(0)
 #

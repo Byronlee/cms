@@ -3,7 +3,7 @@ class Admin::NewsflashesController < Admin::BaseController
 
   def index
     redirect_to :back unless %w(_pdnote _newsflash).include? params[:ptype]
-    @newsflashes = @newsflashes.order("toped_at desc nulls last, created_at desc").includes({ author: :krypton_authentication }, :tags).tagged_with(params[:ptype]).page params[:page]
+    @newsflashes = @newsflashes.top_recent.includes({ author: :krypton_authentication }, :tags).tagged_with(params[:ptype]).page params[:page]
   end
 
   def update
