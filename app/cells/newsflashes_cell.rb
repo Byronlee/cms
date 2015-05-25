@@ -12,9 +12,11 @@ class NewsflashesCell < Cell::Rails
       else
         @newsflashes = @newsflashes.where("case when is_top = true then newsflashes.toped_at < ? else newsflashes.created_at < ? end", b_top_newsflash.toped_at, b_normal_newsflash.created_at)
       end
+    elsif args[:d] == 'next' && b_top_newsflash
+      @newsflashes = @newsflashes.where("newsflashes.is_top = false or newsflashes.toped_at < ?", b_top_newsflash.toped_at)
     end
 
-    @newsflashes = @newsflashes.top_recent.limit 5
+    @newsflashes = @newsflashes.top_recent.limit 20
     render
   end
 

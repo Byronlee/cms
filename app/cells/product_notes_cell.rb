@@ -11,7 +11,7 @@ class ProductNotesCell < Cell::Rails
       @pdnotes = @pdnotes.where("newsflashes.created_at > ?", b_newsflash.created_at)
     end
 
-    @pdnotes = @pdnotes.recent.limit 3
+    @pdnotes = @pdnotes.recent.limit 10
     render
   end
 end
