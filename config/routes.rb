@@ -90,14 +90,14 @@ Rails.application.routes.draw do
   end
 
   namespace :asynces do
-    resources :posts, :only => [] do
+    resources :posts, only: [] do
       get :hots, on: :collection
       get :today, on: :collection
       get :record_post_manage_session_path, on: :collection
       resources :comments, :only => [:index, :create]
     end
 
-    resources :comments, :only => [] do
+    resources :comments, only: [] do
       get :excellents, on: :collection
     end
 
@@ -111,10 +111,13 @@ Rails.application.routes.draw do
       get :get_metas_info, on: :collection
     end
 
-    resources :dashboard, :only => [] do
+    resources :dashboard, only: [] do
       get :charts, on: :collection
       get :pandect, on: :collection
     end
+
+    resources :newsflashes, only: [:index]
+    resources :product_notes, only: [:index]
   end
 
   resources :pages, only: [:show], param: :slug do

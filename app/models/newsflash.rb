@@ -35,6 +35,8 @@ class Newsflash < ActiveRecord::Base
   after_save :update_new_flash_cache
   after_destroy :update_new_flash_cache
 
+  scope :recent,    -> { order('created_at desc') }
+
   def prase_original_input
     inputs = original_input.split(/---{0,}/)
     prase_basic_attrs_from_original_input inputs[0].strip

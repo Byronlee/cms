@@ -1,4 +1,4 @@
-.panel
+- if @newsflashes.count > 0
   - @newsflashes.each do | nf |
     section.selected
       h3
@@ -26,3 +26,6 @@
                   | 打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮
             a.weibo[href="http://share.baidu.com/s?type=text&searchPic=0&sign=on&to=tsina&url=#{newsflash_show_url nf.id}&title=#{nf.description_text}" ref="nofollow" target="_blank"]
               i.icon-weibo
+  a href="#{asynces_newsflashes_path(d: 'next', b_id: @newsflashes.last.id)}" class="load-more"
+- else
+  a href="javascript:void(0)" class="load-more no-data"
