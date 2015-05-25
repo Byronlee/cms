@@ -22,9 +22,9 @@ xml.rss :version => "2.0" do
         end
         xml.pubDate feed.published_at && feed.published_at.to_s(:rfc822)
         xml.link do
-          xml.cdata! "#{Settings.site}/xiaozhi/#{feed.url_code}"
+          xml.cdata! "#{xiaozhi_news_url feed.url_code}"
         end
-        xml.guid "#{Settings.site}/xiaozhi/#{feed.url_code}"
+        xml.guid "#{xiaozhi_news_url feed.url_code}"
         xml.source t('site_name')
         xml.author feed.author.name
         xml.tags feed.tag_list
