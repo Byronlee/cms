@@ -3,8 +3,8 @@ section.single-post-relate
     - @posts.each do | post |
       li
         a[href="#{ post_url(post)}" target="_blank"]
-        .image
-          img[src="#{ high_speed_url post.cover_real_url, 'feature'}" alt="#{raw post.title}"]
+          .image
+            img[src="#{ high_speed_url post.cover_real_url, 'feature'}" alt="#{raw post.title}"]
         .title
           h3
             a[href="#{ post_url(post)}" title="#{raw post.title}"] = raw post.title
