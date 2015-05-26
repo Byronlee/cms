@@ -16,7 +16,7 @@
         .brief
           = raw post.summary
 
-  = link_to '', search_path(q: params[:q], d: 'next', b_url_code: @posts.results.last.url_code, format: :html), class: 'load-more J_listLoadMore'
+  = link_to '', search_path(q: params[:q], d: 'next', b_url_code: @posts.results.last.url_code, format: :html), class: 'load-more J_listLoadMore', id: 'search_next_link'
 
 - else
   = link_to '', "javascript:void(0)", class: 'load-more J_listLoadMore no-data'

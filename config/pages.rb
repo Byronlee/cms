@@ -676,7 +676,7 @@ settings.footer_body = <<-HTML
           <h3>36氪 让创业更简单</h3>
 
           <div class="links">
-              <a href="/about">关于36氪</a> | <a href="http://space.36kr.com/">氪空间</a> | <a href="/hire">加入我们</a> | <a href="http://report.36kr.com/">寻求报道</a> | <a href="http://download.36kr.com/">客户端下载</a>
+              <a href="/about">关于36氪</a> | <a href="http://space.36kr.com/">氪空间</a> | <a href="/hire">加入我们</a> | <a href="http://report.36kr.com/">寻求报道</a> | <a href="http://download.36kr.com/" class="app_download_footer">客户端下载</a>
           </div>
 
           <div class="feedback">
