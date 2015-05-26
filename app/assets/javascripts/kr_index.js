@@ -48,7 +48,13 @@ $(document).ready(function(){
     /**
      * 分类加载(TODO:需要联调加载逻辑)
      */
-    //var navBarTop = $('.J_newsListNavBar').offset().top;
+
+    var navBarTop = $('.J_newsListNavBar').length && $('.J_newsListNavBar').offset().top;
+
+    $(window).resize(function(){
+        navBarTop = $('.J_newsListNavBar').length && $('.J_newsListNavBar').offset().top;
+    });
+
     $('.J_newsListNavBar a').eq(0).data('listWrapper', $('.J_articleList').eq(0))
     $('.J_newsListNavBar a').click(function(e){
         e.preventDefault();
@@ -62,7 +68,8 @@ $(document).ready(function(){
             return;
         }
 
-
+        window.scrollTo(0, Math.min($(window).scrollTop(),navBarTop));
+        
         if(link.data('listWrapper')){
             $(this).addClass('active')
                 .siblings().removeClass('active');
@@ -83,7 +90,7 @@ $(document).ready(function(){
                 .siblings().removeClass('active');
             newWrapper.append(list);
             bindLoadMore(newWrapper);
-            window.scrollTo(0, Math.min($(window).scrollTop(),navBarTop));
+            
         }, 'html');
     });
 
