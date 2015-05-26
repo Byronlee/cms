@@ -83,8 +83,8 @@ module ApplicationHelper
   end
 
   def render_fragment_template(key)
-    content = FragmentTemplate.find_by_key(key).display_content
-    return raw content if content.present?
+    fragment = FragmentTemplate.find_by_key(key)
+    return raw fragment.display_content if fragment && fragment.display_content.present?
   end
 
   def active_class(current_data_type, data_type)
