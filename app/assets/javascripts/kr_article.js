@@ -10,6 +10,16 @@ $(document).ready(function(){
      */
     initMobileNav('.content-wrapper');
 
+    /**
+     * 评论
+     */
+    $('.J_addCommentBtn').click(function(e){
+        e.preventDefault();
+        $('body, html').animate({
+            scrollTop: $('.single-post-comment').offset().top
+        }, 400);
+        $('.single-post-comment textarea').trigger('focus');
+    })
 
     /**
      * 分享展开操作
@@ -18,6 +28,7 @@ $(document).ready(function(){
         e.preventDefault();
         $(this).siblings('.external').removeClass('external');
         $(this).hide();
+        $(this).parents('.hide-external').removeClass('hide-external');
     });
 
     /**

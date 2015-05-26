@@ -58,11 +58,13 @@ function initFastSection(){
             if($('.J_fastSectionList .wrap').data('origin')>=targetHeight){
                 $('.J_fastSectionList .wrap').height(targetHeight);
             }
+            $('.J_fastSection').trigger('sticky_kit:detach');
             $('.J_fastSection').stick_in_parent(
                 {
                     parent: '.main-section'
                 }
             );
+            $(window).trigger('scroll');
         }else{
             $('.J_fastSectionList .wrap').height('auto');
             $('.J_fastSection').trigger('sticky_kit:detach');
@@ -91,7 +93,7 @@ function initFastSection(){
             $(window).trigger('resize');
         });
     });
-    $('.J_fastSectionList section').click(function(){
+    var bindItemActions = function(){
         if($(this).hasClass('active')){
             $(this).removeClass('active');
         }else{
@@ -99,7 +101,8 @@ function initFastSection(){
                 .siblings().removeClass('active');
         }
         $('.J_fastSectionList .wrap').perfectScrollbar('update');
-    });
+    };
+    $('.J_fastSectionList').delegate('section', 'click', bindItemActions);
 
     /**
      * 加载更多(TODO:需要再跟后端联调加载逻辑)
@@ -123,7 +126,7 @@ function initFastSection(){
                 trigger.addClass('loading');
                 $.get(url, function(list){
                     setTimeout(function(){
-                        //var newWrapper = trigger.parent();
+                        var newWrapper = trigger.parent();
                         $(list).insertAfter(trigger);
                         trigger.remove();
 
@@ -134,6 +137,28 @@ function initFastSection(){
 
                 }, 'html');
             }
+
+          }).delegate('.panel:visible .load-more', 'click', function(e){
+          e.preventDefault();
+          if(deviceType=='desktop')return;
+          var trigger = $(this);
+          var url = trigger.attr('href');
+          trigger.attr('href', 'javascript:void(0)');
+          if(trigger.hasClass('no-data'))return;
+          if(trigger.hasClass('loading'))return;
+          trigger.addClass('loading');
+          $.get(url, function(list){
+
+              setTimeout(function(){
+                  var newWrapper = trigger.parent();
+                  $(list).insertAfter(trigger);
+                  trigger.remove();
+
+                  $('.J_fastSectionList .wrap').perfectScrollbar('update');
+
+              },0)
+
+          }, 'html');
 
         });
 

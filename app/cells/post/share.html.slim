@@ -6,11 +6,11 @@ section.single-post-share
         i.icon-star.fly
         span#star-count =  @post.favorites_count
     li
-      a.comment-btn[href="javascript:void(0)"]
+      a.comment-btn.J_addCommentBtn[href="javascript:void(0)"]
         i.icon.icon-comment
         span.comment_total_count
           = @post.comments.count
-  .single-post-share-list
+  .single-post-share-list.hide-external
     span.mobile-hide
       | 分享到
     .share-group
@@ -34,4 +34,4 @@ section.single-post-share
         i.icon-renren
       a.evernote.external.mobile-hide[ref="nofollow" href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title);}})();" target="_blank"]
         i.icon-evernote
-      a.icon-add.J_showAllShareBtn href="javascript:void(0)"
+      a.icon-add.J_showAllShareBtn href=""

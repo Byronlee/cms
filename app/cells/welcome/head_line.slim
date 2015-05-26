@@ -1,7 +1,7 @@
 .head-images.J_headImages
   - head_line_first = @head_lines[0] || {}
   .scrollers.badge-sports
-    a#headline_top[href=head_line_first["url"] style="background-image: url('#{high_speed_url(head_line_first["image"],  'slider')}')"]
+    a#headline_top[href=head_line_first["url"] style="background-image: url('#{high_speed_url(head_line_first["image"],  'slider')}')" class=""]
       img[src=high_speed_url(head_line_first["image"],  'slider') alt=""]
       span = head_line_first["title"]
   .smaller-images

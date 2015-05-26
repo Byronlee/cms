@@ -103,3 +103,8 @@
   border-bottom: 1px solid #e4e4e4;
   font-style: normal;
 }
+/* line 73, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/format.less */
+.article strong,
+.article b {
+  font-weight: 600;
+}
