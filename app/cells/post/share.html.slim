@@ -4,7 +4,7 @@ section.single-post-share
       a.favorite-btn.social-btn.star-btn.J_addFavorite.require-login[ class="#{@has_favorite ? 'is-favorite' : ''}" onclick=do_favorite(@post, @user) data-uid="#{@user.try(:id)}" href="javascript:void(0)" ]
         i.icon.icon-star
         i.icon-star.fly
-        span#star-count =  @post.favorites_count
+        span#star-count =  @post.favorites_count.to_i
     li
       a.comment-btn.J_addCommentBtn[href="javascript:void(0)"]
         i.icon.icon-comment
