@@ -1,16 +1,16 @@
 .head-images.J_headImages
   - head_line_first = @head_lines[0] || {}
-  .scrollers class="badge-#{head_line_first["column"].try(["slug"])}"
+  .scrollers class="badge-#{head_line_first["section"]}"
     a#headline_top[href=head_line_first["url"] style="background-image: url('#{high_speed_url(head_line_first["image"],  'slider')}')" class=""]
       img[src=high_speed_url(head_line_first["image"],  'slider') alt=""]
       span = head_line_first["title"]
   .smaller-images
     - head_line_second = @head_lines[1] || {}
-    .block.wider.article class="badge-#{head_line_second["column"].try(["slug"])}"
+    .block.wider.article class="badge-#{head_line_second["section"]}"
       a#headline_one[href=head_line_second["url"] style="background-image: url('#{high_speed_url(head_line_second["image"], 'slider')}')"]
         span = head_line_second["title"]
     - head_line_third = @head_lines[2] || {}
-    .block.article class="badge-#{head_line_third["column"].try(["slug"])}"
+    .block.article class="badge-#{head_line_third["section"]}"
       a#headline_two[href=head_line_third["url"] style="background-image: url('#{high_speed_url(head_line_third["image"], 'feature')}')"]
         span = head_line_second["title"]
     .block.next

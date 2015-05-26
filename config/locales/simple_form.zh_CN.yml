@@ -27,6 +27,7 @@ zh-CN:
         order_num: 序号
         title: 文章标题
         post_type: 文章类型
+        section: 所属分类
         image: 图片链接
         url_code: CODE
       newsflash:
@@ -93,6 +94,7 @@ zh-CN:
         order_num: 优先级序号
         title: 文章标题
         post_type: 文章类型
+        section: 所属分类
         image: 图片链接
         url_code: 'url code 编码, 请勿删除'
       column:

@@ -8,5 +8,6 @@
   meta property="og:image:secure_url" content= "#{@post.cover_real_url}"
   meta property="og:image:type" content=@post.cover.try(:content_type)
   meta property="og:image:is_display_title" content="true"
+  meta property="og:article:section" content="#{@post.column.try(:slug)}"
   - unless @post.published?
     meta name="robots" content="noindex"

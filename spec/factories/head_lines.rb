@@ -13,6 +13,7 @@
 #  user_id    :integer
 #  url_code   :integer
 #  state      :string(255)
+#  section    :string(255)
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

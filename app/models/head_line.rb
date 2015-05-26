@@ -13,6 +13,7 @@
 #  user_id    :integer
 #  url_code   :integer
 #  state      :string(255)
+#  section    :string(255)
 #
 
 require 'common'
@@ -54,6 +55,7 @@ class HeadLine < ActiveRecord::Base
     metas = {
       title: og.title,
       type: og.type,
+      section: get_customer_meta_of(og, :article, :section),
       url: og.url,
       description: og.description,
       image: og.images.first,
