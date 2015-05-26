@@ -35,3 +35,8 @@
         = render_cell :post, :author, author: @post.author
         = render_cell :post, :hot
       = render 'welcome/aside'
+
+javascript:
+  $(document).ready(function(){
+    $(window).trigger('resize');
+  });        

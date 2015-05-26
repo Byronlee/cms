@@ -5,3 +5,8 @@
       .fast-section-detail.J_fastNewsDetailWrap
         = render @newsflashes
       = render 'welcome/aside'
+
+javascript:
+  $(document).ready(function(){
+    $(window).trigger('resize');
+  });
