@@ -202,7 +202,7 @@ a:hover {
   height: 100%;
   -webkit-transition: all 0.4s ease;
           transition: all 0.4s ease;
-  background: rgba(0, 0, 0, 0.3) url('../images/icon-bofang.png') no-repeat center center;
+  background: rgba(0, 0, 0, 0.3) asset-url('icon-bofang.png') no-repeat center center;
   background-size: 40px;
   z-index: 10;
   opacity: 0.8;

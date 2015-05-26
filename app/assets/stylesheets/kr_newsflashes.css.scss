@@ -202,7 +202,7 @@ a:hover {
   height: 100%;
   -webkit-transition: all 0.4s ease;
           transition: all 0.4s ease;
-  background: rgba(0, 0, 0, 0.3) url('../images/icon-bofang.png') no-repeat center center;
+  background: rgba(0, 0, 0, 0.3) asset-url('icon-bofang.png') no-repeat center center;
   background-size: 40px;
   z-index: 10;
   opacity: 0.8;
@@ -483,36 +483,36 @@ a:hover {
   }
 }
 @media (max-width: 800px) {
-  /* line 8, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/search-result.less */
-  .search-result-wrap {
+  /* line 8, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/fast-section-detail.less */
+  .fast-section-detail-wrap {
     padding: 10px;
   }
 }
-/* line 14, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/search-result.less */
-.search-result-wrap .main-section {
+/* line 14, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/fast-section-detail.less */
+.fast-section-detail-wrap .main-section {
   margin: 0 auto;
   *zoom: 1;
 }
 @media (min-width: 1200px) {
   /* line 32, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
-  .search-result-wrap .main-section {
+  .fast-section-detail-wrap .main-section {
     width: 1170px;
   }
 }
 @media (min-width: 800px) and (max-width: 1200px) {
   /* line 35, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
-  .search-result-wrap .main-section {
+  .fast-section-detail-wrap .main-section {
     width: 1000px;
   }
 }
 @media (max-width: 800px) {
   /* line 38, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
-  .search-result-wrap .main-section {
+  .fast-section-detail-wrap .main-section {
     width: auto;
   }
 }
 /* line 44, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
-.search-result-wrap .main-section:after {
+.fast-section-detail-wrap .main-section:after {
   content: '';
   display: block;
   clear: both;
@@ -520,99 +520,158 @@ a:hover {
 }
 @media (min-width: 1200px) {
   /* line 54, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
-  .search-result-wrap .main-section {
+  .fast-section-detail-wrap .main-section {
     margin-top: 30px;
   }
 }
 @media (min-width: 800px) and (max-width: 1200px) {
   /* line 57, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
-  .search-result-wrap .main-section {
+  .fast-section-detail-wrap .main-section {
     margin-top: 20px;
   }
 }
-/* line 17, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/search-result.less */
-.search-result-wrap .main-section .fast-section {
+/* line 17, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/fast-section-detail.less */
+.fast-section-detail-wrap .main-section .fast-section {
   float: left;
 }
 @media (min-width: 1200px) {
   /* line 64, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
-  .search-result-wrap .main-section .fast-section {
+  .fast-section-detail-wrap .main-section .fast-section {
     width: 330px;
     margin-right: 30px;
   }
 }
 @media (min-width: 800px) and (max-width: 1200px) {
   /* line 68, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
-  .search-result-wrap .main-section .fast-section {
+  .fast-section-detail-wrap .main-section .fast-section {
     width: 280px;
     margin-right: 20px;
   }
 }
 @media (max-width: 800px) {
   /* line 72, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
-  .search-result-wrap .main-section .fast-section {
+  .fast-section-detail-wrap .main-section .fast-section {
     float: none;
   }
 }
-/* line 20, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/search-result.less */
-.search-result-wrap .main-section .result-list {
+/* line 20, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/fast-section-detail.less */
+.fast-section-detail-wrap .main-section .fast-section-detail {
   float: right;
-}
-/* line 22, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/search-result.less */
-.search-result-wrap .main-section .result-list em.highlight {
-  font-style: normal;
-  color: #ff6600;
-  font-weight: 600;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  background: #ffffff;
+  padding: 30px;
 }
 @media (min-width: 1200px) {
   /* line 79, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
-  .search-result-wrap .main-section .result-list {
+  .fast-section-detail-wrap .main-section .fast-section-detail {
     width: 810px;
   }
 }
 @media (min-width: 800px) and (max-width: 1200px) {
   /* line 82, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
-  .search-result-wrap .main-section .result-list {
+  .fast-section-detail-wrap .main-section .fast-section-detail {
     width: 700px;
   }
 }
 @media (max-width: 800px) {
   /* line 85, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
-  .search-result-wrap .main-section .result-list {
+  .fast-section-detail-wrap .main-section .fast-section-detail {
     float: none;
   }
 }
-/* line 28, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/search-result.less */
-.search-result-wrap .main-section .result-list .result-info {
-  *zoom: 1;
-  border-radius: 2px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  background: #ffffff;
-  height: 40px;
-  line-height: 40px;
-  padding: 0 20px;
+/* line 27, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/fast-section-detail.less */
+.fast-section-detail-wrap .main-section .fast-section-detail .fast-news h3 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+/* line 31, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/fast-section-detail.less */
+.fast-section-detail-wrap .main-section .fast-section-detail .fast-news .desc {
   font-size: 15px;
-  color: #666666;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+/* line 36, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/fast-section-detail.less */
+.fast-section-detail-wrap .main-section .fast-section-detail .fast-news .info {
+  *zoom: 1;
+  line-height: 30px;
 }
 /* line 44, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
-.search-result-wrap .main-section .result-list .result-info:after {
+.fast-section-detail-wrap .main-section .fast-section-detail .fast-news .info:after {
   content: '';
   display: block;
   clear: both;
   height: 0;
 }
+/* line 39, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/fast-section-detail.less */
+.fast-section-detail-wrap .main-section .fast-section-detail .fast-news .info .author {
+  float: left;
+  color: #aaaaaa;
+}
+/* line 42, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/fast-section-detail.less */
+.fast-section-detail-wrap .main-section .fast-section-detail .fast-news .info .author a {
+  color: #3da9f7;
+}
+/* line 101, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.fast-section-detail-wrap .main-section .fast-section-detail .fast-news .info .author a:hover {
+  color: #2c79b0;
+}
+/* line 45, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/fast-section-detail.less */
+.fast-section-detail-wrap .main-section .fast-section-detail .fast-news .info .author .avatar {
+  vertical-align: middle;
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  background: no-repeat center center;
+  background-size: cover;
+  margin-right: 6px;
+  border-radius: 50%;
+}
 @media (max-width: 800px) {
-  /* line 37, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/search-result.less */
-  .search-result-wrap .main-section .result-list .result-info {
-    padding: 0 10px;
-    font-size: 15px;
+  /* line 54, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/fast-section-detail.less */
+  .fast-section-detail-wrap .main-section .fast-section-detail .fast-news .info .author .avatar {
+    width: 20px;
+    height: 20px;
   }
 }
-/* line 41, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/search-result.less */
-.search-result-wrap .main-section .result-list .result-info .keyword {
-  float: left;
-}
-/* line 44, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/search-result.less */
-.search-result-wrap .main-section .result-list .result-info .count {
+/* line 60, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/fast-section-detail.less */
+.fast-section-detail-wrap .main-section .fast-section-detail .fast-news .info .share {
   float: right;
+}
+/* line 62, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/fast-section-detail.less */
+.fast-section-detail-wrap .main-section .fast-section-detail .fast-news .info .share .panel-weixin {
+  line-height: 1.5;
+}
+/* line 70, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/fast-section-detail.less */
+.fast-section-detail-wrap .main-section .fast-section-detail .fast-news.product > h3 {
+  font-size: 20px;
+  margin-left: -30px;
+  padding-left: 23px;
+  border-left: solid 2px #fd9827;
+}
+/* line 76, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/fast-section-detail.less */
+.fast-section-detail-wrap .main-section .fast-section-detail .fast-news.product > h4 {
+  margin: 15px 0 10px;
+  font-size: 18px;
+}
+/* line 80, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/fast-section-detail.less */
+.fast-section-detail-wrap .main-section .fast-section-detail .fast-news.product p {
+  color: #666666;
+  font-size: 15px;
+  line-height: 1.8;
+}
+/* line 85, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/fast-section-detail.less */
+.fast-section-detail-wrap .main-section .fast-section-detail .fast-news.product .pic {
+  width: 300px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+/* line 89, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/fast-section-detail.less */
+.fast-section-detail-wrap .main-section .fast-section-detail .fast-news.product .pic img {
+  display: block;
+  width: 100%;
+}
+/* line 94, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/fast-section-detail.less */
+.fast-section-detail-wrap .main-section .fast-section-detail .fast-news.product .info {
+  margin-top: 20px;
 }
