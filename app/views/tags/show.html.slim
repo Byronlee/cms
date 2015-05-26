@@ -1,29 +1,19 @@
 = render 'welcome/title', title: show_tag_name(@tag)
+= stylesheet_link_tag 'kr_search-result', media: 'all'
 
-.main
-  .content
-    .content-wrapper
-      .content-wrapper-border
-        .category
-          .category-header.cf
-            .category-header__info.cf
-              h2.category-header__title.left  = show_tag_name(@tag)
-              div.category-header__status.right.cf
-                span.week
-                  = Post.by_week.published.tagged_with(@tag).try(:count) || 0
-                  i  Weekly
-                span.total
-                  = @posts.try(:total_count) || 0
-                  i  Total
-            p.category-header__bio  ...
+.search-result-wrap
+  .main-section
+    .result-list.J_resultListWrap
+      .result-info
+        .keyword
+          |Tag: 
+          em.highlight '#{show_tag_name(@tag)}'
+        .count
+          |结果数：
+          em.highlight = @posts.try(:total_count) || 0
 
-          = render_cell :tag, :weekly_hot_posts, tag: @tag
+      .article-list
+        .articles.J_articleList
           = render 'tags/list'
-  .aside
-    = render_cell :post, :today
-    = render_cell :sidebar, :social
 
-.sidebar
-  = render_cell :sidebar, :ad_top, position: :column_show
-  = render_cell :post, :hot
-  = render_cell :comment, :excellent
+    = render 'welcome/aside'
