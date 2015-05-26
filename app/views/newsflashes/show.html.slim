@@ -4,8 +4,3 @@
       .fast-section-detail.J_fastNewsDetailWrap
          = render partial: @newsflash.fast_type, locals: { newsflash: @newsflash }
       = render 'welcome/aside'
-
-javascript:
-  $(document).ready(function(){
-    $(window).trigger('resize');
-  });
