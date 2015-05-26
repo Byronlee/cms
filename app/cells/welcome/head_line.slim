@@ -1,22 +1,21 @@
 .head-images.J_headImages
   - head_line_first = @head_lines[0] || {}
-  .scrollers.badge-sports
+  .scrollers class="badge-#{head_line_first["column"].try(["slug"])}"
     a#headline_top[href=head_line_first["url"] style="background-image: url('#{high_speed_url(head_line_first["image"],  'slider')}')" class=""]
       img[src=high_speed_url(head_line_first["image"],  'slider') alt=""]
       span = head_line_first["title"]
   .smaller-images
     - head_line_second = @head_lines[1] || {}
-    .block.wider.article.badge-finance
+    .block.wider.article class="badge-#{head_line_second["column"].try(["slug"])}"
       a#headline_one[href=head_line_second["url"] style="background-image: url('#{high_speed_url(head_line_second["image"], 'slider')}')"]
         span = head_line_second["title"]
     - head_line_third = @head_lines[2] || {}
-    .block.article.badge-edu
+    .block.article class="badge-#{head_line_third["column"].try(["slug"])}"
       a#headline_two[href=head_line_third["url"] style="background-image: url('#{high_speed_url(head_line_third["image"], 'feature')}')"]
         span = head_line_second["title"]
     .block.next
       a#headline_three[href=""]
     .block.ad
-      a#headline_four[href="#" style="background-image: url('http://a.36krcnd.com/nil_class/a97af72e-bda2-4c64-8cc2-5c13c15e575d/20098675846456.jpg!slider')"]
-
+      a#headline_four[href="#" style="background-image: url('#{image_path('ad01.png')}') "]
     .block.ad
-      a#headline_five[href="#" style="background-image: url('http://a.36krcnd.com/nil_class/a97af72e-bda2-4c64-8cc2-5c13c15e575d/20098675846456.jpg!slider')"]
+      a#headline_five[href="#" style="background-image: url('#{image_path('ad02.png')}') "]
