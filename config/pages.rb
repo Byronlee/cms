@@ -706,7 +706,7 @@ settings.footer_body = <<-HTML
       <div class="container">
           <div class="copyright">
               <span class="mobile-hide">本站由 <a href="http://qingcloud.com">QingCloud</a> 提供云计算服务</span>
-              <span class="law">© 2011-2015 36氪  |  京ICP备12031756号 <span class="mobile-hide">|  京公网安备11010802012285号</span></span>
+              <span class="law">© 2011-2015 36氪  |  京ICP备12031756号 <span class="mobile-hide">|  京ICP证150143号 </span> <span class="mobile-hide">|  京公网安备11010802012285号</span></span>
           </div>
           <div class="share">
               <a class="icon-weibo" href="http://weibo.com/wow36kr"></a>
