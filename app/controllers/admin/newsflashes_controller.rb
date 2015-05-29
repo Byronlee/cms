@@ -8,13 +8,13 @@ class Admin::NewsflashesController < Admin::BaseController
 
   def update
     flash[:notice] = '更新成功' if @newsflash.update newsflash_params
-    respond_with @newsflash, location: admin_newsflashes_path
+    respond_with @newsflash, location: target_url
   end
 
   def create
     @newsflash.author = current_user
     flash[:notice] = '创建成功' if @newsflash.save
-    respond_with @newsflash, location: admin_newsflashes_path
+    respond_with @newsflash, location: target_url
   end
 
   def destroy
@@ -37,5 +37,13 @@ class Admin::NewsflashesController < Admin::BaseController
   private
   def newsflash_params
     params.require(:newsflash).permit(:original_input, :tag_list, :newsflash_topic_color_id, :cover)
+  end
+
+  def target_url
+    if params[:newsflash][:tag_list].include? '_newsflash'
+      admin_newsflashes_path(ptype: '_newsflash')
+    else
+      admin_newsflashes_path(ptype: '_pdnote')
+    end
   end
 end
