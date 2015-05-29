@@ -9,11 +9,11 @@
     h4
       | How:
     p
-      = newsflash.news_summaries.strip.split(/\r\n/).delete_if(&:blank?)[0].gsub(/^-/, '' )
+      = newsflash.news_summaries && newsflash.news_summaries.strip.split(/\r\n/).delete_if(&:blank?)[0].gsub(/^-/, '' )
     h4
       | Think It Twice:
     p
-      = newsflash.news_summaries.strip.split(/\r\n/).delete_if(&:blank?)[1].gsub(/^-/, '' )
+      = newsflash.news_summaries && newsflash.news_summaries.strip.split(/\r\n/).delete_if(&:blank?)[1].gsub(/^-/, '' )
     .pic
       = image_tag newsflash.cover if newsflash.cover.present?
     .info
