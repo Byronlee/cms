@@ -86,6 +86,11 @@ class Post < ActiveRecord::Base
     self.company_keywords = keywords if keywords.present?
   end
 
+  after_save :update_kr_search_index
+  def update_kr_search_index
+    logger.info UpdateElsearchIndexWorker.new.perform self.url_code
+  end
+
   def activate_publish_schedule
     return true if self.published?
     return self.publish if self.will_publish_at.blank?

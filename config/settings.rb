@@ -11,6 +11,10 @@ settings.redis_servers = {
 
 settings.elasticsearch_server = 'http://127.0.0.1:9200'
 
+settings.kr_earch_server = {
+  development_url: 'http://rong.dev.36kr.com/news/receiver/v1',
+  production_url: 'http://rong.dev.36kr.com/news/receiver/v1'
+}
 settings.api = {
   expires_in: 15.minutes,
   v1: {
