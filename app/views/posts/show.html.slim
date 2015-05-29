@@ -9,7 +9,7 @@
         - cache [:show, :content, @post] do
           = render_cell :post, :header, post: @post
           = render_cell :post, :content, post: @post
-          = render_cell :post, :ad
+          = render_cell :ads, :position_10
         - cache [:show, @post, :manage, current_user]
           - if (@post.author == current_user || (can? :manage, Comment))
             br
@@ -33,5 +33,10 @@
     .article-side
       - cache [:show, :aside, @post.author, :cache_key_v1] do
         = render_cell :post, :author, author: @post.author
-        = render_cell :post, :hot
-      = render 'welcome/aside'
+      = render_cell :ads, :position_7
+      = render_cell :post, :hot
+      = render_cell :ads, :position_8
+      .index-side
+        .fast-section.J_fastSection.mobile-hide
+          = render 'welcome/aside'
+          = render_cell :ads, :position_9

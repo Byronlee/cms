@@ -1,3 +1,5 @@
+- unless (params[:d].present? && params[:b_url_code].present?)
+  / script type="text/javascript" BAIDU_CLB_fillSlot("1091398")
 - if @posts.count > 0
   = render @posts          
   a.load-more.J_listLoadMore[href="#{ column_slug_path(slug: params[:slug], d: 'next', b_url_code: @posts.last.url_code, format: :html) }" id="columns_next_link"]

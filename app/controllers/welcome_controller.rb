@@ -59,7 +59,8 @@ class WelcomeController < ApplicationController
           :total_count => @total_count,
           :min_url_code => @min_url_code,
           :max_url_code => @max_url_code,
-          :posts_with_ads => @posts_with_ads }
+          :posts => @posts_with_ads.select{|item| item['position'] == nil && item["type"] != 'seperate'}
+        }
       end
     end
   end

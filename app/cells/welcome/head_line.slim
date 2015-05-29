@@ -14,8 +14,8 @@
       a#headline_two[href=head_line_third["url"] style="background-image: url('#{high_speed_url(head_line_third["image"], 'feature')}')"]
         span = head_line_second["title"]
     .block.next
-      a#headline_three[href=""]
-    .block.ad
-      a#headline_four[href="#" style="background-image: url('#{image_path('ad01.png')}') "]
-    .block.ad
-      a#headline_five[href="#" style="background-image: url('#{image_path('ad02.png')}') "]
+      a#headline_three[href="http://next.36kr.com/posts?utm_source=36kr.com" target="_blank"]
+    .block.ad#headline_four
+      = render_cell :ads, :position_1
+    .block.ad#headline_five
+      = render_cell :ads, :position_2

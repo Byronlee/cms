@@ -1,15 +1,11 @@
- .index-side
-  .fast-section.J_fastSection.mobile-hide
-    .list.J_fastSectionList
-      .tabs.J_fastSectionNavBar
-        a.active.newsflashes_nav[href="#"]
-          | 快讯
-        a.product_notes_nav[href="#"]
-          | ProDuct Note
-      .wrap
-        .panel
-          = render_cell :newsflashes, :index
-        .panel[style="display: none"]
-          = render_cell :product_notes, :index
-    a.ad[href="#"]
-      = image_tag "ad3.jpg", alt: ''
+.list.J_fastSectionList
+  .tabs.J_fastSectionNavBar
+    a.active.newsflashes_nav[href="#"]
+      | 快讯
+    a.product_notes_nav[href="#"]
+      | ProDuct Note
+  .wrap
+    .panel
+      = render_cell :newsflashes, :index
+    .panel[style="display: none"]
+      = render_cell :product_notes, :index
