@@ -6,5 +6,6 @@ class NewsflashesController < ApplicationController
 
   def show
     @newsflash = Newsflash.find params[:id]
+    @newsflash.increase_views_count
   end
 end
