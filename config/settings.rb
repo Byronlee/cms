@@ -27,7 +27,7 @@ settings.oauth = {
   krypton: {
     app_id: '9767d4838b9664ca33a1630f6a7889d8b78a1dfd0bcf4b257a3c95122bf9ceaa',
     secret: 'e0df3c21ee500eaf85687357290f6c61878559f22eb0ce24c4ba3219c2666c07',
-    host: 'https://passport.36kr.com',
+    host: 'https://auth.36kr.com',
     cookie: {
       name: 'krid_user_version',
       domain: '.36kr.com'
