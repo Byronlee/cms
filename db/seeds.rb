@@ -107,7 +107,8 @@ Column.update_all(:order_num => 0)
   'edu' => {'name' => '在线教育', 'order_num' => 400},
   'finance' => {'name' => '互联网金融', 'order_num' => 300},
   'company' => {'name' => '大公司', 'order_num' => 200},
-  'activity' => {'name' => '近期活动', 'order_num' => 100}
+  # 'activity' => {'name' => '近期活动', 'order_num' => 100},
+  'column' => {'name' => '专栏', 'order_num' => 50}
 }.each do |slug, values|
   unless column =  Column.find_by_slug(slug)
     puts "create #{slug} => #{values["name"]} ..."
