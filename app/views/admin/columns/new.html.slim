@@ -20,3 +20,12 @@
       = f.input :introduce, as: :text, :input_html => { 'rows' => 3, class: 'col-lg-12'}
       div.form-actions
         = f.button :submit, data: { disable_with: "Submitting..." }, class:"btn btn-primary"
+
+javascript:
+  $(document).ready(function(){
+    var testColor=document.createElement("input")
+    testColor.setAttribute("type", "color");
+    if (testColor.type != "color"){
+      $("#label_bgcolor_input_selector").fadeOut();
+    }
+  });
