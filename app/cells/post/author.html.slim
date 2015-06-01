@@ -2,10 +2,12 @@
   - if @user.blank?
     p style="text-align:center;" 36氪
   - else
-    span.avatar[style="background-image: url('#{@user.avatar}')"]
+    a[href="#{user_domain(@user.try(:domain))}"]
+      span.avatar[style="background-image: url('#{@user.avatar}')"]
     .desc
       span.name
-        = @user.try(:display_name)
+        a[href="#{user_domain(@user.try(:domain))}"]
+          = @user.try(:display_name)
       span.badge
         = @user.role_text
       .brief
