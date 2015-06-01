@@ -3,7 +3,7 @@ class Admin::Posts::ColumnsController < Admin::BaseController
 
   def index
     @columns = Column.find params[:ids]
-    @posts = Post.where.not(column_id: @columns.map(&:id)).order('published_at desc').page(params[:page])
+    @posts = Post.where.not(column_id: @columns.map(&:id)).published.order('published_at desc').page(params[:page])
       .per(params[:per])
   end
 
