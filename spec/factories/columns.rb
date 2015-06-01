@@ -12,6 +12,7 @@
 #  posts_count :integer
 #  slug        :string(255)
 #  order_num   :integer          default(0)
+#  extra       :text
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

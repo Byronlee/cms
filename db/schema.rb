@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150526131406) do
+ActiveRecord::Schema.define(version: 20150601040841) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20150526131406) do
     t.integer  "posts_count"
     t.string   "slug"
     t.integer  "order_num",   default: 0
+    t.text     "extra"
   end
 
   create_table "columns_info_flows", force: true do |t|

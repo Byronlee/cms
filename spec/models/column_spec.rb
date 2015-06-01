@@ -12,6 +12,7 @@
 #  posts_count :integer
 #  slug        :string(255)
 #  order_num   :integer          default(0)
+#  extra       :text
 #
 
 require 'spec_helper'

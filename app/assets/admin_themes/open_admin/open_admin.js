@@ -9,4 +9,5 @@
 //= require ./javascripts/open
 //= require ./javascripts/charts
 //= require ./javascripts/tagsinput
+//= require ./javascripts/color-selector
 //= require highcharts

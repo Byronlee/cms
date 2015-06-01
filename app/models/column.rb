@@ -12,6 +12,7 @@
 #  posts_count :integer
 #  slug        :string(255)
 #  order_num   :integer          default(0)
+#  extra       :text
 #
 
 class Column < ActiveRecord::Base
@@ -31,6 +32,10 @@ class Column < ActiveRecord::Base
 
   scope :info_flows, -> { where(in_info_flow: true) }
   scope :headers,    -> { where("order_num > ?", 0 ).order(order_num: :desc) }
+
+  typed_store :extra do |s|
+    s.string :label_bgcolor, default: ''
+  end
 
   def weekly_posts_count
     posts.by_week.published.count

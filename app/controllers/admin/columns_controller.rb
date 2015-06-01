@@ -23,6 +23,6 @@ class Admin::ColumnsController < Admin::BaseController
   private
 
   def column_params
-    params.require(:column).permit(:name, :slug, :introduce, :icon, :cover, :order_num) if params[:column]
+    params.require(:column).permit(:name, :slug, :introduce, :icon, :cover, :order_num, :label_bgcolor) if params[:column]
   end
 end
