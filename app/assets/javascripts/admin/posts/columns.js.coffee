@@ -6,5 +6,5 @@ jQuery ->
     $(this).closest('form').trigger('submit.rails')
   .end()
   .on "ajax:success", ->
-    ;# $(this).fadeOut()
+    $(this).fadeOut()
   .on "ajax:error", ->
