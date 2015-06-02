@@ -17,7 +17,8 @@
           .brief
             = raw(item["summary"])
     - elsif item["position"] != nil
-      = raw item["content"] if !check_mobile
+      article class="ad-wrapper"
+        = raw item["content"] if !check_mobile
 
   = link_to '', root_path(d: 'next', b_url_code: @min_url_code, format: :html), class: 'load-more J_listLoadMore', id: 'info_flows_next_link'
 - else
