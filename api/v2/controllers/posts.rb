@@ -177,7 +177,7 @@ module V2
           else
             @posts = []
           end
-          present @posts, with: Entities::Post
+          present @posts, with: Entities::PostDetailAll
         end
       end
     end
