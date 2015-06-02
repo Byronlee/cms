@@ -3,7 +3,7 @@
     p style="text-align:center;" 36氪
   - else
     a[href="#{user_domain(@user.try(:domain))}"]
-      span.avatar[style="background-image: url('#{@user.avatar}')"]
+      span.avatar[data-lazyload="#{@user.avatar}"]
     .desc
       span.name
         a[href="#{user_domain(@user.try(:domain))}"]

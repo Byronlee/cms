@@ -211,3 +211,54 @@ function initMobileNav(newsPanel){
         });
     });
 }
+
+function initLazyLoad(){
+
+    function loadItems(){
+        var top = $(window).scrollTop() + $(window).height();
+        $('[data-lazyload]').each(function(){
+            var itemTop = $(this).offset().top;
+            var item = $(this);
+            if($(this).data('lazyload')){
+                item.addClass('before-fade-in');
+            }else{
+                return;
+            }
+            if(itemTop < top && $(this).data('lazyload')) {
+                var src = $(this).data('lazyload');
+                var img = new Image();
+
+                console.log(item.data('fitMobile')==true, deviceType!='desktop');
+
+                if(item.data('fitMobile')==true && deviceType!='desktop'){
+                    src = src.replace(/\!.+$|$/, '!appfeed2x');
+                }
+                item.data('lazyload', null).removeAttr('data-lazyload');
+                console.log(src);
+                img.onload = function(){
+                    console.log(item[0].tagName);
+                    if(item[0].tagName.toLowerCase()=='img'){
+                        item[0].src=src;
+                    }else{
+                        item.css({
+                            'background-image':'url('+src+')'
+                        });
+                    }
+                    item.addClass('after-fade-in');
+
+                };
+                img.src = src;
+            }
+        });
+    }
+
+    $(document).ready(function(){
+        loadItems();
+        $(window).scroll(function bind(){
+            loadItems();
+        });
+    });
+
+}
+
+initLazyLoad();

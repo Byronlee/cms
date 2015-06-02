@@ -1,13 +1,13 @@
 - if @posts.count > 0
   - @posts.each_with_hit do |post, hit|
     article
-      a.pic[class="badge-#{post.column.try(:slug)}" href="#{post_url(post, utm_source: utm_source ||= nil)}" style="background-image: url('#{high_speed_url post.cover_real_url, 'feature'}')"]
+      a.pic[data-fit-mobile="true" class="badge-#{post.column.try(:slug)}" href="#{post_url(post, utm_source: utm_source ||= nil)}" data-lazyload="#{high_speed_url post.cover_real_url, 'feature'}"]
       .desc
         a.title[href=post_url(post, utm_source: 'site_search' ) target="_blank"]
           = display_search_title(post, hit)
         .author
           a[href="#{user_domain(post.author.try(:domain))}"]
-            span.avatar[style="background-image: url('#{post.author.avatar}')"]
+            span.avatar[data-lazyload="#{post.author.avatar}"]
             span.name
               = (post.author && post.author.display_name)
           span.time

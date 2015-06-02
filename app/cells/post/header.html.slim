@@ -4,7 +4,7 @@ section.single-post-header
       = @post.title
   .author
     a[href="#{user_domain(@post.author.try(:domain))}"]
-      span.avatar[style="background-image: url('#{@post.author.avatar}')"]
+      span.avatar[data-lazyload="#{@post.author.avatar}"]
       span.name
         = @post.author.try(:display_name)
     span.time

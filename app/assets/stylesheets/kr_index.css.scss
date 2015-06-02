@@ -462,22 +462,38 @@ a:hover {
   background: #8ab724;
 }
 /* line 222, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.ad-wrapper {
+  position: relative;
+}
+/* line 224, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+.ad-wrapper:before {
+  content: "推广";
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 12px;
+  color: #fff;
+  background: #7c91c2;
+  padding: 0px 10px;
+}
+/* line 237, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
 .radius-box {
   border-radius: 2px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 @media (max-width: 800px) {
-  /* line 232, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 247, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
   .mobile-hide {
     display: none !important;
   }
 }
-/* line 236, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 251, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
 .mobile-show {
   display: none;
 }
 @media (max-width: 800px) {
-  /* line 238, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 253, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
   .mobile-show {
     display: block;
   }
@@ -655,7 +671,7 @@ a:hover {
   margin-bottom: -10px;
 }
 @media (max-width: 800px) {
-  /* line 232, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 247, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
   .index-wrap .head-images .smaller-images {
     display: none !important;
   }
@@ -947,7 +963,7 @@ a:hover {
   z-index: 100;
 }
 @media (max-width: 800px) {
-  /* line 232, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 247, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
   .index-wrap .main-section .news-list .categories {
     display: none !important;
   }
@@ -977,7 +993,7 @@ a:hover {
 @media (min-width: 800px) and (max-width: 1200px) {
   /* line 188, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
   .index-wrap .main-section .news-list .categories a {
-    padding: 0 9px;
+    padding: 0 8px;
   }
 }
 /* line 191, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
