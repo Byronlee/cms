@@ -5,7 +5,8 @@ class UpdateElsearchIndexWorker < BaseWorker
   def perform url_code
     params = { id: url_code }
     response = Faraday.send(:post, Settings.kr_earch_server.send("#{Rails.env}_url"), params)
-    ActiveSupport::JSON.decode(response.body)
+    #ActiveSupport::JSON.decode(response.body)
+    response.body
   end
 
 end
