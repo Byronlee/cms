@@ -34,7 +34,7 @@ class Column < ActiveRecord::Base
   scope :headers,    -> { where("order_num > ?", 0 ).order(order_num: :desc) }
 
   typed_store :extra do |s|
-    s.string :label_bgcolor, default: ''
+    s.string :label_bgcolor, default: nil
   end
 
   def weekly_posts_count
