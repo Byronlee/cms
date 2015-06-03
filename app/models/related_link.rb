@@ -27,6 +27,7 @@ class RelatedLink < ActiveRecord::Base
     s.string :event_address
     s.datetime :event_starttime
     s.datetime :event_endtime
+    s.string :event_status
   end
 
   validates_presence_of :url
@@ -46,6 +47,7 @@ class RelatedLink < ActiveRecord::Base
       self.event_address = params[:event_address]
       self.event_starttime = params[:event_starttime]
       self.event_starttime = params[:event_endtime]
+      self.event_status = params[:event_status]
     end
   end
 
@@ -68,7 +70,8 @@ class RelatedLink < ActiveRecord::Base
         event_locality: get_customer_meta_of(og, :locality),
         event_address: get_customer_meta_of(og, :"street-address"),
         event_starttime: get_customer_meta_of(og, :"start-time"),
-        event_endtime: get_customer_meta_of(og, :"end-time")
+        event_endtime: get_customer_meta_of(og, :"end-time"),
+        event_status: get_customer_meta_of(og, :"status")
       }
     rescue Exception => ex
       return {result: false, msg: ex.message, metas: {}}

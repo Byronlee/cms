@@ -56,6 +56,27 @@ module V2
           end
         end
 
+=begin
+        desc 'update a user'
+        params do
+          requires :sso_id,                   desc: 'sso_id'
+          requires :name,     type: String,   desc: '用户名'
+          requires :phone,    type: String,   desc: '电话'
+          requires :bio,      type: String,   desc: '三观'
+          requires :tagline,  type: String,   desc: '自述'
+        end
+        patch 'edit' do
+          user_params = params.slice(*KEYS)
+          @user = User.where(sso_id: params[:sso_id]).first
+          unless @user.blank?
+            @user.update_attributes user_params
+            binding.pry
+            @user.errors.messages.blank? ? { date: true } : { date: false }
+          else
+            { date: false }
+          end
+        end
+=end
       end
     end
   end
