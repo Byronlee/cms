@@ -1,5 +1,5 @@
 class PostPublishWorker < BaseWorker
-	sidekiq_options :queue => :scheduler, :backtrace => true
+	sidekiq_options :queue => :"#{Settings.sidekiq_evn.namespace}_scheduler", :backtrace => true
 
   def perform(post_id)
     post = Post.find(post_id)

@@ -1,5 +1,5 @@
 class SyncRoleToWriterWorker < BaseWorker
-	sidekiq_options :queue => :third_party_writer, :backtrace => true
+	sidekiq_options :queue => :"#{Settings.sidekiq_evn.namespace}_third_party_writer", :backtrace => true
 
   def perform(uid, role)
     params = { uid: uid, role: role, token: Settings.writer_token }

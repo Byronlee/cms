@@ -1,6 +1,6 @@
 require 'common'
 class HeadLinesComponentWorker < BaseWorker
-  sidekiq_options :queue => :third_party_headline, :backtrace => true
+  sidekiq_options :queue => :"#{Settings.sidekiq_evn.namespace}_third_party_headline", :backtrace => true
 
   def perform
     head_lines = HeadLine.published.where.not(title: [nil, ""]).order(updated_at: :desc).limit(3)

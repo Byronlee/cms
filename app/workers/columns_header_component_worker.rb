@@ -1,5 +1,5 @@
 class ColumnsHeaderComponentWorker < BaseWorker
-	sidekiq_options :queue => :krx2015, :backtrace => true
+	sidekiq_options :queue => :"#{Settings.sidekiq_evn.namespace}_krx2015", :backtrace => true
 	
   def perform
     Redis::HashKey.new('columns')['header'] = 

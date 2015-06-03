@@ -1,5 +1,5 @@
 class InfoFlowsComponentWorker < BaseWorker
-	sidekiq_options :queue => :krx2015, :backtrace => true
+	sidekiq_options :queue => :"#{Settings.sidekiq_evn.namespace}_krx2015", :backtrace => true
 	
   def perform(flow_name)
     info_flow = InfoFlow.find_by_name flow_name

@@ -1,6 +1,6 @@
 require "faraday"
 class UpdateElsearchIndexWorker < BaseWorker
-	sidekiq_options :queue => :search, :backtrace => true
+	sidekiq_options :queue => :"#{Settings.sidekiq_evn.namespace}_search", :backtrace => true
 
   def perform url_code
     params = { id: url_code }

@@ -1,5 +1,5 @@
 class HotPostsComponentWorker < BaseWorker
-	sidekiq_options :queue => :krx2015, :backtrace => true
+	sidekiq_options :queue => :"#{Settings.sidekiq_evn.namespace}_krx2015", :backtrace => true
 	
   def perform
     #取最近的50篇，按照访问量排序取前6个

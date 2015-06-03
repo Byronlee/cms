@@ -1,5 +1,5 @@
 class  NewPostsComponentWorker < BaseWorker
-	sidekiq_options :queue => :krx2015, :backtrace => true
+	sidekiq_options :queue => "#{Settings.sidekiq_evn.namespace}_krx2015", :backtrace => true
 	
   def perform
     posts = Post.select([:id, :title, :url_code, :created_at]).tagged_with("startup").order("created_at desc").limit(9)
