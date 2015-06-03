@@ -1,5 +1,5 @@
 class TodayLastestComponentWorker < BaseWorker
-  sidekiq_options :queue => :"#{Settings.sidekiq_evn.namespace}_krx2015", :backtrace => true
+  sidekiq_options :queue => :krx2015, :backtrace => true
   
   def perform
     posts = Post.today.published.order('published_at desc').limit(6)

@@ -9,8 +9,6 @@ settings.redis_servers = {
   session: 'redis://127.0.0.1:6379/2'
 }
 
-settings.sidekiq_evn = { namespace: 'staging' }
-
 settings.elasticsearch_server = 'http://127.0.0.1:9200'
 
 settings.kr_earch_server = {

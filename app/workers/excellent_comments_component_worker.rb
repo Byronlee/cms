@@ -1,5 +1,5 @@
 class ExcellentCommentsComponentWorker < BaseWorker
-  sidekiq_options :queue => :"#{Settings.sidekiq_evn.namespace}_krx2015", :backtrace => true
+  sidekiq_options :queue => :krx2015, :backtrace => true
   
   def perform
     comments = Comment.excellent.order('comments.created_at desc').limit(6)

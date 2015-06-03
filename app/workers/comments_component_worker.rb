@@ -1,6 +1,4 @@
 class CommentsComponentWorker < BaseWorker
-  sidekiq_options :queue => :"#{Settings.sidekiq_evn.namespace}_third_party_sso", :backtrace => true
-
   def perform(params, comment)
     sso_user = Krypton::Passport.new(params[:sso_token]).me
     unless sso_user.is_a? TrueClass or sso_user.is_a? FalseClass

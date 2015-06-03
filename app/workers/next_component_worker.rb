@@ -1,5 +1,5 @@
 class NextComponentWorker < BaseWorker
-  sidekiq_options :queue => :"#{Settings.sidekiq_evn.namespace}_third_party_next", :backtrace => true
+  sidekiq_options :queue => :third_party_next, :backtrace => true
 
   def perform
     @collections = Faraday.get(Settings.next.collection_api + '?access_token=' + token['access_token']).body
