@@ -15,7 +15,7 @@
              input.input-small.hidden#s_phone name='s[phone]' type="text" placeholder="输入phone"
              input.input-small.hidden#s_email name='s[email]' type="text" placeholder="输入email"
              input.input-small.hidden#s_sso_id name='s[sso_id]' type="text" placeholder="输入sso id"
-             = select("s", "type", Settings.user_search_support)
+             = select("s", "type", options_for_select(Settings.user_search_support, @type ))
   table class="table"
     thead
       tr role="row"
@@ -31,3 +31,11 @@
     tbody
       = render @users
   = paginate @users
+
+javascript:
+  $(document).ready(function(){
+    var s_type = $("select#s_type");
+    $('.input-small').addClass('hidden');
+    $('#s_' + s_type.val()).removeClass('hidden')
+    $('#s_' + s_type.val()).val("#{@type_value}");
+  });
