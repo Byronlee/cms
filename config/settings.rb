@@ -84,6 +84,8 @@ settings.ga = {
   tracker: 'UA-1268479-12'
 }
 
+settings.redis_env = { namespace: 'staging' }
+
 settings.fileupload = {
   url: 'http://writer.36kr.com/api/jHcDEyl/v1/images/create',
   token: 'e625cf097bb338f1100b5453f68',
