@@ -2,29 +2,8 @@
 
 .col_main
   .main_hd
-    h2
-    .toolbar.border_bottom.clearfix
-      .pull-right
-         span.page_info = page_entries_info @posts
-         - if can? :new, Post
-           = link_to raw("<i class='fa fa-plus'></i>&nbsp;&nbsp;创建文章"), Settings.writer.host, class:"btn btn-primary"
-    .pull-left
-      ul.nav-hor
-        - if can? :myown, Post
-          li
-            a href="#{draft_admin_posts_path}" 我的草稿
-          li
-            a href="#{myown_admin_posts_path}" 我的文章
-        - if can? :read, Post
-          li
-            a href="#{admin_posts_path}" 已发布
-        - if can? :reviewings, Post
-          li.active
-            a href="#{reviewings_admin_posts_path}" 待审查
-              (#{reviewings_count})
-        - if can? :read, Favorite
-          li
-            a href="#{admin_favorites_path}" 我的收藏
+    = render 'toolbar', target_page: :reviewings, collections: @posts
+
   table.spt class="table"
     thead
       tr role="row"
