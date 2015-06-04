@@ -24,6 +24,7 @@
         = f.input :event_address, input_html: {class: 'col-lg-12', id: 'related_event_address'}
         = f.input :event_starttime, input_html: {value: "#{time_local_zone @related_link.event_starttime}", class: 'col-lg-12', id: 'related_event_starttime'}
         = f.input :event_endtime, input_html: {value: "#{time_local_zone @related_link.event_endtime}", class: 'col-lg-12', id: 'related_event_endtime'}
+        = f.input :event_status, input_html: {value: "#{@related_link.event_status}", class: 'col-lg-12', id: 'related_event_status'}
       div.form-actions
         = f.button :submit, data: { disable_with: "submitting..." }, class:"btn btn-primary"
 
@@ -63,6 +64,7 @@ javascript:
          $("#related_event_address").val(metas['event_address']);
          $("#related_event_starttime").val(metas['event_starttime']);
          $("#related_event_endtime").val(metas['event_endtime']);
+         $("#related_event_status").val(metas['event_status']);
          check_link_type();
        }
      });

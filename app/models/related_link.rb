@@ -46,7 +46,7 @@ class RelatedLink < ActiveRecord::Base
       self.event_locality = params[:event_locality]
       self.event_address = params[:event_address]
       self.event_starttime = params[:event_starttime]
-      self.event_starttime = params[:event_endtime]
+      self.event_endtime = params[:event_endtime]
       self.event_status = params[:event_status]
     end
   end
