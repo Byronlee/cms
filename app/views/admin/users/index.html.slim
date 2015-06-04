@@ -9,13 +9,13 @@
          - if current_user.role.admin?
            form.form-inline.user_search
              button.btn.btn-primary.pull-right type="submit" 确定
-             = select("s", "role", User.role.options, {}, {class: 'input-small', style: 'padding:0;'})
+             = select("s", "role", User.role.options, {}, {class: 'input-small'})
              input.input-small.hidden#s_id name='s[id]' type="text" placeholder="输入ID"
              input.input-small.hidden#s_name name='s[name]' type="text" placeholder="输入name"
              input.input-small.hidden#s_phone name='s[phone]' type="text" placeholder="输入phone"
              input.input-small.hidden#s_email name='s[email]' type="text" placeholder="输入email"
              input.input-small.hidden#s_sso_id name='s[sso_id]' type="text" placeholder="输入sso id"
-             = select("s", "type", options_for_select(Settings.user_search_support, @type ))
+             = select("s", "type", options_for_select(Settings.user_search_support, @type ), {}, {style: 'padding:0;'})
   table class="table"
     thead
       tr role="row"
