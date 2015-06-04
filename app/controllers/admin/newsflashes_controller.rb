@@ -1,9 +1,14 @@
 class Admin::NewsflashesController < Admin::BaseController
   load_and_authorize_resource
+  before_filter :check_original_input_format, only: [:create, :update]
 
   def index
     redirect_to :back unless %w(_pdnote _newsflash).include? params[:ptype]
     @newsflashes = @newsflashes.top_recent.includes({ author: :krypton_authentication }, :tags).tagged_with(params[:ptype]).page params[:page]
+  end
+
+  def new
+    @newsflash.original_input = params[:original_input]
   end
 
   def update
@@ -45,5 +50,17 @@ class Admin::NewsflashesController < Admin::BaseController
     else
       admin_newsflashes_path(ptype: '_pdnote')
     end
+  end
+
+  def check_original_input_format
+     unless /^#(.+?)#(.+?)(---){1,}(.*)$/im =~ params[:newsflash][:original_input]
+      newsflash_type = params["newsflash"]["tag_list"].include?('_newsflash') ? '_newsflash' : '_pdnote'
+      flash[:error] = "内容格式不正确"
+      if @newsflash.new_record?
+        redirect_to new_admin_newsflash_path(ptype: newsflash_type, original_input: params[:newsflash][:original_input])
+      else
+        redirect_to edit_admin_newsflash_path(@newsflash, ptype: newsflash_type, original_input: params[:newsflash][:original_input])
+      end
+     end
   end
 end
