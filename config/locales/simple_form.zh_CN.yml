@@ -76,6 +76,7 @@ zh-CN:
         event_address: 活动地址
         event_starttime: 活动开始时间
         event_endtime: 活动结束时间
+        event_status: 活动状态
 
       fragment_template:
         name: 片段名称
