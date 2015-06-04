@@ -6,7 +6,7 @@ class WelcomeController < ApplicationController
     info_flow = InfoFlow.find_by_name InfoFlow::DEFAULT_INFOFLOW
     page_direction = params[:d]
     boundary_post_url_code = params[:b_url_code]
-    @posts_with_ads, @total_count, @prev_page, @next_page, @min_url_code, @max_url_code = info_flow.posts_with_ads(params[:page], page_direction, boundary_post_url_code)
+    @posts_with_ads, @total_count, @prev_page, @next_page, @min_url_code, @max_url_code = info_flow.posts_with_ads(params[:page], page_direction, boundary_post_url_code, :page)
     
     render_template
   end
