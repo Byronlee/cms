@@ -7,4 +7,4 @@ section.single-post-relate
             img[data-lazyload="#{ high_speed_url post.cover_real_url, 'feature'}" alt="#{raw post.title}"]
         .title
           h3
-            a[data-lazyload="#{ post_url(post)}" title="#{raw post.title}"] = raw post.title
+            a[href="#{ post_url(post)}" data-lazyload="#{ post_url(post)}" title="#{raw post.title}"] = raw post.title
