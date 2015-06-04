@@ -65,12 +65,11 @@ module V2
           requires :bio,      type: String,   desc: '三观'
           requires :tagline,  type: String,   desc: '自述'
         end
-        patch 'edit' do
+        post 'sso' do
           user_params = params.slice(*KEYS)
           @user = User.where(sso_id: params[:sso_id]).first
           unless @user.blank?
             @user.update_attributes user_params
-            binding.pry
             @user.errors.messages.blank? ? { date: true } : { date: false }
           else
             { date: false }

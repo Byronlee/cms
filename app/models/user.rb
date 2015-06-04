@@ -79,9 +79,10 @@ class User < ActiveRecord::Base
   end
 
   def display_name
-    return name if name.present?
     if krypton_authentication && krypton_authentication.info['name'].present?
       krypton_authentication.info['name']
+    elsif name.present?
+      name
     else
       '匿名用户'
     end
