@@ -9,7 +9,7 @@
         - cache [:show, :content, @post] do
           = render_cell :post, :header, post: @post
           = render_cell :post, :content, post: @post
-          = render_cell :ads, :position_10
+        = render_cell :ads, :position_10
         - cache [:show, @post, :manage, current_user]
           - if (@post.author == current_user || (can? :manage, Comment))
             br
@@ -40,3 +40,7 @@
         .fast-section.J_fastSection.mobile-hide
           = render 'welcome/aside'
           = render_cell :ads, :position_9
+
+javascript:
+  if(!window.mobilecheck())
+    document.write('<script src="http://krplus-cdn.b0.upaiyun.com/common-module/company-bubble/main.js">');
