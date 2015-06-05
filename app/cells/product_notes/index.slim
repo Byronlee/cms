@@ -10,11 +10,11 @@
       h4
         | How:
 
-      p = pd.news_summaries && pd.news_summaries.strip.split(/\r\n/).delete_if(&:blank?)[0].gsub(/^-/, '' )
+      p = display_pnote_summary(pd)
 
       h4
         | Think It Twice:
-      p = pd.news_summaries && pd.news_summaries.strip.split(/\r\n/).delete_if(&:blank?)[1].gsub(/^-/, '' )
+      p = display_pnote_summary(pd)
 
       .pic
         = image_tag pd.cover if pd.cover.present?

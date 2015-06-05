@@ -1,5 +1,5 @@
 class ProductNotesCell < Cell::Rails
-  helper ApplicationHelper
+  helper PnoteHelper
 
   def index(args = {})
     @pdnotes = Newsflash.tagged_with('_pdnote')
