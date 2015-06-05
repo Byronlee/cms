@@ -84,7 +84,7 @@ $(document).ready(function(){
 
         link.addClass('loading');
         $.get(url, function(list){
-            $('.J_ad-'+link.data('type')).prependTo(newWrapper);
+            $('.pre-load-ads .J_channelAd').clone().prependTo(newWrapper);
             newWrapper.show()
                 .siblings().hide();
             link.addClass('active').removeClass('loading')

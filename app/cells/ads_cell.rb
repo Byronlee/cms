@@ -28,4 +28,8 @@ class AdsCell < Cell::Rails
   def position_10
     render
   end
+
+  def sponsors
+    render
+  end
 end

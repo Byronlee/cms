@@ -1529,8 +1529,9 @@ a:hover {
 .article-list .list-head-ad img {
   width: 100%;
   max-height: 80px;
+  display: block;
 }
-/* line 11, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
+/* line 12, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
 .article-list .articles article {
   *zoom: 1;
   padding: 20px;
@@ -1549,17 +1550,17 @@ a:hover {
   height: 0;
 }
 @media (max-width: 800px) {
-  /* line 19, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
+  /* line 20, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
   .article-list .articles article {
     margin-top: 10px;
     padding: 15px 10px;
   }
 }
-/* line 23, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
+/* line 24, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
 .article-list .articles article:hover {
   box-shadow: 0 0px 8px rgba(46, 143, 237, 0.3);
 }
-/* line 26, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
+/* line 27, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
 .article-list .articles article .pic {
   float: left;
   margin-right: 20px;
@@ -1569,25 +1570,25 @@ a:hover {
   background-size: cover;
 }
 @media (max-width: 800px) {
-  /* line 33, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
+  /* line 34, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
   .article-list .articles article .pic {
     width: 90px;
     height: 65px;
     margin-right: 10px;
   }
 }
-/* line 39, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
+/* line 40, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
 .article-list .articles article .desc {
   overflow: hidden;
 }
 @media (max-width: 800px) {
-  /* line 41, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
+  /* line 42, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
   .article-list .articles article .desc {
     position: relative;
     top: -2px;
   }
 }
-/* line 45, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
+/* line 46, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
 .article-list .articles article .desc .title {
   font-size: 18px;
   font-weight: 600;
@@ -1595,7 +1596,7 @@ a:hover {
   word-wrap: break-word;
 }
 @media (max-width: 800px) {
-  /* line 50, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
+  /* line 51, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
   .article-list .articles article .desc .title {
     font-size: 15px;
     line-height: 18px;
@@ -1607,18 +1608,18 @@ a:hover {
     text-align: left;
   }
 }
-/* line 61, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
+/* line 62, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
 .article-list .articles article .desc .author {
   margin: 15px 0 8px;
   color: #aaaaaa;
 }
 @media (max-width: 800px) {
-  /* line 63, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
+  /* line 64, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
   .article-list .articles article .desc .author {
     margin: 11px 0 0;
   }
 }
-/* line 67, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
+/* line 68, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
 .article-list .articles article .desc .author a {
   color: #3da9f7;
 }
@@ -1626,7 +1627,7 @@ a:hover {
 .article-list .articles article .desc .author a:hover {
   color: #2c79b0;
 }
-/* line 70, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
+/* line 71, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
 .article-list .articles article .desc .author .avatar {
   vertical-align: middle;
   display: inline-block;
@@ -1638,7 +1639,7 @@ a:hover {
   border-radius: 50%;
 }
 @media (max-width: 800px) {
-  /* line 79, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
+  /* line 80, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
   .article-list .articles article .desc .author .avatar {
     width: 20px;
     height: 20px;
@@ -1647,7 +1648,7 @@ a:hover {
     margin-right: 3px;
   }
 }
-/* line 88, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
+/* line 89, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
 .article-list .articles article .desc .brief {
   color: #666666;
 }
@@ -1658,6 +1659,11 @@ a:hover {
   }
 }
 /* line 95, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
+.article-list .articles article.ad-wrapper .title {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+/* line 103, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
 .article-list .load-more {
   border-radius: 2px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -1671,32 +1677,32 @@ a:hover {
   color: #6483a2;
 }
 @media (max-width: 800px) {
-  /* line 106, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
+  /* line 114, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
   .article-list .load-more {
     margin-top: 10px;
   }
 }
-/* line 109, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
+/* line 117, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
 .article-list .load-more:before {
   content: '加载更多';
   display: inline-block;
 }
-/* line 113, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
+/* line 121, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
 .article-list .load-more:hover {
   background: #bccbd9;
 }
-/* line 116, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
+/* line 124, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
 .article-list .load-more.loading,
 .article-list .load-more.loading:hover {
   background: #ffffff;
   cursor: default;
 }
-/* line 120, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
+/* line 128, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
 .article-list .load-more.loading:before,
 .article-list .load-more.loading:hover:before {
   content: "正在加载...";
 }
-/* line 123, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
+/* line 131, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
 .article-list .load-more.loading:after,
 .article-list .load-more.loading:hover:after {
   content: " ";
@@ -1708,14 +1714,14 @@ a:hover {
   vertical-align: middle;
   margin-left: 10px;
 }
-/* line 134, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
+/* line 142, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
 .article-list .load-more.no-data,
 .article-list .load-more.no-data:hover {
   cursor: not-allowed;
   color: #aaaaaa;
   background: #f4f4f4;
 }
-/* line 139, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
+/* line 147, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/article-list.less */
 .article-list .load-more.no-data:before,
 .article-list .load-more.no-data:hover:before {
   content: "没有更多数据了";

@@ -34,6 +34,7 @@
       - cache [:show, :aside, @post.author, :cache_key_v1] do
         = render_cell :post, :author, author: @post.author
       = render_cell :ads, :position_7
+      = render_cell :ads, :sponsors
       = render_cell :post, :hot
       = render_cell :ads, :position_8
       .index-side
