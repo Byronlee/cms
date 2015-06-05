@@ -9,7 +9,7 @@
          - if current_user.role.admin?
            form.form-inline.user_search
              button.btn.btn-primary.pull-right type="submit" 确定
-             = select("s", "role", User.role.options, {}, {class: 'input-small'})
+             = select("s", "role", User.role.options, {}, {class: 'input-small', style: 'padding: 0;' })
              input.input-small.hidden#s_id name='s[id]' type="text" placeholder="输入ID"
              input.input-small.hidden#s_name name='s[name]' type="text" placeholder="输入name"
              input.input-small.hidden#s_phone name='s[phone]' type="text" placeholder="输入phone"
