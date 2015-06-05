@@ -33,6 +33,7 @@ class ::V1::Base < Grape::API
       || options[:for] == V1::Controllers::UC \
       || options[:for] == V1::Controllers::Weibo \
       || options[:for] == V1::Controllers::Search \
+      || options[:for] == V1::Controllers::Columns \
       || options[:for] == V1::Controllers::Posts
   end
 
@@ -43,6 +44,7 @@ class ::V1::Base < Grape::API
   mount ::V1::Controllers::Search
   mount ::V1::Controllers::UC
   mount ::V1::Controllers::Weibo
+  mount ::V1::Controllers::Columns
 
   add_swagger_documentation(
     api_version: 'v1', mount_path: 'doc',
