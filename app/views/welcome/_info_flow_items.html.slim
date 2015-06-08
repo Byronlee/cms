@@ -16,7 +16,7 @@
               = smart_time_ago Time.parse(item["published_at"]) if item["published_at"].present?
           .brief
             = raw(item["summary"])
-    - elsif item["position"] != nil
+    - elsif item["position"] != nil && item["content"].present?
       article class="ad-wrapper"
         = raw item["content"] if !check_mobile
 

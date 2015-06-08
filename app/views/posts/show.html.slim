@@ -9,17 +9,16 @@
         - cache [:show, :content, @post] do
           = render_cell :post, :header, post: @post
           = render_cell :post, :content, post: @post
-        = render_cell :ads, :position_10
+        section.ad
+          = render_cell :ads, :position_10
         - cache [:show, @post, :manage, current_user]
           - if (@post.author == current_user || (can? :manage, Comment))
-            br
-            hr style="border: 1px solid #eee;"
-            br
-            = link_to "编辑文章", Settings.writer_edit_path.call(@post)
-            span &nbsp;|&nbsp;
-            = link_to "编辑发布选项", edit_admin_post_path(@post)
-            span &nbsp;|&nbsp;
-            = link_to "管理评论", admin_post_comments_path(@post)
+            div.post-operate style="border-top: solid 1px #f4f4f4; margin-top: 25px; padding-top: 25px;"
+              = link_to "编辑文章", Settings.writer_edit_path.call(@post)
+              span &nbsp;|&nbsp;
+              = link_to "编辑发布选项", edit_admin_post_path(@post)
+              span &nbsp;|&nbsp;
+              = link_to "管理评论", admin_post_comments_path(@post)
         = render_cell :post, :share, post:  @post, user: current_user
       - cache [:show, :author, @post.author, @post] do
         = render_cell :post, :mobile_author, author: @post.author
