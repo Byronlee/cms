@@ -15,6 +15,7 @@ settings.kr_earch_server = {
   development_url: 'http://rong.dev.36kr.com/news/receiver/v1',
   production_url: 'http://rong.dev.36kr.com/news/receiver/v1'
 }
+
 settings.api = {
   expires_in: 15.minutes,
   v1: {
@@ -29,10 +30,8 @@ settings.api = {
 
 settings.oauth = {
   krypton: {
-    # app_id: '5b4d197b305ed7740e8f898505cd7c83f3fc85b21282d101b75eea772be92d62',
-    # secret: '31164e33cfba6d1fbef18e91728c592f455864967a8673b1f368b443d01a956c',
-#   host: 'https://auth.36kr.com',
-    host: 'https://passport.36kr.com',
+    host: 'https://auth.36kr.com',
+    #host: 'https://passport.36kr.com',
     app_id: '9767d4838b9664ca33a1630f6a7889d8b78a1dfd0bcf4b257a3c95122bf9ceaa',
     secret: 'e0df3c21ee500eaf85687357290f6c61878559f22eb0ce24c4ba3219c2666c07',
     cookie: {

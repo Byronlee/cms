@@ -24,7 +24,7 @@ module V2
           @user = User.where.not(sso_id: nil).order('created_at desc').page(params[:page]).per(params[:per_page])
           names= []
            @user.each do |user|
-            names << { sso_id: user.sso_id, fix_name: user.name }
+            names << { sso_id: user.sso_id, fix_name: user.name } #, token: user.krypton_authentication.raw[:credentials][:token] }
            end
            names
         end

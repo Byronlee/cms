@@ -52,6 +52,19 @@ class Krypton::Passport
       end
     end
 
+    def update(id, params = {})
+      Hashie::Mash.new access_token.put("/api/v1/users/#{id}", params: params).parsed
+    rescue OAuth2::Error => e
+      case e.response.status
+      when 404
+        return nil
+      when 422
+        return nil # 修改字段格式校验失败
+      else
+        raise e
+      end
+    end
+
     def client
       @client ||= OAuth2::Client.new(Settings.oauth.krypton.app_id, Settings.oauth.krypton.secret,
         site: Settings.oauth.krypton.host)
