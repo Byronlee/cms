@@ -36,7 +36,7 @@ class Admin::UsersController < Admin::BaseController
     else
       domain = {}
     end
-    other = params.require(:user).permit(:name, :email, :phone, :tagline)
+    other = params.require(:user).permit(:tagline)
     other.merge(role).merge(domain)
   end
 

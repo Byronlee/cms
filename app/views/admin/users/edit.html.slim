@@ -17,9 +17,9 @@
           = f.label :role
           div.controls
             = f.select :role, User.role.options
-      = f.input :name, input_html: {value: @user.display_name, class: 'col-lg-12' }
-      = f.input :email, input_html: {class: 'col-lg-12'}
-      = f.input :phone, input_html: {class: 'col-lg-12'}
+      = f.input :name, disabled: true, input_html: {value: @user.display_name, class: 'col-lg-12' }
+      = f.input :email, disabled: true, input_html: {class: 'col-lg-12'}
+      = f.input :phone, disabled: true, input_html: {class: 'col-lg-12'}
       = f.input :tagline, input_html: {class: 'col-lg-12'}
       div#user_domain_input style="display: #{ current_user.role.admin? ? 'block' : 'none' } "
         = f.input :domain, input_html: {class: 'col-lg-12'}
