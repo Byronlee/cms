@@ -3,6 +3,7 @@ require 'sidekiq/web'
 # TODO路由测试
 
 Rails.application.routes.draw do
+  
   mount API::API => '/'
   mount GrapeSwaggerRails::Engine => '/api/a14f30b8405857de59e098af4d1d07bda752a2dc'
 
@@ -82,6 +83,9 @@ Rails.application.routes.draw do
         delete :destroy_ad
       end
     end
+
+    get 'tools/redis'
+    post 'tools/redis_refresh'
   end
 
   namespace :components do

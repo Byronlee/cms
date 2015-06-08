@@ -1,0 +1,11 @@
+= render 'welcome/title', title: "Redis缓存管理"
+
+.col_main
+  .main_hd
+    h2 Redis缓存管理
+
+    .toolbar.border_bottom.clearfix
+
+    
+    div style="margin-top: 30px;"
+    = link_to raw("<i class='fa fa-refresh'></i>&nbsp;&nbsp;刷新 Redis 缓存"), admin_tools_redis_refresh_path, method: :post, class:"btn btn-primary"
