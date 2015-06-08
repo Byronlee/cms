@@ -15,6 +15,20 @@ module V2
           present users[0], with: Entities::User
         end
 
+        desc 'Get user name list'
+        params do
+          optional :page,  type: Integer, default: 1, desc: '页数'
+          optional :per_page,  type: Integer, default: 30, desc: '每页记录数'
+        end
+        post 'fixname' do
+          @user = User.where.not(sso_id: nil).order('created_at desc').page(params[:page]).per(params[:per_page])
+          names= []
+           @user.each do |user|
+            names << { sso_id: user.sso_id, fix_name: user.name }
+           end
+           names
+        end
+
         desc 'Get user detail'
         get ':id' do
           @user = User.where(id: params[:id]).first
