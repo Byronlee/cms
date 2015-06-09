@@ -9,7 +9,7 @@ namespace :iaas do
     Deploy::Iaas.apply_policy('pek2', 'lb-ym7veism')
   end
   task :online_lbp => :environment do
-    Deploy::Iaas.web_lbp('pek2', 'lbb-pm71b6jb', '', '8093', '1')
+    Deploy::Iaas.web_lbp('pek2', 'lbb-pm71b6jb', '', '8093', '5')
     #Deploy::Iaas.web_lbp('pek2', 'lbb-olx8pelq', '', '8098', '5')
     Deploy::Iaas.apply_policy('pek2', 'lb-ym7veism')
   end
