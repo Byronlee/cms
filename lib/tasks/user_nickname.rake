@@ -1,7 +1,7 @@
 namespace :users do
   desc '邀请经典站回迁用户使用36Kr通行证归位'
   task fix_sso_nickname: :environment do
-    users = User.where.not(sso_id: nil).order('created_at desc')
+    users = User.where.not(sso_id: nil).order('created_at desc').where(role: 'editor')
     total_count = users.count
     puts "共需修改 #{total_count} 位用户的 Nickname"
     succesed = failed = 0
