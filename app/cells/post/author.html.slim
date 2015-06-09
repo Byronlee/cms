@@ -11,4 +11,4 @@
       span.badge
         = @user.role_text
       .brief
-        = @user.tagline || "36氪，关注互联网创业"
+        = @user.tagline.presence || t('site.name').gsub('|', ',')
