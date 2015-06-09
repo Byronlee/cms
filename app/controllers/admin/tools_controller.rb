@@ -8,6 +8,7 @@ class Admin::ToolsController < Admin::BaseController
   	ColumnsHeaderComponentWorker.new.perform
   	HeadLinesComponentWorker.new.perform
   	InfoFlowsComponentWorker.new.perform("主站")
+  	HotPostsComponentWorker.new.perform
 
   	redirect_to :back, notice: 'Redis缓存更新成功'
   end
