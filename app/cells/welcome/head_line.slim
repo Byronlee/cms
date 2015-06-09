@@ -16,7 +16,7 @@
     .block.next
       a#headline_three[href="http://next.36kr.com/posts?utm_source=36kr.com" target="_blank"]
     - head_line_four = @head_lines[3] || {}
-    .block.article class="badge-#{head_line_third["section"]}"
+    .block.article class="badge-#{head_line_four["section"]}"
       a#headline_four[href=head_line_four["url"] data-lazyload="#{high_speed_url(head_line_four["image"], 'feature')}" target="_blank"]
         span = head_line_four["title"]
     #headline_five
