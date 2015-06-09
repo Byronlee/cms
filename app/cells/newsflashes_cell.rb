@@ -3,7 +3,7 @@ class NewsflashesCell < Cell::Rails
 
   def index(args = {})
     @newsflashes = Newsflash.tagged_with('_newsflash')
-
+    # TODO 重构
     b_normal_newsflash = Newsflash.find(params[:b_normal_id]) if args[:b_normal_id]
     b_top_newsflash = Newsflash.find(params[:b_top_id]) if args[:b_top_id]
     if b_normal_newsflash && args[:d] == 'next'

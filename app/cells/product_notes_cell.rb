@@ -3,7 +3,7 @@ class ProductNotesCell < Cell::Rails
 
   def index(args = {})
     @pdnotes = Newsflash.tagged_with('_pdnote')
-
+    # TODO 重构
     b_pdnote = Newsflash.find(params[:b_id]) if args[:b_id]
     if b_pdnote && args[:d] == 'next'
       @pdnotes = @pdnotes.where("newsflashes.created_at < ?", b_pdnote.created_at)
