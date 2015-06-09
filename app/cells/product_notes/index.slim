@@ -10,11 +10,11 @@
       h4
         | How:
 
-      p = display_pnote_summary(pd)
+      p = display_pnote_summary(pd, :first)
 
       h4
         | Think It Twice:
-      p = display_pnote_summary(pd)
+      p = display_pnote_summary(pd, :last)
 
       .pic
         = image_tag pd.cover if pd.cover.present?
