@@ -881,7 +881,7 @@ a:hover {
   height: 100%;
   -webkit-transition: all 0.4s ease;
           transition: all 0.4s ease;
-  background: rgba(0, 0, 0, 0.3) asset-url('icon-bofang.png') no-repeat center center;
+  background: rgba(0, 0, 0, 0.3) font-url('icon-bofang.png') no-repeat center center;
   background-size: 40px;
   z-index: 10;
   opacity: 0.8;
@@ -1156,23 +1156,31 @@ a:hover {
   background: #7c91c2;
   padding: 0px 10px;
 }
-/* line 237, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+@media (max-width: 800px) {
+  /* line 234, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  .ad-wrapper:before {
+    padding: 0px 6px;
+    font-size: 10px;
+    line-height: 1.6;
+  }
+}
+/* line 242, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
 .radius-box {
   border-radius: 2px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 @media (max-width: 800px) {
-  /* line 247, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 252, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
   .mobile-hide {
     display: none !important;
   }
 }
-/* line 251, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 256, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
 .mobile-show {
   display: none;
 }
 @media (max-width: 800px) {
-  /* line 253, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 258, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
   .mobile-show {
     display: block;
   }
@@ -1183,7 +1191,7 @@ a:hover {
   *zoom: 1;
 }
 @media (max-width: 800px) {
-  /* line 247, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 252, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
   .fast-section .tabs {
     display: none !important;
   }
@@ -1482,7 +1490,7 @@ a:hover {
   *zoom: 1;
 }
 @media (max-width: 800px) {
-  /* line 253, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 258, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
   .mobile-nav {
     display: block;
   }
@@ -1653,7 +1661,7 @@ a:hover {
   color: #666666;
 }
 @media (max-width: 800px) {
-  /* line 247, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 252, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
   .article-list .articles article .desc .brief {
     display: none !important;
   }
@@ -2368,23 +2376,31 @@ a:hover {
   background: #7c91c2;
   padding: 0px 10px;
 }
-/* line 237, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+@media (max-width: 800px) {
+  /* line 234, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  .ad-wrapper:before {
+    padding: 0px 6px;
+    font-size: 10px;
+    line-height: 1.6;
+  }
+}
+/* line 242, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
 .radius-box {
   border-radius: 2px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 @media (max-width: 800px) {
-  /* line 247, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 252, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
   .mobile-hide {
     display: none !important;
   }
 }
-/* line 251, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 256, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
 .mobile-show {
   display: none;
 }
 @media (max-width: 800px) {
-  /* line 253, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 258, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
   .mobile-show {
     display: block;
   }
@@ -2413,7 +2429,7 @@ body {
   margin-left: 590px;
 }
 @media (max-width: 800px) {
-  /* line 247, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 252, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
   .fixed-tools {
     display: none !important;
   }
@@ -2612,7 +2628,7 @@ footer.common-footer .sections section.partner-section h3 {
   margin-bottom: 35px;
 }
 @media (max-width: 800px) {
-  /* line 247, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 252, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
   footer.common-footer .sections section.partner-section {
     display: none !important;
   }
@@ -2653,7 +2669,7 @@ footer.common-footer .sections section.qr-section {
   left: 10px;
 }
 @media (max-width: 800px) {
-  /* line 247, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 252, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
   footer.common-footer .sections section.qr-section {
     display: none !important;
   }
@@ -2695,7 +2711,7 @@ footer.common-footer .bottom .share {
   top: 0;
 }
 @media (max-width: 800px) {
-  /* line 247, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 252, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
   footer.common-footer .bottom .share {
     display: none !important;
   }

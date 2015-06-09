@@ -91,6 +91,7 @@ $(document).ready(function(){
                 .siblings().removeClass('active');
             newWrapper.append(list);
             bindLoadMore(newWrapper);
+            $(window).trigger('scroll');
             
         }, 'html');
     });

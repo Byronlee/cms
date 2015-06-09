@@ -5,7 +5,8 @@ class AdsCell < Cell::Rails
     render
   end
 
-  def position_2
+  def position_2(args)
+    @head_line = args[:head_line] || {}
     render
   end
 
