@@ -41,17 +41,18 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def simple_search
+    # TODO 重构
     @type = params[:s][:type]
     if @type.eql?('id')
       @type_value = params[:s][:id]
-      User.where(id: @type_value) 
+      User.where(id: @type_value)
     elsif @type.eql?('sso_id')
       @type_value = params[:s][:sso_id]
       User.where(sso_id: @type_value)
     else
       @type_value = params[:s][@type.to_sym]
       User.where("#{@type} like '%#{@type_value}%'")
-    end      
+    end
   end
 
   def can_search?
