@@ -54,6 +54,7 @@ h2
             success: function (data) {
               $('.single-post-comment__comments').prepend(data);
               $('.comment_total_count').text($(".comments_total_count").data('total-count') || 0);
+              $('.comment_form_count').text($(".comments_total_count").data('total-count') || 0);
               $('#error_msg').text($(".comments_total_count").data('message'));
               if($(".comments_total_count").data('message') == ''){
                 frm[0].reset();
