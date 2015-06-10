@@ -881,7 +881,7 @@ a:hover {
   height: 100%;
   -webkit-transition: all 0.4s ease;
           transition: all 0.4s ease;
-  background: rgba(0, 0, 0, 0.3) font-url('icon-bofang.png') no-repeat center center;
+  background: rgba(0, 0, 0, 0.3) asset-url('icon-bofang.png') no-repeat center center;
   background-size: 40px;
   z-index: 10;
   opacity: 0.8;
@@ -1285,8 +1285,6 @@ a:hover {
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: left;
-  -webkit-transition: all 0.2s ease;
-          transition: all 0.2s ease;
 }
 /* line 79, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/fast-section.less */
 .fast-section .list .panel > section .desc a {
