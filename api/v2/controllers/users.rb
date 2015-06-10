@@ -29,12 +29,21 @@ module V2
            names
         end
 
-        desc 'Get user detail'
+        desc 'Get user detail for id'
         get ':id' do
-          @user = User.where(sso_id: params[:id]).first
+          @user = User.where(id: params[:id]).first
           not_found! if @user.blank?
           #cache(key: "api:v2:users:#{params[:id]}", etag: @user.updated_at, expires_in: Settings.api.expires_in) do
             present @user, with: Entities::User
+          #end
+        end
+
+        desc 'Get user detail for sso_id'
+        get 'sso/:id' do
+          @user = User.where(sso_id: params[:id]).first
+          not_found! if @user.blank?
+          #cache(key: "api:v2:users:#{params[:id]}", etag: @user.updated_at, expires_in: Settings.api.expires_in) do
+            present @user, with: Entities::UserDetail
           #end
         end
 
