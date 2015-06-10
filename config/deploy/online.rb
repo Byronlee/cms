@@ -9,8 +9,8 @@ set :rbenv_roles, :all
 server 'www-data@119.254.100.96', roles: %w[web app db], port: 52221, primary: true #, sidekiq: true, whenever: true
 server 'www-data@119.254.100.96', roles: %w{web app}, port: 52222
 server 'www-data@119.254.100.96', roles: %w{web app}, port: 52223
-server 'www-data@119.254.100.96', roles: %w{web app}, port: 52227
-#server 'www-data@119.254.100.96', roles: %w{web app}, port: 52228
+#server 'www-data@119.254.100.96', roles: %w{web app}, port: 52227
+server 'www-data@119.254.100.96', roles: %w{web app}, port: 52228
 
 namespace :deploy do
   after "deploy:finished", "deploy:online_lbp"
