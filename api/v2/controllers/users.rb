@@ -57,7 +57,7 @@ module V2
           @users = User.where(role: roles).includes(:krypton_authentication)
           .order('created_at desc').page(params[:page]).per(params[:per_page])
           #cache(key: "api:v2:users:editor", etag: Time.now, expires_in: Settings.api.expires_in) do
-            present @users, with: Entities::User
+            present @users, with: Entities::UserDetail
           #end
         end
 
