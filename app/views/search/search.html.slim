@@ -7,11 +7,11 @@
     .result-list.J_resultListWrap
       .result-info
         .keyword
-          em.highlight '#{params[:q]}'
+          em.highlight '#{truncate(params[:q])}'
           | 搜索结果
         .count
           |结果数：
-          em.highlight = @posts.total_count
+          em.highlight = @posts.present? ? @posts.total_count : 0
 
       .article-list
         .articles.J_articleList

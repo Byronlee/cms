@@ -28,5 +28,24 @@ describe SearchController do
       before { get :search, q: 'oo-xx' }
       it { should respond_with(:success) }
     end
+
+    context 'query to long' do
+      before { get :search, q: 'A' * 31 }
+      it do  
+        should respond_with(:success) 
+        expect(assigns[:posts].present?).to eq false
+        expect(assigns[:message]).to eq '搜索关键词过长'
+      end
+    end
+
+    context 'query to long' do
+      before { get :search, q: '' }
+      it do  
+        should respond_with(:success) 
+        expect(assigns[:posts].present?).to eq false
+        expect(assigns[:message]).to eq '搜索关键词不能为空'
+      end
+    end
+
   end
 end

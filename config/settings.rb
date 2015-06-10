@@ -9,11 +9,17 @@ settings.redis_servers = {
   session: 'redis://127.0.0.1:6379/2'
 }
 
-settings.elasticsearch_server = 'http://127.0.0.1:9200'
+settings.elasticsearch = {
+  server: 'http://127.0.0.1:9200',
+  query:{
+    max_length: 30
+  }
+}
 
 settings.kr_earch_server = {
   development_url: 'http://rong.dev.36kr.com/news/receiver/v1',
-  production_url: 'http://rong.dev.36kr.com/news/receiver/v1'
+  production_url: 'http://rong.dev.36kr.com/news/receiver/v1',
+  test_url: 'http://rong.dev.36kr.com/news/receiver/v1'
 }
 
 settings.api = {
