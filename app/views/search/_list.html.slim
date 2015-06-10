@@ -1,4 +1,4 @@
-- if @posts.count > 0
+- if @posts.present?
   - @posts.each_with_hit do |post, hit|
     article
       a.pic[data-fit-mobile="true" class="badge-#{post.column.try(:slug)}" href="#{post_url(post, utm_source: utm_source ||= nil)}" data-lazyload="#{high_speed_url post.cover_real_url, 'feature'}"]
@@ -18,5 +18,8 @@
 
   = link_to '', search_path(q: params[:q], d: 'next', b_url_code: @posts.results.last.url_code, format: :html), class: 'load-more J_listLoadMore', id: 'search_next_link'
 
+- elsif @message.present?
+  p.search_none_info
+     = @message
 - else
   = link_to '', "javascript:void(0)", class: 'load-more J_listLoadMore no-data'

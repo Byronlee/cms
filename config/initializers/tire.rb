@@ -1,6 +1,6 @@
 Tire::Model::Search.index_prefix "krypton_#{Rails.env.to_s.downcase}"
 Tire.configure do
-  url Settings.elasticsearch_server
+  url Settings.elasticsearch.server
 end
 
 module Tire
