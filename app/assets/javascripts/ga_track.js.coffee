@@ -38,9 +38,6 @@ jQuery ->
   #注销点击
   $('.J_logout').click                   -> ga('send', 'event', 'link', 'logout#top_nav',                   ga_user_id)
 
-  #专栏导航点击
-  $('.categories a').click               -> ga('send', 'event', 'link', 'nav#categories',                   ga_user_id)
-
   #客户端下载
   $('.app-download').hover       -> ga('send', 'event', 'link', 'app_download#top_nav',             ga_user_id)
   $('.app_download_footer').click        -> ga('send', 'event', 'link', 'app_download#footer',              ga_user_id)
