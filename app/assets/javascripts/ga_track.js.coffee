@@ -11,6 +11,8 @@ jQuery ->
   $('#headline_four').click              -> ga('send', 'event', 'link', 'headline#four',                    ga_user_id)
   $('#headline_five').click              -> ga('send', 'event', 'link', 'headline#five',                    ga_user_id)
 
+  #专栏导航点击
+
   #登录点击
   $('.J_login').click                    -> ga('send', 'event', 'link', 'login#top_nav',                    ga_user_id)
   $('.login_before_comment').click       -> ga('send', 'event', 'link', 'login#comment',                    ga_user_id)
