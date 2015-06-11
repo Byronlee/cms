@@ -12,6 +12,7 @@ jQuery ->
   $('#headline_five').click              -> ga('send', 'event', 'link', 'headline#five',                    ga_user_id)
 
   #专栏导航点击
+  $('a[id^=column_header_]').click       -> ga 'send', 'event', 'link', $(this).attr('id').replace('header_', 'header#'), ga_user_id
 
   #登录点击
   $('.J_login').click                    -> ga('send', 'event', 'link', 'login#top_nav',                    ga_user_id)
