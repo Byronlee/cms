@@ -123,12 +123,12 @@ class Deploy::Iaas
               short: true
             },
             {
-              title: "请求 Log 样例",
+              title: "Log",
               value: "#{params[5]}",
               short: false
             }
           ],
-          color: "#{params[6]}"#F35A00
+          color: "#{params[6]}"
       }]
       }.to_json
     end
