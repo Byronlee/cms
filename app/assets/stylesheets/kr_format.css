@@ -109,3 +109,13 @@
 .article b {
   font-weight: 600;
 }
+/* line 80, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/format.less */
+.article iframe {
+  width: 100%;
+}
+@media (max-width: 800px) {
+  /* line 82, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/format.less */
+  .article iframe {
+    height: 300px;
+  }
+}
