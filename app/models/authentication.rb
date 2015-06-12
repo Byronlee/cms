@@ -28,6 +28,19 @@ class Authentication < ActiveRecord::Base
     raw[:extra][:version]
   end
 
+  def self.from_access_token(access_token)
+    strategy = OmniAuth::Strategies::Krypton.new Rails.application, Devise.omniauth_configs[:krypton].strategy
+    strategy.access_token = OAuth2::AccessToken.new strategy.client, access_token
+    strategy
+
+    return nil if (strategy.auth_hash.blank? || strategy.uid.nil? rescue Exception && true)
+
+    exists = Authentication.find_by_provider_and_uid(:krypton, strategy.uid.to_s)
+    return exists if exists
+
+    return Authentication.new omniauth: strategy.auth_hash
+  end
+
   private
 
   def auth_client
