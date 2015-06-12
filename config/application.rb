@@ -23,7 +23,7 @@ module Kr
     end
 
     config.cache_store = :redis_store, Settings.redis_servers.cache, {
-      namespace: "_krypton-cache-#{Rails.env}", expires_in: 1.hours
+      namespace: "_krypton-cache-#{Rails.env}"
     }
 
     config.time_zone = 'Beijing'
