@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   end
 
   def hire
-    @jobs, @pages = Rails.cache.fetch(:page_hire_, expires_in: 1.hour) do
+    @jobs, @pages = Rails.cache.fetch(:page_hire_, expires_in: 12.hour) do
       jobs, pages = [], []
       Rails.logger.info "reloading hire page text"
       Dir.glob("#{Rails.root}/public/hires/proceed/*").map do |file|
