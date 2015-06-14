@@ -61,7 +61,8 @@ module V2
     end
 
     def init_and_exchange_token
-      sso_user = Krypton::Passport.new(params[:sso_token]).me
+      sso_token = params[:sso_token]
+      sso_user = Krypton::Passport.new(sso_token).me
       unless sso_user.is_a? TrueClass or sso_user.is_a? FalseClass
         # 新站有用户的情况
         current_user =  User.find_by_sso_id(sso_user['id']) || User.find_by_origin_ids(sso_user['id'])
@@ -74,6 +75,7 @@ module V2
              u.avatar_url = sso_user.avatar
              u.password = 'VEX60gCF'
            end
+           Authentication.from_access_token(sso_token) if current_user.krypton_authentication.blank?
          end
       else # sso sso_token 无效或者没有用户的情况
         current_user = User.new
