@@ -24,7 +24,7 @@ describe Admin::UsersController do
       login_admin_user
       let(:user) { create :user, domain: 'domain' }
       it "returns http success" do
-        patch :update, id: user.id, user: { domain: 'new_domain'}
+        patch :update, id: user.id, user: { domain: 'new_domain' }
         expect(assigns[:user].domain).to eq 'new_domain'
         expect(response.status).to eq 302
       end
@@ -34,7 +34,7 @@ describe Admin::UsersController do
       login_user(:reader)
 
       it do
-        patch :update, id: session_user.id, user: {role: 'admin', email: 'lby@gma.com'}
+        patch :update, id: session_user.id, user: { role: 'admin', email: 'lby@gma.com' }
         expect(session_user.reload.role).to eq 'reader'
         expect(response.status).to eq 302
       end
@@ -43,14 +43,15 @@ describe Admin::UsersController do
     context 'admin can edit the role' do
       let(:user) { create :user, :reader }
       it do
-        patch :update, id: user.id, user: {role: 'admin', email: 'lb@gma.com'}
+        patch :update, id: user.id, user: { role: 'admin', email: 'lb@gma.com' }
         expect(user.reload.role).to eq 'admin'
+      end
     end
 
     context "none admin cannot edit user domain" do
       login_user :editor, domain: 'domain'
       it "returns http success" do
-        patch :update, id: session_user.id, user: { domain: 'new_domain'}
+        patch :update, id: session_user.id, user: { domain: 'new_domain' }
         expect(assigns[:user].domain).to eq 'domain'
         expect(response.status).to eq 302
       end
