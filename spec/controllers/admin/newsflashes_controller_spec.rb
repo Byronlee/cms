@@ -6,9 +6,18 @@ describe Admin::NewsflashesController do
   describe "GET 'index'" do
     before { create :newsflash }
     it "returns http success" do
-      get 'index'
-      expect(assigns(:newsflashes)).to eq [Newsflash.first]
+      @newsflash = build :newsflash
+      @newsflash.tag_list = '_newsflash'
+      @newsflash.save
+      get 'index', ptype: '_newsflash'
+      expect(assigns(:newsflashes)).to eq [Newsflash.tagged_with('_newsflash').first]
       response.should be_success
+    end
+
+    it "if ptype note included in params should return back" do
+      request.env["HTTP_REFERER"] = admin_newsflashes_path
+      get 'index'
+      expect(response).to redirect_to(admin_newsflashes_path)
     end
   end
 
@@ -16,7 +25,7 @@ describe Admin::NewsflashesController do
     let(:newsflash) { create :newsflash }
 
     it "returns http success" do
-      patch :update, id: newsflash.id, newsflash: attributes_for(:newsflash)
+      patch :update, id: newsflash.id, newsflash: attributes_for(:newsflash).merge(tag_list: '_newsflash')
       expect(response.status).to eq 302
     end
   end
@@ -24,8 +33,8 @@ describe Admin::NewsflashesController do
   describe "post 'create'" do
     it "returns http success" do
       expect do
-        post :create, newsflash: attributes_for(:newsflash)
-      end.to change(Newsflash, :count).by(1)
+        post :create, newsflash: attributes_for(:newsflash).merge(tag_list: '_newsflash')
+      end.to change(Newsflash, :count).by(0)
     end
   end
 
@@ -42,7 +51,7 @@ describe Admin::NewsflashesController do
   end
 
   describe "PATCH 'set_top'" do
-    let!(:newsflash){ create :newsflash }
+    let!(:newsflash) { create :newsflash }
 
     it "returns http success" do
       request.env["HTTP_REFERER"] = admin_newsflashes_path
@@ -54,7 +63,7 @@ describe Admin::NewsflashesController do
   end
 
   describe "PATCH 'set_top'" do
-    let!(:newsflash){ create :newsflash }
+    let!(:newsflash) { create :newsflash }
 
     it "returns http success" do
       request.env["HTTP_REFERER"] = admin_newsflashes_path

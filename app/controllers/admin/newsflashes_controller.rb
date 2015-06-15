@@ -40,19 +40,18 @@ class Admin::NewsflashesController < Admin::BaseController
   end
 
   private
+
   def newsflash_params
     params.require(:newsflash).permit(:original_input, :tag_list, :newsflash_topic_color_id, :cover)
   end
 
   def target_url
-    if params[:newsflash][:tag_list].include? '_newsflash'
-      admin_newsflashes_path(ptype: '_newsflash')
-    else
-      admin_newsflashes_path(ptype: '_pdnote')
-    end
+    ptype = (params[:newsflash][:tag_list].include? '_newsflash') ? '_newsflash' : '_pdnote'
+    admin_newsflashes_path(ptype: ptype)
   end
 
   def check_original_input_format
+    # TODO 这个验证应该放到Model层去
      unless /^#(.+?)#(.+?)(---){1,}(.*)$/im =~ params[:newsflash][:original_input]
       newsflash_type = params["newsflash"]["tag_list"].include?('_newsflash') ? '_newsflash' : '_pdnote'
       flash[:error] = "内容格式不正确"

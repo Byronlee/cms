@@ -48,7 +48,8 @@ class Ability
   end
 
   # 读者
-  def reader(user)
+  def reader(_user)
+    cannot :read, Column
   end
 
   # 投稿者

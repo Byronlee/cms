@@ -10,11 +10,11 @@ class Asynces::CommentsController < ApplicationController
 
   def create
     @commentable = find_commentable
-    if current_user.can_comment? && params[:comment][:content].present?
-      comment = @commentable.comments.build(comment_params)
-      comment.user = current_user
+    if current_user.role.admin? || (current_user.can_comment? && params[:comment][:content].present?)
+      @comment = @commentable.comments.build(comment_params)
+      @comment.user = current_user
       current_user.update_attributes(last_comment_at: Time.now)
-      comment.save
+      @comment.save
       @comments = @commentable.comments.where("id > ?", params[:current_maxid]).order('created_at desc')
       @comments = @comments.includes(:commentable, user: [:krypton_authentication])
     else

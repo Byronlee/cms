@@ -10,7 +10,7 @@
     .info
       .author
         a[href="javascript:void(0)"]
-          span.avatar[style="background-image: url('#{newsflash.author.avatar}')"]
+          span.avatar[style="background-image: url('#{newsflash.author.try(:avatar)}')"]
           span.name
             = newsflash.author.display_name
         span.time

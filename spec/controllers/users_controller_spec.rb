@@ -32,29 +32,29 @@ describe UsersController do
   describe "GET 'cancel_favorites'" do
     login_admin_user
     context 'no favorites' do
-       let(:favorite){ create(:favorite) }
-       before { get 'cancel_favorites', url_code: favorite.post.url_code }
-       it { expect(assigns(:state)).to eq true }
+      let(:favorite) { create(:favorite) }
+      before { get 'cancel_favorites', url_code: favorite.post.url_code }
+      it { expect(assigns(:state)).to eq true }
     end
 
     context 'has favorites' do
       let(:favorite) { create :favorite, user: session_user }
       before { get 'cancel_favorites', url_code: favorite.post.url_code }
-      it {
+      it do
         expect(assigns(:state)).to be_false
-      }
+      end
     end
   end
 
   describe "GET 'posts'" do
-    let(:user){ create :user, domain: 'domain' }
+    let(:user) { create :user, domain: 'domain' }
     context 'returns http success' do
       before { get 'posts', user_domain: user.domain }
-      it {
+      it do
         expect(assigns(:user)).to eq user
         response.should be_success
         expect(response).to render_template('users/posts')
-      }
+      end
     end
   end
 end
