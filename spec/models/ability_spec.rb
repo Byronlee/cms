@@ -18,7 +18,7 @@ describe Ability do
       should be_able_to :read, :welcome
       should be_able_to :read, Ad
       should be_able_to :read, Post
-      should be_able_to :read, Column
+      # should be_able_to :read, Column
       should be_able_to :read, Page
       should be_able_to :read, Newsflash
       should be_able_to :read, User
