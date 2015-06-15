@@ -28,6 +28,7 @@ class Admin::UsersController < Admin::BaseController
   private
 
   def user_params
+    # TODO 重构
     return {} unless params[:user]
     role = current_user.role.admin? ? params.require(:user).permit(:role) : {}
     if current_user.role.admin?
@@ -41,18 +42,9 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def simple_search
-    # TODO 重构
-    @type = params[:s][:type]
-    if @type.eql?('id')
-      @type_value = params[:s][:id]
-      User.where(id: @type_value)
-    elsif @type.eql?('sso_id')
-      @type_value = params[:s][:sso_id]
-      User.where(sso_id: @type_value)
-    else
-      @type_value = params[:s][@type.to_sym]
-      User.where("#{@type} like '%#{@type_value}%'")
-    end
+    return User.where(id: params[:s][:id]) if params[:s][:type].eql?('id')
+    return User.where(sso_id: params[:s][:sso_id]) if params[:s][:type].eql?('sso_id')
+    User.where("#{params[:s][:type]} like '%#{params[:s][params[:s][:type].to_sym]}%'")
   end
 
   def can_search?

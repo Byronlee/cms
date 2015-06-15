@@ -15,7 +15,7 @@
              input.input-small.hidden#s_phone name='s[phone]' type="text" placeholder="输入phone"
              input.input-small.hidden#s_email name='s[email]' type="text" placeholder="输入email"
              input.input-small.hidden#s_sso_id name='s[sso_id]' type="text" placeholder="输入sso id"
-             = select("s", "type", options_for_select(Settings.user_search_support, @type ), {}, {style: 'padding:0;'})
+             = select("s", "type", options_for_select(Settings.user_search_support, params[:s][:type] ), {}, {style: 'padding:0;'})
   table class="table"
     thead
       tr role="row"
