@@ -691,7 +691,7 @@ settings.footer_body = <<-HTML
               <li><a href="http://www.aliyun.com/?from=36kr" class="external" target="_blank"><img src="http://a.36krcnd.com/nil_class/20564a40-569b-4152-9cd9-8d5bd5ca9a4f/aly.png" height="16px"></a></li>
               <li><a href="http://qcloud.com/?from=36kr" class="external" target="_blank"><img src="http://a.36krcnd.com/nil_class/b18b965b-65c2-4459-a378-ceeeae135f25/txy.png" alt="" height="21px" style="margin-top:-8px"></a></li>
               <li><a href="http://qingcloud.com/?from=36kr" class="external" target="_blank"><img src="http://a.36krcnd.com/nil_class/4cf18275-e58e-4f6d-9b26-21e34ec71c7f/qy.png" alt="" height="21px" style="margin-top:-8px"></a></li>
-              <li><a href="http://yunpian.cn/?ref=36krx2015" class="external" target="_blank"><img src="http://a.36krcnd.com/nil_class/ea9523c9-0810-48c7-8047-d1a70a1a2caf/yp.png" alt="" height="17px"></a></li>
+              <li><a href="https://www.yunpian.com/?ref=36krx2015" class="external" target="_blank"><img src="http://a.36krcnd.com/nil_class/ea9523c9-0810-48c7-8047-d1a70a1a2caf/yp.png" alt="" height="17px"></a></li>
               <li><a href="http://upyun.com/?from=36kr" class="external" target="_blank"><img src="http://a.36krcnd.com/nil_class/18863924-bd55-4645-8c12-6aef52e6c4f7/upy.png" alt="" height="11px"></a></li>
               <li><a href="http://qiniu.com/?from=36kr" class="external" target="_blank"><img src="http://a.36krcnd.com/nil_class/4018d480-1ed0-4db2-9d75-a2404bc146b0/qny.png" alt="" height="17px"></a></li>
               <li><a href="http://dnspod.cn/?from=36kr" class="external" target="_blank"><img src="http://a.36krcnd.com/nil_class/03706ea3-317b-415f-ad2f-84c7000bae7b/dp.png" alt="" height="10px"></a></li>
