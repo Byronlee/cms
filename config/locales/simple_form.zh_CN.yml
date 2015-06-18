@@ -46,6 +46,7 @@ zh-CN:
         disable_with: '正在提交...'
         order_num: '序号'
         label_bgcolor: '标签背景色'
+        hidden_cover: 隐藏头图
       user:
         role: 角色
         name: 用户昵称

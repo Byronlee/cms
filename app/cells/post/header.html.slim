@@ -11,4 +11,5 @@ section.single-post-header
       | &nbsp;•&nbsp;
       = smart_time_ago(@post.published_at)
   .single-post-header__headline
-    img.image[alt="" src=high_speed_url(@post.cover_real_url, 'heading')]
+    - unless @post.column.hidden_cover?
+      img.image[alt="" src=high_speed_url(@post.cover_real_url, 'heading')]
