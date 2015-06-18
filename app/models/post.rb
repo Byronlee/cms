@@ -126,7 +126,7 @@ class Post < ActiveRecord::Base
       min_score 1
       query do
         boolean do
-          must { string params[:q].presence || "*", default_operator: "AND" }
+          must { string Tire::Utils::escape_query(params[:q].presence) || "*", default_operator: "AND" }
           must { term :state, :published }
           must { range :published_at, { lt: boundary_post.published_at } } if boundary_post && params[:d] == 'next'
           must { range :published_at, { gt: boundary_post.published_at } } if boundary_post && params[:d] == 'pre'
