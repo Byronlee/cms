@@ -142,6 +142,8 @@ ActiveRecord::Schema.define(version: 20150618070817) do
     t.integer  "views_count",                           default: 0
   end
 
+  add_index "newsflashes", ["created_at"], name: "index_newsflashes_on_created_at", using: :btree
+
   create_table "pages", force: true do |t|
     t.string   "title"
     t.text     "body"
