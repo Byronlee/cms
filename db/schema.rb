@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(version: 20150618070817) do
     t.datetime "updated_at"
   end
 
+  add_index "authentications", ["user_id", "provider"], name: "index_authentications_on_user_id_and_provider", using: :btree
+
   create_table "columns", force: true do |t|
     t.string   "name"
     t.text     "introduce"
