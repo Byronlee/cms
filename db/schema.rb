@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 20150618070817) do
   end
 
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
+  add_index "comments", ["created_at"], name: "index_comments_on_created_at", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "favorites", force: true do |t|
