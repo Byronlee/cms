@@ -187,6 +187,7 @@ ActiveRecord::Schema.define(version: 20150618070817) do
   add_index "posts", ["column_id"], name: "index_posts_on_column_id", using: :btree
   add_index "posts", ["created_at"], name: "index_posts_on_created_at", using: :btree
   add_index "posts", ["key"], name: "index_posts_on_key", using: :btree
+  add_index "posts", ["published_at"], name: "index_posts_on_published_at", using: :btree
   add_index "posts", ["url_code"], name: "index_posts_on_url_code", unique: true, using: :btree
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
@@ -252,6 +253,7 @@ ActiveRecord::Schema.define(version: 20150618070817) do
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree
+  add_index "users", ["created_at"], name: "index_users_on_created_at", using: :btree
   add_index "users", ["domain"], name: "index_users_on_domain", using: :hash
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["sso_id"], name: "index_users_on_sso_id", using: :btree
