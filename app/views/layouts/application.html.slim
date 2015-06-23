@@ -2,15 +2,19 @@ doctype html
 html.no-js[lang="zh-CN"]
   head
     = content_for?(:title) ? yield(:title) : content_tag(:title, t('site.name'), s_t: t('site.name'))
-    = render_cell :head, :basic_info
-    = render_cell :head, :ios_meta
-    = render_cell :head, :ios_icons
-    = render_cell :head, :ios_startup
+    
+    - cache [:head, :static_info], :expires_in => Settings.cache.default_expires_in do
+      = render_cell :head, :basic_info
+      = render_cell :head, :ios_meta
+      = render_cell :head, :ios_icons
+      = render_cell :head, :ios_startup
+      = render_cell :head, :dns_prefetch
 
-    = render_cell :head, :twitter_card_meta, post: @post if @post
-    = render_cell :head, :facebook_open_graph_meta, post: @post if @post
-    = render_cell :head, :weibo_card_meta, post: @post if @post
-    = render_cell :head, :dns_prefetch
+    - @post && cache([:head, :post, :metas, @post]) do
+      = render_cell :head, :twitter_card_meta, post: @post
+      = render_cell :head, :facebook_open_graph_meta, post: @post
+      = render_cell :head, :weibo_card_meta, post: @post
+
     /!--opengraph meata start
     = content_for?(:og_meta) ? yield(:og_meta) : ''
     /!--opengraph meata end
@@ -19,9 +23,12 @@ html.no-js[lang="zh-CN"]
     = javascript_include_tag "http://cbjs.baidu.com/js/m.js"
     = javascript_include_tag 'application'
     = javascript_include_tag "#{Settings.oauth.krypton.host}/assets/helper.js"
-    = render_cell :head, :html5
-    = render_fragment_template :extra_metas
-    = render_fragment_template :baidu_statistics
+    - cache [:head, :html5], :expires_in => Settings.cache.default_expires_in do
+      = render_cell :head, :html5
+    - cache [:layout, :footer, extra_metas = FragmentTemplate.find_by_key(:extra_metas)] do
+      = render_fragment_template_content extra_metas
+    - cache [:layout, :footer, baidu_statistics = FragmentTemplate.find_by_key(:baidu_statistics)] do
+      = render_fragment_template_content baidu_statistics
     = csrf_meta_tag
     = javascript_tag "window._token = '#{form_authenticity_token}'"
     
@@ -36,8 +43,13 @@ html.no-js[lang="zh-CN"]
       a.tab[href="#"]
         | ProDuct Note
     = yield
-    = render_cell :layout, :footer
-    = render_cell :layout, :fix_tools
-    = render_cell :layout, :script
     
-    = render_cell :head, :ga, current_user: current_user
+    - cache [:layout, :footer, footer = FragmentTemplate.find_by_key(:footer_body)] do
+      = render_cell :layout, :footer, footer: footer
+
+    - cache [:layout, :fix_tools_and_script], :expires_in => Settings.cache.default_expires_in do
+      = render_cell :layout, :fix_tools
+      = render_cell :layout, :script
+    
+    - cache [:head, :ga, current_user.try(:id), current_user.try(:display_name)] do
+      = render_cell :head, :ga, current_user: current_user

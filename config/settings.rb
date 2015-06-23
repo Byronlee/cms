@@ -123,3 +123,7 @@ settings.common_nav_script = {
   url: "//krplus-cdn.b0.upaiyun.com/common-module/common-header-test/script.js",
   is_local: true
 }
+
+settings.cache={
+  default_expires_in: 1.hour
+}
