@@ -180,7 +180,7 @@ class Post < ActiveRecord::Base
 
   # TODO: 这是只为API提供使用，应该重构删除
   def column_name
-    column.name
+    column.try(:name)
   end
 
   def sanitize_content
