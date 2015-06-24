@@ -1,11 +1,13 @@
 = stylesheet_link_tag 'kr_index', media: 'all'
 .index-wrap
-  = render_cell :welcome, :head_line
+  - cache [:welcome, :head_line, Digest::SHA1.hexdigest(head_lines = CacheClient.instance.head_lines) ] do
+    = render_cell :welcome, :head_line, head_lines: head_lines
   .main-section
-    = render layout: 'welcome/header', locals: { data_type: 'all', columns: @columns } do
-      .article-list
-        .articles.J_articleList
-          = render 'info_flow_items', :posts_with_ads => @posts_with_ads
+    - cache [:welcome, :header_and_info_flows, @columns.map{|c| c["updated_at"]}.max, Digest::SHA1.hexdigest(@posts_with_ads.to_s)]
+      = render layout: 'welcome/header', locals: { data_type: 'all', columns: @columns } do
+        .article-list
+          .articles.J_articleList
+            = render 'info_flow_items', :posts_with_ads => @posts_with_ads
 
     .index-side
       .fast-section.J_fastSection.mobile-hide
