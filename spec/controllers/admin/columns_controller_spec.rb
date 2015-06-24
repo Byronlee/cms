@@ -38,7 +38,7 @@ describe Admin::ColumnsController do
     end
 
     it "returns back for name and introduce being to long" do
-      patch :update, id: @column, column: { :name => 'a' * 11, :introduce => 'a' * 141, :slug => "cn-news" }
+      patch :update, id: @column, column: { :name => 'a' * 31, :introduce => 'a' * 141, :slug => "cn-news" }
       assigns(:column).errors.empty?.should_not be_true
       assigns(:column).errors[:name].empty?.should_not be_true
       assigns(:column).errors[:introduce].empty?.should_not be_true
@@ -77,7 +77,7 @@ describe Admin::ColumnsController do
     end
 
     it "returns back for name and introduce being to long" do
-      post 'create', :column => { :name => 'a' * 11, :introduce => 'a' * 141, :slug => "cn-news" }
+      post 'create', :column => { :name => 'a' * 31, :introduce => 'a' * 141, :slug => "cn-news" }
       assigns(:column).errors.empty?.should_not be_true
       assigns(:column).errors[:name].empty?.should_not be_true
       assigns(:column).errors[:introduce].empty?.should_not be_true
