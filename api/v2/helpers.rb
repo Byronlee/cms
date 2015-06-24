@@ -8,6 +8,18 @@ module V2
       else '<' end
     end
 
+    def adjust_tags(tag)
+      tags_list = [ tag ]
+      case tag
+      when 'cn-startups' then tags_list << '国内创业公司'
+      when 'us-startups' then tags_list << '国外创业公司'
+      when 'cn-news' then tags_list << '国内资讯'
+      when 'breaking' then tags_list << '国外资讯'
+      when 'column' then tags_list << '专栏文章' << '专栏'
+      when 'digest' then tags_list << '生活方式'
+      else tags_list end
+    end
+
     def attributes_for_keys(keys)
       attrs = {}
       keys.each do |key|

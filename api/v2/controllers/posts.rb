@@ -36,13 +36,14 @@ module V2
           optional :action,  type: String, default: 'down', desc: "下翻页 down 和 上翻页 up"
         end
         get "tag/page" do
+          tags_list = adjust_tags params[:tag]
           unless params[:id].blank?
             post = Post.where(url_code: params[:id]).first
             not_found! if post.blank?
             unless post.blank?
               @posts = Post.published
               .includes(:related_links, :column)#, author: [:krypton_authentication])
-              .tagged_with(params[:tag])
+              .tagged_with(tags_list, :any => true)
               .where("published_at #{action params} :date", date: post.published_at)
               .order('published_at desc')
               .page(params[:page]).per(params[:per_page])
@@ -50,7 +51,7 @@ module V2
           else
               @posts = Post.published
               .includes(:related_links, :column)#, author: [:krypton_authentication])
-              .tagged_with(params[:tag])
+              .tagged_with(tags_list, :any => true)
               .order('published_at desc')
               .page(params[:page]).per(params[:per_page])
           end
