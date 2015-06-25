@@ -39,7 +39,7 @@ jQuery ->
   $('.J_logout').click                   -> ga('send', 'event', 'link', 'logout#top_nav',                   ga_user_id)
 
   #客户端下载
-  $('.app-download').hover       -> ga('send', 'event', 'link', 'app_download#top_nav',             ga_user_id)
+  $('.app-download').hover               -> ga('send', 'event', 'link', 'app_download#top_nav',             ga_user_id)
   $('.app_download_footer').click        -> ga('send', 'event', 'link', 'app_download#footer',              ga_user_id)
 
   # 融标签的相关统计
@@ -49,3 +49,6 @@ jQuery ->
   # 简讯导航点击
   $('.newsflashes_nav').click           -> ga('send', 'event', 'link', 'aside-nav#newsflashes',             ga_user_id)
   $('.product_notes_nav').click         -> ga('send', 'event', 'link', 'aside-nav#product_notes',           ga_user_id)
+
+  #回到顶部
+  $(".J_up").click                      -> ga('send', 'event', 'link', 'common#arrow-up',                   ga_user_id)
