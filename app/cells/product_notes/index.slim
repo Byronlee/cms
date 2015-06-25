@@ -1,7 +1,7 @@
 - if @pdnotes.count > 0
   - @pdnotes.each do | pd |
     section.product
-      a[href=pd.news_url target="_blank"]
+      a[href=pd.news_url target="_blank" rel="nofollow"]
         h3 = pd.hash_title
       h4
         | What:
