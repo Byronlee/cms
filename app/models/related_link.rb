@@ -56,7 +56,7 @@ class RelatedLink < ActiveRecord::Base
     code, msg = valid_of?(url)
     return {result: false, msg: msg, metas: {}} unless code
     begin
-      og = OpenGraph.new(url)
+      og = OpenGraph.new(url.split("#").first)
       metas = {
         title: og.title,
         type: og.type,

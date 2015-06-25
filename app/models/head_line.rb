@@ -51,7 +51,7 @@ class HeadLine < ActiveRecord::Base
     return { result: false, msg: 'URL不可为空', metas: {} } unless url.present?
     success, msg = valid_of?(url)
     return { result: false, msg: msg, metas: {} } unless success
-    og = OpenGraph.new(url)
+    og = OpenGraph.new(url.split("#").first)
     metas = {
       title: og.title,
       type: og.type,
