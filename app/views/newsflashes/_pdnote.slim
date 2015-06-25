@@ -1,7 +1,8 @@
 - cache [:show, :newsflashes, newsflash.created_at] do
   .fast-news.product
     h3
-      = newsflash.hash_title
+      a[href=newsflash.news_url target="_blank" rel="nofollow"]
+        = newsflash.hash_title
     h4
       | What:
     p
