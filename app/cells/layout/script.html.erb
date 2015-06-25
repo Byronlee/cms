@@ -1,16 +1,5 @@
-<%= javascript_include_tag "footer" %>
-
-<script>
+<script type="text/javascript">
   $(document).ready(function(){
-
-    if($(".single-post-comment__form").length > 0){
-      wideArea('.single-post-comment__form');
-    }
-
-    $.extend($.lazyLoadXT, {
-      onload: { addClass: 'loaded' }
-    });
-
     $(".timeago").timeago();
   });
 </script>
