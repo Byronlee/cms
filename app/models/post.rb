@@ -268,7 +268,7 @@ class Post < ActiveRecord::Base
   end
 
   def generate_url_code
-    self.url_code = Post.maximum('id') + 5_001_000 if self.url_code.blank?
+    self.url_code = Post.maximum('id').to_i + 5_001_000 if self.url_code.blank?
     true
   end
 
