@@ -3,7 +3,7 @@
 = stylesheet_link_tag 'kr_index', media: 'all'
 
 .index-wrap
-  - cache [:welcome, :head_line, Digest::SHA1.hexdigest(head_lines = CacheClient.instance.head_lines) ] do
+  - cache [:welcome, :head_line, Digest::SHA1.hexdigest((head_lines = CacheClient.instance.head_lines).to_s) ] do
     = render_cell :welcome, :head_line, head_lines: head_lines
   .main-section
     = render layout: 'welcome/header', locals: { data_type: @column.slug, columns: @columns } do
