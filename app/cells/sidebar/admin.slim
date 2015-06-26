@@ -69,6 +69,10 @@ ul.nav.nav-pills.nav-stacked
         li class=nav_active(:tools, @controller_name)
           a href= admin_tools_redis_path
             span  Redis
+      - if can? :manage, :tools
+        li class=nav_active(:tools, @controller_name)
+          a href= admin_tools_report_path
+            span  报表下载
   - if @current_user.role!="reader"
     .deviler
   p
