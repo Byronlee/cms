@@ -14,13 +14,14 @@ html
         img[src="http://a.36krcnd.com/nil_class/66a0c838-dd15-4616-b250-4695d6c3682d/36kr-logo.png
 "]
         .back-btn
-      header
-        #h_text
-          h1 = @post.title
-          #h_sub_title
-            span#h_date = @post.created_at
-      #content
-         = raw bdnews_sanitize_tags @post.content
+      - cache [:post, :bdnews, :html, @post.updated_at]
+        header
+          #h_text
+            h1 = @post.title
+            #h_sub_title
+              span#h_date = @post.created_at
+        #content
+           = raw bdnews_sanitize_tags @post.content
       #vote.vote
         div
           .up-box
