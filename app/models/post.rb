@@ -59,7 +59,7 @@ class Post < ActiveRecord::Base
   # mount_uploader :cover, BaseUploader
   aasm.attribute_name :state
 
-  validates_presence_of :title, :content
+  validates_presence_of :title, :content, :url_code
   validates_uniqueness_of :title, :content, :url_code
   validates_presence_of :published_at, if: -> { self.state == "published" }
 
@@ -75,9 +75,8 @@ class Post < ActiveRecord::Base
              :check_head_line_cache, :update_excellent_comments_cache
   after_destroy :update_today_lastest_cache, :update_info_flows_cache,
                 :check_head_line_cache_for_destroy, :update_excellent_comments_cache
-  before_create :generate_key
+  before_create :generate_key, :generate_url_code
   before_save :auto_generate_summary, :check_source_type
-  after_create :generate_url_code
 
   after_save :check_company_keywords
   def check_company_keywords
@@ -269,7 +268,7 @@ class Post < ActiveRecord::Base
   end
 
   def generate_url_code
-    self.update(url_code: (Post.maximum('id') + 500_500)) if self.url_code.blank?
+    self.url_code = Post.maximum('id') + 5_001_000
   end
 
   def check_head_line_cache
