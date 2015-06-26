@@ -75,9 +75,9 @@ class Post < ActiveRecord::Base
              :check_head_line_cache, :update_excellent_comments_cache
   after_destroy :update_today_lastest_cache, :update_info_flows_cache,
                 :check_head_line_cache_for_destroy, :update_excellent_comments_cache
-  before_create :generate_key, :generate_url_code
+  before_create :generate_key
   before_save :auto_generate_summary, :check_source_type
-
+  before_validation :generate_url_code
   after_save :check_company_keywords
   def check_company_keywords
     keywords = content.scan(/<u>(.*?)<\/u>/).flatten.select { |c| c.length < 10 }
@@ -268,7 +268,8 @@ class Post < ActiveRecord::Base
   end
 
   def generate_url_code
-    self.url_code = Post.maximum('id') + 5_001_000
+    self.url_code = Post.maximum('id') + 5_001_000 if self.url_code.blank?
+    true
   end
 
   def check_head_line_cache
