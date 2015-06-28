@@ -33,13 +33,13 @@ tr
       |&nbsp;&nbsp;
       a title="删除" data-method="delete" data-confirm="确定删除该评论？" href= admin_comment_path(comment)
         i.fa.fa-times
-    - if !comment.user.muted? && can?(:shutup, User)
+    - if !comment.user.try(:muted?) && can?(:shutup, User)
       |&nbsp;&nbsp;
       = link_to shutup_admin_user_path(comment.user, ok_url: request.fullpath), title: "禁言",
         method: :put, data: { confirm: "确认禁言此用户？" } do
         i.fa.fa-ban
 
   td.avatar.text_center[title=comment.user.try(:display_name) data-toggle='tooltip']
-    = link_to [:admin, :comments, user_id: comment.user.id] do
+    = link_to [:admin, :comments, user_id: comment.user.try(:id)] do
       = image_tag comment.user.try(:avatar)
 
