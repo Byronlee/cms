@@ -88,6 +88,16 @@ class User < ActiveRecord::Base
     end
   end
 
+  def authentication=(authentication)
+    self.sso_id = authentication.uid
+    self.krypton_authentication = authentication
+    self.email = authentication.info['email']
+    self.name = authentication.info['nickname'] || authentication.info['name']
+    self.phone = authentication.info['phone']
+    self.avatar_url = authentication.info['image']
+    self.password = 'VEX60gCF'
+  end
+
   def avatar
     if krypton_authentication && krypton_authentication.info['image'].present?
       return krypton_authentication.info['image']

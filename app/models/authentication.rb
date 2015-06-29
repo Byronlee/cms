@@ -31,7 +31,6 @@ class Authentication < ActiveRecord::Base
   def self.from_access_token(access_token)
     strategy = OmniAuth::Strategies::Krypton.new Rails.application, Devise.omniauth_configs[:krypton].strategy
     strategy.access_token = OAuth2::AccessToken.new strategy.client, access_token
-    strategy
 
     return nil if (strategy.auth_hash.blank? || strategy.uid.nil? rescue Exception && true)
 

@@ -10,7 +10,7 @@ module V2
           optional :per_page,  type: Integer, default: 30, desc: '每页记录数'
         end
         get do
-          user = current_user[0]
+          user = current_user
           favorites = Favorite.where(user_id: user.id)
           .order(created_at: :desc).page(params[:page]).per(params[:per_page])
           #cache(key: "api:v2:favorites:#{params[:sso_token]}", etag: Time.now, expires_in: Settings.api.expires_in) do
@@ -42,7 +42,7 @@ module V2
           optional :url_code, type: Integer, desc: 'url_code'
         end
         post 'new' do
-          user = current_user[0]
+          user = current_user
           post = Post.where(url_code: params[:url_code]).first
           state = false
           unless (user.sso_id.blank? and post.blank?)
