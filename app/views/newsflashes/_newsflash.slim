@@ -27,5 +27,5 @@
                   img[src="http://s.jiathis.com/qrcode.php?url=#{newsflash_show_path(newsflash)}via=wechat_qr"]
               h3
                 | 打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮
-          a.weibo[href="http://share.baidu.com/s?type=text&searchPic=0&sign=on&to=tsina&url=#{newsflash_show_path(newsflash)}&title=#{newsflash_show_path(newsflash.description_text)}" ref="nofollow" target="_blank"]
+          a.weibo[href="http://share.baidu.com/s?type=text&searchPic=1&sign=on&to=tsina&url=#{newsflash_show_path(newsflash)}&title=#{newsflash_show_path(newsflash.description_text)}&pic=#{newsflash.cover}" ref="nofollow" target="_blank"]
             i.icon-weibo
