@@ -7,7 +7,7 @@ tr
       - else
         = link_to raw(truncate(comment.commentable.try(:title), length:20)),  preview_post_by_key_path(comment.commentable.key), target: '_blank'
   td.word-break
-    = raw(truncate(comment.content, length:20, escape: false, omission: '...'){ link_to "more", "javascript:$('#comment-#{comment.id}').toggle();" })
+    = truncate(sanitize_tags(comment.content), length:20, omission: '...'){ link_to "more", "javascript:$('#comment-#{comment.id}').toggle();" }
     - if comment.is_long?
       |&nbsp;&nbsp;
       span.badge.badge-success.pointer title="长评论" L
@@ -17,7 +17,7 @@ tr
         i.fa.fa-thumbs-up style="font-size:14px;"
     - if comment.content.length > 20
       div.comment_details_in_row[id="comment-#{comment.id}" style="display:none;"]
-        = raw(comment.content)
+        = sanitize_tags(comment.content)
   td.text_center[title=comment.created_at data-toggle='tooltip']
     = time_ago_in_words comment.created_at rescue ''
   td
