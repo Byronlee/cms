@@ -30,6 +30,10 @@ module OmniAuth
         }
       end
 
+      def full_host
+        Settings.oauth.krypton.redirect_uri_full_host || super
+      end
+
       def raw_info
         @raw_info ||= access_token.get('/api/v1/users/me').parsed
       end
