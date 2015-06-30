@@ -120,6 +120,6 @@ settings.deploy = {
 settings.comment_time_interval = 30.seconds
 
 settings.common_nav_script = {
-  url: "http://krplus-cdn.b0.upaiyun.com/common-module/common-header-test/script.js",
+  url: "//krplus-cdn.b0.upaiyun.com/common-module/common-header-test/script.js",
   is_local: true
 }
