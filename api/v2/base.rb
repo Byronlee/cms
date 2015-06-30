@@ -41,7 +41,7 @@ class ::V2::Base < Grape::API
   mount ::V2::Controllers::Comments
   mount ::V2::Controllers::HeadLines
   mount ::V2::Controllers::Favorites
-  #mount ::V2::Controllers::Feeds
+  mount ::V2::Controllers::Feeds
   mount ::V2::Controllers::Search
 
   add_swagger_documentation(

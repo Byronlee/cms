@@ -5,7 +5,7 @@ class SearchController < ApplicationController
     if params[:q].blank?
       @message = '搜索关键词不能为空'
       @posts = Post.none
-    elsif params[:q].gsub!('/','').length > Settings.elasticsearch.query.max_length
+    elsif params[:q].length > Settings.elasticsearch.query.max_length
       @message = '搜索关键词过长'
       @posts = Post.none
     else

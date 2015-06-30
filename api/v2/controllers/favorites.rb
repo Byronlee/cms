@@ -29,8 +29,9 @@ module V2
                   name: favorite.post.author.display_name,
                   avatar_url: favorite.post.author.avatar
                 },
-                created_at: favorite.created_at.iso8601,
-                updated_at: favorite.updated_at.iso8601
+                created_at: favorite.post.created_at.iso8601,
+                published_at: favorite.post.published_at.iso8601,
+                updated_at: favorite.post.updated_at.iso8601
               }
             end
             posts_list
