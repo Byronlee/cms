@@ -8,7 +8,8 @@ class LayoutCell < Cell::Rails
     render
   end
 
-  def footer
+  def footer(args)
+    @footer = args[:footer]
     render
   end
 

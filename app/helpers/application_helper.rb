@@ -87,6 +87,10 @@ module ApplicationHelper
     return raw fragment.display_content if fragment && fragment.display_content.present?
   end
 
+  def render_fragment_template_content(fragment)
+     return raw fragment.display_content if fragment && fragment.display_content.present?
+  end
+
   def active_class(current_data_type, data_type)
     return '' unless current_data_type == data_type
     'active'

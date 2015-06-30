@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150618070817) do
+ActiveRecord::Schema.define(version: 20150623072001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(version: 20150618070817) do
     t.datetime "updated_at"
   end
 
+  add_index "authentications", ["user_id", "provider"], name: "index_authentications_on_user_id_and_provider", using: :btree
+
   create_table "columns", force: true do |t|
     t.string   "name"
     t.text     "introduce"
@@ -48,7 +50,7 @@ ActiveRecord::Schema.define(version: 20150618070817) do
     t.string   "icon"
     t.integer  "posts_count"
     t.string   "slug"
-    t.integer  "order_num",    default: 0
+    t.integer  "order_num"
     t.text     "extra"
     t.boolean  "hidden_cover", default: false
   end
@@ -74,6 +76,7 @@ ActiveRecord::Schema.define(version: 20150618070817) do
   end
 
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
+  add_index "comments", ["created_at"], name: "index_comments_on_created_at", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "favorites", force: true do |t|
@@ -140,6 +143,8 @@ ActiveRecord::Schema.define(version: 20150618070817) do
     t.integer  "views_count",                           default: 0
   end
 
+  add_index "newsflashes", ["created_at"], name: "index_newsflashes_on_created_at", using: :btree
+
   create_table "pages", force: true do |t|
     t.string   "title"
     t.text     "body"
@@ -176,12 +181,12 @@ ActiveRecord::Schema.define(version: 20150618070817) do
     t.integer  "favorites_count"
     t.string   "company_keywords",  default: [], array: true
     t.integer  "favoriter_sso_ids", default: [], array: true
-    t.string   "column_name"
   end
 
   add_index "posts", ["column_id"], name: "index_posts_on_column_id", using: :btree
   add_index "posts", ["created_at"], name: "index_posts_on_created_at", using: :btree
   add_index "posts", ["key"], name: "index_posts_on_key", using: :btree
+  add_index "posts", ["published_at"], name: "index_posts_on_published_at", using: :btree
   add_index "posts", ["url_code"], name: "index_posts_on_url_code", unique: true, using: :btree
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
@@ -196,6 +201,14 @@ ActiveRecord::Schema.define(version: 20150618070817) do
     t.datetime "updated_at"
     t.integer  "post_id"
     t.integer  "user_id"
+  end
+
+  create_table "sponsors", force: true do |t|
+    t.string   "name"
+    t.string   "logo"
+    t.integer  "order_num"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "taggings", force: true do |t|
@@ -247,6 +260,9 @@ ActiveRecord::Schema.define(version: 20150618070817) do
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree
+  add_index "users", ["created_at"], name: "index_users_on_created_at", using: :btree
+  add_index "users", ["domain"], name: "index_users_on_domain", using: :hash
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["sso_id"], name: "index_users_on_sso_id", using: :btree
 
