@@ -24,7 +24,7 @@ class Comment < ActiveRecord::Base
   paginates_per 100
   by_star_field :created_at
 
-  validates :content, presence: true
+  validates :content, :user_id, presence: true
   validates :content, length: { maximum: 3_000 }
 
   belongs_to :commentable, :polymorphic => true, counter_cache: true

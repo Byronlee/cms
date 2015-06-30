@@ -7,7 +7,7 @@ tr
       - else
         = link_to raw(truncate(comment.commentable.try(:title), length:20)),  preview_post_by_key_path(comment.commentable.key), target: '_blank'
   td.word-break
-    = raw(truncate(comment.content, length:20, escape: false, omission: '...'){ link_to "more", "javascript:$('#comment-#{comment.id}').toggle();" })
+    = truncate(sanitize_tags(comment.content), length:20, omission: '...'){ link_to "more", "javascript:$('#comment-#{comment.id}').toggle();" }
     - if comment.is_long?
       |&nbsp;&nbsp;
       span.badge.badge-success.pointer title="长评论" L
@@ -17,7 +17,7 @@ tr
         i.fa.fa-thumbs-up style="font-size:14px;"
     - if comment.content.length > 20
       div.comment_details_in_row[id="comment-#{comment.id}" style="display:none;"]
-        = raw(comment.content)
+        = sanitize_tags(comment.content)
   td.text_center[title=comment.created_at data-toggle='tooltip']
     = time_ago_in_words comment.created_at rescue ''
   td
@@ -33,13 +33,13 @@ tr
       |&nbsp;&nbsp;
       a title="删除" data-method="delete" data-confirm="确定删除该评论？" href= admin_comment_path(comment)
         i.fa.fa-times
-    - if !comment.user.try(:muted?) && can?(:shutup, User)
+    - if !!comment.user && !comment.user.try(:muted?) && can?(:shutup, User)
       |&nbsp;&nbsp;
       = link_to shutup_admin_user_path(comment.user, ok_url: request.fullpath), title: "禁言",
         method: :put, data: { confirm: "确认禁言此用户？" } do
         i.fa.fa-ban
 
-  td.avatar.text_center[title=comment.user.try(:display_name) data-toggle='tooltip']
-    = link_to [:admin, :comments, user_id: comment.user.try(:id)] do
-      = image_tag comment.user.try(:avatar)
+  td.avatar.text_center[title="#{comment.user.try(:display_name) || '匿名用户'}" data-toggle='tooltip']
+      = link_to [:admin, :comments, user_id: comment.user.try(:id)] do
+        = image_tag comment.user.try(:avatar), alt: "#{comment.user.try(:display_name) || '匿'}"
 
