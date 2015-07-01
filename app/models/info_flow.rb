@@ -20,7 +20,7 @@ class InfoFlow < ActiveRecord::Base
 
   DEFAULT_INFOFLOW = Settings.default_info_flow
 
-  def posts_with_ads(page_num = 1, page_direction = nil, boundary_post_url_code = nil, rquest_from = nil)
+  def posts_with_ads(page_num = 1, page_direction = nil, boundary_post_url_code = nil, ads_required = true)
     boundary_post = Post.find_by_url_code(boundary_post_url_code) if boundary_post_url_code.present?
     
     page_num = 1 if(page_direction.present? && boundary_post.present?)
@@ -33,7 +33,7 @@ class InfoFlow < ActiveRecord::Base
     posts = posts.includes(:column, author: [:krypton_authentication]).recent.page(page_num).per(30)
     posts_with_associations = get_associations_of(posts)
  
-    unless rquest_from == :page
+    if ads_required
       ads = get_ads_with_period_of posts
       flow = mix_posts_and_ads posts_with_associations, ads
       flow = mix_seperate_by_date flow, posts

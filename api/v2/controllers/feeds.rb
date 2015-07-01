@@ -7,13 +7,14 @@ module V2
 
         desc 'get info flow index'
         params do
+          optional :info_flow, type: String, default: '主站', desc: ' 信息流名称'
           optional :page,  type: Integer, default: 1, desc: '页数'
           optional :per_page,  type: Integer, default: 30, desc: '每页记录数'
         end
         get do
-          info_flow = InfoFlow.find_by_name Settings.default_info_flow
+          info_flow = InfoFlow.find_by_name params[:info_flow]
           #cache(key: "api:v2:feeds:index", etag: Time.now, expires_in: Settings.api.expires_in) do
-            info_flow = info_flow.posts_with_ads(params[:page])[0]
+            info_flow = info_flow.posts_with_ads(params[:page], nil, nil, false)
           #end
           info_flow
         end
