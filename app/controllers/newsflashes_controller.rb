@@ -8,4 +8,8 @@ class NewsflashesController < ApplicationController
     @newsflash = Newsflash.find params[:id]
     @newsflash.increase_views_count
   end
+
+  def feed
+    @feeds = Newsflash.includes({ author: :krypton_authentication }, :tags).tagged_with(params[:ptype]).order('created_at desc').limit(30)
+  end
 end

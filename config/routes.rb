@@ -3,7 +3,7 @@ require 'sidekiq/web'
 # TODO路由测试
 
 Rails.application.routes.draw do
-  
+
   mount API::API => '/'
   mount GrapeSwaggerRails::Engine => '/api/a14f30b8405857de59e098af4d1d07bda752a2dc'
 
@@ -148,7 +148,9 @@ Rails.application.routes.draw do
   match '/feed(/:params)' => 'posts#feed', via: :get, defaults: { format: :rss }
   match '/tag/:tag', :controller => 'tags', :action => 'show', via: :get, as: :tag
   match '/clipped/:year/:month/:day', :controller => 'newsflashes', :action => 'index', via: :get, as: :newsflashes_of_day
+  match '/clipped/feed/', :controller => 'newsflashes', :action => 'feed', ptype: '_newsflash', via: :get, defaults: { format: :rss }
   match '/clipped/:id', :controller => 'newsflashes', :action => 'show', via: :get, as: :newsflash_show
+  match '/product_notes/feed/', :controller => 'newsflashes', :action => 'feed', ptype: '_pdnote', via: :get, defaults: { format: :rss }
   match '/changelog', :controller => 'welcome', :action => 'changes', via: :get, as: :changes
   match '/posts/:user_domain', to: 'users#posts', via: :get, as: :user_domain_posts
 
