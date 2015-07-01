@@ -2,7 +2,7 @@ xml.instruct! :xml, :version => "1.0"
 xml.rss :version => "2.0" do
   cache [ :newflash, :feed, :xml, @feeds.map(&:updated_at).max ] do
     xml.channel do
-      xml.title t('site_name')
+      xml.title @ptype
       xml.language 'zh-cn'
       xml.pubDate @feeds.first && @feeds.first.created_at
       xml.generator t('site.name').gsub('|', '-')
@@ -14,8 +14,8 @@ xml.rss :version => "2.0" do
           xml.title feed.hash_title
           xml.description feed.description_text
           xml.pubDate feed.created_at && feed.created_at.to_s(:rfc822)
-          xml.link newsflash_show_url(feed)
-          xml.guid newsflash_show_url(feed)
+          xml.link newsflash_show_url(feed) + (params[:utm_source].present? ? ("?utm_source=" + params[:utm_source]) : "")
+          xml.guid newsflash_show_url(feed) + (params[:utm_source].present? ? ("?utm_source=" + params[:utm_source]) : "")
           xml.source t('site_name')
           xml.author feed.author.try(:name) if !!feed.author
         end
