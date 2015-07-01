@@ -1,6 +1,6 @@
 xml.instruct! :xml, :version => "1.0"
 xml.rss :version => "2.0" do
-  cache [ :newflash, :feed, :xml, @feeds.map(&:updated_at).max ] do
+  cache [ :newflash, :feed, :xml, @feeds.map(&:updated_at).max, params[:utm_source].to_s] do
     xml.channel do
       xml.title @ptype
       xml.language 'zh-cn'
