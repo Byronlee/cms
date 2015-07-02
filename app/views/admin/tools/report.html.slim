@@ -6,7 +6,11 @@
 
     .toolbar.border_bottom.clearfix
 
-
-    div style="margin-top:30px; text-align: center;"
-      = link_to raw("<i class='fa fa-refresh'></i>&nbsp;&nbsp;专栏报表"), admin_tools_gen_column_report_path, method: :post, class:"btn btn-primary"
-      = link_to raw("<i class='fa fa-refresh'></i>&nbsp;&nbsp;文章报表"), admin_tools_gen_post_report_path, method: :post, class:"btn btn-primary"
+    form action=admin_tools_gen_post_report_path method="post"
+      button.btn.btn-primary.pull-right type="submit" 下载报表
+      = text_field(:report, :code)
+      br
+      = date_select("start_date", "report", start_year: 2010)
+      br
+      = date_select("end_date", "report", start_year: 2010)
+      

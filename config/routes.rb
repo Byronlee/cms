@@ -87,7 +87,6 @@ Rails.application.routes.draw do
     get 'tools/redis'
     post 'tools/redis_refresh'
     get 'tools/report'
-    post 'tools/gen_column_report'
     post 'tools/gen_post_report'
   end
 
