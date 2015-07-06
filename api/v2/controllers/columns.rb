@@ -12,6 +12,7 @@ module V2
           optional :per_page,  type: Integer, default: 30, desc: '每页记录数'
         end
         get 'index' do
+          #@columns = Column.where('order_num > 0 and id !=18') # 移除krtv
           @columns = Column.where('order_num > 0')
           .order(order_num: :desc)
           .page(params[:page]).per(params[:per_page])

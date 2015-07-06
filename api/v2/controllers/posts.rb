@@ -18,7 +18,7 @@ module V2
         end
         get 'index' do
           @posts = Post.includes(:related_links)# , author:[:krypton_authentication])
-          .where(state: params[:state])
+          .where(state: params[:state]).where.not('column_id = 18') #.where(state: params[:state]).where('column_id > 18') #只显示新栏目
           .order(published_at: :desc)
           .page(params[:page]).per(params[:per_page])
           #cache(key: "api:v2:posts:index", etag: Time.now, expires_in: Settings.api.expires_in) do
