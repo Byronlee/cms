@@ -96,17 +96,20 @@ module ApplicationHelper
     'active'
   end
 
-  def append_ref_to_url(url, ref)
-    return url if url.blank? || ref.blank?
+  def append_ref_to_url(url, options = {})
+    return url if url.blank? || options.blank?
     uri = URI(url)
-    params = URI.decode_www_form(uri.query || '') << [:ref, ref]
+    params = URI.decode_www_form(uri.query || '')
+    options.each do |key, value|
+      params << [key, value]
+    end
     uri.query = URI.encode_www_form(params)
     uri.to_s
   end
 
   def post_title_link_or_url(post)
     return ('/p/' + post["url_code"].to_s + '.html?ref=hot_posts') if post["title_link"].blank?
-    append_ref_to_url(post["title_link"], :hot_posts)
+    append_ref_to_url(post["title_link"], ref: :hot_posts)
   end
 
   private

@@ -1,23 +1,23 @@
 .head-images.J_headImages
   - head_line_first = @head_lines[0] || {}
   .scrollers class="badge-#{head_line_first["section"]}"
-    a#headline_top[href=append_ref_to_url(head_line_first["url"], :head_line_top) data-lazyload="#{high_speed_url(head_line_first["image"],  'slider')}" class="" target="_blank"]
+    a#headline_top[href=append_ref_to_url(head_line_first["url"], ref: :head_line_top) data-lazyload="#{high_speed_url(head_line_first["image"],  'slider')}" class="" target="_blank"]
       img[src=high_speed_url(head_line_first["image"],  'slider') alt=""]
       span = head_line_first["title"]
   .smaller-images
     - head_line_second = @head_lines[1] || {}
     .block.wider.article class="badge-#{head_line_second["section"]}"
-      a#headline_one[href=append_ref_to_url(head_line_second["url"], :head_line_one) data-lazyload="#{high_speed_url(head_line_second["image"], 'slider')}" target="_blank"]
+      a#headline_one[href=append_ref_to_url(head_line_second["url"], ref: :head_line_one) data-lazyload="#{high_speed_url(head_line_second["image"], 'slider')}" target="_blank"]
         span = head_line_second["title"]
     - head_line_third = @head_lines[2] || {}
     .block.article class="badge-#{head_line_third["section"]}"
-      a#headline_two[href=append_ref_to_url(head_line_third["url"], :head_line_two) data-lazyload="#{high_speed_url(head_line_third["image"], 'feature')}" target="_blank"]
+      a#headline_two[href=append_ref_to_url(head_line_third["url"], ref: :head_line_two) data-lazyload="#{high_speed_url(head_line_third["image"], 'feature')}" target="_blank"]
         span = head_line_third["title"]
     .block.next#headline_three
       = render_cell :ads, :position_next
     - head_line_four = @head_lines[3] || {}
     .block.article class="badge-#{head_line_four["section"]}"
-      a#headline_four[href=append_ref_to_url(head_line_four["url"], :head_line_four) data-lazyload="#{high_speed_url(head_line_four["image"], 'feature')}" target="_blank"]
+      a#headline_four[href=append_ref_to_url(head_line_four["url"], ref: :head_line_four) data-lazyload="#{high_speed_url(head_line_four["image"], 'feature')}" target="_blank"]
         span = head_line_four["title"]
     #headline_five
       = render_cell :ads, :position_2, head_line: @head_lines[4]
