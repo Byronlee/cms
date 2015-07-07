@@ -55,8 +55,8 @@ $(document).ready(function(){
         navBarTop = $('.J_newsListNavBar').length && $('.J_newsListNavBar').offset().top;
     });
 
-    $('.J_newsListNavBar a').eq(0).data('listWrapper', $('.J_articleList').eq(0))
-    $('.J_newsListNavBar a').click(function(e){
+    $('.J_newsListNavBar a.active').data('listWrapper', $('.J_articleList').eq(0))
+    $('.J_newsListNavBar a.tab').click(function(e){
         e.preventDefault();
 
 

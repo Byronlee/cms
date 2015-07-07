@@ -6,7 +6,7 @@
   - cache [:welcome, :head_line, Digest::SHA1.hexdigest((head_lines = CacheClient.instance.head_lines).to_s) ] do
     = render_cell :welcome, :head_line, head_lines: head_lines
   .main-section
-    = render layout: 'welcome/header', locals: { data_type: @column.slug, columns: @columns } do
+    = render layout: 'welcome/header', locals: { data_type: @column.slug, columns: @columns, tab_all_redirect: true } do
       .article-list
         .articles.J_articleList
           = render 'list'
