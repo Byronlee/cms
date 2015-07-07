@@ -96,6 +96,14 @@ module ApplicationHelper
     'active'
   end
 
+  def append_ref_to_url(url, ref)
+    return url if url.blank? || ref.blank?
+    uri = URI(url)
+    params = URI.decode_www_form(uri.query || '') << [:ref, ref]
+    uri.query = URI.encode_www_form(params)
+    uri.to_s
+  end
+
   private
 
   def relative_time(raw_time)
