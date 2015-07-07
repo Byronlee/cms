@@ -104,6 +104,11 @@ module ApplicationHelper
     uri.to_s
   end
 
+  def post_title_link_or_url(post)
+    return ('/p/' + post["url_code"].to_s + '.html?ref=hot_posts') if post["title_link"].blank?
+    append_ref_to_url(post["title_link"], :hot_posts)
+  end
+
   private
 
   def relative_time(raw_time)
