@@ -92,6 +92,7 @@ $(document).ready(function(){
             newWrapper.append(list);
             bindLoadMore(newWrapper);
             $(window).trigger('scroll');
+            $(".timeago").timeago();
             
         }, 'html');
     });
