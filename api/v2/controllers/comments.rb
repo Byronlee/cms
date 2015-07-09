@@ -51,15 +51,18 @@ module V2
         end
         post ':pid/new' do
           user = current_user
-          post = params[:type].classify.constantize.find_by_url_code params[:pid]
-          @comment = post.comments.build params.slice(*KEYS)
-          @comment.user = user
-          if @comment.save
-            #CommentsComponentWorker.perform_async(params, @comment)
-            #CommentsComponentWorker.new.perform(params, @comment)
-            present @comment, with: Entities::Comment
+          unless user.muted? or not user.can_comment?
+            post = params[:type].classify.constantize.find_by_url_code params[:pid]
+            @comment = post.comments.build params.slice(*KEYS)
+            @comment.user = user
+            user.update_attributes(last_comment_at: Time.now)
+            if @comment.save
+              present @comment, with: Entities::Comment #CommentsComponentWorker.perform_async(params, @comment) #CommentsComponentWorker.new.perform(params, @comment)
+            else
+              error!({ error: @comment.errors.full_messages }, 400)
+            end
           else
-            error!({ error: @comment.errors.full_messages }, 400)
+            error!({ error:  '您刚评论了，休息会再评论吧！' }, 401)
           end
         end
 
