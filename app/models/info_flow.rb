@@ -20,33 +20,41 @@ class InfoFlow < ActiveRecord::Base
 
   DEFAULT_INFOFLOW = Settings.default_info_flow
 
-  def posts_with_ads(page_num = 1, page_direction = nil, boundary_post_url_code = nil, ads_required = true)
-    boundary_post = Post.find_by_url_code(boundary_post_url_code) if boundary_post_url_code.present?
+  ###
+  # options[:page]
+  # options[:per_page]
+  # options[:page_direction]
+  # options[:boundary_post_url_code]
+  # options[:ads_required]
+  ###
+  def posts_with_ads(options = {})
+
+    boundary_post = Post.find_by_url_code(options[:boundary_post_url_code]) if options[:boundary_post_url_code].present?
     
-    page_num = 1 if(page_direction.present? && boundary_post.present?)
+    options[:page_num] = 1 if(options[:page_direction].present? && boundary_post.present?)
     posts = Post.where(:column_id => columns).published
-    if page_direction == 'next' && boundary_post.present?
+    if options[:page_direction] == 'next' && boundary_post.present?
       posts = posts.where('posts.published_at < ?', boundary_post.published_at)
-    elsif page_direction == 'prev' && boundary_post.present?
+    elsif options[:page_direction] == 'prev' && boundary_post.present?
       posts = posts.where('posts.published_at > ?', boundary_post.published_at)
     end
-    posts = posts.includes(:column, author: [:krypton_authentication]).recent.page(page_num).per(30)
+    posts = posts.includes(:column, :related_links, author: [:krypton_authentication]).recent.page(options[:page_num]).per(options[:per_page])
     posts_with_associations = get_associations_of(posts)
  
-    if ads_required
+    if options[:ads_required]
       ads = get_ads_with_period_of posts
       flow = mix_posts_and_ads posts_with_associations, ads
-      flow = mix_seperate_by_date flow, posts
     else
-      flow = mix_seperate_by_date posts_with_associations, posts
+      flow = posts_with_associations
     end
 
-    [ flow, posts.total_count,
-      posts.prev_page,
-      posts.next_page,
-      (posts.last ? posts.last.url_code : nil),
-      (posts.first ? posts.first.url_code : nil)
-     ]
+    { posts: flow, 
+      total_count: posts.total_count,
+      prev_page: posts.prev_page,
+      next_page: posts.next_page,
+      last_url_code: (posts.last ? posts.last.url_code : nil),
+      first_url_code: (posts.first ? posts.first.url_code : nil)
+     }
   end
 
   def update_info_flows_cache
@@ -68,8 +76,10 @@ class InfoFlow < ActiveRecord::Base
       :except => [:content],
       :methods => [:cover_real_url, :comments_counts],
       :include => {
+        :related_links => {
+          },
         :author => {
-          :only => [:domain], :methods => [:display_name, :avatar] },
+          :only => [:id, :domain, :sso_id, :email, :phone, :role], :methods => [:display_name, :avatar] },
         :column => {
           :only => [:id, :name, :slug] }
         }
