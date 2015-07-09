@@ -1,0 +1,23 @@
+= render 'welcome/title', title: "报表下载"
+
+.col_main
+  .main_hd
+    h2 数据报表下载
+
+    .toolbar.border_bottom.clearfix
+
+    form.simple_form.form-horizontal action=admin_tools_gen_post_report_path method="post" style="margin-top:60px;"
+      div.control-group
+        label.string.optional.control-label 下载密码
+        div class="controls"
+          = text_field(:report, :code)
+      div.control-group
+        label.string.optional.control-label 开始时间
+        div class="controls"
+          = date_select("start_date", "report", start_year: 2010)
+      div.control-group
+        label.string.optional.control-label 结束时间
+        div class="controls"
+          = date_select("end_date", "report", start_year: 2010)
+      .form-actions
+        button.btn.btn-primary.pull-right type="submit" data-disable-with="下载中..." 下载报表
