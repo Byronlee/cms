@@ -17,8 +17,7 @@
           .brief
             = raw(item["summary"])
     - elsif item["position"] != nil && item["content"].present?
-      article class="ad-wrapper"
-        = raw item["content"]
+      = raw item["content"]
 
   = link_to '', root_path(d: 'next', b_url_code: @min_url_code, format: :html), class: 'load-more J_listLoadMore', id: 'info_flows_next_link'
 - else
