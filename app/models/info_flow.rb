@@ -38,7 +38,7 @@ class InfoFlow < ActiveRecord::Base
     elsif options[:page_direction] == 'prev' && boundary_post.present?
       posts = posts.where('posts.published_at > ?', boundary_post.published_at)
     end
-    posts = posts.includes(:column, :related_links, author: [:krypton_authentication]).recent.page(options[:page_num]).per(options[:per_page])
+    posts = posts.includes(:column, :related_links, author: [:krypton_authentication]).recent.page(options[:page_num]).per(options[:per_page] || 30)
     posts_with_associations = get_associations_of(posts)
  
     if options[:ads_required]
@@ -52,8 +52,8 @@ class InfoFlow < ActiveRecord::Base
       total_count: posts.total_count,
       prev_page: posts.prev_page,
       next_page: posts.next_page,
-      last_url_code: (posts.last ? posts.last.url_code : nil),
-      first_url_code: (posts.first ? posts.first.url_code : nil)
+      first_url_code: (posts.first ? posts.first.url_code : nil),
+      last_url_code: (posts.last ? posts.last.url_code : nil)
      }
   end
 

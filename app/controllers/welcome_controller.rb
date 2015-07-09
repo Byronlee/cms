@@ -4,9 +4,13 @@ class WelcomeController < ApplicationController
   def index  
     return cache_index if (params[:page].blank? || params[:page].to_i == 1) && !paginate_by_id_request?
     info_flow = InfoFlow.find_by_name InfoFlow::DEFAULT_INFOFLOW
-    page_direction = params[:d]
-    boundary_post_url_code = params[:b_url_code]
-    @posts_with_ads, @total_count, @prev_page, @next_page, @min_url_code, @max_url_code = info_flow.posts_with_ads(params[:page], page_direction, boundary_post_url_code, false)
+
+    posts_with_ads = info_flow.posts_with_ads(page: params[:page], page_direction: params[:d], boundary_post_url_code: params[:b_url_code], ads_required: false)
+    
+    @posts_with_ads = posts_with_ads[:posts]
+    @total_count = posts_with_ads[:total_count]
+    @first_url_code = posts_with_ads[:first_url_code]
+    @last_url_code = posts_with_ads[:last_url_code]
     
     render_template
   end
@@ -16,11 +20,10 @@ class WelcomeController < ApplicationController
     @columns = JSON.parse(columns_data.present? ? columns_data : '{}')
     
     flow_data = CacheClient.instance.info_flow
-    cache_data = flow_data.blank? ? {'posts_with_ads' => [] } : JSON.parse(flow_data)
-    @posts_with_ads = cache_data['posts_with_ads']
-    @prev_page, @next_page = nil, 2
-    @max_url_code = cache_data['max_url_code']
-    @min_url_code = cache_data['min_url_code']
+    cache_data = flow_data.blank? ? {} : JSON.parse(flow_data)
+    @posts_with_ads = cache_data['posts']
+    @first_url_code = cache_data['first_url_code']
+    @last_url_code = cache_data['last_url_code']
 
     render_template
   end
@@ -47,8 +50,8 @@ class WelcomeController < ApplicationController
         if request.xhr?
           render 'welcome/_info_flow_items', locals: {
             :posts_with_ads => @posts_with_ads, 
-            :min_url_code => @min_url_code,
-            :max_url_code => @max_url_code
+            :first_url_code => @first_url_code,
+            :last_url_code => @last_url_code
           }, layout: false 
         else
           render :index 
@@ -57,8 +60,8 @@ class WelcomeController < ApplicationController
       format.json do 
         render json: { 
           :total_count => @total_count,
-          :min_url_code => @min_url_code,
-          :max_url_code => @max_url_code,
+          :first_url_code => @first_url_code,
+          :last_url_code => @last_url_code,
           :posts => @posts_with_ads.select{|item| item['position'] == nil && item["type"] != 'seperate'}
         }
       end
