@@ -1,4 +1,4 @@
-- if posts_with_ads.count > 0
+- if !!posts_with_ads && posts_with_ads.count > 0
   - posts_with_ads.each do |item|
     - if item['position'] == nil && item["type"] != 'seperate'
       article
