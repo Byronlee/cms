@@ -24,7 +24,7 @@ class PostsController < ApplicationController
   def feed
     @feeds = Post.published.includes({ author: :krypton_authentication }, :column).order('published_at desc').limit(20)
   end
-  
+
   alias_method :baidu_feed, :feed
   alias_method :xiaozhi_feed, :feed
 
