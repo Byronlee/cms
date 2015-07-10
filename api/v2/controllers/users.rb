@@ -11,8 +11,7 @@ module V2
           optional :sso_token, type: String, desc: 'sso_token'
         end
         get 'token' do
-          users = init_and_exchange_token
-          present users[0], with: Entities::User
+          present current_user, with: Entities::User
         end
 
         desc 'Get user name list'
