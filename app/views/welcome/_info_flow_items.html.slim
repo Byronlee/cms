@@ -1,4 +1,4 @@
-- if posts_with_ads.count > 0
+- if !!posts_with_ads && posts_with_ads.count > 0
   - posts_with_ads.each do |item|
     - if item['position'] == nil && item["type"] != 'seperate'
       article
@@ -19,6 +19,6 @@
     - elsif item["position"] != nil && item["content"].present?
       = raw item["content"]
 
-  = link_to '', root_path(d: 'next', b_url_code: @min_url_code, format: :html), class: 'load-more J_listLoadMore', id: 'info_flows_next_link'
+  = link_to '', root_path(d: 'next', b_url_code: @first_url_code, format: :html), class: 'load-more J_listLoadMore', id: 'info_flows_next_link'
 - else
   a.load-more.J_listLoadMore.no-data[href="javascript:void(0)"]

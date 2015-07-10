@@ -67,7 +67,6 @@ describe WelcomeController do
       before { get :index }
       it do
         expect(response).to be_success
-        expect(assigns(:next_page)).to eq 2
       end
     end
 
