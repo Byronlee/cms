@@ -24,7 +24,7 @@
         = render_cell :post, :mobile_author, author: @post.author
       - cache [:show, :tag, @post] do
         = render_cell :post, :relate, post: @post
-      - cache [:show, :comment, @post.comments_counts, current_user, @post] do
+      - cache [:show, :comment, @post.comments_counts, current_user, current_user.try(:display_name), @post] do
         section.single-post-comment
           = render_cell :comment, :new, post: @post, current_user: current_user if @post.published?
           hr
