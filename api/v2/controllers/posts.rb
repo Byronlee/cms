@@ -90,6 +90,17 @@ module V2
           #end
         end
 
+        # Get post detail
+        desc 'get post detail for mobile'
+        get ":id/mobile" do
+          @post = Post#.includes(author:[:krypton_authentication])
+          .where(url_code: params[:id]).first
+          not_found! if @post.blank?
+          #cache(key: "api:v2:posts:#{params[:id]}", etag: @post.published_at, expires_in: Settings.api.expires_in) do
+            present @post, with: Entities::PostDetailMobile
+          #end
+        end
+
         # Create a new post
         desc 'create a new post'
         params do
