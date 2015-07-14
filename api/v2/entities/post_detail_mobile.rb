@@ -19,9 +19,17 @@ module V2
         images = doc.css 'img'
         images.each do |image|
           src = image.attributes["src"].value
-          image.attributes["src"].value = "#{src}!mobile" if src.scan(URI.regexp)[0].include?("a.36krcnd.com") and object.url_code > 200_000
+          #image.attributes["src"].value = "#{src}!mobile" if src.scan(URI.regexp)[0].include?("a.36krcnd.com") and object.url_code > 200_000
+          image.attributes["src"].value = rand_cdn(src,'mobile') if src.scan(URI.regexp)[0].include?("a.36krcnd.com") and object.url_code > 200_000
         end
         doc.to_html
+      end
+
+      def rand_cdn(raw_url, prefix)
+        match = /(http:\/\/.\.36krcnd\.com)(.*)/.match(raw_url)
+        return raw_url unless match
+        host = "http://#{['a', 'b', 'c', 'd', 'e'][rand(5)]}.36krcnd.com"
+        "#{host}#{match[2]}!#{prefix}"
       end
 
     end
