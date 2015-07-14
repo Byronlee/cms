@@ -19,6 +19,6 @@
     - elsif item["position"] != nil && item["content"].present?
       = raw item["content"]
 
-  = link_to '', root_path(d: 'next', b_url_code: @first_url_code, format: :html), class: 'load-more J_listLoadMore', id: 'info_flows_next_link'
+  = link_to '', root_path(d: 'next', b_url_code: @last_url_code, format: :html), class: 'load-more J_listLoadMore', id: 'info_flows_next_link'
 - else
   a.load-more.J_listLoadMore.no-data[href="javascript:void(0)"]
