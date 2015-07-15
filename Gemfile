@@ -64,6 +64,7 @@ gem 'acts_as_graph_object'
 gem "highcharts-rails", "~> 3.0.0"
 gem 'cells'
 gem "jquery-fileupload-rails"
+gem 'chosen-rails'
 
 # controllers
 gem 'devise', "~> 3.4.1"

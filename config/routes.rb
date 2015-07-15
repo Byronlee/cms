@@ -39,7 +39,7 @@ Rails.application.routes.draw do
       end
       resources :posts, only: [:index], on: :collection
     end
-    resources :ads, :fragment_templates
+    resources :ads, :fragment_templates, :sites
     resources :head_lines, except: [:show] do
       get :archives, on: :collection
       post :archive, on: :member

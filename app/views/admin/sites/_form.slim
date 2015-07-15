@@ -1,0 +1,11 @@
+= simple_form_for [:admin, @site], html:{class:"form-horizontal"} do | f |
+  = f.input :name
+  = f.input :domain
+  = f.association :info_flow
+  = f.input :admin_id
+  = f.input :description, as: :text, :input_html => { 'rows' => 3, class: 'col-lg-12'}
+  = f.association :columns
+
+  div.form-actions
+    = f.button :submit, data: { disable_with: "Submitting..." }, class:"btn btn-primary"
+

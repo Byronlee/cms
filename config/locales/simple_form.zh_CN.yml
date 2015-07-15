@@ -47,6 +47,14 @@ zh-CN:
         order_num: '序号'
         label_bgcolor: '标签背景色'
         hidden_cover: 隐藏头图
+      site:
+        name: 站点名称
+        description: 站点介绍
+        domain: 站点域名
+        info_flow:  所属信息流
+        disable_with: '正在提交...'
+        admin_id: '管理员的主站ID'
+        columns: '拥有专栏'
       user:
         role: 角色
         name: 用户昵称

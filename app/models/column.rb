@@ -11,7 +11,7 @@
 #  icon         :string(255)
 #  posts_count  :integer
 #  slug         :string(255)
-#  order_num    :integer          default(0)
+#  order_num    :integer
 #  extra        :text
 #  hidden_cover :boolean          default(FALSE)
 #
@@ -30,6 +30,7 @@ class Column < ActiveRecord::Base
   has_many :posts, dependent: :destroy
   has_many :contributors, class_name: User.to_s, foreign_key: :user_ids
   has_and_belongs_to_many :info_flows
+  has_and_belongs_to_many :sites
 
   scope :info_flows, -> { where(in_info_flow: true) }
   scope :headers,    -> { where("order_num > ?", 0 ).order(order_num: :desc) }

@@ -1,0 +1,16 @@
+tr
+  td = site.id
+  td = site.name
+  td = site.domain
+  td = link_to site.info_flow.name, columns_and_ads_admin_info_flow_path(site.info_flow)
+  td = site.admin.try(:display_name)
+  td
+    - if site.description.present?
+      i.fa.fa-file-text[title=site.description]
+  td = site.created_at.to_s(:db)
+  td.text_center
+    a title="编辑" href= edit_admin_site_path(site)
+      i.fa.fa-pencil
+    |&nbsp;&nbsp;
+    a title="删除" data-method="delete" data-confirm="确定删除该广告位 ？" href= admin_site_path(site)
+      i.fa.fa-times

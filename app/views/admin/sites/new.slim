@@ -1,0 +1,13 @@
+= render 'welcome/title', title: '站点管理'
+
+.col_main
+  .main_hd
+    h2 站点管理
+    .toolbar.border_bottom.clearfix.new
+      .pull-right
+        i.fa.fa-map-marker
+        ol.breadcrumb
+          li = link_to '站点管理', admin_sites_path
+          li.active 创建站点
+  .main-body
+    = render "form"

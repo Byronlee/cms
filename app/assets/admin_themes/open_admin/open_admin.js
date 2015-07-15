@@ -10,4 +10,6 @@
 //= require ./javascripts/charts
 //= require ./javascripts/tagsinput
 //= require ./javascripts/color-selector
+//= require chosen-jquery
+//= require ./javascripts/chosen
 //= require highcharts
