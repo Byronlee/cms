@@ -43,6 +43,7 @@ class ::V2::Base < Grape::API
   mount ::V2::Controllers::Newsflashes
   mount ::V2::Controllers::Favorites
   mount ::V2::Controllers::Feeds
+  mount ::V2::Controllers::Sites
   mount ::V2::Controllers::Search
 
   add_swagger_documentation(
