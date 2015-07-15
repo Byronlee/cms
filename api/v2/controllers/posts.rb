@@ -103,14 +103,25 @@ module V2
 
         # Get post count
         desc 'get post count for mobile'
-        get ":id/count" do
-          post = Post
-          .where(url_code: params[:id]).first
+        params do
+          optional :sso_token, type: String, desc: 'sso_token'
+        end
+        get ":id/state" do
+          post = Post.where(url_code: params[:id]).first
           not_found! if post.blank?
+          state = false
+          unless params[:sso_token].blank?
+            user = current_user 
+            unless (user.sso_id.blank? and post.blank?)
+              favorites = Favorite.where(url_code: post.url_code, user_id: user.id)
+              state = true unless favorites.blank?
+            end
+          end
           {
             url_code: post.url_code,
             comments_count: post.comments_count,
-            views_count: post.views_count
+            views_count: post.views_count,
+            favorited: state
            }
         end
 

@@ -31,14 +31,14 @@ class InfoFlow < ActiveRecord::Base
 
     boundary_post = Post.find_by_url_code(options[:boundary_post_url_code]) if options[:boundary_post_url_code].present?
     
-    options[:page] = 1 if(options[:page_direction].present? && boundary_post.present?)
+    # options[:page] = 1 if(options[:page_direction].present? && boundary_post.present?)
     posts = Post.where(:column_id => columns).published
     if options[:page_direction] == 'next' && boundary_post.present?
       posts = posts.where('posts.published_at < ?', boundary_post.published_at)
     elsif options[:page_direction] == 'prev' && boundary_post.present?
       posts = posts.where('posts.published_at > ?', boundary_post.published_at)
     end
-    posts = posts.includes(:column, :related_links, author: [:krypton_authentication]).recent.page(options[:page]).per(options[:per_page] || 30)
+    posts = posts.includes(:column, :related_links, author: [:krypton_authentication]).recent.page(options[:page] || 1).per(options[:per_page] || 30)
     posts_with_associations = get_associations_of(posts)
  
     if options[:ads_required]

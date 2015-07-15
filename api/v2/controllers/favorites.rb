@@ -61,21 +61,6 @@ module V2
           { sso_id: user.sso_id, url_code: post.url_code, favorited: state }
         end
 
-        desc 'get user favorites state for post'
-        params do
-          optional :sso_token, type: String, desc: 'sso_token'
-          optional :url_code, type: Integer, desc: 'url_code'
-        end
-        get 'state' do
-          user = current_user
-          post = Post.where(url_code: params[:url_code]).first
-          state = false
-          unless (user.sso_id.blank? and post.blank?)
-            favorites = Favorite.where(url_code: post.url_code, user_id: user.id)
-            state = true unless favorites.blank?
-          end
-          { sso_id: user.sso_id, url_code: post.url_code, favorited: state }
-        end
 
       end
 

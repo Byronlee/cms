@@ -7,28 +7,28 @@ module V2
 
         desc 'get info flow index'
         params do
-          optional :info_flow_name, type: String, default: '主站', desc: '信息流名称'
-          optional :boundary_post_url_code,  type: Integer, default: 0, desc: '边界url_code'
-          optional :page_direction,  type: String, default: 'next', desc: '翻页方向 (down next) (up prev)'
+          optional :name, type: String, default: '主站', desc: '信息流名称'
+          optional :id,  type: Integer, default: 0, desc: '边界url_code'
+          optional :action,  type: String, default: 'next', desc: '翻页方向 (down next) (up prev)'
           optional :page,  type: Integer, default: 1, desc: '页面'
           optional :per_page,  type: Integer, default: 30, desc: '每页显示数量'
         end
         get do
-          params[:boundary_post_url_code] = nil if params[:boundary_post_url_code] <= 0
-          case params[:page_direction]
+          params[:id] = nil if params[:id] <= 0
+          case params[:action]
           when blank?
-            params[:page_direction] = nil
+            params[:action] = nil
           when 'up'
-            params[:page_direction] = 'prev'
+            params[:action] = 'prev'
           when 'down'
-            params[:page_direction] = 'next'
+            params[:action] = 'next'
           end
-          info_flow = InfoFlow.find_by_name params[:info_flow_name]
+          info_flow = InfoFlow.find_by_name params[:name]
           #cache(key: "api:v2:feeds:index", etag: Time.now, expires_in: Settings.api.expires_in) do
             info_flow = info_flow.posts_with_ads(page: params[:page], \
               per_page: params[:per_page], \
-              page_direction: params[:page_direction], \
-              boundary_post_url_code: params[:boundary_post_url_code], \
+              page_direction: params[:action], \
+              boundary_post_url_code: params[:id], \
               ads_required: false)
           #end
           info_flow
