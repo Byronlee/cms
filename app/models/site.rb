@@ -10,7 +10,6 @@
 #  admin_id            :integer
 #  created_at          :datetime
 #  updated_at          :datetime
-#  columns_id_and_name :string(255)      default([]), is an Array
 #
 
 class Site < ActiveRecord::Base
@@ -20,11 +19,6 @@ class Site < ActiveRecord::Base
   validates_uniqueness_of :name
   validates_each :admin_id do |record, attr, value|
     record.errors.add(attr, "用户不存在!") if User.where(id: value).blank?
-  end
-
-  before_save :cache_columns_id_and_name
-  def cache_columns_id_and_name
-    self.columns_id_and_name = self.columns.map { |x| [x.id, x.name] }
   end
 
   def admin
