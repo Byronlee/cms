@@ -18,15 +18,26 @@
           ol.breadcrumb
             li = link_to 'Product Note 管理', admin_newsflashes_path+"?ptype=_pdnote"
             li.active 创建Product Note
-  = render "newsflash_template" if params[:ptype].eql? "_newsflash"
-  = render "pdnote_template" if params[:ptype].eql? "_pdnote"
   - if @newsflash.errors.messages.present?
     div.tips
       p
         = @newsflash.errors.messages.first
   .main-body
     = simple_form_for [:admin, @newsflash], html:{ class:"form-horizontal" } do | f |
-      = f.input :original_input, as: :text, :input_html => { 'rows' => 10, class: 'col-lg-11'}
+      = f.input :hash_title, :input_html => { class: 'col-lg-11'}
+      - if params[:ptype].eql? "_newsflash"
+        = f.input :description_text, as: :text, :input_html => { 'rows' => 7, class: 'col-lg-11'}
+        .control-group.url.optional.newsflash_news_url
+          label.url.optional.control-label for="newsflash_news_url"  相关链接
+          .controls
+            = select_tag "newsflash[news_url_type]", options_for_select(["原文链接", "项目官网", "相关报道"], @newsflash.news_url_type )
+            span &nbsp;:&nbsp;
+            input.string.url.optional#newsflash_news_url name="newsflash[news_url]" type="url" value=@newsflash.news_url
+      - else
+        = f.input :what, as: :text, :input_html => { 'rows' => 5, class: 'col-lg-11'}
+        = f.input :how, as: :text, :input_html => { 'rows' => 5, class: 'col-lg-11'}
+        = f.input :think_it_twice, as: :text, :input_html => { 'rows' => 5, class: 'col-lg-11'}
+      = f.association :column, collection: Column.headers, prompt: "选择一个专栏"
       - @newsflash.tag_list.add params[:ptype]
       = f.input :tag_list, input_html: {class: 'col-lg-11', data:{role:'tagsinput'}}
       div.hidden
@@ -43,3 +54,8 @@
 
       div.form-actions
         = f.button :submit, data: { disable_with: "submitting..." }, class: "btn btn-primary"
+javascript:
+  $(document).ready(function(){
+    $('span:contains(_pdnote)').css('display', 'none')
+    $('span:contains(_newsflash)').css('display', 'none')
+  })

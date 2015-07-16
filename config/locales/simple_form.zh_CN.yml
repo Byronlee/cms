@@ -35,6 +35,10 @@ zh-CN:
         original_input: 内容
         tag_list: 标签
         tag: 标签
+        hash_title: 标题
+        description_text: 内容
+        tag: 标签
+        column: 所属专栏
       page:
         title: 标题
         slug: 英文短标题

@@ -22,7 +22,7 @@ tr
         i.fa.fa-arrow-down
       |&nbsp;&nbsp;
     - if can? :edit, newsflash
-      a title="编辑" data-toggle='tooltip' href=edit_admin_newsflash_path(newsflash)
+      a title="编辑" data-toggle='tooltip' href=edit_admin_newsflash_path(newsflash)+"?ptype=#{params[:ptype]}"
         i.fa.fa-pencil
         |&nbsp;&nbsp;
     - if can? :destroy, newsflash

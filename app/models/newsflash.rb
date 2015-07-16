@@ -16,32 +16,35 @@
 #  is_top                   :boolean          default(FALSE)
 #  toped_at                 :datetime
 #  views_count              :integer          default(0)
+#  column_id                :integer
+#  extra                    :text
 #
 
 class Newsflash < ActiveRecord::Base
-  validates_presence_of :original_input, :hash_title
+  validates_presence_of :hash_title, :column_id
 
   validates :description_text, length: { maximum: 500 }
 
   belongs_to :author, class_name: User.to_s, foreign_key: 'user_id'
   belongs_to :newsflash_topic_color
+  belongs_to :column
 
   paginates_per 100
   acts_as_taggable
   by_star_field :created_at
   page_view_field :views_count, interval: 600
 
-  before_validation :prase_original_input
   after_save :update_new_flash_cache
   after_destroy :update_new_flash_cache
 
   scope :recent,     -> { order('created_at desc') }
   scope :top_recent, -> { order('toped_at desc nulls last, created_at desc') }
 
-  def prase_original_input
-    inputs = original_input.split(/---{0,}/)
-    prase_basic_attrs_from_original_input inputs[0].strip
-    self.news_summaries = inputs[1].strip if inputs[1]
+  typed_store :extra do |s|
+    s.string :news_url_type, default: '原文链接'
+    s.text :what
+    s.text :how
+    s.text :think_it_twice
   end
 
   def set_top
@@ -63,12 +66,6 @@ class Newsflash < ActiveRecord::Base
   end
 
   private
-
-  def prase_basic_attrs_from_original_input(input)
-    return unless !!(/^#(.+??)#(.+??)$/ =~ input)
-    valid_url = URI.extract(input).last
-    self.hash_title, self.description_text, self.news_url = $1, $2.gsub(valid_url.to_s, ''), valid_url
-  end
 
   def update_new_flash_cache
     logger.info 'perform the worker to update new flash cache'

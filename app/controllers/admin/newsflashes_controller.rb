@@ -1,6 +1,5 @@
 class Admin::NewsflashesController < Admin::BaseController
   load_and_authorize_resource
-  before_filter :check_original_input_format, only: [:create, :update]
 
   def index
     redirect_to :back unless %w(_pdnote _newsflash).include? params[:ptype]
@@ -8,7 +7,6 @@ class Admin::NewsflashesController < Admin::BaseController
   end
 
   def new
-    @newsflash.original_input = params[:original_input]
   end
 
   def update
@@ -41,25 +39,12 @@ class Admin::NewsflashesController < Admin::BaseController
 
   private
 
-  def newsflash_params
-    params.require(:newsflash).permit(:original_input, :tag_list, :newsflash_topic_color_id, :cover)
-  end
-
   def target_url
     ptype = (params[:newsflash][:tag_list].include? '_newsflash') ? '_newsflash' : '_pdnote'
     admin_newsflashes_path(ptype: ptype)
   end
 
-  def check_original_input_format
-    # TODO 这个验证应该放到Model层去
-     unless /^#(.+?)#(.+?)(---){1,}(.*)$/im =~ params[:newsflash][:original_input]
-      newsflash_type = params["newsflash"]["tag_list"].include?('_newsflash') ? '_newsflash' : '_pdnote'
-      flash[:error] = "内容格式不正确"
-      if @newsflash.new_record?
-        redirect_to new_admin_newsflash_path(ptype: newsflash_type, original_input: params[:newsflash][:original_input])
-      else
-        redirect_to edit_admin_newsflash_path(@newsflash, ptype: newsflash_type, original_input: params[:newsflash][:original_input])
-      end
-     end
+  def newsflash_params
+    params.require(:newsflash).permit(:hash_title, :tag_list, :description_text, :news_url, :news_url_type, :column_id, :what, :how, :think_it_twice, :cover)
   end
 end
