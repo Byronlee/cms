@@ -8,15 +8,20 @@ class ColumnsController < ApplicationController
     respond_to do |format|
       format.html do
         if request.xhr?
-          render 'columns/_list', locals: { :posts => @posts }, layout: false 
+          render 'columns/_list', locals: { :posts => @posts }, layout: false
         else
           columns_data = CacheClient.instance.columns_header
           @columns = JSON.parse(columns_data.present? ? columns_data : '{}')
         end
       end
-      format.json do 
+      format.json do
         render json: Post.posts_to_json(@posts)
       end
     end
+  end
+
+  def feed
+    @column = Column.find_by_slug!(params[:slug])
+    @feeds = @column.posts.published.includes({ author: :krypton_authentication }, :column).order('published_at desc').limit(20)
   end
 end

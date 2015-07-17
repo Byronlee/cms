@@ -135,6 +135,7 @@ Rails.application.routes.draw do
   match '/current_user_favorites.json', to: 'users#favorites', via: :get
   match '/cancel_favorites', to: 'users#cancel_favorites', via: :get
   match '/comments/excellents', :controller => 'comments', :action => 'execllents', via: :get
+  match '/columns/:slug/feed', :controller => 'columns', :action => 'feed', via: :get, as: :column_feed, defaults: { format: :rss }
   match '/columns/:slug(/:page)', :controller => 'columns', :action => 'show', via: :get, as: :column_slug
   match '/category/:slug(/:page)', :controller => 'columns', :action => 'show', via: :get
   match '/p/(:url_code).html' => 'posts#show', via: :get, as: :post_show_by_url_code
