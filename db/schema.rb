@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150727110847) do
+ActiveRecord::Schema.define(version: 20150717072534) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -196,6 +196,7 @@ ActiveRecord::Schema.define(version: 20150727110847) do
     t.integer  "favorites_count"
     t.string   "company_keywords",  default: [], array: true
     t.integer  "favoriter_sso_ids", default: [], array: true
+    t.string   "column_name"
   end
 
   add_index "posts", ["column_id"], name: "index_posts_on_column_id", using: :btree

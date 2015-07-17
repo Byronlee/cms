@@ -5,10 +5,14 @@ class Admin::SitesController < Admin::BaseController
     @sites = Site.order('created_at desc').page params[:page]
   end
 
+  def edit
+    @ok_url = params[:ok_url]
+  end
+
   def update
     @site.columns = Column.where(id: params[:site][:column_ids])
     @site.update(site_params)
-    respond_with @site, location: admin_sites_path
+    respond_with @site, location: params[:ok_url] || admin_sites_path
   end
 
   def create

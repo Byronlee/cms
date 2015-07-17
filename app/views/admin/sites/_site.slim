@@ -9,6 +9,9 @@ tr
       i.fa.fa-file-text[title=site.description]
   td = site.created_at.to_s(:db)
   td.text_center
+    a title="查看" href= admin_site_columns_path(site)
+      i.fa.fa-search
+    |&nbsp;&nbsp;
     a title="编辑" href= edit_admin_site_path(site)
       i.fa.fa-pencil
     |&nbsp;&nbsp;

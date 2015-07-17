@@ -12,4 +12,5 @@
 //= require ./javascripts/color-selector
 //= require chosen-jquery
 //= require ./javascripts/chosen
+//= require ./javascripts/jquery.sortable.min
 //= require highcharts
