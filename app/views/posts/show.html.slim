@@ -11,6 +11,7 @@
           = render_cell :post, :content, post: @post
         section.ad
           = render_cell :ads, :position_10
+          = render_cell :ads, :position_11
         - cache [:show, @post, :manage, current_user]
           - if (@post.author == current_user || (can? :manage, Comment))
             div.post-operate style="border-top: solid 1px #f4f4f4; margin-top: 25px; padding-top: 25px;"
