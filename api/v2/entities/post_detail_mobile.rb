@@ -7,6 +7,7 @@ module V2
       expose :content    , documentation: '内容'
       expose :favoriter_sso_ids
       expose :tag_list   , documentation: '标签'
+      expose :column, using: Entities::Column, documentation: '专栏'
       with_options(format_with: :iso_timestamp) do
         expose :created_at , documentation: ''
         expose :updated_at , documentation: ''
