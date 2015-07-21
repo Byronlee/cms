@@ -11,13 +11,14 @@
 #
 
 class ColumnSite < ActiveRecord::Base
-	self.table_name = "columns_sites"
+  self.table_name = "columns_sites"
 
-	validates :column_id, :site_id, presence: true
+  validates :column_id, :site_id, presence: true
   validates_uniqueness_of :column_id, scope: :site_id
 
   scope :important, -> { order(order_num: :desc) }
 
-	belongs_to :column
-	belongs_to :site
+  belongs_to :column
+  belongs_to :site
+  
 end

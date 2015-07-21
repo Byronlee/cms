@@ -196,7 +196,6 @@ ActiveRecord::Schema.define(version: 20150721034956) do
     t.integer  "favorites_count"
     t.string   "company_keywords",  default: [], array: true
     t.integer  "favoriter_sso_ids", default: [], array: true
-    t.string   "column_name"
   end
 
   add_index "posts", ["column_id"], name: "index_posts_on_column_id", using: :btree

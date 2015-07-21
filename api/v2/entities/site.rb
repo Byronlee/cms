@@ -3,6 +3,7 @@ module V2
     class Site < Grape::Entity
       expose :id,           documentation: 'not null, primary key'
       expose :name,         documentation: ''
+      expose :slug,         documentation: ''
       expose :description,  documentation: ''
       expose :domain,       documentation: ''
       expose :admin_id,     documentation: ''

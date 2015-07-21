@@ -29,7 +29,6 @@ module V2
             present @site, with: Entities::Site
           #end
         end
-
       end
     end
   end
