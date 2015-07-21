@@ -1,5 +1,6 @@
 = simple_form_for [:admin, @site], html:{class:"form-horizontal"} do | f |
   = f.input :name
+  = f.input :slug
   = f.input :domain
   = f.association :info_flow
   = f.input :admin_id

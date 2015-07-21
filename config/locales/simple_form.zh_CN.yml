@@ -58,6 +58,7 @@ zh-CN:
         hidden_cover: 隐藏头图
       site:
         name: 站点名称
+        slug: Slug
         description: 站点介绍
         domain: 站点域名
         info_flow:  所属信息流

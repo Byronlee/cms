@@ -15,9 +15,10 @@
 #
 
 class Site < ActiveRecord::Base
-  
-  validates_presence_of :name, :description, :domain, :info_flow_id, :admin_id
-  validates_uniqueness_of :name
+
+  validates_presence_of :name, :description, :domain, :info_flow_id, :admin_id, :slug
+  validates_uniqueness_of :name, :slug
+
   validates_each :admin_id do |record, attr, value|
     record.errors.add(attr, "用户不存在!") if User.where(id: value).blank?
   end
