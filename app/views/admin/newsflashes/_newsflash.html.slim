@@ -6,7 +6,7 @@ tr
     i.gray.fa.fa-clock-o[title=newsflash.created_at data-toggle='tooltip']
     a href=newsflash.news_url target="_new"
       i.gray.fa.fa-link[title=newsflash.news_url data-toggle='tooltip']
-    i.gray.fa.fa-file-text-o[title=raw(newsflash.description_text) data-toggle='tooltip']
+    i.gray.fa.fa-file-text-o[title=raw(newsflash.what.presence || newsflash.description_text) data-toggle='tooltip']
   td.text_center
     - if newsflash.is_top?
       span.label.label-success 置顶
