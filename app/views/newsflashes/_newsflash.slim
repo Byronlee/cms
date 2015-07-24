@@ -5,8 +5,8 @@
     .desc
       = newsflash.description_text
       - if newsflash.news_url.present?
-        a[href=newsflash.news_url target="_blank" rel="nofollow"]
-          | [原文链接]
+        a.fast-url[href=newsflash.news_url target="_blank" rel="nofollow"]
+          | [#{newsflash.news_url_type}]
     .info
       .author
         a[href="javascript:void(0)"]
