@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Admin::SitesController do
-  login_admin_user
+	login_admin_user
 
   describe "GET 'index'" do
     it "returns http success" do
