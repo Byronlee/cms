@@ -16,6 +16,8 @@
 #  is_top                   :boolean          default(FALSE)
 #  toped_at                 :datetime
 #  views_count              :integer          default(0)
+#  column_id                :integer
+#  extra                    :text
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150716091235) do
+ActiveRecord::Schema.define(version: 20150721034956) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20150716091235) do
     t.string   "icon"
     t.integer  "posts_count"
     t.string   "slug"
-    t.integer  "order_num"
+    t.integer  "order_num",    default: 0
     t.text     "extra"
     t.boolean  "hidden_cover", default: false
   end
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20150716091235) do
     t.integer  "site_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "order_num",  default: 0
   end
 
   create_table "comments", force: true do |t|
@@ -190,6 +191,7 @@ ActiveRecord::Schema.define(version: 20150716091235) do
     t.integer  "favorites_count"
     t.string   "company_keywords",  default: [], array: true
     t.integer  "favoriter_sso_ids", default: [], array: true
+    t.string   "column_name"
   end
 
   add_index "posts", ["column_id"], name: "index_posts_on_column_id", using: :btree
@@ -220,16 +222,10 @@ ActiveRecord::Schema.define(version: 20150716091235) do
     t.integer  "admin_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "columns_id_and_name", default: [], array: true
+    t.string   "slug"
   end
 
-  create_table "sponsors", force: true do |t|
-    t.string   "name"
-    t.string   "logo"
-    t.integer  "order_num"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+  add_index "sites", ["slug"], name: "index_sites_on_slug", using: :hash
 
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"
@@ -282,7 +278,6 @@ ActiveRecord::Schema.define(version: 20150716091235) do
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree
   add_index "users", ["created_at"], name: "index_users_on_created_at", using: :btree
   add_index "users", ["domain"], name: "index_users_on_domain", using: :hash
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["sso_id"], name: "index_users_on_sso_id", using: :btree
 

@@ -11,7 +11,7 @@
 #  icon         :string(255)
 #  posts_count  :integer
 #  slug         :string(255)
-#  order_num    :integer
+#  order_num    :integer          default(0)
 #  extra        :text
 #  hidden_cover :boolean          default(FALSE)
 #
