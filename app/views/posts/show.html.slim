@@ -6,7 +6,7 @@
   .main-section
     .content-wrapper
       article.single-post
-        - cache [:show, :content, @post] do
+        - cache [:show, :content, @post, @post.author] do
           = render_cell :post, :header, post: @post
           = render_cell :post, :content, post: @post
         section.ad
