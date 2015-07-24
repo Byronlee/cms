@@ -18,10 +18,7 @@
           ol.breadcrumb
             li = link_to 'Product Note 管理', admin_newsflashes_path+"?ptype=_pdnote"
             li.active 创建Product Note
-  - if @newsflash.errors.messages.present?
-    div.tips
-      p
-        = @newsflash.errors.messages.first
+  
   .main-body
     = simple_form_for [:admin, @newsflash], html:{ class:"form-horizontal" } do | f |
       = f.input :hash_title, :input_html => { class: 'col-lg-11'}

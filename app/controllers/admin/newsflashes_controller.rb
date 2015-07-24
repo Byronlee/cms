@@ -10,14 +10,24 @@ class Admin::NewsflashesController < Admin::BaseController
   end
 
   def update
-    flash[:notice] = '更新成功' if @newsflash.update newsflash_params
-    respond_with @newsflash, location: target_url
+    if @newsflash.update newsflash_params
+      flash[:notice] = '更新成功'
+      respond_with @newsflash, location: target_url
+    else
+      params[:ptype] = ptype
+      render :edit
+    end
   end
 
   def create
     @newsflash.author = current_user
-    flash[:notice] = '创建成功' if @newsflash.save
-    respond_with @newsflash, location: target_url
+    if @newsflash.save
+      flash[:notice] = '创建成功'
+      respond_with @newsflash, location: target_url
+    else
+      params[:ptype] = ptype
+      render :new
+    end
   end
 
   def destroy
@@ -40,8 +50,11 @@ class Admin::NewsflashesController < Admin::BaseController
   private
 
   def target_url
-    ptype = (params[:newsflash][:tag_list].include? '_newsflash') ? '_newsflash' : '_pdnote'
     admin_newsflashes_path(ptype: ptype)
+  end
+
+  def ptype
+    (params[:newsflash][:tag_list].include? '_newsflash') ? '_newsflash' : '_pdnote'
   end
 
   def newsflash_params
