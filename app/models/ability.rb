@@ -61,6 +61,8 @@ class Ability
     can [:new, :myown], Post
     can [:read, :column, :reviewings], Post, :id => user.posts.pluck(:id)
     can :manage, Post, :id => user.posts.drafted.pluck(:id)
+    can :create, RelatedLink
+    can :manage, RelatedLink, :post_id => user.posts.drafted.pluck(:id)
     can :read, Comment, :commentable_type => 'Post', :commentable_id => user.posts.pluck(:id)
   end
 
@@ -79,6 +81,8 @@ class Ability
     can :read, :dashboard
     can [:read, :reviewings], Post
     can :manage, Post, :user_id => user.id
+    can :manage, RelatedLink, :post_id => user.posts.pluck(:id)
+    can :create, RelatedLink
     cannot :toggle_tag, Post
     can :manage, Newsflash
     can :read, Comment, :commentable_type => 'Post', :commentable_id => user.posts.pluck(:id)
@@ -88,6 +92,7 @@ class Ability
   def editor(user)
     can :read, :dashboard
     can :manage, Post
+    can :manage, RelatedLink
     can :manage, Newsflash
     can :manage, Column
     can :manage, Comment unless user.muted?
