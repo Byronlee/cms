@@ -9,7 +9,7 @@ class Deploy::Iaas
   PATH = File.expand_path('..', __FILE__)
   KEY = 'CIKMCGEHRZEDJXPDRBJK'
   SECRET = 'Xqc98lWlKSEJW8QZK6PLCD9c1el97MwkvwzEqiaM'
-  WHITE_LIST = ['119.254.103.59']
+  WHITE_LIST = ['119.254.103.59', '119.254.102.252', '106.39.119.70']
   AGENT_BLACK_LIST = []
 
   def initialize(url, key, secret)
