@@ -8,6 +8,7 @@ h2
       form.comment_form action="/asynces/posts/#{@post.id}/comments" method="post" data-remote="true"
         = hidden_field_tag :authenticity_token, form_authenticity_token
         textarea#post.textarea name="comment[content]" placeholder="你怎么看？" data-widearea="enable"
+        span.reply_msg
   .bottom
     - if @current_user
       - if can? :create, Comment
@@ -59,6 +60,7 @@ h2
               if($(".comments_total_count").data('message') == ''){
                 frm[0].reset();
               }
+              $("span.reply_msg span").trigger("click");
               $(".timeago").timeago();
               initLazyLoad();
             },

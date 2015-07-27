@@ -4,12 +4,12 @@
 *= require kr_page
 */
 
-#intercom-container{
-	display: none;
+#intercom-container {
+    display: none;
 }
 
 .badge-column {
-  position: relative;
+    position: relative;
 }
 
 .badge-column:after {
@@ -30,4 +30,27 @@
 
 .fast-section-detail a.fast-url {
   color: #3da9f7;
+}
+
+.pull-right {
+    float: right;
+}
+
+/* reply_comment */
+
+form.comment_form {
+    height: 148px;
+}
+
+form.comment_form span.reply_msg {
+    position: relative;
+    background-color: greenyellow;
+    left: 0px;
+}
+
+form.comment_form span.reply_msg span {
+    padding: 0 5px;
+    background-color: #3da9f7;
+    margin-left: 10px;
+    cursor: pointer;
 }
