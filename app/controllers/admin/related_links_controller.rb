@@ -1,17 +1,16 @@
 class Admin::RelatedLinksController < Admin::BaseController
   load_and_authorize_resource
   before_filter :find_post, except: [:destroy]
+  before_filter :check_authorize, only: [:new, :create]
 
   def index
     @related_links = @post.related_links.order("created_at desc").page params[:page]
   end
 
   def new
-    # @related_link = @post.related_links.build
   end
 
   def edit
-    # @related_link = @post.related_links.find params[:id]
   end
 
   def create
@@ -48,5 +47,9 @@ class Admin::RelatedLinksController < Admin::BaseController
 
   def find_post
     @post = Post.find params[:post_id]
+  end
+
+  def check_authorize
+    raise CanCan::AccessDenied.new("Not authorized!", :create, RelatedLink) unless can? :edit, @post
   end
 end

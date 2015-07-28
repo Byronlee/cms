@@ -5,7 +5,8 @@
     h2 &nbsp;
     .toolbar.clearfix.new
       .pull-right style="margin-top: 40px;"
-        p = link_to "+  添加相关链接", new_admin_post_related_link_path(@post), class:"btn btn-primary", style: "position:absolute; right: 15px;; top: 20px;"
+        - if can? :create, RelatedLink
+          p = link_to "+  添加相关链接", new_admin_post_related_link_path(@post), class:"btn btn-primary", style: "position:absolute; right: 15px;; top: 20px;"
         i.fa.fa-map-marker
         ol.breadcrumb
           li = link_to '文章管理', admin_posts_path
