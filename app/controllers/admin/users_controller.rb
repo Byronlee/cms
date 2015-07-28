@@ -8,7 +8,9 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def update
-    @user.update(user_params)
+    @user.assign_attributes(user_params)
+    valid = @user.role_changed? && @user.valid?
+    flash[:notice] = SyncRoleToWriterWorker.new.perform(@user.krypton_authentication.uid, params[:user][:role]) if @user.save && valid
     ok_url = (can? :manage, User) ? admin_users_path : edit_admin_user_path(@user)
     respond_with @user, location: ok_url
   end

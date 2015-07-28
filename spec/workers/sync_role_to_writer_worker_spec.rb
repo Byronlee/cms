@@ -9,9 +9,8 @@ describe SyncRoleToWriterWorker, sidekiq: :fake do
     let(:user) { create :user, :admin }
 
     it "enqueues access job" do
-      # expect do
-      #   SyncRoleToWriterWorker.perform_async(user.sso_id, user.role)
-      # end.to change(SyncRoleToWriterWorker.jobs, :size).by(1)
+      result = SyncRoleToWriterWorker.new.perform(user.sso_id, user.role)
+      expect(result["status"]).to eql false
     end
 
     it "enqueues access next collections job" do

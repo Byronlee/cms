@@ -60,12 +60,6 @@ class User < ActiveRecord::Base
     self.authentication_token ||= generate_authentication_token
   end
 
-  before_update :sync_role_to_writer
-  def sync_role_to_writer
-    return unless role_changed? && valid?
-    SyncRoleToWriterWorker.new.perform(krypton_authentication.uid, role) rescue true
-  end
-
   def apply_omniauth(omniauth)
     self.phone = omniauth['info']['phone'] if phone.blank?
     self.sso_id = omniauth['uid'] if sso_id.blank?
