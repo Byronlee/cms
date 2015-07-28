@@ -39,6 +39,7 @@ class Newsflash < ActiveRecord::Base
 
   scope :recent,     -> { order('created_at desc') }
   scope :top_recent, -> { order('toped_at desc nulls last, created_at desc') }
+  validates :news_url, length: { maximum: 254 }
 
   typed_store :extra do |s|
     s.string :news_url_type, default: '原文链接'
