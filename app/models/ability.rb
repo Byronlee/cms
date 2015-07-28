@@ -88,6 +88,18 @@ class Ability
     can :read, Comment, :commentable_type => 'Post', :commentable_id => user.posts.pluck(:id)
   end
 
+  # 专栏作者
+  def column_writer(user)
+    cannot :manage, Column
+    can :read, :dashboard
+    can [:new, :myown], Post
+    can [:read, :column, :reviewings], Post, :id => user.posts.pluck(:id)
+    can [:update, :edit, :preview], Post, :id => user.posts.reviewing.pluck(:id)
+    can :manage, Post, :id => user.posts.drafted.pluck(:id)
+    cannot :toggle_tag, Post
+    can :read, Comment, :commentable_type => 'Post', :commentable_id => user.posts.pluck(:id)
+  end
+
   # 编辑
   def editor(user)
     can :read, :dashboard
