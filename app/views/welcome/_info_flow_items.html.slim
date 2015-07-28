@@ -2,9 +2,9 @@
   - posts_with_ads.each do |item|
     - if item['position'] == nil && item["type"] != 'seperate'
       article
-        a.pic.info_flow_news_image[data-fit-mobile="true" class="badge-#{item["column"]["slug"]}" href="#{(item["title_link"].present? ? item["title_link"] : post_url(item["url_code"]))}" data-lazyload="#{(high_speed_url item["cover_real_url"], 'feature')}"]
+        a.pic.info_flow_news_image[data-fit-mobile="true" class="badge-#{item["column"]["slug"]}" href="#{(item["title_link"].present? ? item["title_link"] : post_path(item["url_code"]))}" data-lazyload="#{(high_speed_url item["cover_real_url"], 'feature')}"]
         .desc
-          a.title.info_flow_news_title[href=(item["title_link"].present? ? item["title_link"] : post_url(item["url_code"])) target="_blank"]
+          a.title.info_flow_news_title[href=(item["title_link"].present? ? item["title_link"] : post_path(item["url_code"])) target="_blank"]
             = raw item["title"]
           .author
             a[href="#{user_domain(item['author']['domain'])}"]

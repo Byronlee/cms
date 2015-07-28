@@ -16,6 +16,16 @@ module ApplicationHelper
     (params[:portable] == "1") or !!(request.user_agent =~ /Mobile|webOS/)
   end
 
+  def post_path(arg, options = {})
+    return arg.title_link unless arg.try(:title_link).blank?
+    url_code = (arg.class.to_s == 'Fixnum' ? arg : arg.url_code)
+    if options[:utm_source].blank?
+      post_show_by_url_code_path(url_code)
+    else
+      post_show_by_url_code_path(url_code, utm_source: options[:utm_source])
+    end
+  end
+
   def post_url(arg, options = {})
     return arg.title_link unless arg.try(:title_link).blank?
     url_code = (arg.class.to_s == 'Fixnum' ? arg : arg.url_code)
