@@ -13,7 +13,8 @@ zh-CN:
         writer: 作者
         editor: 编辑
         admin: 管理员
-        contributor: 投稿作者
+        contributor: 新手作者
+        column_writer: 专栏作者
     head_line:
       display_position:
         normal: 普通展位
