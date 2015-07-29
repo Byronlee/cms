@@ -13,7 +13,7 @@ IntercomRails.config do |config|
   # This is required for some Intercom rake tasks like importing your users;
   # you can generate one at https://app.intercom.io/apps/api_keys.
   #
-  # config.api_key = "..."
+   config.api_key = "64a82cc89d26433f6fc34b9ced2830d8f3ee7965"
 
   # == Enabled Environments
   # Which environments is auto inclusion of the Javascript enabled for
@@ -24,12 +24,12 @@ IntercomRails.config do |config|
   # The method/variable that contains the logged in user in your controllers.
   # If it is `current_user` or `@user`, then you can ignore this
   #
-  # config.user.current = Proc.new { current_user }
+  config.user.current = Proc.new { current_user }
 
   # == User model class
   # The class which defines your user model
   #
-  # config.user.model = Proc.new { User }
+  config.user.model = Proc.new { User }
 
   # == Exclude users
   # A Proc that given a user returns true if the user should be excluded
@@ -46,6 +46,20 @@ IntercomRails.config do |config|
   #   :plan => Proc.new { |current_user| current_user.plan.name },
   #   :favorite_color => :favorite_color
   # }
+
+  config.user.custom_data = {
+    email:                       -> (user) { user.email },
+    phone:                       -> (user) { user.phone },
+    role:                        -> (user) { user.role },
+    user_id:                     -> (user) { user.id },
+    nickname:                    -> (user) { user.display_name },
+    tagline:                     -> (user) { user.tagline },
+    sso_id:                      -> (user) { user.sso_id },
+    created_at:                  -> (user) { user.created_at.to_i },
+    user_id:                     -> (user) { user.id },
+    nickname:                    -> (user) { user.display_name },
+    tagline:                     -> (user) { user.tagline }
+  }
 
   # == User -> Company association
   # A Proc that given a user returns an array of companies
