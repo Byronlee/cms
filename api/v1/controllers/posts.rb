@@ -165,7 +165,7 @@ module V1
             { replies: replies_list }.merge({
               id: post.url_code,
               title: post.title,
-              replied_at: comments.last.created_at.iso8601,
+              replied_at: Time.now.iso8601,
               replies_count: comments.size
             })
           #end
