@@ -29,3 +29,14 @@ jQuery ->
   record_post_manage_session_path o for o in ["a[href='/krypton/posts/draft']", "a[href='/krypton/posts/myown']",
    "a[href='/krypton/posts']", "a[href='/krypton/posts/reviewings']",
    "a[href='/krypton/favorites']"]
+
+  $("select#post_source_type").on 'change', (o)->
+    $("input#post_user_id").val("785") if $(this).val() == "contribution"
+
+  $("input#post_user_id").on 'keyup', (o)->
+    if $("input#post_user_id").val() == "785"
+      $("select#post_source_type").val("contribution")
+    else
+      if $("select#post_source_type").val() == "contribution"
+         $("select#post_source_type").val("original")
+    return
