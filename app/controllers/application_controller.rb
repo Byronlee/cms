@@ -57,4 +57,8 @@ class ApplicationController < ActionController::Base
     params[:ok_url] || url
   end
   helper_method :ok_url_or
+
+  def default_url_options
+    { host: Settings.site }
+  end
 end
