@@ -1,4 +1,5 @@
 class Admin::Posts::ColumnsController < Admin::BaseController
+  load_and_authorize_resource
   respond_to :json, only: :create
 
   def index
