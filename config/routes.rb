@@ -93,6 +93,7 @@ Rails.application.routes.draw do
   namespace :components do
     get '/next/collections', to: 'next#collections', as: :next_collections
     get 'pages/show', to: 'pages#show', as: :page_body
+    get 'posts/show', to: 'posts#show', as: :post_body
   end
 
   namespace :asynces do

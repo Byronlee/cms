@@ -1,53 +1,11 @@
-= render 'og_meta'
-
-/!breadcrumbs
-div#content-header
-  div#breadcrumb
-    a.tip-bottom title="回到首页" href= admin_root_path
-      i.icon-home
-      | 首页
-    a.tip-bottom title="回到文章审查管理列表页面" href= reviewings_admin_posts_path
-      i.icon-file
-      | 文章审查管理
-    a.current href="#"
-      = raw(@post.title)
-  h1
-    = raw(@post.title)
-/!End-breadcrumbs
-
-
-div.container-fluid
-  = bootstrap_flash
-  div.span12
-    img src==@post.cover_real_url
-
-  div.span12 style="margin-top:20px;"
-    span
-      b
-        |所属专栏：
-      = @post.column.try(:name)
-    span style="margin-left:20px;"
-      b
-        |作者：
-      = @post.author.try(:name)
-    span style="margin-left:20px;"
-      b
-        |创建时间：
-      = @post.created_at
-
-  div.span12 style="margin-top:20px;"
-    = raw display_post_content @post.content, @post.cover_real_url
-
-    = link_to do_publish_admin_post_path(@post), method: 'POST', class: 'btn btn-primary'
-      i.icon-plane
-      |&nbsp;快速发布
-    |&nbsp;&nbsp;
-    = link_to 'http://writer.36kr.com', class: 'btn btn-primary'
-      i.icon-pencil
-      |&nbsp;编辑
-    |&nbsp;&nbsp;
-    = link_to :back, class: 'btn btn-primary'
-      i.icon-circle
-      |&nbsp;返回
-
-
+.col_main
+  .main_hd
+    h2 文章管理
+    .toolbar.border_bottom.clearfix.new
+      .pull-right
+        i.fa.fa-map-marker
+        ol.breadcrumb
+          li = link_to '文章管理', admin_posts_path
+          li.active 文章详情
+  .main-body
+    post-body post_id="#{@post.id}"

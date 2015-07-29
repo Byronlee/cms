@@ -1,0 +1,20 @@
+<polymer-element name="post-body" attributes="post_id">
+
+  <template>
+    <link rel="stylesheet" href="post-body.css" />
+    <link rel="import" href="juicy-html.html" />
+
+    <div class="container">
+      <article class="single-post-article">
+        <div clas="content-wrapper-single">
+          <section class="article">
+            <template is="juicy-html" content="{{ post_body }}"></template>
+          </section>
+        </div>
+      </article>
+    </div>
+  </template>
+
+  <script src="post-body.js"></script>
+</polymer-element>
+
