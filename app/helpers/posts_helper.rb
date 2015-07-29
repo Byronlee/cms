@@ -16,6 +16,7 @@ module PostsHelper
   end
 
   def sanitize_tags(text)
+    text = text.gsub(/<title>.+?<\/title>/, "")
     tags = %w(a p br hr i em u strong iframe embed blockquote img h1 h2 h3 h4 h5 ul li ol)
     attributes = %w(href ref target src title alt width height frameborder allowfullscreen)
     remove_blank_lines sanitize(text, tags: tags, attributes: attributes)
