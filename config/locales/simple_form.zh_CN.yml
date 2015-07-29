@@ -33,6 +33,7 @@ zh-CN:
         url_code: CODE
         display_position: 展示位置
         summary: 摘要
+        hidden_title: 是否隐藏标题
       newsflash:
         original_input: 内容
         tag_list: 标签

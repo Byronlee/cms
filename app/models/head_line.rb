@@ -22,6 +22,7 @@
 require 'common'
 class HeadLine < ActiveRecord::Base
   include AASM
+  extend Enumerize
   aasm.attribute_name :state
   paginates_per 20
   extend Enumerize
@@ -31,7 +32,7 @@ class HeadLine < ActiveRecord::Base
   validates :url, :title, presence: true
   validates_uniqueness_of :url
   validates :url, :url => { allow_blank: true }
-
+  enumerize :hidden_title, in: [true, false], default: false
   belongs_to :user
 
   scope :published, -> { where(state: :published) }

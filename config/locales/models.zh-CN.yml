@@ -18,6 +18,9 @@ zh-CN:
       display_position:
         normal: 普通展位
         next: NEXT展位
+      hidden_title:
+        true: 隐藏
+        false: 不隐藏
   activerecord:
     attributes:
       comment:
