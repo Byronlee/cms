@@ -46,6 +46,7 @@ class Admin::PostsController < Admin::BaseController
 
   def do_publish
     @post.assign_attributes(post_params)
+    return respond_with(@post) { |f| f.html { render :publish } } unless @post.valid?
     @post.activate_publish_schedule if params[:operate_type].eql?('publish')
     @post.save!
     redirect_to reviewings_admin_posts_path, :notice => '操作成功!'
@@ -71,6 +72,7 @@ class Admin::PostsController < Admin::BaseController
       :column_id, :title,
       :content, :remark,
       :slug, :summary,
+      :catch_title,
       :will_publish_at,
       :title_link, :cover, :tag_list,
       :source_type, :source_urls, :close_comment
