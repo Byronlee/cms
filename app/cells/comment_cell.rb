@@ -17,4 +17,8 @@ class CommentCell < Cell::Rails
   def excellent
     render
   end
+
+  def close
+    render
+  end
 end

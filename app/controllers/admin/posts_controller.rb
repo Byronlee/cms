@@ -73,7 +73,7 @@ class Admin::PostsController < Admin::BaseController
       :slug, :summary,
       :will_publish_at,
       :title_link, :cover, :tag_list,
-      :source_type, :source_urls
+      :source_type, :source_urls, :close_comment
     )
   end
 
@@ -85,7 +85,7 @@ class Admin::PostsController < Admin::BaseController
     begin
       @posts = Column.find(params[:column_id]).posts if params[:column_id].present?
       @posts = User.find(params[:user_id]).posts if params[:user_id].present?
-    rescue 
+    rescue
       return Post
     end
   end

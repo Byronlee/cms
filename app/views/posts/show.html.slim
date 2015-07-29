@@ -27,9 +27,12 @@
         /= render_cell :post, :relate, post: @post
       - cache [:show, :comment, @post.comments_counts, current_user, current_user.try(:display_name), @post] do
         section.single-post-comment
-          = render_cell :comment, :new, post: @post, current_user: current_user if @post.published?
-          hr
-          = render_cell :comment, :index, post: @post
+          - if @post.close_comment
+            = render_cell :comment, :close
+          - else
+            = render_cell :comment, :new, post: @post, current_user: current_user if @post.published?
+            hr
+            = render_cell :comment, :index, post: @post
     .article-side
       - cache [:show, :aside, @post.author, :cache_key_v1] do
         = render_cell :post, :author, author: @post.author

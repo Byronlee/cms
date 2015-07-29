@@ -54,6 +54,7 @@ class Post < ActiveRecord::Base
     s.text :source_urls, default: ''
     s.datetime :will_publish_at, default: ''
     s.string :jid,  default: ''
+    s.boolean :close_comment, default: false
   end
 
   # mount_uploader :cover, BaseUploader

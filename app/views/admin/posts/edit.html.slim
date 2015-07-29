@@ -28,6 +28,7 @@
       = f.input :cover, input_html: {class: 'col-lg-12', style: "height: 33px;resize: none;"}
       - if can? :change_author, @post
         = f.input :user_id
+      = f.input :close_comment, as: :radio_buttons
       div.form-actions
         = f.button :submit, data: { disable_with: "submitting..." }, class:"btn btn-primary"
 
