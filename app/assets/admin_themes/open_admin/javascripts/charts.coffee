@@ -2,7 +2,6 @@ jQuery ->
   window.draw_charts = ->
     setInterval("$('text[text-anchor=end]').remove()", 0);
     range = date_range
-    console.log(range)
     $('.posts').highcharts
       chart: type: 'line'
       title: text: '资源趋势图'
