@@ -1,6 +1,6 @@
 - if @newsflashes.count > 0
   - @newsflashes.each do | nf |
-    section.selected
+    section.selected data-id="#{nf.id}"
       h3
         - if nf.is_top
           span.top 置顶

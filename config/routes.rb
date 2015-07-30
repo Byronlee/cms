@@ -150,6 +150,7 @@ Rails.application.routes.draw do
   match '/clipped/:year/:month/:day', :controller => 'newsflashes', :action => 'index', via: :get, as: :newsflashes_of_day
   match '/clipped/feed/', :controller => 'newsflashes', :action => 'feed', ptype: '_newsflash', via: :get, defaults: { format: :rss }
   match '/clipped/:id', :controller => 'newsflashes', :action => 'show', via: :get, as: :newsflash_show
+  match '/clipped/:id/touch_view', :controller => 'newsflashes', :action => 'touch_view', via: :post, as: :newsflash_touch_view
   match '/product_notes/feed/', :controller => 'newsflashes', :action => 'feed', ptype: '_pdnote', via: :get, defaults: { format: :rss }
   match '/changelog', :controller => 'welcome', :action => 'changes', via: :get, as: :changes
   match '/posts/:user_domain', to: 'users#posts', via: :get, as: :user_domain_posts

@@ -44,6 +44,9 @@ $(document).ready(function(){
             scrollTop:0
         },300);
     });
+
+
+
 });
 function initFastSection(){
     /**
@@ -91,12 +94,41 @@ function initFastSection(){
             $('.J_fastSectionList .wrap').data('origin','').css('height','auto');
             setFastSection();
             $(window).trigger('resize');
+            if($(this).attr('name')){
+                var param = 'sideActiveTab='+$(this).attr('name');
+                var reg = new RegExp('(&|\\?)sideActiveTab=.+(&|$)');
+                var str = location.hash.replace(reg,'');
+                location.hash = str+(
+                str.indexOf('?')>-1?
+                    ('&sideActiveTab='+$(this).attr('name')):
+                    ('?sideActiveTab='+$(this).attr('name'))
+                )
+            }
         });
     });
-    var bindItemActions = function(){
+
+    window.countedStaticsItem = window.countedStaticsItem || [];
+    function addPageView(id){
+        if(countedStaticsItem.indexOf(id)>-1)return;
+        countedStaticsItem.push(id);
+        /**
+         * 发送统计请求
+         */
+        window._hmt && _hmt.push(['_trackPageview', '/clipped/'+id]);
+        $.post("/clipped/"+ id +"/touch_view", {
+        	'authenticity_token': window._token
+        });
+    }
+
+    var bindItemActions = function (){
+
         if($(this).hasClass('active')){
             $(this).removeClass('active');
         }else{
+            //点击快讯并展开时发送统计请求
+            if($(this).data('id')){
+                addPageView($(this).data('id'))
+            };
             $(this).addClass('active')
                 .siblings().removeClass('active');
         }
@@ -105,7 +137,31 @@ function initFastSection(){
     $('.J_fastSectionList').delegate('section', 'click', bindItemActions);
 
     /**
-     * 加载更多(TODO:需要再跟后端联调加载逻辑)
+     * 滚动时统计PN条目的展示
+     */
+    $('.J_fastSectionList .wrap').bind('scroll', function bind(e){
+
+        if(!$('.J_fastSectionNavBar a[name="product"]').hasClass('active')){
+            return;
+        }
+        //var top = $(this).scrollTop();
+        var wrap = $(this);
+        $(this).find('.panel:visible section').each(function(){
+            var item = $(this);
+            var bound = item.offset().top - wrap.offset().top - wrap.height() + item.height()/2;
+
+            if(bound<0){
+                if(item.data('id')){
+                    addPageView(item.data('id'))
+                };
+            }
+
+        });
+    });
+
+
+    /**
+     * 加载更多
      */
 
     function bindLoadMore(){
@@ -125,11 +181,11 @@ function initFastSection(){
                 if(trigger.hasClass('loading'))return;
                 trigger.addClass('loading');
                 $.get(url, function(list){
+
                     setTimeout(function(){
                         var newWrapper = trigger.parent();
                         $(list).insertAfter(trigger);
                         trigger.remove();
-
 
                         $('.J_fastSectionList .wrap').perfectScrollbar('update');
 
@@ -138,28 +194,27 @@ function initFastSection(){
                 }, 'html');
             }
 
-          }).delegate('.panel:visible .load-more', 'click', function(e){
-          e.preventDefault();
-          if(deviceType=='desktop')return;
-          var trigger = $(this);
-          var url = trigger.attr('href');
-          trigger.attr('href', 'javascript:void(0)');
-          if(trigger.hasClass('no-data'))return;
-          if(trigger.hasClass('loading'))return;
-          trigger.addClass('loading');
-          $.get(url, function(list){
+        }).delegate('.panel:visible .load-more', 'click', function(e){
+            e.preventDefault();
+            if(deviceType=='desktop')return;
+            var trigger = $(this);
+            var url = trigger.attr('href');
+            trigger.attr('href', 'javascript:void(0)');
+            if(trigger.hasClass('no-data'))return;
+            if(trigger.hasClass('loading'))return;
+            trigger.addClass('loading');
+            $.get(url, function(list){
 
-              setTimeout(function(){
-                  var newWrapper = trigger.parent();
-                  $(list).insertAfter(trigger);
-                  trigger.remove();
+                setTimeout(function(){
+                    var newWrapper = trigger.parent();
+                    $(list).insertAfter(trigger);
+                    trigger.remove();
 
-                  $('.J_fastSectionList .wrap').perfectScrollbar('update');
+                    $('.J_fastSectionList .wrap').perfectScrollbar('update');
 
-              },0)
+                },0)
 
-          }, 'html');
-
+            }, 'html');
         });
 
     }
@@ -184,6 +239,29 @@ function initFastSection(){
             type: 'image'
         }, 0);
     });
+
+
+    /**
+     * 处理左侧跳转交互
+     */
+
+
+    var hashStrs = location.hash.match(/\?(.+)$/);
+    var hashParams = {};
+    if(hashStrs){
+        hashStrs[1].split('&').forEach(function(item){
+            if(!item.split)return;
+            var vals = item.split('=');
+            if(vals.length==2){
+                hashParams[vals[0]] = vals[1];
+            }
+        });
+        if(hashParams.sideActiveTab){
+            setTimeout(function(){
+                $('.J_mobileNav a[name="'+hashParams.sideActiveTab+'"]').trigger('click');
+            },0);
+        }
+    }
 }
 function initMobileNav(newsPanel){
     /**
@@ -211,7 +289,6 @@ function initMobileNav(newsPanel){
         });
     });
 }
-
 function initLazyLoad(){
 
     function loadItems(){
