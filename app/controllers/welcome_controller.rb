@@ -1,24 +1,21 @@
 class WelcomeController < ApplicationController
   authorize_object :welcome
 
-  def index  
+  def index
     return cache_index if (params[:page].blank? || params[:page].to_i == 1) && !paginate_by_id_request?
     info_flow = InfoFlow.find_by_name InfoFlow::DEFAULT_INFOFLOW
 
     posts_with_ads = info_flow.posts_with_ads(page: params[:page], page_direction: params[:d], boundary_post_url_code: params[:b_url_code], ads_required: false)
-    
+
     @posts_with_ads = posts_with_ads[:posts]
     @total_count = posts_with_ads[:total_count]
     @first_url_code = posts_with_ads[:first_url_code]
     @last_url_code = posts_with_ads[:last_url_code]
-    
+
     render_template
   end
 
   def cache_index
-    columns_data = CacheClient.instance.columns_header
-    @columns = JSON.parse(columns_data.present? ? columns_data : '{}')
-    
     flow_data = CacheClient.instance.info_flow
     cache_data = flow_data.blank? ? {} : JSON.parse(flow_data)
     @posts_with_ads = cache_data['posts']
@@ -49,16 +46,16 @@ class WelcomeController < ApplicationController
       format.html do
         if request.xhr?
           render 'welcome/_info_flow_items', locals: {
-            :posts_with_ads => @posts_with_ads, 
+            :posts_with_ads => @posts_with_ads,
             :first_url_code => @first_url_code,
             :last_url_code => @last_url_code
-          }, layout: false 
+          }, layout: false
         else
-          render :index 
+          render :index
         end
       end
-      format.json do 
-        render json: { 
+      format.json do
+        render json: {
           :total_count => @total_count,
           :first_url_code => @first_url_code,
           :last_url_code => @last_url_code,
