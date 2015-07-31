@@ -2,19 +2,19 @@
 #
 # Table name: head_lines
 #
-#  id           :integer          not null, primary key
-#  url          :string(255)
-#  order_num    :integer
-#  created_at   :datetime
-#  updated_at   :datetime
-#  title        :string(255)
-#  post_type    :string(255)
-#  image        :string(255)
-#  user_id      :integer
-#  url_code     :integer
-#  state        :string(255)
-#  section      :string(255)
-#  hidden_title :boolean
+#  id         :integer          not null, primary key
+#  url        :string(255)
+#  order_num  :integer
+#  created_at :datetime
+#  updated_at :datetime
+#  title      :string(255)
+#  post_type  :string(255)
+#  image      :string(255)
+#  user_id    :integer
+#  url_code   :integer
+#  state      :string(255)
+#  section    :string(255)
+#  extra      :text
 #
 
 require 'common'
@@ -22,6 +22,14 @@ class HeadLine < ActiveRecord::Base
   include AASM
   aasm.attribute_name :state
   paginates_per 20
+  extend Enumerize
+
+  typed_store :extra do |s|
+    s.string :display_position,  default: 'normal'
+    s.text :summary, default: ''
+  end
+
+  enumerize :display_position, in: [:normal, :next], default: :next
 
   validates :url, :title, presence: true
   validates_uniqueness_of :url
