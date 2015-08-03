@@ -124,6 +124,8 @@ ActiveRecord::Schema.define(version: 20150731021622) do
     t.string   "section"
     t.boolean  "hidden_title"
     t.text     "extra"
+    t.text     "display_position"
+    t.text     "summary"
   end
 
   create_table "info_flows", force: true do |t|

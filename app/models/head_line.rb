@@ -2,19 +2,20 @@
 #
 # Table name: head_lines
 #
-#  id         :integer          not null, primary key
-#  url        :string(255)
-#  order_num  :integer
-#  created_at :datetime
-#  updated_at :datetime
-#  title      :string(255)
-#  post_type  :string(255)
-#  image      :string(255)
-#  user_id    :integer
-#  url_code   :integer
-#  state      :string(255)
-#  section    :string(255)
-#  extra      :text
+#  id               :integer          not null, primary key
+#  url              :string(255)
+#  order_num        :integer
+#  created_at       :datetime
+#  updated_at       :datetime
+#  title            :string(255)
+#  post_type        :string(255)
+#  image            :string(255)
+#  user_id          :integer
+#  url_code         :integer
+#  state            :string(255)
+#  section          :string(255)
+#  display_position :text
+#  summary          :text
 #
 
 require 'common'
@@ -23,11 +24,6 @@ class HeadLine < ActiveRecord::Base
   aasm.attribute_name :state
   paginates_per 20
   extend Enumerize
-
-  typed_store :extra do |s|
-    s.string :display_position,  default: 'normal'
-    s.text :summary, default: ''
-  end
 
   enumerize :display_position, in: [:normal, :next], default: :next
 
@@ -39,6 +35,8 @@ class HeadLine < ActiveRecord::Base
 
   scope :published, -> { where(state: :published) }
   scope :archived, -> { where(state: :archived) }
+  scope :normal, -> { where(display_position: [:normal, :nil]) }
+  scope :next, -> { where(display_position: :next) }
   scope :recent, -> { order(updated_at: :desc) }
   scope :weight, -> { order('order_num desc nulls last') }
   scope :related, -> { includes(user: :krypton_authentication)}

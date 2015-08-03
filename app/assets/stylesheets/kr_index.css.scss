@@ -815,6 +815,73 @@ a:hover {
 .index-wrap .head-images .smaller-images .block.ad a:hover:before {
   opacity: 1;
 }
+/* line 138, /Users/guoliyuan/36kr-frontend/src/styles/index.less */
+.index-wrap .head-images .smaller-images .block.next {
+  background: asset-url('next_bg.jpg') center center no-repeat;
+  /*padding: 20px;*/
+  position: relative;
+}
+/* line 142, /Users/guoliyuan/36kr-frontend/src/styles/index.less */
+.index-wrap .head-images .smaller-images .block.next .logo-next {
+  width: 62px;
+  height: 20px;
+  float: left;
+  background: asset-url('logo-next.png') center center no-repeat;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (min-device-pixel-ratio: 1.5) {
+  /* line 147, /Users/guoliyuan/36kr-frontend/src/styles/index.less */
+  .index-wrap .head-images .smaller-images .block.next .logo-next {
+    background-image: asset-url('logo-next@2x.png');
+    background-size: cover;
+  }
+}
+/* line 155, /Users/guoliyuan/36kr-frontend/src/styles/index.less */
+.index-wrap .head-images .smaller-images .block.next .today-recomment {
+  background-color: #ffffff;
+  border-radius: 2px;
+  padding: 0 7px;
+  line-height: 20px;
+  font-size: 13px;
+  color: #31c9d8;
+}
+/* line 163, /Users/guoliyuan/36kr-frontend/src/styles/index.less */
+.index-wrap .head-images .smaller-images .block.next .recomment-app {
+  font-size: 15px;
+  line-height: 18px;
+  color: #ffffff;
+  position: relative;
+  z-index: 100;
+}
+/* line 169, /Users/guoliyuan/36kr-frontend/src/styles/index.less */
+.index-wrap .head-images .smaller-images .block.next .recomment-app h2 {
+  margin: 40px 0 5px;
+  font-weight: bold;
+}
+/* line 174, /Users/guoliyuan/36kr-frontend/src/styles/index.less */
+.index-wrap .head-images .smaller-images .block.next .recomment-app a {
+  color: #ffffff;
+}
+/* line 179, /Users/guoliyuan/36kr-frontend/src/styles/index.less */
+.index-wrap .head-images .smaller-images .block.next:before {
+  content: '';
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  -webkit-transition: all 0.3s ease;
+          transition: all 0.3s ease;
+  z-index: 30;
+  background-color: rgba(255, 255, 255, 0);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), to(rgba(255, 255, 255, 0.5)));
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));
+  background: -ms-linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));
+}
+/* line 193, /Users/guoliyuan/36kr-frontend/src/styles/index.less */
+.index-wrap .head-images .smaller-images .block.next:hover:before {
+  opacity: 1;
+}
 /* line 25, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
 .index-wrap .head-images .smaller-images .block.next a {
   position: relative;
@@ -835,43 +902,6 @@ a:hover {
   color: #ffffff;
   font-size: 18px;
   z-index: 50;
-}
-/* line 43, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
-.index-wrap .head-images .smaller-images .block.next a:before {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  -webkit-transition: all 0.3s ease;
-          transition: all 0.3s ease;
-  background-color: rgba(0, 0, 0, 0);
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), to(#000000));
-  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), #000000);
-  background: -ms-linear-gradient(top, rgba(0, 0, 0, 0), #000000);
-  opacity: 0.7;
-  content: " ";
-  z-index: 30;
-}
-/* line 56, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
-.index-wrap .head-images .smaller-images .block.next a:hover:before {
-  opacity: 1;
-}
-/* line 140, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
-.index-wrap .head-images .smaller-images .block.next a {
-  background-image: asset-url('next.jpg');
-}
-/* line 143, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
-.index-wrap .head-images .smaller-images .block.next a:before {
-  background-color: rgba(255, 255, 255, 0);
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), to(rgba(255, 255, 255, 0.5)));
-  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));
-  background: -ms-linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));
-  opacity: 0;
-}
-/* line 148, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
-.index-wrap .head-images .smaller-images .block.next a:hover:before {
-  opacity: 1;
 }
 /* line 159, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/index.less */
 .index-wrap .main-section {

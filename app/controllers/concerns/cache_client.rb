@@ -18,7 +18,7 @@ class CacheClient
   end
 
   def head_lines
-    Redis::HashKey.new('head_lines')['list']
+    Redis::HashKey.new('head_lines')['list_new']
   end
 
   def columns_header
