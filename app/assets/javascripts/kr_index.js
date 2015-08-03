@@ -55,6 +55,10 @@ $(document).ready(function(){
         navBarTop = $('.J_newsListNavBar').length && $('.J_newsListNavBar').offset().top;
     });
 
+    if($('.categories [data-type="all"]').hasClass('active')){
+        $('.pre-load-ads .J_channelIndexAd').clone().prependTo($('.J_articleList'));
+    }
+
     $('.J_newsListNavBar a.active').data('listWrapper', $('.J_articleList').eq(0))
     $('.J_newsListNavBar a.tab').click(function(e){
         e.preventDefault();
