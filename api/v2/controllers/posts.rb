@@ -120,7 +120,7 @@ module V2
           {
             url_code: post.url_code,
             comments_count: post.comments_count,
-            views_count: post.views_count,
+            views_count: post.cache_views_count,
             favorited: state
            }
         end
