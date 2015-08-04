@@ -30,6 +30,11 @@ module PostsHelper
     content.to_s.gsub('<p class="p-text"></p>', '')
   end
 
+  def uc_sanitize_tags(text)
+    content = sanitize_tags text
+    content.gsub('src', 'alt_src')
+  end
+
   def remove_blank_lines(text)
     text.to_s.gsub('<p><br></p>', '')
   end

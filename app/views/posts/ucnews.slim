@@ -1,0 +1,25 @@
+doctype html
+html[lang="en"]
+  head
+    link href="http://zzd.sm.cn/third_party/css/SMDefaultCSS.css" rel="stylesheet" type="text/css"
+    title
+      = @post.title
+  body
+    .head-fixed.fn-hide
+    article style="padding-bottom:0;"
+    #SmNewsBar
+      a#logo href="http://36kr.com"
+        img alt="36氪" onerror="hideBar()" src="https://krplus-cdn.b0.upaiyun.com/common-module/common-header/images/logo.png"
+    - cache [:post, :ucnews, :html, @post.updated_at]
+      header
+        h1 = @post.title
+        .subtitle
+          time = @post.published_at
+          a#source href="http://36kr.com" 36氪
+          a#toggle_img href="#" onclick=("SMShowImage(); return false")  显示图片
+          a.comment_totoal_cnt
+      article
+        = raw uc_sanitize_tags @post.content
+
+    script src="http://zzd.sm.cn/third_party/js/jquery.min.js" type="text/javascript"
+    script src="http://zzd.sm.cn/third_party/js/SMDefaultJS.js" type="text/javascript"

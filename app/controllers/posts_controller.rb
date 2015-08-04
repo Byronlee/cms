@@ -27,10 +27,16 @@ class PostsController < ApplicationController
 
   alias_method :baidu_feed, :feed
   alias_method :xiaozhi_feed, :feed
+  alias_method :uc_feed, :feed
 
   def bdnews
     @post = Post.published.find_by_url_code!(params[:url_code])
     render 'bdnews', layout: false
+  end
+
+  def ucnews
+    @post = Post.published.find_by_url_code!(params[:url_code])
+    render 'ucnews', layout: false
   end
 
   def xiaozhi_news
