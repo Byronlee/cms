@@ -101,5 +101,18 @@ $(document).ready(function(){
         }, 'html');
     });
 
+    $('.J_articleList .mask-tags').click(function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var index = 0,
+            type = $(this).data('type');
+
+        $('.J_newsListNavBar a').each(function() {
+            if($(this).data('type') == type) {
+                $(this).click();
+            }
+        });
+    });
+
 
 });
