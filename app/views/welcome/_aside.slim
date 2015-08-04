@@ -5,7 +5,7 @@
     a.product_notes_nav[href="#" name="product"]
       | ProDuct Note
   .wrap
-    .panel
+    .panel.fast-news-panel
       = render_cell :newsflashes, :index
-    .panel[style="display: none"]
+    .panel.product-panel[style="display: none"]
       = render_cell :product_notes, :index

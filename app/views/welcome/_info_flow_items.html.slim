@@ -3,6 +3,8 @@
     - if item['position'] == nil && item["type"] != 'seperate'
       article
         a.pic.info_flow_news_image[data-fit-mobile="true" class="badge-#{item["column"]["slug"]}" href="#{(item["title_link"].present? ? item["title_link"] : post_path(item["url_code"]))}" data-lazyload="#{(high_speed_url item["cover_real_url"], 'feature')}"]
+          span.mask-tags data-type="#{item["column"]["slug"]}"
+            = item["column"]["name"]
         .desc
           a.title.info_flow_news_title[href=(item["title_link"].present? ? item["title_link"] : post_path(item["url_code"])) target="_blank"]
             = raw item["title"]

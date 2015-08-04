@@ -13,10 +13,10 @@
     .block.article class="badge-#{head_line_third["section"]}"
       a#headline_two[href=append_ref_to_url(head_line_third["url"], ref: :head_line_two) data-lazyload="#{high_speed_url(head_line_third["image"], 'feature')}" target="_blank"]
         span = head_line_third["title"]
-    .block.next#headline_three
-      = render_cell :ads, :position_next
+    /.block.next#headline_three
+    /  = render_cell :ads, :position_next
     - head_line_next = @head_lines_next[0] || {}
-    .block.next style="padding: 20px;"
+    .block.next#headline_three style="padding: 20px;"
       .next-inner
         .clearfix
           strong.logo-next

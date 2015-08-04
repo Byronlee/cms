@@ -1,39 +1,44 @@
 - if @pdnotes.count > 0
   - @pdnotes.each do | pd |
     section.product data-id="#{pd.id}"
-      a[href=pd.news_url target="_blank" rel="nofollow"]
-        h3 = pd.hash_title
-      h4
-        | What:
-      p = display_pnote_what(pd)
-
-      h4
-        | How:
-
-      p = display_pnote_summary(pd, :first)
-
-      h4
-        | Think It Twice:
-      p = display_pnote_summary(pd, :last)
-
-      .pic
-        = image_tag pd.cover if pd.cover.present?
+      h3
+        a[href=pd.news_url target="_blank" rel="nofollow"]
+          = pd.hash_title
+      p = pd.description_text
       .info
         span.time
           = time_ago_in_words pd.created_at rescue ''
-        span.share
-          |  分享到
-          .share-group
-            a.weixin.mobile-hide[href="javascript:void(0)" ref="nofollow" target="_blank"]
-              i.icon-weixin
-              .panel-weixin
-                section.weixin-section
-                  p
-                    img[alt="533066" src="http://s.jiathis.com/qrcode.php?url=#{newsflash_show_url(pd.id)}?via=wechat_qr"]
-                h3
-                  | 打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮
-            a.weibo[href="http://share.baidu.com/s?type=text&searchPic=1&sign=on&to=tsina&url=#{newsflash_show_url pd.id}&title=#{(pd.description_text.to_s + ' | ProDuct Note').html_safe}&pic=#{pd.cover}" ref="nofollow" target="_blank"]
-              i.icon-weibo
+      .main
+        h4
+          | What:
+        p = pd.description_text
+        h4
+          | How:
+
+        p = display_pnote_summary(pd, :first)
+
+        h4
+          | Think It Twice:
+        p = display_pnote_summary(pd, :last)
+
+        .pic
+          = image_tag pd.cover if pd.cover.present?
+        .info
+          span.time
+            = time_ago_in_words pd.created_at rescue ''
+          span.share
+            |  分享到
+            .share-group
+              a.weixin.mobile-hide[href="javascript:void(0)" ref="nofollow" target="_blank"]
+                i.icon-weixin
+                .panel-weixin
+                  section.weixin-section
+                    p
+                      img[alt="533066" src="http://s.jiathis.com/qrcode.php?url=#{newsflash_show_url(pd.id)}?via=wechat_qr"]
+                  h3
+                    | 打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮
+              a.weibo[href="http://share.baidu.com/s?type=text&searchPic=1&sign=on&to=tsina&url=#{newsflash_show_url pd.id}&title=#{(pd.description_text.to_s + ' | ProDuct Note').html_safe}&pic=#{pd.cover}" ref="nofollow" target="_blank"]
+                i.icon-weibo
   a href="#{asynces_product_notes_path(d: 'next', b_id: @pdnotes.last.id)}" class="load-more product_notes_next_link"
 - else
   a href="javascript:void(0)" class="load-more no-data"
