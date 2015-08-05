@@ -58,8 +58,8 @@ settings.next = {
   collection_api: 'https://next.36kr.com/api/v1/posts/collections'
 }
 
-# 读者, 运营, 作者, 编辑, 管理员, 投稿
-settings.roles =  [:reader, :operator, :writer, :editor, :admin, :contributor]
+# 读者, 运营, 作者, 编辑, 管理员, 投稿, 专栏作者
+settings.roles =  [:reader, :operator, :writer, :editor, :admin, :contributor, :column_writer]
 settings.user_search_support = [['角色', 'role'], ['ID', 'id'], ['姓名', 'name'], ['电话', 'phone'], ['邮件', 'email'], ['sso_id', 'sso_id']]
 settings.editable_roles =  [:operator, :writer, :editor, :admin]
 
@@ -70,7 +70,7 @@ settings.users = {
   }
 }
 
-settings.writer_update_role_api = 'http://writer.36kr.com/api/jHcDEyl/v1/users/update_role'
+settings.writer_update_role_api = 'http://staging.writer.36kr.com/api/jHcDEyl/v1/users/update_role'
 
 settings.writer_token = 'e625cf097bb338f1100b5453f68'
 

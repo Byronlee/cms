@@ -58,7 +58,7 @@ module ApplicationHelper
   end
 
   def reviewings_count
-    @num ||= Post.reviewing.count
+    @num ||= Post.reviewing.accessible_by(current_ability).count
   end
 
   def body_class(name = nil)

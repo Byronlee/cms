@@ -13,9 +13,9 @@ describe Admin::UsersController do
 
   describe "patch 'update'" do
     context "returns http success" do
-      let(:user) { create :user }
+      let(:authentication) { create :authentication }
       it "returns http success" do
-        patch :update, id: user.id, user: attributes_for(:user)
+        patch :update, id: authentication.user.id, user: attributes_for(:user)
         expect(response.status).to eq 302
       end
     end
@@ -41,10 +41,10 @@ describe Admin::UsersController do
     end
 
     context 'admin can edit the role' do
-      let(:user) { create :user, :reader }
+      let(:authentication) { create :authentication }
       it do
-        patch :update, id: user.id, user: { role: 'admin', email: 'lb@gma.com' }
-        expect(user.reload.role).to eq 'admin'
+        patch :update, id: authentication.user.id, user: { role: 'admin', email: 'lb@gma.com' }
+        expect(authentication.user.reload.role).to eq 'admin'
       end
     end
 

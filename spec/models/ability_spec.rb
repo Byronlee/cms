@@ -169,6 +169,58 @@ describe Ability do
     end
   end
 
+  context "column writer role" do
+    context "public page" do
+      include_context "public ability" do
+        let(:user) { create :user, :column_writer }
+      end
+
+      before do
+        @newsflash = create :newsflash, user_id: user.id
+        @post = create :post, :published, author: user
+        @comment = create :comment, commentable_id: @post.id, commentable_type: 'Post'
+      end
+
+      it_behaves_like 'has public ability'
+
+      it do
+        should be_able_to :new, Post
+      end
+
+      it do
+        @post.undo_publish
+        @post.save
+        should be_able_to :reviewings, @post
+      end
+    end
+
+    context "admin page" do
+      include_context "admin ability" do
+        let(:user) { create :user, :column_writer }
+      end
+
+      before do
+        @newsflash = create :newsflash, user_id: user.id
+        @post = create :post, :published, author: user
+        @comment = create :comment, commentable_id: @post.id, commentable_type: 'Post'
+      end
+
+      it do
+        should be_able_to :read, :dashboard
+        should_not be_able_to :manage, Column
+        should be_able_to :new, Post
+        should be_able_to :myown, Post
+        should be_able_to :read, @post
+        should be_able_to :column, Post
+        should be_able_to :reviewings, Post
+        should_not be_able_to [:edit, :update], @post
+        should be_able_to :read, @post
+        should_not be_able_to :toggle_tag, Post
+        should be_able_to :read, @comment
+      end
+    end
+  end
+
   context "operator role" do
     context "public page" do
       include_context "public ability" do

@@ -61,6 +61,10 @@ FactoryGirl.define do
       role :editor
     end
 
+    trait :column_writer do
+      role :column_writer
+    end
+
     factory :user_with_krypton_authentication do
       after(:create) do |user, evaluator|
         list = create_list(:authentication, 1, user: user, provider: :krypton)
