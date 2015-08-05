@@ -21,7 +21,7 @@
 #  md_content        :text
 #  url_code          :integer
 #  views_count       :integer          default(0)
-#  catch_title       :text
+#  catch_title       :string(255)
 #  published_at      :datetime
 #  key               :string(255)
 #  remark            :text
