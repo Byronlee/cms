@@ -14,6 +14,10 @@ zh-CN:
         editor: 编辑
         admin: 管理员
         contributor: 投稿作者
+    head_line:
+      display_position:
+        normal: 普通展位
+        next: NEXT展位
   activerecord:
     attributes:
       comment:

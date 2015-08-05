@@ -91,7 +91,7 @@ function initFastSection(){
                 .eq(i).show()
                 .siblings().hide();
             $('.J_fastSectionList .wrap').perfectScrollbar('update');
-            $('.J_fastSectionList .wrap').data('origin','').css('height','auto');
+            // $('.J_fastSectionList .wrap').data('origin','').css('height','auto');
             setFastSection();
             $(window).trigger('resize');
             if($(this).attr('name')){
@@ -164,12 +164,20 @@ function initFastSection(){
      * 加载更多
      */
 
+    var feedData = {};
+    $.get('https://rongdev.36kr.com/api/hostsite/fetchFeeds',{
+        page: 1,
+        pageSize: 10
+    }).done(function(data){
+        feedData = data;
+        // $(window).trigger('scroll');
+    });
+    var page = 1;
     function bindLoadMore(){
-
         $('.J_fastSectionList .wrap').bind('scroll', function bind(e){
             var top = $(this).scrollTop();
             var loadTrigger = $(this).find('.panel:visible .load-more');
-
+            
 
             var bound = loadTrigger.offset().top - $(this).offset().top - $(this).height();
             if(bound<0){
@@ -180,8 +188,153 @@ function initFastSection(){
                 if(trigger.hasClass('no-data'))return;
                 if(trigger.hasClass('loading'))return;
                 trigger.addClass('loading');
-                $.get(url, function(list){
+                if(trigger.parents().is('.feed')) {
+                    if(page > feedData.data.totalPages - 1) {
+                        return;
+                    }
+                    page++;
+                    $.get('https://rongdev.36kr.com/api/hostsite/fetchFeeds',{
+                        page: page,
+                        pageSize: 10
+                    }).done(function(data){
+                        feedData = data;
+                        setTimeout(function() {
+                            if(page == feedData.data.totalPages) {
+                                var feedInner = '{@each data.data as item, k}'
+                                + '<section class="feed">'
+                                    + '<header>'
+                                        + '<a href="${item.innerImgLink}" class="figure">'
+                                            + '<img src="${item.mainImgUrl}" alt="" width="25">'
+                                        + '</a>'
+                                        + '<a href="${item.innerImgLink}" class="name">${item.mainName}</a>'
+                                        + '<i></i>'
+                                        + '<span>${item.feedTime}</span>'
+                                    + '</header>'
+                                    + '<div class="penel-body">'
+                                        + '<p>$${item.content}</p>'
+                                    + '</div>'
+                                + '</section>'
+                                + '{@/each}'
+                                + '<a href="#" class="load-more no-data"></a>';
+                            } else {
+                                var feedInner = '{@each data.data as item, k}'
+                                + '<section class="feed">'
+                                    + '<header>'
+                                        + '<a href="${item.innerImgLink}" class="figure">'
+                                            + '<img src="${item.mainImgUrl}" alt="" width="25">'
+                                        + '</a>'
+                                        + '<a href="${item.innerImgLink}" class="name">${item.mainName}</a>'
+                                        + '<i></i>'
+                                        + '<span>${item.feedTime}</span>'
+                                    + '</header>'
+                                    + '<div class="penel-body">'
+                                        + '<p>$${item.content}</p>'
+                                    + '</div>'
+                                + '</section>'
+                                + '{@/each}'
+                                + '<a href="#" class="load-more"></a>';
+                            }
+                            
+                            juicer.set('cache',true);
+                            juicer.set('errorhandling',false);
+                            juicer.set('strip',true);
+                            juicer.set('detection',false);
 
+                            var compiled_tpl = juicer(feedInner);
+                            var html = compiled_tpl.render(feedData);
+                            $('.feed-panel').append(html);
+                            trigger.remove();
+
+                            $('.J_fastSectionList .wrap').perfectScrollbar('update');
+                        }, 0);
+                    });
+                } else {
+                    $.get(url, function(list){
+                        setTimeout(function(){
+                            var newWrapper = trigger.parent();
+                            $(list).insertAfter(trigger);
+                            trigger.remove();
+
+                            $('.J_fastSectionList .wrap').perfectScrollbar('update');
+
+                        },0)
+
+                    }, 'html');
+                }
+                
+            }
+
+        }).delegate('.panel:visible .load-more', 'click', function(e){
+            e.preventDefault();
+            if(deviceType=='desktop')return;
+            var trigger = $(this);
+            var url = trigger.attr('href');
+            
+            trigger.attr('href', 'javascript:void(0)');
+            if(trigger.hasClass('no-data'))return;
+            if(trigger.hasClass('loading'))return;
+            trigger.addClass('loading');
+            if(trigger.parents().is('.feed')) {
+                    if(page > feedData.data.totalPages - 1) {
+                        return;
+                    }
+                    page++;
+                    $.get('https://rongdev.36kr.com/api/hostsite/fetchFeeds',{
+                        page: page,
+                        pageSize: 10
+                    }).done(function(data){
+                        feedData = data;
+                        setTimeout(function() {
+                            if(page == feedData.data.totalPages) {
+                                var feedInner = '{@each data.data as item, k}'
+                                + '<section class="feed">'
+                                    + '<header>'
+                                        + '<a href="${item.innerImgLink}" class="figure">'
+                                            + '<img src="${item.mainImgUrl}" alt="" width="25">'
+                                        + '</a>'
+                                        + '<a href="${item.innerImgLink}" class="name">${item.mainName}</a>'
+                                        + '<i></i>'
+                                        + '<span>${item.feedTime}</span>'
+                                    + '</header>'
+                                    + '<div class="penel-body">'
+                                        + '<p>$${item.content}</p>'
+                                    + '</div>'
+                                + '</section>'
+                                + '{@/each}'
+                                + '<a href="#" class="load-more no-data"></a>';
+                            } else {
+                                var feedInner = '{@each data.data as item, k}'
+                                + '<section class="feed">'
+                                    + '<header>'
+                                        + '<a href="${item.innerImgLink}" class="figure">'
+                                            + '<img src="${item.mainImgUrl}" alt="" width="25">'
+                                        + '</a>'
+                                        + '<a href="${item.innerImgLink}" class="name">${item.mainName}</a>'
+                                        + '<i></i>'
+                                        + '<span>${item.feedTime}</span>'
+                                    + '</header>'
+                                    + '<div class="penel-body">'
+                                        + '<p>$${item.content}</p>'
+                                    + '</div>'
+                                + '</section>'
+                                + '{@/each}'
+                                + '<a href="#" class="load-more"></a>';
+                            }
+                            juicer.set('cache',true);
+                            juicer.set('errorhandling',false);
+                            juicer.set('strip',true);
+                            juicer.set('detection',false);
+
+                            var compiled_tpl = juicer(feedInner);
+                            var html = compiled_tpl.render(feedData);
+                            $('.feed-panel').append(html);
+                            trigger.remove();
+
+                            $('.J_fastSectionList .wrap').perfectScrollbar('update');
+                        }, 0);
+                    });
+                } else {
+                $.get(url, function(list){
                     setTimeout(function(){
                         var newWrapper = trigger.parent();
                         $(list).insertAfter(trigger);
@@ -193,28 +346,6 @@ function initFastSection(){
 
                 }, 'html');
             }
-
-        }).delegate('.panel:visible .load-more', 'click', function(e){
-            e.preventDefault();
-            if(deviceType=='desktop')return;
-            var trigger = $(this);
-            var url = trigger.attr('href');
-            trigger.attr('href', 'javascript:void(0)');
-            if(trigger.hasClass('no-data'))return;
-            if(trigger.hasClass('loading'))return;
-            trigger.addClass('loading');
-            $.get(url, function(list){
-
-                setTimeout(function(){
-                    var newWrapper = trigger.parent();
-                    $(list).insertAfter(trigger);
-                    trigger.remove();
-
-                    $('.J_fastSectionList .wrap').perfectScrollbar('update');
-
-                },0)
-
-            }, 'html');
         });
 
     }

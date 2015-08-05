@@ -1,5 +1,7 @@
 article
   a.pic[data-fit-mobile="true" class="badge-#{post.column.try(:slug)}" href="#{post_path(post, utm_source: utm_source ||= nil)}" data-lazyload="#{high_speed_url post.cover_real_url, 'feature'}"]
+    span.mask-tags data-type="#{post.column.try(:slug)}"
+      = post.column.try(:name)
   .desc
     a.title[href=post_path(post, utm_source: utm_source ||= nil) target="_blank"]
       = raw post.title

@@ -1,31 +1,33 @@
 - if @newsflashes.count > 0
   - @newsflashes.each do | nf |
-    section.selected data-id="#{nf.id}"
-      h3
-        - if nf.is_top
-          span.top 置顶
-        = nf.hash_title
-      .desc
-        = nf.description_text
-        - if nf.news_url.present?
-          a[href=nf.news_url target="_blank" rel="nofollow"]
-            | [原文链接]
-      .info
-        span.time
-          = smart_time_ago nf.created_at
-        span.share
-          |  分享到
-          .share-group
-            a.weixin.mobile-hide[href="javascript:void(0)" ref="nofollow" target="_blank"]
-              i.icon-weixin
-              .panel-weixin
-                section.weixin-section
-                  p
-                    img[alt="533066" src="http://s.jiathis.com/qrcode.php?url=#{newsflash_show_url(nf.id)}?via=wechat_qr"]
-                h3
-                  | 打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮
-            a.weibo[href="http://share.baidu.com/s?type=text&searchPic=1&sign=on&to=tsina&url=#{newsflash_show_url nf.id}&title=#{('快讯 | ' + nf.description_text.to_s).html_safe}&pic=#{nf.cover}" ref="nofollow" target="_blank"]
-              i.icon-weibo
+    section data-id="#{nf.id}"
+      .section-inner
+        .info
+          span.time
+            = smart_time_ago nf.created_at
+        h3
+          - if nf.is_top
+            span.top 置顶
+          = nf.hash_title
+        .desc
+          = nf.description_text
+          - if nf.news_url.present?
+            a[href=nf.news_url target="_blank" rel="nofollow"]
+              | [原文链接]
+          .info
+            span.share
+              |  分享到
+              .share-group
+                a.weixin.mobile-hide[href="javascript:void(0)" ref="nofollow" target="_blank"]
+                  i.icon-weixin
+                  .panel-weixin
+                    section.weixin-section
+                      p
+                        img[alt="533066" src="http://s.jiathis.com/qrcode.php?url=#{newsflash_show_url(nf.id)}?via=wechat_qr"]
+                    h3
+                      | 打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮
+                a.weibo[href="http://share.baidu.com/s?type=text&searchPic=1&sign=on&to=tsina&url=#{newsflash_show_url nf.id}&title=#{('快讯 | ' + nf.description_text.to_s).html_safe}&pic=#{nf.cover}" ref="nofollow" target="_blank"]
+                  i.icon-weibo
   a href="#{asynces_newsflashes_path(d: 'next', b_top_id: ((top = @newsflashes.select{|n| n.is_top? }.last) && top.id), b_normal_id: ((normal = @newsflashes.select{|n| !n.is_top?}.last) && normal.id ))}" class="load-more newsflashes_next_link"
 - else
   a href="javascript:void(0)" class="load-more no-data"
