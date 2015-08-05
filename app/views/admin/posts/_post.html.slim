@@ -15,7 +15,7 @@ tr
       span
         | 作者: &nbsp;
         = link_to post.author.display_name, admin_user_posts_path(post.author), title: '查看该作者所有文章'
-      span
+      /span
         | 状态: &nbsp;
         = display_state(post.state)
       span
@@ -25,9 +25,11 @@ tr
         span
           | 留言: &nbsp;
           i.fa.fa-lightbulb-o[title=post.remark]
-      span
+      span title="PC浏览：#{post.cache_views_count}，App点击：#{post.cache_mobile_views_count}"
         | 浏览: &nbsp;
         = post.cache_views_count
+        | /
+        = post.cache_mobile_views_count
       span
         | 收藏: &nbsp;
         = post.favorites_count.to_i
