@@ -21,7 +21,7 @@
 #  md_content        :text
 #  url_code          :integer
 #  views_count       :integer          default(0)
-#  catch_title       :text
+#  catch_title       :string(255)
 #  published_at      :datetime
 #  key               :string(255)
 #  remark            :text
@@ -30,7 +30,6 @@
 #  favorites_count   :integer
 #  company_keywords  :string(255)      default([]), is an Array
 #  favoriter_sso_ids :integer          default([]), is an Array
-#  column_name       :string(255)
 #
 
 require 'action_view'

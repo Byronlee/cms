@@ -13,6 +13,7 @@
 #  is_long          :boolean
 #  state            :string(255)
 #  email            :string(255)
+#  ancestry         :string(255)
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

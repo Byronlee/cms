@@ -2,18 +2,19 @@
 #
 # Table name: head_lines
 #
-#  id         :integer          not null, primary key
-#  url        :string(255)
-#  order_num  :integer
-#  created_at :datetime
-#  updated_at :datetime
-#  title      :string(255)
-#  post_type  :string(255)
-#  image      :string(255)
-#  user_id    :integer
-#  url_code   :integer
-#  state      :string(255)
-#  section    :string(255)
+#  id           :integer          not null, primary key
+#  url          :string(255)
+#  order_num    :integer
+#  created_at   :datetime
+#  updated_at   :datetime
+#  title        :string(255)
+#  post_type    :string(255)
+#  image        :string(255)
+#  user_id      :integer
+#  url_code     :integer
+#  state        :string(255)
+#  section      :string(255)
+#  hidden_title :boolean
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl
