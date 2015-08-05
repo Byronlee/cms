@@ -115,4 +115,36 @@ $(document).ready(function(){
     });
 
 
+    var feedData = {};
+    $.get('https://rongdev.36kr.com/api/hostsite/fetchFeeds',{
+        page: 1,
+        pageSize: 10
+    }).done(function(data){
+        feedData = data;
+        var feedInner = '{@each data.data as item, k}'
+                + '<section class="feed">'
+                    + '<header>'
+                        + '<a href="${item.innerImgLink}" class="figure">'
+                            + '<img src="${item.mainImgUrl}" alt="" width="25">'
+                        + '</a>'
+                        + '<a href="${item.innerImgLink}" class="name">${item.mainName}</a>'
+                        + '<i></i>'
+                        + '<span>${item.feedTime}</span>'
+                    + '</header>'
+                    + '<div class="penel-body">'
+                        + '<p>$${item.content}</p>'
+                    + '</div>'
+                + '</section>'
+                + '{@/each}';
+        juicer.set('cache',true);
+        juicer.set('errorhandling',false);
+        juicer.set('strip',true);
+        juicer.set('detection',false);
+
+        var compiled_tpl = juicer(feedInner);
+        var html = compiled_tpl.render(feedData);
+        $('.feed-inner').append(html);
+    });
+
+
 });

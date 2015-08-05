@@ -992,64 +992,65 @@ a:hover {
   text-align: center;
   border-bottom: solid 1px #e9eaec;
   background: #f4f4f4;
-}
-/* line 16, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
-.fast-section .tabs a:first-of-type {
+  width: 33.33%;
   float: left;
-  width: 50%;
   border-right: solid 1px #e9eaec;
 }
-/* line 21, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 24, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+.fast-section .tabs a:last-child {
+  border: none;
+}
+/* line 27, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .tabs a.active {
   background: #fff;
   border-bottom: solid 1px transparent;
   color: #333333;
   cursor: default;
 }
-/* line 29, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 35, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .list {
   border-radius: 2px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   overflow: hidden;
   background: #fff;
 }
-/* line 33, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 39, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .list .wrap {
   overflow: auto;
   position: relative;
   margin: 4px 0;
 }
 @media (max-width: 800px) {
-  /* line 37, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+  /* line 43, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
   .fast-section .list .wrap {
     margin: 0;
   }
 }
-/* line 43, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 49, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .list .section-inner {
   margin: 0 15px;
   padding: 15px 0;
   border-bottom: solid 1px #e9eaec;
 }
-/* line 51, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 57, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .list .panel > section {
   padding: 0 15px;
   background: #ffffff;
   cursor: pointer;
   position: relative;
 }
-/* line 62, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 68, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .list .panel > section:last-of-type {
   border-bottm: 0;
 }
-/* line 66, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 72, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .list .panel > section > h3 {
   line-height: 20px;
   margin: 6px 0;
   text-align: left;
   font-weight: 600;
 }
-/* line 71, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 77, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .list .panel > section > h3 span {
   display: inline-block;
   vertical-align: middle;
@@ -1062,7 +1063,7 @@ a:hover {
   line-height: 16px;
   margin-top: -2px;
 }
-/* line 84, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 90, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .list .panel > section .desc {
   display: block;
   color: #666666;
@@ -1073,7 +1074,7 @@ a:hover {
   text-overflow: ellipsis;
   text-align: left;
 }
-/* line 93, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 99, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .list .panel > section .desc a {
   color: #3da9f7;
 }
@@ -1081,7 +1082,7 @@ a:hover {
 .fast-section .list .panel > section .desc a:hover {
   color: #2c79b0;
 }
-/* line 97, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 103, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .list .panel > section .info {
   *zoom: 1;
   margin-top: 10px;
@@ -1095,11 +1096,11 @@ a:hover {
   clear: both;
   height: 0;
 }
-/* line 102, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 108, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .list .panel > section .info .time {
   float: left;
 }
-/* line 105, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 111, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .list .panel > section .info .share {
   float: right;
   visibility: hidden;
@@ -1111,17 +1112,17 @@ a:hover {
           transform: translate(-20px, 0);
   vertical-align: middle;
 }
-/* line 112, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 118, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .list .panel > section .info .share .share-group {
   vertical-align: middle;
 }
-/* line 114, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 120, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .list .panel > section .info .share .share-group a {
   margin-left: 8px;
   position: relative;
   top: -1px;
 }
-/* line 118, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 124, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .list .panel > section .info .share .share-group a i {
   width: 18px;
   height: 18px;
@@ -1130,19 +1131,19 @@ a:hover {
   font-size: 13px;
   border-radius: 3px;
 }
-/* line 130, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 136, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .list .panel > section.active {
   background-color: #f3f7fb;
   cursor: default;
 }
-/* line 133, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 139, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .list .panel > section.active .desc {
   display: block;
   overflow: visible;
   height: auto;
   min-height: 60px;
 }
-/* line 140, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 146, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .list .panel > section.active .info .share {
   visibility: visible;
   -webkit-transform: translate(0, 0);
@@ -1150,52 +1151,52 @@ a:hover {
           transform: translate(0, 0);
   opacity: 1;
 }
-/* line 148, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 154, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .list .panel > section.product > h3 {
   font-size: 16px;
   margin-left: 0;
   padding-left: 4px;
   border-left: solid 2px #fd9827;
 }
-/* line 155, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 161, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .list .panel > section.product .main {
   display: none;
 }
-/* line 161, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 167, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .list .panel > section.product.active > h3 a {
   color: #3da9f7;
 }
-/* line 164, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 170, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .list .panel > section.product.active > h3 + p {
   display: none;
 }
-/* line 169, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 175, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .list .panel > section.product.active .main {
   display: block;
 }
-/* line 173, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 179, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .list .panel > section.product.active > .info {
   display: none;
 }
-/* line 178, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 184, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .list .panel > section.product > .info {
   margin-top: 0;
 }
-/* line 183, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 189, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .list .panel > section.product h4 {
   margin: 15px 0 10px;
 }
-/* line 186, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 192, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .list .panel > section.product p {
   color: #666666;
 }
-/* line 189, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 195, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .list .panel > section.product .pic {
   width: 157px;
   margin-top: 15px;
   margin-bottom: 10px;
 }
-/* line 193, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 199, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .list .panel > section.product .pic img {
   display: block;
   width: 100%;
@@ -1203,23 +1204,23 @@ a:hover {
   cursor: zoom-in;
 }
 @media (max-width: 800px) {
-  /* line 199, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+  /* line 205, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
   .fast-section .list .panel > section.product {
     margin-top: 10px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     border: 0;
     border-radius: 2px;
   }
-  /* line 204, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+  /* line 210, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
   .fast-section .list .panel > section.product:first-of-type {
     margin-top: 0;
   }
 }
-/* line 209, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 215, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .list .panel > section.product:hover {
   background-color: #f3f7fb;
 }
-/* line 213, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 219, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .list .panel > section.product .info .share {
   visibility: visible;
   -webkit-transform: translate(0, 0);
@@ -1227,7 +1228,7 @@ a:hover {
           transform: translate(0, 0);
   opacity: 1;
 }
-/* line 224, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 230, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .list .panel.fast-news-panel > section:before {
   position: absolute;
   content: "";
@@ -1237,7 +1238,7 @@ a:hover {
   left: 13px;
   top: 0;
 }
-/* line 235, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 241, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .list .panel.fast-news-panel > section:first-child:after {
   content: "";
   position: absolute;
@@ -1247,23 +1248,23 @@ a:hover {
   top: 0;
   border-left: 2px solid #ffffff;
 }
-/* line 246, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 252, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .list .panel.fast-news-panel > section:first-child.active:after {
   border-left-color: #f3f7fb;
 }
-/* line 253, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 259, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .list .panel.fast-news-panel > section:last-child:before {
   height: 30px;
 }
-/* line 256, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 262, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .list .panel.fast-news-panel > section:last-child .section-inner {
   border-bottom: none;
 }
-/* line 261, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 267, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .list .panel.fast-news-panel > section .info .time {
   position: relative;
 }
-/* line 263, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 269, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .list .panel.fast-news-panel > section .info .time:before {
   position: absolute;
   width: 8px;
@@ -1275,24 +1276,24 @@ a:hover {
   content: "";
   border-radius: 100%;
 }
-/* line 280, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 286, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .list .panel.product-panel > section {
   padding: 2px 15px 5px;
 }
-/* line 287, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 293, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section a.ad {
   width: 100%;
   overflow: hidden;
   display: block;
 }
-/* line 291, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 297, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section a.ad img {
   width: 100%;
   margin-top: 20px;
   height: 120px;
   display: block;
 }
-/* line 298, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 304, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .load-more {
   height: 36px;
   line-height: 36px;
@@ -1300,27 +1301,27 @@ a:hover {
   background: #f2f2f2;
   display: block;
 }
-/* line 307, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 313, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .load-more:before {
   content: '加载更多';
   display: inline-block;
 }
-/* line 311, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 317, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .load-more:hover {
   background: #ffffff;
 }
-/* line 314, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 320, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .load-more.loading,
 .fast-section .load-more.loading:hover {
   background: #ffffff;
   cursor: default;
 }
-/* line 318, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 324, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .load-more.loading:before,
 .fast-section .load-more.loading:hover:before {
   content: "正在加载...";
 }
-/* line 321, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 327, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .load-more.loading:after,
 .fast-section .load-more.loading:hover:after {
   content: " ";
@@ -1332,14 +1333,14 @@ a:hover {
   vertical-align: middle;
   margin-left: 10px;
 }
-/* line 332, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 338, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .load-more.no-data,
 .fast-section .load-more.no-data:hover {
   cursor: not-allowed;
   color: #aaaaaa;
   background: #f4f4f4;
 }
-/* line 337, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+/* line 343, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .load-more.no-data:before,
 .fast-section .load-more.no-data:hover:before {
   content: "没有更多数据了";
@@ -1372,17 +1373,10 @@ a:hover {
   border-bottom: solid 1px #cddce7;
   background: #f3f6f8;
   float: left;
-  width: 33.333%;
+  width: 25%;
   border-right: solid 1px #cddce7;
   color: #4b5d69;
   font-size: 14px;
-}
-/* line 22, /Users/guoliyuan/36kr-frontend/src/styles/components/mobile-nav.less */
-.mobile-nav a:last-of-type {
-  float: none;
-  width: auto;
-  border-right: 0;
-  overflow: hidden;
 }
 /* line 28, /Users/guoliyuan/36kr-frontend/src/styles/components/mobile-nav.less */
 .mobile-nav a.active {
@@ -1753,7 +1747,129 @@ a:hover {
 .share-group a.icon-add:hover {
   opacity: 1;
 }
-/* line 8, /Users/guoliyuan/36kr-frontend/src/styles/global.less */
+/* line 2, /Users/guoliyuan/36kr-frontend/src/styles/components/feed-list.less */
+.fast-section .list .panel section.feed {
+  padding: 10px 15px;
+  border-bottom: 1px solid #f6f6f6;
+}
+/* line 6, /Users/guoliyuan/36kr-frontend/src/styles/components/feed-list.less */
+.fast-section .list .panel section.feed:last-child {
+  border-bottom: none;
+}
+/* line 9, /Users/guoliyuan/36kr-frontend/src/styles/components/feed-list.less */
+.fast-section .list .panel section.feed:hover {
+  background-color: #f7fbff;
+}
+/* line 13, /Users/guoliyuan/36kr-frontend/src/styles/components/feed-list.less */
+.fast-section .list .panel section.feed header {
+  *zoom: 1;
+}
+/* line 44, /Users/guoliyuan/36kr-frontend/src/styles/components/common.less */
+.fast-section .list .panel section.feed header:after {
+  content: '';
+  display: block;
+  clear: both;
+  height: 0;
+}
+/* line 15, /Users/guoliyuan/36kr-frontend/src/styles/components/feed-list.less */
+.fast-section .list .panel section.feed header a,
+.fast-section .list .panel section.feed header i,
+.fast-section .list .panel section.feed header span {
+  float: left;
+}
+/* line 18, /Users/guoliyuan/36kr-frontend/src/styles/components/feed-list.less */
+.fast-section .list .panel section.feed header img {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+/* line 23, /Users/guoliyuan/36kr-frontend/src/styles/components/feed-list.less */
+.fast-section .list .panel section.feed header .figure {
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+  overflow: hidden;
+  background-color: #ccc;
+  margin-right: 15px;
+}
+/* line 32, /Users/guoliyuan/36kr-frontend/src/styles/components/feed-list.less */
+.fast-section .list .panel section.feed header a,
+.fast-section .list .panel section.feed header span {
+  font-size: 13px;
+  line-height: 25px;
+  color: #bbb;
+}
+/* line 37, /Users/guoliyuan/36kr-frontend/src/styles/components/feed-list.less */
+.fast-section .list .panel section.feed header i {
+  width: 3px;
+  height: 3px;
+  overflow: hidden;
+  background-color: #bbb;
+  border-radius: 100%;
+  margin: 10px;
+}
+/* line 46, /Users/guoliyuan/36kr-frontend/src/styles/components/feed-list.less */
+.fast-section .list .panel section.feed .penel-body {
+  margin-top: 13px;
+}
+/* line 48, /Users/guoliyuan/36kr-frontend/src/styles/components/feed-list.less */
+.fast-section .list .panel section.feed .penel-body .img-list {
+  *zoom: 1;
+  margin: 10px 0 0 -2px;
+}
+/* line 44, /Users/guoliyuan/36kr-frontend/src/styles/components/common.less */
+.fast-section .list .panel section.feed .penel-body .img-list:after {
+  content: '';
+  display: block;
+  clear: both;
+  height: 0;
+}
+/* line 51, /Users/guoliyuan/36kr-frontend/src/styles/components/feed-list.less */
+.fast-section .list .panel section.feed .penel-body .img-list img {
+  float: left;
+  margin: 2px;
+  background-color: #ddd;
+}
+/* line 58, /Users/guoliyuan/36kr-frontend/src/styles/components/feed-list.less */
+.fast-section .list .panel section.feed .penel-body .products-apps {
+  *zoom: 1;
+  margin-left: -10px;
+  text-align: center;
+}
+/* line 44, /Users/guoliyuan/36kr-frontend/src/styles/components/common.less */
+.fast-section .list .panel section.feed .penel-body .products-apps:after {
+  content: '';
+  display: block;
+  clear: both;
+  height: 0;
+}
+/* line 62, /Users/guoliyuan/36kr-frontend/src/styles/components/feed-list.less */
+.fast-section .list .panel section.feed .penel-body .products-apps a {
+  float: left;
+  border-radius: 100%;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  background-color: #f1f1f1;
+  color: #188fef;
+  line-height: 50px;
+  margin: 10px;
+}
+/* line 73, /Users/guoliyuan/36kr-frontend/src/styles/components/feed-list.less */
+.fast-section .list .panel section.feed .penel-body .products-apps img {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+/* line 81, /Users/guoliyuan/36kr-frontend/src/styles/components/feed-list.less */
+.fast-section .list .panel section.feed p a {
+  color: #188fef;
+}
+/* line 9, /Users/guoliyuan/36kr-frontend/src/styles/global.less */
 .pre-load-ads {
   display: none;
 }

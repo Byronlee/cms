@@ -4,8 +4,13 @@
       | 快讯
     a.product_notes_nav[href="#" name="product"]
       | ProDuct Note
+    a[href="#" name="feed"]
+      | 创业动态
   .wrap
     .panel.fast-news-panel
       = render_cell :newsflashes, :index
     .panel.product-panel[style="display: none"]
       = render_cell :product_notes, :index
+    .panel.feed-panel.feed[style="display: none"]
+      .feed-inner
+      a.load-more href="#"
