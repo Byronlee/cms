@@ -14,6 +14,7 @@
 #  url_code         :integer
 #  state            :string(255)
 #  section          :string(255)
+#  hidden_title     :boolean
 #  display_position :text
 #  summary          :text
 #

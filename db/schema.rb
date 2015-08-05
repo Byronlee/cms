@@ -123,7 +123,6 @@ ActiveRecord::Schema.define(version: 20150731021622) do
     t.string   "state"
     t.string   "section"
     t.boolean  "hidden_title"
-    t.text     "extra"
     t.text     "display_position"
     t.text     "summary"
   end
@@ -197,7 +196,6 @@ ActiveRecord::Schema.define(version: 20150731021622) do
     t.integer  "favorites_count"
     t.string   "company_keywords",  default: [], array: true
     t.integer  "favoriter_sso_ids", default: [], array: true
-    t.string   "column_name"
   end
 
   add_index "posts", ["column_id"], name: "index_posts_on_column_id", using: :btree
@@ -240,10 +238,7 @@ ActiveRecord::Schema.define(version: 20150731021622) do
     t.integer  "order_num"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "slug"
   end
-
-  add_index "sites", ["slug"], name: "index_sites_on_slug", using: :hash
 
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"

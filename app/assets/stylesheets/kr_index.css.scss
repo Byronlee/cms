@@ -601,7 +601,8 @@ a:hover {
   width: 62px;
   height: 20px;
   float: left;
-  background: asset-url('logo-next.png') center center no-repeat;
+  background: asset-url('http://a.36krcnd.com/nil_class/2d997a7a-6416-452f-ba08-502852c31c62/logo-next_2x.png') center center no-repeat;
+  background-size: cover;
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (min-device-pixel-ratio: 1.5) {
   /* line 147, /Users/guoliyuan/36kr-frontend/src/styles/index.less */
