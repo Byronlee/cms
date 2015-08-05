@@ -11,8 +11,9 @@
           li.active 编辑文章信息
   .main-body
     = simple_form_for [:admin, @post], html:{class:"form-horizontal"}  do | f |
-      = f.input :slug, input_html: {class: 'col-lg-12'}
+      = f.input :catch_title, input_html: {class: 'col-lg-12'}
       = f.input :title, input_html: {class: 'col-lg-12'}
+      = f.input :slug, input_html: {class: 'col-lg-12'}
       = f.input :remark, input_html: {class: 'col-lg-12'}
       = f.input :summary, as: :text, :input_html => { 'rows' => 10, class: 'col-lg-12'}
       = f.input :tag_list, input_html: {class: 'col-lg-12'}

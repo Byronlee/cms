@@ -19,7 +19,7 @@ xml.rss :version => "2.0" do
             xml.cdata! feed.summary
           end
           xml.content do
-            xml.cdata! feed.content
+            xml.cdata! sanitize_tags feed.content
           end
           xml.pubDate feed.published_at && feed.published_at.to_s(:rfc822)
           xml.link do

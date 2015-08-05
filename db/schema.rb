@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150729082307) do
+ActiveRecord::Schema.define(version: 20150731021622) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -123,11 +123,8 @@ ActiveRecord::Schema.define(version: 20150729082307) do
     t.string   "state"
     t.string   "section"
     t.boolean  "hidden_title"
-<<<<<<< HEAD
     t.text     "display_position"
     t.text     "summary"
-=======
->>>>>>> 添加头条推荐隐藏标题选项
   end
 
   create_table "info_flows", force: true do |t|

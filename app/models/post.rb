@@ -65,7 +65,8 @@ class Post < ActiveRecord::Base
   validates_presence_of :title, :content, :url_code
   validates_uniqueness_of :title, :content, :url_code
   validates_presence_of :published_at, if: -> { self.state == "published" }
-  validates :title, length: { maximum: 200 }
+  validates :title, :slug, length: { maximum: 250 }
+  validates :catch_title, length: { maximum: 14 }
 
   belongs_to :column, counter_cache: true
   belongs_to :author, class_name: User.to_s, foreign_key: 'user_id'
