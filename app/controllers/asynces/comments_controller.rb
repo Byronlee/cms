@@ -33,7 +33,7 @@ class Asynces::CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:content) if params[:comment]
+    params.require(:comment).permit(:content, :parent_id) if params[:comment]
   end
 
   def find_commentable

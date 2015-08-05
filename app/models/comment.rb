@@ -21,6 +21,7 @@ class Comment < ActiveRecord::Base
   include ActionView::Helpers::DateHelper
   include AASM
 
+  has_ancestry
   aasm.attribute_name :state
   paginates_per 100
   by_star_field :created_at

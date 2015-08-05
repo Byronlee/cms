@@ -3,6 +3,7 @@
 #= require kr_article
 #= require kr_search-result
 #= require kr_fast-section-detail
+#= require kr_comment
 #= require ga_track
 #= require search-result
 #= require async_render
