@@ -45,6 +45,7 @@ class ::V2::Base < Grape::API
   mount ::V2::Controllers::Feeds
   mount ::V2::Controllers::Sites
   mount ::V2::Controllers::Search
+  mount ::V2::Controllers::Callbacks
 
   add_swagger_documentation(
     api_version: 'v2', mount_path: 'doc',

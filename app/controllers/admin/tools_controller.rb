@@ -35,18 +35,19 @@ class Admin::ToolsController < Admin::BaseController
     comments_counts = posts.map(&:comments_counts).compact.inject(0) {|sum, i| sum + i }
     favorites_count = posts.map(&:favorites_count).compact.inject(0) {|sum, i| sum + i }
     cache_views_count = posts.map(&:cache_views_count).compact.inject(0) {|sum, i| sum + i }
+    cache_mobile_views_count = posts.map(&:cache_mobile_views_count).compact.inject(0) {|sum, i| sum + i }
     (0..10).select{|x| x % 2 == 1}.each do |i|
         sheet1.row(1).set_format(i, red_format)
     end
-    sheet1.row(1).push '文章总数', posts.size, '总评论数', comments_counts, '总收藏数', favorites_count, '总浏览击数', cache_views_count
-    sheet1.row(3).push 'ID', '标题', 'URL', '阅读次数', '作者', '发表时间', '站内评论', '收藏数', '标题字数', '内容字数'
+    sheet1.row(1).push '文章总数', posts.size, '总评论数', comments_counts, '总收藏数', favorites_count, '总浏览数', cache_views_count, '移动端浏览数', cache_mobile_views_count
+    sheet1.row(3).push 'ID', '标题', 'URL', '阅读次数', '作者', '发表时间', '站内评论', '收藏数', '标题字数', '内容字数', '移动端阅读次数'
     posts.each_with_index do |post,i|
-        sheet1.row(i+4).push post.url_code, post.title,"http://36kr.com/p/#{post.url_code}.html", post.cache_views_count, post.author.name, post.published_at, post.comments_counts, post.favorites_count, post.title.length, post.content.length
+        sheet1.row(i+4).push post.url_code, post.title,"http://36kr.com/p/#{post.url_code}.html", post.cache_views_count, post.author.name, post.published_at, post.comments_counts, post.favorites_count, post.title.length, post.content.length, post.cache_mobile_views_count
     end
 
     sheet2 = book.create_worksheet :name => '综合统计'
     sheet2.row(0).push "所有专栏", "日期时段", report_name
-    sheet2.row(1).push '专栏', '文章总数', '总评论数', '总收藏数', '总浏览击数'
+    sheet2.row(1).push '专栏', '文章总数', '总评论数', '总收藏数', '总浏览击数', '移动端浏览数'
 
     columns.each_with_index do |column,c|
       sheet3 = book.create_worksheet :name => column.name.to_s
@@ -60,16 +61,17 @@ class Admin::ToolsController < Admin::BaseController
       comments_counts = posts.map(&:comments_counts).compact.inject(0) {|sum, i| sum + i }
       favorites_count = posts.map(&:favorites_count).compact.inject(0) {|sum, i| sum + i }
       cache_views_count = posts.map(&:cache_views_count).compact.inject(0) {|sum, i| sum + i }
-      sheet3.row(2).push '文章总数', posts.size , '总评论数', comments_counts, '总收藏数', favorites_count, '总浏览击数', cache_views_count
-      sheet3.row(4).push 'ID', '标题', 'URL', '阅读次数', '作者', '发表时间', '站内评论', '收藏数', '标题字数', '内容字数'
+      cache_mobile_views_count = posts.map(&:cache_mobile_views_count).compact.inject(0) {|sum, i| sum + i }
+      sheet3.row(2).push '文章总数', posts.size , '总评论数', comments_counts, '总收藏数', favorites_count, '总浏览击数', cache_views_count, '移动端浏览数', cache_mobile_views_count
+      sheet3.row(4).push 'ID', '标题', 'URL', '阅读次数', '作者', '发表时间', '站内评论', '收藏数', '标题字数', '内容字数', '移动端阅读次数'
       posts.each_with_index do |post,i|
-        sheet3.row(i+5).push post.url_code, post.title,"http://36kr.com/p/#{post.url_code}.html", post.cache_views_count, post.author.name, post.published_at, post.comments_counts, post.favorites_count, post.title.length, post.content.length
+        sheet3.row(i+5).push post.url_code, post.title,"http://36kr.com/p/#{post.url_code}.html", post.cache_views_count, post.author.name, post.published_at, post.comments_counts, post.favorites_count, post.title.length, post.content.length, post.cache_mobile_views_count
       end
 
       (1..5).each do |i|
         sheet2.row(c+2).set_format(i, red_format)
       end
-      sheet2.row(c+2).push column.name.to_s, posts.size , comments_counts, favorites_count, cache_views_count
+      sheet2.row(c+2).push column.name.to_s, posts.size , comments_counts, favorites_count, cache_views_count, cache_mobile_views_count
     end
 
     book.write filename

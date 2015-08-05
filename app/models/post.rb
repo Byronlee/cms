@@ -46,6 +46,7 @@ class Post < ActiveRecord::Base
 
   by_star_field '"posts".published_at'
   page_view_field :views_count, interval: 600
+  page_view_field :mobile_views_count, interval: 1800
   paginates_per 100
 
   enumerize :source_type, in: [:original, :translation, :reference, :contribution], default: :original
@@ -55,6 +56,7 @@ class Post < ActiveRecord::Base
     s.datetime :will_publish_at, default: ''
     s.string :jid,  default: ''
     s.boolean :close_comment, default: false
+    s.integer :mobile_views_count, default: 0
   end
 
   # mount_uploader :cover, BaseUploader
