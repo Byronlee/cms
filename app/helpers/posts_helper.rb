@@ -12,7 +12,12 @@ module PostsHelper
                 end
               end
      content = sanitize_tags(content)
-     remove_blank_lines(content)
+     content = remove_blank_lines(content)
+     fix_wp_content_image(content)
+  end
+
+  def fix_wp_content_image(content)
+     content.gsub('http://36kr.com/wp-content/uploads/', 'http://static.36kr.com/wp-content/uploads/')
   end
 
   def sanitize_tags(text)
