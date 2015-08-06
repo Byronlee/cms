@@ -63,7 +63,7 @@ zh-CN:
         domain: 站点域名
         info_flow:  所属信息流
         disable_with: '正在提交...'
-        admin_id: '管理员的主站ID'
+        admin_id: '管理员的用户中心ID'
         columns: '拥有专栏'
       user:
         role: 角色
