@@ -1,4 +1,5 @@
 settings.site = 'http://36kr.com'
+
 settings.writer = {
   host: 'http://writer.36kr.com/posts/new'
 }
@@ -128,3 +129,5 @@ settings.common_nav_script = {
 settings.cache={
   default_expires_in: 1.hour
 }
+
+settings.subsite = 'http://space.36kr.com'

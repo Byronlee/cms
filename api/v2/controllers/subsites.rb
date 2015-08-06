@@ -35,7 +35,7 @@ module V2
           return { status: false, msg: @post.errors.full_messages }  unless @post.save
           return { status: true,
             data: { key: @post.key, published_id: @post.url_code, state: @post.state },
-            review_url: generate_review_url(@post),
+            review_url: "#{Settings.subsite}/blog/#{@post.url_code}.html",
             admin_edit_post_url: admin_edit_post_url(@post, auth) }
         end
 
@@ -67,7 +67,7 @@ module V2
           return { status: false, msg: @post.errors.full_messages }  unless @post.save
           return { status: true,
             data: { key: @post.key, published_id: @post.url_code, state: @post.state },
-            review_url: generate_review_url(@post),
+            review_url: "#{Settings.subsite}/blog/#{@post.url_code}.html",
             admin_edit_post_url: admin_edit_post_url(@post, auth) }
         end
 
