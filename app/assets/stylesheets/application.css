@@ -54,3 +54,7 @@ form.comment_form span.reply_msg span {
     margin-left: 10px;
     cursor: pointer;
 }
+
+article .desc .brief a{
+    color: #3da9f7;
+}

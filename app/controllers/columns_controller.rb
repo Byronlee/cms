@@ -4,6 +4,7 @@ class ColumnsController < ApplicationController
     @posts = @column.posts.published.recent
     @posts = @posts.includes(:column, author: [:krypton_authentication])
     @posts = Post.paginate(@posts, params)
+    @posts_with_newsflashes = Post.merger_newsflashes(@column, @posts, params)
 
     respond_to do |format|
       format.html do

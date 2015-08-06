@@ -31,6 +31,7 @@ class Column < ActiveRecord::Base
   has_many :contributors, class_name: User.to_s, foreign_key: :user_ids
   has_and_belongs_to_many :info_flows
   has_and_belongs_to_many :sites
+  has_many :newsflashes
 
   scope :info_flows, -> { where(in_info_flow: true) }
   scope :headers,    -> { where("order_num > ?", 0 ).order(order_num: :desc) }
