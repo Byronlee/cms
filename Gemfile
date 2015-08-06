@@ -65,6 +65,7 @@ gem "highcharts-rails", "~> 3.0.0"
 gem 'cells'
 gem "jquery-fileupload-rails"
 gem 'chosen-rails'
+gem 'auto-correct'
 
 # controllers
 gem 'devise', "~> 3.4.1"
