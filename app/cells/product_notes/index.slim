@@ -4,14 +4,14 @@
       h3
         a[href=pd.news_url target="_blank" rel="nofollow"]
           = pd.hash_title
-      p = pd.description_text
+      p = display_pnote_what pd
       .info
         span.time
           = time_ago_in_words pd.created_at rescue ''
       .main
         h4
           | What:
-        p = pd.description_text
+        p = display_pnote_what pd
         h4
           | How:
 
