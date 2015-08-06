@@ -97,7 +97,6 @@ class Ability
     can [:update, :edit, :preview], Post, :id => user.posts.reviewing.pluck(:id)
     can :manage, Post, :id => user.posts.drafted.pluck(:id)
     cannot :toggle_tag, Post
-    can :read, Comment, :commentable_type => 'Post', :commentable_id => user.posts.pluck(:id)
   end
 
   # 编辑

@@ -216,7 +216,7 @@ describe Ability do
         should_not be_able_to [:edit, :update], @post
         should be_able_to :read, @post
         should_not be_able_to :toggle_tag, Post
-        should be_able_to :read, @comment
+        should_not be_able_to :read, @comment
       end
     end
   end
