@@ -28,6 +28,7 @@ FactoryGirl.define do
     sequence(:hash_title) { |n| "36氪号称全球最牛逼的科技媒体公司今#{n}天上市" }
     news_url "http://36kr.com"
     column
+    author
 
     trait :newsflash_data do
       description_text "根据本报讯，今天上午全球最牛逼的科技媒体公司36氪在拉斯维达斯成功上市，市值一只飙升1一千亿美元"
