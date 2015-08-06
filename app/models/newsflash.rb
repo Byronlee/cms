@@ -21,7 +21,7 @@
 #
 
 class Newsflash < ActiveRecord::Base
-  validates_presence_of :hash_title, :column_id
+  validates_presence_of :hash_title
 
   validates :description_text, length: { maximum: 500 }
 
