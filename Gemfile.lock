@@ -60,6 +60,8 @@ GEM
     ansi (1.5.0)
     ansi256 (0.2.5)
     arel (5.0.1.20140414130214)
+    auto-correct (0.1.0.pre0)
+      activesupport (> 3.0.0)
     axiom-types (0.1.1)
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
@@ -571,6 +573,7 @@ DEPENDENCIES
   acts_as_graph_object
   ancestry (~> 2.1.0)
   annotate
+  auto-correct
   by_star
   cancancan (~> 1.8.2)
   capistrano-bundler

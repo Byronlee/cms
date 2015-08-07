@@ -1,7 +1,7 @@
 section.single-post-header
   header.single-post-header__meta
     h1.single-post__title
-      = @post.title
+      = @post.title.auto_correct!
   .author
     a[href="#{user_domain(@post.author.try(:domain))}"]
       span.avatar[data-lazyload="#{@post.author.avatar}"]

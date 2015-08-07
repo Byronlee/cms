@@ -17,7 +17,7 @@ module PostsHelper
   end
 
   def fix_wp_content_image(content)
-     content.gsub('http://36kr.com/wp-content/uploads/', 'http://static.36kr.com/wp-content/uploads/')
+    content.gsub('http://36kr.com/wp-content/uploads/', 'http://static.36kr.com/wp-content/uploads/').auto_space!
   end
 
   def sanitize_tags(text)
