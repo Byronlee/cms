@@ -34,7 +34,7 @@ describe NewsflashesController do
   describe "GET 'show'" do
     context 'should return success' do
       let(:newsflash) { create(:newsflash) }
-      before { get 'show', id: newsflash }
+      before { get 'show', id: newsflash.id }
       it do
         date = newsflash.created_at
         should respond_with(200)

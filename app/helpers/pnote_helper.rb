@@ -1,6 +1,6 @@
 module PnoteHelper
   def display_pnote_what(pnote)
-    pnote.what.presence || pnote.description_text
+    pnote.what.presence || pnote.description_text.to_s
   end
 
   def display_pnote_summary(pnote, position)

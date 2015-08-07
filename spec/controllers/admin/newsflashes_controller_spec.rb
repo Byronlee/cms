@@ -34,7 +34,7 @@ describe Admin::NewsflashesController do
     it "returns http success" do
       expect do
         post :create, newsflash: attributes_for(:newsflash).merge(tag_list: '_newsflash')
-      end.to change(Newsflash, :count).by(0)
+      end.to change(Newsflash, :count).by(1)
     end
   end
 
