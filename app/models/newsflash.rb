@@ -66,6 +66,10 @@ class Newsflash < ActiveRecord::Base
     tag_list.include?('_newsflash') ? 'newsflash' : 'pdnote'
   end
 
+  def self.find_newsflashes_by_datetime(column, start_time, end_time)
+    column.newsflashes.tagged_with('_newsflash').where(created_at: start_time..end_time)
+  end
+
   private
 
   def update_new_flash_cache

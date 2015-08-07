@@ -219,7 +219,31 @@ class Post < ActiveRecord::Base
     end
   end
 
+  def self.merger_newsflashes(column, posts, params)
+    start_time = posts.present? ? posts.last.published_at : Time.parse('2000-01-01')
+    if paginate_by_id_request?(params)
+      if posts.present?
+        end_time = posts.firt.published_at
+      elsif (boundary_post = Post.find_by_url_code(params[:b_url_code]))
+        end_time = boundary_post.published_at
+      else
+        return posts
+      end
+    else
+      end_time   = Time.now
+    end
+    newsflashes  = Newsflash.find_newsflashes_by_datetime(column, start_time, end_time)
+    result       = posts.to_a + newsflashes.to_a
+    result.sort do |a, b|
+      get_object_time(b) <=> get_object_time(a)
+    end
+  end
+
   private
+
+  def self.get_object_time(obj)
+    obj.is_a?(Post) ? obj.published_at : obj.created_at
+  end
 
   def self.paginate_by_id_request?(params)
     params[:d].present? && params[:b_url_code].present?
