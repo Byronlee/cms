@@ -1,5 +1,6 @@
 require File.expand_path('../observers/post_sweeper.rb', __FILE__)
 class ApplicationController < ActionController::Base
+  
   protect_from_forgery with: :exception
 
   prepend_before_action :match_krid_online_status, unless: -> { devise_controller? || Rails.env.test? }
