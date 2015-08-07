@@ -105,9 +105,10 @@ GEM
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
-    cells (4.0.2)
-      tilt (>= 1.4, < 3)
-      uber (~> 0.0.9)
+    cells (3.11.3)
+      actionpack (>= 3.0)
+      railties (>= 3.0)
+      uber (~> 0.0.8)
     celluloid (0.17.1)
       bundler
       celluloid-essentials
@@ -628,7 +629,7 @@ DEPENDENCIES
   capsum (~> 1.0.0)
   carrierwave (~> 0.10.0)
   carrierwave-upyun!
-  cells
+  cells (~> 3.11.3)
   chosen-rails
   coffee-rails (~> 4.0.0)
   dalli (~> 2.7.0)
