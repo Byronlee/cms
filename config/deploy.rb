@@ -24,7 +24,7 @@ set :linked_files, %w{
 
 set :linked_dirs, %w{log tmp/pids tmp/logs tmp/cache tmp/sockets public/uploads}
 
-set :keep_releases, 15
+set :keep_releases, 8
 
 namespace :deploy do
 
