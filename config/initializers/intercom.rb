@@ -58,7 +58,8 @@ IntercomRails.config do |config|
     created_at:                  -> (user) { user.created_at.to_i },
     user_id:                     -> (user) { user.id },
     nickname:                    -> (user) { user.display_name },
-    tagline:                     -> (user) { user.tagline }
+    tagline:                     -> (user) { user.tagline },
+    favorites_count:             -> (user) { user.favorites_count }
   }
 
   # == User -> Company association
