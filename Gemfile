@@ -39,7 +39,7 @@ gem 'spreadsheet'
 gem "ancestry", "~> 2.1.0"
 gem 'enumerize', "~> 0.11.0"
 gem "carrierwave", "~> 0.10.0"
-gem 'carrierwave-upyun', '~> 0.1.6'
+gem 'carrierwave-upyun', github: "nowa/carrierwave-upyun"
 gem "mini_magick", "~> 3.7.0"
 gem "acts-as-taggable-on", "~> 3.4"
 gem "cancancan", "~> 1.8.2"
