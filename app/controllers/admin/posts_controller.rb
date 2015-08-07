@@ -85,8 +85,10 @@ class Admin::PostsController < Admin::BaseController
 
   def check_posts
     begin
-      @posts = Column.find(params[:column_id]).posts if params[:column_id].present?
-      @posts = User.find(params[:user_id]).posts if params[:user_id].present?
+      return @posts = Column.find(params[:column_id]).posts if params[:column_id].present?
+      return @posts = User.find(params[:user_id]).posts if params[:user_id].present?
+      @info_flow ||= InfoFlow.find_by_name InfoFlow::DEFAULT_INFOFLOW
+      @posts = Post.where(:column_id => @info_flow.columns.map(&:id))
     rescue
       return Post
     end

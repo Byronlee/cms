@@ -36,5 +36,5 @@ html lang="en"
         = render "/admin/shared/notice"
         = yield
 
-    = render_cell :layout, :script
+    / = render_cell :layout, :script
     = render_cell :head, :ga, current_user: current_user

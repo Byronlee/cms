@@ -62,7 +62,7 @@ gem 'polymer-rails', '~> 0.2.8'
 gem 'acts_as_graph_object'
 # gem 'google-analytics-rails'
 gem "highcharts-rails", "~> 3.0.0"
-gem 'cells'
+gem 'cells', "~> 3.11.3"
 gem "jquery-fileupload-rails"
 gem 'chosen-rails'
 gem 'auto-correct'

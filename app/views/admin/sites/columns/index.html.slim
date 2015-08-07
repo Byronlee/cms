@@ -1,0 +1,59 @@
+= render 'welcome/title', title: "#{@site.name}"
+
+.col_main.widget-box
+  .main_hd
+    h2 &nbsp;
+    .toolbar.clearfix.new
+      .pull-right style="margin-top: 40px;"
+        i.fa.fa-map-marker
+        ol.breadcrumb
+          li = link_to '站点管理', admin_sites_path
+          li.active
+            = @site.name
+        
+    div.widget-title
+      ul class="nav nav-tabs"
+        li.active
+          a data-toggle="tab" href="#info_flow_columns"  专栏
+
+
+  .main-body
+    div class="widget-content tab-content"
+      div#info_flow_columns class="tab-pane active"
+        = link_to "+  关联专栏", edit_admin_site_path(@site, ok_url: request.fullpath), class:"btn btn-primary guanlian"
+        div.widget-box
+          div class="widget-content"
+            ul.thumbnails.sortable
+              - @column_sites && @column_sites.each do |cs|
+                li.col-lg-2 data-column-site-id="#{cs.id}" style="cursor: all-scroll;"
+                  a href=  admin_column_posts_path(cs.column)
+                    - if cs.column.icon_url
+                      img onerror="imgError(this)" src="#{cs.column.icon_url}"
+                    - else
+                     p.default-cover
+                       span 专栏
+                  div.descripiton
+                    h5  = cs.column.name
+                  span class="label label-danger" data-placement="left" title="文章数"  = cs.column.posts_count.to_i
+
+javascript:
+  $(document).ready(function(){
+    $('.sortable').sortable().bind('sortupdate', function() {
+      var ids = [];
+      $.each($('.sortable li'), function(index, item) {
+        ids.push($(item).data('column-site-id'));
+      });
+
+      $.ajax({
+            type: 'patch',
+            url: "#{update_order_nums_admin_site_columns_path(site_id: @site.id)}",
+            data: {ids: ids},
+            beforeSend: function(){
+            },
+            success: function (data) {
+            },
+            complete: function(){
+            }
+        });
+    });
+  });
