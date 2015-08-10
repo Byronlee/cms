@@ -1,4 +1,4 @@
-= render 'welcome/title', title: (params[:ptype].eql?("_newsflash") ? '快讯管理' : 'Product Note 管理')
+= render 'welcome/title', title: "#{fast_news_type(params[:ptype])} 管理"
 
 .col_main
   .main_hd
