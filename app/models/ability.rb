@@ -42,7 +42,7 @@ class Ability
     can [:read, :site_map, :changes], :welcome
     can :read, [Ad, Post, Column, Page, Newsflash]
     can [:read, :posts], User
-    can [:news, :feed, :hots, :today_lastest, :feed_bdnews, :bdnews, :archives, :preview, :baidu_feed, :xiaozhi_feed, :xiaozhi_news], Post
+    can [:news, :feed, :hots, :today_lastest, :feed_bdnews, :bdnews, :archives, :preview, :baidu_feed, :xiaozhi_feed, :xiaozhi_news, :uc_feed, :ucnews], Post
     can [:read, :excellents], Comment
     cannot :create, Comment
   end
