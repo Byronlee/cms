@@ -134,7 +134,34 @@ function initFastSection(){
         }
         $('.J_fastSectionList .wrap').perfectScrollbar('update');
     };
-    $('.J_fastSectionList').delegate('section', 'click', bindItemActions);
+     $('body').delegate('.J_fastSectionList section', 'click', bindItemActions);
+
+    // 微信
+    $('body').on('click', '.J_fastSection .weixin', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var codeUrl = $(this).data('url');
+        var html = '<div class="panel-weixin">'
+                        + '<section class="weixin-section">'
+                            + '<p>'
+                                + '<img alt="533066" src="http://s.jiathis.com/qrcode.php?url=' + codeUrl + '">'
+                            + '</p>'
+                        + '</section>'
+                        + '<h3>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</h3>'
+                    + '</div>';
+                $(this).toggleClass('ac');
+                if($(this).hasClass('ac')) {
+                    $(this).append(html);
+                } else {
+                    $(this).find('.panel-weixin').remove();
+                }
+        // $(this).toggleClass('ac');
+        // if($(this).is('.ac')) {
+        //     $(this).append(html);
+        // } else {
+        //     $(this).remove('panel-weixin');
+        // }
+    });
 
     /**
      * 滚动时统计PN条目的展示
@@ -177,7 +204,7 @@ function initFastSection(){
         $('.J_fastSectionList .wrap').bind('scroll', function bind(e){
             var top = $(this).scrollTop();
             var loadTrigger = $(this).find('.panel:visible .load-more');
-            
+
 
             var bound = loadTrigger.offset().top - $(this).offset().top - $(this).height();
             if(bound<0){
@@ -234,7 +261,7 @@ function initFastSection(){
                                 + '{@/each}'
                                 + '<a href="#" class="load-more"></a>';
                             }
-                            
+
                             juicer.set('cache',true);
                             juicer.set('errorhandling',false);
                             juicer.set('strip',true);
@@ -261,7 +288,7 @@ function initFastSection(){
 
                     }, 'html');
                 }
-                
+
             }
 
         }).delegate('.panel:visible .load-more', 'click', function(e){
@@ -269,7 +296,7 @@ function initFastSection(){
             if(deviceType=='desktop')return;
             var trigger = $(this);
             var url = trigger.attr('href');
-            
+
             trigger.attr('href', 'javascript:void(0)');
             if(trigger.hasClass('no-data'))return;
             if(trigger.hasClass('loading'))return;
@@ -356,12 +383,13 @@ function initFastSection(){
      * 绑定大图交互
      */
 
-    $('.J_fastSectionList .wrap .product').magnificPopup({
-        delegate: 'img', // child items selector, by clicking on it popup will open
-        type: 'image'
-        // other options
-    });
-    $('.J_fastSectionList .wrap .product').delegate('img', 'click', function(e){
+    $('body').on('click','.J_fastSectionList .wrap .product img', function(e) {
+        e.stopPropagation();
+        $('.J_fastSectionList .wrap .product').magnificPopup({
+            delegate: 'img', // child items selector, by clicking on it popup will open
+            type: 'image'
+            // other options
+        });
         e.stopPropagation();
         $.magnificPopup.open({
             items: {

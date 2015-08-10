@@ -1018,7 +1018,6 @@ a:hover {
 .fast-section .list .wrap {
   overflow: auto;
   position: relative;
-  margin: 4px 0;
 }
 @media (max-width: 800px) {
   /* line 43, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
@@ -1044,11 +1043,12 @@ a:hover {
   border-bottm: 0;
 }
 /* line 72, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
-.fast-section .list .panel > section > h3 {
+.fast-section .list .panel > section h3 {
   line-height: 20px;
   margin: 6px 0;
   text-align: left;
   font-weight: 600;
+  font-size: 13px;
 }
 /* line 77, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .list .panel > section > h3 span {
@@ -1153,10 +1153,19 @@ a:hover {
 }
 /* line 154, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .list .panel > section.product > h3 {
-  font-size: 16px;
   margin-left: 0;
-  padding-left: 4px;
-  border-left: solid 2px #fd9827;
+  padding-left: 10px;
+  position: relative;
+}
+/* line 160, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
+.fast-section .list .panel > section.product > h3:before {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 13px;
+  background-color: #fd9827;
+  left: 0;
+  top: 2px;
 }
 /* line 161, /Users/guoliyuan/36kr-frontend/src/styles/components/fast-section.less */
 .fast-section .list .panel > section.product .main {
@@ -1813,6 +1822,7 @@ a:hover {
 /* line 46, /Users/guoliyuan/36kr-frontend/src/styles/components/feed-list.less */
 .fast-section .list .panel section.feed .penel-body {
   margin-top: 13px;
+  color: #555;
 }
 /* line 48, /Users/guoliyuan/36kr-frontend/src/styles/components/feed-list.less */
 .fast-section .list .panel section.feed .penel-body .img-list {
@@ -1867,7 +1877,7 @@ a:hover {
 }
 /* line 81, /Users/guoliyuan/36kr-frontend/src/styles/components/feed-list.less */
 .fast-section .list .panel section.feed p a {
-  color: #188fef;
+  color: #2f2f2f;
 }
 /* line 9, /Users/guoliyuan/36kr-frontend/src/styles/global.less */
 .pre-load-ads {
