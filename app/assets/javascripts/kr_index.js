@@ -73,7 +73,7 @@ $(document).ready(function(){
         }
 
         window.scrollTo(0, Math.min($(window).scrollTop(),navBarTop));
-        
+
         if(link.data('listWrapper')){
             $(this).addClass('active')
                 .siblings().removeClass('active');
@@ -97,11 +97,11 @@ $(document).ready(function(){
             bindLoadMore(newWrapper);
             $(window).trigger('scroll');
             $(".timeago").timeago();
-            
+
         }, 'html');
     });
 
-    $('.J_articleList .mask-tags').click(function(e) {
+    $('body').on('click','.J_articleList .mask-tags', function(e) {
         e.preventDefault();
         e.stopPropagation();
         var index = 0,

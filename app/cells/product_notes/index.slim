@@ -7,7 +7,7 @@
       p = display_pnote_what pd
       .info
         span.time
-          = time_ago_in_words pd.created_at rescue ''
+          = smart_time_ago pd.created_at rescue ''
       .main
         h4
           | What:
@@ -25,18 +25,12 @@
           = image_tag pd.cover if pd.cover.present?
         .info
           span.time
-            = time_ago_in_words pd.created_at rescue ''
+            = smart_time_ago pd.created_at rescue ''
           span.share
             |  分享到
             .share-group
-              a.weixin.mobile-hide[href="javascript:void(0)" ref="nofollow" target="_blank"]
+              a.weixin.mobile-hide[href="javascript:void(0)" ref="nofollow" target="_blank" data-url="#{newsflash_show_url(pd.id)}?via=wechat_qr"]
                 i.icon-weixin
-                .panel-weixin
-                  section.weixin-section
-                    p
-                      img[alt="533066" src="http://s.jiathis.com/qrcode.php?url=#{newsflash_show_url(pd.id)}?via=wechat_qr"]
-                  h3
-                    | 打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮
               a.weibo[href="http://share.baidu.com/s?type=text&searchPic=1&sign=on&to=tsina&url=#{newsflash_show_url pd.id}&title=#{('ProDuctNote ｜ ' + pd.hash_title.to_s + ' - ' + display_pnote_what(pd).to_s).html_safe}&pic=#{pd.cover}" ref="nofollow" target="_blank"]
                 i.icon-weibo
   a href="#{asynces_product_notes_path(d: 'next', b_id: @pdnotes.last.id)}" class="load-more product_notes_next_link"
