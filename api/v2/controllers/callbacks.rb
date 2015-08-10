@@ -8,7 +8,7 @@ module V2
         get ':url_code' do
           #views_count = Redis::HashKey.new('page_views')["Post#34034#views_count"]
           post = Post.find_by_url_code params[:url_code]
-          post.increase_mobile_views_count
+          post.increase_mobile_views_count if post
         end
 
       end
