@@ -1712,7 +1712,7 @@ a:hover {
   white-space: normal;
 }
 /* line 86, /Users/guoliyuan/36kr-frontend/src/styles/components/share-group.less */
-.share-group a:hover .panel-weixin {
+.share-group a:hover .panel-weixin, .share-group a.ac .panel-weixin {
   visibility: visible;
   -webkit-transform: translate(0, 0px);
       -ms-transform: translate(0, 0px);
