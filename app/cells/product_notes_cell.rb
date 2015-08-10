@@ -1,4 +1,5 @@
 class ProductNotesCell < Cell::Rails
+  helper ApplicationHelper
   helper PnoteHelper
 
   def index(args = {})

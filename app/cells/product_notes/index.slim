@@ -7,7 +7,7 @@
       p = display_pnote_what pd
       .info
         span.time
-          = time_ago_in_words pd.created_at rescue ''
+          = smart_time_ago pd.created_at rescue ''
       .main
         h4
           | What:
@@ -25,7 +25,7 @@
           = image_tag pd.cover if pd.cover.present?
         .info
           span.time
-            = time_ago_in_words pd.created_at rescue ''
+            = smart_time_ago pd.created_at rescue ''
           span.share
             |  分享到
             .share-group
