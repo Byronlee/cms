@@ -1,4 +1,4 @@
-= render 'welcome/title', title: '快讯管理'
+= render 'welcome/title', title: (params[:ptype].eql?("_newsflash") ? '快讯管理' : 'Product Note 管理')
 
 .col_main
   .main_hd
@@ -18,7 +18,7 @@
           ol.breadcrumb
             li = link_to 'Product Note 管理', admin_newsflashes_path+"?ptype=_pdnote"
             li.active 创建Product Note
-  
+
   .main-body
     = simple_form_for [:admin, @newsflash], html:{ class:"form-horizontal" } do | f |
       = f.input :hash_title, :input_html => { class: 'col-lg-11'}
