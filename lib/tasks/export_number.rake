@@ -1,17 +1,18 @@
 namespace :export do
-	desc 'export column post comment number'
-	task :export_column_post_comment_number => :environment do
-		columns = Column.all.order('id')
+	desc 'export user info'
+	task :export_user_info_number => :environment do
+		users = User.all.order('id')
 
-		columns_export_file ||= "#{Rails.root}/tmp/data/columns-#{DateTime.now.strftime("%F")}.csv"
-        Dir.mkdir(File.dirname(columns_export_file)) if !FileTest.exists?(File.dirname(columns_export_file))
-        CSV.open(columns_export_file, "wb") do |csv|
-        	csv << [ '专栏编号', '专栏名称', '文章数']
-        	columns.each do |column|
-			    csv << [ column.id, column.name, column.posts.size ]
+		users_export_file ||= "#{Rails.root}/tmp/data/users-#{DateTime.now.strftime("%F")}.csv"
+        Dir.mkdir(File.dirname(users_export_file)) if !FileTest.exists?(File.dirname(users_export_file))
+        CSV.open(users_export_file, "wb") do |csv|
+        	csv << [ 'sso_id', '姓名', '手机号']
+        	users.each do |user|
+			    csv << [ user.sso_id, user.name, user.phone ]
         	end
 		end
 
+=begin
 		post_export_file ||= "#{Rails.root}/tmp/data/post-#{DateTime.now.strftime("%F")}.csv"
         Dir.mkdir(File.dirname(post_export_file)) if !FileTest.exists?(File.dirname(post_export_file))
         CSV.open(post_export_file, "wb") do |csv2|
@@ -22,6 +23,7 @@ namespace :export do
 				end
         	end
 		end
+=end
 
 	end
 end
