@@ -2,7 +2,7 @@ doctype html
 html.no-js[lang="zh-CN"]
   head
     = content_for?(:title) ? yield(:title) : content_tag(:title, t('site.name'), s_t: t('site.name'))
-    
+
     - cache [:head, :static_info], :expires_in => Settings.cache.default_expires_in do
       = render_cell :head, :basic_info
       = render_cell :head, :ios_meta
@@ -31,10 +31,11 @@ html.no-js[lang="zh-CN"]
       = render_fragment_template_content baidu_statistics
     = csrf_meta_tag
     = javascript_tag "window._token = '#{form_authenticity_token}'"
-    
+
   body
     noscript
     script[src="#{Settings.common_nav_script.url}" name="news" fixed="false" local="#{Settings.common_nav_script.is_local}"]
+    script[src='//cdn.goroost.com/roostjs/jsuj1ry4og17haw6mdqoqep1ti1tcq4z' async]
     .mobile-nav.J_mobileNav
       a.tab.active[href="#"]
         | 深度报道
@@ -45,13 +46,13 @@ html.no-js[lang="zh-CN"]
       a.tab[href="#" name="feed"]
         | 创业动态
     = yield
-    
+
     - cache [:layout, :footer, footer = FragmentTemplate.find_by_key(:footer_body)] do
       = render_cell :layout, :footer, footer: footer
 
     - cache [:layout, :fix_tools_and_script], :expires_in => Settings.cache.default_expires_in do
       = render_cell :layout, :fix_tools
       = render_cell :layout, :script
-    
+
     - cache [:head, :ga, current_user.try(:id), current_user.try(:display_name)] do
       = render_cell :head, :ga, current_user: current_user
