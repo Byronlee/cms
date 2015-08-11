@@ -194,7 +194,7 @@ function initFastSection(){
     var feedData = {};
     $.get('https://rong.36kr.com/api/hostsite/fetchFeeds',{
         page: 1,
-        pageSize: 10
+        pageSize: 30
     }).done(function(data){
         feedData = data;
         // $(window).trigger('scroll');
@@ -222,33 +222,33 @@ function initFastSection(){
                     page++;
                     $.get('https://rong.36kr.com/api/hostsite/fetchFeeds',{
                         page: page,
-                        pageSize: 10
+                        pageSize: 30
                     }).done(function(data){
                         feedData = data;
                         setTimeout(function() {
                             if(page == feedData.data.totalPages) {
                                 var feedInner = '{@each data.data as item, k}'
-                                + '<section class="feed">'
-                                    + '<header>'
-                                        + '<a href="${item.innerImgLink}" class="figure">'
-                                            + '<img src="${item.mainImgUrl}" alt="" width="25">'
-                                        + '</a>'
-                                        + '<a href="${item.innerImgLink}" class="name">${item.mainName}</a>'
-                                        + '<i></i>'
-                                        + '<span>${item.feedTime}</span>'
-                                    + '</header>'
-                                    + '<div class="penel-body">'
-                                        + '<p>$${item.content}</p>'
-                                    + '</div>'
-                                + '</section>'
-                                + '{@/each}'
+                                    + '<section class="feed">'
+                                        + '<header>'
+                                            + '<a href="${item.innerImgLink}" class="figure">'
+                                                + '<img src="${item.mainImgUrl}" alt="" width="25" onerror="nofind()">'
+                                            + '</a>'
+                                            + '<a href="${item.innerImgLink}" class="name">${item.mainName}</a>'
+                                            + '<i></i>'
+                                            + '<span>${item.feedTime}</span>'
+                                        + '</header>'
+                                        + '<div class="penel-body">'
+                                            + '<p>$${item.content}</p>'
+                                        + '</div>'
+                                    + '</section>'
+                                    + '{@/each}'
                                 + '<a href="#" class="load-more no-data"></a>';
                             } else {
                                 var feedInner = '{@each data.data as item, k}'
                                 + '<section class="feed">'
                                     + '<header>'
                                         + '<a href="${item.innerImgLink}" class="figure">'
-                                            + '<img src="${item.mainImgUrl}" alt="" width="25">'
+                                            + '<img src="${item.mainImgUrl}" alt="" width="25" onerror="nofind()">'
                                         + '</a>'
                                         + '<a href="${item.innerImgLink}" class="name">${item.mainName}</a>'
                                         + '<i></i>'
@@ -308,33 +308,33 @@ function initFastSection(){
                     page++;
                     $.get('https://rong.36kr.com/api/hostsite/fetchFeeds',{
                         page: page,
-                        pageSize: 10
+                        pageSize: 30
                     }).done(function(data){
                         feedData = data;
                         setTimeout(function() {
                             if(page == feedData.data.totalPages) {
                                 var feedInner = '{@each data.data as item, k}'
-                                + '<section class="feed">'
-                                    + '<header>'
-                                        + '<a href="${item.innerImgLink}" class="figure">'
-                                            + '<img src="${item.mainImgUrl}" alt="" width="25">'
-                                        + '</a>'
-                                        + '<a href="${item.innerImgLink}" class="name">${item.mainName}</a>'
-                                        + '<i></i>'
-                                        + '<span>${item.feedTime}</span>'
-                                    + '</header>'
-                                    + '<div class="penel-body">'
-                                        + '<p>$${item.content}</p>'
-                                    + '</div>'
-                                + '</section>'
-                                + '{@/each}'
+                                    + '<section class="feed">'
+                                        + '<header>'
+                                            + '<a href="${item.innerImgLink}" class="figure">'
+                                                + '<img src="${item.mainImgUrl}" alt="" width="25" onerror="nofind()">'
+                                            + '</a>'
+                                            + '<a href="${item.innerImgLink}" class="name">${item.mainName}</a>'
+                                            + '<i></i>'
+                                            + '<span>${item.feedTime}</span>'
+                                        + '</header>'
+                                        + '<div class="penel-body">'
+                                            + '<p>$${item.content}</p>'
+                                        + '</div>'
+                                    + '</section>'
+                                    + '{@/each}'
                                 + '<a href="#" class="load-more no-data"></a>';
                             } else {
                                 var feedInner = '{@each data.data as item, k}'
                                 + '<section class="feed">'
                                     + '<header>'
                                         + '<a href="${item.innerImgLink}" class="figure">'
-                                            + '<img src="${item.mainImgUrl}" alt="" width="25">'
+                                            + '<img src="${item.mainImgUrl}" alt="" width="25" onerror="nofind()">'
                                         + '</a>'
                                         + '<a href="${item.innerImgLink}" class="name">${item.mainName}</a>'
                                         + '<i></i>'

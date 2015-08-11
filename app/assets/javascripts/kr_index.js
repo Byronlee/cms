@@ -101,7 +101,7 @@ $(document).ready(function(){
         }, 'html');
     });
 
-    $('body').on('click','.J_articleList .mask-tags', function(e) {
+    $('body').on('click','.mask-tags', function(e) {
         e.preventDefault();
         e.stopPropagation();
         var index = 0,
@@ -118,24 +118,31 @@ $(document).ready(function(){
     var feedData = {};
     $.get('https://rong.36kr.com/api/hostsite/fetchFeeds',{
         page: 1,
-        pageSize: 10
+        pageSize: 30
     }).done(function(data){
         feedData = data;
-        var feedInner = '{@each data.data as item, k}'
-                + '<section class="feed">'
-                    + '<header>'
-                        + '<a href="${item.innerImgLink}" class="figure">'
-                            + '<img src="${item.mainImgUrl}" alt="" width="25">'
-                        + '</a>'
-                        + '<a href="${item.innerImgLink}" class="name">${item.mainName}</a>'
-                        + '<i></i>'
-                        + '<span>${item.feedTime}</span>'
-                    + '</header>'
-                    + '<div class="penel-body">'
-                        + '<p>$${item.content}</p>'
-                    + '</div>'
-                + '</section>'
-                + '{@/each}';
+        var feedInner = '<script>'
+                        + 'function nofind(){'
+                            + 'var img = event.srcElement;'
+                            + 'img.src="https://krplus-pic.b0.upaiyun.com/default_avatar.png";'
+                            + 'img.onerror=null;'
+                        + '}'
+                    + '</script>'
+                    + '{@each data.data as item, k}'
+                        + '<section class="feed">'
+                            + '<header>'
+                                + '<a href="${item.innerImgLink}" class="figure">'
+                                    + '<img src="${item.mainImgUrl}" alt="" width="25" onerror="nofind()">'
+                                + '</a>'
+                                + '<a href="${item.innerImgLink}" class="name">${item.mainName}</a>'
+                                + '<i></i>'
+                                + '<span>${item.feedTime}</span>'
+                            + '</header>'
+                            + '<div class="penel-body">'
+                                + '<p>$${item.content}</p>'
+                            + '</div>'
+                        + '</section>'
+                    + '{@/each}';
         juicer.set('cache',true);
         juicer.set('errorhandling',false);
         juicer.set('strip',true);
