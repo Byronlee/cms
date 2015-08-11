@@ -327,7 +327,7 @@ class Post < ActiveRecord::Base
 
   def auto_generate_summary
     return true if summary.present?
-    self.summary = /^(.*?[。|；|!|?|？|！|.])/imx.match(strip_tags(content))[1] rescue true
+    self.summary = /^(.*?([。|；|!|?|？|！|.]|\z))/imx.match(strip_tags(content))[1] rescue nil
     true
   end
 
