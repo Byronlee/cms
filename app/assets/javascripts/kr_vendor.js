@@ -192,7 +192,7 @@ function initFastSection(){
      */
 
     var feedData = {};
-    $.get('https://rongtest.36kr.com/api/hostsite/fetchFeeds',{
+    $.get('https://rong.36kr.com/api/hostsite/fetchFeeds',{
         page: 1,
         pageSize: 10
     }).done(function(data){
@@ -220,7 +220,7 @@ function initFastSection(){
                         return;
                     }
                     page++;
-                    $.get('https://rongtest.36kr.com/api/hostsite/fetchFeeds',{
+                    $.get('https://rong.36kr.com/api/hostsite/fetchFeeds',{
                         page: page,
                         pageSize: 10
                     }).done(function(data){
@@ -306,7 +306,7 @@ function initFastSection(){
                         return;
                     }
                     page++;
-                    $.get('https://rongtest.36kr.com/api/hostsite/fetchFeeds',{
+                    $.get('https://rong.36kr.com/api/hostsite/fetchFeeds',{
                         page: page,
                         pageSize: 10
                     }).done(function(data){
