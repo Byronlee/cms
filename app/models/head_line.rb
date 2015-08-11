@@ -14,9 +14,10 @@
 #  url_code         :integer
 #  state            :string(255)
 #  section          :string(255)
-#  hidden_title     :boolean
 #  display_position :text
 #  summary          :text
+#  hidden_title     :boolean
+#  section_text     :string(255)
 #
 
 require 'common'
@@ -65,6 +66,7 @@ class HeadLine < ActiveRecord::Base
       title: og.title,
       type: og.type,
       section: get_customer_meta_of(og, :article, :section),
+      section_text: get_customer_meta_of(og, :article, :section_text),
       url: og.url,
       description: og.description,
       image: og.images.first,

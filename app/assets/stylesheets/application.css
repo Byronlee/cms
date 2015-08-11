@@ -12,16 +12,8 @@
     position: relative;
 }
 
-.badge-column:after {
-  content: "专栏";
+.badge-column .mask-tags {
   background: #478de4;
-  position: absolute;
-  top: 0;
-  left: 0;
-  color: #ffffff;
-  padding: 2px 10px;
-  font-size: 12px;
-  display: block;
 }
 
 .search_none_info{

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150804101358) do
+ActiveRecord::Schema.define(version: 20150811095528) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -125,6 +125,7 @@ ActiveRecord::Schema.define(version: 20150804101358) do
     t.text     "display_position"
     t.text     "summary"
     t.boolean  "hidden_title"
+    t.string   "section_text"
   end
 
   create_table "info_flows", force: true do |t|

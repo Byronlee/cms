@@ -20,6 +20,7 @@
         = f.input :display_position, input_html: {class: 'col-lg-12', id: 'head_line_display_position'}
         .extra_info_for_normal
           = f.input :section, input_html: {id: 'head_line_section'}
+          = f.input :section_text, input_html: {id: 'head_line_section_text'}
           = f.input :url_code, input_html: {id: 'head_line_url_code'}
           = f.input :order_num, input_html:{ step: 100, id: 'head_line_order_num'}
         .extra_info_for_next
@@ -60,6 +61,7 @@ javascript:
          metas = data['metas']
          $("#head_line_post_type").val(metas['type']);
          $("#head_line_section").val(metas['section']);
+         $("#head_line_section_text").val(metas['section_text']);
          $("#head_line_url_code").val(metas['code']);
          $("#head_line_image").val(metas['image']);
          $("#head_line_title").val(metas['title']);

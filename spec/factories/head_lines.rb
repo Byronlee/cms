@@ -14,9 +14,10 @@
 #  url_code         :integer
 #  state            :string(255)
 #  section          :string(255)
-#  hidden_title     :boolean
 #  display_position :text
 #  summary          :text
+#  hidden_title     :boolean
+#  section_text     :string(255)
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

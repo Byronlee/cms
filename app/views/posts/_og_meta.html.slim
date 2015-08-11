@@ -9,5 +9,6 @@
   meta property="og:image:type" content=@post.cover.try(:content_type)
   meta property="og:image:is_display_title" content="true"
   meta property="og:article:section" content="#{@post.column.try(:slug)}"
+  meta property="og:article:section_text" content="#{@post.column.try(:name)}"
   - unless @post.published?
     meta name="robots" content="noindex"
