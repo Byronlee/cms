@@ -444,6 +444,10 @@ function initMobileNav(newsPanel){
                 case 2:
                     $('.J_fastSection').removeClass('mobile-hide');
                     $('.J_fastSectionList .tabs a').eq(1).trigger('click');
+                    break;
+                case 3:
+                    $('.J_fastSection').removeClass('mobile-hide');
+                    $('.J_fastSectionList .tabs a').eq(2).trigger('click');
             }
         });
     });
