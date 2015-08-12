@@ -9,7 +9,7 @@
           a.title.info_flow_news_title[href=(item["title_link"].present? ? item["title_link"] : post_path(item["url_code"])) target="_blank"]
             = raw item["title"]
           .author
-            a[href="#{user_domain(item['author']['domain'])}"]
+            a[href="#{item['author'].present? ? user_domain(item['author']['domain']) : 'javascript:void(0)'}"]
               span.avatar[data-lazyload="#{item['author']['avatar']}"]
               span.name
                 = (item["author"] && item["author"]["display_name"]) || "匿名用户"
