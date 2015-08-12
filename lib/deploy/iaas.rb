@@ -7,8 +7,8 @@ require "faraday"
 class Deploy::Iaas
 
   PATH = File.expand_path('..', __FILE__)
-  KEY = 'CIKMCGEHRZEDJXPDRBJK'
-  SECRET = 'Xqc98lWlKSEJW8QZK6PLCD9c1el97MwkvwzEqiaM'
+  KEY = 'WQTDHTKSWXBMEVPIKATI'
+  SECRET = 'CDQ6oSfS7BZhPT7JN857z6sisMYTHrTbleE5i6Ph'
   WHITE_LIST = ['119.254.103.59', '119.254.102.252', '106.39.119.70', '121.9.213.16', '121.9.213.17', '121.9.213.32', '121.9.213.43']
   AGENT_BLACK_LIST = []
 
