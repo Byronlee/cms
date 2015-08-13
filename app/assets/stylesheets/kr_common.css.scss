@@ -1812,6 +1812,8 @@ a:hover {
   overflow: hidden;
   background-color: #ccc;
   margin-right: 15px;
+  position: relative;
+  z-index: 10;
 }
 /* line 32, /Users/guoliyuan/36kr-frontend/src/styles/components/feed-list.less */
 .fast-section .list .panel section.feed header a,

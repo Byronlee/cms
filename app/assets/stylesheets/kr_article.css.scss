@@ -1048,6 +1048,15 @@ a:hover {
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .textarea:focus {
   background: #ffffff;
 }
+/* line 354, /Users/guoliyuan/36kr-frontend/src/styles/article.less */
+.article-detail-wrap .main-section .content-wrapper section.single-post-comment .textarea:focus + .focus-tips {
+  display: block;
+}
+/* line 360, /Users/guoliyuan/36kr-frontend/src/styles/article.less */
+.article-detail-wrap .main-section .content-wrapper section.single-post-comment .focus-tips {
+  display: none;
+  color: #999;
+}
 /* line 356, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .bottom {
   margin-top: 15px;

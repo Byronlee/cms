@@ -35,9 +35,11 @@ form.comment_form {
 }
 
 form.comment_form span.reply_msg {
+    float: left;
     position: relative;
     background-color: greenyellow;
     left: 0px;
+    margin-right: 5px;
 }
 
 form.comment_form span.reply_msg span {
@@ -49,4 +51,8 @@ form.comment_form span.reply_msg span {
 
 article .desc .brief a{
     color: #3da9f7;
+}
+
+.article-detail-wrap .main-section .content-wrapper section.single-post-comment .textarea:focus + .focus-tips {
+  display: inline-block !important;
 }
