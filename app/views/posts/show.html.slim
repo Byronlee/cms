@@ -26,9 +26,12 @@
         = render_cell :post, :share, post:  @post, user: current_user
       - cache [:show, :author, @post.author, @post] do
         = render_cell :post, :mobile_author, author: @post.author
-      /- cache [:show, :tag, @post] do
-        /= render_cell :post, :relate, post: @post
+
       = render_cell :post, :report
+
+      - cache [:show, :tag, @post] do
+        = render_cell :post, :relate, post: @post
+
       - cache [:show, :comment, @post.comments_counts, current_user, current_user.try(:display_name), @post] do
         section.single-post-comment
           - if @post.close_comment
