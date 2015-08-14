@@ -9,7 +9,8 @@ namespace :export do
 		  CSV.open(users_export_file, "wb") do |csv|
 		    csv << [ 'id', 'email',' sso_id', '姓名', '手机号']
 		    users.each_with_index do |user, i|
-					csv << [ user.id, user.email, user.sso_id, user.name, user.phone ]
+          auth = user.krypton_authentication
+					csv << [ user.id, user.email, user.sso_id, auth.info['name'], user.phone ]
 				end
       end
 

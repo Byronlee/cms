@@ -13,7 +13,7 @@ module V2
         params do
           requires :title,     type: String,   desc: '标题'
           requires :content,   type: String,   desc: '内容'
-          requires :uid,       type: Integer,  desc: '用户SSO_ID'
+          requires :uid,       type: String,  desc: '用户SSO_ID'
           requires :column_id, type: Integer,  desc: '专栏id'
           optional :cover,     type: String,   desc: '图片封面url'
           optional :remark,    type: String,   desc: '备注'
@@ -25,7 +25,7 @@ module V2
           auth = Authentication.where(uid: params[:uid].to_s).first
           if auth.blank?
           	return { status: false, msg: '用户无效,请登录网站激活用户 !' }
-          elsif auth.user.role.eql?('admin') or site.admin.krypton_authentication.uid == params[:uid]
+          elsif auth.user.role.eql?('admin') or site.admin.krypton_authentication.uid.to_s == params[:uid].to_s
             post_params.merge!(user_id: auth.user.id)
           else
           	return { status: false, msg: '你没权限写文章!' }

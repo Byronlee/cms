@@ -77,7 +77,7 @@ class Deploy::Iaas
             signature_url = signature_obj.signature
             #puts signature_url
             signature_obj.send_msg signature_url
-            apply_firewall('pek2', 'sg-do5avfp6')
+            apply_firewall('pek2', 'sg-525eogns')
           end
         end
       end
@@ -91,7 +91,7 @@ class Deploy::Iaas
       apply_url = "https://api.qingcloud.com/iaas/?action=ApplySecurityGroup&security_group=#{security_group}&zone=#{zone}"
       signature_obj = self.new(apply_url, KEY, SECRET)
       signature_url = signature_obj.signature
-      #puts signature_url
+      puts signature_url
       signature_obj.send_msg signature_url
     end
 

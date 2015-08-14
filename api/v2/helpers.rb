@@ -55,12 +55,7 @@ module V2
     end
 
     def current_user
-      init_and_exchange_token
-      #User.where(authentication_token: params[:authentication_token]).first
       #warden.user || @user
-    end
-
-    def init_and_exchange_token
       sso_token = params[:sso_token]
       authentication = Authentication.from_access_token(sso_token)
       authentication.user || User.create!(authentication: authentication)

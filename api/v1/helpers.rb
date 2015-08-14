@@ -39,32 +39,79 @@ module V1
     end
 
     def current_user
-      User.where(authentication_token: params[:authentication_token]).first
-    end
-
-    def init_and_exchange_token
-      sso_user = Krypton::Passport.new(params[:sso_token]).me
-      unless sso_user.is_a? TrueClass or sso_user.is_a? FalseClass
-        # 新站有用户的情况
-        current_user =  User.find_by_sso_id(sso_user['id']) || User.find_by_origin_ids(sso_user['id'])
-         if current_user.blank?
-           # 新站没有用户的情况
-           current_user = User.find_or_create_by(sso_id: sso_user.id) do |u|
-             u.email = sso_user.email
-             u.name = sso_user.nickname || sso_user.username
-             u.phone = sso_user.phone
-             u.avatar_url = sso_user.avatar
-             u.password = 'VEX60gCF'
-           end
-         end
-      else # sso sso_token 无效或者没有用户的情况
-        current_user = User.new
-      end
-      [current_user,sso_user]
+      #warden.user || @user
+      sso_token = params[:sso_token]
+      authentication = Authentication.from_access_token(sso_token)
+      authentication.user || User.create!(authentication: authentication)
     end
 
     def warden
       env['warden']
+    end
+
+    def weibo_post(object)
+      if !object.nil? && object.state == "published"
+        {
+          "display_name" => "#{object.title}",
+          "image" =>  {
+          "url" => "#{object.cover_real_url}!s2",
+          "width" => 120,
+          "height" =>  120
+        },
+          "author" =>  {
+          "display_name" =>  "#{object.author.name||"36Kr"}",
+          "url" => "#{Settings.site}",
+          "object_type" =>  "person"
+        },
+          "summary" =>  "#{object.summary||""}",
+          "url" =>  "#{Settings.site}/p/#{object.url_code}.html",
+          "links" =>  {
+          "url" =>  "#{Settings.site}/p/#{object.url_code}.html",
+          "scheme" =>  "scheme://www.36kr.com/p/#{object.url_code}",
+          "display_name" =>  "阅读全文"
+        },
+          "tags" =>  [ {
+          "display_name" =>  "#{object.tag_list.first||""}" }
+        ],
+          "create_at" => "#{object.created_at||Time.now}",
+          "object_type" =>  "article"
+        }
+      else
+        { "errcode" => "-1","msg" => "NotFound!" }
+      end
+    end
+
+    def weibo_newsflash(object)
+      img_url = object.fast_type == 'newsflash' ? \
+        "http://a.36krcnd.com/nil_class/40202777-0930-44ef-a435-7baecc36fece/krec.png" : \
+        "http://a.36krcnd.com/nil_class/ff30ebc4-6533-48ea-bff4-8544a4a82b0e/pnd.png"
+      if !object.nil?
+        {
+          "display_name" => "#{object.hash_title}",
+          "image" =>  {
+          "url" => "#{img_url}!s2", "width" => 120, "height" =>  120
+        },
+          "author" =>  {
+          "display_name" =>  "#{object.author.name || '36Kr' }",
+          "url" => "#{Settings.site}",
+          "object_type" =>  "person"
+        },
+          "summary" =>  "#{object.description_text || ''}",
+          "url" =>  "#{Settings.site}/clipped/#{object.id}.html",
+          "links" =>  {
+          "url" =>  "#{Settings.site}/clipped/#{object.id}.html",
+          "scheme" =>  "scheme://www.36kr.com/clipped/#{object.id}",
+          "display_name" =>  "阅读全文"
+        },
+          "tags" =>  [ {
+          "display_name" =>  "#{object.tag_list.first || ''}" }
+        ],
+          "create_at" => "#{object.created_at || Time.now}",
+          "object_type" =>  @newsflash.fast_type
+        }
+      else
+        { "errcode" => "-1","msg" => "NotFound!" }
+      end
     end
 
   end
