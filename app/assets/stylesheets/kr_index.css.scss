@@ -158,7 +158,7 @@ a:hover {
   font-size: 12px;
   display: block;
   background: #f45170;
-  z-index: 1000;
+  z-index: 50;
 }
 @media (max-width: 800px) {
   /* line 135, /Users/guoliyuan/36kr-frontend/src/styles/components/common.less */
@@ -465,7 +465,7 @@ a:hover {
   width: auto;
   margin: 0;
   bottom: auto;
-  z-index: 1000;
+  z-index: 50;
 }
 @media (max-width: 800px) {
   /* line 103, /Users/guoliyuan/36kr-frontend/src/styles/index.less */
@@ -570,7 +570,7 @@ a:hover {
   width: auto;
   bottom: auto;
   display: block;
-  z-index: 1000;
+  z-index: 50;
 }
 @media (max-width: 800px) {
   /* line 155, /Users/guoliyuan/36kr-frontend/src/styles/index.less */

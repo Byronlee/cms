@@ -56,7 +56,3 @@ article .desc .brief a{
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .textarea:focus + .focus-tips {
   display: inline-block !important;
 }
-
-.index-wrap .main-section .news-list .categories{
-  z-index: 10000 !important;
-}
