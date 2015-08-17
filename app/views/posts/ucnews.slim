@@ -14,7 +14,7 @@ html[lang="en"]
       header
         h1 = @post.title
         .subtitle
-          time = @post.published_at.to_s(:db)
+          time = @post.published_at.strftime("%Y-%m-%d %H:%M")
           a#source href="http://36kr.com" 36氪
           a#toggle_img href="#" onclick=("SMShowImage(); return false")  显示图片
           a.comment_totoal_cnt
