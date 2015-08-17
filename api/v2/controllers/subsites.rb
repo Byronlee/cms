@@ -52,6 +52,7 @@ module V2
         end
         patch 'krspace/:id' do
           post_params = params.slice(*KEYS)
+          site  = Site.find_by_slug('krspace')
           @post = Post.find(params[:id])
           auth = Authentication.where(uid: params[:uid].to_s).first
           if auth.blank?
