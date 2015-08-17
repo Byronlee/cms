@@ -7,9 +7,9 @@ html[lang="en"]
   body
     .head-fixed.fn-hide
     article style="padding-bottom:0;"
-    #SmNewsBar
+    #SmNewsBar style="background-color: #2376BC;"
       a#logo href="http://36kr.com"
-        img alt="36氪" onerror="hideBar()" src="https://krplus-cdn.b0.upaiyun.com/common-module/common-header/images/logo.png"
+        img alt="36氪" onerror="hideBar()" src="http://a.36krcnd.com/nil_class/e9dfee47-68bd-4121-b29d-dc06f058588b/36kr.png"
     - cache [:post, :ucnews, :html, @post.updated_at]
       header
         h1 = @post.title
