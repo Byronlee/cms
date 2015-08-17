@@ -38,7 +38,8 @@ class AdsCell < Cell::Rails
     render
   end
 
-  def position_next
+  def position_next(args)
+    @head_line = args[:head_line] || {}
     render
   end
 end

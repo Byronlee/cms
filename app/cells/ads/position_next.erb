@@ -1,1 +1,17 @@
-<script type="text/javascript">BAIDU_CLB_fillSlot("1100819")</script>
+<script type="text/javascript">
+  window.BAIDU_CLB_fillSlot()==false?BAIDU_CLB_fillSlot("1100819"):(function(){
+    document.write('<div class="next-inner"> \
+        <div class="clearfix"> \
+          <strong class="logo-next"></strong><span class="today-recomment">今日推荐</span> \
+        </div> \
+        <div class="recomment-app"> \
+          <h2> \
+            <a href="<%= @head_line["url"] %>" target="_blank"><%= @head_line["title"] %></a> \
+          </h2> \
+          <p> \
+            <%= @head_line["summary"] %> \
+          </p> \
+        </div> \
+      </div>')
+  })();
+</script>

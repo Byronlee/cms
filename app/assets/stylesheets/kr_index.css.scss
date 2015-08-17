@@ -637,8 +637,10 @@ a:hover {
 /* line 138, /Users/guoliyuan/36kr-frontend/src/styles/index.less */
 .index-wrap .head-images .smaller-images .block.next {
   background: asset-url('next.jpg') center center no-repeat;
-  padding: 20px;
   position: relative;
+}
+.index-wrap .head-images .smaller-images .block.next .next-inner {
+  padding:20px;
 }
 /* line 142, /Users/guoliyuan/36kr-frontend/src/styles/index.less */
 .index-wrap .head-images .smaller-images .block.next .logo-next {
