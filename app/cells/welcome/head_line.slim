@@ -22,19 +22,20 @@
           span class="mask-tags" data-type="#{head_line_third["section"]}"
             = head_line_third["section_text"]
         span = head_line_third["title"]
-    /.block.next#headline_three
-    /  = render_cell :ads, :position_next
     - head_line_next = @head_lines_next[0] || {}
-    .block.next#headline_three style="padding: 20px;"
-      .next-inner
-        .clearfix
-          strong.logo-next
-          span.today-recomment 今日推荐
-        .recomment-app
-          h2
-            a href="#{head_line_next["url"]}" target="_blank"
-              = head_line_next["title"]
-          p = head_line_next["summary"]
+    .block.next.ad#headline_three
+      = render_cell :ads, :position_next, head_line: head_line_next
+    / - head_line_next = @head_lines_next[0] || {}
+    / .block.next#headline_three style="padding: 20px;"
+    /   .next-inner
+    /     .clearfix
+    /       strong.logo-next
+    /       span.today-recomment 今日推荐
+    /     .recomment-app
+    /       h2
+    /         a href="#{head_line_next["url"]}" target="_blank"
+    /           = head_line_next["title"]
+    /       p = head_line_next["summary"]
     - head_line_four = @head_lines_normal[3] || {}
     .block.article class="badge-#{head_line_four["section"]}"
       a#headline_four[href=append_ref_to_url(head_line_four["url"], ref: :head_line_four) data-lazyload="#{high_speed_url(head_line_four["image"], 'feature')}" target="_blank"]

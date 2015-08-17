@@ -27,6 +27,7 @@ class Site < ActiveRecord::Base
   has_many :column_sites
 
   def admin
-    User.find(admin_id)
+    auth = Authentication.where(uid: admin_id.to_s).first
+    auth.user
   end
 end
