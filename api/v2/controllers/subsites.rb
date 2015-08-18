@@ -70,6 +70,19 @@ module V2
             admin_edit_post_url: admin_edit_post_url(@post, auth) }
         end
 
+        # Update a post state
+        desc 'update a post state'
+        params do
+          requires :url_code, desc: 'url_code'
+        end
+        get 'krspace/post/:url_code' do
+          post = Post.where(url_code: params[:url_code]).first
+          not_found! if post.blank?
+          post.published? ? post.undo_publish : post.publish
+          return { msg: post.errors.full_messages }  unless post.save
+          return { state: post.state }
+        end
+
       end
 
     end
