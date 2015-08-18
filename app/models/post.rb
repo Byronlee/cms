@@ -250,6 +250,12 @@ class Post < ActiveRecord::Base
     Post.where(:url_code => self.related_post_url_codes)
   end
 
+  def get_related_post_url_codes
+    posts = self.find_related_tags.published.where.not(id: self.id).limit(3)
+    posts = self.author.posts.published.where.not(id: self.id).recent.limit(3) if posts.blank?
+    posts.map(&:url_code)
+  end
+
   private
 
   def self.get_object_time(obj)
