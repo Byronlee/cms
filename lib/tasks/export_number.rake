@@ -6,13 +6,14 @@ namespace :export do
     users_export_file ||= "#{Rails.root}/tmp/data/users-#{DateTime.now.strftime("%F")}.csv"
     Dir.mkdir(File.dirname(users_export_file)) if !FileTest.exists?(File.dirname(users_export_file))
 
-		  CSV.open(users_export_file, "wb") do |csv|
-		    csv << [ 'id', 'email',' sso_id', '姓名', '手机号']
-		    users.each_with_index do |user, i|
-          auth = user.krypton_authentication
-					csv << [ user.id, user.email, user.sso_id, auth.info['name'], user.phone ]
-				end
+    CSV.open(users_export_file, "wb") do |csv|
+      csv << [ 'id', 'email',' sso_id', '姓名', '手机号', '注册时间']
+      users.each_with_index do |user, i|
+        auth = user.krypton_authentication
+        name = auth.info['name'] if auth
+        csv << [ user.id, user.email, user.sso_id, name || user.name, user.phone, user.created_at ]
       end
+    end
 
 =begin
     post_export_file ||= "#{Rails.root}/tmp/data/post-#{DateTime.now.strftime("%F")}.csv"
