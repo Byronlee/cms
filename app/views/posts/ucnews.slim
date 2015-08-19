@@ -4,6 +4,8 @@ html[lang="en"]
     link href="http://zzd.sm.cn/third_party/css/SMDefaultCSS.css" rel="stylesheet" type="text/css"
     title
       = @post.title
+    style
+      |  article a{color: #0070C0;}
   body
     .head-fixed.fn-hide
     article style="padding-bottom:0;"
@@ -15,7 +17,7 @@ html[lang="en"]
         h1 = @post.title
         .subtitle
           time = @post.published_at.strftime("%Y-%m-%d %H:%M")
-          a#source href="http://36kr.com" 36氪
+          a#source 36氪
           a#toggle_img href="#" onclick=("SMShowImage(); return false")  显示图片
           a.comment_totoal_cnt
       article
