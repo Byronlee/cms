@@ -5,7 +5,7 @@ class ::V1::Base < Grape::API
   content_type :json, "application/json;charset=UTF-8"
   prefix 'api'
   version 'v1'
-  #format :json
+  format :json
   #formatter :json, ::V1::JSendSuccessFormatter
   #error_formatter :json, ::V1::JSendErrorFormatter
 

@@ -170,9 +170,12 @@ class Post < ActiveRecord::Base
     end
   end
 
-  # TODO: 这是只为API提供使用，应该重构删除
   def get_access_url
     post_url(self)
+  end
+
+  def column_name
+    column.try(:name)
   end
 
   def cover_real_url
@@ -182,11 +185,6 @@ class Post < ActiveRecord::Base
   def comments_counts
     update_attribute(:comments_count, comments.size) if comments_count.nil?
     comments_count
-  end
-
-  # TODO: 这是只为API提供使用，应该重构删除
-  def column_name
-    column.try(:name)
   end
 
   def sanitize_content

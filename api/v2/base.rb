@@ -4,9 +4,13 @@ require_relative 'formatter'
 
 class ::V2::Base < Grape::API
   content_type :json, "application/json;charset=UTF-8"
+  content_type :xml, 'application/xml'
+  #content_type :rss, 'application/xml+rss'
+  #content_type :binary, 'application/octet-stream'
+  #content_type :txt, 'text/plain'
   prefix 'api'
   version 'v2'
-  #format :json
+  format :json
   #formatter :json, ::V2::JSendSuccessFormatter
   #error_formatter :json, ::V2::JSendErrorFormatter
 
