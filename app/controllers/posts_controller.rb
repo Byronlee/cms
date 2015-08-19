@@ -19,6 +19,19 @@ class PostsController < ApplicationController
     @posts = @posts.by_month(params[:month], year: params[:year]) if params[:month].present?
     @posts = @posts.by_day("#{params[:year]}-#{params[:month]}-#{params[:day]}") if params[:day].present?
     @posts = @posts.order('published_at desc').includes({ author: :krypton_authentication }, :column).page params[:page]
+
+    @posts = Post.paginate(@posts, params)
+
+    respond_to do |format|
+      format.html do
+        if request.xhr?
+          render 'posts/_list', locals: { :posts => @posts }, layout: false
+        end
+      end
+      format.json do
+        render json: Post.posts_to_json(@posts)
+      end
+    end
   end
 
   def feed
