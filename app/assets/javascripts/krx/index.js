@@ -23,12 +23,13 @@ $(document).ready(function(){
 
     function bindLoadMore(wrapper){
         wrapper = wrapper || $('.J_articleList').eq(0);
-        $('.J_listLoadMore', wrapper).unbind().click(function(e){
+        $('.J_listLoadMore', wrapper).click(function(e){
             e.preventDefault();
             var trigger = $(this);
             if(trigger.hasClass('no-data'))return;
             if(trigger.hasClass('loading'))return;
             trigger.addClass('loading');
+            
             $.get(trigger.attr('href'), function(list){
                 var newWrapper = trigger.parent();
                 $(list).insertAfter(trigger);
@@ -48,9 +49,7 @@ $(document).ready(function(){
     /**
      * 分类加载(TODO:需要联调加载逻辑)
      */
-
     var navBarTop = $('.J_newsListNavBar').length && $('.J_newsListNavBar').offset().top;
-
     $(window).resize(function(){
         navBarTop = $('.J_newsListNavBar').length && $('.J_newsListNavBar').offset().top;
     });
@@ -60,7 +59,7 @@ $(document).ready(function(){
     }
 
     $('.J_newsListNavBar a.active').data('listWrapper', $('.J_articleList').eq(0))
-    $('.J_newsListNavBar a.tab').click(function(e){
+    $('.J_newsListNavBar a').click(function(e){
         e.preventDefault();
 
 
@@ -88,6 +87,7 @@ $(document).ready(function(){
 
         link.addClass('loading');
         $.get(url, function(list){
+
             $('.pre-load-ads .J_channelAd').clone().prependTo(newWrapper);
             newWrapper.show()
                 .siblings().hide();
@@ -96,8 +96,6 @@ $(document).ready(function(){
             newWrapper.append(list);
             bindLoadMore(newWrapper);
             $(window).trigger('scroll');
-            $(".timeago").timeago();
-
         }, 'html');
     });
 
@@ -114,44 +112,18 @@ $(document).ready(function(){
         });
     });
 
+    
+    
+    // ProDuct Note
+    // $('body').on('click','.product h3', function() {
+    //     $(this).next().toogleClass('show');
+    //     $('.product .main').toogleClass('show');
+    // });
+        
 
-    var feedData = {};
-    $.get('https://rong.36kr.com/api/hostsite/fetchFeeds',{
-        page: 1,
-        pageSize: 30
-    }).done(function(data){
-        feedData = data;
-        var feedInner = '<script>'
-                        + 'function nofind(){'
-                            + 'var img = event.srcElement;'
-                            + 'img.src="https://krplus-pic.b0.upaiyun.com/default_avatar.png";'
-                            + 'img.onerror=null;'
-                        + '}'
-                    + '</script>'
-                    + '{@each data.data as item, k}'
-                        + '<section class="feed">'
-                            + '<header>'
-                                + '<a href="${item.innerImgLink}" class="figure">'
-                                    + '<img src="${item.mainImgUrl}" alt="" width="25" onerror="nofind()">'
-                                + '</a>'
-                                + '<a href="${item.innerImgLink}" class="name">${item.mainName}</a>'
-                                + '<i></i>'
-                                + '<span>${item.feedTime}</span>'
-                            + '</header>'
-                            + '<div class="penel-body">'
-                                + '<p>$${item.content}</p>'
-                            + '</div>'
-                        + '</section>'
-                    + '{@/each}';
-        juicer.set('cache',true);
-        juicer.set('errorhandling',false);
-        juicer.set('strip',true);
-        juicer.set('detection',false);
-
-        var compiled_tpl = juicer(feedInner);
-        var html = compiled_tpl.render(feedData);
-        $('.feed-inner').append(html);
-    });
-
-
+    // $(".feed img").bind("error",function(){ 
+    //     console.log(222);  
+    //     this.src="../images/default_avatar.png";   
+    // }); 
+        
 });

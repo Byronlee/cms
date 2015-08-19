@@ -1,5 +1,7 @@
-= stylesheet_link_tag 'kr_newsflashes', media: 'all'
 = render 'welcome/title', title: "8点1氪：#{@newsflashes.first.try(:hash_title)}"
+
+= stylesheet_link_tag 'krx/fast-section-detail', media: 'all'
+
 .fast-section-detail-wrap
     .main-section
       .fast-section-detail.J_fastNewsDetailWrap
@@ -7,3 +9,5 @@
       .index-side
         .fast-section.J_fastSection.mobile-hide
           = render 'welcome/aside'
+
+= javascript_include_tag 'krx/fast-section-detail', media: 'all'

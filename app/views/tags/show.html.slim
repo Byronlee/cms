@@ -1,12 +1,13 @@
 = render 'welcome/title', title: show_tag_name(@tag)
-= stylesheet_link_tag 'kr_search-result', media: 'all'
+
+= stylesheet_link_tag 'krx/search-result', media: 'all'
 
 .search-result-wrap
   .main-section
     .result-list.J_resultListWrap
       .result-info
         .keyword
-          |Tag: 
+          |Tag:
           em.highlight '#{show_tag_name(@tag)}'
         .count
           |结果数：
@@ -20,3 +21,5 @@
       .fast-section.J_fastSection.mobile-hide
         = render 'welcome/aside'
         = render_cell :ads, :position_9
+
+= javascript_include_tag 'krx/search-result', media: 'all'

@@ -1,6 +1,7 @@
 = render 'welcome/title', title: "搜索: #{params[:q]}"
 = render 'welcome/canonical', :raw_url => "http://36kr.com/search/#{params[:q]}"
-= stylesheet_link_tag 'kr_search-result', media: 'all'
+
+= stylesheet_link_tag 'krx/search-result', media: 'all'
 
 .search-result-wrap
   .main-section
@@ -21,3 +22,5 @@
       .fast-section.J_fastSection.mobile-hide
         = render 'welcome/aside'
         = render_cell :ads, :position_9
+
+= javascript_include_tag 'krx/search-result', media: 'all'

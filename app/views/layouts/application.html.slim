@@ -21,6 +21,7 @@ html.no-js[lang="zh-CN"]
     = stylesheet_link_tag 'application', media: 'all'
     = content_for?(:canonical) ? yield(:canonical) : ''
     = javascript_include_tag "http://cbjs.baidu.com/js/m.js"
+    = javascript_include_tag "//res.wx.qq.com/open/js/jweixin-1.0.0.js"
     = javascript_include_tag 'application'
     = javascript_include_tag "#{Settings.oauth.krypton.host}/assets/helper.js"
     - cache [:head, :html5], :expires_in => Settings.cache.default_expires_in do
