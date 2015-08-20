@@ -1,62 +1,29 @@
 = render 'welcome/title', title: "归档日期: #{params[:year]}-#{params[:month]}-#{params[:day]}"
 
-.main
-  .content
-    .content-wrapper
-      .content-wrapper-border
-        h2.lastest style="text-transform: none;"
+= stylesheet_link_tag 'krx/search-result', media: 'all'
+
+.search-result-wrap
+  .main-section
+    .result-list.J_resultListWrap
+      .result-info
+        .keyword
           | 归档日期：
-          = params[:year]
-          = "-#{params[:month]}" if params[:month]
-          = "-#{params[:day]}" if params[:day]
-          span style="float:right; font-weight: normal" 结果数：#{@posts.total_count}
-        .articles
-          - if @posts.count > 0
-            - @posts.each do |post|
-               article.posts.post-1.cf
-                .info.cf
-                  .topic.left
-                    span
-                     a class="#{post.column.slug}" href="/category/#{post.column.slug}"  = post.column.name
-                     |  /  #{post.column.slug}
-                  .postmeta.right
-                    a href="javascript:void(0)" class="uname user_#{post.author.try(:display_name)}" data-name="#{post.author.try(:display_name)}" target="_blank"
-                      = post.author.try(:display_name)
-                    |&nbsp;•&nbsp;
-                    = smart_time_ago(post.published_at)
-                .left.left-col
-                  div.image.feature-img.thumb-180
-                    a href="#{post_url(post, utm_source: 'site_search')}"
-                      img alt="Blank" class="image lazyload loaded" data-src="#{ high_speed_url post.cover, 'slider' }" src="#{ high_speed_url post.cover, 'slider' }"
-                .right-col
-                  h1
-                    a href="#{post_url(post, utm_source:'site_search')}" data-no-turbolink="true" onclick="javascript:_gaq.push(['_trackPageview', '/click/index_newtab/']);" target="_blank" title="#{raw(post.title)}"  = raw(post.title)
-                  p
-                    = post.summary
-          - else
-            p.search_none_info
-              |未找到相关文章
-          .pagination.cf
-            ul
-              - if @posts.any?
-                - unless @posts.first_page?
-                  li.prev.previous_page.left
-                    = link_to '← 上一页', search_path(q: params[:q], page: params[:page].to_i.pred ), rel: "prev"
-                - else
-                  li.prev.previous_page.left.disabled
-                    = link_to '← 上一页', '#', rel: "prev"
+          em.highlight
+            = params[:year]
+            = "-#{params[:month]}" if params[:month]
+            = "-#{params[:day]}" if params[:day]
+        .count
+          |结果数：
+          em.highlight = @posts.total_count
 
-                - unless @posts.last_page?
-                  li.next.next_page.right
-                    = link_to '下一页 →', search_path(q: params[:q], page: params[:page].to_i.next ), rel: "next"
-                - else
-                  li.prev.next_page.right.disabled
-                    = link_to '下一页 →', '#', rel: "prev"
-  .aside
-    = render_cell :post, :today
-    = render_cell :sidebar, :social
+      .article-list
+        .articles.J_articleList
+          = render 'posts/list'
 
-.sidebar
-  = render_cell :sidebar, :ad_top, position: :column_show
-  = render_cell :post, :hot
-  = render_cell :comment, :excellent
+    .index-side
+      .fast-section.J_fastSection.mobile-hide
+        = render 'welcome/aside'
+        = render_cell :ads, :position_9
+
+= javascript_include_tag 'krx/search-result', media: 'all'
+= render 'welcome/wechat_share'

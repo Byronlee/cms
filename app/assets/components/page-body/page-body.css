@@ -1,5 +1,7 @@
 /*
- *= require origin
+ *= require krx/common
+ *= require krx/format
+ *= require krx/pages
  */
 
 :host {

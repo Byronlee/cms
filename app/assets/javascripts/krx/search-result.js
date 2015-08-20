@@ -23,7 +23,7 @@ $(document).ready(function(){
 
     function bindLoadMore(wrapper){
         wrapper = wrapper || $('.J_articleList').eq(0);
-        $('.J_listLoadMore', wrapper).unbind().click(function(e){
+        $('.J_listLoadMore', wrapper).click(function(e){
             e.preventDefault();
             var trigger = $(this);
             if(trigger.hasClass('no-data'))return;

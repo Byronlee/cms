@@ -1,11 +1,7 @@
-#= require kr_vendor
-#= require kr_index
-#= require kr_article
-#= require kr_search-result
-#= require kr_fast-section-detail
-#= require kr_comment
+#= require ./krx/config
+#= require ./krx/vendor
+#= require comment
 #= require ga_track
-#= require search-result
 #= require async_render
 #= require ./timeago/timeago
 #= require ./timeago/timeago.zh-cn
