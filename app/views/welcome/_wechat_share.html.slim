@@ -1,0 +1,14 @@
+- share_title ||= nil
+- share_desc  ||= nil
+- share_img   ||= nil
+
+javascript:
+  $(document).ready(function(){
+      // 微信分享
+      var WEIXINSHARE = {
+        shareTitle: '#{share_title}' || window.document.title,
+        shareDesc: '#{share_desc}',
+        shareImg: '#{share_img || "http://krplus-pic.b0.upaiyun.com/36kr_new_logo.jpg"}'
+      };
+      InitWeixinShare(WEIXINSHARE);
+    });

@@ -13,11 +13,4 @@
 
 = javascript_include_tag 'krx/fast-section-detail', media: 'all'
 
-javascript:
-  $(document).ready(function(){
-      // 微信分享
-      var WEIXINSHARE = {
-          shareTitle: '#{ @newsflash.hash_title } | 36氪'
-      };
-      InitWeixinShare(WEIXINSHARE);
-    });
+= render 'welcome/wechat_share'
