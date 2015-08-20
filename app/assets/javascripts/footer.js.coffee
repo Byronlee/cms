@@ -6,4 +6,3 @@
 #= require "ladda/dist/spin.min"
 #= require "ladda/dist/ladda.min"
 #= require "magnific-popup/dist/jquery.magnific-popup.min"
-#= require "app"
