@@ -1,6 +1,7 @@
 = render 'welcome/title', title: @column.try(:name)
 = render 'welcome/canonical', :raw_url => "http://36kr.com/category/#{@column.try(:slug)}"
-= stylesheet_link_tag 'kr_index', media: 'all'
+
+= stylesheet_link_tag 'krx/index', media: 'all'
 
 .index-wrap
   - cache [:welcome, :head_line, Digest::SHA1.hexdigest((head_lines = CacheClient.instance.head_lines).to_s) ] do
@@ -15,3 +16,6 @@
       .fast-section.J_fastSection.mobile-hide
         = render 'welcome/aside'
         = render_cell :ads, :position_3
+
+= javascript_include_tag 'krx/index', media: 'all'
+= render 'welcome/wechat_share'

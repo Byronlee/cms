@@ -48,7 +48,7 @@ jQuery ->
 
   # 简讯导航点击
   $('.newsflashes_nav').click           -> ga('send', 'event', 'link', 'aside-nav#newsflashes',             ga_user_id)
-  $('.product_notes_nav').click         -> ga('send', 'event', 'link', 'aside-nav#product_notes',           ga_user_id)
+  $('.next_nav').click         -> ga('send', 'event', 'link', 'aside-nav#product_notes',           ga_user_id)
 
   #回到顶部
   $(".J_up").click                      -> ga('send', 'event', 'link', 'common#arrow-up',                   ga_user_id)

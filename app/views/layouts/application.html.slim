@@ -20,7 +20,9 @@ html.no-js[lang="zh-CN"]
     /!--opengraph meata end
     = stylesheet_link_tag 'application', media: 'all'
     = content_for?(:canonical) ? yield(:canonical) : ''
+    = javascript_tag "window._token = '#{form_authenticity_token}'"
     = javascript_include_tag "http://cbjs.baidu.com/js/m.js"
+    = javascript_include_tag "//res.wx.qq.com/open/js/jweixin-1.0.0.js"
     = javascript_include_tag 'application'
     = javascript_include_tag "#{Settings.oauth.krypton.host}/assets/helper.js"
     - cache [:head, :html5], :expires_in => Settings.cache.default_expires_in do
@@ -30,7 +32,6 @@ html.no-js[lang="zh-CN"]
     - cache [:layout, :footer, baidu_statistics = FragmentTemplate.find_by_key(:baidu_statistics)] do
       = render_fragment_template_content baidu_statistics
     = csrf_meta_tag
-    = javascript_tag "window._token = '#{form_authenticity_token}'"
 
   body
     noscript
@@ -41,8 +42,8 @@ html.no-js[lang="zh-CN"]
         | 深度报道
       a.tab[href="#" name="fast"]
         | 快讯
-      a.tab[href="#" name="product"]
-        | PN
+      a.tab[href="#" name="next"]
+        | NEXT
       a.tab[href="#" name="feed"]
         | 创业动态
     = yield

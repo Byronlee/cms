@@ -12,10 +12,13 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( admin.js
                                                   admin.css
                                                   footer.js
-                                                  kr_index.css
-                                                  kr_search-result.css
-                                                  kr_article.css
-                                                  kr_newsflashes.css)
+                                                  sass/style.scss
+                                                  krx/index.css
+                                                  krx/search-result.css
+                                                  krx/article.css
+                                                  krx/format.css
+                                                  krx/fast-section-detail.css
+                                                  krx/pages.css)
 
 Rails.application.config.assets.precompile += %w( vender/html5shiv/dist/html5shiv.js
                                                   vender/ScrollToFixed/jquery-scrolltofixed-min.js
@@ -27,4 +30,7 @@ Rails.application.config.assets.precompile += %w( vender/html5shiv/dist/html5shi
                                                   vender/magnific-popup/dist/jquery.magnific-popup.min.js
                                                   vender/widearea/minified/widearea.min.js
                                                   js/app.js
-                                                  sass/style.scss )
+                                                  krx/index.js
+                                                  krx/article.js
+                                                  krx/search-result.js
+                                                  krx/fast-section-detail.js)

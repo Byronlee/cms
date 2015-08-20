@@ -15,10 +15,10 @@ class SearchController < ApplicationController
     respond_to do |format|
       format.html do
         if request.xhr?
-          render 'search/_list', locals: { :posts => @posts }, layout: false 
+          render 'search/_list', locals: { :posts => @posts }, layout: false
         end
       end
-      format.json do 
+      format.json do
         render json: Post.posts_to_json(@posts, true)
       end
       format.xml do
