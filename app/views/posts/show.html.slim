@@ -53,3 +53,13 @@
 javascript:
   if(!window.mobilecheck())
     document.write('<script src="http://krplus-cdn.b0.upaiyun.com/common-module/company-bubble/main.js">\x3C/script>');
+
+    $(document).ready(function(){
+      // 微信分享
+      var WEIXINSHARE = {
+          shareTitle: '#{ @post.title } | 36氪',
+          shareDesc: '#{ @post.summary }',
+          shareImg: '#{ high_speed_url(@post.cover_real_url, 'square') }'
+      };
+      InitWeixinShare(WEIXINSHARE);
+    });
