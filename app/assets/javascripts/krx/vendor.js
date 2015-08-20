@@ -116,7 +116,9 @@ function initFastSection(){
          * 发送统计请求
          */
         window._hmt && _hmt.push(['_trackPageview', '/clipped/'+id]);
-        window.KR_CONFIG_OBJECT.trackClipPage(id);
+        $.post(KR_CONFIG_OBJECT.trackClipPage.replace('{id}', id), {
+            id: id
+        });
     }
 
     var bindItemActions = function (e){
