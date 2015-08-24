@@ -30,7 +30,7 @@ class Admin::ToolsController < Admin::BaseController
     red_format = Spreadsheet::Format.new(:weight => :bold, :pattern_bg_color => :yellow , :color=> :red)
 
     sheet1 = book.create_worksheet :name => '所有文章'
-    posts = Post.includes(:author).published.where("published_at >= ? and published_at <= ?", start_date ,end_date).order('published_at desc')
+    posts = Post.includes(:author).published.where(published_at: start_date..end_date).order('published_at desc')
     sheet1.row(0).push "日期时段", report_name, "内的所有专栏文章"
     comments_counts = posts.map(&:comments_counts).compact.inject(0) {|sum, i| sum + i }
     favorites_count = posts.map(&:favorites_count).compact.inject(0) {|sum, i| sum + i }
@@ -57,7 +57,7 @@ class Admin::ToolsController < Admin::BaseController
       end
       sheet3.row(4).default_format = Spreadsheet::Format.new(:weight => :bold)
       sheet3.row(0).push "#{column.name} (代码 #{column.id})", "日期时段", report_name
-      posts = column.posts.includes(:author).published.where("published_at >= ? and published_at <= ?", start_date ,end_date).order('published_at desc')
+      posts = column.posts.includes(:author).published.where(published_at: start_date..end_date).order('published_at desc')
       comments_counts = posts.map(&:comments_counts).compact.inject(0) {|sum, i| sum + i }
       favorites_count = posts.map(&:favorites_count).compact.inject(0) {|sum, i| sum + i }
       cache_views_count = posts.map(&:cache_views_count).compact.inject(0) {|sum, i| sum + i }
