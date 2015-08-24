@@ -13,7 +13,12 @@ module PostsHelper
               end
      content = sanitize_tags(content)
      content = remove_blank_lines(content)
+     content = load_image_lazy(content)
      fix_wp_content_image(content)
+  end
+
+  def load_image_lazy(content)
+    content.gsub(/<img.*?>/) { |match| match.gsub('src', 'data-lazyload') }
   end
 
   def fix_wp_content_image(content)
