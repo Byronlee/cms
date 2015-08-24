@@ -135,7 +135,7 @@ function initFastSection(){
         }
         $('.J_fastSectionList .wrap').perfectScrollbar('update');
     };
-    $('body').delegate('.J_fastSectionList section', 'click', bindItemActions);
+    $('body').delegate('.J_fastSectionList .fast-news-panel section', 'click', bindItemActions);
 
      // 微信
     $('body').on('click', '.J_fastSection .weixin', function(e) {
@@ -474,21 +474,21 @@ function initFastSection(){
         nextData.data = data;
         var nextInner = '{@each data as item, k}'
                 + '<section class="next" data-id="22">'
-                    + '<div class="clearfix">'
-                        + '<a href="${item.url}" class="tags" target="_blank">'
-                            + '<span></span>'
-                            + '<i>${item.votes_count}</i>'
-                        + '</a>'
-                        + '<div class="con">'
-                            + '<div class="clearfix">'
-                                + '<h3>'
-                                    + '<a href="${item.url}" target="_blank">${item.title}</a>'
-                                + '</h3>'
-                                + '<time class="timeago" datetime="${item.published_at}"></time>'
+                    + '<a href="${item.url}" target="_blank">'
+                        + '<div class="next-box clearfix">'
+                            + '<div class="tags">'
+                                + '<span></span>'
+                                + '<i>${item.score}</i>'
                             + '</div>'
-                            + '<p>$${item.summary}</p>'
+                            + '<div class="con">'
+                                + '<div class="clearfix">'
+                                    + '<h3>${item.title}</h3>'
+                                    + '<time class="timeago" datetime="${item.published_at}"></time>'
+                                + '</div>'
+                                + '<p>$${item.summary}</p>'
+                            + '</div>'
                         + '</div>'
-                    + '</div>'
+                    + '</a>'
                 + '</section>'
                 + '{@/each}';
         juicer.set('cache',true);
