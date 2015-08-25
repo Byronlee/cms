@@ -1,11 +1,11 @@
-/* line 1, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 1, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 html,
 body {
   background: #e9eaec;
   -webkit-font-smoothing: antialiased;
   font-size: 13px;
 }
-/* line 7, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 7, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 * {
   box-sizing: border-box;
   font-family: "Lantinghei SC", "Open Sans", Arial, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;
@@ -13,61 +13,61 @@ body {
   -webkit-tap-highlight-color: transparent;
   /* For some Androids */
 }
-/* line 14, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 14, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 [placeholder]::-webkit-input-placeholder,
 [placeholder]::-moz-placeholder,
 [placeholder]:-ms-input-placeholder {
   font-family: "Lantinghei SC", "Open Sans", Arial, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;
 }
-/* line 20, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 20, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 a {
   color: #333333;
   -webkit-transition: all 0.2s ease;
           transition: all 0.2s ease;
   text-decoration: none;
 }
-/* line 24, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 24, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 a:hover {
   color: #3da9f7;
 }
-/* line 29, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 29, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .container {
   margin: 0 auto;
 }
 @media (min-width: 1200px) {
-  /* line 32, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 32, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
   .container {
     width: 1170px;
   }
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-  /* line 35, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 35, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
   .container {
     width: 1000px;
   }
 }
 @media (max-width: 800px) {
-  /* line 38, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 38, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
   .container {
     width: auto;
   }
 }
-/* line 42, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 42, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .clearfix {
   *zoom: 1;
 }
-/* line 44, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 44, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .clearfix:after {
   content: '';
   display: block;
   clear: both;
   height: 0;
 }
-/* line 52, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 52, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .rows {
   *zoom: 1;
 }
-/* line 44, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 44, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .rows:after {
   content: '';
   display: block;
@@ -75,80 +75,80 @@ a:hover {
   height: 0;
 }
 @media (min-width: 1200px) {
-  /* line 54, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 54, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
   .rows {
     margin-top: 30px;
   }
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-  /* line 57, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 57, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
   .rows {
     margin-top: 20px;
   }
 }
-/* line 62, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 62, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .col-sub {
   float: left;
 }
 @media (min-width: 1200px) {
-  /* line 64, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 64, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
   .col-sub {
     width: 330px;
     margin-right: 30px;
   }
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-  /* line 68, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 68, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
   .col-sub {
     width: 280px;
     margin-right: 20px;
   }
 }
 @media (max-width: 800px) {
-  /* line 72, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 72, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
   .col-sub {
     float: none;
   }
 }
-/* line 77, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 77, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .col-main {
   float: right;
 }
 @media (min-width: 1200px) {
-  /* line 79, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 79, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
   .col-main {
     width: 810px;
   }
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-  /* line 82, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 82, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
   .col-main {
     width: 700px;
   }
 }
 @media (max-width: 800px) {
-  /* line 85, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 85, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
   .col-main {
     float: none;
   }
 }
-/* line 99, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 99, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .brand-link {
   color: #3da9f7;
 }
-/* line 101, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 101, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .brand-link:hover {
   color: #2c79b0;
 }
-/* line 107, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 107, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .badge-base {
   position: relative;
 }
-/* line 125, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 125, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .pic {
   position: relative;
 }
-/* line 127, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 127, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .pic .mask-tags {
   position: absolute;
   top: 0;
@@ -161,19 +161,19 @@ a:hover {
   z-index: 50;
 }
 @media (max-width: 800px) {
-  /* line 135, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 135, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
   .pic .mask-tags {
     padding: 0px 6px;
     font-size: 10px;
     line-height: 1.6;
   }
 }
-/* line 149, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 149, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .badge-tv {
   position: relative;
   overflow: hidden;
 }
-/* line 152, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 152, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .badge-tv:before {
   content: " ";
   display: block;
@@ -190,61 +190,61 @@ a:hover {
   opacity: 0.8;
 }
 @media (max-width: 800px) {
-  /* line 165, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 165, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
   .badge-tv:before {
     background-size: 28px;
   }
 }
-/* line 170, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 170, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .badge-tv:hover:before {
   opacity: 1;
   background-color: rgba(0, 0, 0, 0.3);
 }
-/* line 175, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 175, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .badge-tv .mask-tags {
   background: #f45170;
 }
-/* line 181, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 181, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .badge-o2o .mask-tags {
   background: #f0cc23;
 }
-/* line 186, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 186, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .badge-hardware .mask-tags {
   background: #a289df;
 }
-/* line 191, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 191, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .badge-fun .mask-tags {
   background: #ff6161;
 }
-/* line 196, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 196, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .badge-enterprise .mask-tags {
   background: #678ce0;
 }
-/* line 201, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 201, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .badge-sports .mask-tags {
   background: #42d1db;
 }
-/* line 207, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 207, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .badge-edu .mask-tags {
   background: #51cc96;
 }
-/* line 212, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 212, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .badge-finance .mask-tags {
   background: #f28d19;
 }
-/* line 217, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 217, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .badge-company .mask-tags {
   background: #1f90f2;
 }
-/* line 222, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 222, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .badge-activity .mask-tags {
   background: #8ab724;
 }
-/* line 227, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 227, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .ad-wrapper {
   position: relative;
 }
-/* line 229, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 229, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .ad-wrapper:before {
   content: "推广";
   display: block;
@@ -257,67 +257,67 @@ a:hover {
   padding: 0px 10px;
 }
 @media (max-width: 800px) {
-  /* line 239, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 239, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
   .ad-wrapper:before {
     padding: 0px 6px;
     font-size: 10px;
     line-height: 1.6;
   }
 }
-/* line 247, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 247, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .radius-box {
   border-radius: 2px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 @media (max-width: 800px) {
-  /* line 257, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 257, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
   .mobile-hide {
     display: none !important;
   }
 }
-/* line 261, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 261, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .mobile-show {
   display: none;
 }
 @media (max-width: 800px) {
-  /* line 263, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 263, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
   .mobile-show {
     display: block;
   }
 }
-/* line 4, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 4, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap {
   margin: 0 auto;
 }
 @media (max-width: 800px) {
-  /* line 5, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+  /* line 5, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap {
     padding: 10px;
   }
 }
 @media (min-width: 1200px) {
-  /* line 32, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 32, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
   .article-detail-wrap {
     width: 1170px;
   }
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-  /* line 35, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 35, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
   .article-detail-wrap {
     width: 1000px;
   }
 }
 @media (max-width: 800px) {
-  /* line 38, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 38, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
   .article-detail-wrap {
     width: auto;
   }
 }
-/* line 9, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 9, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section {
   *zoom: 1;
 }
-/* line 44, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 44, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .article-detail-wrap .main-section:after {
   content: '';
   display: block;
@@ -325,45 +325,45 @@ a:hover {
   height: 0;
 }
 @media (min-width: 1200px) {
-  /* line 54, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 54, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
   .article-detail-wrap .main-section {
     margin-top: 30px;
   }
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-  /* line 57, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 57, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
   .article-detail-wrap .main-section {
     margin-top: 20px;
   }
 }
-/* line 11, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 11, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper {
   float: right;
 }
 @media (min-width: 1200px) {
-  /* line 79, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 79, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
   .article-detail-wrap .main-section .content-wrapper {
     width: 810px;
   }
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-  /* line 82, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 82, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
   .article-detail-wrap .main-section .content-wrapper {
     width: 700px;
   }
 }
 @media (max-width: 800px) {
-  /* line 85, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 85, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
   .article-detail-wrap .main-section .content-wrapper {
     float: none;
   }
 }
-/* line 13, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 13, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper.focus-edition {
   float: none;
   margin: 0 auto;
 }
-/* line 17, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 17, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper article.single-post {
   border-radius: 2px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -371,18 +371,18 @@ a:hover {
   padding: 35px;
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-  /* line 21, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+  /* line 21, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .content-wrapper article.single-post {
     padding: 25px;
   }
 }
 @media (max-width: 800px) {
-  /* line 24, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+  /* line 24, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .content-wrapper article.single-post {
     padding: 20px 15px;
   }
 }
-/* line 28, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 28, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper article.single-post header h1 {
   font-size: 24px;
   font-weight: 600;
@@ -390,31 +390,31 @@ a:hover {
   text-align: left;
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-  /* line 33, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+  /* line 33, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .content-wrapper article.single-post header h1 {
     margin-bottom: 15px;
   }
 }
 @media (max-width: 800px) {
-  /* line 36, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+  /* line 36, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .content-wrapper article.single-post header h1 {
     font-size: 17px;
   }
 }
-/* line 42, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 42, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper article.single-post .author {
   margin: 15px 0 8px;
   color: #aaaaaa;
 }
-/* line 45, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 45, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper article.single-post .author a {
   color: #3da9f7;
 }
-/* line 101, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 101, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .article-detail-wrap .main-section .content-wrapper article.single-post .author a:hover {
   color: #2c79b0;
 }
-/* line 48, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 48, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper article.single-post .author .avatar {
   vertical-align: middle;
   display: inline-block;
@@ -426,7 +426,7 @@ a:hover {
   border-radius: 50%;
 }
 @media (max-width: 800px) {
-  /* line 57, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+  /* line 57, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .content-wrapper article.single-post .author .avatar {
     width: 20px;
     height: 20px;
@@ -435,19 +435,19 @@ a:hover {
     margin-right: 3px;
   }
 }
-/* line 66, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 66, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper article.single-post .single-post-header__headline {
   text-align: center;
   margin: 20px 0;
   position: relative;
 }
-/* line 70, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 70, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper article.single-post .single-post-header__headline img {
   width: 100%;
   display: block;
   margin: 0 auto;
 }
-/* line 75, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 75, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper article.single-post .single-post-header__headline small {
   position: absolute;
   left: 0;
@@ -455,62 +455,156 @@ a:hover {
   padding: 0 5px;
   background: rgba(0, 0, 0, 0.5);
 }
-/* line 81, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 81, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper article.single-post .single-post-header__headline small a {
   color: #fff;
   font-size: 12px;
 }
-/* line 88, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 88, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper article.single-post section.ad {
   font-size: 15px;
   margin: 25px 0 0;
   color: #666666;
 }
 @media (max-width: 800px) {
-  /* line 92, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+  /* line 92, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .content-wrapper article.single-post section.ad {
     font-size: 13px;
   }
 }
-/* line 97, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 97, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+.article-detail-wrap .main-section .content-wrapper article.single-post section.to-tip {
+  text-align: center;
+}
+/* line 99, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+.article-detail-wrap .main-section .content-wrapper article.single-post section.to-tip .inner {
+  display: inline-block;
+  margin-top: 30px;
+}
+/* line 103, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+.article-detail-wrap .main-section .content-wrapper article.single-post section.to-tip .top-tip-shap {
+  border: 2px solid #ececec;
+  border-radius: 100%;
+}
+/* line 108, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+.article-detail-wrap .main-section .content-wrapper article.single-post section.to-tip a {
+  display: block;
+  width: 58px;
+  height: 58px;
+  border: 1px solid #f1b60e;
+  border-radius: 100%;
+  line-height: 58px;
+  color: #fff;
+  font-size: 24px;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fccd60+0,fbae12+100,2989d8+100,207cca+100 */
+  background: #fccd60;
+  /* Old browsers */
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fccd60), color-stop(100%, #fbae12), color-stop(100%, #2989d8), color-stop(100%, #207cca));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #fccd60 0%, #fbae12 100%, #2989d8 100%, #207cca 100%);
+  /* Chrome10+,Safari5.1+ */
+  /* Opera 11.10+ */
+  /* IE10+ */
+  background: linear-gradient(to bottom, #fccd60 0%, #fbae12 100%, #2989d8 100%, #207cca 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fccd60', endColorstr='#207cca', GradientType=0);
+  /* IE6-9 */
+  position: relative;
+}
+/* line 129, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+.article-detail-wrap .main-section .content-wrapper article.single-post section.to-tip a:hover .code {
+  display: block;
+}
+/* line 135, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+.article-detail-wrap .main-section .content-wrapper article.single-post section.to-tip div {
+  color: #666;
+  margin-top: 4px;
+}
+/* line 140, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+.article-detail-wrap .main-section .content-wrapper article.single-post section.to-tip .code {
+  position: absolute;
+  padding: 10px;
+  border: 1px solid #e6e6e6;
+  background-color: #fff;
+  line-height: 14px;
+  top: -140px;
+  left: 50%;
+  -webkit-transform: translate3d(-50%, 0, 0);
+          transform: translate3d(-50%, 0, 0);
+  display: none;
+}
+/* line 150, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+.article-detail-wrap .main-section .content-wrapper article.single-post section.to-tip .code:before,
+.article-detail-wrap .main-section .content-wrapper article.single-post section.to-tip .code:after {
+  position: absolute;
+  content: "";
+  border: 10px solid transparent;
+}
+/* line 156, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+.article-detail-wrap .main-section .content-wrapper article.single-post section.to-tip .code:before {
+  border-top-color: #e6e6e6;
+  left: 50%;
+  margin-left: -10px;
+  bottom: -20px;
+}
+/* line 162, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+.article-detail-wrap .main-section .content-wrapper article.single-post section.to-tip .code:after {
+  border-top-color: #fff;
+  left: 50%;
+  margin-left: -10px;
+  bottom: -19px;
+}
+/* line 169, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+.article-detail-wrap .main-section .content-wrapper article.single-post section.to-tip .code img {
+  width: 80px;
+  height: 80px;
+}
+/* line 173, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+.article-detail-wrap .main-section .content-wrapper article.single-post section.to-tip .code b {
+  color: #333;
+  font-size: 12px;
+  font-weight: normal;
+}
+/* line 181, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper article.single-post section.single-post-share {
   *zoom: 1;
   padding: 25px 0 0;
   margin-top: 25px;
   border-top: solid 1px #f4f4f4;
 }
-/* line 44, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 44, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .article-detail-wrap .main-section .content-wrapper article.single-post section.single-post-share:after {
   content: '';
   display: block;
   clear: both;
   height: 0;
 }
-/* line 102, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 186, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper article.single-post section.single-post-share ul.actions {
   float: left;
   *zoom: 1;
 }
-/* line 44, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 44, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .article-detail-wrap .main-section .content-wrapper article.single-post section.single-post-share ul.actions:after {
   content: '';
   display: block;
   clear: both;
   height: 0;
 }
-/* line 105, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 189, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper article.single-post section.single-post-share ul.actions li {
   list-style: none;
   float: left;
   margin-right: 70px;
 }
-/* line 109, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 193, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper article.single-post section.single-post-share ul.actions li a {
   display: block;
   position: relative;
   box-shadow: none;
 }
-/* line 113, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 197, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper article.single-post section.single-post-share ul.actions li a i {
   width: 28px;
   height: 28px;
@@ -523,18 +617,18 @@ a:hover {
   font-size: 17px;
   position: relative;
 }
-/* line 125, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 209, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper article.single-post section.single-post-share ul.actions li a i:nth-of-type(2) {
   position: absolute;
   top: 0;
   left: 0;
   background: none !important;
 }
-/* line 132, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 216, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper article.single-post section.single-post-share ul.actions li a.is-favorite i {
   color: #fff133;
 }
-/* line 137, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 221, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper article.single-post section.single-post-share ul.actions li a.icon-fly i:nth-of-type(2) {
   -webkit-transition: all 0.6s ease;
           transition: all 0.6s ease;
@@ -543,11 +637,11 @@ a:hover {
       -ms-transform: translate(-8px, -30px) scale(2) rotate(-45deg);
           transform: translate(-8px, -30px) scale(2) rotate(-45deg);
 }
-/* line 144, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 228, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper article.single-post section.single-post-share ul.actions li a:hover i {
   background: #6378b0;
 }
-/* line 149, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 233, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper article.single-post section.single-post-share ul.actions li a span {
   position: absolute;
   left: 100%;
@@ -564,7 +658,7 @@ a:hover {
   color: #666666;
   font-family: arial, sans-serif;
 }
-/* line 162, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 246, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper article.single-post section.single-post-share ul.actions li a span:after {
   position: absolute;
   top: 8px;
@@ -579,7 +673,7 @@ a:hover {
   border-width: 0 0 1px 1px;
   background: #f4f4f4;
 }
-/* line 178, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 262, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper article.single-post section.single-post-share .single-post-share-list {
   float: right;
   color: #666666;
@@ -588,28 +682,48 @@ a:hover {
           transition: all 0.3s ease;
   white-space: nowrap;
 }
-/* line 184, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 268, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper article.single-post section.single-post-share .single-post-share-list.hide-external {
   width: 184px;
 }
 @media (max-width: 800px) {
-  /* line 187, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+  /* line 271, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .content-wrapper article.single-post section.single-post-share .single-post-share-list.hide-external {
     width: auto;
   }
 }
-/* line 195, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 279, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+.article-detail-wrap .main-section .content-wrapper section.enter-report {
+  text-align: center;
+  background-color: #fff;
+  padding: 15px;
+  line-height: 30px;
+  color: #666;
+  font-size: 13px;
+  margin-top: 15px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  border-radius: 2px;
+}
+/* line 289, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+.article-detail-wrap .main-section .content-wrapper section.enter-report a {
+  display: inline-block;
+  color: #fff;
+  background-color: #008df2;
+  border-radius: 2px;
+  width: 100px;
+}
+/* line 297, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.mobile-author {
   display: none;
   margin-top: 15px;
 }
 @media (max-width: 800px) {
-  /* line 263, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 263, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
   .article-detail-wrap .main-section .content-wrapper section.mobile-author {
     display: block;
   }
 }
-/* line 197, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 299, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.mobile-author .author {
   padding: 25px;
   background: #f3f7fb;
@@ -620,12 +734,12 @@ a:hover {
   white-space: nowrap;
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-  /* line 199, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+  /* line 301, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .content-wrapper section.mobile-author .author {
     padding: 15px;
   }
 }
-/* line 207, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 309, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.mobile-author .author .avatar {
   display: inline-block;
   width: 60px;
@@ -636,7 +750,7 @@ a:hover {
   margin-right: 15px;
   vertical-align: top;
 }
-/* line 217, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 319, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.mobile-author .author .desc {
   overflow: hidden;
   display: inline-block;
@@ -644,13 +758,13 @@ a:hover {
   vertical-align: middle;
   white-space: normal;
 }
-/* line 223, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 325, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.mobile-author .author .desc .name {
   font-size: 17px;
   font-weight: 600;
   display: inline-block;
 }
-/* line 228, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 330, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.mobile-author .author .desc .badge {
   font-size: 12px;
   color: #fff;
@@ -662,27 +776,27 @@ a:hover {
   top: -2px;
   vertical-align: middle;
 }
-/* line 239, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 341, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.mobile-author .author .desc .brief {
   margin-top: 5px;
   color: #666666;
 }
-/* line 247, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 349, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-relate {
   margin-top: 15px;
 }
-/* line 249, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 351, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-relate ul {
   *zoom: 1;
 }
-/* line 44, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 44, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-relate ul:after {
   content: '';
   display: block;
   clear: both;
   height: 0;
 }
-/* line 251, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 353, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-relate ul li {
   float: left;
   margin-left: 21px;
@@ -693,7 +807,7 @@ a:hover {
   background: #ffffff;
   *zoom: 1;
 }
-/* line 44, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 44, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-relate ul li:after {
   content: '';
   display: block;
@@ -701,7 +815,7 @@ a:hover {
   height: 0;
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-  /* line 259, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+  /* line 361, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .content-wrapper section.single-post-relate ul li {
     width: 220px;
     margin-left: 20px;
@@ -709,55 +823,55 @@ a:hover {
   }
 }
 @media (max-width: 800px) {
-  /* line 264, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+  /* line 366, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .content-wrapper section.single-post-relate ul li {
     float: none;
     margin: 0 0 10px;
     width: auto;
     padding: 15px;
   }
-  /* line 269, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+  /* line 371, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .content-wrapper section.single-post-relate ul li > a {
     float: left;
     width: 90px;
     height: 65px;
     margin-right: 10px;
   }
-  /* line 274, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+  /* line 376, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .content-wrapper section.single-post-relate ul li > a .image {
     height: 65px;
   }
 }
-/* line 279, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 381, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-relate ul li:first-of-type {
   margin-left: 0;
 }
-/* line 282, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 384, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-relate ul li .image {
   height: 140px;
   overflow: hidden;
   width: 100%;
 }
-/* line 288, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 390, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-relate ul li .image img {
   min-width: 100%;
   height: 100%;
   display: block;
 }
-/* line 294, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 396, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-relate ul li .title {
   margin-top: 15px;
   height: 72px;
   overflow: hidden;
   line-height: 24px;
 }
-/* line 299, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 401, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-relate ul li .title h3 a {
   font-size: 15px;
   font-weight: 600;
 }
 @media (max-width: 800px) {
-  /* line 303, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+  /* line 405, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .content-wrapper section.single-post-relate ul li .title {
     overflow: hidden;
     margin-top: 8px;
@@ -765,7 +879,7 @@ a:hover {
     line-height: 22px;
   }
 }
-/* line 317, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 419, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment {
   border-radius: 2px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -774,32 +888,32 @@ a:hover {
   padding: 30px;
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-  /* line 322, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+  /* line 424, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .content-wrapper section.single-post-comment {
     padding: 20px;
   }
 }
 @media (max-width: 800px) {
-  /* line 325, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+  /* line 427, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .content-wrapper section.single-post-comment {
     padding: 20px;
   }
 }
-/* line 328, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 430, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment h2 {
   margin-bottom: 15px;
   font-size: 15px;
   font-weight: 600;
 }
-/* line 333, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 435, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment a {
   color: #3da9f7;
 }
-/* line 101, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 101, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment a:hover {
   color: #2c79b0;
 }
-/* line 336, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 438, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .textarea {
   width: 100%;
   background: #f3f7fb;
@@ -813,44 +927,44 @@ a:hover {
           transition: all 1s ease;
   -webkit-appearance: none;
 }
-/* line 347, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 449, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .textarea::-moz-placeholder,
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .textarea::-webkit-input-placeholder {
   color: #aaaaaa;
   font-size: 15px;
 }
-/* line 352, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 454, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .textarea:focus {
   background: #ffffff;
 }
-/* line 354, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 456, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .textarea:focus + .focus-tips {
   display: block;
 }
-/* line 360, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 462, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .focus-tips {
   display: none;
   color: #999;
 }
-/* line 364, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 466, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .bottom {
   margin-top: 15px;
   *zoom: 1;
   padding-bottom: 20px;
   border-bottom: solid 1px #f4f4f4;
 }
-/* line 44, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 44, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .bottom:after {
   content: '';
   display: block;
   clear: both;
   height: 0;
 }
-/* line 369, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 471, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .bottom .meta {
   float: left;
 }
-/* line 371, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 473, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .bottom .meta .avatar {
   width: 28px;
   height: 28px;
@@ -861,13 +975,13 @@ a:hover {
   background: #aaaaaa no-repeat center center;
   background-size: cover;
 }
-/* line 381, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 483, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .bottom .meta .username,
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .bottom .meta .username:hover {
   cursor: default;
   color: #333333;
 }
-/* line 387, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 489, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .bottom button {
   float: right;
   width: 100px;
@@ -882,30 +996,30 @@ a:hover {
   padding: 0;
   font-size: 13px;
 }
-/* line 400, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 502, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .bottom button:hover {
   background: #3798de;
 }
-/* line 406, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 508, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details {
   padding-bottom: 15px;
   padding-top: 15px;
   *zoom: 1;
   position: relative;
 }
-/* line 44, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 44, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details:after {
   content: '';
   display: block;
   clear: both;
   height: 0;
 }
-/* line 411, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 513, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .avatar {
   float: left;
   margin-right: 10px;
 }
-/* line 414, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 516, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .avatar a {
   width: 40px;
   height: 40px;
@@ -915,7 +1029,7 @@ a:hover {
   display: block;
   cursor: default;
 }
-/* line 422, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 524, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .avatar a img {
   width: 100%;
   height: 100%;
@@ -923,81 +1037,81 @@ a:hover {
   display: block;
   border-radius: 50%;
 }
-/* line 432, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 534, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details:hover .btn-replay {
   display: block;
 }
-/* line 436, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 538, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .btn-replay {
   text-align: right;
   display: none;
   font-size: 12px;
 }
-/* line 440, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 542, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .btn-replay a {
   color: #999;
 }
-/* line 445, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 547, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .comment-wrapper {
   overflow: hidden;
 }
-/* line 447, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 549, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .comment-wrapper .postmeta {
   font-size: 12px;
   margin-bottom: 4px;
   color: #aaaaaa;
 }
-/* line 451, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 553, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .comment-wrapper .postmeta a,
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .comment-wrapper .postmeta a:hover {
   cursor: default;
   color: #333333;
 }
-/* line 457, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 559, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .comment-wrapper .comment-main {
   font-size: 15px;
 }
-/* line 461, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 563, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .replay-tips {
   color: #999;
 }
-/* line 467, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 569, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side {
   float: left;
 }
 @media (min-width: 1200px) {
-  /* line 64, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 64, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
   .article-detail-wrap .main-section .article-side {
     width: 330px;
     margin-right: 30px;
   }
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-  /* line 68, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 68, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
   .article-detail-wrap .main-section .article-side {
     width: 280px;
     margin-right: 20px;
   }
 }
 @media (max-width: 800px) {
-  /* line 72, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 72, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
   .article-detail-wrap .main-section .article-side {
     float: none;
   }
 }
-/* line 469, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 571, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .block.ad {
   width: 330px;
   height: 300px;
   margin-bottom: 20px;
 }
 @media (max-width: 800px) {
-  /* line 257, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 257, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
   .article-detail-wrap .main-section .article-side .block.ad {
     display: none !important;
   }
 }
-/* line 474, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 576, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .block.ad a {
   width: 100%;
   height: 100%;
@@ -1006,13 +1120,13 @@ a:hover {
   background-size: cover;
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-  /* line 481, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+  /* line 583, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .article-side .block.ad {
     width: 100%;
     height: 260px;
   }
 }
-/* line 486, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 588, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .author {
   padding: 25px;
   background: #f3f7fb;
@@ -1023,18 +1137,18 @@ a:hover {
   white-space: nowrap;
 }
 @media (max-width: 800px) {
-  /* line 257, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 257, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
   .article-detail-wrap .main-section .article-side .author {
     display: none !important;
   }
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-  /* line 489, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+  /* line 591, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .article-side .author {
     padding: 15px;
   }
 }
-/* line 497, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 599, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .author .avatar {
   display: inline-block;
   width: 60px;
@@ -1045,7 +1159,7 @@ a:hover {
   margin-right: 15px;
   vertical-align: top;
 }
-/* line 507, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 609, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .author .desc {
   overflow: hidden;
   display: inline-block;
@@ -1054,18 +1168,18 @@ a:hover {
   white-space: normal;
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-  /* line 511, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+  /* line 613, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .article-side .author .desc {
     width: 160px;
   }
 }
-/* line 516, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 618, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .author .desc .name {
   font-size: 17px;
   font-weight: 600;
   display: inline-block;
 }
-/* line 521, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 623, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .author .desc .badge {
   font-size: 12px;
   color: #fff;
@@ -1077,12 +1191,12 @@ a:hover {
   top: -2px;
   vertical-align: middle;
 }
-/* line 532, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 634, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .author .desc .brief {
   margin-top: 5px;
   color: #666666;
 }
-/* line 538, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 640, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .vendor-links {
   border-radius: 2px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -1091,28 +1205,28 @@ a:hover {
   margin-bottom: 20px;
 }
 @media (max-width: 800px) {
-  /* line 257, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 257, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
   .article-detail-wrap .main-section .article-side .vendor-links {
     display: none !important;
   }
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-  /* line 544, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+  /* line 646, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .article-side .vendor-links {
     padding: 15px;
   }
 }
-/* line 547, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 649, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .vendor-links h3 {
   font-size: 13px;
   font-weight: 600;
 }
-/* line 551, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 653, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .vendor-links article {
   *zoom: 1;
   margin-top: 20px;
 }
-/* line 44, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 44, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .article-detail-wrap .main-section .article-side .vendor-links article:after {
   content: '';
   display: block;
@@ -1120,21 +1234,21 @@ a:hover {
   height: 0;
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-  /* line 554, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+  /* line 656, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .article-side .vendor-links article {
     margin-top: 15px;
   }
 }
-/* line 557, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 659, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .vendor-links article .image {
   float: left;
   margin-right: 15px;
 }
-/* line 561, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 663, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .vendor-links article a {
   margin-top: 5px;
 }
-/* line 566, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 668, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .top-articles {
   border-radius: 2px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -1143,28 +1257,28 @@ a:hover {
   margin-bottom: 20px;
 }
 @media (max-width: 800px) {
-  /* line 257, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+  /* line 257, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
   .article-detail-wrap .main-section .article-side .top-articles {
     display: none !important;
   }
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-  /* line 572, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+  /* line 674, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .article-side .top-articles {
     padding: 15px;
   }
 }
-/* line 575, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 677, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .top-articles h3 {
   font-size: 13px;
   font-weight: 600;
 }
-/* line 579, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 681, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .top-articles article {
   *zoom: 1;
   margin-top: 20px;
 }
-/* line 44, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/components/common.less */
+/* line 44, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .article-detail-wrap .main-section .article-side .top-articles article:after {
   content: '';
   display: block;
@@ -1172,12 +1286,12 @@ a:hover {
   height: 0;
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-  /* line 582, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+  /* line 684, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .article-side .top-articles article {
     margin-top: 15px;
   }
 }
-/* line 585, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 687, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .top-articles article .pic {
   width: 80px;
   height: 60px;
@@ -1186,11 +1300,11 @@ a:hover {
   margin-right: 10px;
   float: left;
 }
-/* line 593, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 695, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .top-articles article .desc {
   overflow: hidden;
 }
-/* line 595, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/article.less */
+/* line 697, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .top-articles article .desc .title {
   display: inline-block;
   max-height: 60px;

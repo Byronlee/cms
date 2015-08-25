@@ -1,4 +1,4 @@
-/* line 2, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/pages.less */
+/* line 2, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/pages.less */
 .pages-wrap {
   padding-top: 40px;
   background: #fff;
@@ -6,32 +6,32 @@
   margin-bottom: -30px;
 }
 @media (max-width: 800px) {
-  /* line 7, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/pages.less */
+  /* line 7, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/pages.less */
   .pages-wrap {
     padding: 20px 0;
   }
 }
-/* line 10, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/pages.less */
+/* line 10, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/pages.less */
 .pages-wrap .job-title {
   margin-bottom: 30px;
 }
-/* line 13, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/pages.less */
+/* line 13, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/pages.less */
 .pages-wrap figure.big {
   margin: 0 -227px 30px;
 }
 @media (max-width: 800px) {
-  /* line 15, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/pages.less */
+  /* line 15, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/pages.less */
   .pages-wrap figure.big {
     margin: 0 0px 30px;
   }
 }
-/* line 19, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/pages.less */
+/* line 19, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/pages.less */
 .pages-wrap .content-wrapper {
   width: 700px;
   margin: 0 auto;
 }
 @media (max-width: 800px) {
-  /* line 21, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/pages.less */
+  /* line 21, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/pages.less */
   .pages-wrap .content-wrapper {
     width: 100%;
     padding: 20px;

@@ -1,0 +1,35 @@
+- if @pdnotes.count > 0
+  - @pdnotes.each do | pd |
+    article
+      section.product data-id="#{pd.id}"
+        h3
+          a[href=pd.news_url target="_blank" rel="nofollow"]
+            = pd.hash_title
+        .main
+          h4
+            | What:
+          p = display_pnote_what pd
+          h4
+            | How:
+
+          p = display_pnote_summary(pd, :first)
+
+          h4
+            | Think It Twice:
+          p = display_pnote_summary(pd, :last)
+
+          .pic
+            = image_tag pd.cover if pd.cover.present?
+          .info
+            span.time
+              = smart_time_ago pd.created_at rescue ''
+            span.share
+              |  分享到
+              .share-group
+                a.weixin.mobile-hide[href="javascript:void(0)" ref="nofollow" target="_blank" data-url="#{newsflash_show_url(pd.id)}?via=wechat_qr"]
+                  i.icon-weixin
+                a.weibo[href="http://share.baidu.com/s?type=text&searchPic=1&sign=on&to=tsina&url=#{newsflash_show_url pd.id}&title=#{('ProDuctNote ｜ ' + pd.hash_title.to_s + ' - ' + display_pnote_what(pd).to_s).html_safe}&pic=#{pd.cover}" ref="nofollow" target="_blank"]
+                  i.icon-weibo
+  a.load-more.J_listLoadMore.product_notes_next_link href="#{product_notes_path(d: 'next', b_id: @pdnotes.last.id)}"
+- else
+  a href="javascript:void(0)" class="load-more no-data"
