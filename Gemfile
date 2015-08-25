@@ -23,7 +23,7 @@ gem 'redis-rails', '~> 4.0.0'
 gem 'redis-objects', '~> 1.0.1'
 gem 'redis-namespace', "~> 1.5.1"
 gem 'redis-stat'
-gem 'newrelic_rpm', '~> 3.12.0.288'
+gem 'newrelic_rpm', '~> 3.13.0.299'
 gem 'newrelic-redis'
 gem 'sidekiq', '~> 3.1.2'
 gem 'sidekiq-failures'
