@@ -46,6 +46,8 @@ $(document).ready(function(){
     bindLoadMore();
 
 
+    
+
     /**
      * 分类加载(TODO:需要联调加载逻辑)
      */
@@ -97,6 +99,71 @@ $(document).ready(function(){
             bindLoadMore(newWrapper);
             $(window).trigger('scroll');
         }, 'html');
+
+
+// $('.J_fastSectionList .wrap').bind('scroll', function bind(e){
+
+//         if(!$('.J_fastSectionNavBar a[name="product"]').hasClass('active')){
+//             return;
+//         }
+//         //var top = $(this).scrollTop();
+//         var wrap = $(this);
+//         $(this).find('.panel:visible section').each(function(){
+//             var item = $(this);
+//             var bound = item.offset().top - wrap.offset().top - wrap.height() + item.height()/2;
+
+//             if(bound<0){
+//                 if(item.data('id')){
+//                     addPageView(item.data('id'))
+//                 };
+//             }
+
+//         });
+//     });
+
+
+        window.countedStaticsItem = window.countedStaticsItem || [];
+        var timer = null;
+        var sendId = [];
+        function addPageView(id){
+            if(countedStaticsItem.indexOf(id)>-1)return;
+            countedStaticsItem.push(id);
+            sendId.push(id);
+            /**
+             * 发送统计请求
+             */
+
+            window._hmt && _hmt.push(['_trackPageview', '/clipped/'+id]);
+            clearInterval(timer);
+            timer = setTimeout(function() {
+                if(sendId) {
+                    $.post(KR_CONFIG_OBJECT.trackClipPageList, {
+                        ids: sendId
+                    });
+                    clearInterval(timer);
+                    sendId = [];
+                }
+                
+            },5000);
+            
+        }
+        if($(this).is(':last-child')) {
+            $(window).bind('scroll', function() {
+                $('.article-list .articles:last-child').addClass('articles-pdn');
+                var wrap = $('.article-list .articles-pdn');
+                
+                wrap.find('article').each(function() {
+                    var item = $(this);
+                    var bound = item.offset().top + item.height() / 2 - ($(window).height() + $('body').scrollTop());
+                    
+                    if(bound < 0) {
+                        if(item.data('id')) {
+                            addPageView(item.data('id'));
+                        }
+                    }
+                })
+            })
+        }
     });
 
     $('body').on('click','.mask-tags', function(e) {
@@ -110,6 +177,47 @@ $(document).ready(function(){
                 $(this).click();
             }
         });
+    });
+
+     /**
+     * 绑定大图交互
+     */
+
+    $('body').on('click','.article-list .articles article .product img', function(e) {
+        e.stopPropagation();
+        $('.article-list .articles article .product').magnificPopup({
+            delegate: 'img', // child items selector, by clicking on it popup will open
+            type: 'image'
+            // other options
+        });
+        $.magnificPopup.open({
+            items: {
+                src: $(this).attr('src')
+            },
+            type: 'image'
+        }, 0);
+    })
+
+     // 微信
+    $('body').on('click', '.article-list .articles-pdn .weixin', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        $(this).parents('article').siblings().find('.weixin').removeClass('ac').find('.panel-weixin').remove();
+        var codeUrl = $(this).data('url');
+        var html = '<div class="panel-weixin">'
+                        + '<section class="weixin-section">'
+                            + '<p>'
+                                + '<img alt="533066" src="http://s.jiathis.com/qrcode.php?url=' + codeUrl + '">'
+                            + '</p>'
+                        + '</section>'
+                        + '<h3>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</h3>'
+                    + '</div>';
+                $(this).toggleClass('ac');
+                if($(this).hasClass('ac')) {
+                    $(this).append(html);
+                } else {
+                    $(this).find('.panel-weixin').remove();
+                }
     });
 
     

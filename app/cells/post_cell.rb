@@ -47,4 +47,9 @@ class PostCell < Cell::Rails
   def today
     render
   end
+
+
+  def report
+    render
+  end
 end

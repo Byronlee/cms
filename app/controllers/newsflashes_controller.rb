@@ -18,6 +18,26 @@ class NewsflashesController < ApplicationController
     render json: {:result => "success"}.to_json
   end
 
+  def touch_views
+    Newsflash.transaction do
+      Newsflash.where(id: params[:ids]).map(&:increase_views_count)
+    end
+    render json: {:result => "success"}.to_json
+  end
+
+  def product_notes
+    b_pdnote = Newsflash.find(params[:b_id]) if params[:b_id]
+    @pdnotes = Newsflash.tagged_with('_pdnote')
+    if b_pdnote && params[:d] == 'next'
+      @pdnotes = @pdnotes.where("newsflashes.created_at < ?", b_pdnote.created_at)
+    elsif b_pdnote && params[:d] == 'prev'
+      @pdnotes = @pdnotes.where("newsflashes.created_at > ?", b_newsflash.created_at)
+    end
+
+    @pdnotes = @pdnotes.recent.limit 5
+    render layout: false
+  end
+
   private
 
   def increase_views_count

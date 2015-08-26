@@ -1,4 +1,4 @@
-/* line 2, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/format.less */
+/* line 2, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/format.less */
 .article {
   font-size: 17px;
   line-height: 1.8;
@@ -6,26 +6,26 @@
   word-wrap: break-word;
 }
 @media (max-width: 800px) {
-  /* line 7, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/format.less */
+  /* line 7, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/format.less */
   .article {
     font-size: 16px;
     line-height: 1.8;
     overflow: hidden;
   }
 }
-/* line 12, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/format.less */
+/* line 12, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/format.less */
 .article a {
   color: #3da9f7;
 }
-/* line 14, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/format.less */
+/* line 14, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/format.less */
 .article a:hover {
   color: #2c79b0;
 }
-/* line 18, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/format.less */
+/* line 18, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/format.less */
 .article u {
   text-decoration: none;
 }
-/* line 21, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/format.less */
+/* line 21, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/format.less */
 .article p,
 .article h3,
 .article h4,
@@ -43,7 +43,7 @@
   margin-bottom: 30px;
 }
 @media (max-width: 800px) {
-  /* line 36, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/format.less */
+  /* line 36, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/format.less */
   .article p,
   .article h3,
   .article h4,
@@ -61,31 +61,31 @@
     margin-bottom: 30px;
   }
 }
-/* line 40, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/format.less */
+/* line 40, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/format.less */
 .article img {
   max-width: 100%;
 }
-/* line 43, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/format.less */
+/* line 43, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/format.less */
 .article ul,
 .article ol {
   list-style: square;
   margin-left: 20px;
 }
-/* line 48, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/format.less */
+/* line 48, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/format.less */
 .article blockquote {
   font-weight: 600;
   border-left: 4px solid #3da9f7;
   padding-left: 15px;
 }
 @media (min-width: 800px) {
-  /* line 49, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/format.less */
+  /* line 49, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/format.less */
   .article blockquote {
     padding-left: 24px;
     margin-left: -24px;
     border-left: 6px solid #3da9f7;
   }
 }
-/* line 59, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/format.less */
+/* line 59, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/format.less */
 .article hr {
   border: 0;
   height: 1px;
@@ -93,28 +93,28 @@
   margin: 50px auto;
   border-top: 1px solid #e4e4e4;
 }
-/* line 66, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/format.less */
+/* line 66, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/format.less */
 .article img {
   margin: 0 auto;
   display: block;
 }
-/* line 70, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/format.less */
+/* line 70, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/format.less */
 .article em {
   background: #f6f6f6;
   border-bottom: 1px solid #e4e4e4;
   font-style: normal;
 }
-/* line 75, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/format.less */
+/* line 75, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/format.less */
 .article strong,
 .article b {
   font-weight: 600;
 }
-/* line 80, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/format.less */
+/* line 80, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/format.less */
 .article iframe {
   width: 100%;
 }
 @media (max-width: 800px) {
-  /* line 82, /Users/yanghanwen/development/36kr/36kr-fe/src/styles/format.less */
+  /* line 82, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/format.less */
   .article iframe {
     height: 300px;
   }
