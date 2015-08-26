@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150811095528) do
+ActiveRecord::Schema.define(version: 20150814071133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -187,7 +187,7 @@ ActiveRecord::Schema.define(version: 20150811095528) do
     t.integer  "comments_count"
     t.text     "md_content"
     t.integer  "url_code"
-    t.integer  "views_count",       default: 0
+    t.integer  "views_count",            default: 0
     t.string   "catch_title"
     t.datetime "published_at"
     t.string   "key"
@@ -195,10 +195,11 @@ ActiveRecord::Schema.define(version: 20150811095528) do
     t.text     "extra"
     t.string   "source_type"
     t.integer  "favorites_count"
-    t.string   "company_keywords",  default: [], array: true
-    t.integer  "favoriter_sso_ids", default: [], array: true
+    t.string   "company_keywords",       default: [], array: true
+    t.integer  "favoriter_sso_ids",      default: [], array: true
     t.string   "column_name"
-    t.integer  "api_hits_count",    default: 0
+    t.integer  "api_hits_count",         default: 0
+    t.integer  "related_post_url_codes", default: [], array: true
   end
 
   add_index "posts", ["column_id"], name: "index_posts_on_column_id", using: :btree

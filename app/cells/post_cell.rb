@@ -31,8 +31,7 @@ class PostCell < Cell::Rails
 
   def relate(args)
     @post = args[:post]
-    @posts = @post.find_related_tags.published.where.not(id: @post.id).limit(3)
-    @posts = @post.author.posts.published.where.not(id: @post.id).order('created_at DESC').limit(3) if @posts.blank?
+    @posts = @post.related_posts
     render
   end
 
