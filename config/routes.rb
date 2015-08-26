@@ -160,6 +160,7 @@ Rails.application.routes.draw do
   match '/clipped/feed/', :controller => 'newsflashes', :action => 'feed', ptype: '_newsflash', via: :get, defaults: { format: :rss }
   match '/clipped/:id', :controller => 'newsflashes', :action => 'show', via: :get, as: :newsflash_show
   match '/clipped/:id/touch_view', :controller => 'newsflashes', :action => 'touch_view', via: :post, as: :newsflash_touch_view
+  match '/clipped/touch_views', :controller => 'newsflashes', :action => 'touch_views', via: :post, as: :newsflash_touch_views
   match '/product_notes', :controller => 'newsflashes', :action => 'product_notes', ptype: '_pdnote', via: :get, as: :product_notes
   match '/product_notes/feed/', :controller => 'newsflashes', :action => 'feed', ptype: '_pdnote', via: :get, defaults: { format: :rss }
   match '/changelog', :controller => 'welcome', :action => 'changes', via: :get, as: :changes

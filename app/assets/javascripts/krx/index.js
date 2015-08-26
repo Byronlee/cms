@@ -46,18 +46,7 @@ $(document).ready(function(){
     bindLoadMore();
 
 
-    window.countedStaticsItem = window.countedStaticsItem || [];
-    function addPageView(id){
-        if(countedStaticsItem.indexOf(id)>-1)return;
-        countedStaticsItem.push(id);
-        /**
-         * 发送统计请求
-         */
-        window._hmt && _hmt.push(['_trackPageview', '/clipped/'+id]);
-        $.post(KR_CONFIG_OBJECT.trackClipPage.replace('{id}', id), {
-            id: id
-        });
-    }
+    
 
     /**
      * 分类加载(TODO:需要联调加载逻辑)
@@ -131,6 +120,33 @@ $(document).ready(function(){
 
 //         });
 //     });
+
+
+        window.countedStaticsItem = window.countedStaticsItem || [];
+        var timer = null;
+        var sendId = [];
+        function addPageView(id){
+            if(countedStaticsItem.indexOf(id)>-1)return;
+            countedStaticsItem.push(id);
+            sendId.push(id);
+            /**
+             * 发送统计请求
+             */
+
+            window._hmt && _hmt.push(['_trackPageview', '/clipped/'+id]);
+            clearInterval(timer);
+            timer = setTimeout(function() {
+                if(sendId) {
+                    $.post(KR_CONFIG_OBJECT.trackClipPageList, {
+                        ids: sendId
+                    });
+                    clearInterval(timer);
+                    sendId = [];
+                }
+                
+            },5000);
+            
+        }
         if($(this).is(':last-child')) {
             $(window).bind('scroll', function() {
                 $('.article-list .articles:last-child').addClass('articles-pdn');
@@ -138,8 +154,8 @@ $(document).ready(function(){
                 
                 wrap.find('article').each(function() {
                     var item = $(this);
-                    var bound = item.offset().top - wrap.offset().top - wrap.height() + item.height() / 2;
-                    console.log('bound: ' + (item.offset().top - wrap.offset().top));
+                    var bound = item.offset().top + item.height() / 2 - ($(window).height() + $('body').scrollTop());
+                    
                     if(bound < 0) {
                         if(item.data('id')) {
                             addPageView(item.data('id'));

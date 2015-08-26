@@ -5,5 +5,5 @@
     - columns && columns.each do |column|
       = link_to column["name"], column_slug_path(slug: column["slug"]), 'data-type' => column["slug"], class: "#{active_class(column["slug"], data_type)} tab", id: "column_header_#{column['slug']}"
 
-    = link_to 'PDN', product_notes_path, 'data-type' => 'pdn', class: "#{active_class('pdn', data_type)} #{ 'tab' unless tab_all_redirect }", id: 'column_header_pdn'
+    = link_to '新产品', product_notes_path, 'data-type' => 'pdn', class: "#{active_class('pdn', data_type)} #{ 'tab' unless tab_all_redirect }", id: 'column_header_pdn'
   = yield

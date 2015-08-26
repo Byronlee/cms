@@ -108,18 +108,7 @@ function initFastSection(){
         });
     });
 
-    window.countedStaticsItem = window.countedStaticsItem || [];
-    function addPageView(id){
-        if(countedStaticsItem.indexOf(id)>-1)return;
-        countedStaticsItem.push(id);
-        /**
-         * 发送统计请求
-         */
-        window._hmt && _hmt.push(['_trackPageview', '/clipped/'+id]);
-        $.post(KR_CONFIG_OBJECT.trackClipPage.replace('{id}', id), {
-            id: id
-        });
-    }
+    
 
     var bindItemActions = function (e){
 
@@ -141,9 +130,46 @@ function initFastSection(){
     };
     $('body').delegate('.J_fastSectionList .fast-news-panel section', 'click', bindItemActions);
 
+     // 微信
+    $('body').on('click', '.J_fastSection .weixin', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var codeUrl = $(this).data('url');
+        var html = '<div class="panel-weixin">'
+                        + '<section class="weixin-section">'
+                            + '<p>'
+                                + '<img alt="533066" src="http://s.jiathis.com/qrcode.php?url=' + codeUrl + '">'
+                            + '</p>'
+                        + '</section>'
+                        + '<h3>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</h3>'
+                    + '</div>';
+                $(this).toggleClass('ac');
+                if($(this).hasClass('ac')) {
+                    $(this).append(html);
+                } else {
+                    $(this).find('.panel-weixin').remove();
+                }
+        // $(this).toggleClass('ac');
+        // if($(this).is('.ac')) {
+        //     $(this).append(html);
+        // } else {
+        //     $(this).remove('panel-weixin');
+        // }
+    });
+
     
-
-
+    window.countedStaticsItem = window.countedStaticsItem || [];
+    function addPageView(id){
+        if(countedStaticsItem.indexOf(id)>-1)return;
+        countedStaticsItem.push(id);
+        /**
+         * 发送统计请求
+         */
+        window._hmt && _hmt.push(['_trackPageview', '/clipped/'+id]);
+        $.post(KR_CONFIG_OBJECT.trackClipPage.replace('{id}', id), {
+            id: id
+        });
+    }
     /**
      * 滚动时统计PN条目的展示
      */
@@ -160,7 +186,7 @@ function initFastSection(){
 
             if(bound<0){
                 if(item.data('id')){
-                    addPageView(item.data('id'))
+                    addPageView(item.data('id'));
                 };
             }
 

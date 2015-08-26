@@ -1,7 +1,7 @@
 - if @pdnotes.count > 0
   - @pdnotes.each do | pd |
-    article
-      section.product data-id="#{pd.id}"
+    article data-id="#{pd.id}"
+      section.product
         h3
           a[href=pd.news_url target="_blank" rel="nofollow"]
             = pd.hash_title
