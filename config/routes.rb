@@ -129,7 +129,6 @@ Rails.application.routes.draw do
     end
 
     resources :newsflashes, only: [:index]
-    resources :product_notes, only: [:index]
   end
 
   resources :pages, only: [:show], param: :slug do
