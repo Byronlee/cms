@@ -131,3 +131,5 @@ settings.cache={
 }
 
 settings.subsite = 'http://space.36kr.com'
+
+settings.user_info_update_url = '//uc.36kr.com/#/uc/account/basic'
