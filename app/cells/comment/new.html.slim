@@ -20,7 +20,7 @@ h2
             a[href="javascript:void(0)"]
               = @current_user.try(:display_name)
           span#error_msg style="color:#f00; margin-left:15px;"
-            - if true || @current_user.try(:display_name).to_s.include?('新用户')
+            - if @current_user.try(:display_name).to_s.include?('新用户')
               |Tips：您正在使用默认的用户名，一点都不 Cool，<a href="#{Settings.user_info_update_url}">去更新</a>
 
         button.ladda-button.comment-submit-btn.right[ data-style="slide-down" data-spinner-size="32"]
