@@ -5,12 +5,11 @@ xml.xml do
   xml.FromUserName  do
     xml.cdata! params[:from_user]
   end
-  xml.CreateTime Time.now.to_s(:rfc822)
+  xml.CreateTime Time.now.to_i
   xml.MsgType  do
     xml.cdata! "news"
   end
-  total_count = @posts.total_count
-  xml.ArticleCount total_count > 6 ? 6 : total_count
+  xml.ArticleCount params[:per_page]
   xml.Articles do
     @posts.each do |post|
       xml.item do

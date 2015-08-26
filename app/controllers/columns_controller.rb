@@ -20,7 +20,7 @@ class ColumnsController < ApplicationController
       end
       format.xml do
         #/api/wx/column.xml?slug=o2o&to_user=toUser&from_user=fromUser&page=1&per_page=5
-        render 'columns/column', locals: { :posts => @posts }, layout: false
+        render 'api/wx', locals: { :posts => @posts }, layout: false
       end
     end
   end
