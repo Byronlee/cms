@@ -182,6 +182,14 @@ class Post < ActiveRecord::Base
     cover
   end
 
+  def heading_cover_url
+    "#{cover}!heading"
+  end
+
+  def square_cover_url
+    "#{cover}!square"
+  end
+
   def comments_counts
     update_attribute(:comments_count, comments.size) if comments_count.nil?
     comments_count

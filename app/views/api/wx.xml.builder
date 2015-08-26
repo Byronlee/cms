@@ -9,9 +9,10 @@ xml.xml do
   xml.MsgType  do
     xml.cdata! "news"
   end
-  xml.ArticleCount params[:per_page]
+  total_count, per_page = @posts.total_count, params[:per_page].to_i
+  xml.ArticleCount total_count < per_page ? total_count : per_page
   xml.Articles do
-    @posts.each do |post|
+    @posts.each_with_index do |post,i|
       xml.item do
         xml.Title do
           xml.cdata! post.title
@@ -20,7 +21,7 @@ xml.xml do
           xml.cdata! post.summary
         end
         xml.PicUrl do
-          xml.cdata! post.cover_real_url
+          xml.cdata! i == 0 ? post.heading_cover_url : post.square_cover_url
         end
         xml.Url do
           xml.cdata! post.get_access_url
