@@ -2,10 +2,12 @@ namespace :iaas do
   desc 'Modify load balancer backend attributes'
   task :web1_preview_lbp => :environment do
     Deploy::Iaas.web_lbp('pek2', 'lbb-yd5i1k0c', 'lbp-z6agbjzn', '8091', '1')
+    Deploy::Iaas.web_lbp('pek2', 'lbb-35k2e7ic', 'lbp-z6agbjzn', '8091', '1')
     Deploy::Iaas.apply_policy('pek2', 'lb-3hczjbvo')
   end
   task :web1_online_lbp => :environment do
     Deploy::Iaas.web_lbp('pek2', 'lbb-yd5i1k0c', 'lbp-t69biw8w', '8091', '5')
+    Deploy::Iaas.web_lbp('pek2', 'lbb-35k2e7ic', 'lbp-t69biw8w', '8091', '1')
     Deploy::Iaas.apply_policy('pek2', 'lb-3hczjbvo')
   end
 
