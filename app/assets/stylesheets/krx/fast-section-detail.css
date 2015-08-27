@@ -445,3 +445,7 @@ a:hover {
 .fast-section-detail-wrap .main-section .fast-section-detail .fast-news .info .share .panel-weixin {
   line-height: 1.5;
 }
+/* line 69, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+.fast-section-detail-wrap .main-section .fast-section-detail .fast-news .pic img {
+  max-width: 100%;
+}

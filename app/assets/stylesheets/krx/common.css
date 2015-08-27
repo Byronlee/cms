@@ -2009,11 +2009,12 @@ a:hover {
 }
 /* line 18, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/feed-list.less */
 .fast-section .list .panel section.feed header a {
-  max-width: 80px;
+  max-width: 120px;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
-/* line 23, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/feed-list.less */
+/* line 24, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/feed-list.less */
 .fast-section .list .panel section.feed header img {
   position: relative;
   top: 50%;
@@ -2021,7 +2022,7 @@ a:hover {
       -ms-transform: translateY(-50%);
           transform: translateY(-50%);
 }
-/* line 28, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/feed-list.less */
+/* line 29, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/feed-list.less */
 .fast-section .list .panel section.feed header .figure {
   width: 25px;
   height: 25px;
@@ -2032,14 +2033,14 @@ a:hover {
   position: relative;
   z-index: 10;
 }
-/* line 39, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/feed-list.less */
+/* line 40, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/feed-list.less */
 .fast-section .list .panel section.feed header a,
 .fast-section .list .panel section.feed header span {
   font-size: 13px;
   line-height: 25px;
   color: #bbb;
 }
-/* line 44, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/feed-list.less */
+/* line 45, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/feed-list.less */
 .fast-section .list .panel section.feed header i {
   width: 3px;
   height: 3px;
@@ -2048,13 +2049,13 @@ a:hover {
   border-radius: 100%;
   margin: 10px;
 }
-/* line 53, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/feed-list.less */
+/* line 54, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/feed-list.less */
 .fast-section .list .panel section.feed .penel-body {
   margin-top: 10px;
   color: #555;
   word-break: break-all;
 }
-/* line 57, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/feed-list.less */
+/* line 58, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/feed-list.less */
 .fast-section .list .panel section.feed .penel-body .img-list {
   *zoom: 1;
   margin: 10px 0 0 -2px;
@@ -2066,13 +2067,13 @@ a:hover {
   clear: both;
   height: 0;
 }
-/* line 60, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/feed-list.less */
+/* line 61, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/feed-list.less */
 .fast-section .list .panel section.feed .penel-body .img-list img {
   float: left;
   margin: 2px;
   background-color: #ddd;
 }
-/* line 67, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/feed-list.less */
+/* line 68, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/feed-list.less */
 .fast-section .list .panel section.feed .penel-body .products-apps {
   *zoom: 1;
   margin-left: -10px;
@@ -2085,7 +2086,7 @@ a:hover {
   clear: both;
   height: 0;
 }
-/* line 71, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/feed-list.less */
+/* line 72, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/feed-list.less */
 .fast-section .list .panel section.feed .penel-body .products-apps a {
   float: left;
   border-radius: 100%;
@@ -2097,7 +2098,7 @@ a:hover {
   line-height: 50px;
   margin: 10px;
 }
-/* line 82, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/feed-list.less */
+/* line 83, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/feed-list.less */
 .fast-section .list .panel section.feed .penel-body .products-apps img {
   position: relative;
   top: 50%;
@@ -2105,7 +2106,7 @@ a:hover {
       -ms-transform: translateY(-50%);
           transform: translateY(-50%);
 }
-/* line 90, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/feed-list.less */
+/* line 91, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/feed-list.less */
 .fast-section .list .panel section.feed p a {
   color: #2f2f2f;
 }
