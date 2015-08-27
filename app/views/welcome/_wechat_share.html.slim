@@ -7,7 +7,7 @@ javascript:
       // 微信分享
       var WEIXINSHARE = {
         shareTitle: '#{share_title}' || window.document.title,
-        shareDesc: '#{share_desc}',
+        shareDesc: '#{share_desc}' || window.document.URL,
         shareImg: '#{share_img || "http://krplus-pic.b0.upaiyun.com/36kr_new_logo.jpg"}'
       };
       InitWeixinShare(WEIXINSHARE);
