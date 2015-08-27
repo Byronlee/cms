@@ -9,7 +9,6 @@ set :rbenv_roles, :all
 
 server 'www-data@119.254.100.96', roles: %w[web app db], port: 52221, primary: true #, sidekiq: true, whenever: true
 
-#namespace :deploy do
-  #after "deploy:finished", "deploy:web3_preview_lbp"
-  #after "deploy:finished", "deploy:web4_preview_lbp"
-#end
+namespace :deploy do
+  after "deploy:finished", "deploy:web1_preview_lbp"
+end
