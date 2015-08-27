@@ -1691,27 +1691,29 @@ a:hover {
   border-left: solid 2px #fd9827;
   line-height: 20px;
   font-size: 18px;
+  font-weight: 600;
 }
-/* line 111, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/article-list.less */
+/* line 112, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/article-list.less */
 .article-list .articles article .product > h3 span {
   position: relative;
   top: 2px;
 }
-/* line 116, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/article-list.less */
+/* line 117, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/article-list.less */
 .article-list .articles article .product h4 {
   margin: 10px 0 3px;
+  font-weight: 600;
 }
-/* line 119, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/article-list.less */
+/* line 121, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/article-list.less */
 .article-list .articles article .product p {
   color: #666666;
 }
-/* line 123, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/article-list.less */
+/* line 125, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/article-list.less */
 .article-list .articles article .product .main {
   line-height: 20px;
   font-size: 13px;
   color: #333;
 }
-/* line 128, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/article-list.less */
+/* line 130, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/article-list.less */
 .article-list .articles article .product .pic {
   width: 120px;
   margin-top: 15px;
@@ -1719,14 +1721,14 @@ a:hover {
   float: none;
   height: auto;
 }
-/* line 134, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/article-list.less */
+/* line 136, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/article-list.less */
 .article-list .articles article .product .pic img {
   display: block;
   width: 100%;
   cursor: -webkit-zoom-in;
   cursor: zoom-in;
 }
-/* line 140, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/article-list.less */
+/* line 142, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/article-list.less */
 .article-list .articles article .product .info {
   margin-top: 20px;
   *zoom: 1;
@@ -1740,19 +1742,19 @@ a:hover {
   clear: both;
   height: 0;
 }
-/* line 145, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/article-list.less */
+/* line 147, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/article-list.less */
 .article-list .articles article .product .info .time {
   float: left;
 }
-/* line 148, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/article-list.less */
+/* line 150, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/article-list.less */
 .article-list .articles article .product .info .share {
   float: right;
 }
-/* line 153, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/article-list.less */
+/* line 155, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/article-list.less */
 .article-list .articles article .product .share-group a .panel-weixin h3 {
   top: 0;
 }
-/* line 160, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/article-list.less */
+/* line 162, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/article-list.less */
 .article-list .load-more {
   border-radius: 2px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -1766,32 +1768,32 @@ a:hover {
   color: #6483a2;
 }
 @media (max-width: 800px) {
-  /* line 171, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/article-list.less */
+  /* line 173, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/article-list.less */
   .article-list .load-more {
     margin-top: 10px;
   }
 }
-/* line 174, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/article-list.less */
+/* line 176, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/article-list.less */
 .article-list .load-more:before {
   content: '加载更多';
   display: inline-block;
 }
-/* line 178, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/article-list.less */
+/* line 180, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/article-list.less */
 .article-list .load-more:hover {
   background: #bccbd9;
 }
-/* line 181, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/article-list.less */
+/* line 183, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/article-list.less */
 .article-list .load-more.loading,
 .article-list .load-more.loading:hover {
   background: #ffffff;
   cursor: default;
 }
-/* line 185, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/article-list.less */
+/* line 187, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/article-list.less */
 .article-list .load-more.loading:before,
 .article-list .load-more.loading:hover:before {
   content: "正在加载...";
 }
-/* line 188, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/article-list.less */
+/* line 190, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/article-list.less */
 .article-list .load-more.loading:after,
 .article-list .load-more.loading:hover:after {
   content: " ";
@@ -1803,14 +1805,14 @@ a:hover {
   vertical-align: middle;
   margin-left: 10px;
 }
-/* line 199, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/article-list.less */
+/* line 201, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/article-list.less */
 .article-list .load-more.no-data,
 .article-list .load-more.no-data:hover {
   cursor: not-allowed;
   color: #aaaaaa;
   background: #f4f4f4;
 }
-/* line 204, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/article-list.less */
+/* line 206, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/article-list.less */
 .article-list .load-more.no-data:before,
 .article-list .load-more.no-data:hover:before {
   content: "没有更多数据了";
