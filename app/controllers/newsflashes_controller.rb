@@ -1,5 +1,6 @@
 class NewsflashesController < ApplicationController
   before_filter :increase_views_count, only: [:show, :touch_view]
+  skip_before_filter :verify_authenticity_token, if: Proc.new{|c| c.request.xhr?}
 
   def index
     @newsflashes = Newsflash.by_day("#{params[:year]}-#{params[:month]}-#{params[:day]}").order('created_at asc')

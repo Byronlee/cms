@@ -1,5 +1,6 @@
 class Asynces::FavoritesController < ApplicationController
   load_and_authorize_resource
+  skip_before_filter :verify_authenticity_token, if: Proc.new{|c| c.request.xhr?}
 
   def create
     return render :json => { success: 'false' } if params[:url_code].blank?
