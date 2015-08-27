@@ -1694,7 +1694,7 @@ a:hover {
   font-weight: 600;
 }
 /* line 112, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/article-list.less */
-.article-list .articles article .product > h3 span {
+.article-list .articles article .product > h3 a {
   position: relative;
   top: 2px;
 }
