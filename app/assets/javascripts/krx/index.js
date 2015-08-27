@@ -29,7 +29,7 @@ $(document).ready(function(){
             if(trigger.hasClass('no-data'))return;
             if(trigger.hasClass('loading'))return;
             trigger.addClass('loading');
-            
+
             $.get(trigger.attr('href'), function(list){
                 var newWrapper = trigger.parent();
                 $(list).insertAfter(trigger);
@@ -46,7 +46,7 @@ $(document).ready(function(){
     bindLoadMore();
 
 
-    
+
 
     /**
      * 分类加载(TODO:需要联调加载逻辑)
@@ -98,6 +98,11 @@ $(document).ready(function(){
             newWrapper.append(list);
             bindLoadMore(newWrapper);
             $(window).trigger('scroll');
+
+            if($(".timeago").length >= 1){
+              $(".timeago").timeago();
+            }
+
         }, 'html');
 
 
@@ -143,19 +148,19 @@ $(document).ready(function(){
                     clearInterval(timer);
                     sendId = [];
                 }
-                
+
             },5000);
-            
+
         }
         if($(this).is(':last-child')) {
             $(window).bind('scroll', function() {
                 $('.article-list .articles:last-child').addClass('articles-pdn');
                 var wrap = $('.article-list .articles-pdn');
-                
+
                 wrap.find('article').each(function() {
                     var item = $(this);
                     var bound = item.offset().top + item.height() / 2 - ($(window).height() + $('body').scrollTop());
-                    
+
                     if(bound < 0) {
                         if(item.data('id')) {
                             addPageView(item.data('id'));
@@ -220,18 +225,18 @@ $(document).ready(function(){
                 }
     });
 
-    
-    
+
+
     // ProDuct Note
     // $('body').on('click','.product h3', function() {
     //     $(this).next().toogleClass('show');
     //     $('.product .main').toogleClass('show');
     // });
-        
 
-    // $(".feed img").bind("error",function(){ 
-    //     console.log(222);  
-    //     this.src="../images/default_avatar.png";   
-    // }); 
-        
+
+    // $(".feed img").bind("error",function(){
+    //     console.log(222);
+    //     this.src="../images/default_avatar.png";
+    // });
+
 });
