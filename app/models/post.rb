@@ -48,7 +48,7 @@ class Post < ActiveRecord::Base
   include AASM
 
   by_star_field '"posts".published_at'
-  page_view_field :views_count, interval: 600
+  page_view_field :views_count, interval: 1800
   page_view_field :mobile_views_count, interval: 1800
   paginates_per 100
 
