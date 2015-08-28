@@ -62,6 +62,9 @@ $(document).ready(function(){
 
     $('.J_newsListNavBar a.active').data('listWrapper', $('.J_articleList').eq(0))
     $('.J_newsListNavBar a').click(function(e){
+        if($(this).data('type')=='all' && location.pathname!='/'){
+            return;
+        }
         e.preventDefault();
 
 
