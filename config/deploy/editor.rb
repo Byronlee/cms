@@ -6,12 +6,13 @@ set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rben
 set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 set :rbenv_roles, :all
 
-set :ssh_options, { forward_agent: true, port: 22 }
-set :deploy_to, "/var/www/apps/editor"
-server 'www-data@staging.36kr.com', roles: %w[web app db], primary: true #, sidekiq: true, whenever: true
+#set :ssh_options, { forward_agent: true, port: 22 }
+#set :deploy_to, "/var/www/apps/editor"
 
+server 'www-data@119.254.100.96', roles: %w[web app db], port: 52224, primary: true #, sidekiq: true, whenever: true
+
+=begin
 namespace :deploy do
-
   desc "Restart application"
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
@@ -20,3 +21,4 @@ namespace :deploy do
     end
   end
 end
+=end
