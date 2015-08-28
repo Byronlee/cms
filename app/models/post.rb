@@ -84,6 +84,7 @@ class Post < ActiveRecord::Base
   after_destroy :update_today_lastest_cache, :update_info_flows_cache,
                 :check_head_line_cache_for_destroy, :update_excellent_comments_cache
   before_create :generate_key
+  after_create :fetch_related_posts
   before_save :auto_generate_summary, :check_source_type
   before_validation :generate_url_code
   after_save :check_company_keywords
@@ -251,8 +252,8 @@ class Post < ActiveRecord::Base
   end
 
   def get_related_post_url_codes
-    posts = self.find_related_tags.published.where.not(id: self.id).limit(3)
-    posts = self.author.posts.published.where.not(id: self.id).recent.limit(3) if posts.blank?
+    posts = self.find_related_tags.published.where.not(id: self.id.to_i).limit(3)
+    posts = self.author.posts.published.where.not(id: self.id.to_i).recent.limit(3) if posts.blank? && self.author.present?
     posts.map(&:url_code)
   end
 
@@ -383,5 +384,10 @@ class Post < ActiveRecord::Base
     return true unless source_type.contribution?
     return true if user_id == 785
     self.user_id = 785
+  end
+
+  def fetch_related_posts
+    self.related_post_url_codes = get_related_post_url_codes
+    self.save
   end
 end
