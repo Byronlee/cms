@@ -84,7 +84,7 @@ class Post < ActiveRecord::Base
   after_destroy :update_today_lastest_cache, :update_info_flows_cache,
                 :check_head_line_cache_for_destroy, :update_excellent_comments_cache
   before_create :generate_key
-  after_create :fetch_related_posts
+  # after_create :fetch_related_posts
   before_save :auto_generate_summary, :check_source_type
   before_validation :generate_url_code
   after_save :check_company_keywords
