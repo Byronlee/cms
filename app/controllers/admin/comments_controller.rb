@@ -6,7 +6,7 @@ class Admin::CommentsController < Admin::BaseController
     return commentable if find_commentable
     @comments = Comment.accessible_by(current_ability).order("id desc").includes({ user: :krypton_authentication }, :commentable)
     @comments = @coments.where(user_id: @user.id) if @user
-    @comments = @comments.page params[:page]
+    @comments = @comments.page(params[:page]).per(params[:page_size])
   end
 
   def commentable
