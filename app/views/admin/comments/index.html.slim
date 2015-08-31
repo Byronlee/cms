@@ -45,6 +45,22 @@ javascript:
      $("input[name='comment_select']").prop('checked', isChecked)
   });
 
+  var isTableSelectMode = false;
+  $("body").mousedown(function(){
+    isTableSelectMode = true;
+  });
+
+  $("body").mouseup(function(){
+    isTableSelectMode = false;
+  });
+
+  $("table tr").mouseenter(function(){
+    if(!isTableSelectMode) return;
+    var id = $(this).data("id");
+    var checkbox = $("input#comment_select_" + id);
+    checkbox.prop('checked', !checkbox.prop('checked'));
+  })
+
   function commentsBatchDelete(){
     var ids = []
     $("input:checked[name='comment_select']").each(function(){
