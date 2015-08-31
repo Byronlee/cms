@@ -35,8 +35,8 @@ class Comment < ActiveRecord::Base
 
   before_save :set_is_long_attribute
 
-  after_save :update_excellent_comments_cache
-  after_destroy :update_excellent_comments_cache
+  # after_save :update_excellent_comments_cache
+  # after_destroy :update_excellent_comments_cache
 
   scope :order_by_content, -> {
     includes(:commentable, user: [:krypton_authentication]).order('char_length(content) desc')
@@ -66,9 +66,9 @@ class Comment < ActiveRecord::Base
     true
   end
 
-  def update_excellent_comments_cache
-    logger.info 'perform the worker to update excellent comments cache'
-    logger.info ExcellentCommentsComponentWorker.new.perform
-    true
-  end
+  # def update_excellent_comments_cache
+  #   logger.info 'perform the worker to update excellent comments cache'
+  #   logger.info ExcellentCommentsComponentWorker.new.perform
+  #   true
+  # end
 end

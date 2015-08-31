@@ -76,6 +76,9 @@ Rails.application.routes.draw do
         post :do_publish
         post :do_reject
       end
+      collection do
+        delete :batch_destroy
+      end
     end
     resources :info_flows do
       member do

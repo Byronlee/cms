@@ -38,6 +38,11 @@ class Admin::CommentsController < Admin::BaseController
     redirect_to :back
   end
 
+  def batch_destroy
+    Comment.where(id: params[:ids]).delete_all
+    render json: {result: 'success'}.to_json
+  end
+
   private
 
   def comment_params

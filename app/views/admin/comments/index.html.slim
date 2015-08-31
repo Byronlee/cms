@@ -3,12 +3,30 @@
 .col_main
   .main_hd
     h2 评论管理
+    hr style="margin-bottom: 0;"
     .toolbar.border_bottom.clearfix
+      .pull-left style="position: relative;bottom: -10px;"
+        = link_to 'javascript:commentsBatchDelete()', title: '删除所选评论' do
+          i.fa.fa-times
+        |&nbsp;|&nbsp;
+        = link_to 'javascript:void(0)', title: '置为优秀评论' do
+          i.fa.fa-thumbs-up
+        |&nbsp;|&nbsp;
+        = link_to 'javascript:void(0)', title: '取消优秀评论' do
+          i.fa.fa-thumbs-down
+        |&nbsp;|&nbsp;
+        = link_to 'javascript:void(0)', title: '展开评论' do
+          i.fa.fa-folder-open
+        |&nbsp;|&nbsp;
+        = link_to 'javascript:void(0)', title: '收起评论' do
+          i.fa.fa-suitcase
       .pull-right
          span.page_info = page_entries_info @comments
   table class="table"
     thead
       tr role="row"
+        th style="width=5%"
+          = check_box_tag 'select_all', 'select_all'
         th style="width=5%" ID
         th style="width=25%" 文章
         th style="width=35%"
@@ -20,3 +38,24 @@
     tbody
       = render @comments
   = paginate @comments
+
+javascript:
+  $("input#select_all").change(function(){
+     var isChecked = $(this).prop("checked");
+     $("input[name='comment_select']").prop('checked', isChecked)
+  });
+
+  function commentsBatchDelete(){
+    var ids = []
+    $("input:checked[name='comment_select']").each(function(){
+      ids.push($(this).val());
+    });
+    $.ajax({
+     url: '#{batch_destroy_admin_comments_path}',
+     type: 'DELETE',
+     data: {ids: ids},
+     success: function(result) {
+       window.location.reload()
+     }
+    });
+  }
