@@ -12,6 +12,7 @@ settings.redis_servers = {
 
 settings.elasticsearch = {
   server: 'http://127.0.0.1:9200',
+  auto_index: true,
   query:{
     max_length: 30
   }

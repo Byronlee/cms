@@ -41,7 +41,7 @@ class Post < ActiveRecord::Base
   include ActionView::Helpers::DateHelper
   include Rails.application.routes.url_helpers
   include Tire::Model::Search
-  include Tire::Model::Callbacks
+  include Tire::Model::Callbacks if Settings.elasticsearch.auto_index
   include ApplicationHelper
   include PostsHelper
   extend Enumerize
