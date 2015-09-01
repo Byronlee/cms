@@ -36,6 +36,13 @@ class Admin::CommentsController < Admin::BaseController
     redirect_to :back
   end
 
+  def undo_publish
+    return redirect_to :back unless @comment.may_undo_publish?
+    @comment.undo_publish
+    @comment.save
+    redirect_to :back
+  end
+
   def destroy
     @comment.destroy
     redirect_to :back

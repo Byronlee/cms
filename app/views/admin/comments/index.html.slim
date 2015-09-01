@@ -39,15 +39,15 @@
         th style="width=5%"
           = check_box_tag 'select_all', 'select_all'
         th style="width=5%" ID
-        th style="width=25%" 文章
-        th style="width=35%"
+        th style="width=20%" 文章
+        th style="width=30%"
           | 评论
           = link_to '(展开所有隐藏评论)', "javascript:javascript:$('.comment_details_in_row').toggle();"
-        th.text_center style="width=10%"
+        th.text_center style="width=5%"
           = sort_link(@q, :state, '状态', default_order: :desc)
         th.text_center style="width=10%" 创建时间
-        th.text_center style="width=15%" 操作
-        th.text_center style="width=10%" 评论者
+        th.text_center style="width=20%" 操作
+        th.text_center style="width=5%" 评论者
     tbody
       = render @comments
   = paginate @comments

@@ -75,6 +75,7 @@ Rails.application.routes.draw do
         post :set_excellent
         post :do_publish
         post :do_reject
+        post :undo_publish
       end
       collection do
         delete :batch_destroy

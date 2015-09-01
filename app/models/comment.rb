@@ -59,6 +59,10 @@ class Comment < ActiveRecord::Base
     event :reject do
       transitions :from => [:reviewing, :published, :prepublished], :to => :rejected
     end
+
+    event :undo_publish do
+      transitions :from => [:published, :rejected, :prepublished], :to => :reviewing
+    end
   end
 
   private
