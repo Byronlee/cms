@@ -59,3 +59,8 @@
 javascript:
   if(!window.mobilecheck())
     document.write('<script src="http://krplus-cdn.b0.upaiyun.com/common-module/company-bubble/main.js">\x3C/script>');
+
+  $(document).ready(function(){
+    //取消前端默认的收藏js效果
+    $('.J_addFavorite').unbind('click.J_addFavorite');
+  });
