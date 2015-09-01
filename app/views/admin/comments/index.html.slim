@@ -79,6 +79,13 @@ javascript:
     $("input:checked[name='comment_select']").each(function(){
       ids.push($(this).val());
     });
+    if(ids.length == 0){
+      alert("请先选择您要操作的评论！");
+      return;
+    }
+    if(!confirm("确定要删除选中的"+ ids.length +"条评论？")){
+      return;
+    }
     $.ajax({
      url: '#{batch_destroy_admin_comments_path}',
      type: 'DELETE',
