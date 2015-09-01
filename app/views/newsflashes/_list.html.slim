@@ -28,7 +28,7 @@
               .share-group
                 a.weixin.mobile-hide[href="javascript:void(0)" ref="nofollow" target="_blank" data-url="#{newsflash_show_url(pd.id)}?via=wechat_qr"]
                   i.icon-weixin
-                a.weibo[href="http://share.baidu.com/s?type=text&searchPic=1&sign=on&to=tsina&url=#{newsflash_show_url pd.id}&title=#{('ProDuctNote ｜ ' + pd.hash_title.to_s + ' - ' + display_pnote_what(pd).to_s).html_safe}&pic=#{pd.cover}" ref="nofollow" target="_blank"]
+                a.weibo[href="http://share.baidu.com/s?type=text&searchPic=1&sign=on&to=tsina&url=#{newsflash_show_url pd.id}&title=#{('新产品 ｜ ' + pd.hash_title.to_s + ' - ' + display_pnote_what(pd).to_s).html_safe}&pic=#{pd.cover}" ref="nofollow" target="_blank"]
                   i.icon-weibo
   a.load-more.J_listLoadMore.product_notes_next_link href="#{product_notes_path(d: 'next', b_id: @pdnotes.last.id)}"
 - else

@@ -15,7 +15,7 @@ ul.nav.nav-pills.nav-stacked
   - if can? :read, Newsflash
     li class=nav_active(:_pdnote, params[:ptype].to_s)
       a href=admin_newsflashes_path+"?ptype=_pdnote"
-        span Product Note 管理
+        span 新产品管理
   - if can? :read, Comment
     li class=nav_active(:comments, @controller_name)
       a href=admin_comments_path
