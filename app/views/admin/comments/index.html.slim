@@ -43,7 +43,8 @@
         th style="width=35%"
           | 评论
           = link_to '(展开所有隐藏评论)', "javascript:javascript:$('.comment_details_in_row').toggle();"
-        th.text_center style="width=10%" 状态
+        th.text_center style="width=10%"
+          = sort_link(@q, :state, '状态', default_order: :desc)
         th.text_center style="width=10%" 创建时间
         th.text_center style="width=15%" 操作
         th.text_center style="width=10%" 评论者
