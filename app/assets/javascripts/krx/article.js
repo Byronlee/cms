@@ -51,14 +51,14 @@ $(document).ready(function(){
                 trigger.addClass('icon-fly');
             },0);
         }
-    });
+    })
 
 
+   
+
+    
 
 
-
-
-
-
+    
 
 });
