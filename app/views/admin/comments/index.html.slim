@@ -26,19 +26,19 @@
         = link_to "javascript:commentsBatchOption('POST', '#{batch_do_reject_admin_comments_path}', '确定要屏蔽选中的{count}条评论？')", title: '屏蔽评论' do
           i.fa.fa-eye-slash
         |&nbsp;|&nbsp;
-        = link_to "javascript:commentsBatchOption('POST', '#{batch_destroy_admin_comments_path}', '确定要将选中的{count}条评论置为优秀评论？')", title: '置为优秀评论' do
+        = link_to "javascript:commentsBatchOption('POST', '#{batch_set_excellent_admin_comments_path}', '确定要将选中的{count}条评论置为优秀评论？')", title: '置为优秀评论' do
           i.fa.fa-thumbs-up
         |&nbsp;|&nbsp;
-        = link_to "javascript:commentsBatchOption('POST', '#{batch_destroy_admin_comments_path}', '确定要将选中的{count}条评论取消优秀评论？')", title: '取消优秀评论' do
+        = link_to "javascript:commentsBatchOption('POST', '#{batch_unset_excellent_admin_comments_path}', '确定要将选中的{count}条评论取消优秀评论？')", title: '取消优秀评论' do
           i.fa.fa-thumbs-down
         |&nbsp;|&nbsp;
         = link_to "javascript:commentsBatchOption('DELETE', '#{batch_destroy_admin_comments_path}', '确定要删除选中的{count}条评论？')", title: '删除所选评论' do
           i.fa.fa-times
         |&nbsp;|&nbsp;
-        = link_to 'javascript:void(0)', title: '展开评论' do
+        = link_to "javascript:$('.comment_details_in_row').slideDown()", title: '展开评论' do
           i.fa.fa-folder-open
         |&nbsp;|&nbsp;
-        = link_to 'javascript:void(0)', title: '收起评论' do
+        = link_to "javascript:$('.comment_details_in_row').slideUp()", title: '收起评论' do
           i.fa.fa-suitcase
       .pull-right
          span.page_info = page_entries_info @comments
@@ -51,7 +51,7 @@
         th style="width=20%" 文章
         th style="width=30%"
           | 评论
-          = link_to '(展开所有隐藏评论)', "javascript:javascript:$('.comment_details_in_row').toggle();"
+          = link_to '(展开所有隐藏评论)', "javascript:javascript:$('.comment_details_in_row').slideToggle();"
         th.text_center style="width=5%"
           = sort_link(@q, :state, '状态', default_order: :desc)
         th.text_center style="width=10%" 创建时间

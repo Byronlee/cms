@@ -86,6 +86,16 @@ class Admin::CommentsController < Admin::BaseController
     render json: {result: 'success'}.to_json
   end
 
+  def batch_set_excellent
+    Comment.where(id: params[:ids]).update_all({is_excellent: true})
+    render json: {result: 'success'}.to_json
+  end
+
+  def batch_unset_excellent
+    Comment.where(id: params[:ids]).update_all({is_excellent: false})
+    render json: {result: 'success'}.to_json
+  end
+
   private
 
   def comment_params
