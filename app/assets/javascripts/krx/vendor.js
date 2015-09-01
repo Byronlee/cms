@@ -58,7 +58,7 @@ function initFastSection(){
         if(deviceType=='desktop'){
             var targetHeight = window.innerHeight - 210;
             var curHeight = $('.J_fastSectionList .wrap').height();
-
+            
             !$('.J_fastSectionList .wrap').data('origin')&&$('.J_fastSectionList .wrap').data('origin', curHeight);
             if($('.J_fastSectionList .wrap').data('origin')>=targetHeight){
                 $('.J_fastSectionList .wrap').height(targetHeight);
@@ -81,7 +81,7 @@ function initFastSection(){
     });
     setFastSection();
     $(window).resize(setFastSection);
-
+        
     $('.J_fastSectionList .tabs a').each(function(i){
         console.log($('.J_fastSectionList .tabs a'));
         $(this).click(function(e){
@@ -104,11 +104,11 @@ function initFastSection(){
                     ('&sideActiveTab='+$(this).attr('name')):
                     ('?sideActiveTab='+$(this).attr('name'))
                 )
-            }
+            } 
         });
     });
 
-
+    
 
     var bindItemActions = function (e){
 
@@ -146,6 +146,20 @@ function initFastSection(){
                 $(this).toggleClass('ac');
                 if($(this).hasClass('ac')) {
                     $(this).append(html);
+                    // if($('.fast-news-panel').is(':visible')) {
+                    //     console.log(7);
+                    // }
+                    if($('.fast-news-panel').is(':visible') && ($(this).parents('.active').index() == 0)) {
+                        // console.log($(this).find('.panel-weixin').outerHeight());
+                        // console.log($(this).parents('.share').offset().top - $(this).parents('.active').offset().top - 10);
+                        var wxHeight = $(this).find('.panel-weixin').outerHeight(),
+                            showHeiht = $(this).parents('.share').offset().top - $(this).parents('.fast-news-panel').offset().top - 10;
+                        if(showHeiht < wxHeight) {
+                            $(this).parents('.share').addClass('bottom');
+                        } else {
+                            $(this).parents('.share').removeClass('bottom');
+                        }
+                    }
                 } else {
                     $(this).find('.panel-weixin').remove();
                 }
@@ -157,7 +171,7 @@ function initFastSection(){
         // }
     });
 
-
+    
     window.countedStaticsItem = window.countedStaticsItem || [];
     function addPageView(id){
         if(countedStaticsItem.indexOf(id)>-1)return;
@@ -198,7 +212,7 @@ function initFastSection(){
      * 加载更多
      */
 
-
+    
     var feedData = {};
     // $.get(KR_CONFIG_OBJECT.fetchFeed,{
     //     page: 1,
@@ -213,7 +227,7 @@ function initFastSection(){
             if($('.next-panel').is(':visible')) return;
             var top = $(this).scrollTop();
             var loadTrigger = $(this).find('.panel:visible .load-more');
-
+            
 
             var bound = loadTrigger.offset().top - $(this).offset().top - $(this).height();
             if(bound<0){
@@ -250,7 +264,7 @@ function initFastSection(){
                                             + '<p>$${item.content}</p>'
                                         + '</div>'
                                     + '</section>'
-                                    + '{@/each}'
+                                    + '{@/each}' 
                                 + '<a href="#" class="load-more no-data"></a>';
                             } else {
                                 var feedInner = '{@each data.data as item, k}'
@@ -270,7 +284,7 @@ function initFastSection(){
                                 + '{@/each}'
                                 + '<a href="#" class="load-more"></a>';
                             }
-
+                            
                             juicer.set('cache',true);
                             juicer.set('errorhandling',false);
                             juicer.set('strip',true);
@@ -290,17 +304,15 @@ function initFastSection(){
                             var newWrapper = trigger.parent();
                             $(list).insertAfter(trigger);
                             trigger.remove();
-
-                            if($(".timeago").length >= 1){
-                              $(".timeago").timeago();
+                            if($('.timeago').length >= 1) {
+                                $('.timeago').timeago();
                             }
-
                             $('.J_fastSectionList .wrap').perfectScrollbar('update');
                         },0)
 
                     }, 'html');
                 }
-
+                
             }
 
         }).delegate('.panel:visible .load-more', 'click', function(e){
@@ -308,7 +320,7 @@ function initFastSection(){
             if(deviceType=='desktop')return;
             var trigger = $(this);
             var url = trigger.attr('href');
-
+            
             trigger.attr('href', 'javascript:void(0)');
             if(trigger.hasClass('no-data'))return;
             if(trigger.hasClass('loading'))return;
@@ -339,7 +351,7 @@ function initFastSection(){
                                             + '<p>$${item.content}</p>'
                                         + '</div>'
                                     + '</section>'
-                                    + '{@/each}'
+                                    + '{@/each}' 
                                 + '<a href="#" class="load-more no-data"></a>';
                             } else {
                                 var feedInner = '{@each data.data as item, k}'
@@ -378,11 +390,9 @@ function initFastSection(){
                         var newWrapper = trigger.parent();
                         $(list).insertAfter(trigger);
                         trigger.remove();
-
-                        if($(".timeago").length >= 1){
-                          $(".timeago").timeago();
+                        if($('.timeago').length >= 1) {
+                            $('.timeago').timeago();
                         }
-
                         $('.J_fastSectionList .wrap').perfectScrollbar('update');
 
                     },0)
@@ -394,7 +404,7 @@ function initFastSection(){
     }
     bindLoadMore();
 
-
+    
 
 
     /**
@@ -428,9 +438,9 @@ function initFastSection(){
     }).done(function(data){
         feedData = data;
         var feedInner = '<script>'
-                            + 'function nofind(){'
-                                + 'var img = event.srcElement;'
-                                + 'img.src="https://krplus-pic.b0.upaiyun.com/default_avatar.png";'
+                            + 'function nofind(){'  
+                                + 'var img = event.srcElement;'  
+                                + 'img.src="https://krplus-pic.b0.upaiyun.com/default_avatar.png";' 
                                 + 'img.onerror=null;'
                             + '}'
                         + '</script>'

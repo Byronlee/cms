@@ -35,7 +35,7 @@ $(document).ready(function(){
     /**
      * 添加收藏
      */
-    $('.J_addFavorite').click(function(e){
+    $('.J_addFavorite').bind('click.J_addFavorite', function(e){
         e.preventDefault();
         var countWrap = $(this).find('span');
         var count = countWrap.text()-0;

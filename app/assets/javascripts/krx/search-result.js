@@ -36,11 +36,9 @@ $(document).ready(function(){
 
                 //触发一下滚动，让固定的元素重新定位
                 $(window).trigger('scroll');
-
-                if($(".timeago").length >= 1){
-                  $(".timeago").timeago();
+                if($('.timeago').length >= 1) {
+                    $('.timeago').timeago();
                 }
-
                 bindLoadMore(newWrapper);
             }, 'html');
         });

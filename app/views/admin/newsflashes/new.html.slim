@@ -10,13 +10,13 @@
             li = link_to '快讯管理', admin_newsflashes_path+"?ptype=_newsflash"
             li.active 创建快讯
     - else
-      h2 Product Note 管理
+      h2 新产品管理
       .toolbar.border_bottom.clearfix.new
         .pull-right
           i.fa.fa-map-marker
           ol.breadcrumb
-            li = link_to 'Product Note 管理', admin_newsflashes_path+"?ptype=_pdnote"
-            li.active 创建Product Note
+            li = link_to '新产品管理', admin_newsflashes_path+"?ptype=_pdnote"
+            li.active 创建新产品
 
   .main-body
     = simple_form_for [:admin, @newsflash], html:{ class:"form-horizontal" } do | f |

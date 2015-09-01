@@ -915,21 +915,29 @@ a:hover {
 }
 /* line 212, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .badge-finance .mask-tags {
-  background: #f28d19;
+  background: #ffa319;
 }
 /* line 217, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .badge-company .mask-tags {
-  background: #1f90f2;
+  background: #1da8fe;
 }
 /* line 222, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .badge-activity .mask-tags {
-  background: #8ab724;
+  background: #9ec72c;
 }
 /* line 227, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
+.badge-column .mask-tags {
+  background: #478de4;
+}
+/* line 232, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
+.badge-pdn .mask-tags {
+  background: #f08945;
+}
+/* line 238, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .ad-wrapper {
   position: relative;
 }
-/* line 229, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
+/* line 240, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .ad-wrapper:before {
   content: "推广";
   display: block;
@@ -942,30 +950,30 @@ a:hover {
   padding: 0px 10px;
 }
 @media (max-width: 800px) {
-  /* line 239, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
+  /* line 250, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
   .ad-wrapper:before {
     padding: 0px 6px;
     font-size: 10px;
     line-height: 1.6;
   }
 }
-/* line 247, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
+/* line 258, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .radius-box {
   border-radius: 2px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 @media (max-width: 800px) {
-  /* line 257, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
+  /* line 268, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
   .mobile-hide {
     display: none !important;
   }
 }
-/* line 261, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
+/* line 272, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .mobile-show {
   display: none;
 }
 @media (max-width: 800px) {
-  /* line 263, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
+  /* line 274, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
   .mobile-show {
     display: block;
   }
@@ -976,7 +984,7 @@ a:hover {
   *zoom: 1;
 }
 @media (max-width: 800px) {
-  /* line 257, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
+  /* line 268, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
   .fast-section .tabs {
     display: none !important;
   }
@@ -1135,19 +1143,27 @@ a:hover {
   font-size: 12px;
   border-radius: 100%;
 }
-/* line 137, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 136, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+.fast-section .list .panel section .info .share.bottom {
+  position: relative;
+  z-index: 10;
+}
+/* line 139, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+.fast-section .list .panel section .info .share.bottom .panel-weixin {
+  top: 26px;
+}
+/* line 146, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .list .panel section.active {
   background-color: #f3f7fb;
   cursor: default;
 }
-/* line 140, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 149, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .list .panel section.active .desc {
   display: block;
   overflow: visible;
   height: auto;
-  min-height: 60px;
 }
-/* line 147, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 155, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .list .panel section.active .info .share {
   visibility: visible;
   -webkit-transform: translate(0, 0);
@@ -1155,23 +1171,23 @@ a:hover {
           transform: translate(0, 0);
   opacity: 1;
 }
-/* line 154, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 162, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .list .panel section.next {
   border-bottom: 1px solid transparent;
   margin-top: -1px;
 }
-/* line 157, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 165, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .list .panel section.next .next-box {
   padding: 20px 0;
   border-bottom: 1px solid #f6f6f6;
 }
-/* line 161, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 169, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .list .panel section.next > h3 {
   margin-left: 0;
   padding-left: 10px;
   position: relative;
 }
-/* line 166, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 174, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .list .panel section.next > h3:before {
   content: "";
   position: absolute;
@@ -1181,7 +1197,7 @@ a:hover {
   left: 0;
   top: 2px;
 }
-/* line 177, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 185, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .list .panel section.next .tags {
   float: left;
   width: 30px;
@@ -1192,14 +1208,14 @@ a:hover {
   color: #919ca7;
   font-size: 12px;
 }
-/* line 186, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 194, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .list .panel section.next .tags span {
   display: inline-block;
   width: 14px;
   height: 7px;
   position: relative;
 }
-/* line 191, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 199, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .list .panel section.next .tags span:before,
 .fast-section .list .panel section.next .tags span:after {
   position: absolute;
@@ -1211,27 +1227,27 @@ a:hover {
   width: 0;
   height: 0;
 }
-/* line 202, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 210, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .list .panel section.next .tags span:before {
   top: -7px;
 }
-/* line 206, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 214, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .list .panel section.next .tags span:after {
   border-bottom-color: #ffffff;
   top: -6px;
 }
-/* line 211, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 219, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .list .panel section.next .tags i {
   font-style: normal;
   position: relative;
   top: -3px;
   display: block;
 }
-/* line 219, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 227, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .list .panel section.next .con {
   margin-left: 40px;
 }
-/* line 221, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 229, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .list .panel section.next .con h3 {
   float: left;
   max-width: 150px;
@@ -1242,46 +1258,46 @@ a:hover {
   color: #30d0df;
 }
 @media (max-width: 800px) {
-  /* line 230, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+  /* line 238, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
   .fast-section .list .panel section.next .con h3 {
     max-width: 80%;
   }
 }
-/* line 234, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 242, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .list .panel section.next .con .timeago {
   color: #bbb;
   float: right;
   line-height: 20px;
 }
-/* line 241, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 249, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .list .panel section.next .main {
   display: none;
 }
-/* line 247, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 255, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .list .panel section.next.active > h3 a {
   color: #3da9f7;
 }
-/* line 250, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 258, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .list .panel section.next.active > h3 + p {
   display: none;
 }
-/* line 255, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 263, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .list .panel section.next.active .main {
   display: block;
 }
-/* line 259, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 267, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .list .panel section.next.active > .info {
   display: none;
 }
-/* line 264, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 272, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .list .panel section.next > .info {
   margin-top: 0;
 }
-/* line 269, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 277, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .list .panel section.next h4 {
   margin: 15px 0 10px;
 }
-/* line 272, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 280, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .list .panel section.next p {
   color: #666666;
   word-break: break-all;
@@ -1289,13 +1305,13 @@ a:hover {
   top: -12px;
   margin-bottom: -12px;
 }
-/* line 279, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 287, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .list .panel section.next .pic {
   width: 157px;
   margin-top: 15px;
   margin-bottom: 10px;
 }
-/* line 283, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 291, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .list .panel section.next .pic img {
   display: block;
   width: 100%;
@@ -1303,40 +1319,40 @@ a:hover {
   cursor: zoom-in;
 }
 @media (max-width: 800px) {
-  /* line 289, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+  /* line 297, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
   .fast-section .list .panel section.next {
     margin-top: 10px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     border: 0;
     border-radius: 2px;
   }
-  /* line 294, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+  /* line 302, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
   .fast-section .list .panel section.next:first-of-type {
     margin-top: 0;
   }
 }
-/* line 299, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 307, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .list .panel section.next:hover {
   background-color: #f3f7fb;
   border-bottom-color: #f6f6f6;
 }
-/* line 302, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 310, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .list .panel section.next:hover .tags {
   border-color: #2fd0e0;
 }
-/* line 304, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 312, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .list .panel section.next:hover .tags i {
   color: #2fd0e0;
 }
-/* line 308, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 316, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .list .panel section.next:hover .tags span:before {
   border-bottom-color: #2fd0e0;
 }
-/* line 311, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 319, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .list .panel section.next:hover .tags span:after {
   border-bottom-color: #f3f7fb;
 }
-/* line 318, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 326, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .list .panel section.next .info .share {
   visibility: visible;
   -webkit-transform: translate(0, 0);
@@ -1344,12 +1360,12 @@ a:hover {
           transform: translate(0, 0);
   opacity: 1;
 }
-/* line 328, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 336, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .list .panel .next-link {
   text-align: center;
   padding: 10px 0;
 }
-/* line 331, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 339, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .list .panel .next-link a {
   display: inline-block;
   padding: 0 13px;
@@ -1358,7 +1374,7 @@ a:hover {
   border: 1px solid #30d0df;
   border-radius: 2px;
 }
-/* line 341, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 349, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .list .panel.fast-news-panel .tags-box {
   *zoom: 1;
   padding: 10px 15px 20px;
@@ -1370,7 +1386,7 @@ a:hover {
   clear: both;
   height: 0;
 }
-/* line 344, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 352, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .list .panel.fast-news-panel .tags-box a {
   float: left;
   margin: 10px 5px 0;
@@ -1381,12 +1397,12 @@ a:hover {
   padding: 0 6px;
   border-radius: 2px;
 }
-/* line 353, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 361, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .list .panel.fast-news-panel .tags-box a:hover {
   color: #fff;
   background-color: #3da9f7;
 }
-/* line 360, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 368, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .list .panel.fast-news-panel section:before {
   position: absolute;
   content: "";
@@ -1396,7 +1412,7 @@ a:hover {
   left: 13px;
   top: 0;
 }
-/* line 371, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 379, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .list .panel.fast-news-panel section:first-child:after {
   content: "";
   position: absolute;
@@ -1406,28 +1422,28 @@ a:hover {
   top: 0;
   border-left: 2px solid #ffffff;
 }
-/* line 382, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 390, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .list .panel.fast-news-panel section:first-child.active:after {
   border-left-color: #f3f7fb;
 }
-/* line 389, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 397, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .list .panel.fast-news-panel section:last-child:before {
   height: 30px;
 }
-/* line 392, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 400, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .list .panel.fast-news-panel section:last-child .section-inner {
   border-bottom: none;
 }
-/* line 398, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 406, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .list .panel.fast-news-panel section.active .show {
   display: none;
 }
-/* line 403, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
-.fast-section .list .panel.fast-news-panel section h3 {
+/* line 411, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+.fast-section .list .panel.fast-news-panel section .section-inner > h3 {
   position: relative;
 }
-/* line 405, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
-.fast-section .list .panel.fast-news-panel section h3:before {
+/* line 413, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+.fast-section .list .panel.fast-news-panel section .section-inner > h3:before {
   position: absolute;
   width: 8px;
   height: 8px;
@@ -1438,20 +1454,20 @@ a:hover {
   content: "";
   border-radius: 100%;
 }
-/* line 428, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 436, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section a.ad {
   width: 100%;
   overflow: hidden;
   display: block;
 }
-/* line 432, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 440, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section a.ad img {
   width: 100%;
   margin-top: 20px;
   height: 120px;
   display: block;
 }
-/* line 439, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 447, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .load-more {
   height: 36px;
   line-height: 36px;
@@ -1459,27 +1475,27 @@ a:hover {
   background: #f2f2f2;
   display: block;
 }
-/* line 448, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 456, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .load-more:before {
   content: '加载更多';
   display: inline-block;
 }
-/* line 452, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 460, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .load-more:hover {
   background: #ffffff;
 }
-/* line 455, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 463, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .load-more.loading,
 .fast-section .load-more.loading:hover {
   background: #ffffff;
   cursor: default;
 }
-/* line 459, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 467, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .load-more.loading:before,
 .fast-section .load-more.loading:hover:before {
   content: "正在加载...";
 }
-/* line 462, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 470, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .load-more.loading:after,
 .fast-section .load-more.loading:hover:after {
   content: " ";
@@ -1491,14 +1507,14 @@ a:hover {
   vertical-align: middle;
   margin-left: 10px;
 }
-/* line 473, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 481, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .load-more.no-data,
 .fast-section .load-more.no-data:hover {
   cursor: not-allowed;
   color: #aaaaaa;
   background: #f4f4f4;
 }
-/* line 478, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
+/* line 486, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/fast-section.less */
 .fast-section .load-more.no-data:before,
 .fast-section .load-more.no-data:hover:before {
   content: "没有更多数据了";
@@ -1510,7 +1526,7 @@ a:hover {
   *zoom: 1;
 }
 @media (max-width: 800px) {
-  /* line 263, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
+  /* line 274, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
   .mobile-nav {
     display: block;
   }
@@ -1674,7 +1690,7 @@ a:hover {
   color: #666666;
 }
 @media (max-width: 800px) {
-  /* line 257, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
+  /* line 268, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
   .article-list .articles article .desc .brief {
     display: none !important;
   }
@@ -2349,21 +2365,29 @@ a:hover {
 }
 /* line 212, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .badge-finance .mask-tags {
-  background: #f28d19;
+  background: #ffa319;
 }
 /* line 217, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .badge-company .mask-tags {
-  background: #1f90f2;
+  background: #1da8fe;
 }
 /* line 222, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .badge-activity .mask-tags {
-  background: #8ab724;
+  background: #9ec72c;
 }
 /* line 227, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
+.badge-column .mask-tags {
+  background: #478de4;
+}
+/* line 232, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
+.badge-pdn .mask-tags {
+  background: #f08945;
+}
+/* line 238, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .ad-wrapper {
   position: relative;
 }
-/* line 229, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
+/* line 240, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .ad-wrapper:before {
   content: "推广";
   display: block;
@@ -2376,30 +2400,30 @@ a:hover {
   padding: 0px 10px;
 }
 @media (max-width: 800px) {
-  /* line 239, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
+  /* line 250, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
   .ad-wrapper:before {
     padding: 0px 6px;
     font-size: 10px;
     line-height: 1.6;
   }
 }
-/* line 247, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
+/* line 258, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .radius-box {
   border-radius: 2px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 @media (max-width: 800px) {
-  /* line 257, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
+  /* line 268, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
   .mobile-hide {
     display: none !important;
   }
 }
-/* line 261, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
+/* line 272, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 .mobile-show {
   display: none;
 }
 @media (max-width: 800px) {
-  /* line 263, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
+  /* line 274, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
   .mobile-show {
     display: block;
   }
@@ -2428,7 +2452,7 @@ body {
   margin-left: 590px;
 }
 @media (max-width: 800px) {
-  /* line 257, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
+  /* line 268, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
   .fixed-tools {
     display: none !important;
   }
@@ -2627,7 +2651,7 @@ footer.common-footer .sections section.partner-section h3 {
   margin-bottom: 35px;
 }
 @media (max-width: 800px) {
-  /* line 257, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
+  /* line 268, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
   footer.common-footer .sections section.partner-section {
     display: none !important;
   }
@@ -2668,7 +2692,7 @@ footer.common-footer .sections section.qr-section {
   left: 10px;
 }
 @media (max-width: 800px) {
-  /* line 257, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
+  /* line 268, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
   footer.common-footer .sections section.qr-section {
     display: none !important;
   }
@@ -2710,7 +2734,7 @@ footer.common-footer .bottom .share {
   top: 0;
 }
 @media (max-width: 800px) {
-  /* line 257, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
+  /* line 268, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
   footer.common-footer .bottom .share {
     display: none !important;
   }
