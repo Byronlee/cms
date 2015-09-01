@@ -11,11 +11,12 @@
         = smart_time_ago comment.created_at
       .commemt-main
         p
+          = display_comment_state_with_tip(comment.state)
           - if comment.parent.present?
             span 回复@
             = comment.parent.user.try(:display_name)
             span ：
-          = sanitize_tags comment.content
+          span class="#{comment.state}" = sanitize_tags comment.content
 
       .opts
         a.pull-right onclick="window.reply_comment(this)" href="javascript:void(0)" data-stat-click="pinglun.huifupinglun.click" 回复
