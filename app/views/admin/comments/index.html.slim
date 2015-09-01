@@ -4,6 +4,17 @@
   .main_hd
     h2 评论管理
     hr style="margin-bottom: 0;"
+
+    = search_form_for @q, url: admin_comments_path, class: 'form-inline' do |f|
+      = f.label :content_cont, '内容：'
+      = f.search_field :content_cont
+      |&nbsp;&nbsp;
+      = f.label :state_eq, '状态：'
+      = f.select :state_eq , Comment::STATE_OPTIONS.invert, {include_blank: '全部', prompt: false}, class: 'input-small'
+      |&nbsp;&nbsp;
+      = f.submit '查询', class: 'btn btn-primary'
+
+    hr style="margin-bottom: 0;"
     .toolbar.border_bottom.clearfix
       .pull-left style="position: relative;bottom: -10px;"
         = link_to 'javascript:commentsBatchDelete()', title: '删除所选评论' do
@@ -32,6 +43,7 @@
         th style="width=35%"
           | 评论
           = link_to '(展开所有隐藏评论)', "javascript:javascript:$('.comment_details_in_row').toggle();"
+        th.text_center style="width=10%" 状态
         th.text_center style="width=10%" 创建时间
         th.text_center style="width=15%" 操作
         th.text_center style="width=10%" 评论者

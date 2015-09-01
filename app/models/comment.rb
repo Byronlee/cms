@@ -35,14 +35,16 @@ class Comment < ActiveRecord::Base
 
   before_save :set_is_long_attribute
 
+  STATE_OPTIONS = {reviewing: '审查中', published: '已发布', rejected: '已拒绝'}
+
   # after_save :update_excellent_comments_cache
   # after_destroy :update_excellent_comments_cache
 
   scope :order_by_content, -> {
     includes(:commentable, user: [:krypton_authentication]).order('char_length(content) desc')
   }
-
   scope :excellent, -> { includes(:post).where(posts: { state: :published }, is_excellent: true) }
+  # scope :valid_comments, -> { where.not(content:) }
 
   aasm do
     state :reviewing, :initial => true

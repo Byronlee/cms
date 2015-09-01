@@ -19,6 +19,7 @@ tr data-id="#{comment.id}"
     - if comment.content.length > 20
       div.comment_details_in_row[id="comment-#{comment.id}" style="display:none;"]
         = sanitize_tags(comment.content)
+  td = display_comment_state comment.state
   td.text_center[title=comment.created_at data-toggle='tooltip']
     = time_ago_in_words comment.created_at rescue ''
   td

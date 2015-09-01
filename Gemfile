@@ -66,6 +66,7 @@ gem 'cells', "~> 3.11.3"
 gem "jquery-fileupload-rails"
 gem 'chosen-rails'
 gem 'auto-correct'
+gem 'ransack'
 
 # controllers
 gem 'devise', "~> 3.4.1"

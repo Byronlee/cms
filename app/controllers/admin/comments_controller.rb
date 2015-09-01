@@ -4,13 +4,16 @@ class Admin::CommentsController < Admin::BaseController
 
   def index
     return commentable if find_commentable
-    @comments = Comment.accessible_by(current_ability).order("id desc").includes({ user: :krypton_authentication }, :commentable)
+    @q = Comment.ransack(params[:q])
+    @comments = @q.result.accessible_by(current_ability).order("id desc").includes({ user: :krypton_authentication }, :commentable)
     @comments = @coments.where(user_id: @user.id) if @user
     @comments = @comments.page(params[:page]).per(params[:page_size])
   end
 
   def commentable
-    @comments = find_commentable.comments.accessible_by(current_ability).order("id desc").includes(user: :krypton_authentication).page params[:page]
+    @comments = find_commentable.comments.accessible_by(current_ability).order("id desc").includes(user: :krypton_authentication)
+    @q = @comments.ransack(params[:q])
+    @comments = @q.result.page params[:page]
     render :index
   end
 
