@@ -48,6 +48,39 @@ class Admin::CommentsController < Admin::BaseController
     redirect_to :back
   end
 
+  def batch_do_publish
+    Comment.transaction do
+      Comment.where(id: params[:ids]).each do |comment|
+        next unless comment.may_publish?
+        comment.publish
+        comment.save
+      end
+    end
+    render json: {result: 'success'}.to_json
+  end
+
+  def batch_undo_publish
+    Comment.transaction do
+      Comment.where(id: params[:ids]).each do |comment|
+        next unless comment.may_undo_publish?
+        comment.undo_publish
+        comment.save
+      end
+    end
+    render json: {result: 'success'}.to_json
+  end
+
+  def batch_do_reject
+    Comment.transaction do
+      Comment.where(id: params[:ids]).each do |comment|
+        next unless comment.may_reject?
+        comment.reject
+        comment.save
+      end
+    end
+    render json: {result: 'success'}.to_json
+  end
+
   def batch_destroy
     Comment.where(id: params[:ids]).delete_all
     render json: {result: 'success'}.to_json

@@ -78,6 +78,9 @@ Rails.application.routes.draw do
         post :undo_publish
       end
       collection do
+        post :batch_do_publish
+        post :batch_undo_publish
+        post :batch_do_reject
         delete :batch_destroy
       end
     end
