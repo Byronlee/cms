@@ -23,13 +23,13 @@ tr data-id="#{comment.id}"
   td.text_center[title=comment.created_at data-toggle='tooltip']
     = time_ago_in_words comment.created_at rescue ''
   td
-    - if comment.may_publish?
+    - if can?(:do_publish, comment) && comment.may_publish?
       a title="发布评论" data-method="post" href= do_publish_admin_comment_path(comment)
           i.fa.fa-plane
-    - if comment.may_undo_publish?
+    - if can?(:undo_publish, comment) && comment.may_undo_publish?
       a title="撤回评论" data-method="post" href= undo_publish_admin_comment_path(comment)
           i.fa.fa-power-off
-    - if comment.may_reject?
+    - if can?(:do_reject, comment) && comment.may_reject?
       a title="屏蔽评论" data-method="post" href= do_reject_admin_comment_path(comment)
           i.fa.fa-eye-slash
     - if can? :set_excellent, comment

@@ -17,25 +17,31 @@
     hr style="margin-bottom: 0; margin-top: 0;"
     .toolbar.border_bottom.clearfix
       .pull-left style="position: relative;bottom: -10px;"
-        = link_to "javascript:commentsBatchOption('POST', '#{batch_do_publish_admin_comments_path}', '确定要发布选中的{count}条评论？')", title: '发布评论' do
-          i.fa.fa-plane
-          |发布
-        |&nbsp;|&nbsp;
-        = link_to "javascript:commentsBatchOption('POST', '#{batch_undo_publish_admin_comments_path}', '确定要撤回选中的{count}条评论？')", title: '撤回评论' do
-          i.fa.fa-power-off
-        |&nbsp;|&nbsp;
-        = link_to "javascript:commentsBatchOption('POST', '#{batch_do_reject_admin_comments_path}', '确定要屏蔽选中的{count}条评论？')", title: '屏蔽评论' do
-          i.fa.fa-eye-slash
-        |&nbsp;|&nbsp;
-        = link_to "javascript:commentsBatchOption('POST', '#{batch_set_excellent_admin_comments_path}', '确定要将选中的{count}条评论置为优秀评论？')", title: '置为优秀评论' do
-          i.fa.fa-thumbs-up
-        |&nbsp;|&nbsp;
-        = link_to "javascript:commentsBatchOption('POST', '#{batch_unset_excellent_admin_comments_path}', '确定要将选中的{count}条评论取消优秀评论？')", title: '取消优秀评论' do
-          i.fa.fa-thumbs-down
-        |&nbsp;|&nbsp;
-        = link_to "javascript:commentsBatchOption('DELETE', '#{batch_destroy_admin_comments_path}', '确定要删除选中的{count}条评论？')", title: '删除所选评论' do
-          i.fa.fa-times
-          |删除
+        - if can?(:batch_do_publish, Comment)
+          = link_to "javascript:commentsBatchOption('POST', '#{batch_do_publish_admin_comments_path}', '确定要发布选中的{count}条评论？')", title: '发布评论' do
+            i.fa.fa-plane
+            |发布
+          |&nbsp;|&nbsp;
+        - if can?(:batch_undo_publish, Comment)
+          = link_to "javascript:commentsBatchOption('POST', '#{batch_undo_publish_admin_comments_path}', '确定要撤回选中的{count}条评论？')", title: '撤回评论' do
+            i.fa.fa-power-off
+          |&nbsp;|&nbsp;
+        - if can?(:batch_do_reject, Comment)
+          = link_to "javascript:commentsBatchOption('POST', '#{batch_do_reject_admin_comments_path}', '确定要屏蔽选中的{count}条评论？')", title: '屏蔽评论' do
+            i.fa.fa-eye-slash
+          |&nbsp;|&nbsp;
+        - if can?(:batch_set_excellent, Comment)
+          = link_to "javascript:commentsBatchOption('POST', '#{batch_set_excellent_admin_comments_path}', '确定要将选中的{count}条评论置为优秀评论？')", title: '置为优秀评论' do
+            i.fa.fa-thumbs-up
+          |&nbsp;|&nbsp;
+        - if can?(:batch_unset_excellent, Comment)
+          = link_to "javascript:commentsBatchOption('POST', '#{batch_unset_excellent_admin_comments_path}', '确定要将选中的{count}条评论取消优秀评论？')", title: '取消优秀评论' do
+            i.fa.fa-thumbs-down
+          |&nbsp;|&nbsp;
+        - if can?(:batch_destroy, Comment)
+          = link_to "javascript:commentsBatchOption('DELETE', '#{batch_destroy_admin_comments_path}', '确定要删除选中的{count}条评论？')", title: '删除所选评论' do
+            i.fa.fa-times
+            |删除
       .pull-right
          span.page_info = page_entries_info @comments
   table class="table"
