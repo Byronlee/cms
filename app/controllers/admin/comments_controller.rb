@@ -45,7 +45,10 @@ class Admin::CommentsController < Admin::BaseController
 
   def destroy
     @comment.destroy
-    redirect_to :back
+    respond_to do |format|
+      format.html {redirect_to :back}
+      format.js
+    end
   end
 
   def batch_do_publish

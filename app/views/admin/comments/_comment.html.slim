@@ -40,7 +40,7 @@ tr data-id="#{comment.id}"
         a title="置为优质评论" data-method="post" href= set_excellent_admin_comment_path(comment, comment:{is_excellent:true})
           i.fa.fa-thumbs-up
     - if can? :destroy, comment
-      a title="删除" data-method="delete" data-confirm="确定删除该评论？" href= admin_comment_path(comment)
+      a title="删除" data-method="delete" data-confirm="确定删除该评论？" data-remote="true" href= admin_comment_path(comment)
         i.fa.fa-times
     - if !!comment.user && !comment.user.try(:muted?) && can?(:shutup, User)
       = link_to shutup_admin_user_path(comment.user, ok_url: request.fullpath), title: "禁言",
