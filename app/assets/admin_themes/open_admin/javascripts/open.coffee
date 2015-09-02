@@ -40,3 +40,11 @@ jQuery ->
       if $("select#post_source_type").val() == "contribution"
          $("select#post_source_type").val("original")
     return
+
+  $(window).scroll ->
+    if $(document).scrollTop() > $('.comments-batch-toolbar-boundary').offset().top
+      $('.comments-batch-toolbar').addClass 'position-fixed'
+      $('.comments-batch-toolbar').width $('table.table-comments').width()
+    else
+      $('.comments-batch-toolbar').removeClass 'position-fixed'
+    return

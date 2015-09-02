@@ -14,8 +14,8 @@
       |&nbsp;&nbsp;
       = f.submit '查询', class: 'btn btn-primary'
 
-    hr style="margin-bottom: 0; margin-top: 0;"
-    .toolbar.border_bottom.clearfix
+    hr.comments-batch-toolbar-boundary style="margin-bottom: 0; margin-top: 0;"
+    .toolbar.border_bottom.clearfix.comments-batch-toolbar
       .pull-left style="position: relative;bottom: -10px;"
         - if can?(:batch_do_publish, Comment)
           = link_to "javascript:commentsBatchOption('POST', '#{batch_do_publish_admin_comments_path}', '确定要发布选中的{count}条评论？')", title: '发布评论' do
@@ -44,7 +44,7 @@
             |删除
       .pull-right
          span.page_info = page_entries_info @comments
-  table class="table"
+  table class="table table-comments"
     thead
       tr role="row"
         th style="width=5%"
