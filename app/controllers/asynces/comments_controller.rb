@@ -5,7 +5,7 @@ class Asynces::CommentsController < ApplicationController
     @commentable = find_commentable
     @comments = @commentable.comments
     if current_user
-      @comments = @comments.where("state = 'published' or user_id = ? ", current_user.id)
+      @comments = @comments.valid_comments(current_user)
     else
       @comments = @comments.published
     end
