@@ -53,7 +53,7 @@
         th style="width=20%" 文章
         th style="width=30%"
           | 评论
-          = link_to '(展开所有隐藏评论)', "javascript:javascript:$('.comment_details_in_row').slideToggle();"
+          = link_to '(展开评论)', "javascript:commentsToggleShow();", id: 'commentsToggleBtn'
         th.text_center style="width=5%"
           = sort_link(@q, :state, '状态', default_order: :desc)
         th.text_center style="width=10%" 创建时间
@@ -105,4 +105,14 @@ javascript:
        window.location.reload()
      }
     });
+  }
+
+  function commentsToggleShow(){
+    if($("#commentsToggleBtn").text().match("展开")){
+      $("#commentsToggleBtn").text("(收起评论)");
+      $('.comment_details_in_row').slideDown();
+    }else{
+      $("#commentsToggleBtn").text("(展开评论)");
+      $('.comment_details_in_row').slideUp();
+    }
   }
