@@ -44,6 +44,7 @@ zh-CN:
         description_text: 内容
         tag: 标签
         column: 所属专栏
+        display_in_infoflow: 推送至信息流
       page:
         title: 标题
         slug: 英文短标题

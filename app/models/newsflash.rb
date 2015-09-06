@@ -42,6 +42,7 @@ class Newsflash < ActiveRecord::Base
   validates :news_url, length: { maximum: 254 }
 
   typed_store :extra do |s|
+    s.boolean :display_in_infoflow
     s.string :news_url_type, default: '原文链接'
     s.text :what
     s.text :how

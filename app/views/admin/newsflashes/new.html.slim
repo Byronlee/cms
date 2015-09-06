@@ -54,6 +54,8 @@
               span class="slug" + 点击上传头图
       input[id="fileupload" type="file" name="file" data-url="#{Settings.fileupload.url}" data-sequential-uploads="true" data-form-data='{"token": "#{Settings.fileupload.token}","source": "#{Settings.fileupload.source}"}']
 
+      - if params[:ptype].eql? "_newsflash"
+        = f.input :display_in_infoflow, as: :boolean
       div.form-actions
         = f.button :submit, data: { disable_with: "submitting..." }, class: "btn btn-primary"
 javascript:

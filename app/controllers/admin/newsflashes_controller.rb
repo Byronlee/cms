@@ -58,6 +58,6 @@ class Admin::NewsflashesController < Admin::BaseController
   end
 
   def newsflash_params
-    params.require(:newsflash).permit(:hash_title, :tag_list, :description_text, :news_url, :news_url_type, :column_id, :what, :how, :think_it_twice, :cover)
+    params.require(:newsflash).permit(:hash_title, :tag_list, :description_text, :news_url, :news_url_type, :column_id, :what, :how, :think_it_twice, :cover, :display_in_infoflow)
   end
 end
