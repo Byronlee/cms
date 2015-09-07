@@ -5,7 +5,7 @@ class WelcomeController < ApplicationController
     return cache_index if (params[:page].blank? || params[:page].to_i == 1) && !paginate_by_id_request?
     info_flow = InfoFlow.find_by_name InfoFlow::DEFAULT_INFOFLOW
 
-    posts_with_ads = info_flow.posts_with_ads(page: params[:page], page_direction: params[:d], boundary_post_url_code: params[:b_url_code], ads_required: false)
+    posts_with_ads = info_flow.posts_with_ads(page: params[:page], page_direction: params[:d], boundary_post_url_code: params[:b_url_code], ads_required: false, newsflash_required: true)
 
     @posts_with_ads = posts_with_ads[:posts]
     @total_count = posts_with_ads[:total_count]

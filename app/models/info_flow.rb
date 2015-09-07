@@ -26,6 +26,7 @@ class InfoFlow < ActiveRecord::Base
   # options[:page_direction]
   # options[:boundary_post_url_code]
   # options[:ads_required]
+  # options[:newsflash_required]
   ###
   def posts_with_ads(options = {})
 
@@ -41,10 +42,13 @@ class InfoFlow < ActiveRecord::Base
     posts = posts.includes(:column, :related_links, author: [:krypton_authentication]).recent.page(options[:page] || 1).per(options[:per_page] || 30)
     posts_with_associations = get_associations_of(posts)
 
+    if options[:newsflash_required]
+      posts_with_associations = mix_posts_and_newsflashes posts_with_associations, options[:boundary_post_url_code], boundary_post
+    end
+
     if options[:ads_required]
-      posts_with_newsflashes = mix_posts_and_newsflashes posts_with_associations, options[:boundary_post_url_code], boundary_post
       ads = get_ads_with_period_of posts
-      flow = mix_posts_and_ads posts_with_newsflashes, ads
+      flow = mix_posts_and_ads posts_with_associations, ads
     else
       flow = posts_with_associations
     end
@@ -79,6 +83,18 @@ class InfoFlow < ActiveRecord::Base
       :include => {
         :related_links => {
           },
+        :author => {
+          :only => [:id, :domain, :sso_id, :email, :phone, :role], :methods => [:display_name, :avatar] },
+        :column => {
+          :only => [:id, :name, :slug] }
+        }
+      )
+  end
+
+  def get_associations_of_newsflashes(newsflashes)
+    JSON.parse newsflashes.to_json(
+      :methods => [:news_url_type],
+      :include => {
         :author => {
           :only => [:id, :domain, :sso_id, :email, :phone, :role], :methods => [:display_name, :avatar] },
         :column => {
@@ -127,8 +143,9 @@ class InfoFlow < ActiveRecord::Base
     else
       end_time   = Time.now
     end
-    newsflashes  = Newsflash.where(:column_id => columns).to_info_flow
-    result       = posts.to_a + newsflashes.to_a
+    newsflashes  = Newsflash.tagged_with('_newsflash').where(:column_id => columns).to_info_flow.where(created_at: start_time..end_time)
+    newsflashes_with_assoicatio = get_associations_of_newsflashes(newsflashes)
+    result       = posts + newsflashes_with_assoicatio
     result.sort do |a, b|
       get_object_time(b) <=> get_object_time(a)
     end
@@ -139,6 +156,6 @@ class InfoFlow < ActiveRecord::Base
   end
 
   def get_object_time(obj)
-    obj.is_a?(Post) ? obj['published_at'] : obj['created_at']
+    obj['published_at'].present? ? obj['published_at'] : obj['created_at']
   end
 end

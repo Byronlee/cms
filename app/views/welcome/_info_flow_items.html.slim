@@ -1,26 +1,9 @@
 - if !!posts_with_ads && posts_with_ads.count > 0
   - posts_with_ads.each_with_index do |item, index|
-    - if item['position'] == nil && item["type"] != 'seperate'
-      article
-        a.pic.info_flow_news_image[data-fit-mobile="true" class="badge-#{item["column"]["slug"]}" href="#{(item["title_link"].present? ? item["title_link"] : post_path(item["url_code"]))}" data-lazyload="#{(high_speed_url item["cover_real_url"], 'feature')}" data-stat-click="wenzhangtupian.#{index.next}.#{item['url_code']}.click"]
-          span.mask-tags data-type="#{item["column"]["slug"]}"
-            = item["column"]["name"]
-        .desc
-          a.title.info_flow_news_title[href=(item["title_link"].present? ? item["title_link"] : post_path(item["url_code"])) target="_blank" data-stat-click="wenzhangbiaoti.#{index.next}.#{item['url_code']}.click"]
-            = raw item["title"]
-          .author
-            a[href="#{item['author'].present? ? user_domain(item['author']['domain']) : 'javascript:void(0)'}" data-stat-click="wenzhangzuozhe.#{index.next}.#{item['url_code']}.click"]
-              span.avatar[data-lazyload="#{item['author']['avatar']}"]
-              span.name
-                = (item["author"] && item["author"]["display_name"]) || "匿名用户"
-            span.time
-              |&nbsp;•&nbsp;
-              = smart_time_ago Time.parse(item["published_at"]) if item["published_at"].present?
-          .brief
-            = raw(item["summary"])
-    - elsif item["position"] == nil && item["hash_title"].present?
-      article
-        h1 hhhhhhhhhhhh
+    - if item['position'] == nil && item["type"] != 'seperate' && item["published_at"].present?
+      = render 'info_flow_post', post: item, index: index
+    - elsif item["position"] == nil && item["type"] != 'seperate' && item["hash_title"].present?
+      = render 'info_flow_newsflash', newsflash: item, index: index
     - elsif item["position"] != nil && item["content"].present?
       = raw item["content"]
 

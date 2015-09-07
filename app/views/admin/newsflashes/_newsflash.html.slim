@@ -9,7 +9,9 @@ tr
     i.gray.fa.fa-file-text-o[title=raw(newsflash.what.presence || newsflash.description_text) data-toggle='tooltip']
   td.text_center
     - if newsflash.is_top?
-      span.label.label-success 置顶
+      span.label.label-success title='置顶显示' 置顶
+    - if newsflash.display_in_infoflow?
+      span.label.label-info title='推送至信息流' style="margin-left: 5px;" 信息流
   td.text_center = newsflash.cache_views_count
   td.text_center data-toggle='tooltip' title="#{newsflash.created_at}" = smart_time_ago newsflash.created_at, 30
   td.text_center
