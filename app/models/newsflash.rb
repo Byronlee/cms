@@ -35,8 +35,8 @@ class Newsflash < ActiveRecord::Base
   by_star_field :created_at
   page_view_field :views_count, interval: 600
 
-  after_save :update_new_flash_cache
-  after_destroy :update_new_flash_cache
+  after_save :update_new_flash_cache, :update_info_flows_cache
+  after_destroy :update_new_flash_cache, :update_info_flows_cache
 
   scope :recent,     -> { order('created_at desc') }
   scope :top_recent, -> { order('toped_at desc nulls last, created_at desc') }
@@ -77,6 +77,12 @@ class Newsflash < ActiveRecord::Base
   def update_new_flash_cache
     logger.info 'perform the worker to update new flash cache'
     NewPostsComponentWorker.new.perform
+    true
+  end
+
+  def update_info_flows_cache
+    return true unless [:hash_title, :description_text, :news_url, :news_url_type, :user_id, :column_id, :display_in_infoflow].collect {  |col| eval "#{col}_changed?" }.any?
+    self.column && self.column.info_flows.map(&:update_info_flows_cache)
     true
   end
 end
