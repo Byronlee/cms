@@ -6,7 +6,6 @@ class Admin::CommentsController < Admin::BaseController
     return commentable if find_commentable
     @q = Comment.ransack(params[:q])
     @comments = @q.result.accessible_by(current_ability).order("id desc").includes({ user: :krypton_authentication }, :commentable)
-    @comments = @coments.where(user_id: @user.id) if @user
     @comments = @comments.page(params[:page]).per(params[:page_size])
   end
 
@@ -85,7 +84,9 @@ class Admin::CommentsController < Admin::BaseController
   end
 
   def batch_destroy
-    Comment.where(id: params[:ids]).delete_all
+    Comment.transaction do
+      Comment.where(id: params[:ids]).map(&:destroy)
+    end
     render json: {result: 'success'}.to_json
   end
 
