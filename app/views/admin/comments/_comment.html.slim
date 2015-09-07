@@ -2,11 +2,7 @@ tr data-id="#{comment.id}"
   td = check_box_tag 'comment_select', comment.id, false, id: "comment_select_#{comment.id}"
   td = comment.id
   td[title=comment.commentable.try(:title) data-toggle='tooltip']
-    - if comment.commentable
-      - if comment.commentable.published?
-        = link_to raw(truncate(comment.commentable.try(:title), length:15)),  polymorphic_url(comment.commentable), target: '_blank'
-      - else
-        = link_to raw(truncate(comment.commentable.try(:title), length:15)),  preview_post_by_key_path(comment.commentable.key), target: '_blank'
+    = link_to raw(truncate(comment.commentable.try(:title), length:15)),  [:admin, :comments, post_id: comment.commentable.try(:id)]
   td.word-break
     = truncate(sanitize_tags(comment.content), length:20, omission: '...'){ link_to "more", "javascript:$('#comment-#{comment.id}').toggle();" }
     - if comment.is_long?
@@ -19,6 +15,14 @@ tr data-id="#{comment.id}"
     - if comment.content.length > 20
       div.comment_details_in_row[id="comment-#{comment.id}" style="display:none;"]
         = sanitize_tags(comment.content)
+  td
+    - if comment.commentable
+      - if comment.commentable.published?
+        = link_to polymorphic_path(comment.commentable) + "#comment-#{comment.id}", target: '_blank' do
+          i.fa.fa-link
+      - else
+        = link_to preview_post_by_key_path(comment.commentable.key) + "#comment-#{comment.id}", target: '_blank' do
+          i.fa.fa-link
   td = display_comment_state comment.state
   td.text_center[title=comment.created_at data-toggle='tooltip']
     = time_ago_in_words comment.created_at rescue ''
