@@ -30,7 +30,7 @@ class InfoFlow < ActiveRecord::Base
   def posts_with_ads(options = {})
 
     boundary_post = Post.find_by_url_code(options[:boundary_post_url_code]) if options[:boundary_post_url_code].present?
-    
+
     # options[:page] = 1 if(options[:page_direction].present? && boundary_post.present?)
     posts = Post.where(:column_id => columns).published
     if options[:page_direction] == 'next' && boundary_post.present?
@@ -40,15 +40,16 @@ class InfoFlow < ActiveRecord::Base
     end
     posts = posts.includes(:column, :related_links, author: [:krypton_authentication]).recent.page(options[:page] || 1).per(options[:per_page] || 30)
     posts_with_associations = get_associations_of(posts)
- 
+
     if options[:ads_required]
+      posts_with_newsflashes = mix_posts_and_newsflashes posts_with_associations, options[:boundary_post_url_code], boundary_post
       ads = get_ads_with_period_of posts
-      flow = mix_posts_and_ads posts_with_associations, ads
+      flow = mix_posts_and_ads posts_with_newsflashes, ads
     else
       flow = posts_with_associations
     end
 
-    { posts: flow, 
+    { posts: flow,
       total_count: posts.total_count,
       prev_page: posts.prev_page,
       next_page: posts.next_page,
@@ -113,7 +114,31 @@ class InfoFlow < ActiveRecord::Base
     flow
   end
 
+  def mix_posts_and_newsflashes(posts, paginate_by_id_request, boundary_post)
+    start_time = posts.present? ? posts.last['published_at'] : Time.parse('2000-01-01')
+    if paginate_by_id_request.present?
+      if posts.present?
+        end_time = posts.first['published_at']
+      elsif boundary_post.present?
+        end_time = boundary_post.published_at
+      else
+        return posts
+      end
+    else
+      end_time   = Time.now
+    end
+    newsflashes  = Newsflash.where(:column_id => columns).to_info_flow
+    result       = posts.to_a + newsflashes.to_a
+    result.sort do |a, b|
+      get_object_time(b) <=> get_object_time(a)
+    end
+  end
+
   def destroy_info_flows_cache
     Redis::HashKey.new('info_flow').delete(name)
+  end
+
+  def get_object_time(obj)
+    obj.is_a?(Post) ? obj['published_at'] : obj['created_at']
   end
 end

@@ -18,6 +18,9 @@
               = smart_time_ago Time.parse(item["published_at"]) if item["published_at"].present?
           .brief
             = raw(item["summary"])
+    - elsif item["position"] == nil && item["hash_title"].present?
+      article
+        h1 hhhhhhhhhhhh
     - elsif item["position"] != nil && item["content"].present?
       = raw item["content"]
 

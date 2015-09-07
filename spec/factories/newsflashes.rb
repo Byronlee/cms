@@ -18,6 +18,7 @@
 #  views_count              :integer          default(0)
 #  column_id                :integer
 #  extra                    :text
+#  display_in_infoflow      :boolean
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

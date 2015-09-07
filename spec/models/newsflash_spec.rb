@@ -18,6 +18,7 @@
 #  views_count              :integer          default(0)
 #  column_id                :integer
 #  extra                    :text
+#  display_in_infoflow      :boolean
 #
 
 require 'spec_helper'

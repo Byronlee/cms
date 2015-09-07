@@ -18,6 +18,7 @@
 #  views_count              :integer          default(0)
 #  column_id                :integer
 #  extra                    :text
+#  display_in_infoflow      :boolean
 #
 
 class Newsflash < ActiveRecord::Base
@@ -39,10 +40,10 @@ class Newsflash < ActiveRecord::Base
 
   scope :recent,     -> { order('created_at desc') }
   scope :top_recent, -> { order('toped_at desc nulls last, created_at desc') }
+  scope :to_info_flow, -> { where(display_in_infoflow: true) }
   validates :news_url, length: { maximum: 254 }
 
   typed_store :extra do |s|
-    s.boolean :display_in_infoflow
     s.string :news_url_type, default: '原文链接'
     s.text :what
     s.text :how
