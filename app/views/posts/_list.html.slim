@@ -1,7 +1,7 @@
 - if @posts.count > 0
   = render @posts
 
-  = link_to '', post_archives_path(year: params[:year], month: params[:month], day: params[:day], d: 'next', b_url_code: @posts.last.url_code, format: :html), class: 'load-more J_listLoadMore', id: 'tag_next_link'
+  = link_to '', post_archives_path(year: params[:year], month: params[:month], day: params[:day], d: 'next', b_url_code: @posts.last.url_code, format: :html), class: 'load-more J_listLoadMore', id: 'tag_next_link', 'data-stat-click' => "wenzhanggengduo.click"
 
 - else
   = link_to '', "javascript:void(0)", class: 'load-more J_listLoadMore no-data'
