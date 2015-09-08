@@ -1,8 +1,8 @@
 - if @newsflashes.count > 0
-  - @newsflashes.each do | nf |
+  - @newsflashes.each_with_index do | nf, index |
     section data-id="#{nf.id}"
       .section-inner
-        h3
+        h3 data-stat-click="kuaixunbiaoti.#{index.next}.#{nf.id}.click"
           - if nf.is_top
             span.top 置顶
           = nf.hash_title
@@ -12,7 +12,7 @@
         .desc
           = nf.description_text
           - if nf.news_url.present?
-            a[href=nf.news_url target="_blank" rel="nofollow"]
+            a[href=nf.news_url target="_blank" rel="nofollow" data-stat-click="kuaixunlianjie.#{index.next}.#{nf.id}.click"]
               | [#{nf.news_url_type}]
           .info
             span.time
@@ -20,9 +20,9 @@
             span.share
               |  分享到
               .share-group
-                a.weixin.mobile-hide[href="javascript:void(0)" ref="nofollow" target="_blank" data-url="#{newsflash_show_url(nf.id)}?via=wechat_qr"]
+                a.weixin.mobile-hide[href="javascript:void(0)" ref="nofollow" target="_blank" data-url="#{newsflash_show_url(nf.id)}?via=wechat_qr" data-stat-click="kuaixunweixin.#{index.next}.#{nf.id}.click"]
                   i.icon-weixin
-                a.weibo[href="http://share.baidu.com/s?type=text&searchPic=1&sign=on&to=tsina&url=#{newsflash_show_url nf.id}&title=#{('快讯 | ' + nf.description_text.to_s).html_safe}&pic=#{nf.cover}" ref="nofollow" target="_blank"]
+                a.weibo[href="http://share.baidu.com/s?type=text&searchPic=1&sign=on&to=tsina&url=#{newsflash_show_url nf.id}&title=#{('快讯 | ' + nf.description_text.to_s).html_safe}&pic=#{nf.cover}" ref="nofollow" target="_blank"  data-stat-click="kuaixunweibo.#{index.next}.#{nf.id}.click"]
                   i.icon-weibo
   a href="#{asynces_newsflashes_path(d: 'next', b_top_id: ((top = @newsflashes.select{|n| n.is_top? }.last) && top.id), b_normal_id: ((normal = @newsflashes.select{|n| !n.is_top?}.last) && normal.id ))}" class="load-more newsflashes_next_link"
 - else

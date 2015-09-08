@@ -16,7 +16,7 @@
         .brief
           = raw post.summary
 
-  = link_to '', search_path(q: params[:q], d: 'next', b_url_code: @posts.results.last.url_code, format: :html), class: 'load-more J_listLoadMore', id: 'search_next_link'
+  = link_to '', search_path(q: params[:q], d: 'next', b_url_code: @posts.results.last.url_code, format: :html), class: 'load-more J_listLoadMore', id: 'search_next_link', 'data-stat-click' => "liebiao.gengduo.click"
 
 - elsif @message.present?
   p.search_none_info

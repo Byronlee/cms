@@ -40,11 +40,11 @@ html.no-js[lang="zh-CN"]
     .mobile-nav.J_mobileNav
       a.tab.active[href="#"]
         | 深度报道
-      a.tab[href="#" name="fast"]
+      a.tab[href="#" name="fast" data-stat-click="Kuaixunmokuai.biaoti.click"]
         | 快讯
-      a.tab[href="#" name="next"]
+      a.tab[href="#" name="next" data-stat-click="NEXTmokuai.biaoti.click"]
         | NEXT
-      a.tab[href="#" name="feed"]
+      a.tab[href="#" name="feed" data-stat-click="Chuangyefeedmokuai.biaoti.click"]
         | 创业动态
     = yield
 
@@ -53,4 +53,4 @@ html.no-js[lang="zh-CN"]
       = render_cell :layout, :script
 
     - cache [:head, :ga, current_user.try(:id), current_user.try(:display_name)] do
-      = render_cell :head, :ga, current_user: current_user
+      = render_cell :head, :js_tracker, current_user: current_user
