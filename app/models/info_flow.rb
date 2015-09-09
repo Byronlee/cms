@@ -64,7 +64,7 @@ class InfoFlow < ActiveRecord::Base
 
   def update_info_flows_cache
     logger.info "perform the worker to update info flows of #{name}"
-    logger.info InfoFlowsComponentWorker.new.perform(name)
+    InfoFlowsComponentWorker.new.perform(name)
     true
   end
 

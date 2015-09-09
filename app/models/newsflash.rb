@@ -81,7 +81,7 @@ class Newsflash < ActiveRecord::Base
   end
 
   def update_info_flows_cache
-    return true unless [:hash_title, :description_text, :news_url, :news_url_type, :user_id, :column_id, :display_in_infoflow].collect {  |col| eval "#{col}_changed?" }.any?
+    return true unless [:hash_title, :description_text, :news_url, :news_url_type, :user_id, :column_id, :display_in_infoflow, :cover].collect {  |col| eval "#{col}_changed?" }.any?
     self.column && self.column.info_flows.map(&:update_info_flows_cache)
     true
   end

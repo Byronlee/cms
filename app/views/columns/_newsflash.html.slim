@@ -1,4 +1,8 @@
 article
+  - if newsflash.cover.present?
+    a.pic[data-fit-mobile="true" class="badge-#{newsflash.column.try(:slug)}" href="#{newsflash_show_path(newsflash, utm_source: utm_source ||= nil)}" data-lazyload="#{high_speed_url newsflash.cover, 'feature'}" data-stat-click="kuaixuntupian.#{index.next}.#{newsflash.id}.click"]
+      span.mask-tags data-type="#{newsflash.column.try(:slug)}"
+        = newsflash.column.try(:name)
   .desc
     a.title[href=newsflash_show_path(newsflash) target="_blank" data-stat-click="kuaixunbiaoti.#{index.next}.#{newsflash.id}.click"]
       = newsflash.hash_title
