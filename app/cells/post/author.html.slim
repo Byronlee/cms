@@ -2,7 +2,7 @@
   - if @user.blank?
     p style="text-align:center;" 36氪
   - else
-    a[href="#{user_domain(@user.try(:domain))}"]
+    a[href="#{user_domain(@user.try(:domain))}" data-stat-click="Zuocezuozhe.mingcheng.click"]
       span.avatar[data-lazyload="#{@user.avatar}"]
     .desc
       span.name

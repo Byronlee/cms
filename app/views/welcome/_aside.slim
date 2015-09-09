@@ -1,18 +1,18 @@
 .list.J_fastSectionList
   .tabs.J_fastSectionNavBar
-    a.active.newsflashes_nav[href="#" name="fast"]
+    a.active.newsflashes_nav[href="#" name="fast" data-stat-click="Kuaixunmokuai.biaoti.click"]
       | 快讯
-    a.next_nav[href="#" name="next"]
+    a.next_nav[href="#" name="next" data-stat-click="NEXTmokuai.biaoti.click"]
       | NEXT
-    a[href="#" name="feed"]
+    a[href="#" name="feed" data-stat-click="Chuangyefeedmokuai.biaoti.click"]
       | 创业动态
   .wrap
-    .panel.fast-news-panel
+    .panel.fast-news-panel data-stat-module="Kuaixunmokuai"
       = render_cell :newsflashes, :index
-    .panel.next-panel style="display: none"
+    .panel.next-panel style="display: none" data-stat-module="NEXTmokuai"
       .next-inner
       .next-link
-        a href="http://next.36kr.com" target="_blank" OK，NEXT
-    .panel.feed-panel.feed[style="display: none"]
+        a href="http://next.36kr.com" target="_blank" data-stat-click="gengduo.click" OK，NEXT
+    .panel.feed-panel.feed[style="display: none" data-stat-module="Chuangyefeedmokuai"]
       .feed-inner
-      a.load-more href="#"
+      a.load-more href="#" data-stat-click="gengduo.click"

@@ -1,7 +1,7 @@
 .head-images.J_headImages
   - head_line_first = @head_lines_normal[0] || {}
   .scrollers class="badge-#{head_line_first["section"]}"
-    a#headline_top[href=append_ref_to_url(head_line_first["url"], ref: :head_line_top) data-lazyload="#{high_speed_url(head_line_first["image"],  'slider')}" class="" target="_blank"]
+    a#headline_top[href=append_ref_to_url(head_line_first["url"], ref: :head_line_top) data-lazyload="#{high_speed_url(head_line_first["image"],  'slider')}" class="" target="_blank" data-stat-click="dingbu.top.click"]
       img[src=high_speed_url(head_line_first["image"],  'slider') alt=""]
       - if head_line_first["section_text"].present?
         span class="mask-tags" data-type="#{head_line_first["section"]}"
@@ -10,14 +10,14 @@
   .smaller-images
     - head_line_second = @head_lines_normal[1] || {}
     .block.wider.article class="badge-#{head_line_second["section"]}"
-      a#headline_one[href=append_ref_to_url(head_line_second["url"], ref: :head_line_one) data-lazyload="#{high_speed_url(head_line_second["image"], 'slider')}" target="_blank"]
+      a#headline_one[href=append_ref_to_url(head_line_second["url"], ref: :head_line_one) data-lazyload="#{high_speed_url(head_line_second["image"], 'slider')}" target="_blank" data-stat-click="dingbu.1.click"]
         - if head_line_second["section_text"].present?
           span class="mask-tags" data-type="#{head_line_second["section"]}"
             = head_line_second["section_text"]
         span = head_line_second["title"]
     - head_line_third = @head_lines_normal[2] || {}
     .block.article class="badge-#{head_line_third["section"]}"
-      a#headline_two[href=append_ref_to_url(head_line_third["url"], ref: :head_line_two) data-lazyload="#{high_speed_url(head_line_third["image"], 'feature')}" target="_blank"]
+      a#headline_two[href=append_ref_to_url(head_line_third["url"], ref: :head_line_two) data-lazyload="#{high_speed_url(head_line_third["image"], 'feature')}" target="_blank" data-stat-click="dingbu.2.click"]
         - if head_line_third["section_text"].present?
           span class="mask-tags" data-type="#{head_line_third["section"]}"
             = head_line_third["section_text"]
@@ -38,7 +38,7 @@
     /       p = head_line_next["summary"]
     - head_line_four = @head_lines_normal[3] || {}
     .block.article class="badge-#{head_line_four["section"]}"
-      a#headline_four[href=append_ref_to_url(head_line_four["url"], ref: :head_line_four) data-lazyload="#{high_speed_url(head_line_four["image"], 'feature')}" target="_blank"]
+      a#headline_four[href=append_ref_to_url(head_line_four["url"], ref: :head_line_four) data-lazyload="#{high_speed_url(head_line_four["image"], 'feature')}" target="_blank" data-stat-click="dingbu.4.click"]
         - if head_line_four["section_text"].present?
           span class="mask-tags" data-type="#{head_line_four["section"]}"
             = head_line_four["section_text"]

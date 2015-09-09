@@ -1,10 +1,10 @@
-section.single-post-relate
+section.single-post-relate data-stat-module="dibutuijian"
   ul
-    - @posts.each do | post |
+    - @posts.each_with_index do | post, index |
       li
-        a[href="#{ append_ref_to_url(post_url(post), ref: :related_posts, ref_url_code: @post.url_code ) }" target="_blank"]
+        a[href="#{ append_ref_to_url(post_url(post), ref: :related_posts, ref_url_code: @post.url_code ) }" target="_blank" data-stat-click="tupian.#{index.next}.#{post.url_code}.click"]
           .image
             img[data-lazyload="#{ high_speed_url post.cover_real_url, 'feature'}" alt="#{raw post.title}"]
         .title
           h3
-            a[href="#{ append_ref_to_url(post_url(post), ref: :related_posts, ref_url_code: @post.url_code) }" data-lazyload="#{ post_url(post)}" title="#{raw post.title}"] = raw post.title
+            a[href="#{ append_ref_to_url(post_url(post), ref: :related_posts, ref_url_code: @post.url_code) }" data-lazyload="#{ post_url(post)}" title="#{raw post.title}" data-stat-click="biaoti.#{index.next}.#{post.url_code}.click"] = raw post.title

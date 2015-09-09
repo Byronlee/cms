@@ -14,7 +14,7 @@
           em.highlight = @posts.try(:total_count) || 0
 
       .article-list
-        .articles.J_articleList
+        .articles.J_articleList data-stat-module="TAG"
           = render 'tags/list'
 
     .index-side

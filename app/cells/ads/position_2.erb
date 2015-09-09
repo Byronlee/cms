@@ -1,7 +1,7 @@
 <script type="text/javascript">
   window.BAIDU_CLB_fillSlot()==false?BAIDU_CLB_fillSlot("1091328"):(function(){
     document.write('<div class="block article badge-<%= @head_line["section"] %>">\
-      <a href="<%= append_ref_to_url(@head_line["url"], ref: :head_line_five) %>" data-lazyload="<%= high_speed_url(@head_line["image"], "feature") %>">\
+      <a href="<%= append_ref_to_url(@head_line["url"], ref: :head_line_five) %>" data-lazyload="<%= high_speed_url(@head_line["image"], "feature") %>" data-stat-click="dingbu.5.click">\
         <% if @head_line["section_text"].present? %> \
         <span class="mask-tags" data-type="<%= @head_line["section"] %>"><%= @head_line["section_text"] %></span> \
         <% end %> \
