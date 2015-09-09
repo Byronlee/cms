@@ -75,6 +75,15 @@ Rails.application.routes.draw do
         post :set_excellent
         post :do_publish
         post :do_reject
+        post :undo_publish
+      end
+      collection do
+        post :batch_do_publish
+        post :batch_undo_publish
+        post :batch_do_reject
+        post :batch_set_excellent
+        post :batch_unset_excellent
+        delete :batch_destroy
       end
     end
     resources :info_flows do

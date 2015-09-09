@@ -54,3 +54,20 @@ article .desc .brief a{
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .textarea:focus + .focus-tips {
   display: inline-block !important;
 }
+
+/*span.badge{
+  border: solid #9e9e9e 1px;
+  border-radius: 1px 15px;
+  padding: 1px 5px;
+  margin-right: 5px;
+}*/
+
+/*span.badge-warning{
+  background-color: #f0ad4e;
+  color: #fff;
+}
+
+span.badge-fatal{
+  background-color: #E85252;
+  color: #fff;
+}*/

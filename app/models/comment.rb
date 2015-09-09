@@ -35,14 +35,16 @@ class Comment < ActiveRecord::Base
 
   before_save :set_is_long_attribute
 
-  after_save :update_excellent_comments_cache
-  after_destroy :update_excellent_comments_cache
+  STATE_OPTIONS = {reviewing: '审核中', published: '已发布', rejected: '已屏蔽'}
+
+  # after_save :update_excellent_comments_cache
+  # after_destroy :update_excellent_comments_cache
 
   scope :order_by_content, -> {
     includes(:commentable, user: [:krypton_authentication]).order('char_length(content) desc')
   }
-
   scope :excellent, -> { includes(:post).where(posts: { state: :published }, is_excellent: true) }
+  scope :valid_comments, -> (user) { where("state = 'published' or user_id = ? ", user.id) }
 
   aasm do
     state :reviewing, :initial => true
@@ -57,6 +59,10 @@ class Comment < ActiveRecord::Base
     event :reject do
       transitions :from => [:reviewing, :published, :prepublished], :to => :rejected
     end
+
+    event :undo_publish do
+      transitions :from => [:published, :rejected, :prepublished], :to => :reviewing
+    end
   end
 
   private
@@ -66,9 +72,9 @@ class Comment < ActiveRecord::Base
     true
   end
 
-  def update_excellent_comments_cache
-    logger.info 'perform the worker to update excellent comments cache'
-    logger.info ExcellentCommentsComponentWorker.new.perform
-    true
-  end
+  # def update_excellent_comments_cache
+  #   logger.info 'perform the worker to update excellent comments cache'
+  #   logger.info ExcellentCommentsComponentWorker.new.perform
+  #   true
+  # end
 end

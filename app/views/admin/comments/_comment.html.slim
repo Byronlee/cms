@@ -1,11 +1,8 @@
-tr
+tr data-id="#{comment.id}"
+  td = check_box_tag 'comment_select', comment.id, false, id: "comment_select_#{comment.id}"
   td = comment.id
   td[title=comment.commentable.try(:title) data-toggle='tooltip']
-    - if comment.commentable
-      - if comment.commentable.published?
-        = link_to raw(truncate(comment.commentable.try(:title), length:20)),  polymorphic_url(comment.commentable), target: '_blank'
-      - else
-        = link_to raw(truncate(comment.commentable.try(:title), length:20)),  preview_post_by_key_path(comment.commentable.key), target: '_blank'
+    = link_to raw(truncate(comment.commentable.try(:title), length:15)),  [:admin, :comments, post_id: comment.commentable.try(:id)]
   td.word-break
     = truncate(sanitize_tags(comment.content), length:20, omission: '...'){ link_to "more", "javascript:$('#comment-#{comment.id}').toggle();" }
     - if comment.is_long?
@@ -18,9 +15,27 @@ tr
     - if comment.content.length > 20
       div.comment_details_in_row[id="comment-#{comment.id}" style="display:none;"]
         = sanitize_tags(comment.content)
+  td
+    - if comment.commentable
+      - if comment.commentable.published?
+        = link_to polymorphic_path(comment.commentable) + "#comment-#{comment.id}", target: '_blank' do
+          i.fa.fa-link
+      - else
+        = link_to preview_post_by_key_path(comment.commentable.key) + "#comment-#{comment.id}", target: '_blank' do
+          i.fa.fa-link
+  td = display_comment_state comment.state
   td.text_center[title=comment.created_at data-toggle='tooltip']
     = time_ago_in_words comment.created_at rescue ''
   td
+    - if can?(:do_publish, comment) && comment.may_publish?
+      a title="发布评论" data-method="post" href= do_publish_admin_comment_path(comment)
+          i.fa.fa-plane
+    - if can?(:undo_publish, comment) && comment.may_undo_publish?
+      a title="撤回评论" data-method="post" href= undo_publish_admin_comment_path(comment)
+          i.fa.fa-power-off
+    - if can?(:do_reject, comment) && comment.may_reject?
+      a title="屏蔽评论" data-method="post" href= do_reject_admin_comment_path(comment)
+          i.fa.fa-eye-slash
     - if can? :set_excellent, comment
       - if comment.is_excellent?
         a title="取消优质评论" data-method="post" href= set_excellent_admin_comment_path(comment, comment:{is_excellent:false})
@@ -28,13 +43,10 @@ tr
       - else
         a title="置为优质评论" data-method="post" href= set_excellent_admin_comment_path(comment, comment:{is_excellent:true})
           i.fa.fa-thumbs-up
-      |&nbsp;&nbsp;
     - if can? :destroy, comment
-      |&nbsp;&nbsp;
-      a title="删除" data-method="delete" data-confirm="确定删除该评论？" href= admin_comment_path(comment)
+      a title="删除" data-method="delete" data-confirm="确定删除该评论？" data-remote="true" href= admin_comment_path(comment)
         i.fa.fa-times
     - if !!comment.user && !comment.user.try(:muted?) && can?(:shutup, User)
-      |&nbsp;&nbsp;
       = link_to shutup_admin_user_path(comment.user, ok_url: request.fullpath), title: "禁言",
         method: :put, data: { confirm: "确认禁言此用户？" } do
         i.fa.fa-ban

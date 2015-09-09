@@ -3,7 +3,13 @@ class Asynces::CommentsController < ApplicationController
 
   def index
     @commentable = find_commentable
-    @comments = @commentable.comments.order('created_at desc')
+    @comments = @commentable.comments
+    if current_user
+      @comments = @comments.valid_comments(current_user)
+    else
+      @comments = @comments.published
+    end
+    @comments = @comments.order('created_at desc')
     @comments = @comments.includes(:commentable, user: [:krypton_authentication])
     render 'list', :layout => false
   end
@@ -15,8 +21,10 @@ class Asynces::CommentsController < ApplicationController
       @comment.user = current_user
       current_user.update_attributes(last_comment_at: Time.now)
       @comment.save
-      @comments = @commentable.comments.where("id > ?", params[:current_maxid]).order('created_at desc')
-      @comments = @comments.includes(:commentable, user: [:krypton_authentication])
+      @comments = @commentable.comments.where("id > ?", params[:current_maxid])
+                  .where("state = 'published' or user_id = ? ", current_user.id)
+                  .order('created_at desc')
+                  .includes(:commentable, user: [:krypton_authentication])
     else
       @comments = Comment.none
       @message = "您刚评论了，休息 #{current_user.dist_time_from_next_comment.to_i }s 再评论吧！"

@@ -1,5 +1,6 @@
 - comment ||= @comment
 - unless comment.user_id == 10002
+  a name="#comment-#{comment.id}"
   .comment.cf.comment_details data-comment-id="#{comment.id}"
     .avatar.left
       a[href="javascript:void(0)"]
@@ -10,11 +11,13 @@
         |&nbsp;•&nbsp;
         = smart_time_ago comment.created_at
       .commemt-main
-        p
+        p class="#{"#{comment.state} common-details" if comment.state != 'published'}"
+          = display_comment_state_with_tip(comment.state)
           - if comment.parent.present?
-            span 回复@
-            = comment.parent.user.try(:display_name)
-            span ：
+            span.replay-tips
+              |回复
+              = comment.parent.user.try(:display_name)
+              |：
           = sanitize_tags comment.content
 
       .opts

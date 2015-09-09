@@ -3,20 +3,118 @@
 .col_main
   .main_hd
     h2 评论管理
-    .toolbar.border_bottom.clearfix
+    hr style="margin-bottom: 0;"
+
+    = search_form_for @q, url: admin_comments_path, class: 'form-inline' do |f|
+      = f.label :content_cont, '内容：'
+      = f.search_field :content_cont
+      |&nbsp;&nbsp;
+      = f.label :state_eq, '状态：'
+      = f.select :state_eq , Comment::STATE_OPTIONS.invert, {include_blank: '全部', prompt: false}, class: 'input-small'
+      |&nbsp;&nbsp;
+      = f.submit '查询', class: 'btn btn-primary'
+      = link_to '重置', admin_comments_path, class: 'btn btn-info', style: 'margin-left: 10px;'
+
+    hr.comments-batch-toolbar-boundary style="margin-bottom: 0; margin-top: 0;"
+    .toolbar.border_bottom.clearfix.comments-batch-toolbar
+      .pull-left style="position: relative;bottom: -10px;"
+        - if can?(:batch_do_publish, Comment)
+          = link_to "javascript:commentsBatchOption('POST', '#{batch_do_publish_admin_comments_path}', '确定要发布选中的{count}条评论？')", title: '发布评论' do
+            i.fa.fa-plane
+            |发布
+          |&nbsp;|&nbsp;
+        - if can?(:batch_undo_publish, Comment)
+          = link_to "javascript:commentsBatchOption('POST', '#{batch_undo_publish_admin_comments_path}', '确定要撤回选中的{count}条评论？')", title: '撤回评论' do
+            i.fa.fa-power-off
+          |&nbsp;|&nbsp;
+        - if can?(:batch_do_reject, Comment)
+          = link_to "javascript:commentsBatchOption('POST', '#{batch_do_reject_admin_comments_path}', '确定要屏蔽选中的{count}条评论？')", title: '屏蔽评论' do
+            i.fa.fa-eye-slash
+          |&nbsp;|&nbsp;
+        - if can?(:batch_set_excellent, Comment)
+          = link_to "javascript:commentsBatchOption('POST', '#{batch_set_excellent_admin_comments_path}', '确定要将选中的{count}条评论置为优秀评论？')", title: '置为优秀评论' do
+            i.fa.fa-thumbs-up
+          |&nbsp;|&nbsp;
+        - if can?(:batch_unset_excellent, Comment)
+          = link_to "javascript:commentsBatchOption('POST', '#{batch_unset_excellent_admin_comments_path}', '确定要将选中的{count}条评论取消优秀评论？')", title: '取消优秀评论' do
+            i.fa.fa-thumbs-down
+          |&nbsp;|&nbsp;
+        - if can?(:batch_destroy, Comment)
+          = link_to "javascript:commentsBatchOption('DELETE', '#{batch_destroy_admin_comments_path}', '确定要删除选中的{count}条评论？')", title: '删除所选评论' do
+            i.fa.fa-times
+            |删除
       .pull-right
          span.page_info = page_entries_info @comments
-  table class="table"
+  table class="table table-comments"
     thead
       tr role="row"
+        th style="width=5%"
+          = check_box_tag 'select_all', 'select_all'
         th style="width=5%" ID
-        th style="width=25%" 文章
-        th style="width=35%"
+        th style="width=18%" 文章
+        th style="width=27%"
           | 评论
-          = link_to '(展开所有隐藏评论)', "javascript:javascript:$('.comment_details_in_row').toggle();"
+          = link_to '(展开评论)', "javascript:commentsToggleShow();", id: 'commentsToggleBtn'
+        th.text_center style="width=5%" 链接
+        th.text_center style="width=5%"
+          = sort_link(@q, :state, '状态', default_order: :desc)
         th.text_center style="width=10%" 创建时间
-        th.text_center style="width=15%" 操作
-        th.text_center style="width=10%" 评论者
+        th.text_center style="width=20%" 操作
+        th.text_center style="width=5%" 评论者
     tbody
       = render @comments
   = paginate @comments
+
+javascript:
+  $("input#select_all").change(function(){
+     var isChecked = $(this).prop("checked");
+     $("input[name='comment_select']").prop('checked', isChecked)
+  });
+
+  var isTableSelectMode = false;
+  $("body").mousedown(function(){
+    isTableSelectMode = true;
+  });
+
+  $("body").mouseup(function(){
+    isTableSelectMode = false;
+  });
+
+  $("table tr").mouseenter(function(){
+    if(!isTableSelectMode) return;
+    var id = $(this).data("id");
+    var checkbox = $("input#comment_select_" + id);
+    checkbox.prop('checked', !checkbox.prop('checked'));
+  })
+
+  function commentsBatchOption(method, url, tip){
+    var ids = []
+    $("input:checked[name='comment_select']").each(function(){
+      ids.push($(this).val());
+    });
+    if(ids.length == 0){
+      alert("请先选择您要操作的评论！");
+      return;
+    }
+    if(!confirm(tip.replace('{count}', ids.length))){
+      return;
+    }
+    $.ajax({
+     url: url,
+     type: method,
+     data: {ids: ids},
+     success: function(result) {
+       window.location.reload()
+     }
+    });
+  }
+
+  function commentsToggleShow(){
+    if($("#commentsToggleBtn").text().match("展开")){
+      $("#commentsToggleBtn").text("(收起评论)");
+      $('.comment_details_in_row').slideDown();
+    }else{
+      $("#commentsToggleBtn").text("(展开评论)");
+      $('.comment_details_in_row').slideUp();
+    }
+  }

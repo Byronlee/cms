@@ -1,6 +1,6 @@
 h2
   | 文章评论(
-  span.comment_form_count = @post.comments_counts.to_i
+  span.comment_form_count = 0
   | )
 .single-post-comment-reply
   - if can? :create, Comment
@@ -74,3 +74,13 @@ h2
         });
      });
    });
+
+   function commentsLoadComplete(){
+     $('.timeago').timeago();
+     $('.comment_total_count').text($(".comments_total_count").data('total-count') || 0);
+     $('.comment_form_count').text($(".comments_total_count").data('total-count') || 0);
+     var anchor =  $('a[name="'+ window.location.hash +'"]');
+     if(anchor.length > 0){
+       $('body').animate({scrollTop: $('a[name="'+ window.location.hash +'"]').offset().top}, 600)
+     }
+   }
