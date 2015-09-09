@@ -1,0 +1,22 @@
+article
+  - if newsflash['cover'].present?
+    a.pic[data-fit-mobile="true" class="badge-#{newsflash['column'] && newsflash['column']['slug']}" href="#{newsflash_show_path(newsflash['id'], utm_source: utm_source ||= nil)}" data-lazyload="#{high_speed_url newsflash['cover'], 'feature'}" data-stat-click="kuaixuntupian.#{index.next}.#{newsflash['id']}.click"]
+      span.mask-tags data-type="#{newsflash['column'] && newsflash['column']['slug']}"
+        = newsflash['column'] && newsflash['column']['name']
+  .desc
+    a.title[href=newsflash_show_path(newsflash["id"]) target="_blank" data-stat-click="kuaixunbiaoti.#{index.next}.#{newsflash['id']}.click"]
+      = newsflash["hash_title"]
+    .author
+      a[href="#{user_domain((author = newsflash['author']) && author['domain'])}" data-stat-click="kuaixunzuozhe.#{index.next}.#{newsflash['id']}.click"]
+        span.avatar[data-lazyload="#{(author=newsflash['author']) && author['avatar']}"]
+        span.name
+          = (author = newsflash['author']) && author['display_name']
+      span.time
+        |&nbsp;•&nbsp;
+        = smart_time_ago Time.parse(newsflash['created_at']) if newsflash['created_at'].present?
+    .brief
+      = newsflash['description_text']
+      - if newsflash['news_url'].present?
+        a[href=newsflash['news_url'] target="_blank" rel="nofollow"]
+          | [#{newsflash['news_url_type']}]
+

@@ -1,0 +1,17 @@
+article
+  a.pic.info_flow_news_image[data-fit-mobile="true" class="badge-#{post["column"]["slug"]}" href="#{(post["title_link"].present? ? post["title_link"] : post_path(post["url_code"]))}" data-lazyload="#{(high_speed_url post["cover_real_url"], 'feature')}" data-stat-click="wenzhangtupian.#{index.next}.#{post['url_code']}.click"]
+    span.mask-tags data-type="#{post["column"]["slug"]}"
+      = post["column"]["name"]
+  .desc
+    a.title.info_flow_news_title[href=(post["title_link"].present? ? post["title_link"] : post_path(post["url_code"])) target="_blank" data-stat-click="wenzhangbiaoti.#{index.next}.#{post['url_code']}.click"]
+      = raw post["title"]
+    .author
+      a[href="#{post['author'].present? ? user_domain(post['author']['domain']) : 'javascript:void(0)'}"]
+        span.avatar[data-lazyload="#{post['author']['avatar']}" data-stat-click="wenzhangzuozhe.#{index.next}.#{post['url_code']}.click"]
+        span.name
+          = (post["author"] && post["author"]["display_name"]) || "匿名用户"
+      span.time
+        |&nbsp;•&nbsp;
+        = smart_time_ago Time.parse(post["published_at"]) if post["published_at"].present?
+    .brief
+      = raw(post["summary"])

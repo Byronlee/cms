@@ -26,11 +26,12 @@ class InfoFlow < ActiveRecord::Base
   # options[:page_direction]
   # options[:boundary_post_url_code]
   # options[:ads_required]
+  # options[:newsflash_required]
   ###
   def posts_with_ads(options = {})
 
     boundary_post = Post.find_by_url_code(options[:boundary_post_url_code]) if options[:boundary_post_url_code].present?
-    
+
     # options[:page] = 1 if(options[:page_direction].present? && boundary_post.present?)
     posts = Post.where(:column_id => columns).published
     if options[:page_direction] == 'next' && boundary_post.present?
@@ -40,7 +41,11 @@ class InfoFlow < ActiveRecord::Base
     end
     posts = posts.includes(:column, :related_links, author: [:krypton_authentication]).recent.page(options[:page] || 1).per(options[:per_page] || 30)
     posts_with_associations = get_associations_of(posts)
- 
+
+    if options[:newsflash_required]
+      posts_with_associations = mix_posts_and_newsflashes posts_with_associations, options[:boundary_post_url_code], boundary_post
+    end
+
     if options[:ads_required]
       ads = get_ads_with_period_of posts
       flow = mix_posts_and_ads posts_with_associations, ads
@@ -48,7 +53,7 @@ class InfoFlow < ActiveRecord::Base
       flow = posts_with_associations
     end
 
-    { posts: flow, 
+    { posts: flow,
       total_count: posts.total_count,
       prev_page: posts.prev_page,
       next_page: posts.next_page,
@@ -59,7 +64,7 @@ class InfoFlow < ActiveRecord::Base
 
   def update_info_flows_cache
     logger.info "perform the worker to update info flows of #{name}"
-    logger.info InfoFlowsComponentWorker.new.perform(name)
+    InfoFlowsComponentWorker.new.perform(name)
     true
   end
 
@@ -78,6 +83,18 @@ class InfoFlow < ActiveRecord::Base
       :include => {
         :related_links => {
           },
+        :author => {
+          :only => [:id, :domain, :sso_id, :email, :phone, :role], :methods => [:display_name, :avatar] },
+        :column => {
+          :only => [:id, :name, :slug] }
+        }
+      )
+  end
+
+  def get_associations_of_newsflashes(newsflashes)
+    JSON.parse newsflashes.to_json(
+      :methods => [:news_url_type],
+      :include => {
         :author => {
           :only => [:id, :domain, :sso_id, :email, :phone, :role], :methods => [:display_name, :avatar] },
         :column => {
@@ -113,7 +130,32 @@ class InfoFlow < ActiveRecord::Base
     flow
   end
 
+  def mix_posts_and_newsflashes(posts, paginate_by_id_request, boundary_post)
+    start_time = posts.present? ? posts.last['published_at'] : Time.parse('2000-01-01')
+    if paginate_by_id_request.present?
+      if posts.present?
+        end_time = posts.first['published_at']
+      elsif boundary_post.present?
+        end_time = boundary_post.published_at
+      else
+        return posts
+      end
+    else
+      end_time   = Time.now
+    end
+    newsflashes  = Newsflash.tagged_with('_newsflash').where(:column_id => columns).to_info_flow.where(created_at: start_time..end_time)
+    newsflashes_with_assoicatio = get_associations_of_newsflashes(newsflashes)
+    result       = posts + newsflashes_with_assoicatio
+    result.sort do |a, b|
+      get_object_time(b) <=> get_object_time(a)
+    end
+  end
+
   def destroy_info_flows_cache
     Redis::HashKey.new('info_flow').delete(name)
+  end
+
+  def get_object_time(obj)
+    obj['published_at'].present? ? obj['published_at'] : obj['created_at']
   end
 end

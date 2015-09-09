@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150814071133) do
+ActiveRecord::Schema.define(version: 20150907034620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -157,6 +157,7 @@ ActiveRecord::Schema.define(version: 20150814071133) do
     t.integer  "views_count",                           default: 0
     t.integer  "column_id"
     t.text     "extra"
+    t.boolean  "display_in_infoflow"
   end
 
   add_index "newsflashes", ["created_at"], name: "index_newsflashes_on_created_at", using: :btree
