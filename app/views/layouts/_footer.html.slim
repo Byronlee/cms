@@ -1,0 +1,20 @@
+- subnavs ||= []
+footer.common-footer
+  .breadcrumb
+    .sections.clearfix
+      .nav-left
+        a href="https://36kr.com" 36Kr首页
+        |-
+        a href="#{root_path}" 资讯首页
+        - subnavs.each do |nav|
+          |-
+          = link_to nav[0], nav[1]
+      .nav-right
+        a href="#{root_path}" 资讯
+        a href="https://rong.36kr.com/#/zhongchou" 股权投资
+        a href="https://rong.36kr.com/#/" 融资
+        a href="http://space.36kr.com/#/" 氪空间
+        a href="http://chuang.36kr.com/report#/report/index" 寻求报道
+
+  - cache [:layout, :footer, footer = FragmentTemplate.find_by_key(:footer_body)] do
+    = render_cell :layout, :footer, footer: footer

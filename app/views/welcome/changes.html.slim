@@ -7,3 +7,6 @@
     .content-wrapper-single
        section.article.changes-details
           = raw(@changes)
+
+= render 'layouts/footer', subnavs: [['更新日志', changes_path]]
+= render 'welcome/wechat_share', share_desc: '36氪是一个关注互联网创业的科技博客'

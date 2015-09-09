@@ -1,4 +1,4 @@
-= render 'welcome/title', title: "归档日期: #{params[:year]}-#{params[:month]}-#{params[:day]}"
+= render 'welcome/title', title: "归档日期: #{archive_title(params)}"
 
 = stylesheet_link_tag 'krx/search-result', media: 'all'
 
@@ -9,9 +9,7 @@
         .keyword
           | 归档日期：
           em.highlight
-            = params[:year]
-            = "-#{params[:month]}" if params[:month]
-            = "-#{params[:day]}" if params[:day]
+            = archive_title(params)
         .count
           |结果数：
           em.highlight = @posts.total_count
@@ -25,5 +23,6 @@
         = render 'welcome/aside'
         = render_cell :ads, :position_9
 
+= render 'layouts/footer', subnavs: [["归档日期: #{archive_title(params)}", post_archives_path(year: params[:year], month: params[:month], day: params[:day])]]
 = javascript_include_tag 'krx/search-result', media: 'all'
 = render 'welcome/wechat_share'

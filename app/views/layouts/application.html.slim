@@ -48,9 +48,6 @@ html.no-js[lang="zh-CN"]
         | 创业动态
     = yield
 
-    - cache [:layout, :footer, footer = FragmentTemplate.find_by_key(:footer_body)] do
-      = render_cell :layout, :footer, footer: footer
-
     - cache [:layout, :fix_tools_and_script], :expires_in => Settings.cache.default_expires_in do
       = render_cell :layout, :fix_tools
       = render_cell :layout, :script

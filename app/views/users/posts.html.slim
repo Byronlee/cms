@@ -22,5 +22,6 @@
         = render 'welcome/aside'
         = render_cell :ads, :position_9
 
+= render 'layouts/footer', subnavs: [[@user.display_name, user_domain_posts_path(user_domain: params[:user_domain])]]
 = javascript_include_tag 'krx/search-result', media: 'all'
 = render 'welcome/wechat_share', share_img: @user.avatar

@@ -52,8 +52,8 @@
           = render 'welcome/aside'
           = render_cell :ads, :position_9
 
+= render 'layouts/footer', subnavs: [["#{@post.title}", post_show_by_url_code_path(url_code: @post.url_code)]]
 = javascript_include_tag 'krx/article', media: 'all'
-
 = render 'welcome/wechat_share', share_img: high_speed_url(@post.cover_real_url, 'square'), share_desc: @post.summary
 
 javascript:
