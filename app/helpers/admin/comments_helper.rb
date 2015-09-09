@@ -17,7 +17,7 @@ module Admin::CommentsHelper
     when 'published'
       "badge-success"
     when 'rejected'
-      "badge-fatal"
+      "badge-shield"
     end
   end
 
@@ -25,7 +25,7 @@ module Admin::CommentsHelper
   def comment_state_tip(state)
     case state
     when 'reviewing'
-      "该评论正在审查中, 仅对本人可见"
+      "该评论正在审核中, 仅对本人可见"
     when 'rejected'
       "该评论已经屏蔽，仅对本人可见"
     end

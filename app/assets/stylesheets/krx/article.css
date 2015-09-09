@@ -1082,27 +1082,34 @@ a:hover {
   line-height: 22px;
 }
 /* line 567, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-.article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .comment-wrapper .badge-warning {
+.article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .comment-wrapper .badge {
   position: absolute;
   left: 0;
   top: 2px;
   padding: 0 8px;
   line-height: 18px;
-  background-color: #ffa84b;
   color: #fff;
   border-radius: 2px;
   text-indent: 0;
   font-size: 12px;
 }
 /* line 579, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+.article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .comment-wrapper .badge-warning {
+  background-color: #ffa84b;
+}
+/* line 582, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+.article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .comment-wrapper .badge-shield {
+  background-color: #df3e3e;
+}
+/* line 585, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .comment-wrapper .comment-main {
   font-size: 15px;
 }
-/* line 583, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 589, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .replay-tips {
   color: #999;
 }
-/* line 589, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 595, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side {
   float: left;
 }
@@ -1126,7 +1133,7 @@ a:hover {
     float: none;
   }
 }
-/* line 591, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 597, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .block.ad {
   width: 330px;
   height: 300px;
@@ -1138,7 +1145,7 @@ a:hover {
     display: none !important;
   }
 }
-/* line 596, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 602, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .block.ad a {
   width: 100%;
   height: 100%;
@@ -1147,13 +1154,13 @@ a:hover {
   background-size: cover;
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-  /* line 603, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+  /* line 609, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .article-side .block.ad {
     width: 100%;
     height: 260px;
   }
 }
-/* line 608, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 614, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .author {
   padding: 25px;
   background: #f3f7fb;
@@ -1170,12 +1177,12 @@ a:hover {
   }
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-  /* line 611, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+  /* line 617, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .article-side .author {
     padding: 15px;
   }
 }
-/* line 619, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 625, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .author .avatar {
   display: inline-block;
   width: 60px;
@@ -1186,7 +1193,7 @@ a:hover {
   margin-right: 15px;
   vertical-align: top;
 }
-/* line 629, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 635, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .author .desc {
   overflow: hidden;
   display: inline-block;
@@ -1195,18 +1202,18 @@ a:hover {
   white-space: normal;
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-  /* line 633, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+  /* line 639, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .article-side .author .desc {
     width: 160px;
   }
 }
-/* line 638, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 644, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .author .desc .name {
   font-size: 17px;
   font-weight: 600;
   display: inline-block;
 }
-/* line 643, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 649, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .author .desc .badge {
   font-size: 12px;
   color: #fff;
@@ -1218,12 +1225,12 @@ a:hover {
   top: -2px;
   vertical-align: middle;
 }
-/* line 654, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 660, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .author .desc .brief {
   margin-top: 5px;
   color: #666666;
 }
-/* line 660, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 666, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .vendor-links {
   border-radius: 2px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -1238,17 +1245,17 @@ a:hover {
   }
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-  /* line 666, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+  /* line 672, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .article-side .vendor-links {
     padding: 15px;
   }
 }
-/* line 669, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 675, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .vendor-links h3 {
   font-size: 13px;
   font-weight: 600;
 }
-/* line 673, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 679, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .vendor-links article {
   *zoom: 1;
   margin-top: 20px;
@@ -1261,21 +1268,21 @@ a:hover {
   height: 0;
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-  /* line 676, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+  /* line 682, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .article-side .vendor-links article {
     margin-top: 15px;
   }
 }
-/* line 679, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 685, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .vendor-links article .image {
   float: left;
   margin-right: 15px;
 }
-/* line 683, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 689, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .vendor-links article a {
   margin-top: 5px;
 }
-/* line 688, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 694, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .top-articles {
   border-radius: 2px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -1290,17 +1297,17 @@ a:hover {
   }
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-  /* line 694, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+  /* line 700, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .article-side .top-articles {
     padding: 15px;
   }
 }
-/* line 697, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 703, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .top-articles h3 {
   font-size: 13px;
   font-weight: 600;
 }
-/* line 701, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 707, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .top-articles article {
   *zoom: 1;
   margin-top: 20px;
@@ -1313,12 +1320,12 @@ a:hover {
   height: 0;
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-  /* line 704, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+  /* line 710, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .article-side .top-articles article {
     margin-top: 15px;
   }
 }
-/* line 707, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 713, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .top-articles article .pic {
   width: 80px;
   height: 60px;
@@ -1327,11 +1334,11 @@ a:hover {
   margin-right: 10px;
   float: left;
 }
-/* line 715, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 721, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .top-articles article .desc {
   overflow: hidden;
 }
-/* line 717, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 723, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .top-articles article .desc .title {
   display: inline-block;
   max-height: 60px;

@@ -35,7 +35,7 @@ class Comment < ActiveRecord::Base
 
   before_save :set_is_long_attribute
 
-  STATE_OPTIONS = {reviewing: '审查中', published: '已发布', rejected: '已屏蔽'}
+  STATE_OPTIONS = {reviewing: '审核中', published: '已发布', rejected: '已屏蔽'}
 
   # after_save :update_excellent_comments_cache
   # after_destroy :update_excellent_comments_cache
