@@ -51,4 +51,8 @@ class PostCell < Cell::Rails
   def report
     render
   end
+
+  def reward
+    render
+  end
 end

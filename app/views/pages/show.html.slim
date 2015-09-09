@@ -10,4 +10,5 @@
         section.article
           = raw(@page.try(:body))
 
+= render 'layouts/footer', subnavs: [[@page.title, page_path(slug: @page.try(:slug))]]
 = render 'welcome/wechat_share'

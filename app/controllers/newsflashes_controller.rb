@@ -3,7 +3,7 @@ class NewsflashesController < ApplicationController
   skip_before_filter :verify_authenticity_token, if: Proc.new{|c| c.request.xhr?}
 
   def index
-    @newsflashes = Newsflash.by_day("#{params[:year]}-#{params[:month]}-#{params[:day]}").order('created_at asc')
+    @newsflashes = Newsflash.by_day("#{params[:year]}-#{params[:month]}-#{params[:day]}").order('created_at asc').includes({ author: :krypton_authentication }, :column)
     @newsflashes.map(&:increase_views_count)
   end
 

@@ -25,5 +25,6 @@ div.pre-load-ads
     /!-- 广告位：信息流-全部-顶部广告位-广告位13
     script type="text/javascript" BAIDU_CLB_fillSlot("1116653")
 
+= render 'layouts/footer', subnavs: [[@column.try(:name), column_slug_path(slug: @column.try(:slug))]]
 = javascript_include_tag 'krx/index', media: 'all'
 = render 'welcome/wechat_share'

@@ -45,6 +45,24 @@ $(document).ready(function(){
         },300);
     });
 
+    var qrWrapper = $('.J_qrWrapper');
+    qrWrapper.mouseleave(function(){
+        setTimeout(function(){
+            qrWrapper.removeClass('extend');
+        },500)
+    });
+    $('.qr-min a',qrWrapper).click(function(){
+        qrWrapper.addClass('extend');
+    });
+
+    qrWrapper.find('.tab').each(function(i){
+        $(this).click(function(){
+            qrWrapper.find('.qr-group .active').removeClass('active');
+            $(this).addClass('active');
+            qrWrapper.find('.panel').eq(i).addClass('active');
+        })
+    });
+
 
 
 });
@@ -251,7 +269,7 @@ function initFastSection(){
                         setTimeout(function() {
                             if(page == feedData.data.totalPages) {
                                 var feedInner = '{@each data.data as item, k}'
-                                    + '<section class="feed">'
+                                    + '<section class="feed" data-stat-click="neirong.click">'
                                         + '<header>'
                                             + '<a href="${item.innerImgLink}" class="figure">'
                                                 + '<img src="${item.mainImgUrl}" alt="" width="25" onerror="nofind()">'
@@ -268,7 +286,7 @@ function initFastSection(){
                                 + '<a href="#" class="load-more no-data"></a>';
                             } else {
                                 var feedInner = '{@each data.data as item, k}'
-                                + '<section class="feed">'
+                                + '<section class="feed" data-stat-click="neirong.click">'
                                     + '<header>'
                                         + '<a href="${item.innerImgLink}" class="figure">'
                                             + '<img src="${item.mainImgUrl}" alt="" width="25" onerror="nofind()">'
@@ -338,7 +356,7 @@ function initFastSection(){
                         setTimeout(function() {
                             if(page == feedData.data.totalPages) {
                                 var feedInner = '{@each data.data as item, k}'
-                                    + '<section class="feed">'
+                                    + '<section class="feed" data-stat-click="neirong.click">'
                                         + '<header>'
                                             + '<a href="${item.innerImgLink}" class="figure">'
                                                 + '<img src="${item.mainImgUrl}" alt="" width="25" onerror="nofind()">'
@@ -355,7 +373,7 @@ function initFastSection(){
                                 + '<a href="#" class="load-more no-data"></a>';
                             } else {
                                 var feedInner = '{@each data.data as item, k}'
-                                + '<section class="feed">'
+                                + '<section class="feed" data-stat-click="neirong.click">'
                                     + '<header>'
                                         + '<a href="${item.innerImgLink}" class="figure">'
                                             + '<img src="${item.mainImgUrl}" alt="" width="25" onerror="nofind()">'
@@ -445,7 +463,7 @@ function initFastSection(){
                             + '}'
                         + '</script>'
                         + '{@each data.data as item, k}'
-                            + '<section class="feed">'
+                            + '<section class="feed" data-stat-click="neirong.click">'
                                 + '<header>'
                                     + '<a href="${item.innerImgLink}" class="figure">'
                                         + '<img src="${item.mainImgUrl}" alt="" width="25" onerror="nofind()">'
@@ -476,7 +494,7 @@ function initFastSection(){
     }).done(function(data){
         nextData.data = data;
         var nextInner = '{@each data as item, k}'
-                + '<section class="next" data-id="22">'
+                + '<section class="next" data-id="22" data-stat-click="neirong.click">'
                     + '<a href="${item.url}" target="_blank">'
                         + '<div class="next-box clearfix">'
                             + '<div class="tags">'

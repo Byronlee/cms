@@ -10,5 +10,6 @@
         .fast-section.J_fastSection.mobile-hide
           = render 'welcome/aside'
 
+= render 'layouts/footer', subnavs: [["8点1氪：#{@newsflashes.first.try(:hash_title)}", newsflashes_of_day_path(year: params[:year], month: params[:month], day: params[:day])]]
 = javascript_include_tag 'krx/fast-section-detail', media: 'all'
 = render 'welcome/wechat_share'

@@ -22,5 +22,6 @@
         = render 'welcome/aside'
         = render_cell :ads, :position_9
 
+= render 'layouts/footer', subnavs: [[show_tag_name(@tag), tag_path(tag: @tag)]]
 = javascript_include_tag 'krx/search-result', media: 'all'
 = render 'welcome/wechat_share'

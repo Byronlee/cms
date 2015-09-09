@@ -11,4 +11,6 @@
         .fast-section.J_fastSection.mobile-hide
           = render 'welcome/aside'
 
+= render 'layouts/footer', subnavs: [[@newsflash.hash_title, newsflash_show_path(@newsflash)]]
 = javascript_include_tag 'krx/fast-section-detail', media: 'all'
+= render 'welcome/wechat_share', share_img: @newsflash.cover, share_desc: @newsflash.description_text
