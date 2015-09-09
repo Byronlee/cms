@@ -1,5 +1,5 @@
 - @posts_with_newsflashes.each_with_index do |item, index|
   - if item.is_a? Post
-    = render 'post', post: item
+    = render 'post', post: item, index: index
   - else
-    = render 'newsflash', newsflash: item
+    = render 'newsflash', newsflash: item, index: index
