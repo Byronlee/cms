@@ -15,6 +15,10 @@
         section.ad
           = render_cell :ads, :position_10
           = render_cell :ads, :position_11
+
+        section.to-tip
+          = render_cell :post, :reward
+
         - cache [:show, @post, :manage, current_user]
           - if (@post.author == current_user || (can? :manage, Comment))
             div.post-operate style="border-top: solid 1px #f4f4f4; margin-top: 25px; padding-top: 25px;"
@@ -64,3 +68,5 @@ javascript:
     //取消前端默认的收藏js效果
     $('.J_addFavorite').unbind('click.J_addFavorite');
   });
+
+  crowdFunding("#{@post.author.try(:display_name)}","#{@post.title}", "#{ "#{current_user.sso_id}-#{current_user.display_name}"  if current_user }");

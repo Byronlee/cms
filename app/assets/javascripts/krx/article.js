@@ -1,3 +1,14 @@
+// 支付宝打赏
+function crowdFunding(author,title,user){
+    $.post(KR_CONFIG_OBJECT.crowdFunding,{
+        user_nick_name: author,
+        article_title: title,
+        reward_nick_name: user
+    }).done(function(data) {
+        $('.top-tip-shap img').attr('src', data.data.QRImgUrl);
+    });
+}
+
 $(document).ready(function(){
 
     /**
@@ -52,13 +63,4 @@ $(document).ready(function(){
             },0);
         }
     })
-
-
-   
-
-    
-
-
-    
-
 });
