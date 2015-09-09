@@ -2457,8 +2457,8 @@ body {
     display: none !important;
   }
 }
-/* line 20, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
-.fixed-tools a {
+/* line 21, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+.fixed-tools > a {
   display: block;
   width: 40px;
   height: 40px;
@@ -2469,12 +2469,15 @@ body {
   line-height: 40px;
   text-align: center;
   background: #ffffff;
-  visibility: hidden;
-  opacity: 0;
   position: relative;
 }
-/* line 34, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
-.fixed-tools a .qr {
+/* line 33, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+.fixed-tools > a:last-of-type {
+  opacity: 0;
+  visibility: hidden;
+}
+/* line 37, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+.fixed-tools > a + .qr {
   position: absolute;
   right: 50px;
   top: 0;
@@ -2486,49 +2489,160 @@ body {
   border: solid 1px #d7dde3;
   visibility: hidden;
   opacity: 0;
-  -webkit-transition: all 0.3s ease;
-          transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease 0.2s;
+          transition: all 0.3s ease 0.2s;
   -webkit-transform: translate(0, 20px);
       -ms-transform: translate(0, 20px);
           transform: translate(0, 20px);
-}
-/* line 47, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
-.fixed-tools a .qr img {
-  width: 80px;
+  width: 142px;
+  height: 152px;
   display: block;
 }
-/* line 52, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
-.fixed-tools a:first-of-type {
-  margin-top: 0;
-  border-radius: 2px 2px 0 0;
-  font-size: 20px;
-  line-height: 36px;
-  text-indent: 2px;
-}
-/* line 59, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
-.fixed-tools a:last-of-type {
-  border-radius: 0 0 2px 2px;
-  line-height: 36px;
-}
-/* line 63, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
-.fixed-tools a:hover {
-  color: #727d87;
-  background: #f8f8f8;
-}
-/* line 66, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
-.fixed-tools a:hover .qr {
+/* line 54, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+.fixed-tools > a + .qr:hover {
   visibility: visible;
   opacity: 1;
   -webkit-transform: translate(0, 0px);
       -ms-transform: translate(0, 0px);
           transform: translate(0, 0px);
 }
-/* line 74, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
-.fixed-tools.show a {
+/* line 59, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+.fixed-tools > a + .qr.extend {
+  width: 400px;
+  height: 225px;
+  overflow: hidden;
+  -webkit-transition: all 0.3s ease;
+          transition: all 0.3s ease;
+}
+/* line 64, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+.fixed-tools > a + .qr.extend .qr-min {
+  display: none;
+}
+/* line 67, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+.fixed-tools > a + .qr.extend .qr-group {
+  display: block;
+  width: 400px;
+  height: 225px;
+}
+/* line 71, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+.fixed-tools > a + .qr.extend .qr-group .tabs {
+  *zoom: 1;
+  background: #e4e6e7;
+  border-bottom: solid 1px #d7dde3;
+}
+/* line 44, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
+.fixed-tools > a + .qr.extend .qr-group .tabs:after {
+  content: '';
+  display: block;
+  clear: both;
+  height: 0;
+}
+/* line 75, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+.fixed-tools > a + .qr.extend .qr-group .tabs .tab {
+  float: left;
+  padding: 10px 24px;
+  margin-bottom: -1px;
+}
+/* line 79, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+.fixed-tools > a + .qr.extend .qr-group .tabs .tab.active {
+  background: #f5f5f5;
+}
+/* line 86, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+.fixed-tools > a + .qr .qr-group {
+  display: none;
+  background: #f5f5f5;
+}
+/* line 90, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+.fixed-tools > a + .qr .qr-group .panels .panel {
+  display: none;
+  padding: 24px;
+}
+/* line 92, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+.fixed-tools > a + .qr .qr-group .panels .panel.active {
+  display: block;
+}
+/* line 96, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+.fixed-tools > a + .qr .qr-group .panels .panel .img {
+  float: left;
+  margin-right: 24px;
+  text-align: center;
+}
+/* line 100, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+.fixed-tools > a + .qr .qr-group .panels .panel .img img {
+  width: 120px;
+  height: 120px;
+  display: block;
+  margin: 0 auto 10px;
+}
+/* line 107, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+.fixed-tools > a + .qr .qr-group .panels .panel .desc {
+  overflow: hidden;
+  line-height: 1.8;
+}
+/* line 110, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+.fixed-tools > a + .qr .qr-group .panels .panel .desc p {
+  margin-bottom: 16px;
+}
+/* line 117, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+.fixed-tools > a + .qr .qr-min {
+  padding: 10px;
+  text-align: center;
+}
+/* line 120, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+.fixed-tools > a + .qr .qr-min img {
+  display: block;
+  width: 90px;
+  height: 90px;
+  padding: 5px;
+  border: solid 1px #d7dde3;
+  background: #ffffff;
+  margin: 0px auto 10px;
+}
+/* line 129, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+.fixed-tools > a + .qr .qr-min .btn {
+  display: inline-block;
+  width: 90px;
+  padding: 3px 0;
+  text-align: center;
+  background: #7dc8ff;
+  color: #fff;
+}
+/* line 136, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+.fixed-tools > a + .qr .qr-min .btn:hover {
+  background: #66b2ff;
+}
+/* line 142, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+.fixed-tools > a:first-of-type {
+  margin-top: 0;
+  border-radius: 2px 2px 0 0;
+  font-size: 20px;
+  line-height: 36px;
+  text-indent: 2px;
+}
+/* line 149, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+.fixed-tools > a:last-of-type {
+  border-radius: 0 0 2px 2px;
+  line-height: 36px;
+}
+/* line 153, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+.fixed-tools > a:hover {
+  color: #727d87;
+  background: #f8f8f8;
+}
+/* line 156, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+.fixed-tools > a:hover + .qr {
+  visibility: visible;
+  opacity: 1;
+  -webkit-transform: translate(0, 0px);
+      -ms-transform: translate(0, 0px);
+          transform: translate(0, 0px);
+}
+/* line 165, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+.fixed-tools.show > a:last-of-type {
   visibility: visible;
   opacity: 1;
 }
-/* line 81, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+/* line 173, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
 footer.common-footer {
   *zoom: 1;
   background: #2d3237;
@@ -2546,16 +2660,16 @@ footer.common-footer:after {
   height: 0;
 }
 @media (max-width: 800px) {
-  /* line 89, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+  /* line 181, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
   footer.common-footer {
     height: auto;
   }
-  /* line 91, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+  /* line 183, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
   footer.common-footer .breadcrumb {
     display: none;
   }
 }
-/* line 96, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+/* line 188, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
 footer.common-footer .breadcrumb {
   background-color: #dee0e5;
   font-size: 13px;
@@ -2563,47 +2677,47 @@ footer.common-footer .breadcrumb {
   padding: 10px 0;
   color: #999;
 }
-/* line 103, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+/* line 195, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
 footer.common-footer .breadcrumb .sections {
   padding: 0;
 }
-/* line 107, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+/* line 199, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
 footer.common-footer .breadcrumb a {
   color: #999;
 }
-/* line 109, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+/* line 201, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
 footer.common-footer .breadcrumb a:hover {
   color: #999;
 }
-/* line 114, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+/* line 206, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
 footer.common-footer .breadcrumb .nav-left {
   float: left;
 }
-/* line 117, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+/* line 209, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
 footer.common-footer .breadcrumb .nav-right {
   float: right;
 }
-/* line 119, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+/* line 211, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
 footer.common-footer .breadcrumb .nav-right a {
   margin: 0 12px;
 }
-/* line 122, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+/* line 214, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
 footer.common-footer .breadcrumb .nav-right a:last-child {
   margin-right: 0;
 }
-/* line 129, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+/* line 221, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
 footer.common-footer ul {
   padding-left: 0;
 }
-/* line 133, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+/* line 225, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
 footer.common-footer a {
   color: #b1d1e8;
 }
-/* line 135, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+/* line 227, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
 footer.common-footer a:hover {
   color: #f8ffff;
 }
-/* line 139, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+/* line 231, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
 footer.common-footer .sections {
   margin: 0 auto;
   *zoom: 1;
@@ -2634,11 +2748,11 @@ footer.common-footer .sections:after {
   clear: both;
   height: 0;
 }
-/* line 143, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+/* line 235, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
 footer.common-footer .sections section {
   float: left;
 }
-/* line 145, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+/* line 237, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
 footer.common-footer .sections section h3 {
   font-size: 16px;
   color: #ffffff;
@@ -2646,51 +2760,51 @@ footer.common-footer .sections section h3 {
   margin-bottom: 20px;
   margin-top: 0;
 }
-/* line 152, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+/* line 244, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
 footer.common-footer .sections section.link-section {
   width: 44%;
   color: #aaaaaa;
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-  /* line 154, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+  /* line 246, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
   footer.common-footer .sections section.link-section {
     width: 42%;
   }
 }
-/* line 158, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+/* line 250, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
 footer.common-footer .sections section.link-section .links {
   padding-top: 10px;
   margin-bottom: 10px;
 }
-/* line 162, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+/* line 254, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
 footer.common-footer .sections section.link-section .feedback {
   margin-bottom: 10px;
 }
 @media (max-width: 800px) {
-  /* line 165, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+  /* line 257, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
   footer.common-footer .sections section.link-section {
     float: none;
     width: 100%;
     text-align: center;
   }
-  /* line 169, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+  /* line 261, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
   footer.common-footer .sections section.link-section .links {
     padding-top: 0px;
     margin-bottom: 10px;
   }
 }
-/* line 175, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+/* line 267, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
 footer.common-footer .sections section.partner-section {
   width: 44%;
   padding-right: 130px;
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-  /* line 178, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+  /* line 270, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
   footer.common-footer .sections section.partner-section {
     padding-right: 80px;
   }
 }
-/* line 181, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+/* line 273, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
 footer.common-footer .sections section.partner-section h3 {
   margin-bottom: 35px;
 }
@@ -2700,7 +2814,7 @@ footer.common-footer .sections section.partner-section h3 {
     display: none !important;
   }
 }
-/* line 185, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+/* line 277, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
 footer.common-footer .sections section.partner-section ul {
   *zoom: 1;
   list-style: none;
@@ -2712,22 +2826,22 @@ footer.common-footer .sections section.partner-section ul:after {
   clear: both;
   height: 0;
 }
-/* line 188, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+/* line 280, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
 footer.common-footer .sections section.partner-section ul li {
   display: inline-block;
   vertical-align: middle;
   margin-right: 30px;
   margin-bottom: 10px;
 }
-/* line 193, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+/* line 285, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
 footer.common-footer .sections section.partner-section ul li a {
   opacity: 0.6;
 }
-/* line 198, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+/* line 290, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
 footer.common-footer .sections section.partner-section ul li a:hover {
   opacity: 1;
 }
-/* line 205, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+/* line 297, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
 footer.common-footer .sections section.qr-section {
   text-align: center;
   color: #aaaaaa;
@@ -2741,13 +2855,13 @@ footer.common-footer .sections section.qr-section {
     display: none !important;
   }
 }
-/* line 212, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+/* line 304, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
 footer.common-footer .sections section.qr-section img {
   width: 100px;
   margin-bottom: 5px;
   position: relative;
 }
-/* line 221, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+/* line 313, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
 footer.common-footer .bottom {
   background: #23282d;
   line-height: 50px;
@@ -2756,22 +2870,22 @@ footer.common-footer .bottom {
   position: relative;
 }
 @media (max-width: 800px) {
-  /* line 228, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+  /* line 320, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
   footer.common-footer .bottom {
     text-align: center;
     height: 40px;
     line-height: 40px;
   }
 }
-/* line 234, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+/* line 326, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
 footer.common-footer .bottom .container {
   position: relative;
 }
-/* line 237, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+/* line 329, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
 footer.common-footer .bottom .law {
   margin-left: 20px;
 }
-/* line 241, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+/* line 333, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
 footer.common-footer .bottom .share {
   position: absolute;
   right: 0;
@@ -2783,7 +2897,7 @@ footer.common-footer .bottom .share {
     display: none !important;
   }
 }
-/* line 246, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+/* line 338, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
 footer.common-footer .bottom .share a {
   color: #fff;
   display: inline-block;
@@ -2798,19 +2912,19 @@ footer.common-footer .bottom .share a {
   -webkit-transition: all 0.3s ease;
           transition: all 0.3s ease;
 }
-/* line 258, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+/* line 350, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
 footer.common-footer .bottom .share a.icon-weibo:hover {
   background-color: #d04340;
 }
-/* line 261, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+/* line 353, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
 footer.common-footer .bottom .share a.icon-twitter:hover {
   background-color: #5bbce5;
 }
-/* line 264, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+/* line 356, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
 footer.common-footer .bottom .share a.icon-facebook:hover {
   background-color: #2f4485;
 }
-/* line 267, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+/* line 359, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
 footer.common-footer .bottom .share a.icon-rss:hover {
   background-color: #e9640e;
 }

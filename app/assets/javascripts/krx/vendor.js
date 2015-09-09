@@ -45,6 +45,24 @@ $(document).ready(function(){
         },300);
     });
 
+    var qrWrapper = $('.J_qrWrapper');
+    qrWrapper.mouseleave(function(){
+        setTimeout(function(){
+            qrWrapper.removeClass('extend');
+        },500)
+    });
+    $('.qr-min a',qrWrapper).click(function(){
+        qrWrapper.addClass('extend');
+    });
+
+    qrWrapper.find('.tab').each(function(i){
+        $(this).click(function(){
+            qrWrapper.find('.qr-group .active').removeClass('active');
+            $(this).addClass('active');
+            qrWrapper.find('.panel').eq(i).addClass('active');
+        })
+    });
+
 
 
 });
