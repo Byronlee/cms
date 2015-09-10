@@ -44,7 +44,7 @@ class Comment < ActiveRecord::Base
     includes(:commentable, user: [:krypton_authentication]).order('char_length(content) desc')
   }
   scope :excellent, -> { includes(:post).where(posts: { state: :published }, is_excellent: true) }
-  scope :valid_comments, -> (user) { where("state = 'published' or user_id = ? ", user.id) }
+  scope :valid_comments, -> (user) { where("state = 'published' or user_id = ? ", user.id) if user }
 
   aasm do
     state :reviewing, :initial => true
