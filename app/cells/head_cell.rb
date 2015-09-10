@@ -40,8 +40,12 @@ class HeadCell < Cell::Rails
     render
   end
 
-  def js_tracker(args)
+  def ga(args)
     @current_user = args[:current_user]
+    render
+  end
+
+  def js_tracker_36kr
     render
   end
 end
