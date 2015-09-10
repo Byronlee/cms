@@ -58,7 +58,7 @@
 
 = render 'layouts/footer', subnavs: [["#{@post.title}", post_show_by_url_code_path(url_code: @post.url_code)]]
 = javascript_include_tag 'krx/article', media: 'all'
-= render 'welcome/wechat_share', share_img: high_speed_url(@post.cover_real_url, 'square'), share_desc: post_summary_text(@post.summary)
+= render 'welcome/wechat_share', share_img: high_speed_url(@post.cover_real_url, 'square'), share_desc: html_text_only(@post.summary)
 
 javascript:
   if(!window.mobilecheck())
@@ -69,4 +69,4 @@ javascript:
     $('.J_addFavorite').unbind('click.J_addFavorite');
   });
 
-  crowdFunding("#{@post.author.try(:display_name)}","#{@post.title}", "#{ "#{current_user.sso_id}-#{current_user.display_name}"  if current_user }");
+  crowdFunding("#{@post.author.try(:display_name)}","#{@post.title}", "#{ current_user.present? ? "#{current_user.sso_id}-#{current_user.display_name}" : '匿名用户' }");

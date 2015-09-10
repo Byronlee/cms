@@ -66,8 +66,12 @@ module PostsHelper
     return "doFavorite(#{post.url_code})" if current_user.present?
   end
 
-  def post_summary_text(summary)
-    strip_tags(summary).gsub(/\s/,'')
+  def html_text_only(html)
+    strip_tags(html).gsub(/\s/,'')
+  end
+
+  def post_title(title)
+    raw(sanitize_tags(title))
   end
 end
 

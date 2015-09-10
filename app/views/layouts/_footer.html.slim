@@ -4,11 +4,11 @@ footer.common-footer
     .sections.clearfix
       .nav-left
         a href="https://36kr.com" 36Kr首页
-        span -
+        span &nbsp;-&nbsp;
         a href="#{root_path}" 资讯首页
         - subnavs.each do |nav|
-          span -
-          = link_to nav[0], nav[1], class: 'cur-con', title: nav[0]
+          span &nbsp;-&nbsp;
+          = link_to truncate(post_title(nav[0]), length:40), nav[1], title: post_title(nav[0])
       .nav-right
         a href="#{root_path}" 资讯
         a href="https://rong.36kr.com/#/zhongchou" 股权投资
