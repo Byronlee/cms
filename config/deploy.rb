@@ -69,22 +69,22 @@ namespace :deploy do
   end
 
   desc "Modify load balancer backend for preview"
-  task :web1_preview_lbp do
+  task :web5_preview_lbp do
     on roles(:app) do
       within release_path do
         with rails_env: fetch(:rails_env) do
-          execute :rake, "iaas:web1_preview_lbp"
+          execute :rake, "iaas:web5_preview_lbp"
         end
       end
     end
   end
 
   desc "Modify load balancer backend for online"
-  task :web1_online_lbp do
+  task :web5_online_lbp do
     on roles(:app) do
       within release_path do
         with rails_env: fetch(:rails_env) do
-          execute :rake, "iaas:web1_online_lbp"
+          execute :rake, "iaas:web5_online_lbp"
         end
       end
     end

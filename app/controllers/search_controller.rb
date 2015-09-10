@@ -22,8 +22,12 @@ class SearchController < ApplicationController
         render json: Post.posts_to_json(@posts, true)
       end
       format.xml do
-        #/api/wx.xml?q=ibm&to_user=toUser&from_user=fromUser&page=1&per_page=5
-        render 'api/wx', locals: { :posts => @posts }, layout: false
+        if @posts.length > 0
+          #/api/wx.xml?q=ibm&to_user=toUser&from_user=fromUser&page=1&per_page=5
+          render 'api/wx', locals: { :posts => @posts }, layout: false
+        else
+          render text: ''
+        end
       end
     end
 
