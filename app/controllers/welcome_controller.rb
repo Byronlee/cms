@@ -43,7 +43,15 @@ class WelcomeController < ApplicationController
 
   def render_template
      respond_to do |format|
-      format.html do
+      format.json do
+        render json: {
+          :total_count => @total_count,
+          :first_url_code => @first_url_code,
+          :last_url_code => @last_url_code,
+          :posts => @posts_with_ads.select{|item| item['position'] == nil && item["type"] != 'seperate'}
+        }
+      end
+      format.all do
         if request.xhr?
           render 'welcome/_info_flow_items', locals: {
             :posts_with_ads => @posts_with_ads,
@@ -53,14 +61,6 @@ class WelcomeController < ApplicationController
         else
           render :index
         end
-      end
-      format.json do
-        render json: {
-          :total_count => @total_count,
-          :first_url_code => @first_url_code,
-          :last_url_code => @last_url_code,
-          :posts => @posts_with_ads.select{|item| item['position'] == nil && item["type"] != 'seperate'}
-        }
       end
     end
   end
