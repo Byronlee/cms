@@ -1,7 +1,7 @@
 require 'uri'
 class SearchController < ApplicationController
   def search
-    params[:q] = URI.unescape(params[:q]).gsub('/','')
+    params[:q] = URI.unescape(params[:q]).gsub('/','') unless params[:q].blank?
     if params[:q].blank?
       @message = '搜索关键词不能为空'
       @posts = Post.none
