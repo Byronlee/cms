@@ -152,7 +152,7 @@ class InfoFlow < ActiveRecord::Base
   end
 
   def destroy_info_flows_cache
-    Redis::HashKey.new('info_flow').delete(name)
+    Redis::HashKey.new('info_flow_new').delete(name)
   end
 
   def get_object_time(obj)

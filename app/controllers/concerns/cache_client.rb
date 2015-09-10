@@ -14,7 +14,7 @@ class CacheClient
   end
 
   def info_flow
-    Redis::HashKey.new('info_flow')[InfoFlow::DEFAULT_INFOFLOW]
+    Redis::HashKey.new('info_flow_new')[InfoFlow::DEFAULT_INFOFLOW]
   end
 
   def head_lines
