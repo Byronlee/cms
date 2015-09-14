@@ -42,7 +42,7 @@ class Admin::ToolsController < Admin::BaseController
     sheet1.row(1).push '文章总数', posts.size, '总评论数', comments_counts, '总收藏数', favorites_count, '总浏览数', cache_views_count, '移动端浏览数', cache_mobile_views_count
     sheet1.row(3).push 'ID', '标题', 'URL', '阅读次数', '作者', '发表时间', '站内评论', '收藏数', '标题字数', '内容字数', '移动端阅读次数'
     posts.each_with_index do |post,i|
-        sheet1.row(i+4).push post.url_code, post.title,"http://36kr.com/p/#{post.url_code}.html", post.cache_views_count, post.author.name, post.published_at, post.comments_counts, post.favorites_count, post.title.length, post.content.length, post.cache_mobile_views_count
+        sheet1.row(i+4).push post.url_code, post.title,"http://36kr.com/p/#{post.url_code}.html", post.cache_views_count, post.author.display_name, post.published_at, post.comments_counts, post.favorites_count, post.title.length, post.content.length, post.cache_mobile_views_count
     end
 
     sheet2 = book.create_worksheet :name => '综合统计'
@@ -65,7 +65,7 @@ class Admin::ToolsController < Admin::BaseController
       sheet3.row(2).push '文章总数', posts.size , '总评论数', comments_counts, '总收藏数', favorites_count, '总浏览击数', cache_views_count, '移动端浏览数', cache_mobile_views_count
       sheet3.row(4).push 'ID', '标题', 'URL', '阅读次数', '作者', '发表时间', '站内评论', '收藏数', '标题字数', '内容字数', '移动端阅读次数'
       posts.each_with_index do |post,i|
-        sheet3.row(i+5).push post.url_code, post.title,"http://36kr.com/p/#{post.url_code}.html", post.cache_views_count, post.author.name, post.published_at, post.comments_counts, post.favorites_count, post.title.length, post.content.length, post.cache_mobile_views_count
+        sheet3.row(i+5).push post.url_code, post.title,"http://36kr.com/p/#{post.url_code}.html", post.cache_views_count, post.author.display_name, post.published_at, post.comments_counts, post.favorites_count, post.title.length, post.content.length, post.cache_mobile_views_count
       end
 
       (1..5).each do |i|
