@@ -193,13 +193,16 @@ module V2
           optional :end_date, type: Integer, desc: '结束日期ISO-8601 时间戳(Unix timestamp)秒'
         end
         post 'krweekly' do
-          post_hash = {}
+          post_hash, newflash_hash = {}, {}
            params[:tags].split(',').each do |tag|
              post_hash[tag] = Post.published.select(:url_code,:title,:summary)
              .where(published_at: Time.at(params[:start_date].to_i)..Time.at(params[:end_date].to_i))
              .tagged_with(tag).order('published_at desc')
+             newflash_hash[tag] = Newsflash.select(:id,:hash_title,:news_summaries)
+             .where(created_at: Time.at(params[:start_date].to_i)..Time.at(params[:end_date].to_i))
+             .tagged_with(tag).order('newsflashes.created_at desc')
            end
-           post_hash
+           post_hash.merge newflash_hash
         end
 
         # Delete post. Available only for admin
