@@ -3,7 +3,9 @@
     article data-id="#{pd.id}"
       section.product
         h3
-          a[href=pd.news_url target="_blank" rel="nofollow"]
+          - if pd.news_url.present?
+            = link_to pd.hash_title, pd.news_url, target: '_blank', ref: 'nofollow'
+          - else
             = pd.hash_title
         .main
           h4
