@@ -22,6 +22,9 @@
 #
 
 class Newsflash < ActiveRecord::Base
+  include Tire::Model::Search
+  include Tire::Model::Callbacks if Settings.elasticsearch.auto_index
+
   validates_presence_of :hash_title
 
   validates :description_text, length: { maximum: 500 }
@@ -43,11 +46,35 @@ class Newsflash < ActiveRecord::Base
   scope :to_info_flow, -> { where(display_in_infoflow: true) }
   validates :news_url, length: { maximum: 254 }
 
+  mapping do
+    indexes :id,             index:    :not_analyzed
+    indexes :hash_title,     analyzer: 'snowball',   boost:    100
+    indexes :taging,         type:     'string'
+    indexes :created_at,     type:     'date'
+    indexes :updated_at,     type:     'date'
+  end
+
   typed_store :extra do |s|
     s.string :news_url_type, default: '原文链接'
     s.text :what
     s.text :how
     s.text :think_it_twice
+  end
+
+  def self.search(params)
+    tire.search(load: true, page: params[:page] || 1, per_page: params[:per_page] || 30) do
+      highlight :hash_title, options: { tag: "<em class='highlight' >" }
+      min_score 1
+      query do
+        boolean do
+          must { string Tire::Utils::escape_query(params[:q].presence) || "*", default_operator: "AND" }
+        end
+      end
+      sort do
+        by :created_at, :desc
+        by :_score, :desc
+      end
+    end
   end
 
   def set_top
@@ -66,6 +93,10 @@ class Newsflash < ActiveRecord::Base
 
   def fast_type
     tag_list.include?('_newsflash') ? 'newsflash' : 'pdnote'
+  end
+
+  def taging
+    self.tagged_with '_newsflash'
   end
 
   def self.find_newsflashes_by_datetime(column, start_time, end_time)
