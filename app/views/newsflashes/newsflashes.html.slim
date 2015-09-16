@@ -7,7 +7,8 @@
       = render_cell :newsflashes_list, :header, columns: @columns
       article.single-post
         .fase-time-line
-          = render 'newsflashes_list'
+          ul.page-fast-list
+            = render 'newsflashes_list', first_timeline: true
 
     .article-side
       = render_cell :newsflashes_list, :tags
