@@ -49,6 +49,29 @@ class NewsflashesController < ApplicationController
     end
   end
 
+  def newsflashes
+    b_newsflash = Newsflash.find(params[:b_id]) if params[:b_id]
+    @newsflashes = Newsflash.tagged_with('_newsflash')
+    if b_newsflash && params[:d] == 'next'
+      @newsflashes = @newsflashes.where("newsflashes.created_at < ?", b_newsflash.created_at)
+    elsif b_newsflash && params[:d] == 'prev'
+      @newsflashes = @newsflashes.where("newsflashes.created_at > ?", b_newsflash.created_at)
+    end
+
+    @newsflashes = @newsflashes.recent.limit 30
+
+    respond_to do |format|
+      format.html do
+        # if request.xhr?
+        #   # render 'newsflashes/_list', locals: { :pdnotes => @pdnotes }, layout: false
+        # else
+        #   # columns_data = CacheClient.instance.columns_header
+        #   # @columns = JSON.parse(columns_data.present? ? columns_data : '{}')
+        # end
+      end
+    end
+  end
+
   private
 
   def increase_views_count

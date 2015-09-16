@@ -18,6 +18,7 @@ Rails.application.config.assets.precompile += %w( admin.js
                                                   krx/article.css
                                                   krx/format.css
                                                   krx/fast-section-detail.css
+                                                  krx/page-fast-news.css
                                                   krx/pages.css)
 
 Rails.application.config.assets.precompile += %w( vender/html5shiv/dist/html5shiv.js
@@ -33,4 +34,5 @@ Rails.application.config.assets.precompile += %w( vender/html5shiv/dist/html5shi
                                                   krx/index.js
                                                   krx/article.js
                                                   krx/search-result.js
-                                                  krx/fast-section-detail.js)
+                                                  krx/fast-section-detail.js
+                                                  krx/page-fast-news.js)
