@@ -40,7 +40,7 @@ class NewsflashesController < ApplicationController
     respond_to do |format|
       format.html do
         if request.xhr?
-          render 'newsflashes/_list', locals: { :pdnotes => @pdnotes }, layout: false
+          render 'newsflashes/_product_notes_list', locals: { :pdnotes => @pdnotes }, layout: false
         else
           columns_data = CacheClient.instance.columns_header
           @columns = JSON.parse(columns_data.present? ? columns_data : '{}')
