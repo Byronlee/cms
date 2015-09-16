@@ -1,7 +1,8 @@
 class NewsflashesListCell < Cell::Rails
   helper ApplicationHelper
 
-  def header
+  def header(args)
+    @columns = args[:columns]
     render
   end
 

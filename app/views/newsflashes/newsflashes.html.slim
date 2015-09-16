@@ -4,7 +4,7 @@
 .article-detail-wrap
   .main-section
     .content-wrapper.page-fast-wrapper
-      = render_cell :newsflashes_list, :header
+      = render_cell :newsflashes_list, :header, columns: @columns
       article.single-post
         .fase-time-line
           = render 'newsflashes_list'

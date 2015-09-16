@@ -10,10 +10,8 @@ header.time-line-header
         |全部行业
         i.icon-arrow-up
       div.nav-list
-        a href="#" 选项一
-        a href="#" 选项二
-        a href="#" 选项三
-        a href="#" 选项三
+        - @columns && @columns.each do |column|
+          = link_to column['name'], newsflashes_list_path(column: column['slug'])
     span.line
     .search
       form
