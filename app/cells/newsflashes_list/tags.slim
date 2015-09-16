@@ -1,17 +1,5 @@
 .vendor-links.hot-tags
   h3 氪热点
   .tags-box
-    a href="#" 移动互联网
-    a href="#" 健康应用
-    a href="#" 嘀嘀打车
-    a href="#" 融资
-    a href="#" O2O
-    a href="#" 金融
-    a href="#" 在线教育平台
-    a href="#" 滴滴拼车
-    a href="#" 运动手环
-    a href="#" 股权投资
-    a href="#" 电商
-    a href="#" 智能硬件
-    a href="#" 运动健康
-    a href="#" 大数据
+    - @tags[1..30].each do | tag |
+      = link_to tag.name, root_path
