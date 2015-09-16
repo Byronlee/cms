@@ -28,14 +28,8 @@ class NewsflashesController < ApplicationController
   end
 
   def product_notes
-    b_pdnote = Newsflash.find(params[:b_id]) if params[:b_id]
-    @pdnotes = Newsflash.tagged_with('_pdnote')
-    if b_pdnote && params[:d] == 'next'
-      @pdnotes = @pdnotes.where("newsflashes.created_at < ?", b_pdnote.created_at)
-    elsif b_pdnote && params[:d] == 'prev'
-      @pdnotes = @pdnotes.where("newsflashes.created_at > ?", b_newsflash.created_at)
-    end
-    @pdnotes = @pdnotes.recent.limit 5
+    @pdnotes = Newsflash.product_notes
+    @pdnotes = Newsflash.paginate(@pdnotes, params.merge({per_page: 5}))
 
     respond_to do |format|
       format.html do
@@ -50,20 +44,17 @@ class NewsflashesController < ApplicationController
   end
 
   def newsflashes
-    b_newsflash = Newsflash.find(params[:b_id]) if params[:b_id]
-    @newsflashes = Newsflash.tagged_with('_newsflash')
-    if b_newsflash && params[:d] == 'next'
-      @newsflashes = @newsflashes.where("newsflashes.created_at < ?", b_newsflash.created_at)
-    elsif b_newsflash && params[:d] == 'prev'
-      @newsflashes = @newsflashes.where("newsflashes.created_at > ?", b_newsflash.created_at)
+    @newsflashes = Newsflash.newsflashes
+    if(params[:column_slug] && (column = Column.find_by_slug(params[:column_slug])))
+      @newsflashes = @newsflashes.where("column_id = ? ", column.id)
     end
-
-    @newsflashes = @newsflashes.recent.limit 30
-    @news_day = @newsflashes.first.created_at.to_date if @newsflashes.first
+    @newsflashes = @newsflashes.tagged_with(params[:tag]) if params[:tag]
+    @newsflashes = Newsflash.paginate(@newsflashes, params)
 
     respond_to do |format|
       format.html do
         if request.xhr?
+          @news_day = @newsflashes.first.created_at.to_date if @newsflashes.first
           render 'newsflashes/_newsflashes_list', locals: { :pdnotes => @pdnotes }, layout: false
         else
           columns_data = CacheClient.instance.columns_header

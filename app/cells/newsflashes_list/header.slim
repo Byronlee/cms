@@ -11,7 +11,7 @@ header.time-line-header
         i.icon-arrow-up
       div.nav-list
         - @columns && @columns.each do |column|
-          = link_to column['name'], newsflashes_list_path(column: column['slug'])
+          = link_to column['name'], newsflashes_list_path(column_slug: column['slug'])
     span.line
     .search
       form

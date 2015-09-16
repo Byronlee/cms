@@ -44,6 +44,8 @@ class Newsflash < ActiveRecord::Base
   scope :recent,     -> { order('created_at desc') }
   scope :top_recent, -> { order('toped_at desc nulls last, created_at desc') }
   scope :to_info_flow, -> { where(display_in_infoflow: true) }
+  scope :newsflashes, -> { tagged_with('_newsflash') }
+  scope :product_notes, -> { tagged_with('_pdnote') }
   validates :news_url, length: { maximum: 254 }
 
   mapping do
@@ -102,6 +104,16 @@ class Newsflash < ActiveRecord::Base
 
   def self.find_newsflashes_by_datetime(column, start_time, end_time)
     column.newsflashes.tagged_with('_newsflash').where(created_at: start_time..end_time)
+  end
+
+  def self.paginate(newsflashes, params)
+    b_newsflash = Newsflash.find(params[:b_id]) if params[:b_id]
+    if b_newsflash && params[:d] == 'next'
+      newsflashes = newsflashes.where("newsflashes.created_at < ?", b_newsflash.created_at)
+    elsif b_newsflash && params[:d] == 'prev'
+      newsflashes = newsflashes.where("newsflashes.created_at > ?", b_newsflash.created_at)
+    end
+    newsflashes = newsflashes.recent.page(1).per(params[:per_page] || 30)
   end
 
   private
