@@ -59,6 +59,7 @@ class NewsflashesController < ApplicationController
     end
 
     @newsflashes = @newsflashes.recent.limit 30
+    @news_day = @newsflashes.first.created_at.to_date if @newsflashes.first
 
     respond_to do |format|
       format.html do

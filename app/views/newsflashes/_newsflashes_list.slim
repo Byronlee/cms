@@ -1,16 +1,15 @@
-- news_day ||= nil
 - if @newsflashes.count > 0
   - @newsflashes.each do |newsflash|
-    - if news_day.blank? || newsflash.created_at.to_date != news_day
-      - news_day = newsflash.created_at.to_date
+    - if @news_day.blank? || newsflash.created_at.to_date != @news_day
+      - @news_day = newsflash.created_at.to_date
       .item
         .time-tag.first
           img
           span
             |&nbsp;&nbsp;
-            = news_day.strftime('%Y-%m-%d')
+            = @news_day.strftime('%Y-%m-%d')
             |&nbsp;&nbsp;星期
-            = convert_to_chinese_number news_day.wday.next
+            = convert_to_chinese_number @news_day.wday.next
     .item
       ul.page-fast-list
         li
