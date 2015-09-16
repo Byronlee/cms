@@ -1496,7 +1496,7 @@ a:hover {
 /* line 118, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .time-line-header .show-top {
   padding-left: 28px;
-  background: url(../images/2350866d.see.png) 0 12px no-repeat;
+  background: url('//krplus-cdn.b0.upaiyun.com/static-images/images/2350866d.see.png') 0 12px no-repeat;
 }
 /* line 122, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .time-line-header .nav {
@@ -1533,7 +1533,7 @@ a:hover {
   top: 4px;
   width: 20px;
   height: 20px;
-  background: url(../images/3ba9dd35.search-btn.png) center center no-repeat;
+  background: url('//krplus-cdn.b0.upaiyun.com/static-images/images/3ba9dd35.search-btn.png') center center no-repeat;
   border: none;
   cursor: pointer;
 }
