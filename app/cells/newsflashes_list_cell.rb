@@ -5,10 +5,6 @@ class NewsflashesListCell < Cell::Rails
     render
   end
 
-  def list
-    render
-  end
-
   def tags
     render
   end

@@ -122,6 +122,11 @@ module ApplicationHelper
     append_ref_to_url(post["title_link"], ref: :hot_posts)
   end
 
+  def convert_to_chinese_number(num)
+    return nil if num.blank?
+    lambda {|s| s.to_s.chars.map{|c|'〇一二三四五六七八九'[c.to_i]}.join('')}.call(num)
+  end
+
   private
 
   def relative_time(raw_time)

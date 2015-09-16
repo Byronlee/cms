@@ -62,12 +62,12 @@ class NewsflashesController < ApplicationController
 
     respond_to do |format|
       format.html do
-        # if request.xhr?
-        #   # render 'newsflashes/_list', locals: { :pdnotes => @pdnotes }, layout: false
-        # else
-        #   # columns_data = CacheClient.instance.columns_header
-        #   # @columns = JSON.parse(columns_data.present? ? columns_data : '{}')
-        # end
+        if request.xhr?
+          render 'newsflashes/_newsflashes_list', locals: { :pdnotes => @pdnotes }, layout: false
+        else
+          columns_data = CacheClient.instance.columns_header
+          @columns = JSON.parse(columns_data.present? ? columns_data : '{}')
+        end
       end
     end
   end

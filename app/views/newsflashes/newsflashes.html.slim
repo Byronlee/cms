@@ -5,7 +5,10 @@
   .main-section
     .content-wrapper.page-fast-wrapper
       = render_cell :newsflashes_list, :header
-      = render_cell :newsflashes_list, :list
+      article.single-post
+        .fase-time-line
+          = render 'newsflashes_list'
+
     .article-side
       = render_cell :newsflashes_list, :tags
       = render_cell :newsflashes_list, :hot
