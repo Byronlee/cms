@@ -1,8 +1,8 @@
 .top-articles
   h3 最热快讯
   article
-    - @newsflashes.each do |i|
+    - @newsflashes.each do |newsflash|
       section
         h2
-          a href="#" WI
-          span 半小时前
+          a href="#" = newsflash.hash_title
+        span 半小时前
