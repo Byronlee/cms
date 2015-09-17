@@ -1,0 +1,44 @@
+- first_timeline ||= nil
+- if @newsflashes.count > 0
+  - @newsflashes.each_with_hit do |newsflash, hit|
+    - if @news_day.blank? || newsflash.created_at.to_date != @news_day
+      - @news_day = newsflash.created_at.to_date
+      li
+        .time-tag class="#{'first' if(first_timeline && !(first_timeline = !first_timeline)) }"
+          img
+          span
+            |&nbsp;&nbsp;
+            = @news_day.strftime('%Y-%m-%d')
+            |&nbsp;&nbsp;星期
+            = convert_to_chinese_number @news_day.wday.next
+    li
+      span.public-time = smart_only_time_ago newsflash.created_at
+      span.tags class="tags-#{newsflash.column.try(:slug) || 'column'}" = newsflash.column.try(:name) || '专栏'
+      .item-details
+        h2
+          a href="#" data-show="false" = display_search_newsflash_title(newsflash, hit)
+        p.details-text
+          = newsflash.description_text
+          - if newsflash.news_url.present?
+            a.fast-url[href=newsflash.news_url target="_blank" rel="nofollow"]
+              | [#{newsflash.news_url_type}]
+        footer
+          span.share
+            |分享到
+            div.share-group
+              a.weixin.mobile-hide[href="javascript:void(0)" ref="nofollow" target="_blank"]
+                i.icon-weixin
+                .panel-weixin
+                  section.weixin-section
+                    p
+                      img[src="http://s.jiathis.com/qrcode.php?url=#{newsflash_show_url(newsflash)}via=wechat_qr"]
+                  h3
+                    | 打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮
+              a.weibo[href="http://share.baidu.com/s?type=text&searchPic=1&sign=on&to=tsina&url=#{newsflash_show_path(newsflash)}&title=#{('快讯 | ' + newsflash.description_text.to_s).html_safe}&pic=#{newsflash.cover}" ref="nofollow" target="_blank"]
+                i.icon-weibo
+  a.load-more.J_listLoadMore.product_notes_next_link href="#{newsflashes_search_path(q: params[:q], d: 'next', b_id: @newsflashes.results.last.id)}"
+- elsif @message.present?
+  p.search_none_info
+     = @message
+- else
+  a href="javascript:void(0)" class="load-more no-data"

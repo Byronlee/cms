@@ -55,10 +55,32 @@ class NewsflashesController < ApplicationController
       format.html do
         if request.xhr?
           @news_day = @newsflashes.first.created_at.to_date if @newsflashes.first
-          render 'newsflashes/_newsflashes_list', locals: { :pdnotes => @pdnotes }, layout: false
+          render 'newsflashes/_newsflashes_list', layout: false
         else
           columns_data = CacheClient.instance.columns_header
           @columns = JSON.parse(columns_data.present? ? columns_data : '{}')
+        end
+      end
+    end
+  end
+
+  def search
+    params[:q] = URI.unescape(params[:q]).gsub('/','') unless params[:q].blank?
+    if params[:q].blank?
+      @message = '搜索关键词不能为空'
+      @newsflashes = Newsflash.none
+    elsif params[:q].length > Settings.elasticsearch.query.max_length
+      @message = '搜索关键词过长'
+      @newsflashes = Newsflash.none
+    else
+      @newsflashes = Newsflash.search(params)
+    end
+
+    respond_to do |format|
+      format.html do
+        if request.xhr?
+          @news_day = @newsflashes.results.first.created_at.to_date if @newsflashes.results.first
+          render 'newsflashes/_search_list', layout: false
         end
       end
     end

@@ -15,7 +15,7 @@ header.time-line-header
           = link_to column['name'], newsflashes_list_path(column_slug: column['slug'])
     span.line
     .search
-      form
+      form url="#{newsflashes_search_path}" method="GET"
         div
-          input type="text" placeholder="关键字"
+          input type="text" name="q" placeholder="关键字" value="#{params[:q]}"
           button

@@ -64,13 +64,16 @@ class Newsflash < ActiveRecord::Base
   end
 
   def self.search(params)
-    tire.search(load: true, page: params[:page] || 1, per_page: params[:per_page] || 30) do
+    params[:page] ||= 1 if params[:d].present? && params[:b_id].present? && (boundary_newsfalsh = Newsflash.find_by_id(params[:b_id]))
+    tire.search(load: true, page: params[:page] || 1, per_page: params[:per_page] || 3) do
       highlight :hash_title, options: { tag: "<em class='highlight' >" }
       min_score 1
       query do
         boolean do
           must { string Tire::Utils::escape_query(params[:q].presence) || "*", default_operator: "AND" }
           must { term :_type, :newsflash }
+          must { range :created_at, { lt: boundary_newsfalsh.created_at } } if boundary_newsfalsh && params[:d] == 'next'
+          must { range :created_at, { gt: boundary_newsfalsh.created_at } } if boundary_newsfalsh && params[:d] == 'pre'
         end
       end
       sort do

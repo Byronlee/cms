@@ -1,0 +1,19 @@
+= render 'welcome/title', title: "#{params[:q]} | 氪快讯"
+= stylesheet_link_tag 'krx/page-fast-news', media: 'all'
+
+.article-detail-wrap
+  .main-section
+    .content-wrapper.page-fast-wrapper
+      = render_cell :newsflashes_list, :header, columns: @columns
+      article.single-post
+        .fase-time-line
+          ul.page-fast-list
+            = render 'search_list', first_timeline: true
+
+    .article-side
+      = render_cell :newsflashes_list, :tags
+      = render_cell :newsflashes_list, :hot
+
+= render 'layouts/footer', subnavs: [["氪快讯", newsflashes_list_path]]
+= javascript_include_tag 'krx/page-fast-news', media: 'all'
+= render 'welcome/wechat_share'
