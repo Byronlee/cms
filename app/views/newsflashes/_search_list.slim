@@ -3,7 +3,7 @@
   - @newsflashes.each_with_hit do |newsflash, hit|
     - if @news_day.blank? || newsflash.created_at.to_date != @news_day
       - @news_day = newsflash.created_at.to_date
-      li
+      .item
         .time-tag class="#{'first' if(first_timeline && !(first_timeline = !first_timeline)) }"
           = image_tag 'calendar.png', alt: ''
           span
@@ -11,7 +11,7 @@
             = @news_day.strftime('%Y-%m-%d')
             |&nbsp;&nbsp;星期
             = convert_to_chinese_number @news_day.wday.next
-    li
+    .item
       span.public-time = smart_only_time_ago newsflash.created_at
       span.tags class="tags-#{newsflash.column.try(:slug) || 'column'}" = newsflash.column.try(:name) || '专栏'
       .item-details

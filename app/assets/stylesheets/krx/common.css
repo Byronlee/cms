@@ -157,11 +157,20 @@ a img {
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.icon-arrow-up:before {
-	content: "\e60f";
+.icon-see:before {
+	content: "\e606";
 }
-.icon-qr:before {
-	content: "\e607";
+.icon-evernote:before {
+	content: "\e600";
+}
+.icon-renren:before {
+	content: "\e601";
+}
+.icon-douban:before {
+	content: "\e602";
+}
+.icon-comment:before {
+	content: "\e603";
 }
 .icon-add:before {
 	content: "\e604";
@@ -169,23 +178,17 @@ a img {
 .icon-play-circle-outline:before {
 	content: "\e605";
 }
-.icon-evernote:before {
-	content: "\e600";
+.icon-qr:before {
+	content: "\e607";
 }
-.icon-comment:before {
-	content: "\e603";
+.icon-arrow-up:before {
+	content: "\e60f";
 }
 .icon-apple:before {
 	content: "\eabf";
 }
 .icon-android:before {
 	content: "\eac1";
-}
-.icon-renren:before {
-	content: "\e601";
-}
-.icon-douban:before {
-	content: "\e602";
 }
 .icon-star:before {
 	content: "\f005";
@@ -203,10 +206,10 @@ a img {
 	content: "\f18a";
 }
 .icon-qq:before {
-	content: "\f1d6";
+	content: "\f1d7";
 }
 .icon-weixin:before {
-	content: "\f1d7";
+	content: "\f1d8";
 }
 
 /* Magnific Popup CSS */
