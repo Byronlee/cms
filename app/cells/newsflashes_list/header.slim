@@ -11,6 +11,7 @@ header.time-line-header
         |全部行业
         i.icon-arrow-up
       div.nav-list
+        = link_to '全部', newsflashes_list_path
         - @columns && @columns.each do |column|
           = link_to column['name'], newsflashes_list_path(column_slug: column['slug'])
     span.line
