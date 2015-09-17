@@ -52,6 +52,16 @@ module ApplicationHelper
     end
   end
 
+
+  def smart_only_time_ago(raw_time, days_distance = 1)
+    return raw_time if raw_time.blank?
+    if raw_time + days_distance.day < Time.now
+      raw "<abbr class=\"timeago\" title=\"#{raw_time}\">#{raw_time.strftime('%H:%M')}</abbr>"
+    else
+      raw "<time class=\"timeago\" title=\"#{raw_time}\" datetime=\"#{raw_time}\">#{relative_time(raw_time)}</time>"
+    end
+  end
+
   def nav_active(local, target)
     local = [] << local unless local.class == Array
     return 'active' if local.include? target.to_sym

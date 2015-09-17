@@ -11,7 +11,7 @@
             |&nbsp;&nbsp;星期
             = convert_to_chinese_number @news_day.wday.next
     li
-      span.public-time = smart_time_ago newsflash.created_at
+      span.public-time = smart_only_time_ago newsflash.created_at
       span.tags class="tags-#{newsflash.column.try(:slug) || 'column'}" = newsflash.column.try(:name) || '专栏'
       .item-details
         h2
