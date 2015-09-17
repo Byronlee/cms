@@ -81,6 +81,9 @@ class NewsflashesController < ApplicationController
         if request.xhr?
           @news_day = @newsflashes.results.first.created_at.to_date if @newsflashes.results.first
           render 'newsflashes/_search_list', layout: false
+        else
+          columns_data = CacheClient.instance.columns_header
+          @columns = JSON.parse(columns_data.present? ? columns_data : '{}')
         end
       end
     end
