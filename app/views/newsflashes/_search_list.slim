@@ -5,7 +5,7 @@
       - @news_day = newsflash.created_at.to_date
       li
         .time-tag class="#{'first' if(first_timeline && !(first_timeline = !first_timeline)) }"
-          img
+          = image_tag 'calendar.png', alt: ''
           span
             |&nbsp;&nbsp;
             = @news_day.strftime('%Y-%m-%d')
