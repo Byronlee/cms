@@ -68,6 +68,7 @@ class Newsflash < ActiveRecord::Base
       query do
         boolean do
           must { string Tire::Utils::escape_query(params[:q].presence) || "*", default_operator: "AND" }
+          must { term :_type, :newsflash }
         end
       end
       sort do
