@@ -15,7 +15,7 @@
       span.tags class="tags-#{newsflash.column.try(:slug) || 'column'}" = newsflash.column.try(:name) || '专栏'
       .item-details
         h2
-          a href="#" data-show="false" = newsflash.hash_title
+          a href="#" data-id="#{newsflash.id}" data-show="false" = newsflash.hash_title
         p.details-text
           = newsflash.description_text
           - if newsflash.news_url.present?
