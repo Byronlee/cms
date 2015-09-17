@@ -134,3 +134,5 @@ settings.cache={
 settings.subsite = 'http://space.36kr.com'
 
 settings.user_info_update_url = '//uc.36kr.com/#/uc/account/basic'
+
+settings.report_tip = '<p>“看完这篇还不够？如果你也在创业，并且希望自己的项目被报道，请<a href="http://chuang.36kr.com/report#/report/index" target="_blank">戳这里</a>告诉我们！”</p>'
