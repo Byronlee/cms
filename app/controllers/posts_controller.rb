@@ -58,6 +58,11 @@ class PostsController < ApplicationController
     render 'xiaozhi_news', layout: false
   end
 
+  def chouti_news
+    @post = Post.published.find_by_url_code!(params[:url_code])
+    render 'chouti_news', layout: false
+  end
+
   def feed_bdnews
     @feeds = Post.published.tagged_with('bdnews')
     @feeds = @feeds.includes(:column, author: [:krypton_authentication])
