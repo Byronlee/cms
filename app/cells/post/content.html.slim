@@ -13,3 +13,4 @@ section.article
       = display_source_urls(@post)
     - elsif @post.source_type.contribution?
       | 本文来自读者投稿，不代表 36氪 立场
+  = raw Settings.report_tip.presence
