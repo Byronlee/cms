@@ -40,6 +40,7 @@ class PostsController < ApplicationController
 
   alias_method :baidu_feed, :feed
   alias_method :xiaozhi_feed, :feed
+  alias_method :chouti_feed, :feed
   alias_method :uc_feed, :feed
 
   def bdnews

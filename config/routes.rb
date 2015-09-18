@@ -156,6 +156,8 @@ Rails.application.routes.draw do
   match '/baidu/(:url_code)' => 'posts#bdnews', via: :get, as: :post_bdnews
   match '/xiaozhi/feed/' => 'posts#xiaozhi_feed', via: :get, defaults: { format: :rss }
   match '/xiaozhi/(:url_code)' => 'posts#xiaozhi_news', via: :get, as: :xiaozhi_news
+  match '/chouti/feed/' => 'posts#chouti_feed', via: :get, defaults: { format: :rss }
+  match '/chouti/(:url_code)' => 'posts#chouti_news', via: :get, as: :chouti_news
   match '/uc/feed/' => 'posts#uc_feed', via: :get, defaults: { format: :rss }
   match '/uc/(:url_code)' => 'posts#ucnews', via: :get, as: :uc_news
   match '/p/(:url_code)(.:format)' => 'posts#show', via: :get, constraints: { format: '' }
