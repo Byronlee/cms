@@ -1352,25 +1352,26 @@ a:hover {
   font-weight: 600;
   overflow: hidden;
 }
-/* line 6, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
-.page-fast-wrapper .single-post {
+/* line 7, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+.article-detail-wrap .main-section .page-fast-wrapper article.single-post {
   position: relative;
   margin-bottom: 61px;
+  padding: 12px 35px 35px;
 }
-/* line 14, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 13, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .article-side .hot-tags,
 .article-detail-wrap .main-section .article-side .top-articles {
   padding: 14px 20px;
   font-size: 13px;
   color: #333;
 }
-/* line 19, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 18, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .article-side .hot-tags > h3,
 .article-detail-wrap .main-section .article-side .top-articles > h3 {
   padding: 0 10px 10px;
   border-bottom: 1px solid #eee;
 }
-/* line 25, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 24, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .article-side .tags-box {
   *zoom: 1;
   margin: 0 -5px;
@@ -1383,7 +1384,7 @@ a:hover {
   clear: both;
   height: 0;
 }
-/* line 29, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 28, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .article-side .tags-box a {
   float: left;
   line-height: 22px;
@@ -1393,70 +1394,70 @@ a:hover {
   background-color: #dbf0ff;
   border-radius: 2px;
 }
-/* line 37, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 36, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .article-side .tags-box a:hover {
   background-color: #3da9f7;
   color: #fff;
 }
-/* line 45, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 44, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .article-side .top-articles article {
   margin-top: 0;
 }
-/* line 49, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 48, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .article-side .top-articles article > section {
   padding: 20px 0;
   border-bottom: 1px solid #f6f6f6;
   cursor: pointer;
 }
-/* line 53, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 52, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .article-side .top-articles article > section:last-child {
   border-bottom: none;
 }
-/* line 56, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 55, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .article-side .top-articles article > section.active {
   background-color: #f3f7fb;
 }
-/* line 58, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 57, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .article-side .top-articles article > section.active .desc {
   height: auto;
   overflow: visible;
 }
-/* line 62, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 61, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .article-side .top-articles article > section.active .show {
   display: none;
 }
-/* line 65, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 64, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .article-side .top-articles article > section.active .share {
   -webkit-transform: translate(0, 0);
       -ms-transform: translate(0, 0);
           transform: translate(0, 0);
   opacity: 1;
 }
-/* line 72, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 71, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .article-side .top-articles.hot-news {
   padding: 14px 0;
 }
-/* line 74, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 73, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .article-side .top-articles.hot-news > h3 {
   margin: 0 20px;
 }
-/* line 78, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 77, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .article-side .top-articles.hot-news article > section {
   padding: 20px 30px;
 }
-/* line 85, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 84, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .article-side .top-articles h2 {
   font-weight: 600;
   line-height: 20px;
   margin-bottom: 2px;
 }
-/* line 90, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 89, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .article-side .top-articles span {
   font-size: 12px;
   color: #bbb;
   line-height: 20px;
 }
-/* line 95, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 94, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .article-side .top-articles .top {
   padding: 0 8px;
   display: inline-block;
@@ -1466,7 +1467,7 @@ a:hover {
   color: #fff;
   line-height: 16px;
 }
-/* line 104, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 103, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .article-side .top-articles .info {
   *zoom: 1;
 }
@@ -1477,25 +1478,30 @@ a:hover {
   clear: both;
   height: 0;
 }
-/* line 106, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 105, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .article-side .top-articles .info .time {
   float: left;
 }
-/* line 109, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 108, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .article-side .top-articles .info .share {
   float: right;
 }
-/* line 113, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 112, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .article-side .top-articles .desc {
   height: 0;
 }
-/* line 115, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 114, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .article-side .top-articles .desc p {
   margin: 3px 0;
   font-size: 12px;
   color: #666;
 }
-/* line 121, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 118, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+.article-detail-wrap .main-section .article-side .top-articles .desc p a{
+  color: #178fe6;
+  margin: 0 5px;
+}
+/* line 124, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .article-side .top-articles .share {
   -webkit-transform: translate(-20px, 0);
       -ms-transform: translate(-20px, 0);
@@ -1504,22 +1510,22 @@ a:hover {
   -webkit-transition: all ease .3s;
           transition: all ease .3s;
 }
-/* line 125, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 128, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .article-side .top-articles .share p {
   margin: 0;
 }
-/* line 131, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 134, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .article-side .top-articles .share-group a h3 {
   top: 0;
 }
-/* line 134, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 137, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .article-side .top-articles .share-group a i {
   width: 20px;
   height: 20px;
   line-height: 20px;
   font-size: 12px;
 }
-/* line 146, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 149, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .time-line-header {
   background-color: #3da9f7;
   padding: 0 20px;
@@ -1534,7 +1540,7 @@ a:hover {
   clear: both;
   height: 0;
 }
-/* line 152, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 155, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .time-line-header h2 {
   font-size: 20px;
   float: left;
@@ -1542,39 +1548,39 @@ a:hover {
   font-weight: normal;
   padding: 15px 0;
 }
-/* line 159, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 162, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .time-line-header h2 a {
   color: #fff;
 }
-/* line 163, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 166, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .time-line-header h2 small {
   font-size: 12px;
 }
-/* line 167, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 170, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .time-line-header .nav-right {
   float: right;
 }
-/* line 169, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 172, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .time-line-header .nav-right > a,
 .article-detail-wrap .main-section .time-line-header .nav-right > div {
   float: left;
 }
-/* line 173, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 176, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .time-line-header .all-industry,
 .article-detail-wrap .main-section .time-line-header .show-top {
   float: left;
   line-height: 18px;
   font-size: 13px;
   color: #fff;
-  padding: 12px 14px;
-  margin-top: 4px;
+  padding: 15px 14px;
+  margin-top: 2px;
 }
-/* line 181, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 184, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .time-line-header .all-industry {
   padding-right: 34px;
   position: relative;
 }
-/* line 184, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 187, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .time-line-header .all-industry i {
   position: absolute;
   right: 14px;
@@ -1582,41 +1588,41 @@ a:hover {
       -ms-transform: rotate(180deg);
           transform: rotate(180deg);
   font-size: 20px;
-  top: 10px;
+  top: 12px;
+  -webkit-transition: all ease .3s;
+          transition: all ease .3s;
 }
-/* line 192, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
-.article-detail-wrap .main-section .time-line-header .all-industry > .keywords.cur {
+/* line 196, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+.article-detail-wrap .main-section .time-line-header .all-industry.cur .keywords,
+.article-detail-wrap .main-section .time-line-header .all-industry.cur i {
   color: #e6e273;
 }
-/* line 197, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 201, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .time-line-header .line {
   float: left;
-  width: 1px;
-  height: 18px;
-  background-color: #64baf9;
-  margin-top: 16px;
+  margin-top: 17px;
 }
-/* line 204, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 205, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .time-line-header .show-top {
   padding-left: 24px;
   position: relative;
 }
-/* line 207, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 208, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .time-line-header .show-top span {
   font-size: 20px;
   position: absolute;
   left: 0;
-  top: 10px;
+  top: 12px;
 }
-/* line 213, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 214, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .time-line-header .show-top.active {
   color: #e6e273;
 }
-/* line 217, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 218, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .time-line-header .nav {
   position: relative;
 }
-/* line 220, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 221, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .time-line-header .nav:hover .nav-list {
   visibility: visible;
   -webkit-transform: scale(1);
@@ -1626,12 +1632,18 @@ a:hover {
   -webkit-transition: all 0.3s cubic-bezier(0.31, 0.57, 0.68, 1.36);
           transition: all 0.3s cubic-bezier(0.31, 0.57, 0.68, 1.36);
 }
-/* line 228, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 227, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+.article-detail-wrap .main-section .time-line-header .nav:hover .icon-arrow-up {
+  -webkit-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+          transform: rotate(0deg);
+}
+/* line 232, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .time-line-header .search {
   margin-left: 15px;
   padding: 12px 0;
 }
-/* line 231, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 235, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .time-line-header .search div {
   width: 125px;
   line-height: 26px;
@@ -1640,7 +1652,7 @@ a:hover {
   background-color: #fff;
   border-radius: 2px;
 }
-/* line 239, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 243, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .time-line-header .search button {
   position: absolute;
   right: 10px;
@@ -1651,21 +1663,22 @@ a:hover {
   border: none;
   cursor: pointer;
 }
-/* line 249, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 253, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .time-line-header .search input {
   width: 84px;
   border: none;
 }
-/* line 254, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 258, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .time-line-header .nav-list {
   position: absolute;
   width: 100%;
   top: 50px;
+  right: 0;
   background-color: #fff;
   z-index: 10;
   border: solid 1px #ddd;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
-  padding: 0 14px;
+  padding: 15px;
   visibility: hidden;
   -webkit-transform: scale(0);
       -ms-transform: scale(0);
@@ -1674,8 +1687,9 @@ a:hover {
       -ms-transform-origin: 50% 0;
           transform-origin: 50% 0;
   opacity: 0;
+  width: 280px;
 }
-/* line 267, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 273, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .time-line-header .nav-list:before {
   width: 10px;
   height: 10px;
@@ -1686,22 +1700,65 @@ a:hover {
   content: "";
   border-width: 1px 1px 0 0;
   top: -6px;
-  left: 50%;
-  margin-left: -5px;
+  right: 50px;
   background-color: #fff;
   position: absolute;
 }
-/* line 280, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
-.article-detail-wrap .main-section .time-line-header .nav-list a {
-  display: block;
-  line-height: 36px;
-  border-bottom: 1px solid #ddd;
+/* line 286, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+.article-detail-wrap .main-section .time-line-header .nav-list > div {
+  margin: 0 -2px;
 }
-/* line 284, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 289, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+.article-detail-wrap .main-section .time-line-header .nav-list a {
+  float: left;
+  line-height: 20px;
+  margin: 2px;
+  padding: 0 10px;
+  color: #666;
+}
+/* line 295, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .time-line-header .nav-list a:last-child {
   border-bottom: none;
 }
-/* line 291, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 298, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+.article-detail-wrap .main-section .time-line-header .nav-list a:hover,
+.article-detail-wrap .main-section .time-line-header .nav-list a.active {
+  background-color: #d8e8f3;
+}
+/* line 305, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+.article-detail-wrap .main-section .tools {
+  padding: 9px 20px;
+  color: #666;
+  font-size: 13px;
+  line-height: 22px;
+  background-color: #f9f9f9;
+}
+/* line 311, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+.article-detail-wrap .main-section .tools i {
+  color: #f90;
+  font-style: normal;
+}
+/* line 315, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+.article-detail-wrap .main-section .tools a {
+  padding: 0 12px;
+  background-color: #dbf0ff;
+  color: #4a9fd8;
+  border-radius: 2px;
+}
+/* line 321, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+.article-detail-wrap .main-section .tools .line {
+  position: relative;
+  height: 15px;
+  background-color: #f0f0f0;
+  margin: 0 8px;
+  top: 3px;
+}
+/* line 328, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+.article-detail-wrap .main-section .tools .clear-btn {
+  background: none;
+  padding: 0;
+}
+/* line 335, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .fase-time-line {
   margin-left: 75px;
   border-left: 1px solid #e8f0f6;
@@ -1709,12 +1766,12 @@ a:hover {
   padding: 0 10px;
   margin-top: 10px;
 }
-/* line 297, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 341, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .fase-time-line .time-tag {
   line-height: 24px;
   position: relative;
 }
-/* line 302, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 346, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .fase-time-line .time-tag:before {
   content: "";
   position: absolute;
@@ -1727,7 +1784,7 @@ a:hover {
   margin-top: -3px;
   z-index: 10;
 }
-/* line 315, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 359, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .fase-time-line .time-tag.first:after {
   content: "";
   width: 1px;
@@ -1737,16 +1794,16 @@ a:hover {
   top: -20px;
   position: absolute;
 }
-/* line 326, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 370, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .fase-time-line .time-tag img {
   vertical-align: middle;
 }
-/* line 329, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 373, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .fase-time-line .time-tag span {
   position: relative;
   top: 2px;
 }
-/* line 334, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 378, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .fase-time-line > div {
   *zoom: 1;
   list-style: none;
@@ -1760,38 +1817,38 @@ a:hover {
   clear: both;
   height: 0;
 }
-/* line 339, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 383, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .fase-time-line > div.ac {
   background-color: #f7fbff;
 }
-/* line 341, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 385, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .fase-time-line > div.ac .details-text,
 .article-detail-wrap .main-section .fase-time-line > div.ac footer {
   display: block;
 }
-/* line 345, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 389, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .fase-time-line > div footer {
   text-align: right;
   margin-top: 3px;
   display: none;
   color: #666;
 }
-/* line 350, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 394, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .fase-time-line > div footer span {
   text-align: left;
 }
-/* line 353, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 397, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .fase-time-line > div footer .panel-weixin h3 {
   top: 0;
 }
-/* line 357, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 401, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .fase-time-line > div footer .share i {
   width: 20px;
   height: 20px;
   font-size: 12px;
   line-height: 20px;
 }
-/* line 369, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 413, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .public-time {
   position: absolute;
   width: 75px;
@@ -1801,7 +1858,7 @@ a:hover {
   font-size: 12px;
   color: #bbb;
 }
-/* line 377, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 421, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .public-time:before {
   content: "";
   position: absolute;
@@ -1814,39 +1871,39 @@ a:hover {
   right: -13px;
   margin-top: -4px;
 }
-/* line 390, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 434, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .item-details {
   margin-left: 108px;
 }
-/* line 392, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 436, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .item-details h2 {
   font-size: 15px;
   line-height: 18px;
   font-weight: 600;
 }
-/* line 396, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 440, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .item-details h2 a {
   color: #666;
   word-break: break-all;
 }
-/* line 401, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 445, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .item-details .details-text {
   margin-top: 15px;
   color: #666;
   line-height: 17px;
   font-size: 13px;
 }
-/* line 406, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 450, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .item-details .details-text a {
   color: #178fe6;
   margin: 0 5px;
 }
-/* line 411, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 455, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .item-details .details-text,
 .article-detail-wrap .main-section .item-details footer {
   display: none;
 }
-/* line 416, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 460, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .page-fast-wrapper .tags {
   margin-right: 15px;
   float: left;
@@ -1854,47 +1911,47 @@ a:hover {
   text-align: center;
   color: #fff;
 }
-/* line 422, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 466, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .page-fast-wrapper .tags-o2o {
   background-color: #f0cc23;
 }
-/* line 425, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 469, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .page-fast-wrapper .tags-fun {
   background-color: #ff6161;
 }
-/* line 428, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 472, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .page-fast-wrapper .tags-column {
   background-color: #f45170;
 }
-/* line 431, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 475, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .page-fast-wrapper .tags-company {
   background-color: #1f90f2;
 }
-/* line 434, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 478, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .page-fast-wrapper .tags-hardware {
   background-color: #a188dd;
 }
-/* line 437, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 481, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .page-fast-wrapper .tags-kr-headline {
   background-color: #ec1414;
 }
-/* line 440, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 484, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .page-fast-wrapper .tags-edu {
   background-color: #51cc96;
 }
-/* line 443, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 487, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .page-fast-wrapper .tags-fit {
   background-color: #42d1db;
 }
-/* line 446, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 490, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .page-fast-wrapper .tags-service {
   background-color: #678ce0;
 }
-/* line 449, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 493, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .page-fast-wrapper .tags-internet {
   background-color: #f28d19;
 }
-/* line 453, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 497, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .page-fast-wrapper .load-more {
   border-radius: 2px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -1912,32 +1969,32 @@ a:hover {
   width: 100%;
 }
 @media (max-width: 800px) {
-  /* line 468, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+  /* line 512, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
   .article-detail-wrap .main-section .page-fast-wrapper .load-more {
     margin-top: 10px;
   }
 }
-/* line 471, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 515, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .page-fast-wrapper .load-more:before {
   content: '加载更多';
   display: inline-block;
 }
-/* line 475, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 519, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .page-fast-wrapper .load-more:hover {
   background: #bccbd9;
 }
-/* line 478, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 522, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .page-fast-wrapper .load-more.loading,
 .article-detail-wrap .main-section .page-fast-wrapper .load-more.loading:hover {
   background: #ffffff;
   cursor: default;
 }
-/* line 482, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 526, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .page-fast-wrapper .load-more.loading:before,
 .article-detail-wrap .main-section .page-fast-wrapper .load-more.loading:hover:before {
   content: "正在加载...";
 }
-/* line 485, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 529, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .page-fast-wrapper .load-more.loading:after,
 .article-detail-wrap .main-section .page-fast-wrapper .load-more.loading:hover:after {
   content: " ";
@@ -1949,15 +2006,22 @@ a:hover {
   vertical-align: middle;
   margin-left: 10px;
 }
-/* line 496, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 540, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .page-fast-wrapper .load-more.no-data,
 .article-detail-wrap .main-section .page-fast-wrapper .load-more.no-data:hover {
   cursor: not-allowed;
   color: #aaaaaa;
   background: #f4f4f4;
 }
-/* line 501, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+/* line 545, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .page-fast-wrapper .load-more.no-data:before,
 .article-detail-wrap .main-section .page-fast-wrapper .load-more.no-data:hover:before {
   content: "没有更多数据了";
+}
+/* line 551, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+.article-detail-wrap .main-section .line {
+  width: 1px;
+  height: 18px;
+  background-color: #64baf9;
+  display: inline-block;
 }

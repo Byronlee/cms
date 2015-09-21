@@ -5,6 +5,8 @@
       section data-id="#{nf.id}"
         .section-inner
           h2 data-stat-click="kuaixunbiaoti.#{index.next}.#{nf.id}.click"
+            - if nf.is_top?
+              span.top 置顶
             = nf.hash_title
           span.info.show
             = smart_time_ago nf.created_at

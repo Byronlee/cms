@@ -3,6 +3,8 @@ class NewsflashesListCell < Cell::Rails
 
   def header(args)
     @columns = args[:columns]
+    @column = args[:column]
+    @nf_count = args[:nf_count]
     render
   end
 

@@ -2,9 +2,9 @@
 = stylesheet_link_tag 'krx/page-fast-news', media: 'all'
 
 .article-detail-wrap
-  .main-section
+  .main-section.page-fast-main
     .content-wrapper.page-fast-wrapper
-      = render_cell :newsflashes_list, :header, columns: @columns
+      = render_cell :newsflashes_list, :header, columns: @columns, nf_count: @newsflashes.total_count, column: @column
       article.single-post
         .fase-time-line
           = render 'newsflashes_list', first_timeline: true
