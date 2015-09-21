@@ -19,6 +19,7 @@
 #  column_id                :integer
 #  extra                    :text
 #  display_in_infoflow      :boolean
+#  pin                      :boolean          default(FALSE)
 #
 
 class Newsflash < ActiveRecord::Base
@@ -42,6 +43,7 @@ class Newsflash < ActiveRecord::Base
   after_destroy :update_new_flash_cache, :update_info_flows_cache
 
   scope :recent,     -> { order('created_at desc') }
+  scope :pins,     -> { where(pin: true).order('created_at desc') }
   scope :top_recent, -> { order('toped_at desc nulls last, created_at desc') }
   scope :to_info_flow, -> { where(display_in_infoflow: true) }
   scope :newsflashes, -> { tagged_with('_newsflash') }

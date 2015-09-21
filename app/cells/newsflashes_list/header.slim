@@ -4,7 +4,7 @@ header.time-line-header
     |&nbsp;
     small 互联网创业大事记
   .nav-right
-    a.show-top href="#"
+    a.show-top href=newsflashes_list_path(pin: true)
       span.icon-see
       |只看头条
     span.line
@@ -27,8 +27,8 @@ header.time-line-header
   .tools
     span
       | 查看条件：
-    a[href="javascript:viod(0)" style="cursor: default;"]
-      = params[:q] || params[:tag] || @column.try(:name)
+    span.search-express
+      = params[:q] || params[:tag] || @column.try(:name) || ('头条' if params[:pin].present?)
     span.line
     span
       | 共

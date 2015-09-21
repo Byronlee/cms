@@ -10,7 +10,7 @@
           = render 'newsflashes_list', first_timeline: true
 
     .article-side
-      = render_cell :newsflashes_list, :tags, num: 20
+      = render_cell :newsflashes_list, :tags, num: 20, from: :newsflash_index_tags_cloud
       = render_cell :newsflashes_list, :hot
 
 = render 'layouts/footer', subnavs: [["氪快讯", newsflashes_list_path]]

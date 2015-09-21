@@ -56,6 +56,7 @@
 
       - if params[:ptype].eql? "_newsflash"
         = f.input :display_in_infoflow, as: :boolean
+        = f.input :pin, as: :boolean
       div.form-actions
         = f.button :submit, data: { disable_with: "submitting..." }, class: "btn btn-primary"
 javascript:

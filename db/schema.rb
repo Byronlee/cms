@@ -158,6 +158,7 @@ ActiveRecord::Schema.define(version: 20150922035002) do
     t.integer  "column_id"
     t.text     "extra"
     t.boolean  "display_in_infoflow"
+    t.boolean  "pin",                                   default: false
   end
 
   add_index "newsflashes", ["created_at"], name: "index_newsflashes_on_created_at", using: :btree
