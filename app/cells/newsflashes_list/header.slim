@@ -23,7 +23,7 @@ header.time-line-header
         div
           input type="text" name="q" placeholder="关键字" value="#{params[:q]}"
           button
-- unless params.count == 3
+- if params.count != 3 || params[:q].present?
   .tools
     span
       | 查看条件：
