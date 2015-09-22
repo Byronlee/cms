@@ -4,7 +4,7 @@
 .article-detail-wrap
   .main-section.page-fast-main
     .content-wrapper.page-fast-wrapper
-      = render_cell :newsflashes_list, :header, columns: @columns, nf_count: @newsflashes.total_count, column: @column
+      = render_cell :newsflashes_list, :header, columns: @columns, nf_count: @newsflashes.try(:total_count), column: @column
       article.single-post
         .fase-time-line
           = render 'search_list', first_timeline: true
