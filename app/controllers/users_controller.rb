@@ -33,12 +33,16 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html do
         if request.xhr?
-          render 'users/_list', locals: { :posts => @posts }, layout: false 
+          render 'users/_list', locals: { :posts => @posts }, layout: false
         end
       end
-      format.json do 
+      format.json do
         render json: Post.posts_to_json(@posts)
       end
     end
+  end
+
+  def current
+    return if current_user.blank?
   end
 end
