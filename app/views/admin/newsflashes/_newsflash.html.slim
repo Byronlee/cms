@@ -12,6 +12,8 @@ tr
       span.label.label-success title='置顶显示' 置顶
     - if newsflash.display_in_infoflow?
       span.label.label-info title='推送至信息流' style="margin-left: 5px;" 信息流
+    - if newsflash.pin?
+      span.label.label-warning title='氪头条' style="margin-left: 5px;" 氪头条
   td.text_center = newsflash.cache_views_count
   td.text_center data-toggle='tooltip' title="#{newsflash.created_at}" = smart_time_ago newsflash.created_at, 30
   td.text_center
