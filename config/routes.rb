@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
-  root 'welcome#index'
+  root 'welcome#index', defaults: { format: :html }
   get 'search', to: 'search#search'
 
   # TODO 所有的 only: [] 全部改成 namespace :users，去掉所有的 only, except

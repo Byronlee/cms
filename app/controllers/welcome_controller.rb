@@ -53,13 +53,13 @@ class WelcomeController < ApplicationController
       end
       format.all do
         if request.xhr?
-          render 'welcome/_info_flow_items', locals: {
+          render 'welcome/_info_flow_items.html', locals: {
             :posts_with_ads => @posts_with_ads,
             :first_url_code => @first_url_code,
             :last_url_code => @last_url_code
           }, layout: false
         else
-          render :index
+          render 'index.html'
         end
       end
     end
