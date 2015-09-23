@@ -37,5 +37,6 @@ javascript:
     var s_type = $("select#s_type");
     $('.input-small').addClass('hidden');
     $('#s_' + s_type.val()).removeClass('hidden')
+    $("input:hidden").empty();
     $('#s_' + s_type.val()).val("#{@type_value}");
   });

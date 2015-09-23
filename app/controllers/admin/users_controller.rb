@@ -44,6 +44,7 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def simple_search
+    @type_value = params[:s][params[:s][:type].to_sym]
     return User.where(id: params[:s][:id]) if params[:s][:type].eql?('id')
     return User.where(sso_id: params[:s][:sso_id]) if params[:s][:type].eql?('sso_id')
     User.where("#{params[:s][:type]} like '%#{params[:s][params[:s][:type].to_sym]}%'")
