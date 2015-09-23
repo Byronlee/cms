@@ -4,17 +4,24 @@ header.time-line-header
     |&nbsp;
     small 互联网创业大事记
   .nav-right
-    a.show-top href=newsflashes_list_path(pin: true)
+    a.show-top class="#{ 'active' if params[:pin].present?}" href=newsflashes_list_path(pin: true)
       span.icon-see
       |只看头条
     span.line
     .nav
-      a.all-industry.cur[href=newsflashes_list_path]
-        span.keywords
-          | 全部行业
-        i.icon-arrow-ups
+      - if @column.try(:name)
+        a.all-industry.cur[href='javascript:void(0)']
+          span.keywords
+            = @column.try(:name)
+          i.icon-arrow-ups
+      - else
+        a.all-industry[href='javascript:void(0)']
+          span.keywords
+            | 全部行业
+          i.icon-arrow-ups
       .nav-list
         .clearfix
+          = link_to '全部', newsflashes_list_path
           - @columns && @columns.each do |column|
             = link_to column['name'], newsflashes_list_path(column_slug: column['slug']), class: "#{'active' if params[:column_slug].to_s.eql?(column['slug'])}"
     span.line
