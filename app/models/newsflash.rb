@@ -67,7 +67,7 @@ class Newsflash < ActiveRecord::Base
 
   def self.search(params)
     params[:page] ||= 1 if params[:d].present? && params[:b_id].present? && (boundary_newsfalsh = Newsflash.find_by_id(params[:b_id]))
-    tire.search(load: true, page: params[:page] || 1, per_page: params[:per_page] || 3) do
+    tire.search(load: true, page: params[:page] || 1, per_page: params[:per_page] || 30) do
       highlight :hash_title, options: { tag: "<em class='highlight' >" }
       min_score 1
       query do
