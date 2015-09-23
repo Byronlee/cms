@@ -30,9 +30,8 @@
 #  favorites_count        :integer
 #  company_keywords       :string(255)      default([]), is an Array
 #  favoriter_sso_ids      :integer          default([]), is an Array
-#  column_name            :string(255)
-#  api_hits_count         :integer          default(0)
 #  related_post_url_codes :integer          default([]), is an Array
+#  seo_meta               :text
 #
 
 require "spec_helper"

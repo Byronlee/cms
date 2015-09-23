@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150907034620) do
+ActiveRecord::Schema.define(version: 20150922035002) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -122,9 +122,9 @@ ActiveRecord::Schema.define(version: 20150907034620) do
     t.integer  "url_code"
     t.string   "state"
     t.string   "section"
+    t.boolean  "hidden_title"
     t.text     "display_position"
     t.text     "summary"
-    t.boolean  "hidden_title"
     t.string   "section_text"
   end
 
@@ -198,9 +198,8 @@ ActiveRecord::Schema.define(version: 20150907034620) do
     t.integer  "favorites_count"
     t.string   "company_keywords",       default: [], array: true
     t.integer  "favoriter_sso_ids",      default: [], array: true
-    t.string   "column_name"
-    t.integer  "api_hits_count",         default: 0
     t.integer  "related_post_url_codes", default: [], array: true
+    t.text     "seo_meta"
   end
 
   add_index "posts", ["column_id"], name: "index_posts_on_column_id", using: :btree

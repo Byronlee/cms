@@ -18,6 +18,12 @@ settings.elasticsearch = {
   }
 }
 
+settings.kr_seo_server = {
+  development_url: 'http://sm.dev.36tr.com',
+  production_url: 'http://sm.36tr.com',
+  test_url: 'http://sm.test.36tr.com'
+}
+
 settings.kr_earch_server = {
   development_url: 'http://rong.dev.36kr.com/news/receiver/v1',
   production_url: 'http://rong.dev.36kr.com/news/receiver/v1',
