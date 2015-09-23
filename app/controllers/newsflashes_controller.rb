@@ -35,7 +35,6 @@ class NewsflashesController < ApplicationController
     elsif b_pdnote && params[:d] == 'prev'
       @pdnotes = @pdnotes.where("newsflashes.created_at > ?", b_newsflash.created_at)
     end
-
     @pdnotes = @pdnotes.recent.limit 5
 
     respond_to do |format|
