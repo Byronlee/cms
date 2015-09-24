@@ -3,7 +3,7 @@ require File.join(Rails.root, 'lib/seo.rb')
 namespace :seo do
   desc 'Writer seo keyword'
   task :push => :environment do
-    posts = Post.published
+    posts = Post.published.recent
     total_count = posts.count
     succesed = failed = 0
     progressbar = ProgressBar.create(total: total_count, format: '%a %bᗧ%i %p%% %t')
@@ -23,7 +23,7 @@ namespace :seo do
 
   desc 'Read seo keyword'
   task :pull, [:url_code] => :environment do |t, args|
-    posts = Post.published
+    posts = Post.published.recent
     total_count = posts.count
     succesed = failed = 0
     progressbar = ProgressBar.create(total: total_count, format: '%a %bᗧ%i %p%% %t')
