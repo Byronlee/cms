@@ -1,6 +1,6 @@
 - if @tags.present?
   .vendor-links.hot-tags
     h3 氪热点
-    .tags-box
+    .tags-box data-stat-module='keredian.kuaixundanduye'
       - @tags.each do | tag |
-        = link_to tag.name, newsflashes_list_path(tag: tag.name)
+        = link_to tag.name, newsflashes_list_path(tag: tag.name), 'data-stat-click' => "tag.#{tag.name}.click"
