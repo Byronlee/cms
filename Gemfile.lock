@@ -698,7 +698,7 @@ DEPENDENCIES
   responders
   rspec-rails (~> 2.14.1)
   rspec-sidekiq (~> 1.0.0)
-  ruby-progressbar (~> 1.7.1)
+  ruby-progressbar
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   shoulda-matchers (~> 2.6.1)

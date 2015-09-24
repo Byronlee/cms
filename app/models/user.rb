@@ -50,6 +50,8 @@ class User < ActiveRecord::Base
   has_many :favorites
   has_many :related_links
 
+  scope :recent_editor, -> { where(role: 'editor').order('updated_at desc') }
+
   typed_store :extra do |s|
     s.string :admin_post_manage_session_path,  default: ''
     s.datetime :last_comment_at, default: Time.now

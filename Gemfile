@@ -31,7 +31,7 @@ gem 'faraday', '~> 0.9.0'
 #gem 'typhoeus'
 gem "kaminari", "~> 0.15.1"
 gem "tire", "~> 0.6.2"
-gem 'ruby-progressbar', "~> 1.7.1"
+gem 'ruby-progressbar'
 gem 'rails-observers'
 gem 'spreadsheet'
 
@@ -101,17 +101,8 @@ gem "less-rails"
 gem "twitter-bootstrap-rails"
 gem "rails-assets-html5shiv", "~> 3.7.0"
 #gem "rails-assets-respond", "~> 1.4.0"
-
+gem "annotate"
 gem 'unicorn'
-
-group :development do
-  # gem "better_errors", "~> 1.1.0"
-  # gem "binding_of_caller", "~> 0.7.2"
-  gem "puma", "~> 2.8.0"
-  gem "quiet_assets", "~> 1.0.2"
-  gem "annotate"
-  gem 'spring'
-end
 
 group :development, :test do
   gem "capsum", "~> 1.0.0", require: false
@@ -126,6 +117,11 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'guard-livereload'
   #gem 'web-console', '~> 2.0'
+  # gem "better_errors", "~> 1.1.0"
+  # gem "binding_of_caller", "~> 0.7.2"
+  gem "puma", "~> 2.8.0"
+  gem "quiet_assets", "~> 1.0.2"
+  gem 'spring'
 end
 
 group :test do

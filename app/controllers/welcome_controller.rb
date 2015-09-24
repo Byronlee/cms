@@ -35,6 +35,10 @@ class WelcomeController < ApplicationController
     @posts = info_flow.posts
   end
 
+  def posts_site_map
+    @author = User.recent_editor
+  end
+
   private
 
   def paginate_by_id_request?
