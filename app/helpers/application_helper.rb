@@ -55,7 +55,7 @@ module ApplicationHelper
 
   def smart_only_time_ago(raw_time, days_distance = 1)
     return raw_time if raw_time.blank?
-    if raw_time + days_distance.day < Time.now
+    if raw_time.to_date + (days_distance - 1).day < Time.now.to_date
       raw "<abbr class=\"timeago\" title=\"#{raw_time}\">#{raw_time.strftime('%H:%M')}</abbr>"
     else
       raw "<time class=\"timeago\" title=\"#{raw_time}\" datetime=\"#{raw_time}\">#{relative_time(raw_time)}</time>"
