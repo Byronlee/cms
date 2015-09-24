@@ -8,7 +8,7 @@
       | 创业动态
   .wrap
     .panel.fast-news-panel data-stat-module="Kuaixunmokuai"
-      .tags-box
+      .tags-box.mobile-hide
         = render_cell :newsflashes_list, :tags, num: 15, from: :welcome_newsflash_index_tags_cloud
       div
         = render_cell :newsflashes, :index

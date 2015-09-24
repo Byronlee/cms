@@ -18,12 +18,12 @@ header.time-line-header
         a.all-industry.cur[href='javascript:void(0)' data-stat-hover = "quanbuhangye.hover"]
           span.keywords
             = @column.try(:name)
-          i.icon-arrow-ups
+          i.icon-arrow-up
       - else
         a.all-industry[href='javascript:void(0)' data-stat-hover = "quanbuhangye.hover"]
           span.keywords
             | 全部行业
-          i.icon-arrow-ups
+          i.icon-arrow-up
       .nav-list
         .clearfix
           = link_to '全部', newsflashes_list_path, 'data-stat-click' => "quanbuhangye.quanbu.click"
