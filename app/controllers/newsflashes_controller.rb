@@ -23,6 +23,7 @@ class NewsflashesController < ApplicationController
     Newsflash.transaction do
       Newsflash.where(id: params[:ids]).map(&:increase_views_count)
     end
+
     render json: {:result => "success"}.to_json
   end
 
