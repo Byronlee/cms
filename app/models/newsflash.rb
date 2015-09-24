@@ -19,6 +19,7 @@
 #  column_id                :integer
 #  extra                    :text
 #  display_in_infoflow      :boolean
+#  pin                      :boolean          default(FALSE)
 #
 
 class Newsflash < ActiveRecord::Base
@@ -42,8 +43,11 @@ class Newsflash < ActiveRecord::Base
   after_destroy :update_new_flash_cache, :update_info_flows_cache
 
   scope :recent,     -> { order('created_at desc') }
+  scope :pins,     -> { where(pin: true).order('created_at desc') }
   scope :top_recent, -> { order('toped_at desc nulls last, created_at desc') }
   scope :to_info_flow, -> { where(display_in_infoflow: true) }
+  scope :newsflashes, -> { tagged_with('_newsflash') }
+  scope :product_notes, -> { tagged_with('_pdnote') }
   validates :news_url, length: { maximum: 254 }
 
   mapping do
@@ -62,6 +66,7 @@ class Newsflash < ActiveRecord::Base
   end
 
   def self.search(params)
+    params[:page] ||= 1 if params[:d].present? && params[:b_id].present? && (boundary_newsfalsh = Newsflash.find_by_id(params[:b_id]))
     tire.search(load: true, page: params[:page] || 1, per_page: params[:per_page] || 30) do
       highlight :hash_title, options: { tag: "<em class='highlight' >" }
       min_score 1
@@ -69,6 +74,8 @@ class Newsflash < ActiveRecord::Base
         boolean do
           must { string Tire::Utils::escape_query(params[:q].presence) || "*", default_operator: "AND" }
           must { term :_type, :newsflash }
+          must { range :created_at, { lt: boundary_newsfalsh.created_at } } if boundary_newsfalsh && params[:d] == 'next'
+          must { range :created_at, { gt: boundary_newsfalsh.created_at } } if boundary_newsfalsh && params[:d] == 'pre'
         end
       end
       sort do
@@ -102,6 +109,16 @@ class Newsflash < ActiveRecord::Base
 
   def self.find_newsflashes_by_datetime(column, start_time, end_time)
     column.newsflashes.tagged_with('_newsflash').where(created_at: start_time..end_time)
+  end
+
+  def self.paginate(newsflashes, params)
+    b_newsflash = Newsflash.find(params[:b_id]) if params[:b_id]
+    if b_newsflash && params[:d] == 'next'
+      newsflashes = newsflashes.where("newsflashes.created_at < ?", b_newsflash.created_at)
+    elsif b_newsflash && params[:d] == 'prev'
+      newsflashes = newsflashes.where("newsflashes.created_at > ?", b_newsflash.created_at)
+    end
+    newsflashes = newsflashes.recent.page(1).per(params[:per_page] || 30)
   end
 
   private

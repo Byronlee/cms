@@ -173,6 +173,8 @@ Rails.application.routes.draw do
   match '/clipped/touch_views', :controller => 'newsflashes', :action => 'touch_views', via: :post, as: :newsflash_touch_views
   match '/product_notes', :controller => 'newsflashes', :action => 'product_notes', ptype: '_pdnote', via: :get, as: :product_notes
   match '/product_notes/feed/', :controller => 'newsflashes', :action => 'feed', ptype: '_pdnote', via: :get, defaults: { format: :rss }
+  match '/newsflashes/', :controller => 'newsflashes', :action => 'newsflashes', ptype: '_newsflash', via: :get, as: :newsflashes_list
+  match '/newsflashes/search', :controller => 'newsflashes', :action => 'search', via: :get, as: :newsflashes_search
   match '/changelog', :controller => 'welcome', :action => 'changes', via: :get, as: :changes
   match '/posts/:user_domain', to: 'users#posts', via: :get, as: :user_domain_posts
 

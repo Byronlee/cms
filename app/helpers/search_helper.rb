@@ -3,5 +3,10 @@ module SearchHelper
     return raw hit['highlight']['title'].first if hit['highlight']
     raw post.title
   end
+
+  def display_search_newsflash_title(newflash, hit)
+    return raw hit['highlight']['hash_title'].first if hit['highlight']
+    raw newflash.hash_title
+  end
 end
 

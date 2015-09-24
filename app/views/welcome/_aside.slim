@@ -8,7 +8,10 @@
       | 创业动态
   .wrap
     .panel.fast-news-panel data-stat-module="Kuaixunmokuai"
-      = render_cell :newsflashes, :index
+      .tags-box.mobile-hide
+        = render_cell :newsflashes_list, :tags, num: 15, from: :welcome_newsflash_index_tags_cloud
+      div
+        = render_cell :newsflashes, :index
     .panel.next-panel style="display: none" data-stat-module="NEXTmokuai"
       .next-inner
       .next-link

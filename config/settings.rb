@@ -1,4 +1,4 @@
-settings.site = Rails.env.production? ? 'https://36kr.com' : 'http://client.36kr.com'
+settings.site = Rails.env.production? ? 'https://36kr.com' : 'http://kid.36kr.com'
 
 settings.writer = {
   host: 'http://writer.36kr.com/posts/new'

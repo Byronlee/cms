@@ -48,3 +48,5 @@ html
     script[type="text/javascript" src="http://m.baidu.com/static/news/sn_app_detail/js/smartnews-aio.js"]
 
     = render_cell :head, :ga, current_user: current_user
+    - cache [:layout, :footer, baidu_statistics = FragmentTemplate.find_by_key(:baidu_statistics)] do
+      = render_fragment_template_content baidu_statistics

@@ -23,24 +23,63 @@ class NewsflashesController < ApplicationController
     Newsflash.transaction do
       Newsflash.where(id: params[:ids]).map(&:increase_views_count)
     end
+
     render json: {:result => "success"}.to_json
   end
 
   def product_notes
-    b_pdnote = Newsflash.find(params[:b_id]) if params[:b_id]
-    @pdnotes = Newsflash.tagged_with('_pdnote')
-    if b_pdnote && params[:d] == 'next'
-      @pdnotes = @pdnotes.where("newsflashes.created_at < ?", b_pdnote.created_at)
-    elsif b_pdnote && params[:d] == 'prev'
-      @pdnotes = @pdnotes.where("newsflashes.created_at > ?", b_newsflash.created_at)
-    end
-
-    @pdnotes = @pdnotes.recent.limit 5
+    @pdnotes = Newsflash.product_notes
+    @pdnotes = Newsflash.paginate(@pdnotes, params.merge({per_page: 5}))
 
     respond_to do |format|
       format.html do
         if request.xhr?
-          render 'newsflashes/_list', locals: { :pdnotes => @pdnotes }, layout: false
+          render 'newsflashes/_product_notes_list', locals: { :pdnotes => @pdnotes }, layout: false
+        else
+          columns_data = CacheClient.instance.columns_header
+          @columns = JSON.parse(columns_data.present? ? columns_data : '{}')
+        end
+      end
+    end
+  end
+
+  def newsflashes
+    @newsflashes = Newsflash.newsflashes
+    @column = Column.find_by_slug(params[:column_slug]) if params[:column_slug]
+    @newsflashes = @newsflashes.where("column_id = ? ", @column.id) if @column.present?
+    @newsflashes = @newsflashes.tagged_with(params[:tag]) if params[:tag]
+    @newsflashes = @newsflashes.pins if params[:pin]
+    @newsflashes = Newsflash.paginate(@newsflashes, params)
+    respond_to do |format|
+      format.html do
+        if request.xhr?
+          @news_day = @newsflashes.first.created_at.to_date if @newsflashes.first
+          render 'newsflashes/_newsflashes_list', layout: false
+        else
+          columns_data = CacheClient.instance.columns_header
+          @columns = JSON.parse(columns_data.present? ? columns_data : '{}')
+        end
+      end
+    end
+  end
+
+  def search
+    params[:q] = URI.unescape(params[:q]).gsub('/','') unless params[:q].blank?
+    if params[:q].blank?
+      @message = '搜索关键词不能为空'
+      @newsflashes = Newsflash.none
+    elsif params[:q].length > Settings.elasticsearch.query.max_length
+      @message = '搜索关键词过长'
+      @newsflashes = Newsflash.none
+    else
+      @newsflashes = Newsflash.search(params)
+    end
+
+    respond_to do |format|
+      format.html do
+        if request.xhr?
+          @news_day = @newsflashes.results.first.created_at.to_date if @newsflashes.results.first
+          render 'newsflashes/_search_list', layout: false
         else
           columns_data = CacheClient.instance.columns_header
           @columns = JSON.parse(columns_data.present? ? columns_data : '{}')

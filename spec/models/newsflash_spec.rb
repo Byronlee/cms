@@ -19,6 +19,7 @@
 #  column_id                :integer
 #  extra                    :text
 #  display_in_infoflow      :boolean
+#  pin                      :boolean          default(FALSE)
 #
 
 require 'spec_helper'

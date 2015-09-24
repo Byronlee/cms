@@ -71,7 +71,6 @@ function initFastSection(){
      * 初始化侧边快速简讯部分交互
      */
 
-
     function setFastSection(){
         if(deviceType=='desktop'){
             var targetHeight = window.innerHeight - 210;
