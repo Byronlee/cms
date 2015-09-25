@@ -37,4 +37,16 @@ namespace :seo do
     end
   end
 
+  desc 'Export all posts url_code text'
+  task :all_posts_url_code => :environment do
+    all_posts_url_code_file ||= "#{Rails.root}/public/all_posts_url_code-#{DateTime.now.strftime("%F")}.txt"
+    Dir.mkdir(File.dirname(all_posts_url_code_file)) if !FileTest.exists?(File.dirname(all_posts_url_code_file))
+    posts = Post.published.recent
+    CSV.open(all_posts_url_code_file, "wb") do |csv2|
+      posts.each do |post|
+        csv2 << [post.url_code]
+      end
+    end
+  end
+
 end
