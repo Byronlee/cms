@@ -52,6 +52,10 @@ module PostsHelper
     remove_blank_lines sanitize(text, tags: tags, attributes: attributes)
   end
 
+  def seo meta
+    [ Nokogiri::HTML.fragment(meta).css('title').to_html, Nokogiri::HTML.fragment(meta).css('meta').to_html ]
+  end
+
   def bdnews_sanitize_tags(text)
     content = remove_blank_lines(text)
     content = sanitize(content, tags: %w(p, b, img), attributes: %w(class data-url src  data-videourl))

@@ -1,2 +1,6 @@
 - content_for :title do
-  = content_tag :title, "#{title} | 36氪", s_t: onblur_title(title || '')
+  -if @post.nil?
+    = content_tag :title, "#{title} | 36氪", s_t: onblur_title(title || '')
+  -else
+    = raw seo(@post.seo_meta).first
+    = raw seo(@post.seo_meta).last
