@@ -2,15 +2,22 @@ require File.join(Rails.root, 'lib/seo.rb')
 
 namespace :seo do
   desc 'Writer seo keyword'
-  task :push => :environment do
-    posts = Post.published.recent
+  task :push, [:limit] => :environment do |t, args|
+    template_id = 'www-article'
+    limit = args[:limit].to_i
+    if limit == 0
+      posts = Post.published.recent
+    else
+      posts = Post.published.recent.limit(limit)
+    end
     total_count = posts.count
     succesed = failed = 0
     progressbar = ProgressBar.create(total: total_count, format: '%a %bᗧ%i %p%% %t')
     posts.each do |post|
-      response = Seo.writer post
-      #msg = ActiveSupport::JSON.decode(response.body)
-      if response.success?
+      params = { id: post.url_code, content: post.content, title: post.title, keywords: post.tag_list.to_s, description: post.summary }
+      response = Seo.writer template_id, params
+      data = ActiveSupport::JSON.decode(response.body)
+      if response.success? and data['code'] == 0
         progressbar.increment
         succesed += 1
       else
@@ -22,13 +29,19 @@ namespace :seo do
   end
 
   desc 'Read seo keyword'
-  task :pull, [:url_code] => :environment do |t, args|
-    posts = Post.published.recent
+  task :pull, [:limit] => :environment do |t, args|
+    template_id = 'www-article'
+    limit = args[:limit].to_i
+    if limit == 0
+      posts = Post.published.recent
+    else
+      posts = Post.published.recent.limit(limit)     
+    end
     total_count = posts.count
     succesed = failed = 0
     progressbar = ProgressBar.create(total: total_count, format: '%a %bᗧ%i %p%% %t')
     posts.each do |post|
-      response = Seo.read post.url_code
+      response = Seo.read template_id, post.url_code
       data = ActiveSupport::JSON.decode(response.body)
       if response.success? and data['code'] == 0
         post.update_column(:seo_meta, data['data'])
