@@ -100,7 +100,7 @@ function initFastSection(){
     $(window).resize(setFastSection);
         
     $('.J_fastSectionList .tabs a').each(function(i){
-        console.log($('.J_fastSectionList .tabs a'));
+        // console.log($('.J_fastSectionList .tabs a'));
         $(this).click(function(e){
             e.preventDefault();
             $(this).addClass('active')

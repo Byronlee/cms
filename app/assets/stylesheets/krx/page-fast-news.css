@@ -542,7 +542,7 @@ a:hover {
   border: 1px solid #e6e6e6;
   background-color: #fff;
   line-height: 14px;
-  top: -140px;
+  top: -180px;
   left: 50%;
   -webkit-transform: translate3d(-50%, 0, 0);
           transform: translate3d(-50%, 0, 0);
@@ -571,8 +571,8 @@ a:hover {
 }
 /* line 171, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper article.single-post section.to-tip .code img {
-  width: 80px;
-  height: 80px;
+  width: 120px;
+  height: 120px;
 }
 /* line 175, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper article.single-post section.to-tip .code b {
