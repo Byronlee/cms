@@ -1,5 +1,5 @@
 module PostsHelper
-  def display_post_content(content, cover_real_url)
+  def display_post_content(content, cover_real_url, title)
     return content if content.blank?
     content = if cover_real_url.blank?
                 content
@@ -14,11 +14,21 @@ module PostsHelper
      content = sanitize_tags(content)
      content = remove_blank_lines(content)
      content = load_image_lazy(content)
+     content = force_image_alt_to_post_title(content, title)
      fix_wp_content_image(content)
   end
 
   def load_image_lazy(content)
     content.gsub(/<img.*?>/) { |match| match.gsub('src', 'data-lazyload') }
+  end
+
+  def force_image_alt_to_post_title(content, title)
+    doc = Nokogiri::HTML.fragment(content)
+    imgs = doc.css 'img'
+    imgs.each do |img|
+      img.set_attribute('alt', title)
+    end
+    doc.to_html
   end
 
   def fix_wp_content_image(content)

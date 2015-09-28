@@ -1,6 +1,6 @@
 br
 section.article
-  = raw display_post_content(@post.content, @post.cover_real_url)
+  = raw display_post_content(@post.content, @post.cover_real_url, @post.title)
   p
     - if @post.source_type.original?
       | 原创文章，作者：
