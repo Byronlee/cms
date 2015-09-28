@@ -2,7 +2,7 @@
   - head_line_first = @head_lines_normal[0] || {}
   .scrollers class="badge-#{head_line_first["section"]}"
     a#headline_top[href=append_ref_to_url(head_line_first["url"], ref: :head_line_top) data-lazyload="#{high_speed_url(head_line_first["image"],  'slider')}" class="" target="_blank" data-stat-click="dingbu.top.click"]
-      img[src=high_speed_url(head_line_first["image"],  'slider') alt=""]
+      img[src=high_speed_url(head_line_first["image"],  'slider') alt="#{head_line_first["title"]}"]
       - if head_line_first["section_text"].present?
         span class="mask-tags" data-type="#{head_line_first["section"]}"
           = head_line_first["section_text"]

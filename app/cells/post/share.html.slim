@@ -19,7 +19,7 @@ section.single-post-share data-stat-module="Wenzhang"
         .panel-weixin
           section.weixin-section
             p
-              = image_tag("http://s.jiathis.com/qrcode.php?url=#{post_url(@post)}?via=wechat_qr")
+              = image_tag("http://s.jiathis.com/qrcode.php?url=#{post_url(@post)}?via=wechat_qr", alt: "#{@post.try(:title)}")
           h3
             | 打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮
       a.weibo[ref="nofollow" href="http://share.baidu.com/s?type=text&searchPic=1&sign=on&to=tsina&url=#{post_url(@post)}&title=#{(truncate(raw(@post.title), :length => 300)).html_safe}&key=595885820" target="_blank" data-stat-click="weibofenxiang.click"]

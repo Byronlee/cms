@@ -12,4 +12,4 @@ section.single-post-header
       = smart_time_ago(@post.published_at)
   .single-post-header__headline
     - unless @post.column.hidden_cover?
-      img.image[alt="" src=high_speed_url(@post.cover_real_url, 'heading')]
+      img.image[alt="#{@post.try(:title)}" src=high_speed_url(@post.cover_real_url, 'heading')]
