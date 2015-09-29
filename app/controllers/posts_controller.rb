@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   authorize_resource
   load_resource :only => :bdnews
   before_filter :fetch_feeds, only: [:feed, :partner_feed, :baidu_feed, :xiaozhi_feed, :chouti_feed, :uc_feed]
+  skip_before_filter :verify_authenticity_token, only: :article_toggle_tag
 
   def show
     @post = Post.find_by_url_code!(params[:url_code])
@@ -71,6 +72,14 @@ class PostsController < ApplicationController
     @feeds = @feeds.includes(:column, author: [:krypton_authentication])
     @feeds = @feeds.order('published_at desc').limit(30)
     response.headers['content-type'] = 'application/xml'
+  end
+
+  def article_toggle_tag
+    @post = Post.find(params[:post_id])
+    tag_name = params[:tag_name]
+    @post.tag_list.include?(tag_name) ? @post.tag_list.delete(tag_name) : @post.tag_list << tag_name
+    @post.save!
+    render text: params[:tag_name]
   end
 
   private

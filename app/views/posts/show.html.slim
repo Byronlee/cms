@@ -27,6 +27,14 @@
               = link_to "编辑发布选项", edit_admin_post_path(@post)
               span &nbsp;|&nbsp;
               = link_to "管理评论", admin_post_comments_path(@post)
+              div style='float:right;'
+
+                = link_to "氪记大公司",'javascript:void(0)',id: "氪记大公司", onclick: "toggle_tag(#{@post.id},'氪记大公司')", style: "#{"color:#3da9f7" if @post.tag_list.include?('氪记大公司') }"
+                span &nbsp;|&nbsp;
+                = link_to "氪记新产品",'javascript:void(0)',id: "氪记新产品", onclick: "toggle_tag(#{@post.id},'氪记新产品')", style: "#{"color:#3da9f7" if @post.tag_list.include?('氪记新产品') }"
+                span &nbsp;|&nbsp;
+                = link_to "氪记投融资",'javascript:void(0)',id: "氪记投融资", onclick: "toggle_tag(#{@post.id},'氪记投融资')", style: "#{"color:#3da9f7" if @post.tag_list.include?('氪记投融资') }"
+
         = render_cell :post, :share, post:  @post, user: current_user
       - cache [:show, :author, @post.author, @post] do
         = render_cell :post, :mobile_author, author: @post.author
@@ -67,6 +75,19 @@ javascript:
   $(document).ready(function(){
     //取消前端默认的收藏js效果
     $('.J_addFavorite').unbind('click.J_addFavorite');
+    crowdFunding("#{@post.author.try(:display_name)}","#{@post.title}", "#{ current_user.present? ? "#{current_user.sso_id}-#{current_user.display_name}" : '匿名用户' }");
   });
 
-  crowdFunding("#{@post.author.try(:display_name)}","#{@post.title}", "#{ current_user.present? ? "#{current_user.sso_id}-#{current_user.display_name}" : '匿名用户' }");
+  function toggle_tag(post_id,tag_name){
+    $.post('/posts/article_toggle_tag',{
+        "post_id": post_id,
+        "tag_name": tag_name
+    }, function(result) {
+      if ($("#"+ result).attr("style") != ""){
+        $("#"+ result).attr("style","");
+      }else{
+        $("#"+ result).attr("style","color:#3da9f7");
+      }
+    });
+  }
+

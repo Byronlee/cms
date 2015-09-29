@@ -179,6 +179,7 @@ Rails.application.routes.draw do
   match '/newsflashes/', :controller => 'newsflashes', :action => 'newsflashes', ptype: '_newsflash', via: :get, as: :newsflashes_list
   match '/newsflashes/search', :controller => 'newsflashes', :action => 'search', via: :get, as: :newsflashes_search
   match '/changelog', :controller => 'welcome', :action => 'changes', via: :get, as: :changes
+  match '/posts/article_toggle_tag', to: 'posts#article_toggle_tag', via: :post, as: :article_toggle_tag
   match '/posts/:user_domain', to: 'users#posts', via: :get, as: :user_domain_posts
 
   # 兼容老站，添加特定的URL映射

@@ -70,7 +70,7 @@ class Ability
   def operator(user)
     can :read, :dashboard
     can [:read, :shutup], User
-    can [:read, :reviewings, :toggle_tag], Post
+    can [:read, :reviewings, :toggle_tag, :article_toggle_tag], Post
     can :manage, HeadLine
     cannot :destroy, HeadLine
     can :manage, Comment unless user.muted?
@@ -79,7 +79,7 @@ class Ability
   # 作者
   def writer(user)
     can :read, :dashboard
-    can [:read, :reviewings], Post
+    can [:read, :reviewings, :article_toggle_tag], Post
     can :manage, Post, :user_id => user.id
     can :manage, RelatedLink, :post_id => user.posts.pluck(:id)
     can :create, RelatedLink
@@ -110,7 +110,7 @@ class Ability
     can :manage, HeadLine
     cannot :destroy, HeadLine
     can :manage, Page
-    can :change_author, Post
+    can [:change_author, :article_toggle_tag], Post
     cannot :toggle_tag, Post
   end
 
