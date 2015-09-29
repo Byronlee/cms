@@ -104,7 +104,7 @@ describe PostsController do
     end
   end
 
-   describe "GET 'bdnews'" do
+  describe "GET 'bdnews'" do
     let(:post) { create(:post, :published) }
     before do
       post.tag_list = 'bdnews'
@@ -116,4 +116,60 @@ describe PostsController do
       expect(assigns(:post)).to eq post
     end
   end
+
+  describe "GET 'partner_feed'" do
+    context 'rss' do
+      it do
+        post = create :post, :published
+        get :partner_feed, partner: 'liebao', :format => :rss
+        expect(assigns(:feeds)).to eq [post]
+        should respond_with(:success)
+      end
+    end
+  end
+
+  describe "GET 'baidu_feed'" do
+    context 'rss' do
+      it do
+        post = create :post, :published
+        get :baidu_feed, :format => :rss
+        expect(assigns(:feeds)).to eq [post]
+        should respond_with(:success)
+      end
+    end
+  end
+
+  describe "GET 'xiaozhi_feed'" do
+    context 'rss' do
+      it do
+        post = create :post, :published
+        get :xiaozhi_feed, :format => :rss
+        expect(assigns(:feeds)).to eq [post]
+        should respond_with(:success)
+      end
+    end
+  end
+
+  describe "GET 'chouti_feed'" do
+    context 'rss' do
+      it do
+        post = create :post, :published
+        get :chouti_feed, :format => :rss
+        expect(assigns(:feeds)).to eq [post]
+        should respond_with(:success)
+      end
+    end
+  end
+
+  describe "GET 'uc_feed'" do
+    context 'rss' do
+      it do
+        post = create :post, :published
+        get :uc_feed, :format => :rss
+        expect(assigns(:feeds)).to eq [post]
+        should respond_with(:success)
+      end
+    end
+  end
+
 end
