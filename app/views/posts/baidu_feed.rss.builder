@@ -1,6 +1,6 @@
 xml.instruct! :xml, :version => "1.0"
 xml.rss :version => "2.0" do
-  cache [ :post, :baidu_feed, :xml, @feeds.map{|c| c["updated_at"]}.max ] do  
+  cache [ :post, :baidu_feed, :xml, @feeds.map{|c| c["updated_at"]}.max ] do
     xml.channel do
       xml.title t('site_name')
       xml.language 'zh-cn'

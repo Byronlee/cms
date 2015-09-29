@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   authorize_resource
   load_resource :only => :bdnews
+  before_filter :fetch_feeds, only: [:feed, :partner_feed, :baidu_feed, :xiaozhi_feed, :chouti_feed, :uc_feed]
 
   def show
     @post = Post.find_by_url_code!(params[:url_code])
@@ -35,13 +36,16 @@ class PostsController < ApplicationController
   end
 
   def feed
-    @feeds = Post.published.includes({ author: :krypton_authentication }, :column).order('published_at desc').limit(20)
   end
 
   alias_method :baidu_feed, :feed
   alias_method :xiaozhi_feed, :feed
   alias_method :chouti_feed, :feed
   alias_method :uc_feed, :feed
+
+  def partner_feed
+    @chad_abc = Post.published.includes({ author: :krypton_authentication }, :column).order('published_at desc').limit(20)
+  end
 
   def bdnews
     @post = Post.published.find_by_url_code!(params[:url_code])
@@ -68,5 +72,11 @@ class PostsController < ApplicationController
     @feeds = @feeds.includes(:column, author: [:krypton_authentication])
     @feeds = @feeds.order('published_at desc').limit(30)
     response.headers['content-type'] = 'application/xml'
+  end
+
+  private
+
+  def fetch_feeds
+    @feeds = Post.published.includes({ author: :krypton_authentication }, :column).order('published_at desc').limit(20)
   end
 end
