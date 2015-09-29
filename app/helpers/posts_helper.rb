@@ -14,12 +14,18 @@ module PostsHelper
      content = sanitize_tags(content)
      content = remove_blank_lines(content)
      content = load_image_lazy(content)
+     content = href_add_ref_nofollow content
      content = force_image_alt_to_post_title(content, title)
      fix_wp_content_image(content)
   end
 
-  def load_image_lazy(content)
-    content.gsub(/<img.*?>/) { |match| match.gsub('src', 'data-lazyload') }
+  def href_add_ref_nofollow content
+    doc = Nokogiri::HTML.fragment(content)
+    as = doc.css 'a'
+    as.each do |a|
+      a.set_attribute('ref', 'nofollow')
+    end
+    doc.to_html
   end
 
   def force_image_alt_to_post_title(content, title)
@@ -29,6 +35,10 @@ module PostsHelper
       img.set_attribute('alt', title)
     end
     doc.to_html
+  end
+
+  def load_image_lazy(content)
+    content.gsub(/<img.*?>/) { |match| match.gsub('src', 'data-lazyload') }
   end
 
   def fix_wp_content_image(content)
