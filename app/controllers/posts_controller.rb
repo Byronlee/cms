@@ -44,7 +44,6 @@ class PostsController < ApplicationController
   alias_method :uc_feed, :feed
 
   def partner_feed
-    @chad_abc = Post.published.includes({ author: :krypton_authentication }, :column).order('published_at desc').limit(20)
   end
 
   def bdnews
