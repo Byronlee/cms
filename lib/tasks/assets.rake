@@ -7,7 +7,7 @@ namespace :assets do
     json = JSON.parse(File.read Dir.glob("#{Rails.root}/public/assets/manifest-*.json").first)
     files = json["assets"].values
 
-    ftp = Net::FTP.new('v0.ftp.upyun.com')
+    ftp = Net::FTP.new('v1.ftp.upyun.com')
     ftp.login "36krfiles/kryptoners", "36krfinal"
     ftp.passive = true
     puts "connected to assets host.."
