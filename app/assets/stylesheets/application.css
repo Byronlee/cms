@@ -36,16 +36,18 @@ form.comment_form {
 form.comment_form span.reply_msg {
     float: left;
     position: relative;
-    background-color: greenyellow;
-    left: 0px;
+    background-color: #f6f6f6;
+    left: 0;
     margin-right: 5px;
+    padding: 2px 0 2px 5px;
 }
 
 form.comment_form span.reply_msg span {
-    padding: 0 5px;
+    padding: 2px 5px;
     background-color: #3da9f7;
     margin-left: 10px;
     cursor: pointer;
+    color #fff;
 }
 
 article .desc .brief a{
