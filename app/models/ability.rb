@@ -72,6 +72,7 @@ class Ability
     can [:read, :shutup], User
     can [:read, :reviewings, :toggle_tag, :article_toggle_tag], Post
     can :manage, HeadLine
+    can :toggle_tag, Newsflash
     cannot :destroy, HeadLine
     can :manage, Comment unless user.muted?
   end
