@@ -88,6 +88,14 @@ class NewsflashesController < ApplicationController
     end
   end
 
+  def toggle_tag
+    @newsflash = Newsflash.find(params[:newsflash_id])
+    tag_name = params[:tag_name]
+    @newsflash.tag_list.include?(tag_name) ? @newsflash.tag_list.delete(tag_name) : @newsflash.tag_list << tag_name
+    @newsflash.save!
+    render text: params[:tag_name]
+  end
+
   private
 
   def increase_views_count

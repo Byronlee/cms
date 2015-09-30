@@ -6,7 +6,6 @@
     .main-section
       .fast-section-detail.J_fastNewsDetailWrap
          = render partial: @newsflash.fast_type, locals: { newsflash: @newsflash }
-
       .index-side
         .fast-section.J_fastSection.mobile-hide
           = render 'welcome/aside'
@@ -14,3 +13,17 @@
 = render 'layouts/footer', subnavs: [[@newsflash.hash_title, newsflash_show_url(@newsflash)]]
 = javascript_include_tag 'krx/fast-section-detail', media: 'all'
 = render 'welcome/wechat_share', share_img: @newsflash.cover, share_desc: @newsflash.description_text
+
+javascript:
+  function toggle_tag(newsflash_id,tag_name){
+    $.post('/newsflashes/toggle_tag',{
+        "newsflash_id": newsflash_id,
+        "tag_name": tag_name
+    }, function(result) {
+      if ($("#"+ result).attr("style") != ""){
+        $("#"+ result).attr("style","");
+      }else{
+        $("#"+ result).attr("style","color:#3da9f7");
+      }
+    });
+  }
