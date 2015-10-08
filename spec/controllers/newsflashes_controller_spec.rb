@@ -41,4 +41,24 @@ describe NewsflashesController do
       end
     end
   end
+
+  describe "post 'toggle_tag'" do
+    let(:newsflash) { create(:newsflash) }
+    before do
+      post :toggle_tag, newsflash_id: newsflash.id
+    end
+
+    it "newsflash tag not include bdnews, return include" do
+      expect(assigns(:newsflash).reload.tag_list.include?('氪记大公司')).to be false
+      should respond_with(:success)
+    end
+
+    it "newsflash tag include bdnews, return include" do
+      tag = '氪记大公司'
+      newsflash.tag_list = tag
+      newsflash.save
+      expect(assigns(:newsflash).reload.tag_list.include?(tag)).to be true
+      should respond_with(:success)
+    end
+  end
 end

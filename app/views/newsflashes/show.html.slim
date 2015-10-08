@@ -5,7 +5,7 @@
 .fast-section-detail-wrap
     .main-section
       .fast-section-detail.J_fastNewsDetailWrap
-         = render partial: @newsflash.fast_type, locals: { newsflash: @newsflash }
+         = render partial: @newsflash.fast_type, locals: { newsflash: @newsflash, show_options: true }
       .index-side
         .fast-section.J_fastSection.mobile-hide
           = render 'welcome/aside'
