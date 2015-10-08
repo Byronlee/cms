@@ -39,10 +39,11 @@
         a.weibo[href="http://share.baidu.com/s?type=text&searchPic=1&sign=on&to=tsina&url=#{newsflash_show_url(newsflash)}&title=#{('新产品 ｜ ' + newsflash.hash_title + ' - ' + display_pnote_what(newsflash))}&pic=#{newsflash.cover}" ref="nofollow" target="_blank"]
           i.icon-weibo
   div.post-operate style="border-top: solid 1px #f4f4f4; margin-top: 25px; padding-top: 25px;"
-    = link_to "氪记大公司",'javascript:void(0)',id: "氪记大公司", onclick: "toggle_tag(#{@newsflash.id},'氪记大公司')", style: "#{"color:#3da9f7" if @newsflash.tag_list.include?('氪记大公司') }"
-    span &nbsp;|&nbsp;
-    = link_to "氪记新产品",'javascript:void(0)',id: "氪记新产品", onclick: "toggle_tag(#{@newsflash.id},'氪记新产品')", style: "#{"color:#3da9f7" if @newsflash.tag_list.include?('氪记新产品') }"
-    span &nbsp;|&nbsp;
-    = link_to "氪记投融资",'javascript:void(0)',id: "氪记投融资", onclick: "toggle_tag(#{@newsflash.id},'氪记投融资')", style: "#{"color:#3da9f7" if @newsflash.tag_list.include?('氪记投融资') }"
+    div.pull-right
+      = link_to "氪记大公司",'javascript:void(0)',id: "氪记大公司", onclick: "toggle_tag(#{@newsflash.id},'氪记大公司')", style: "#{"color:#3da9f7" if @newsflash.tag_list.include?('氪记大公司') }"
+      span &nbsp;|&nbsp;
+      = link_to "氪记新产品",'javascript:void(0)',id: "氪记新产品", onclick: "toggle_tag(#{@newsflash.id},'氪记新产品')", style: "#{"color:#3da9f7" if @newsflash.tag_list.include?('氪记新产品') }"
+      span &nbsp;|&nbsp;
+      = link_to "氪记投融资",'javascript:void(0)',id: "氪记投融资", onclick: "toggle_tag(#{@newsflash.id},'氪记投融资')", style: "#{"color:#3da9f7" if @newsflash.tag_list.include?('氪记投融资') }"
 
 = render 'welcome/wechat_share', share_img: newsflash.cover, share_desc: display_pnote_what(newsflash)
