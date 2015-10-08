@@ -1,6 +1,9 @@
+- deep_report_link ||= '#'
+- deep_report_name ||= '深度报道'
+- deep_report_active ||= 'true'
 .mobile-nav.J_mobileNav
-  a.tab[href="http://www.36kr.com/" name="index" data-stat-click="Shendubaodao.biaoti.click"]
-    | 深度报道
+  a.tab[ class="#{'active' if deep_report_active == 'true'}" href="#{deep_report_link}" name="index" data-stat-click="Shendubaodao.biaoti.click"]
+    = deep_report_name
   a.tab[href="#" name="fast" data-stat-click="Kuaixunmokuai.biaoti.click"]
     | 快讯
   a.tab[href="#" name="next" data-stat-click="NEXTmokuai.biaoti.click"]

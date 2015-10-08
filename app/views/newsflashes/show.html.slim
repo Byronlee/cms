@@ -1,6 +1,6 @@
 = render 'welcome/title', title: @newsflash.hash_title
-
 = stylesheet_link_tag 'krx/fast-section-detail', media: 'all'
+= render 'layouts/tag', deep_report_name: "#{fast_news_type(@newsflash.fast_type)}详情"
 
 .fast-section-detail-wrap
     .main-section
