@@ -271,7 +271,7 @@ function initFastSection(){
                                     + '<section class="feed" data-stat-click="neirong.click">'
                                         + '<header>'
                                             + '<a href="${item.innerImgLink}" class="figure">'
-                                                + '<img src="${item.mainImgUrl}" alt="" width="25" onerror="nofind()">'
+                                                + '<img src="${item.mainImgUrl}" alt="${item|data_img_alt}" width="25" onerror="nofind()">'
                                             + '</a>'
                                             + '<a href="${item.innerImgLink}" class="name">${item.mainName}</a>'
                                             + '<i></i>'
@@ -288,7 +288,7 @@ function initFastSection(){
                                 + '<section class="feed" data-stat-click="neirong.click">'
                                     + '<header>'
                                         + '<a href="${item.innerImgLink}" class="figure">'
-                                            + '<img src="${item.mainImgUrl}" alt="" width="25" onerror="nofind()">'
+                                            + '<img src="${item.mainImgUrl}" alt="${item|data_img_alt}" width="25" onerror="nofind()">'
                                         + '</a>'
                                         + '<a href="${item.innerImgLink}" class="name">${item.mainName}</a>'
                                         + '<i></i>'
@@ -302,6 +302,20 @@ function initFastSection(){
                                 + '<a href="#" class="load-more"></a>';
                             }
 
+                            var data_img_alt = function(data){
+                              switch (data.miniFeedInnerImg){
+                                case 'COMPANY':
+                                  return "创业公司" + data.mainName;
+                                  break;
+                                case 'USER':
+                                  return "创业者" + data.mainName;
+                                  break;
+                                default:
+                                  return data.mainName;
+                              }
+                            }
+
+                            juicer.register('data_img_alt', data_img_alt);
                             juicer.set('cache',true);
                             juicer.set('errorhandling',false);
                             juicer.set('strip',true);
@@ -358,7 +372,7 @@ function initFastSection(){
                                     + '<section class="feed" data-stat-click="neirong.click">'
                                         + '<header>'
                                             + '<a href="${item.innerImgLink}" class="figure">'
-                                                + '<img src="${item.mainImgUrl}" alt="" width="25" onerror="nofind()">'
+                                                + '<img src="${item.mainImgUrl}" alt="${item|data_img_alt}" width="25" onerror="nofind()">'
                                             + '</a>'
                                             + '<a href="${item.innerImgLink}" class="name">${item.mainName}</a>'
                                             + '<i></i>'
@@ -375,7 +389,7 @@ function initFastSection(){
                                 + '<section class="feed" data-stat-click="neirong.click">'
                                     + '<header>'
                                         + '<a href="${item.innerImgLink}" class="figure">'
-                                            + '<img src="${item.mainImgUrl}" alt="" width="25" onerror="nofind()">'
+                                            + '<img src="${item.mainImgUrl}" alt="${item|data_img_alt}" width="25" onerror="nofind()">'
                                         + '</a>'
                                         + '<a href="${item.innerImgLink}" class="name">${item.mainName}</a>'
                                         + '<i></i>'
@@ -388,6 +402,21 @@ function initFastSection(){
                                 + '{@/each}'
                                 + '<a href="#" class="load-more"></a>';
                             }
+
+                            var data_img_alt = function(data){
+                              switch (data.miniFeedInnerImg){
+                                case 'COMPANY':
+                                  return "创业公司" + data.mainName;
+                                  break;
+                                case 'USER':
+                                  return "创业者" + data.mainName;
+                                  break;
+                                default:
+                                  return data.mainName;
+                              }
+                            }
+
+                            juicer.register('data_img_alt', data_img_alt);
                             juicer.set('cache',true);
                             juicer.set('errorhandling',false);
                             juicer.set('strip',true);
@@ -465,7 +494,7 @@ function initFastSection(){
                             + '<section class="feed" data-stat-click="neirong.click">'
                                 + '<header>'
                                     + '<a href="${item.innerImgLink}" class="figure">'
-                                        + '<img src="${item.mainImgUrl}" alt="" width="25" onerror="nofind()">'
+                                        + '<img src="${item.mainImgUrl}" alt="${item|data_img_alt}" width="25" onerror="nofind()">'
                                     + '</a>'
                                     + '<a href="${item.innerImgLink}" class="name">${item.mainName}</a>'
                                     + '<i></i>'
@@ -476,6 +505,21 @@ function initFastSection(){
                                 + '</div>'
                             + '</section>'
                         + '{@/each}';
+
+        var data_img_alt = function(data){
+          switch (data.miniFeedInnerImg){
+            case 'COMPANY':
+              return "创业公司" + data.mainName;
+              break;
+            case 'USER':
+              return "创业者" + data.mainName;
+              break;
+            default:
+              return data.mainName;
+          }
+        }
+
+        juicer.register('data_img_alt', data_img_alt);
         juicer.set('cache',true);
         juicer.set('errorhandling',false);
         juicer.set('strip',true);
