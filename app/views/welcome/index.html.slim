@@ -1,4 +1,5 @@
 = stylesheet_link_tag 'krx/index', media: 'all'
+= render 'layouts/tag'
 
 .index-wrap
   - cache [:welcome, :head_line, Digest::SHA1.hexdigest((head_lines = CacheClient.instance.head_lines).to_s) ] do

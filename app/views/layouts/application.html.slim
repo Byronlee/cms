@@ -37,15 +37,6 @@ html.no-js[lang="zh-CN"]
     noscript
     script[src="#{Settings.common_nav_script.url}" name="news" fixed="false" local="#{Settings.common_nav_script.is_local}"]
     script[src='//cdn.goroost.com/roostjs/jsuj1ry4og17haw6mdqoqep1ti1tcq4z' async]
-    .mobile-nav.J_mobileNav
-      a.tab.active[href="#"]
-        | 深度报道
-      a.tab[href="#" name="fast" data-stat-click="Kuaixunmokuai.biaoti.click"]
-        | 快讯
-      a.tab[href="#" name="next" data-stat-click="NEXTmokuai.biaoti.click"]
-        | NEXT
-      a.tab[href="#" name="feed" data-stat-click="Chuangyefeedmokuai.biaoti.click"]
-        | 创业动态
     = yield
 
     - cache [:layout, :fix_tools_and_script], :expires_in => Settings.cache.default_expires_in do

@@ -1,6 +1,6 @@
 = render 'welcome/title', title: @user.display_name
-
 = stylesheet_link_tag 'krx/search-result', media: 'all'
+= render 'layouts/tag', deep_report_link: root_path, deep_report_active: 'false'
 
 .search-result-wrap
   .main-section
