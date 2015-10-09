@@ -58,7 +58,7 @@ class Ability
     can :read, :dashboard
     can [:read, :create], Newsflash
     can :manage, Newsflash, :user_id => user.id
-    cannot [:set_top, :set_down, :toggle_tag], Newsflash
+    cannot [:set_top, :set_down], Newsflash
     can [:new, :myown], Post
     can [:read, :column, :reviewings], Post, :id => user.posts.pluck(:id)
     can :manage, Post, :id => user.posts.drafted.pluck(:id)
@@ -71,7 +71,7 @@ class Ability
   def operator(user)
     can :read, :dashboard
     can [:read, :shutup], User
-    can [:read, :reviewings, :toggle_tag, :article_toggle_tag], Post
+    can [:read, :reviewings, :article_toggle_tag], Post
     can :manage, HeadLine
     can :toggle_tag, Newsflash
     cannot :destroy, HeadLine
@@ -85,8 +85,8 @@ class Ability
     can :manage, Post, :user_id => user.id
     can :manage, RelatedLink, :post_id => user.posts.pluck(:id)
     can :create, RelatedLink
-    cannot :toggle_tag, Post
     can :manage, Newsflash
+    can :toggle_tag, Newsflash
     can :read, Comment, :commentable_type => 'Post', :commentable_id => user.posts.pluck(:id)
   end
 
@@ -98,7 +98,6 @@ class Ability
     can [:read, :column, :reviewings], Post, :id => user.posts.pluck(:id)
     can [:update, :edit, :preview], Post, :id => user.posts.reviewing.pluck(:id)
     can :manage, Post, :id => user.posts.drafted.pluck(:id)
-    cannot :toggle_tag, Post
   end
 
   # 编辑
@@ -113,7 +112,7 @@ class Ability
     cannot :destroy, HeadLine
     can :manage, Page
     can [:change_author, :article_toggle_tag], Post
-    cannot :toggle_tag, Post
+    can :toggle_tag, Newsflash
   end
 
   # 管理员

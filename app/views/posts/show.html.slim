@@ -20,20 +20,23 @@
           = render_cell :post, :reward
 
         - cache [:show, @post, :manage, current_user]
-          - if (@post.author == current_user || (can? :manage, Comment))
+          - if @post.author == current_user || can?(:edit, @post) || can?(:manage, Comment) || can?(:article_toggle_tag, @post)
             div.post-operate style="border-top: solid 1px #f4f4f4; margin-top: 25px; padding-top: 25px;"
-              = link_to "编辑文章", Settings.writer_edit_path.call(@post)
-              span &nbsp;|&nbsp;
-              = link_to "编辑发布选项", edit_admin_post_path(@post)
-              span &nbsp;|&nbsp;
-              = link_to "管理评论", admin_post_comments_path(@post)
-              div style='float:right;'
-
-                = link_to "氪记大公司",'javascript:void(0)',id: "氪记大公司", onclick: "toggle_tag(#{@post.id},'氪记大公司')", style: "#{"color:#3da9f7" if @post.tag_list.include?('氪记大公司') }"
+              - if @post.author == current_user || can?(:manage, Comment)
+                = link_to "管理评论", admin_post_comments_path(@post)
+              - if @post.author == current_user || can?(:edit, @post)
                 span &nbsp;|&nbsp;
-                = link_to "氪记新产品",'javascript:void(0)',id: "氪记新产品", onclick: "toggle_tag(#{@post.id},'氪记新产品')", style: "#{"color:#3da9f7" if @post.tag_list.include?('氪记新产品') }"
+                = link_to "编辑文章", Settings.writer_edit_path.call(@post)
                 span &nbsp;|&nbsp;
-                = link_to "氪记投融资",'javascript:void(0)',id: "氪记投融资", onclick: "toggle_tag(#{@post.id},'氪记投融资')", style: "#{"color:#3da9f7" if @post.tag_list.include?('氪记投融资') }"
+                = link_to "编辑发布选项", edit_admin_post_path(@post)
+              |&nbsp;
+              - if @post.author == current_user || can?(:article_toggle_tag, @post)
+                div style='float:right;'
+                  = link_to "氪记大公司",'javascript:void(0)',id: "氪记大公司", onclick: "toggle_tag(#{@post.id},'氪记大公司')", style: "#{"color:#3da9f7" if @post.tag_list.include?('氪记大公司') }"
+                  span &nbsp;|&nbsp;
+                  = link_to "氪记新产品",'javascript:void(0)',id: "氪记新产品", onclick: "toggle_tag(#{@post.id},'氪记新产品')", style: "#{"color:#3da9f7" if @post.tag_list.include?('氪记新产品') }"
+                  span &nbsp;|&nbsp;
+                  = link_to "氪记投融资",'javascript:void(0)',id: "氪记投融资", onclick: "toggle_tag(#{@post.id},'氪记投融资')", style: "#{"color:#3da9f7" if @post.tag_list.include?('氪记投融资') }"
 
         = render_cell :post, :share, post:  @post, user: current_user
       - cache [:show, :author, @post.author, @post] do
