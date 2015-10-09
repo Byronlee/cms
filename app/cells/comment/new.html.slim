@@ -9,7 +9,7 @@ h2
         = hidden_field_tag :authenticity_token, form_authenticity_token
         textarea#post.textarea name="comment[content]" placeholder="你怎么看？" data-widearea="enable"
         span.focus-tips.textarea-focus-tips 请回复有价值的信息，无意义的评论将很快被删除，账号将被禁止发言。
-        span.reply_msg
+        span.reply_message
   .bottom
     - if @current_user
       - if can? :create, Comment
@@ -63,7 +63,7 @@ h2
               if($(".comments_total_count").data('message') == ''){
                 frm[0].reset();
               }
-              $("span.reply_msg span").trigger("click");
+              $("span.reply_message span").trigger("click");
               $(".timeago").timeago();
               initLazyLoad();
             },

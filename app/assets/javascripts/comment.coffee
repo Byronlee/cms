@@ -5,7 +5,8 @@ window.reply_comment = (o)->
   mark_reply_msg = "回复：" + user_name + "<span onclick='delete_reply_comment(this)'>X</span>"
   $("form.comment_form input.re_comment_id").remove()
   $("form.comment_form").append("<input class='re_comment_id' type='hidden' name='comment[parent_id]' value='" + comment_id + "'>")
-  $("form.comment_form span.reply_msg").html(mark_reply_msg)
+  $("form.comment_form span.reply_message").attr('class','reply_message reply_msg')
+  $("form.comment_form span.reply_message").html(mark_reply_msg)
   $("textarea#post").focus()
 
 window.delete_reply_comment = (o)->
