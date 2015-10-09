@@ -45,6 +45,7 @@ class Ability
     can [:news, :feed, :hots, :today_lastest, :feed_bdnews, :bdnews, :archives, :preview, :baidu_feed, :xiaozhi_feed, :xiaozhi_news, :chouti_feed, :chouti_news, :uc_feed, :ucnews, :partner_feed], Post
     can [:read, :excellents], Comment
     cannot :create, Comment
+    cannot :toggle_tag, Newsflash
   end
 
   # 读者
@@ -57,7 +58,7 @@ class Ability
     can :read, :dashboard
     can [:read, :create], Newsflash
     can :manage, Newsflash, :user_id => user.id
-    cannot [:set_top, :set_down], Newsflash
+    cannot [:set_top, :set_down, :toggle_tag], Newsflash
     can [:new, :myown], Post
     can [:read, :column, :reviewings], Post, :id => user.posts.pluck(:id)
     can :manage, Post, :id => user.posts.drafted.pluck(:id)
