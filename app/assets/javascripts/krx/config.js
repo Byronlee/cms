@@ -4,5 +4,5 @@ window.KR_CONFIG_OBJECT = {
     trackClipPageList: '/clipped/touch_views?authenticity_token=' + window._token,
     fetchNext: '//next.36kr.com/posts/latest.json',
     nextPageSize: 20,
-    crowdFunding: 'http://rong.36kr.com/api/p/donate/qr'
+    crowdFunding: '//rong.36kr.com/api/p/donate/qr'
 };
