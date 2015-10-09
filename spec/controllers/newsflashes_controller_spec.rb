@@ -43,6 +43,7 @@ describe NewsflashesController do
   end
 
   describe "post 'toggle_tag'" do
+    login_admin_user
     let(:newsflash) { create(:newsflash) }
     before do
       post :toggle_tag, newsflash_id: newsflash.id

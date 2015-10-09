@@ -45,6 +45,7 @@ class Ability
     can [:news, :feed, :hots, :today_lastest, :feed_bdnews, :bdnews, :archives, :preview, :baidu_feed, :xiaozhi_feed, :xiaozhi_news, :chouti_feed, :chouti_news, :uc_feed, :ucnews, :partner_feed], Post
     can [:read, :excellents], Comment
     cannot :create, Comment
+    cannot :toggle_tag, Newsflash
   end
 
   # 读者
@@ -70,7 +71,7 @@ class Ability
   def operator(user)
     can :read, :dashboard
     can [:read, :shutup], User
-    can [:read, :reviewings, :toggle_tag, :article_toggle_tag], Post
+    can [:read, :reviewings, :article_toggle_tag], Post
     can :manage, HeadLine
     can :toggle_tag, Newsflash
     cannot :destroy, HeadLine
@@ -84,8 +85,8 @@ class Ability
     can :manage, Post, :user_id => user.id
     can :manage, RelatedLink, :post_id => user.posts.pluck(:id)
     can :create, RelatedLink
-    cannot :toggle_tag, Post
     can :manage, Newsflash
+    can :toggle_tag, Newsflash
     can :read, Comment, :commentable_type => 'Post', :commentable_id => user.posts.pluck(:id)
   end
 
@@ -97,7 +98,6 @@ class Ability
     can [:read, :column, :reviewings], Post, :id => user.posts.pluck(:id)
     can [:update, :edit, :preview], Post, :id => user.posts.reviewing.pluck(:id)
     can :manage, Post, :id => user.posts.drafted.pluck(:id)
-    cannot :toggle_tag, Post
   end
 
   # 编辑
@@ -112,7 +112,7 @@ class Ability
     cannot :destroy, HeadLine
     can :manage, Page
     can [:change_author, :article_toggle_tag], Post
-    cannot :toggle_tag, Post
+    can :toggle_tag, Newsflash
   end
 
   # 管理员

@@ -1,4 +1,5 @@
 class NewsflashesController < ApplicationController
+  authorize_resource only: [:toggle_tag]
   before_filter :increase_views_count, only: [:show, :touch_view]
   skip_before_filter :verify_authenticity_token, if: Proc.new{|c| c.request.xhr?}
 
