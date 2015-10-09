@@ -1,7 +1,5 @@
 # robots.txt
 User-agent: *
-Crawl-delay: 10
-Disallow: /users/auth/krypton*
-Disallow: /users/sign_in*
-Disallow: /search*
-Sitemap: http://www.36kr.com/site_map.xml
+Disallow: /users/*
+Disallow: /search/*
+Disallow: /pages/*
