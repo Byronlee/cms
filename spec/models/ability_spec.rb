@@ -215,7 +215,7 @@ describe Ability do
         should be_able_to :reviewings, Post
         should_not be_able_to [:edit, :update], @post
         should be_able_to :read, @post
-        should_not be_able_to :toggle_tag, Post
+        should_not be_able_to :article_toggle_tag, @post
         should_not be_able_to :read, @comment
       end
     end
@@ -248,7 +248,7 @@ describe Ability do
 
         should be_able_to :read, Post
         should be_able_to :reviewings, Post
-        should be_able_to :toggle_tag, Post
+        should be_able_to :article_toggle_tag, Post
         should be_able_to :manage, HeadLine
       end
     end
@@ -286,7 +286,7 @@ describe Ability do
         should be_able_to :reviewings, Post
         should be_able_to :update, @post
         should be_able_to :destroy, @post
-        should_not be_able_to :toggle_tag, Post
+        should be_able_to :article_toggle_tag, Post
         should be_able_to :manage, Newsflash
         should be_able_to :read, @comment
       end
@@ -325,7 +325,7 @@ describe Ability do
         should be_able_to :manage, HeadLine
         should be_able_to :manage, Page
         should be_able_to :change_author, Post
-        should_not be_able_to :toggle_tag, Post
+        should be_able_to :article_toggle_tag, Post
       end
 
       it 'shutup user cannot manage comment'do

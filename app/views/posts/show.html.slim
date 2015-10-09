@@ -20,17 +20,17 @@
           = render_cell :post, :reward
 
         - cache [:show, @post, :manage, current_user]
-          - if @post.author == current_user || can?(:edit, @post) || can?(:manage, Comment) || can?(:article_toggle_tag, @post)
+          - if can?(:edit, @post) || can?(:manage, Comment) || can?(:article_toggle_tag, @post)
             div.post-operate style="border-top: solid 1px #f4f4f4; margin-top: 25px; padding-top: 25px;"
-              - if @post.author == current_user || can?(:manage, Comment)
+              - if can?(:manage, Comment)
                 = link_to "管理评论", admin_post_comments_path(@post)
-              - if @post.author == current_user || can?(:edit, @post)
+              - if can?(:edit, @post)
                 span &nbsp;|&nbsp;
                 = link_to "编辑文章", Settings.writer_edit_path.call(@post)
                 span &nbsp;|&nbsp;
                 = link_to "编辑发布选项", edit_admin_post_path(@post)
               |&nbsp;
-              - if @post.author == current_user || can?(:article_toggle_tag, @post)
+              - if can?(:article_toggle_tag, @post)
                 div style='float:right;'
                   = link_to "氪记大公司",'javascript:void(0)',id: "氪记大公司", onclick: "toggle_tag(#{@post.id},'氪记大公司')", style: "#{"color:#3da9f7" if @post.tag_list.include?('氪记大公司') }"
                   span &nbsp;|&nbsp;
