@@ -64,6 +64,9 @@ em.highlight {
   font-weight: 600;
 }
 
+.textarea-focus-tips{
+  padding: 2px 0 2px 5px;
+}
 /*span.badge{
   border: solid #9e9e9e 1px;
   border-radius: 1px 15px;
