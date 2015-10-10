@@ -4,7 +4,7 @@ xml.rss 'xmlns:content' => "http://purl.org/rss/1.0/modules/content/", :version 
     xml.channel do
       xml.title t('site_name')
       xml.language 'zh-cn'
-      xml.pubDate @feeds.first && @feeds.first.published_at
+      xml.pubDate @feeds.first && @feeds.first.published_at.to_s(:rfc822)
       xml.generator t('site.name').gsub('|', '-')
       xml.description t('site_description')
       xml.link do

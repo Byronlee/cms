@@ -45,6 +45,11 @@ class PostsController < ApplicationController
   alias_method :uc_feed, :feed
 
   def partner_feed
+    if params[:partner] == 'liebao'
+      render 'partner_liebao_feed'
+    else
+      render 'partner_feed'
+    end
   end
 
   def bdnews
