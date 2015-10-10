@@ -12,4 +12,10 @@ module Seo
     response = Faraday.send(:get, url)
   end
 
+  #internal/seo/fragment/header-footer/<page-id>
+  def self.read_header_footer page_id
+    url = "#{Settings.kr_seo_server.send("#{Rails.env}_url")}/internal/seo/fragment/header-footer/#{page_id}"
+    response = Faraday.send(:get, url)
+  end
+
 end
