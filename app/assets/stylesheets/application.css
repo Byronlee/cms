@@ -30,7 +30,7 @@
 /* reply_comment */
 
 form.comment_form {
-    height: 148px;
+    min-height: 148px;
 }
 
 form.comment_form span.reply_msg {

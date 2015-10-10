@@ -10,6 +10,7 @@ h2
         textarea#post.textarea name="comment[content]" placeholder="你怎么看？" data-widearea="enable"
         span.focus-tips.textarea-focus-tips 请回复有价值的信息，无意义的评论将很快被删除，账号将被禁止发言。
         span.reply_message
+  div style="clear:both"
   .bottom
     - if @current_user
       - if can? :create, Comment

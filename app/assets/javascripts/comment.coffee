@@ -12,4 +12,4 @@ window.reply_comment = (o)->
 window.delete_reply_comment = (o)->
   $(o).parent().html("")
   $("form.comment_form input.re_comment_id").remove()
-
+  $("form.comment_form span.reply_message").attr('class','reply_message')
