@@ -1,0 +1,4 @@
+- if true && (header_fragment = Redis::HashKey.new('site-header')['header']).present?
+  = raw header_fragment
+- else
+  script[src="#{Settings.common_nav_script.url}" name="news" fixed="false" local="#{Settings.common_nav_script.is_local}"]

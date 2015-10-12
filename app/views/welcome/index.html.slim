@@ -1,6 +1,8 @@
 = stylesheet_link_tag 'krx/index', media: 'all'
 = render 'layouts/tag'
 
+= render 'welcome/title', seo_metas_with_title: Redis::HashKey.new('www-home')[0]
+
 .index-wrap
   - cache [:welcome, :head_line, Digest::SHA1.hexdigest((head_lines = CacheClient.instance.head_lines).to_s) ] do
     = render_cell :welcome, :head_line, head_lines: head_lines

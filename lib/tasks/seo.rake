@@ -32,7 +32,7 @@ namespace :seo do
       response = Seo.writer template_id, params
       data = ActiveSupport::JSON.decode(response.body)
       if response.success? and data['code'] == 0
-        puts data
+        #puts data
         progressbar.increment
         succesed += 1
       else
@@ -57,7 +57,7 @@ namespace :seo do
         params = { id: newsflash.id, content: newsflash.description_text, title: newsflash.hash_title, keywords: newsflash.tag_list.to_s, description: newsflash.description_text, author: newsflash.author.display_name }
         response = Seo.writer template_id, params
         data = ActiveSupport::JSON.decode(response.body)
-        puts data
+        #puts data
         if response.success? and data['code'] == 0
           progressbar.increment
           succesed += 1
@@ -84,7 +84,7 @@ namespace :seo do
         params = { id: user.id, content: user.display_name, title: user.display_name, keywords: user.display_name, description: user.display_name, author: user.display_name }
         response = Seo.writer template_id, params
         data = ActiveSupport::JSON.decode(response.body)
-        puts data
+        #puts "#{data}-#{user.domain}"
         if response.success? and data['code'] == 0
           progressbar.increment
           succesed += 1
@@ -101,7 +101,7 @@ namespace :seo do
     params = { id: 0, content: 'home', title: 'home', keywords: '36kr', description: 'home' }
     response = Seo.writer template_id, params
     data = ActiveSupport::JSON.decode(response.body)
-    puts "#{data}" #if response.success? and data['code'] == 0
+    #puts "#{data}" #if response.success? and data['code'] == 0
   end
 
   desc 'Read seo keyword'
@@ -140,7 +140,7 @@ namespace :seo do
       data = ActiveSupport::JSON.decode(response.body)
       if response.success? and data['code'] == 0
         redis_hash[post.url_code] = data['data']
-        puts data
+        #puts data
         #post.update_column(:seo_meta, data['data'])
         progressbar.increment
         succesed += 1
@@ -167,7 +167,7 @@ namespace :seo do
       data = ActiveSupport::JSON.decode(response.body)
       if response.success? and data['code'] == 0
         redis_hash[newsflash.id] = data['data']
-        puts data
+        #puts data
         #post.update_column(:seo_meta, data['data'])
         progressbar.increment
         succesed += 1
@@ -194,7 +194,7 @@ namespace :seo do
       data = ActiveSupport::JSON.decode(response.body)
       if response.success? and data['code'] == 0
         redis_hash[user.id] = data['data']
-        puts data
+        #puts "#{data}-#{user.domain}"
         #post.update_column(:seo_meta, data['data'])
         progressbar.increment
         succesed += 1
@@ -221,8 +221,8 @@ namespace :seo do
     response = Seo.read_header_footer(template_id)
     data = ActiveSupport::JSON.decode(response.body)
     if response.success? and data['code'] == 0
-      redis_hash[0] = data['data']
-      puts data
+      redis_hash['header'] = data['data']['header']
+      puts data['data']['header']
     end
   end
 
@@ -231,8 +231,8 @@ namespace :seo do
     response = Seo.read_header_footer(template_id)
     data = ActiveSupport::JSON.decode(response.body)
     if response.success? and data['code'] == 0
-      redis_hash[0] = data['data']
-      puts data
+      redis_hash['footer'] = data['data']['footer']
+      puts data['data']['footer']
     end   
   end
 

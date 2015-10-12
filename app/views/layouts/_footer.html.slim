@@ -1,5 +1,5 @@
 - subnavs ||= []
-footer.common-footer
+footer.common-footer style="position:static;margin:20px 0 5px;"
   .breadcrumb
     .sections.clearfix
       .nav-left
@@ -16,5 +16,8 @@ footer.common-footer
         a href="http://space.36kr.com/#/" 氪空间
         a href="http://chuang.36kr.com/report#/report/index" 寻求报道
 
+- if(footer_fragment = Redis::HashKey.new('site-footer')['footer']).present?
+  = raw footer_fragment
+- else
   - cache [:layout, :footer, footer = FragmentTemplate.find_by_key(:footer_body)] do
     = render_cell :layout, :footer, footer: footer
