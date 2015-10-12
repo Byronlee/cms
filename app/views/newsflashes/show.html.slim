@@ -1,4 +1,5 @@
-= render 'welcome/title', title: @newsflash.hash_title
+= render 'welcome/title', title: @newsflash.hash_title, seo_metas_with_title: Redis::HashKey.new('www-newsflashes')[@newsflash.id]
+
 = stylesheet_link_tag 'krx/fast-section-detail', media: 'all'
 = render 'layouts/tag', deep_report_name: "#{fast_news_type(@newsflash.fast_type)}详情"
 

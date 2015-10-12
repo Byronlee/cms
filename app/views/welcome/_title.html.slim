@@ -1,6 +1,12 @@
+- seo_metas_with_title ||= nil; title ||= nil
+- seo_title, seo_metas = seo(seo_metas_with_title) if seo_metas_with_title.present?
 - content_for :title do
-  -if @post.nil?
+  - if seo_title.present?
+    = raw seo_title
+  - else
     = content_tag :title, "#{title} | 36氪", s_t: onblur_title(title || '')
-  -else
-    = raw seo(@post.seo_meta).first
-    = raw seo(@post.seo_meta).last
+  - if seo_metas.present?
+    = raw seo_metas
+  - else
+    meta name="keywords" content="36氪, 36kr, 36tr, 创业, 想创业, 投资, 融资, 创投媒体, 创业公司, 科技新闻, 移动互联网, 资讯平台, 开放日, 互联网创业"
+    meta name="description" content="36氪是一个关注互联网创业的科技博客"
