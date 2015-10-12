@@ -33,10 +33,13 @@ class WelcomeController < ApplicationController
   def site_map
     info_flow = InfoFlow.find_by_name InfoFlow::DEFAULT_INFOFLOW
     @posts = info_flow.posts
+    @authors = User.recent_editor
+    @columns = Column.headers
+    @newsflashs = Newsflash.recent
   end
 
-  def posts_site_map
-    @author = User.recent_editor
+  def site_map2
+    @tags = ActsAsTaggableOn::Tag.all.order('taggings_count desc')
   end
 
   private
