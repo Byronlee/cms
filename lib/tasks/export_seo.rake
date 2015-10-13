@@ -1,6 +1,22 @@
 require 'faraday'
 
 namespace :seo do
+  desc 'Baidu update data'
+  task :post_push_baidu => :environment do
+    url = 'http://data.zz.baidu.com/urls?site=36kr.com&token=t6nDUVNK5Hbdipj2'
+    posts = Post.select('url_code').published_on(Date.today).order('published_at desc')
+    urls = []
+    posts.each do |post|
+      urls << "https://36kr.com/p/#{post.url_code}.html"
+    end
+    response = Faraday.post do |req|
+      req.url url
+      req.headers['Content-Type'] = 'text/plain'
+      req.body = urls.join("\n")
+    end
+    puts response.body
+  end
+
   desc 'Export seo robort text'
   task :export_seo_posts_text => :environment do
     seo_posts_export_file ||= "#{Rails.root}/public/seo-1.txt"
