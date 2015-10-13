@@ -134,11 +134,11 @@ a img {
 
 @font-face {
 	font-family: 'icomoon';
-	src:url('//krplus-cdn.b0.upaiyun.com/static-images/styles/fonts/b3826628.icomoon.eot?-ta6kg2');
-	src:url('//krplus-cdn.b0.upaiyun.com/static-images/styles/fonts/b3826628.icomoon.eot?#iefix-ta6kg2') format('embedded-opentype'),
-		url('//krplus-cdn.b0.upaiyun.com/static-images/styles/fonts/53b59494.icomoon.ttf?-ta6kg2') format('truetype'),
-		url('//krplus-cdn.b0.upaiyun.com/static-images/styles/fonts/c7ad35cb.icomoon.woff?-ta6kg2') format('woff'),
-		url('//krplus-cdn.b0.upaiyun.com/static-images/styles/fonts/fbe4e7fa.icomoon.svg?-ta6kg2#icomoon') format('svg');
+	src:url('//krplus-cdn.b0.upaiyun.com/static-images/styles/fonts/14cfc841.icomoon.eot?fejlke');
+  src:url('//krplus-cdn.b0.upaiyun.com/static-images/styles/fonts/14cfc841.icomoon.eot?fejlke#iefix') format('embedded-opentype'),
+    url('//krplus-cdn.b0.upaiyun.com/static-images/styles/fonts/e0228cb8.icomoon.ttf?fejlke') format('truetype'),
+    url('//krplus-cdn.b0.upaiyun.com/static-images/styles/fonts/6d383381.icomoon.woff?fejlke') format('woff'),
+    url('//krplus-cdn.b0.upaiyun.com/static-images/styles/fonts/9990986a.icomoon.svg?fejlke#icomoon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -157,59 +157,62 @@ a img {
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.icon-see:before {
-	content: "\e606";
-}
 .icon-evernote:before {
-	content: "\e600";
+  content: "\e600";
 }
 .icon-renren:before {
-	content: "\e601";
+  content: "\e601";
 }
 .icon-douban:before {
-	content: "\e602";
+  content: "\e602";
 }
 .icon-comment:before {
-	content: "\e603";
+  content: "\e604";
 }
 .icon-add:before {
-	content: "\e604";
+  content: "\e605";
 }
 .icon-play-circle-outline:before {
-	content: "\e605";
+  content: "\e606";
+}
+.icon-see:before {
+  content: "\e607";
 }
 .icon-qr:before {
-	content: "\e607";
+  content: "\e608";
 }
 .icon-arrow-up:before {
-	content: "\e60f";
+  content: "\e60f";
 }
 .icon-apple:before {
-	content: "\eabf";
+  content: "\eabf";
 }
 .icon-android:before {
-	content: "\eac1";
+  content: "\eac1";
 }
 .icon-star:before {
-	content: "\f005";
+  content: "\f005";
 }
 .icon-twitter:before {
-	content: "\f099";
+  content: "\f099";
 }
 .icon-facebook:before {
-	content: "\f09a";
+  content: "\f09a";
 }
 .icon-rss:before {
-	content: "\f09e";
+  content: "\f09e";
 }
 .icon-weibo:before {
-	content: "\f18a";
+  content: "\f18a";
 }
 .icon-qq:before {
-	content: "\f1d7";
+  content: "\f1d7";
 }
 .icon-weixin:before {
-	content: "\f1d8";
+  content: "\f1d8";
+}
+.icon-linkedin:before {
+  content: "\e603";
 }
 
 /* Magnific Popup CSS */
@@ -1909,6 +1912,9 @@ a:hover {
 /* line 50, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/share-group.less */
 .share-group a .icon-evernote {
   background: #266800;
+}
+.share-group a .icon-linkedin {
+  background: #0076B7;
 }
 /* line 53, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/share-group.less */
 .share-group a .panel-weixin {
