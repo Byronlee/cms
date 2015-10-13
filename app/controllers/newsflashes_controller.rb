@@ -51,6 +51,7 @@ class NewsflashesController < ApplicationController
     @newsflashes = @newsflashes.tagged_with(params[:tag]) if params[:tag]
     @newsflashes = @newsflashes.pins if params[:pin]
     @newsflashes = Newsflash.paginate(@newsflashes, params)
+    @tag = params[:tag] || params[:column_slug]
     respond_to do |format|
       format.html do
         if request.xhr?

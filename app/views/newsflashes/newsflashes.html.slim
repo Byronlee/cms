@@ -1,4 +1,4 @@
-= render 'welcome/title', title: "氪快讯"
+= render 'welcome/title', title: "氪快讯", seo_metas_with_title: Redis::HashKey.new('www-newsflashes')[0]
 = stylesheet_link_tag 'krx/page-fast-news', media: 'all'
 
 .article-detail-wrap
