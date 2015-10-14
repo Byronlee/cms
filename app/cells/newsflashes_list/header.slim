@@ -40,7 +40,7 @@ header.time-line-header
     span
       | 查看条件：
     span.search-express
-      = params[:q] || params[:tag] || @column.try(:name) || ('头条' if params[:pin].present?)
+      = params[:q] || params[:tag] || @column.try(:name) || ('头条' if params[:pin].present?) || ('查看更多' if params[:b_id] && params[:d] && !request.xhr?)
     span.line
     span
       | 共
