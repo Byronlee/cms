@@ -28,7 +28,8 @@ namespace :seo do
     succesed = failed = 0
     progressbar = ProgressBar.create(total: total_count, format: '%a %bᗧ%i %p%% %t')
     posts.each do |post|
-      params = { id: post.url_code, content: post.content, title: post.title, keywords: post.tag_list.to_s, description: post.summary, author: post.author.display_name }
+      content = ActionController::Base.helpers.sanitize(post.content, tags: %w(), attributes: %w())[0..120]
+      params = { id: post.url_code, content: content, title: post.title, keywords: post.tag_list.to_s, description: "#{content}...", author: post.author.display_name }
       response = Seo.writer template_id, params
       data = ActiveSupport::JSON.decode(response.body)
       if response.success? and data['code'] == 0
