@@ -3,8 +3,8 @@ class Admin::UsersController < Admin::BaseController
   authorize_resource
 
   def index
-    @users = (simple_search if can_search? rescue @users)
-    @users = @users.includes(:krypton_authentication).order('id desc').page params[:page]
+    @users = (simple_search if can_search? rescue @users.includes(:krypton_authentication))
+    @users = @users.order('id desc').page params[:page]
   end
 
   def update
@@ -17,13 +17,13 @@ class Admin::UsersController < Admin::BaseController
 
   def shutup
     @user.shutup!
-    flash[:notice] = "禁言操作成功！"
+    flash[:notice] = '禁言操作成功！'
     respond_with @user, location: ok_url_or([:admin, :users])
   end
 
   def speak
     @user.speak!
-    flash[:notice] = "解除禁言操作成功！"
+    flash[:notice] = '解除禁言操作成功！'
     respond_with @user, location:  ok_url_or([:admin, :users])
   end
 
@@ -45,9 +45,10 @@ class Admin::UsersController < Admin::BaseController
 
   def simple_search
     @type_value = params[:s][params[:s][:type].to_sym]
-    return User.where(id: params[:s][:id]) if params[:s][:type].eql?('id')
-    return User.where(sso_id: params[:s][:sso_id]) if params[:s][:type].eql?('sso_id')
-    User.where("#{params[:s][:type]} like '%#{params[:s][params[:s][:type].to_sym]}%'")
+    return User.where(id: params[:s][:id]).includes(:krypton_authentication) if params[:s][:type].eql?('id')
+    return User.where(sso_id: params[:s][:sso_id]).includes(:krypton_authentication) if params[:s][:type].eql?('sso_id')
+    return User.where(role:params[:s][:role]).includes(:krypton_authentication) if params[:s][:type].eql?('role')
+    User.joins(:krypton_authentication).where("authentications.raw like '%#{params[:s][params[:s][:type].to_sym]}%'")
   end
 
   def can_search?
