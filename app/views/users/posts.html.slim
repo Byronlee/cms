@@ -1,4 +1,4 @@
-= render 'welcome/title', title: @user.display_name, seo_metas_with_title: Redis::HashKey.new('www-posts')[0]
+= render 'welcome/title', title: @user.display_name, seo_metas_with_title: Redis::HashKey.new('www-posts')[@user.display_name]
 
 = stylesheet_link_tag 'krx/search-result', media: 'all'
 = render 'layouts/tag', deep_report_link: root_path, deep_report_active: 'false'

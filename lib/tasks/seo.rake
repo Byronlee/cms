@@ -80,11 +80,11 @@ namespace :seo do
     succesed = failed = 0
     progressbar = ProgressBar.create(total: total_count, format: '%a %bᗧ%i %p%% %t')
     users.each do |user|
-      if user.domain.present?
+      #if user.domain.present?
         params = { id: user.id, content: user.display_name, title: user.display_name, keywords: user.display_name, description: user.display_name, author: user.display_name }
         response = Seo.writer template_id, params
         data = ActiveSupport::JSON.decode(response.body)
-        #puts "#{data}-#{user.domain}"
+        #puts "#{data}-#{user.display_name}"
         if response.success? and data['code'] == 0
           progressbar.increment
           succesed += 1
@@ -92,7 +92,7 @@ namespace :seo do
           progressbar.decrement
           failed += 1
         end
-      end
+      #end
     end
     puts "共提交 #{total_count} 个作者, 成功提交 #{succesed} 个作者, 失败 #{failed} 个作者"
   end
@@ -189,7 +189,7 @@ namespace :seo do
     puts "共更新 #{total_count} 个快讯, 成功更新 #{succesed} 个快讯, 失败 #{failed} 个快讯"
   end
 
-    def pull_authors(template_id, limit)
+    def pull_authors_disable(template_id, limit)
     redis_hash = Redis::HashKey.new(template_id)
     response = Seo.read template_id, 0
     data = ActiveSupport::JSON.decode(response.body)
@@ -199,7 +199,7 @@ namespace :seo do
     end
   end
 
-  def pull_authors_detil(template_id, limit)
+  def pull_authors(template_id, limit)
     if limit == 0
       users = User.recent_editor
     else
@@ -210,20 +210,19 @@ namespace :seo do
     progressbar = ProgressBar.create(total: total_count, format: '%a %bᗧ%i %p%% %t')
     redis_hash = Redis::HashKey.new(template_id)
     users.each do |user|
-      if user.domain.present?
+      #if user.domain.present?
         response = Seo.read template_id, user.id
         data = ActiveSupport::JSON.decode(response.body)
         if response.success? and data['code'] == 0
-          redis_hash[user.id] = data['data']
-          #puts "#{data}-#{user.domain}"
-          #post.update_column(:seo_meta, data['data'])
+          redis_hash[user.display_name] = data['data']
+          #puts "#{data}-#{user.display_name}"
           progressbar.increment
           succesed += 1
         else
           progressbar.decrement
           failed += 1
         end
-      end
+      #end
     end
     puts "共更新 #{total_count} 个作者, 成功更新 #{succesed} 个作者, 失败 #{failed} 个作者"
   end
