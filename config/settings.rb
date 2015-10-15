@@ -24,10 +24,10 @@ settings.kr_seo_server = {
   test_url: 'http://sm.dev.36tr.com'
 }
 
-settings.kr_earch_server = {
-  development_url: 'http://rong.dev.36kr.com/news/receiver/v1',
-  production_url: 'http://rong.dev.36kr.com/news/receiver/v1',
-  test_url: 'http://rong.dev.36kr.com/news/receiver/v1'
+settings.kr_search_server = {
+  development_url: 'http://data-internal.test.36tr.com/es-mobile?cmd=article',
+  production_url: 'http://data-internal.36tr.com/es-mobile?cmd=article',
+  test_url: 'http://data-internal.test.36tr.com/es-mobile?cmd=article'
 }
 
 settings.api = {
