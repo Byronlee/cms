@@ -16,3 +16,15 @@
 = render 'layouts/footer', subnavs: [["氪快讯", newsflashes_list_path]]
 = javascript_include_tag 'krx/page-fast-news', media: 'all'
 = render 'welcome/wechat_share'
+
+javascript:
+  function loadingLatest(){
+    var b_id = $(".item-details h2 a").data("id");
+    if(!b_id){
+      return;
+    }
+    $.get("/newsflashes?d=prev&b_id=" + b_id, function(data){
+      console.log(data);
+    })
+  }
+  setInterval("loadingLatest()", 5000);
