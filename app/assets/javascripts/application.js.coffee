@@ -26,7 +26,7 @@ window.mobilecheck = ->
 
 window.doFavorite = (url_code) ->
   $.post '/asynces/favorites', { 'url_code': url_code, 'authenticity_token': window._token }, (result) ->
-    trigger = $(".J_addFavorite")
+    trigger = $("#favorite-btn-post-" + url_code)
 
     if trigger.hasClass('is-favorite')
       trigger.removeClass 'is-favorite'
@@ -42,13 +42,13 @@ window.doFavorite = (url_code) ->
       trigger.addClass 'is-favorite'
       setTimeout (->
         trigger.addClass 'icon-fly'
-        $('#star-count').text result['count']
+        $('#star-count-post-'+url_code).text result['count']
         return
       ), 0
     else if result['success'] == 'del'
       trigger.removeClass 'is-favorite'
       trigger.removeClass 'icon-fly'
-      $('#star-count').text result['count']
+      $('#star-count-post-'+url_code).text result['count']
     return
   return
 

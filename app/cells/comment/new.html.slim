@@ -44,7 +44,7 @@ h2
 
   javascript:
     $(document).ready(function(){
-      $(".comment-submit-btn").click(function(o){
+      $("body").delegate('.comment-submit-btn', 'click', function(o){
         var comment_message = $('form.comment_form #post').val();
         if(#{@current_user.present?} == false || comment_message == "") return;
         var frm = $('form.comment_form');

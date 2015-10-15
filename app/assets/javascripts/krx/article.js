@@ -25,12 +25,13 @@ $(document).ready(function(){
     /**
      * 评论
      */
-    $('.J_addCommentBtn').click(function(e){
+    $('body').delegate('.J_addCommentBtn', 'click', function(e){
         e.preventDefault();
+        var postId = $(this).data('post-id');
         $('body, html').animate({
-            scrollTop: $('.single-post-comment').offset().top
+            scrollTop: $("#article-section-"+postId).find('.single-post-comment').offset().top
         }, 400);
-        $('.single-post-comment textarea').trigger('focus');
+        $("#article-section-"+postId).find('.single-post-comment textarea').trigger('focus');
     })
 
     /**
@@ -63,4 +64,159 @@ $(document).ready(function(){
             },0);
         }
     })
+
+  // *************************Begin无缝加载********************************
+    // 获取当前初始化文章的打赏二维码
+    var titleCur = $('.article-section:eq(0)').find('.single-post__title').html(),
+        authorCur = $('.article-section:eq(0)').find('.author .name').html();
+    crowdFunding(authorCur,titleCur,'EE');
+    // 获取广告的内容
+    var ad = $('.article-section:eq(0)').find('.ad').html().replace(/<script.*?<\/script>/img, '');
+    // 获取第二篇文章内容
+    var url_code = $('.article-section').attr('data-aid');
+    var nextArticleData = '';
+    $.get('/p/' + url_code + '.html', function(data) {
+      nextArticleData = data;
+    });
+    // 判断该文章是否已存在
+    function  pexist(aid){
+    var isexists = 0;
+
+    $.each($('.article-section'),function(i,v){
+      if($(this).data('aid') == aid){
+        isexists = 1;
+      }
+
+    });
+    return isexists;
+  }
+
+  var curscrolltop = -1;
+  // 判断是否在视野内
+  function invisiblezone() {
+    var wT = $(window).scrollTop(),
+      wH = $(window).height();
+    if(Math.abs(wT - curscrolltop) < 20) {
+      return 0;
+    }
+    var d = 0; //1 向下滑动   2  向上滑动
+    if((wT - curscrolltop) > 0) {
+      d = 1;
+    } else if((wT - curscrolltop) < 0) {
+      d = 2;
+    }
+
+    var wB = $(window).scrollTop() + $(window).height();
+    if(curscrolltop > -1) {
+      $.each($('.article-section'),function(i,v){
+        var title = $(this).find('.single-post__title').html(),
+          url = $(this).data('url'),
+          oT = $(this).offset().top,
+          pH = oT + $(this).outerHeight();
+
+
+        // 向下滑动
+        if(d == 1) {
+          if((oT > wT) && (oT < (wT + wH / 3))) {
+            if(window.location.href != url) {
+              var state = {
+                title: title,
+                url: window.location.href
+              }
+              window.history.pushState(state, document.title, url);
+              document.title = title;
+            }
+          }
+        } else if(d == 2) {
+          // 向上滑动
+          if((pH < (wT + wH)) && (pH > (wT + wH * 2 / 3))) {
+
+            if(window.location.href != url) {
+              var state = {
+                title: title,
+                url: window.location.href
+              }
+              window.history.pushState(state, document.title, url);
+              document.title = title;
+            }
+          }
+        }
+      });
+    }
+
+    curscrolltop = wT;
+  }
+
+  // 获取文章内容
+  var isgeting = 0;
+  function getArticle(curAid) {
+    var articleData = '';
+    $.ajax({
+      url: '/p/' + curAid + '.html',
+      type: 'get',
+      beforeSend: function() {
+        isgeting = 1;
+      },
+      success: function(data) {
+        // 获取内容成功
+        isgeting = 0;
+        if(data) {
+          articleData = "<div class='ajax-article-main'>" + data + "</div>";
+          nextArticleData = articleData;
+        } else {
+          alert('没有文章了！');
+        }
+      }
+    });
+  }
+
+
+  // 渲染文章
+  function renderArticle(data) {
+    data = "<div class='ajax-article-main'>" + data + "</div>";
+    if(data) {
+      var dH = $(document).height(),
+        showNextCon = '';
+      $(window).scrollTop(dH + 100);
+      // 替换广告的内容
+      // console.log(data);
+
+      showNextCon = $($.parseHTML(data,true)).find('.ad').html(ad).parents('.ajax-article-main').html();
+      $('.article-section:last').after(showNextCon);
+
+
+      var title = $($.parseHTML(data,true)).find('.ad').html(ad).end().find('.single-post__title').html(),
+        url = $($.parseHTML(nextArticleData,true)).find('.ad').html(ad).parents('.article-section').data('url'),
+        author = $($.parseHTML(data,true)).find('.ad').html(ad).end().find('.author .name').html();
+        // console.log(author);
+      // 获取打赏二维码
+      crowdFunding(author,title,'EE');
+      var state = {
+        title: title,
+        url: window.location.href
+      }
+      window.history.pushState(state, document.title, url);
+      document.title = title;
+    }
+  }
+
+  // 处理滚动事件
+  $(window).scroll(function() {
+    var sT = $(window).scrollTop();
+    invisiblezone();
+    // console.log('aa: ' + (sT + $(window).height() + 50) + 'bb: ' + $(document).height());
+    if((sT + $(window).height() + 50) > $(document).height()) {
+
+
+      var aidC = $($.parseHTML(nextArticleData,true)).find('.ad').html(ad).parents('.article-section').data('aid');
+      // if(!aidC) return;
+      if(!pexist($($.parseHTML(nextArticleData,true)).find('.ad').html(ad).parents('.article-section').data('aid'))) {
+        renderArticle(nextArticleData);
+      }
+      if(isgeting) return;
+      // console.log(aidC);
+      nextArticleData = getArticle(aidC);
+    }
+  });
+  // *************************End无缝加载********************************
 });

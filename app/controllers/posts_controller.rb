@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   def show
     if request.xhr?
       post = Post.find_by_url_code!(params[:url_code])
-      @post = Post.where("published_at < ?", post.published_at).last
+      @post = Post.published.where("published_at < ?", post.published_at).last
       render 'posts/_content_and_comment', locals: { :post => @post }, layout: false
     else
       @post = Post.find_by_url_code!(params[:url_code])
