@@ -56,7 +56,6 @@ module V2
           { MsgType: "<![CDATA[news]]>", ArticleCount: posts.total_count,
             Articles: { item: items }
           }
-
         end
 
       end

@@ -8,6 +8,7 @@ module V2
       expose :email      , documentation: '邮箱'
       expose :phone      , documentation: '电话'
       expose :role        , documentation: ''
+      expose :domain , documentation: ''
     end
   end
 end

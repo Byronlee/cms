@@ -5,6 +5,7 @@ module V2
       expose :title      , documentation: '标题'
       expose :summary    , documentation: '摘要'
       expose :column_id  , documentation: '专栏编号'
+      expose :column, using: Entities::Column, documentation: '专栏'
       expose :cover_real_url  , documentation: '封面图片'
       expose :author, using: Entities::User, documentation: '用户'
       expose :url_code   , documentation: '兼容旧站文章id'
