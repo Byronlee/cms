@@ -51,12 +51,14 @@ class NewsflashesController < ApplicationController
     @newsflashes = @newsflashes.tagged_with(params[:tag]) if params[:tag]
     @newsflashes = @newsflashes.pins if params[:pin]
     @newsflashes = Newsflash.paginate(@newsflashes, params)
-    @tag = params[:tag] || params[:column_slug]
+    #@tag = params[:tag] || params[:column_slug]
+    @newsflashes, @b_newsflash = Newsflash.paginate(@newsflashes, params)
     respond_to do |format|
       format.html do
         if request.xhr?
-          @news_day = @newsflashes.first.created_at.to_date if @newsflashes.first
-          render 'newsflashes/_newsflashes_list', layout: false
+          @news_day = @newsflashes.first.created_at.to_date if params[:d] != 'prev' && @newsflashes.first
+          # render 'newsflashes/_newsflashes_list', layout: false
+          render 'newsflashes/_prev_list', layout: false
         else
           columns_data = CacheClient.instance.columns_header
           @columns = JSON.parse(columns_data.present? ? columns_data : '{}')

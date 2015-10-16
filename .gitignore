@@ -28,5 +28,5 @@
 /config/database.yml
 /config/gem_sources.yml
 gmon.out
-.rvmrc
-.idea
+/.idea
+/.rvmrc

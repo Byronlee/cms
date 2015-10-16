@@ -1,0 +1,64 @@
+- first_timeline = true
+- if @newsflashes.count > 0
+  div.newest-news
+    - @newsflashes.each_with_index do |newsflash, index|
+      - next if (newsflash.created_at.strftime('%Y-%m-%d') == @b_newsflash.created_at.strftime('%Y-%m-%d'))
+      - if @news_day.blank? || newsflash.created_at.to_date != @news_day
+        - @news_day = newsflash.created_at.to_date
+        .item.item-date data-date="#{newsflash.created_at.to_date}"
+          - first_timeline ||= nil
+          .time-tag class="#{'first' if(first_timeline && !(first_timeline = !first_timeline)) }"
+            = image_tag 'calendar.png', alt: ''
+            span
+              |&nbsp;&nbsp;
+              = @news_day.strftime('%Y-%m-%d')
+              |&nbsp;&nbsp;星期
+              = convert_to_chinese_number @news_day.wday.next
+      .item.item-news
+        span.public-time = smart_only_time_ago newsflash.created_at
+        - if newsflash.pin?
+          span.tags.tags-kr-headline 氪头条
+        - else
+          span.tags class="tags-#{newsflash.column.try(:slug) || 'column'}" = newsflash.column.try(:name) || '专栏'
+        .item-details
+          h2 data-stat-click="kuaixunbiaoti.#{index.next}.#{newsflash.id}.click"
+            a href="#" data-id="#{newsflash.id}" data-show="false" = newsflash.hash_title
+          p.details-text
+            = newsflash.description_text
+            - if newsflash.news_url.present?
+              a.fast-url[href=newsflash.news_url target="_blank" rel="nofollow"]
+                | [#{newsflash.news_url_type}]
+          footer
+            span.share
+              |分享到
+              div.share-group
+                a.weixin.mobile-hide[href="javascript:void(0)" ref="nofollow" target="_blank" data-url="#{newsflash_show_url(newsflash)}?via=wechat_qr" data-stat-click="kuaixunweixin.#{index.next}.#{newsflash.id}.click"]
+                  i.icon-weixin
+                a.weibo[href="http://share.baidu.com/s?type=text&searchPic=1&sign=on&to=tsina&url=#{newsflash_show_url(newsflash)}&title=#{('快讯 | ' + newsflash.description_text.to_s).html_safe}&pic=#{newsflash.cover}" ref="nofollow" target="_blank" data-stat-click="kuaixunweibo.#{index.next}.#{newsflash.id}.click"]
+                  i.icon-weibo
+
+  div.current-news
+    - @newsflashes.each_with_index do |newsflash, index|
+      - next unless (newest_news = newsflash.created_at.strftime('%Y-%m-%d') == @b_newsflash.created_at.strftime('%Y-%m-%d'))
+      .item.item-news
+        span.public-time = smart_only_time_ago newsflash.created_at
+        - if newsflash.pin?
+          span.tags.tags-kr-headline 氪头条
+        - else
+          span.tags class="tags-#{newsflash.column.try(:slug) || 'column'}" = newsflash.column.try(:name) || '专栏'
+        .item-details
+          h2 data-stat-click="kuaixunbiaoti.#{index.next}.#{newsflash.id}.click"
+            a href="#" data-id="#{newsflash.id}" data-show="false" = newsflash.hash_title
+          p.details-text
+            = newsflash.description_text
+            - if newsflash.news_url.present?
+              a.fast-url[href=newsflash.news_url target="_blank" rel="nofollow"]
+                | [#{newsflash.news_url_type}]
+          footer
+            span.share
+              |分享到
+              div.share-group
+                a.weixin.mobile-hide[href="javascript:void(0)" ref="nofollow" target="_blank" data-url="#{newsflash_show_url(newsflash)}?via=wechat_qr" data-stat-click="kuaixunweixin.#{index.next}.#{newsflash.id}.click"]
+                  i.icon-weixin
+                a.weibo[href="http://share.baidu.com/s?type=text&searchPic=1&sign=on&to=tsina&url=#{newsflash_show_url(newsflash)}&title=#{('快讯 | ' + newsflash.description_text.to_s).html_safe}&pic=#{newsflash.cover}" ref="nofollow" target="_blank" data-stat-click="kuaixunweibo.#{index.next}.#{newsflash.id}.click"]
+                  i.icon-weibo

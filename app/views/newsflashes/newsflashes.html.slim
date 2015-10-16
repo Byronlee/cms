@@ -24,7 +24,16 @@ javascript:
       return;
     }
     $.get("/newsflashes?d=prev&b_id=" + b_id, function(data){
+      //console.log(data);
+      //$('div[class="time-tag first"]').parent().after(data);s
       console.log(data);
+      $('a[data-id="7919"]').parent().parent().parent().before($(data).filter(".current-news").find(".item"));
+      var newestNews = $(data).filter(".newest-news").find(".item");
+      if(newestNews) {
+        $(".time-tag.first").removeClass('first');
+        $('.fase-time-line').prepend(newestNews);
+      }
     })
   }
-  setInterval("loadingLatest()", 5000);
+  setTimeout("loadingLatest()", 5000);
+  //setInterval("loadingLatest()", 5000);

@@ -114,11 +114,11 @@ class Newsflash < ActiveRecord::Base
   def self.paginate(newsflashes, params)
     b_newsflash = Newsflash.find(params[:b_id]) if params[:b_id]
     if b_newsflash && params[:d] == 'next'
-      newsflashes = newsflashes.where("newsflashes.created_at < ?", b_newsflash.created_at)
+      newsflashes = newsflashes.where('newsflashes.created_at < ?', b_newsflash.created_at).recent.page(1).per(params[:per_page] || 30)
     elsif b_newsflash && params[:d] == 'prev'
-      newsflashes = newsflashes.where("newsflashes.created_at > ?", b_newsflash.created_at)
+      newsflashes = newsflashes.where('newsflashes.created_at > ?', b_newsflash.created_at).order(created_at: :desc).last(30)
     end
-    newsflashes = newsflashes.recent.page(1).per(params[:per_page] || 30)
+    [newsflashes, b_newsflash]
   end
 
   private
