@@ -24,7 +24,7 @@ h2
             - if @current_user.try(:display_name).to_s.include?('新用户')
               |Tips：您正在使用默认的用户名，一点都不 Cool，<a href="#{Settings.user_info_update_url}">去更新</a>
 
-        button.ladda-button.comment-submit-btn.right[ data-style="slide-down" data-spinner-size="32" data-stat-click="pinglun.fabupinglun.click"]
+        button.ladda-button.comment-submit-btn.right[data-post-id="#{@post.url_code}" data-style="slide-down" data-spinner-size="32" data-stat-click="pinglun.fabupinglun.click"]
           span.ladda-label
             | 提交评论
       - else
@@ -36,52 +36,9 @@ h2
         a href="#{new_user_session_path(ok_url: request.fullpath)}" class="login_before_comment" 登录
         | 后参与讨论
 
-  - unless @current_user.present?
-    javascript:
-      $(document).ready(function(){
-        $('textarea#post.textarea, button.ladda-button.comment-submit-btn').attr('disabled','disabled')
-      })
+  / - unless @current_user.present?
+  /   javascript:
+  /     $(document).ready(function(){
+  /       $('textarea#post.textarea, button.ladda-button.comment-submit-btn').attr('disabled','disabled')
+  /     })
 
-  javascript:
-    $(document).ready(function(){
-      $("body").delegate('.comment-submit-btn', 'click', function(o){
-        var comment_message = $('form.comment_form #post').val();
-        if(#{@current_user.present?} == false || comment_message == "") return;
-        var frm = $('form.comment_form');
-        $.ajax({
-            type: frm.attr('method'),
-            url: frm.attr('action'),
-            data: frm.serialize() + "&current_maxid=" + ($(".comment_details").data('comment-id') || 0),
-            beforeSend: function(){
-              $(o).attr('diabled', "true")
-              $('span.ladda-label').html('提交评论...')
-            },
-            success: function (data) {
-              $('.single-post-comment__comments').prepend(data);
-              $('.comment_total_count').text($(".comments_total_count").data('total-count') || 0);
-              $('.comment_form_count').text($(".comments_total_count").data('total-count') || 0);
-              $('#error_msg').text($(".comments_total_count").data('message'));
-              if($(".comments_total_count").data('message') == ''){
-                frm[0].reset();
-              }
-              $("span.reply_message span").trigger("click");
-              $(".timeago").timeago();
-              initLazyLoad();
-            },
-            complete: function(){
-              $(o).removeAttr('diabled')
-              $('span.ladda-label').html('提交评论')
-            }
-        });
-     });
-   });
-
-   function commentsLoadComplete(){
-     $('.timeago').timeago();
-     $('.comment_total_count').text($(".comments_total_count").data('total-count') || 0);
-     $('.comment_form_count').text($(".comments_total_count").data('total-count') || 0);
-     var anchor =  $('a[name="'+ window.location.hash +'"]');
-     if(anchor.length > 0){
-       $('body').animate({scrollTop: $('a[name="'+ window.location.hash +'"]').offset().top}, 600)
-     }
-   }

@@ -321,6 +321,10 @@ a:hover {
     width: auto;
   }
 }
+.article-detail-wrap .article-section:not(:first-child) {
+  margin-top: 20px;
+}
+
 /* line 9, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section {
   *zoom: 1;

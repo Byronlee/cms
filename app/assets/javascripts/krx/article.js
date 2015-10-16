@@ -5,7 +5,9 @@ function crowdFunding(author,title,user){
         article_title: title,
         reward_nick_name: user
     }).done(function(data) {
-        $('.top-tip-shap img').attr('src', data.data.QRImgUrl);
+        if(data.data){
+          $('.top-tip-shap img').attr('src', data.data.QRImgUrl);
+        }
     });
 }
 
