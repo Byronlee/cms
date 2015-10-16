@@ -1,6 +1,9 @@
 class AsymcRender
   constructor: (@stack) ->
-    @stack ||= $('div[async]')
+    if !@stack
+      @stack = $('div[async]')
+    else
+      @stack = @stack.find('div[async]')
 
   render: ->
     $.each @stack, (key, obj)->
@@ -8,15 +11,12 @@ class AsymcRender
         $(obj).hide().html(data).fadeIn(1500)
         eval($(obj).attr('async-callback')) if $(obj).attr('async-callback')
 
-window.async_render = (obj = '') ->
+window.async_render = (parent = null) ->
   asymc_render = null
-  if obj
+  if parent == null
     asymc_render = new AsymcRender
-    console.log(asymc_render)
-
   else
-    asymc_render = new AsymcRender(obj)
-
+    asymc_render = new AsymcRender(parent)
   asymc_render.render()
 
 jQuery ->
