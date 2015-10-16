@@ -16,12 +16,12 @@ module V2
           optional :time,  type: Integer, default: Time.now.to_i, desc: 'ISO-8601 时间戳(Unix timestamp)秒'
         end
         post 'posts' do
-          if ((Date.today.end_of_day - Time.at(params[:time].to_i)) / (3600*24)) < 15
+          #if ((Date.today.end_of_day - Time.at(params[:time].to_i)) / (3600*24)) < 15
             posts = Post.select(:url_code).where(published_at: Time.at(params[:time].to_i)..Date.today.end_of_day)
             posts.map(&:url_code)
-          else
-            { msg: '大哥，注意身体不要用力过猛哦.' }
-          end
+          #else
+          #  { msg: '大哥，注意身体不要用力过猛哦.' }
+          #end
         end
 
       end

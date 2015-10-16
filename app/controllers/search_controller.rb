@@ -1,6 +1,14 @@
 require 'uri'
 class SearchController < ApplicationController
+
   def search
+    @data = Java::Search.search params
+    @total_count = @data['data']['totalCount']
+    @posts = @data['data']['article']
+    p @posts.last
+  end
+  
+  def search_ruby
     params[:q] = URI.unescape(params[:q]).gsub('/','') unless params[:q].blank?
     if params[:q].blank?
       @message = '搜索关键词不能为空'
@@ -30,6 +38,6 @@ class SearchController < ApplicationController
         end
       end
     end
-
   end
+
 end

@@ -1,13 +1,13 @@
 - if @posts.present?
-  - @posts.each do |post|
+  - @posts.each_with_hit do |post, hit|
     - @index = (@index || 0) + 1
     article
-      a.pic[data-fit-mobile="true" class="badge-#{Column.find(post['column_id']).try(:slug)}" href="#{post_url(post, utm_source: utm_source ||= nil)}" data-lazyload="#{high_speed_url post['img'], 'feature'}" data-stat-click="Wenzhangtupian.#{@index}.#{post['id']}.click"]
+      a.pic[data-fit-mobile="true" class="badge-#{post.column.try(:slug)}" href="#{post_url(post, utm_source: utm_source ||= nil)}" data-lazyload="#{high_speed_url post.cover_real_url, 'feature'}" data-stat-click="Wenzhangtupian.#{@index}.#{post.url_code}.click"]
       .desc
-        a.title[href=post_url(post, utm_source: 'site_search' ) target="_blank" data-stat-click="Wenzhangbiaoti.#{@index}.#{post['id']}.click"]
-          = post['highlight']
+        a.title[href=post_url(post, utm_source: 'site_search' ) target="_blank" data-stat-click="Wenzhangbiaoti.#{@index}.#{post.url_code}.click"]
+          = display_search_title(post, hit)
         .author
-          a[href="#{user_domain(post.author.try(:domain))}" data-stat-click="Wenzhangzuozhe.#{@index}.#{post['id']}.click"]
+          a[href="#{user_domain(post.author.try(:domain))}" data-stat-click="Wenzhangzuozhe.#{@index}.#{post.url_code}.click"]
             span.avatar[data-lazyload="#{post.author.avatar}"]
             span.name
               = (post.author && post.author.display_name)

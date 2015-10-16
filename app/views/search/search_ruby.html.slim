@@ -12,11 +12,11 @@
           | 搜索结果
         .count
           |结果数：
-          em.highlight = @total_count || 0
+          em.highlight = @posts.present? ? @posts.total_count : 0
 
       .article-list
         .articles.J_articleList data-stat-module="Sousuo"
-          = render 'search/list'
+          = render 'search/list_ruby'
 
     .index-side
       .fast-section.J_fastSection.mobile-hide

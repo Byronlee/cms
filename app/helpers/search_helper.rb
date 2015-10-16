@@ -8,5 +8,9 @@ module SearchHelper
     return raw hit['highlight']['hash_title'].first if hit['highlight']
     raw newflash.hash_title
   end
+
+  def show_post_url 
+  	
+  end
 end
 
