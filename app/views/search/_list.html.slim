@@ -2,22 +2,22 @@
   - @posts.each do |post|
     - @index = (@index || 0) + 1
     article
-      a.pic[data-fit-mobile="true" class="badge-#{show_column post['column_id']}" href="#{show_post_url post['id']}" data-lazyload="#{high_speed_url post['img'], 'feature'}" data-stat-click="Wenzhangtupian.#{@index}.#{post['id']}.click"]
+      a.pic[data-fit-mobile="true" class="badge-#{post['slug']}" href="#{show_post_url post['id']}" data-lazyload="#{high_speed_url post['img'], 'feature'}" data-stat-click="Wenzhangtupian.#{@index}.#{post['id']}.click"]
       .desc
         a.title[href=show_post_url(post['id']) target="_blank" data-stat-click="Wenzhangbiaoti.#{@index}.#{post['id']}.click"]
           = raw post['highlight']
         .author
-          a[href="#{show_user_domain_url(post['author']['id'])}" data-stat-click="Wenzhangzuozhe.#{@index}.#{post['id']}.click"]
+          a[href="#{post['author']['domain']}" data-stat-click="Wenzhangzuozhe.#{@index}.#{post['id']}.click"]
             span.avatar[data-lazyload="#{post['author']['avatar_url']}"]
             span.name
               = (post['author']['name'])
           span.time
             |&nbsp;•&nbsp;
-            = smart_time_ago post['published_time']
+            = smart_time_ago post['publish_time'].to_time
         .brief
           = raw post['summary']
 
-  /= link_to '', search_path(q: params[:q], d: 'next', b_url_code: @posts.results.last.url_code, format: :html), class: 'load-more J_listLoadMore', id: 'search_next_link', 'data-stat-click' => "wenzhanggengduo.click"
+  = link_to '', search_path(q: params[:q], published_at: @posts.last['publish_time'].to_time.to_i, format: :html), class: 'load-more J_listLoadMore', id: 'search_next_link', 'data-stat-click' => "wenzhanggengduo.click"
 
 - elsif @message.present?
   article.search_none_info

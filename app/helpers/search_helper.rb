@@ -13,12 +13,5 @@ module SearchHelper
   	"#{Settings.site}/p/#{url_code}.html"
   end
 
-  def show_user_domain_url id
-  	User.find(id).try(:domain)
-  end
-
-  def show_column column_id
-  	Column.find(column_id).try(:slug)
-  end
 end
 
