@@ -12,27 +12,25 @@ module V2
           optional :per_page,  type: Integer, default: 30, desc: '每页记录数'
         end
         get do
-          #posts = Post.search(params)
-          #present posts, with: Entities::Post
           data = Java::Search.search params
           posts = data['data']['article'] || []
           total_count = data['data']['totalCount'] || 0
-          #binding.pry
           posts_list = []
           posts.each do |post|
+            ruby_post = Post.where(url_code: post['id']).first
             posts_list << {
               id: post['id'],
               title: post['title'],
               column_id: post['column_id'],
               column_name: post['column_name'],
-              comments_count: Post.find(post['id']).comments_count,
+              comments_count: ruby_post.try(:comments_count) || 0,
               cover_real_url: post['img'],
               author: {
                 name: post['author']['name'],
                 avatar_url: post['author']['avatar_url']
               },
-              published_at: post.published_at.iso8601,
-              updated_at: post.updated_at.iso8601
+              published_at: post['published_at'].to_time.iso8601,
+              updated_at: post['updated_at'].to_time.iso8601
             }
           end
           {data: posts_list, post_count: total_count}

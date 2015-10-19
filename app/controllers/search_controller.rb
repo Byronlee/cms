@@ -38,6 +38,7 @@ class SearchController < ApplicationController
         end
       end
     end
+    
   end
 
 end
