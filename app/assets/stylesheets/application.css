@@ -23,6 +23,15 @@
   color: #3da9f7;
 }
 
+.fast-section-detail .fast-news .info .author .links {
+  margin-top: 10px;
+}
+
+.fast-section-detail .fast-news .info .author .links a {
+  margin: 0 10px;
+  color: #3da9f7;
+}
+
 .pull-right {
     float: right;
 }

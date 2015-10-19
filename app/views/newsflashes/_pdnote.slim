@@ -25,6 +25,10 @@
       span.time
         | &nbsp;• &nbsp;
         = smart_time_ago newsflash.created_at
+      .links
+        = link_to '官网地址', newsflash.site_url, target: '_blank' unless newsflash.site_url.blank?
+        = link_to '产品链接', newsflash.product_url, target: '_blank' unless newsflash.product_url.blank?
+        = link_to '原文链接', newsflash.news_url_type, target: '_blank' unless newsflash.news_url_type.blank?
     span.share
       |  分享到:
       .share-group
