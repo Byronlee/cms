@@ -151,7 +151,7 @@ Rails.application.routes.draw do
   match '/category/:slug(/:page)', :controller => 'columns', :action => 'show', via: :get
   match '/p/(:url_code).html' => 'posts#show', via: :get, as: :post_show_by_url_code
 
-  match '/baidu/feed' => 'posts#baidu_feed', via: :get, defaults: { format: :rss }
+  match '/baidu/feed/' => 'posts#baidu_feed', via: :get, defaults: { format: :rss }
   match '/baidu/(:url_code)' => 'posts#bdnews', via: :get, as: :post_bdnews
   match '/xiaozhi/feed/' => 'posts#xiaozhi_feed', via: :get, defaults: { format: :rss }
   match '/xiaozhi/(:url_code)' => 'posts#xiaozhi_news', via: :get, as: :xiaozhi_news
@@ -159,7 +159,7 @@ Rails.application.routes.draw do
   match '/chouti/(:url_code)' => 'posts#chouti_news', via: :get, as: :chouti_news
   match '/crop/:partner/feed' => 'posts#partner_feed', via: :get, defaults: { format: :rss }
 
-  match '/uc/feed' => 'posts#uc_feed', via: :get, defaults: { format: :rss }
+  match '/uc/feed/' => 'posts#uc_feed', via: :get, defaults: { format: :rss }
   match '/uc/(:url_code)' => 'posts#ucnews', via: :get, as: :uc_news
   match '/p/(:url_code)(.:format)' => 'posts#show', via: :get, constraints: { format: '' }
   match '/p/preview/(:key).html' => 'posts#preview', via: :get, as: :preview_post_by_key
