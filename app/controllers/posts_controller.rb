@@ -5,14 +5,13 @@ class PostsController < ApplicationController
   skip_before_filter :verify_authenticity_token, only: :article_toggle_tag
 
   def show
+    @post = Post.find_by_url_code!(params[:url_code])
+    @post.increase_views_count
     if request.xhr?
-      post = Post.find_by_url_code!(params[:url_code])
-      @post = Post.published.where("published_at < ?", post.published_at).last
+      @post = Post.published.where("published_at < ?", @post.published_at).last
       render 'posts/_content_and_comment', locals: { :post => @post }, layout: false
     else
-      @post = Post.find_by_url_code!(params[:url_code])
       raise ActiveRecord::RecordNotFound unless @post.published?
-      @post.increase_views_count
     end
   end
 

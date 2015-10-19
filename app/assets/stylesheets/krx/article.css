@@ -695,7 +695,7 @@ a:hover {
 .article-detail-wrap .main-section .content-wrapper article.single-post section.single-post-share .single-post-share-list {
   float: right;
   color: #666666;
-  width: 329px;
+  width: 309px;
   -webkit-transition: all 0.3s ease;
           transition: all 0.3s ease;
   white-space: nowrap;
@@ -721,10 +721,6 @@ a:hover {
   padding: 3px 5px;
   border-radius: 4px;
   margin-right: 10px;
-}
-/* line 291, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-.article-detail-wrap .main-section .content-wrapper article.single-post section.single-post-tags .tag-item a {
-  color: #fff;
 }
 /* line 301, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.enter-report {
