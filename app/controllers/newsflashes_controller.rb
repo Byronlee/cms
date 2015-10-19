@@ -56,9 +56,13 @@ class NewsflashesController < ApplicationController
     respond_to do |format|
       format.html do
         if request.xhr?
-          @news_day = @newsflashes.first.created_at.to_date if params[:d] != 'prev' && @newsflashes.first
-          # render 'newsflashes/_newsflashes_list', layout: false
-          render 'newsflashes/_prev_list', layout: false
+          if params[:d] == 'prev'
+            @news_day = @newsflashes.first.created_at.to_date if params[:d] != 'prev' && @newsflashes.first
+            render 'newsflashes/_prev_list', layout: false
+          elsif params[:d] == 'next'
+            @news_day = @newsflashes.first.created_at.to_date if @newsflashes.first
+            render 'newsflashes/_newsflashes_list', layout: false
+          end
         else
           columns_data = CacheClient.instance.columns_header
           @columns = JSON.parse(columns_data.present? ? columns_data : '{}')
