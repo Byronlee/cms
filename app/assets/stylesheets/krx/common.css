@@ -137,6 +137,7 @@ a img {
 	src:url('//krplus-cdn.b0.upaiyun.com/static-images/styles/fonts/14cfc841.icomoon.eot?fejlke');
 	src:url('//krplus-cdn.b0.upaiyun.com/static-images/styles/fonts/14cfc841.icomoon.eot?fejlke#iefix') format('embedded-opentype'),
 <<<<<<< HEAD
+<<<<<<< HEAD
 		url('//krplus-cdn.b0.upaiyun.com/static-images/styles/fonts/e0228cb8.icomoon.ttf?fejlke') format('truetype'),
 		url('//krplus-cdn.b0.upaiyun.com/static-images/styles/fonts/6d383381.icomoon.woff?fejlke') format('woff'),
 		url('//krplus-cdn.b0.upaiyun.com/static-images/styles/fonts/9990986a.icomoon.svg?fejlke#icomoon') format('svg');
@@ -145,6 +146,11 @@ a img {
 		url('fonts/6d383381.icomoon.woff?fejlke') format('woff'),
 		url('fonts/9990986a.icomoon.svg?fejlke#icomoon') format('svg');
 >>>>>>> 审查代码后修改
+=======
+		url('//krplus-cdn.b0.upaiyun.com/static-images/styles/fonts/e0228cb8.icomoon.ttf?fejlke') format('truetype'),
+		url('//krplus-cdn.b0.upaiyun.com/static-images/styles/fonts/6d383381.icomoon.woff?fejlke') format('woff'),
+		url('//krplus-cdn.b0.upaiyun.com/static-images/styles/fonts/9990986a.icomoon.svg?fejlke#icomoon') format('svg');
+>>>>>>> 优化文章详情页滚动加载效果
 	font-weight: normal;
 	font-style: normal;
 }

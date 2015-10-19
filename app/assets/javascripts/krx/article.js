@@ -76,10 +76,7 @@ $(document).ready(function(){
     var ad = $('.article-section:eq(0)').find('.ad').html().replace(/<script.*?<\/script>/img, '');
     // 获取第二篇文章内容
     var url_code = $('.article-section').attr('data-aid');
-    var nextArticleData = '';
-    $.get('/p/' + url_code + '.html', function(data) {
-      nextArticleData = data;
-    });
+    var nextArticleData = $(".article-section:eq(0)").parent().html();
     // 判断该文章是否已存在
     function  pexist(aid){
     var isexists = 0;
@@ -125,7 +122,7 @@ $(document).ready(function(){
                 title: title,
                 url: window.location.href
               }
-              window.history.pushState(state, document.title, url);
+              window.history.pushState(state, document.title, url + '?data='+Math.random(100));
               document.title = title;
             }
           }
@@ -138,7 +135,7 @@ $(document).ready(function(){
                 title: title,
                 url: window.location.href
               }
-              window.history.pushState(state, document.title, url);
+              window.history.pushState(state, document.title, url + '?data='+Math.random(100));
               document.title = title;
             }
           }
@@ -152,6 +149,7 @@ $(document).ready(function(){
   // 获取文章内容
   var isgeting = 0;
   function getArticle(curAid) {
+    console.log(curAid);
     var articleData = '';
     $.ajax({
       url: '/p/' + curAid + '.html',
@@ -166,7 +164,7 @@ $(document).ready(function(){
           articleData = "<div class='ajax-article-main'>" + data + "</div>";
           nextArticleData = articleData;
         } else {
-          alert('没有文章了！');
+          //alert('没有文章了！');
         }
       }
     });
@@ -197,7 +195,7 @@ $(document).ready(function(){
         title: title,
         url: window.location.href
       }
-      window.history.pushState(state, document.title, url);
+      window.history.pushState(state, document.title, url + '?data='+Math.random(100));
       document.title = title;
     }
   }
@@ -209,15 +207,18 @@ $(document).ready(function(){
     // console.log('aa: ' + (sT + $(window).height() + 50) + 'bb: ' + $(document).height());
     if((sT + $(window).height() + 50) > $(document).height()) {
 
-
       var aidC = $($.parseHTML(nextArticleData,true)).find('.ad').html(ad).parents('.article-section').data('aid');
-      // if(!aidC) return;
-      if(!pexist($($.parseHTML(nextArticleData,true)).find('.ad').html(ad).parents('.article-section').data('aid'))) {
-        renderArticle(nextArticleData);
-      }
+
       if(isgeting) return;
       // console.log(aidC);
-      nextArticleData = getArticle(aidC);
+
+      if(aidC){
+        // if(!aidC) return;
+        if(!pexist($($.parseHTML(nextArticleData,true)).find('.ad').html(ad).parents('.article-section').data('aid'))) {
+          renderArticle(nextArticleData);
+        }
+        nextArticleData = getArticle(aidC);
+      }
     }
   });
   // *************************End无缝加载********************************

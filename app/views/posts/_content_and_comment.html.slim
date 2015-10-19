@@ -1,4 +1,4 @@
-.article-section id="article-section-#{@post.url_code}" data-aid="#{ @post.url_code }" data-url="#{ post_path(@post) }"
+.article-section id="article-section-#{@post.url_code}" data-aid="#{ @post.url_code }" data-url="#{ post_show_by_url_code_path(url_code: @post.url_code) }"
   .inner
     article.single-post
       - cache [:show, :content, @post, @post.author] do

@@ -81,17 +81,21 @@ function initFastSection(){
                 $('.J_fastSectionList .wrap').height(targetHeight);
             }
             $('.J_fastSection').trigger('sticky_kit:detach');
-            $('.J_fastSection').stick_in_parent(
-                {
-                    parent: '.main-section'
-                }
-            );
+            if($('.J_fastSection').stick_in_parent){
+	            $('.J_fastSection').stick_in_parent(
+	                {
+	                    parent: '.main-section'
+	                }
+	            );
+            }
             $(window).trigger('scroll');
         }else{
             $('.J_fastSectionList .wrap').height('auto');
             $('.J_fastSection').trigger('sticky_kit:detach');
         }
-        $('.J_fastSectionList .wrap').perfectScrollbar('update');
+        if($('.J_fastSectionList .wrap').perfectScrollbar){
+          $('.J_fastSectionList .wrap').perfectScrollbar('update');
+        }
     };
     $('.J_fastSectionList .wrap').perfectScrollbar({
         wheelPropagation:true

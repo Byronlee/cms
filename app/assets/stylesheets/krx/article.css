@@ -722,6 +722,9 @@ a:hover {
   border-radius: 4px;
   margin-right: 10px;
 }
+.article-detail-wrap .main-section .content-wrapper article.single-post section.single-post-tags .tag-item a{
+  color: #fff;
+}
 /* line 301, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.enter-report {
   text-align: center;
