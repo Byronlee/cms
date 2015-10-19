@@ -79,10 +79,5 @@ describe Admin::UsersController do
       get :index, s: { type: 'id', id: @user.id }
       expect(assigns(:users)).to eq [@user]
     end
-
-    it "returns http success" do
-      get :index, s: { type: 'email', email: @user.email }
-      expect(assigns(:users)).to eq [@user]
-    end
   end
 end
