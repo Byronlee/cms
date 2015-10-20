@@ -21,6 +21,7 @@ $(document).ready(function(){
             $('.fase-time-line > .item').removeClass('ac').find('.item-details a').data('show', false);
             $(this).data('show', true).parents('.item').addClass('ac');
         }
+        $(this).parents('.item').removeClass('lastest');
         prevIndex = curIndex;
         $('.fase-time-line').find('.weixin').removeClass('ac').find('.panel-weixin').remove();
         $('.top-articles section').removeClass('active');
@@ -69,6 +70,12 @@ $(document).ready(function(){
     //         $(this).find('.panel-weixin').remove();
     //     }
     // });
+
+// 微博分享
+    $('body').on('click','.hot-news .weibo',function(e) {
+        e.stopPropagation();
+    });
+
     $('body').on('click', '.page-fast-main .weixin', function(e) {
         e.preventDefault();
         e.stopPropagation();
@@ -104,7 +111,7 @@ $(document).ready(function(){
             if(trigger.hasClass('no-data'))return;
             if(trigger.hasClass('loading'))return;
             trigger.addClass('loading');
-            
+
             $.get(trigger.attr('href'), function(list){
                 var newWrapper = trigger.parent();
                 // $(list).appendTo($('.fase-time-line'));
