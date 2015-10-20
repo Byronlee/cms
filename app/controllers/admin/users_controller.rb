@@ -3,7 +3,7 @@ class Admin::UsersController < Admin::BaseController
   authorize_resource
 
   def index
-    @users = (simple_search if can_search? rescue @users.includes(:krypton_authentication))
+    @users = (can_search? ? simple_search : @users.includes(:krypton_authentication))
     @users = @users.order('id desc').page params[:page]
   end
 
@@ -52,6 +52,6 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def can_search?
-    current_user.role.admin? && params[:s][:type].present?
+    current_user.role.admin? && params[:s].present? && params[:s][:type].present?
   end
 end
