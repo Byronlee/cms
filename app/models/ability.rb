@@ -71,7 +71,7 @@ class Ability
   def operator(user)
     can :read, :dashboard
     can [:read, :shutup], User
-    can [:read, :reviewings, :toggle_tag, :article_toggle_tag], Post
+    can [:read, :reviewings, :toggle_tag, :article_toggle_tag, :edit, :update, :do_publishm, :publish], Post
     can :manage, HeadLine
     can :toggle_tag, Newsflash
     cannot :destroy, HeadLine
