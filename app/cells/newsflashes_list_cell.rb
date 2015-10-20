@@ -1,5 +1,6 @@
 class NewsflashesListCell < Cell::Rails
   helper ApplicationHelper
+  helper NewsflashHelper
 
   def header(args)
     @columns = args[:columns]
