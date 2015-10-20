@@ -35,7 +35,9 @@ html.no-js[lang="zh-CN"]
 
   body
     noscript
-    script[src="#{Settings.common_nav_script.url}" name="news" fixed="false" local="#{Settings.common_nav_script.is_local}"]
+    javascript:
+      window.activeChlName='news';
+    = render 'layouts/header'
     script[src='//cdn.goroost.com/roostjs/jsuj1ry4og17haw6mdqoqep1ti1tcq4z' async]
     = yield
 
