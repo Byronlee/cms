@@ -19,23 +19,29 @@ class Admin::MobileAdsController < Admin::BaseController
   def create
     @mobile_ad = MobileAd.new(mobile_ad_params)
     if @mobile_ad.save
-      flash[:warn] = '新广告创建成功！'
-      redirect_to admin_mobile_ads_path(@mobile_ad)
+      flash[:notice] = '新广告创建成功！'
+      redirect_to admin_mobile_ads_path
     else
-      flash[:warn] = '广告表单数据不完整'
+      flash[:notice] = '广告表单数据不完整'
       render :new
     end
 
   end
 
   def update
-    @mobile_ad.update(mobile_ad_params)
-    respond_with(@mobile_ad)
+    if @mobile_ad.update(mobile_ad_params)
+      flash[:notice] = '新广告创建成功！'
+      redirect_to admin_mobile_ads_path
+    else
+      flash[:notice] = '广告表单数据不完整'
+      render :edit
+    end
   end
 
   def destroy
     @mobile_ad.destroy
-
+    flash[:notice] = '广告信息删除成功！'
+    redirect_to admin_mobile_ads_path
   end
 
   private
