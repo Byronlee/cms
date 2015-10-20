@@ -13,14 +13,7 @@ module Kr
   class Application < Rails::Application
     require Rails.root.join 'app/models/settings'
 
-    config.autoload_paths += %W(#{config.root}/api #{config.root}/lib #{config.root}/services #{config.root}/observers)
-
-    config.middleware.use Rack::Cors do
-      allow do
-        origins '*'
-        resource '/api/*', headers: :any, methods: [:get, :post, :put, :delete, :destroy]
-      end
-    end
+    config.autoload_paths += %W(#{config.root}/lib #{config.root}/services #{config.root}/observers)
 
     config.cache_store = :redis_store, Settings.redis_servers.cache, {
       namespace: "_krypton-cache-#{Rails.env}", expires_in: 6.hours

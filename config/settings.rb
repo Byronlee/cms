@@ -26,7 +26,7 @@ settings.kr_seo_server = {
 
 settings.kr_search_server = {
   development_url: 'http://data-internal.test.36tr.com/es-mobile?cmd=article',
-  production_url: 'http://data-internal.36tr.com/es-mobile?cmd=article',
+  production_url: 'http://data-internal.36tr.com:20421/es-mobile?cmd=article',
   test_url: 'http://data-internal.test.36tr.com/es-mobile?cmd=article'
 }
 

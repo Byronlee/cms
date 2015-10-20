@@ -77,13 +77,6 @@ gem 'httparty'
 gem 'intercom-rails'
 
 # api
-gem 'grape' , "~> 0.10.1"
-gem 'grape-entity' , "~> 0.4.4" # orgnize data
-gem 'grape-jbuilder' , "~> 0.2.0"
-# gem 'grape-rails-cache'
-gem 'grape-swagger', github: 'tim-vandecasteele/grape-swagger'
-gem 'grape-swagger-rails', github: 'tian-xiaobo/grape-swagger-rails'
-gem 'swagger-ui_rails'
 gem 'rack-cors' #solve the CORS problem
 gem 'hashie', '~> 3.3.2'
 
