@@ -1,5 +1,6 @@
 class NewsflashesCell < Cell::Rails
   helper ApplicationHelper
+  helper NewsflashHelper
 
   def index(args = {})
     @newsflashes = Newsflash.tagged_with('_newsflash')

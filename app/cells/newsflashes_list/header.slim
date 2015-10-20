@@ -35,7 +35,7 @@ header.time-line-header
         div
           input type="text" name="q" placeholder="关键字" value="#{params[:q]}"
           button data-stat-click = "sousuo.click"
-- if params.count != 3 || params[:q].present?
+- if [:q, :pin, :column_slug, :tag].collect {|p| eval "params['#{p}'].present?"}.any?
   .tools
     span
       | 查看条件：
