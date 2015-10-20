@@ -97,6 +97,28 @@ class Post < ActiveRecord::Base
     logger.info UpdateElsearchIndexWorker.new.perform self.url_code
   end
 
+  after_commit :sync_post_seo, on: :create
+  def sync_post_seo
+    template_id = 'www-article'
+    content_sanitize = ActionController::Base.helpers.sanitize(self.content, tags: %w(), attributes: %w())[0..120]
+    push_params = { id: self.url_code, content: content_sanitize, title: self.title, keywords: self.tag_list.to_s, description: "#{content_sanitize}...", author: self.author.display_name }
+    response = Seo.writer(template_id, push_params)
+    data = ActiveSupport::JSON.decode(response.body)
+    if response.success? and data['code'] == 0
+      response = Seo.read(template_id, self.url_code)
+      data = ActiveSupport::JSON.decode(response.body)
+      if response.success? and data['code'] == 0
+        redis_hash = Redis::HashKey.new(template_id)
+        redis_hash[self.url_code] = data['data']
+        logger.info "success: #{redis_hash[self.url_code]}---#{data['data']}"
+      else
+        logger.error "fail: #{data['data']}"
+      end
+    else
+      logger.error "fail: #{data['data']}"
+    end
+  end
+
   def activate_publish_schedule
     return true if self.published?
     return self.publish if self.will_publish_at.blank?
