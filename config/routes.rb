@@ -97,6 +97,7 @@ Rails.application.routes.draw do
         delete :destroy_ad
       end
     end
+    resources :mobile_ads
 
     get 'tools/redis'
     post 'tools/redis_refresh'

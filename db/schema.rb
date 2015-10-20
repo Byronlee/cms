@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150922035002) do
+ActiveRecord::Schema.define(version: 20151020030247) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -130,6 +130,20 @@ ActiveRecord::Schema.define(version: 20150922035002) do
 
   create_table "info_flows", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "mobile_ads", force: true do |t|
+    t.string   "ad_title"
+    t.string   "ad_url"
+    t.string   "ad_img_url"
+    t.string   "ad_position"
+    t.datetime "ad_enable_time"
+    t.datetime "ad_end_time"
+    t.integer  "api_count"
+    t.integer  "click_count"
+    t.text     "ad_summary"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

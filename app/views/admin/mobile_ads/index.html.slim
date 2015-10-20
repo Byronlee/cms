@@ -1,0 +1,34 @@
+= render 'welcome/title', title: '移动广告管理'
+
+.col_main
+  .main_hd
+    h2 广告位管理
+    .toolbar.border_bottom.clearfix
+      .pull-right
+        span.page_info = page_entries_info @mobile_ads
+        = link_to raw("<i class='fa fa-plus'></i>&nbsp;&nbsp;创建广告"), new_admin_mobile_ad_path, class:"btn btn-primary"
+  table class="table"
+    thead
+      tr role="row"
+        th 展示封面
+        th 位置信息
+        th 显示标题
+        th 启用时间
+        th 禁用时间
+        th 操作
+    tbody
+      - @mobile_ads.each do |ad|
+        tr title="#{ad.ad_summary}"
+          td
+            img style="width:auto;height:70px;" src= ad.ad_img_url
+          td = ad.ad_position
+          td = ad.ad_title
+          td = ad.ad_enable_time.strftime('%Y-%m-%d %H:%M')
+          td = ad.ad_end_time.strftime('%Y-%m-%d %H:%M')
+          td
+            a title="编辑" href= edit_admin_mobile_ad_path(ad)
+              i.fa.fa-pencil
+            |&nbsp;&nbsp;
+            a title="删除" data-method="delete" data-confirm="确定删除该广告信息 ？" href= admin_mobile_ad_path(ad)
+              i.fa.fa-times
+  = paginate @mobile_ads

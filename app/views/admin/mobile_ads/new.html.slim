@@ -1,0 +1,49 @@
+= render 'welcome/title', title: '移动广告编辑'
+
+.col_main
+  .main_hd
+    h2 移动广告管理
+    .toolbar.border_bottom.clearfix.new
+      .pull-right
+        i.fa.fa-map-marker
+        ol.breadcrumb
+          li = link_to '移动广告管理', admin_mobile_ads_path
+          li.active 创建广告
+
+  .main-body
+    = simple_form_for [:admin, @mobile_ad], html: {class: "form-horizontal"} do |f|
+      div class="control-group string required"
+        label class="string required control-label" = '展示标题'
+        div class="controls"
+          = f.text_field :ad_title, class:'string required'
+      div class="control-group string required"
+        label class="string required control-label" = '位置信息'
+        div class="controls"
+          = f.number_field :ad_position, class: 'string required'
+      div class="control-group string required"
+        label class="string required control-label" = '跳转链接'
+        div class="controls"
+          = f.text_field :ad_url, class: 'string required'
+      div class="control-group string required"
+        label class="string required control-label" = '广告启用'
+        div class="controls"
+          = f.datetime_select :ad_enable_time
+      div class="control-group string required"
+        label class="string required control-label" = '广告禁用'
+        div class="controls"
+          = f.datetime_select :ad_end_time, default: 7.days.from_now
+      div.hidden
+          input id="newsflash_cover" name="mobile_ad[ad_img_url]"
+      div class="control-group string required"
+        label class="string required control-label" = '广告描述'
+        div class="controls"
+          = f.text_area :ad_summary, class: 'string required', style: 'width:326px;height:120px;'
+      div class="control-group string required"
+        label class="string required control-label" = '广告图片'
+        div.controls
+          div.feature-img-empty
+              a href="#"
+                span class="slug" + 点击上传广告图
+              input[id="fileupload" type="file" name="file" data-url="#{Settings.fileupload.url}" data-sequential-uploads="true" data-form-data='{"token": "#{Settings.fileupload.token}","source": "#{Settings.fileupload.source}"}']
+      div.form-actions
+        = f.button :submit, data: {disable_with: 'Submitting...'}, class: 'btn btn-primary', value: '创建广告信息'

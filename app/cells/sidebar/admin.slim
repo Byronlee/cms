@@ -53,13 +53,17 @@ ul.nav.nav-pills.nav-stacked
     p
       i.fa.fa-volume-down
       span 推广
+    li class=nav_active(:sites, @controller_name)
+      a href=admin_sites_path
+        span 站点管理
+
     li class=nav_active(:ads, @controller_name)
       a href=admin_ads_path
         span  广告位管理
 
-    li class=nav_active(:sites, @controller_name)
-      a href=admin_sites_path
-        span 站点管理
+    li class=nav_active(:mobile_ads, @controller_name)
+      a href=admin_mobile_ads_path
+        span  移动端管理
   - if can?(:manage, :sidekiq) || can?(:manage, :tools)
     .deviler
     p
