@@ -19,7 +19,7 @@ class NewsflashesListCell < Cell::Rails
   end
 
   def hot
-    @newsflashes = Newsflash.newsflashes.where(created_at: 1.week.ago..DateTime.now).order(created_at: :desc).limit 10
+    @newsflashes = Newsflash.newsflashes.where(created_at: 1.week.ago..DateTime.now).order(views_count: :desc).limit 10
     render
   end
 end
