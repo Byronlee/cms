@@ -4,6 +4,7 @@
 = stylesheet_link_tag 'krx/article', media: 'all'
 = stylesheet_link_tag 'krx/format', media: 'all'
 = render 'layouts/tag', deep_report_link: root_path, deep_report_active: 'false'
+= javascript_include_tag 'krx/article', media: 'all'
 
 .article-detail-wrap
   .main-section
@@ -22,7 +23,6 @@
           = render_cell :ads, :position_9
 
 = render 'layouts/footer', subnavs: [["#{@post.title}", post_show_by_url_code_path(url_code: @post.url_code)]]
-= javascript_include_tag 'krx/article', media: 'all'
 = render 'welcome/wechat_share', share_img: high_speed_url(@post.cover_real_url, 'square'), share_desc: html_text_only(@post.summary)
 
 javascript:
@@ -33,7 +33,6 @@ javascript:
     //取消前端默认的收藏js效果
     $('.J_addFavorite').unbind('click.J_addFavorite');
     window.bind_comment();
-    crowdFunding("#{@post.author.try(:display_name)}","#{@post.title.gsub(/\s/, '')}", "#{ current_user.present? ? "#{current_user.sso_id}-#{current_user.display_name}" : '匿名用户' }");
   });
 
   function toggle_tag(post_id,tag_name){

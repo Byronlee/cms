@@ -1,12 +1,12 @@
 // 支付宝打赏
-function crowdFunding(author,title,user){
+function crowdFunding(url_code,author,title,user){
     $.post(KR_CONFIG_OBJECT.crowdFunding,{
         user_nick_name: author,
         article_title: title,
         reward_nick_name: user
     }).done(function(data) {
         if(data.data){
-          $('.top-tip-shap img').attr('src', data.data.QRImgUrl);
+          $("#article-section-" + url_code).find('.top-tip-shap img').attr('src', data.data.QRImgUrl);
         }
     });
 }
@@ -39,17 +39,20 @@ $(document).ready(function(){
     /**
      * 分享展开操作
      */
-    $('.J_showAllShareBtn').click(function(e){
+    $('body').delegate('.J_showAllShareBtn', 'click', function(e){
         e.preventDefault();
         $(this).siblings('.external').removeClass('external');
         $(this).hide();
         $(this).parents('.hide-external').removeClass('hide-external');
-    });
+    })
 
     /**
      * 添加收藏
      */
-    $('.J_addFavorite').bind('click.J_addFavorite', function(e){
+    $('body').delegate('.J_addFavorite', 'click', function(e){
+      if (($('.require-login').data().uid == undefined || $('.require-login').data().uid == '')){
+        return
+      }
         e.preventDefault();
         var countWrap = $(this).find('span');
         var count = countWrap.text()-0;
@@ -69,14 +72,17 @@ $(document).ready(function(){
 
   // *************************Begin无缝加载********************************
     // 获取当前初始化文章的打赏二维码
+    var url_code = $('.article-section').attr('data-aid');
     var titleCur = $('.article-section:eq(0)').find('.single-post__title').html(),
         authorCur = $('.article-section:eq(0)').find('.author .name').html();
-    crowdFunding(authorCur,titleCur,'EE');
+    crowdFunding(url_code,authorCur,titleCur,'EE');
     // 获取广告的内容
     var ad = $('.article-section:eq(0)').find('.ad').html().replace(/<script.*?<\/script>/img, '');
     // 获取第二篇文章内容
-    var url_code = $('.article-section').attr('data-aid');
-    var nextArticleData = $(".article-section:eq(0)").parent().html();
+    var nextArticleData = '';
+    $.get('/p/' + url_code + '.html', function(data) {
+      nextArticleData = data;
+    });
     // 判断该文章是否已存在
     function  pexist(aid){
     var isexists = 0;
@@ -115,6 +121,7 @@ $(document).ready(function(){
 
 
         // 向下滑动
+        var date = new Date();
         if(d == 1) {
           if((oT > wT) && (oT < (wT + wH / 3))) {
             if(window.location.href != url) {
@@ -122,7 +129,7 @@ $(document).ready(function(){
                 title: title,
                 url: window.location.href
               }
-              window.history.pushState(state, document.title, url + '?data='+Math.random(100));
+              window.history.pushState(state, document.title, url + '?t=' + date.getTime());
               document.title = title;
             }
           }
@@ -135,7 +142,7 @@ $(document).ready(function(){
                 title: title,
                 url: window.location.href
               }
-              window.history.pushState(state, document.title, url + '?data='+Math.random(100));
+              window.history.pushState(state, document.title, url + '?t=' + date.getTime());
               document.title = title;
             }
           }
@@ -149,7 +156,6 @@ $(document).ready(function(){
   // 获取文章内容
   var isgeting = 0;
   function getArticle(curAid) {
-    console.log(curAid);
     var articleData = '';
     $.ajax({
       url: '/p/' + curAid + '.html',
@@ -174,6 +180,8 @@ $(document).ready(function(){
   // 渲染文章
   function renderArticle(data) {
     data = "<div class='ajax-article-main'>" + data + "</div>";
+    var date = new Date();
+    var url_code = $($.parseHTML(data,true)).find('.article-section').attr('data-aid');
     if(data) {
       var dH = $(document).height(),
         showNextCon = '';
@@ -190,12 +198,12 @@ $(document).ready(function(){
         author = $($.parseHTML(data,true)).find('.ad').html(ad).end().find('.author .name').html();
         // console.log(author);
       // 获取打赏二维码
-      crowdFunding(author,title,'EE');
+      crowdFunding(url_code,author,title,'EE');
       var state = {
         title: title,
         url: window.location.href
       }
-      window.history.pushState(state, document.title, url + '?data='+Math.random(100));
+      window.history.pushState(state, document.title, url + '?t=' + date.getTime());
       document.title = title;
     }
   }

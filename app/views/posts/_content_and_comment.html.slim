@@ -9,7 +9,7 @@
         = render_cell :ads, :position_11
 
       section.to-tip
-        = render_cell :post, :reward
+        = render_cell :post, :reward, post: @post
 
       - cache [:show, @post, :manage, current_user]
         - unless @post.tag_list.blank?
@@ -58,4 +58,4 @@
 javascript:
   window.async_render($("#article-section-#{@post.url_code}"));
   window.check_comment_submit_btn($("#article-section-#{@post.url_code}"));
-
+  window.crowdFunding("#{@post.url_code}","#{@post.author.try(:display_name)}","#{@post.title.gsub(/\s/, '')}", "#{ current_user.present? ? "#{current_user.sso_id}-#{current_user.display_name}" : '匿名用户' }");

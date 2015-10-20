@@ -1,7 +1,7 @@
 section.single-post-share data-stat-module="Wenzhang"
   ul.actions
     li
-      a.favorite-btn.social-btn.star-btn.J_addFavorite.require-login[ id="favorite-btn-post-#{@post.url_code}" class="#{@has_favorite ? 'is-favorite' : ''}" onclick=do_favorite(@post, @user) data-uid="#{@user.try(:id)}" href="javascript:void(0)" data-stat-click="shoucang.click" ]
+      a.favorite-btn.social-btn.star-btn.J_addFavorite.require-login[ id="favorite-btn-post-#{@post.url_code}" class="#{@has_favorite ? 'is-favorite' : ''}" onclick=do_favorite(@post, @user) data-uid="#{@user.try(:id)}" href="javascript:void(0)" data-stat-click="shoucang.click" data-ok_url="#{request.fullpath}"]
         i.icon.icon-star
         i.icon-star.fly
         span[id="star-count-post-#{@post.url_code}"] =  @post.favorites_count.to_i
@@ -25,8 +25,10 @@ section.single-post-share data-stat-module="Wenzhang"
       a.weibo[ref="nofollow" href="http://share.baidu.com/s?type=text&searchPic=1&sign=on&to=tsina&url=#{post_url(@post)}&title=#{(truncate(raw(@post.title), :length => 300)).html_safe}&key=595885820" target="_blank" data-stat-click="weibofenxiang.click"]
         i.icon-weibo
       a.qq[ref="nofollow" href="http://connect.qq.com/widget/shareqq/index.html?url=#{post_url(@post)}&title=#{(truncate(raw(@post.title), :length => 300)).html_safe}&source=shareqq&desc=刚看到这篇文章不错，推荐给你看看～" target="_blank" data-stat-click="QQfenxiang.click"]
-        i.icon-qq
+        i.icon-linkedin
       a.twitter.external.mobile-hide[ref="nofollow" href="http://share.baidu.com/s?type=text&searchPic=0&sign=on&to=twi&url=#{post_url(@post)}&title=#{(truncate(raw(@post.title), :length => 300)).html_safe}&key=" target="_blank" data-stat-click="twfenxiang.click"]
+        i.icon-qq
+      a.linkedin.external.mobile-hide[ref="nofollow" href="http://share.baidu.com/s?type=text&searchPic=0&sign=on&to=linkedin&url=#{post_url(@post)}&title=#{(truncate(raw(@post.title), :length => 300)).html_safe}" target="_blank" data-stat-click="linkinfenxiang.click"]
         i.icon-twitter
       a.douban.external.mobile-hide[ref="nofollow" href="http://share.baidu.com/s?type=text&searchPic=0&sign=on&to=douban&url=#{post_url(@post)}&title=#{(truncate(raw(@post.title), :length => 300)).html_safe}" target="_blank" data-stat-click="doufanfenxiang.click"]
         i.icon-douban
@@ -34,6 +36,4 @@ section.single-post-share data-stat-module="Wenzhang"
         i.icon-renren
       a.evernote.external.mobile-hide[ref="nofollow" href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title);}})();" target="_blank" data-stat-click="EVfenxiang.click"]
         i.icon-evernote
-      a.linkedin.external.mobile-hide[ref="nofollow" href="http://share.baidu.com/s?type=text&searchPic=0&sign=on&to=linkedin&url=#{post_url(@post)}&title=#{(truncate(raw(@post.title), :length => 300)).html_safe}" target="_blank" data-stat-click="linkinfenxiang.click"]
-        i.icon-linkedin
-      a.icon-add.J_showAllShareBtn href="" data-stat-click="gengduofenxiang.click"
+      a.icon-add.J_showAllShareBtn href="javascript:void(0);" data-stat-click="gengduofenxiang.click"

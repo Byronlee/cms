@@ -52,7 +52,8 @@ class PostCell < Cell::Rails
     render
   end
 
-  def reward
+  def reward(args)
+    @post = args[:post]
     render
   end
 end
