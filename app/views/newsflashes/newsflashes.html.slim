@@ -19,13 +19,12 @@
 
 javascript:
   function loadingLatest(){
-    //alert('即将执行~');
     var b_id = $(".item-details h2 a").data("id");
     if(!b_id){
       return;
     }
-    $.get("/newsflashes?d=prev&b_id=" + b_id, function(data){
-      //console.log(data);
+
+    $.get("#{newsflashes_list_path(d: 'prev', column_slug: params[:column_slug], tag: params[:tag], pin: params[:pin])}&b_id=" + b_id, function(data){
       $('a[data-id="'+ b_id + '"]').parents('.item').before($(data).filter(".current-news").html());
       var newestNews = $(data).filter(".newest-news").html();
       if( data !='' && newestNews.length > 1) {
@@ -35,7 +34,7 @@ javascript:
     })
   }
   if (!#{params[:b_id].present? || params[:share_id].present?})
-    setInterval("loadingLatest()", 5000);
+    setInterval("loadingLatest()", #{Settings.newsflash_interval});
 
   if (#{params[:share_id].present?})
   $(document).ready(function () {
