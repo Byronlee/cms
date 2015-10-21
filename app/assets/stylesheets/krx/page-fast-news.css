@@ -1390,7 +1390,7 @@ a:hover {
   left: 0;
   top: 0;
   overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: #e9eaec;
   z-index: 1000;
 }
 /* line 783, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */

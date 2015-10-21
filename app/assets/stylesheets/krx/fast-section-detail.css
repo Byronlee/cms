@@ -298,8 +298,13 @@ a:hover {
   .fast-section-detail-wrap {
     padding: 10px;
   }
+  /* line 10, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+  .fast-section-detail-wrap .main-section .fast-section-detail .product .info .share {
+    width: 100%;
+    padding: 0 5px;
+  }
 }
-/* line 14, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+/* line 18, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
 .fast-section-detail-wrap .main-section {
   margin: 0 auto;
   *zoom: 1;
@@ -341,7 +346,7 @@ a:hover {
     margin-top: 20px;
   }
 }
-/* line 17, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+/* line 21, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
 .fast-section-detail-wrap .main-section .fast-section {
   float: left;
 }
@@ -365,7 +370,7 @@ a:hover {
     float: none;
   }
 }
-/* line 20, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+/* line 24, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
 .fast-section-detail-wrap .main-section .header-new-pro {
   padding: 10px 30px;
   background-color: #3da9f7;
@@ -373,15 +378,15 @@ a:hover {
   font-size: 22px;
   line-height: 1;
 }
-/* line 27, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+/* line 31, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
 .fast-section-detail-wrap .main-section .header-new-pro h2 {
   font-weight: normal;
 }
-/* line 30, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+/* line 34, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
 .fast-section-detail-wrap .main-section .header-new-pro small {
   font-size: 12px;
 }
-/* line 34, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+/* line 38, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
 .fast-section-detail-wrap .main-section .fast-section-detail {
   float: right;
   border-radius: 2px;
@@ -405,41 +410,41 @@ a:hover {
     float: none;
   }
 }
-/* line 39, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+/* line 43, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
 .fast-section-detail-wrap .main-section .fast-section-detail .new-pro-inner {
   background: #ffffff;
   padding: 30px;
 }
-/* line 48, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+/* line 52, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
 .fast-section-detail-wrap .main-section .fast-section-detail .product > h3 {
   margin: 0 0 20px -30px;
-  padding-left: 16px;
+  padding-left: 26px;
   border-left: solid 2px #fd9827;
   line-height: 20px;
   font-size: 18px;
   font-weight: 600;
 }
-/* line 56, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+/* line 60, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
 .fast-section-detail-wrap .main-section .fast-section-detail .product > h3 a {
   position: relative;
   top: 2px;
 }
-/* line 61, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+/* line 65, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
 .fast-section-detail-wrap .main-section .fast-section-detail .product h4 {
   margin: 10px 0 3px;
   font-weight: 600;
 }
-/* line 65, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+/* line 69, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
 .fast-section-detail-wrap .main-section .fast-section-detail .product p {
   color: #666666;
 }
-/* line 69, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+/* line 73, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
 .fast-section-detail-wrap .main-section .fast-section-detail .product .main {
   line-height: 20px;
   font-size: 13px;
   color: #333;
 }
-/* line 74, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+/* line 78, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
 .fast-section-detail-wrap .main-section .fast-section-detail .product .pic {
   width: 120px;
   margin-top: 15px;
@@ -447,14 +452,14 @@ a:hover {
   float: none;
   height: auto;
 }
-/* line 80, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+/* line 84, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
 .fast-section-detail-wrap .main-section .fast-section-detail .product .pic img {
   display: block;
   width: 100%;
   cursor: -webkit-zoom-in;
   cursor: zoom-in;
 }
-/* line 86, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+/* line 90, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
 .fast-section-detail-wrap .main-section .fast-section-detail .product .info {
   margin-top: 20px;
   *zoom: 1;
@@ -468,18 +473,18 @@ a:hover {
   clear: both;
   height: 0;
 }
-/* line 92, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+/* line 96, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
 .fast-section-detail-wrap .main-section .fast-section-detail .product .info .author {
   color: #aaaaaa;
   float: left;
   line-height: 28px;
   margin-right: 5px;
 }
-/* line 98, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+/* line 102, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
 .fast-section-detail-wrap .main-section .fast-section-detail .product .info .author a {
   color: #3da9f7;
 }
-/* line 101, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+/* line 105, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
 .fast-section-detail-wrap .main-section .fast-section-detail .product .info .author a span.avatar {
   vertical-align: middle;
   display: inline-block;
@@ -490,25 +495,25 @@ a:hover {
   margin-right: 6px;
   border-radius: 50%;
 }
-/* line 114, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+/* line 118, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
 .fast-section-detail-wrap .main-section .fast-section-detail .product .info .links {
   line-height: 28px;
   float: left;
 }
-/* line 118, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+/* line 122, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
 .fast-section-detail-wrap .main-section .fast-section-detail .product .info .links a {
   margin: 0 5px;
   color: #3da9f7;
 }
-/* line 123, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+/* line 127, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
 .fast-section-detail-wrap .main-section .fast-section-detail .product .info .share {
   float: right;
 }
-/* line 128, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+/* line 132, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
 .fast-section-detail-wrap .main-section .fast-section-detail .product .share-group a .panel-weixin h3 {
   top: 0;
 }
-/* line 134, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+/* line 138, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
 .fast-section-detail-wrap .main-section .fast-section-detail .load-more {
   border-radius: 2px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -522,17 +527,17 @@ a:hover {
   color: #6483a2;
 }
 @media (max-width: 800px) {
-  /* line 145, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+  /* line 149, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
   .fast-section-detail-wrap .main-section .fast-section-detail .load-more {
     margin-top: 10px;
   }
 }
-/* line 148, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+/* line 152, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
 .fast-section-detail-wrap .main-section .fast-section-detail .load-more:before {
   content: '查看更多新产品';
   display: inline-block;
 }
-/* line 152, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+/* line 156, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
 .fast-section-detail-wrap .main-section .fast-section-detail .load-more:hover {
   background: #bccbd9;
 }

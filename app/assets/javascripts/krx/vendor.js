@@ -66,6 +66,7 @@ $(document).ready(function(){
 
 
 });
+
 function initFastSection(){
     /**
      * 初始化侧边快速简讯部分交互
@@ -81,21 +82,17 @@ function initFastSection(){
                 $('.J_fastSectionList .wrap').height(targetHeight);
             }
             $('.J_fastSection').trigger('sticky_kit:detach');
-            if($('.J_fastSection').stick_in_parent){
-	            $('.J_fastSection').stick_in_parent(
-	                {
-	                    parent: '.main-section'
-	                }
-	            );
-            }
+            $('.J_fastSection').stick_in_parent(
+                {
+                    parent: '.main-section'
+                }
+            );
             $(window).trigger('scroll');
         }else{
             $('.J_fastSectionList .wrap').height('auto');
             $('.J_fastSection').trigger('sticky_kit:detach');
         }
-        if($('.J_fastSectionList .wrap').perfectScrollbar){
-          $('.J_fastSectionList .wrap').perfectScrollbar('update');
-        }
+        $('.J_fastSectionList .wrap').perfectScrollbar('update');
     };
     $('.J_fastSectionList .wrap').perfectScrollbar({
         wheelPropagation:true
@@ -113,10 +110,18 @@ function initFastSection(){
                 .eq(i).show()
                 .siblings().hide();
             $('.J_fastSectionList .wrap').perfectScrollbar('update');
+
             // $('.J_fastSectionList .wrap').data('origin','').css('height','auto');
             setFastSection();
             $(window).trigger('resize');
             if($(this).attr('name')){
+                if($(this).attr('name') == 'fast') {
+                    if(/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent) || /(Android)/i.test(navigator.userAgent)) {
+                        $('.header-fast-news').addClass('show');
+                    }
+                } else {
+                    $('.header-fast-news').removeClass('show');
+                }
                 var param = 'sideActiveTab='+$(this).attr('name');
                 var reg = new RegExp('(&|\\?)sideActiveTab=.+(&|$)');
                 var str = location.hash.replace(reg,'');
@@ -127,6 +132,22 @@ function initFastSection(){
                 )
             }
         });
+    });
+
+    function fastNewsDevice() {
+        var url = window.location.hash;
+        if((/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent) || /(Android)/i.test(navigator.userAgent)) && (url.lastIndexOf('sideActiveTab=fast') != -1)) {
+            $('.header-fast-news').addClass('show');
+        } else {
+            $('.header-fast-news').removeClass('show');
+        }
+    }
+    fastNewsDevice();
+
+    $(window).resize(function() {
+        // setFastSection();
+        fastNewsDevice();
+        // location.reload();
     });
 
 
@@ -150,6 +171,12 @@ function initFastSection(){
         }
     };
     $('body').delegate('.J_fastSectionList .fast-news-panel section', 'click', bindItemActions);
+
+
+    // 微博分享
+    $('body').on('click','.J_fastSection .weibo',function(e) {
+        e.stopPropagation();
+    });
 
      // 微信
     $('body').on('click', '.J_fastSection .weixin', function(e) {
@@ -581,6 +608,7 @@ function initMobileNav(newsPanel){
                 .siblings().removeClass('active');
             var group = $('.J_fastSection').add(newsPanel);
             group.addClass('mobile-hide');
+            // $('.header-fast-news').removeClass('show');
             switch (i){
                 case 0:
                     $(newsPanel).removeClass('mobile-hide');
@@ -592,6 +620,7 @@ function initMobileNav(newsPanel){
                 case 1:
                     $('.J_fastSection').removeClass('mobile-hide');
                     $('.J_fastSectionList .tabs a').eq(0).trigger('click');
+                    // $('.header-fast-news').addClass('show');
                     break;
                 case 2:
                     $('.J_fastSection').removeClass('mobile-hide');

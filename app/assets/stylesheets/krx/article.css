@@ -323,7 +323,7 @@ a:hover {
 }
 /* line 10, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .article-section:not(:first-child) {
-  margin-top: 20px;
+  margin: 20px 0;
 }
 /* line 15, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section {
@@ -695,7 +695,7 @@ a:hover {
 .article-detail-wrap .main-section .content-wrapper article.single-post section.single-post-share .single-post-share-list {
   float: right;
   color: #666666;
-  width: 329px;
+  width: 309px;
   -webkit-transition: all 0.3s ease;
           transition: all 0.3s ease;
   white-space: nowrap;
@@ -722,10 +722,11 @@ a:hover {
   border-radius: 4px;
   margin-right: 10px;
 }
-.article-detail-wrap .main-section .content-wrapper article.single-post section.single-post-tags .tag-item a{
+/* line 298, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+.article-detail-wrap .main-section .content-wrapper article.single-post section.single-post-tags .tag-item a {
   color: #fff;
 }
-/* line 301, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 305, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.enter-report {
   text-align: center;
   background-color: #fff;
@@ -737,7 +738,7 @@ a:hover {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   border-radius: 2px;
 }
-/* line 311, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 315, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.enter-report a {
   display: inline-block;
   color: #fff;
@@ -745,7 +746,7 @@ a:hover {
   border-radius: 2px;
   width: 100px;
 }
-/* line 319, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 323, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.mobile-author {
   display: none;
   margin-top: 15px;
@@ -756,7 +757,7 @@ a:hover {
     display: block;
   }
 }
-/* line 321, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 325, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.mobile-author .author {
   padding: 25px;
   background: #f3f7fb;
@@ -767,12 +768,12 @@ a:hover {
   white-space: nowrap;
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-  /* line 323, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+  /* line 327, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .content-wrapper section.mobile-author .author {
     padding: 15px;
   }
 }
-/* line 331, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 335, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.mobile-author .author .avatar {
   display: inline-block;
   width: 60px;
@@ -783,7 +784,7 @@ a:hover {
   margin-right: 15px;
   vertical-align: top;
 }
-/* line 341, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 345, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.mobile-author .author .desc {
   overflow: hidden;
   display: inline-block;
@@ -791,13 +792,13 @@ a:hover {
   vertical-align: middle;
   white-space: normal;
 }
-/* line 347, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 351, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.mobile-author .author .desc .name {
   font-size: 17px;
   font-weight: 600;
   display: inline-block;
 }
-/* line 352, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 356, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.mobile-author .author .desc .badge {
   font-size: 12px;
   color: #fff;
@@ -809,16 +810,16 @@ a:hover {
   top: -2px;
   vertical-align: middle;
 }
-/* line 363, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 367, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.mobile-author .author .desc .brief {
   margin-top: 5px;
   color: #666666;
 }
-/* line 371, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 375, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-relate {
   margin-top: 15px;
 }
-/* line 373, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 377, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-relate ul {
   *zoom: 1;
 }
@@ -829,7 +830,7 @@ a:hover {
   clear: both;
   height: 0;
 }
-/* line 375, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 379, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-relate ul li {
   float: left;
   margin-left: 21px;
@@ -848,7 +849,7 @@ a:hover {
   height: 0;
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-  /* line 383, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+  /* line 387, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .content-wrapper section.single-post-relate ul li {
     width: 220px;
     margin-left: 20px;
@@ -856,55 +857,55 @@ a:hover {
   }
 }
 @media (max-width: 800px) {
-  /* line 388, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+  /* line 392, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .content-wrapper section.single-post-relate ul li {
     float: none;
     margin: 0 0 10px;
     width: auto;
     padding: 15px;
   }
-  /* line 393, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+  /* line 397, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .content-wrapper section.single-post-relate ul li > a {
     float: left;
     width: 90px;
     height: 65px;
     margin-right: 10px;
   }
-  /* line 398, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+  /* line 402, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .content-wrapper section.single-post-relate ul li > a .image {
     height: 65px;
   }
 }
-/* line 403, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 407, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-relate ul li:first-of-type {
   margin-left: 0;
 }
-/* line 406, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 410, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-relate ul li .image {
   height: 140px;
   overflow: hidden;
   width: 100%;
 }
-/* line 412, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 416, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-relate ul li .image img {
   min-width: 100%;
   height: 100%;
   display: block;
 }
-/* line 418, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 422, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-relate ul li .title {
   margin-top: 15px;
   height: 72px;
   overflow: hidden;
   line-height: 24px;
 }
-/* line 423, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 427, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-relate ul li .title h3 a {
   font-size: 15px;
   font-weight: 600;
 }
 @media (max-width: 800px) {
-  /* line 427, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+  /* line 431, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .content-wrapper section.single-post-relate ul li .title {
     overflow: hidden;
     margin-top: 8px;
@@ -912,7 +913,7 @@ a:hover {
     line-height: 22px;
   }
 }
-/* line 441, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 445, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment {
   border-radius: 2px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -921,24 +922,24 @@ a:hover {
   padding: 30px;
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-  /* line 446, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+  /* line 450, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .content-wrapper section.single-post-comment {
     padding: 20px;
   }
 }
 @media (max-width: 800px) {
-  /* line 449, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+  /* line 453, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .content-wrapper section.single-post-comment {
     padding: 20px;
   }
 }
-/* line 452, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 456, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment h2 {
   margin-bottom: 15px;
   font-size: 15px;
   font-weight: 600;
 }
-/* line 457, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 461, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment a {
   color: #3da9f7;
 }
@@ -946,7 +947,7 @@ a:hover {
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment a:hover {
   color: #2c79b0;
 }
-/* line 460, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 464, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .textarea {
   width: 100%;
   background: #f3f7fb;
@@ -960,26 +961,26 @@ a:hover {
           transition: all 1s ease;
   -webkit-appearance: none;
 }
-/* line 471, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 475, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .textarea::-moz-placeholder,
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .textarea::-webkit-input-placeholder {
   color: #aaaaaa;
   font-size: 15px;
 }
-/* line 476, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 480, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .textarea:focus {
   background: #ffffff;
 }
-/* line 478, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 482, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .textarea:focus + .focus-tips {
   display: block;
 }
-/* line 484, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 488, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .focus-tips {
   display: none;
   color: #999;
 }
-/* line 488, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 492, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .bottom {
   margin-top: 15px;
   *zoom: 1;
@@ -993,11 +994,11 @@ a:hover {
   clear: both;
   height: 0;
 }
-/* line 493, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 497, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .bottom .meta {
   float: left;
 }
-/* line 495, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 499, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .bottom .meta .avatar {
   width: 28px;
   height: 28px;
@@ -1008,13 +1009,13 @@ a:hover {
   background: #aaaaaa no-repeat center center;
   background-size: cover;
 }
-/* line 505, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 509, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .bottom .meta .username,
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .bottom .meta .username:hover {
   cursor: default;
   color: #333333;
 }
-/* line 511, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 515, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .bottom button {
   float: right;
   width: 100px;
@@ -1029,11 +1030,11 @@ a:hover {
   padding: 0;
   font-size: 13px;
 }
-/* line 524, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 528, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .bottom button:hover {
   background: #3798de;
 }
-/* line 530, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 534, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details {
   padding-bottom: 15px;
   padding-top: 15px;
@@ -1047,12 +1048,12 @@ a:hover {
   clear: both;
   height: 0;
 }
-/* line 535, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 539, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .avatar {
   float: left;
   margin-right: 10px;
 }
-/* line 538, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 542, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .avatar a {
   width: 40px;
   height: 40px;
@@ -1062,7 +1063,7 @@ a:hover {
   display: block;
   cursor: default;
 }
-/* line 546, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 550, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .avatar a img {
   width: 100%;
   height: 100%;
@@ -1070,43 +1071,43 @@ a:hover {
   display: block;
   border-radius: 50%;
 }
-/* line 556, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 560, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details:hover .btn-replay {
   display: block;
 }
-/* line 560, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 564, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .btn-replay {
   text-align: right;
   display: none;
   font-size: 12px;
 }
-/* line 564, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 568, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .btn-replay a {
   color: #999;
 }
-/* line 569, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 573, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .comment-wrapper {
   overflow: hidden;
 }
-/* line 571, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 575, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .comment-wrapper .postmeta {
   font-size: 12px;
   margin-bottom: 4px;
   color: #aaaaaa;
 }
-/* line 575, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 579, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .comment-wrapper .postmeta a,
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .comment-wrapper .postmeta a:hover {
   cursor: default;
   color: #333333;
 }
-/* line 582, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 586, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .comment-wrapper .common-details {
   text-indent: 58px;
   position: relative;
   line-height: 22px;
 }
-/* line 588, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 592, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .comment-wrapper .badge {
   position: absolute;
   left: 0;
@@ -1118,23 +1119,23 @@ a:hover {
   text-indent: 0;
   font-size: 12px;
 }
-/* line 600, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 604, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .comment-wrapper .badge-warning {
   background-color: #ffa84b;
 }
-/* line 603, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 607, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .comment-wrapper .badge-shield {
   background-color: #df3e3e;
 }
-/* line 606, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 610, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .comment-wrapper .comment-main {
   font-size: 15px;
 }
-/* line 610, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 614, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .replay-tips {
   color: #999;
 }
-/* line 616, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 620, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side {
   float: left;
 }
@@ -1158,7 +1159,7 @@ a:hover {
     float: none;
   }
 }
-/* line 618, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 622, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .block.ad {
   width: 330px;
   height: 300px;
@@ -1170,7 +1171,7 @@ a:hover {
     display: none !important;
   }
 }
-/* line 623, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 627, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .block.ad a {
   width: 100%;
   height: 100%;
@@ -1179,13 +1180,13 @@ a:hover {
   background-size: cover;
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-  /* line 630, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+  /* line 634, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .article-side .block.ad {
     width: 100%;
     height: 260px;
   }
 }
-/* line 635, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 639, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .author {
   padding: 25px;
   background: #f3f7fb;
@@ -1202,12 +1203,12 @@ a:hover {
   }
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-  /* line 638, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+  /* line 642, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .article-side .author {
     padding: 15px;
   }
 }
-/* line 646, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 650, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .author .avatar {
   display: inline-block;
   width: 60px;
@@ -1218,7 +1219,7 @@ a:hover {
   margin-right: 15px;
   vertical-align: top;
 }
-/* line 656, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 660, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .author .desc {
   overflow: hidden;
   display: inline-block;
@@ -1227,18 +1228,18 @@ a:hover {
   white-space: normal;
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-  /* line 660, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+  /* line 664, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .article-side .author .desc {
     width: 160px;
   }
 }
-/* line 665, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 669, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .author .desc .name {
   font-size: 17px;
   font-weight: 600;
   display: inline-block;
 }
-/* line 670, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 674, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .author .desc .badge {
   font-size: 12px;
   color: #fff;
@@ -1250,12 +1251,12 @@ a:hover {
   top: -2px;
   vertical-align: middle;
 }
-/* line 681, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 685, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .author .desc .brief {
   margin-top: 5px;
   color: #666666;
 }
-/* line 687, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 691, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .vendor-links {
   border-radius: 2px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -1270,17 +1271,17 @@ a:hover {
   }
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-  /* line 693, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+  /* line 697, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .article-side .vendor-links {
     padding: 15px;
   }
 }
-/* line 696, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 700, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .vendor-links h3 {
   font-size: 13px;
   font-weight: 600;
 }
-/* line 700, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 704, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .vendor-links article {
   *zoom: 1;
   margin-top: 20px;
@@ -1293,21 +1294,21 @@ a:hover {
   height: 0;
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-  /* line 703, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+  /* line 707, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .article-side .vendor-links article {
     margin-top: 15px;
   }
 }
-/* line 706, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 710, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .vendor-links article .image {
   float: left;
   margin-right: 15px;
 }
-/* line 710, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 714, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .vendor-links article a {
   margin-top: 5px;
 }
-/* line 715, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 719, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .top-articles {
   border-radius: 2px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -1322,17 +1323,17 @@ a:hover {
   }
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-  /* line 721, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+  /* line 725, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .article-side .top-articles {
     padding: 15px;
   }
 }
-/* line 724, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 728, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .top-articles h3 {
   font-size: 13px;
   font-weight: 600;
 }
-/* line 728, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 732, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .top-articles article {
   *zoom: 1;
   margin-top: 20px;
@@ -1345,12 +1346,12 @@ a:hover {
   height: 0;
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-  /* line 731, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+  /* line 735, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .article-side .top-articles article {
     margin-top: 15px;
   }
 }
-/* line 734, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 738, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .top-articles article .pic {
   width: 80px;
   height: 60px;
@@ -1359,11 +1360,11 @@ a:hover {
   margin-right: 10px;
   float: left;
 }
-/* line 742, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 746, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .top-articles article .desc {
   overflow: hidden;
 }
-/* line 744, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 748, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .top-articles article .desc .title {
   display: inline-block;
   max-height: 60px;
@@ -1371,7 +1372,7 @@ a:hover {
   font-weight: 600;
   overflow: hidden;
 }
-
+/* line 764, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .reading-article {
   position: fixed;
   left: 0;
@@ -1381,6 +1382,7 @@ a:hover {
   overflow: auto;
   display: none;
 }
+/* line 772, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .reading-article .mask {
   position: fixed;
   width: 100%;
@@ -1388,12 +1390,13 @@ a:hover {
   left: 0;
   top: 0;
   overflow: hidden;
-  background-color: rgba(0,0,0,.6);
+  background-color: #e9eaec;
   z-index: 1000;
- }
+}
+/* line 783, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .reading-article .article-detail-wrap .content-wrapper {
   float: none;
   margin: 0 auto;
   position: relative;
   z-index: 1001;
-  }
+}

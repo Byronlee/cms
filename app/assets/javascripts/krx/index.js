@@ -205,6 +205,11 @@ $(document).ready(function(){
         }, 0);
     })
 
+    // 微博分享
+    $('body').on('click','.J_fastSection .weibo',function(e) {
+        e.stopPropagation();
+    });
+
      // 微信
     $('body').on('click', '.article-list .articles-pdn .weixin', function(e) {
         e.preventDefault();
@@ -240,5 +245,11 @@ $(document).ready(function(){
     //     console.log(222);  
     //     this.src="../images/default_avatar.png";   
     // }); 
+
+    // 新产品详情页点击查看更多，跳转至首页且新产品标签为选中状态
+    if(window.localStorage.loadNew) {
+        $('.J_newsListNavBar a[data-type="pdn"]').click();
+        window.localStorage.removeItem('loadNew');
+    }
         
 });
