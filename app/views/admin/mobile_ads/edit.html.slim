@@ -13,6 +13,13 @@
   .main-body
     = simple_form_for [:admin, @mobile_ad], html: {class: "form-horizontal"} do |f|
       div class="control-group string required"
+        label class="string required control-label" = '是否启用'
+        div class="controls"
+          | 禁用
+          = f.radio_button :state, false
+          |  启用
+          = f.radio_button :state, true
+      div class="control-group string required"
         label class="string required control-label" = '展示标题'
         div class="controls"
           = f.text_field :ad_title, class:'string required'

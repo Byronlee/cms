@@ -30,7 +30,7 @@ class Admin::MobileAdsController < Admin::BaseController
 
   def update
     if @mobile_ad.update(mobile_ad_params)
-      flash[:notice] = '新广告创建成功！'
+      flash[:notice] = '新广告更新成功！'
       redirect_to admin_mobile_ads_path
     else
       flash[:notice] = '广告表单数据不完整'
@@ -50,6 +50,6 @@ class Admin::MobileAdsController < Admin::BaseController
     end
 
     def mobile_ad_params
-      params.require(:mobile_ad).permit(:ad_title, :ad_url, :ad_img_url, :ad_position, :ad_enable_time, :ad_end_time, :ad_summary, :api_count, :click_count)
+      params.require(:mobile_ad).permit(:ad_title, :ad_url, :ad_img_url, :ad_position, :ad_enable_time, :ad_end_time, :ad_summary, :api_count, :click_count, :state)
     end
 end

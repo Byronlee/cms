@@ -15,6 +15,7 @@
         th 显示标题
         th 启用时间
         th 禁用时间
+        th 状态
         th 操作
     tbody
       - @mobile_ads.each do |ad|
@@ -25,6 +26,11 @@
           td = ad.ad_title
           td = ad.ad_enable_time.strftime('%Y-%m-%d %H:%M')
           td = ad.ad_end_time.strftime('%Y-%m-%d %H:%M')
+          td
+            - if ad.state == true
+              a class="btn btn-success" = "启用"
+            - else
+              a class="btn btn-danger" = "禁用"
           td
             a title="编辑" href= edit_admin_mobile_ad_path(ad)
               i.fa.fa-pencil
