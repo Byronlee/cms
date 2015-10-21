@@ -30,12 +30,13 @@
 = render 'welcome/wechat_share', share_img: high_speed_url(@post.cover_real_url, 'square'), share_desc: html_text_only(@post.summary)
 
 javascript:
+
   if(!window.mobilecheck())
     document.write('<script src="http://krplus-cdn.b0.upaiyun.com/common-module/company-bubble/main.js">\x3C/script>');
 
-  $('.reading-open').addClass('show');
 
   $(document).ready(function(){
+    $('.reading-open').addClass('show');
     //取消前端默认的收藏js效果
     $('.J_addFavorite').unbind('click.J_addFavorite');
     window.bind_comment();

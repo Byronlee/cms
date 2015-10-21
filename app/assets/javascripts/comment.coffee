@@ -1,6 +1,6 @@
-window.reply_comment = (parent)->
-  comment_id = parent.find(".comment_details").attr("data-comment-id")
-  user_name = parent.find(".comment_details").find(".avatar img").attr("alt")
+window.reply_comment = (parent, o)->
+  comment_id = $(o).parents(".comment_details").attr("data-comment-id")
+  user_name = $(o).parents(".comment_details").find(".avatar img").attr("alt")
   user_name = user_name.replace('36氪用户','')
   mark_reply_msg = "回复：" + user_name + "<span onclick='delete_reply_comment(this)'>X</span>"
   parent.find("form.comment_form input.re_comment_id").remove()

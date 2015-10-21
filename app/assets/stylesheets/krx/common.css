@@ -136,9 +136,9 @@ a img {
 	font-family: 'icomoon';
 	src:url('//krplus-cdn.b0.upaiyun.com/static-images/styles/fonts/14cfc841.icomoon.eot?fejlke');
 	src:url('//krplus-cdn.b0.upaiyun.com/static-images/styles/fonts/14cfc841.icomoon.eot?fejlke#iefix') format('embedded-opentype'),
-		url('fonts/e0228cb8.icomoon.ttf?fejlke') format('truetype'),
-		url('fonts/6d383381.icomoon.woff?fejlke') format('woff'),
-		url('fonts/9990986a.icomoon.svg?fejlke#icomoon') format('svg');
+		url('//krplus-cdn.b0.upaiyun.com/static-images/styles/fonts/e0228cb8.icomoon.ttf?fejlke') format('truetype'),
+		url('//krplus-cdn.b0.upaiyun.com/static-images/styles/fonts/6d383381.icomoon.woff?fejlke') format('woff'),
+		url('//krplus-cdn.b0.upaiyun.com/static-images/styles/fonts/9990986a.icomoon.svg?fejlke#icomoon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }

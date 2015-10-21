@@ -22,6 +22,6 @@
 
       .opts
       - if current_user
-        a.pull-right onclick='window.reply_comment($("#article-section-#{comment.commentable.url_code}"))' href="javascript:void(0)" data-stat-click="pinglun.huifupinglun.click" 回复
+        a.pull-right onclick='window.reply_comment($("#article-section-#{comment.commentable.url_code}"), this)' href="javascript:void(0)" data-stat-click="pinglun.huifupinglun.click" 回复
       - else
         a.pull-right  href="#{new_user_session_path(ok_url: "/p/#{comment.commentable.url_code}.html?t=#{Time.now.to_i}")}"  回复
