@@ -366,12 +366,26 @@ a:hover {
   }
 }
 /* line 20, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+.fast-section-detail-wrap .main-section .header-new-pro {
+  padding: 10px 30px;
+  background-color: #3da9f7;
+  color: #ffffff;
+  font-size: 22px;
+  line-height: 1;
+}
+/* line 27, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+.fast-section-detail-wrap .main-section .header-new-pro h2 {
+  font-weight: normal;
+}
+/* line 30, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+.fast-section-detail-wrap .main-section .header-new-pro small {
+  font-size: 12px;
+}
+/* line 34, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
 .fast-section-detail-wrap .main-section .fast-section-detail {
   float: right;
   border-radius: 2px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  background: #ffffff;
-  padding: 30px;
+  overflow: hidden;
 }
 @media (min-width: 1200px) {
   /* line 79, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
@@ -391,69 +405,134 @@ a:hover {
     float: none;
   }
 }
-/* line 27, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
-.fast-section-detail-wrap .main-section .fast-section-detail .fast-news h3 {
-  font-size: 20px;
-  margin-bottom: 20px;
+/* line 39, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+.fast-section-detail-wrap .main-section .fast-section-detail .new-pro-inner {
+  background: #ffffff;
+  padding: 30px;
 }
-/* line 31, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
-.fast-section-detail-wrap .main-section .fast-section-detail .fast-news .desc {
-  font-size: 15px;
-  line-height: 1.8;
-  margin-bottom: 20px;
+/* line 48, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+.fast-section-detail-wrap .main-section .fast-section-detail .product > h3 {
+  margin: 0 0 20px -30px;
+  padding-left: 16px;
+  border-left: solid 2px #fd9827;
+  line-height: 20px;
+  font-size: 18px;
+  font-weight: 600;
 }
-/* line 36, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
-.fast-section-detail-wrap .main-section .fast-section-detail .fast-news .info {
+/* line 56, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+.fast-section-detail-wrap .main-section .fast-section-detail .product > h3 a {
+  position: relative;
+  top: 2px;
+}
+/* line 61, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+.fast-section-detail-wrap .main-section .fast-section-detail .product h4 {
+  margin: 10px 0 3px;
+  font-weight: 600;
+}
+/* line 65, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+.fast-section-detail-wrap .main-section .fast-section-detail .product p {
+  color: #666666;
+}
+/* line 69, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+.fast-section-detail-wrap .main-section .fast-section-detail .product .main {
+  line-height: 20px;
+  font-size: 13px;
+  color: #333;
+}
+/* line 74, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+.fast-section-detail-wrap .main-section .fast-section-detail .product .pic {
+  width: 120px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  float: none;
+  height: auto;
+}
+/* line 80, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+.fast-section-detail-wrap .main-section .fast-section-detail .product .pic img {
+  display: block;
+  width: 100%;
+  cursor: -webkit-zoom-in;
+  cursor: zoom-in;
+}
+/* line 86, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+.fast-section-detail-wrap .main-section .fast-section-detail .product .info {
+  margin-top: 20px;
   *zoom: 1;
-  line-height: 30px;
+  font-size: 12px;
+  color: #bbb;
 }
 /* line 44, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
-.fast-section-detail-wrap .main-section .fast-section-detail .fast-news .info:after {
+.fast-section-detail-wrap .main-section .fast-section-detail .product .info:after {
   content: '';
   display: block;
   clear: both;
   height: 0;
 }
-/* line 39, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
-.fast-section-detail-wrap .main-section .fast-section-detail .fast-news .info .author {
-  float: left;
+/* line 92, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+.fast-section-detail-wrap .main-section .fast-section-detail .product .info .author {
   color: #aaaaaa;
+  float: left;
+  line-height: 28px;
+  margin-right: 5px;
 }
-/* line 42, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
-.fast-section-detail-wrap .main-section .fast-section-detail .fast-news .info .author a {
+/* line 98, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+.fast-section-detail-wrap .main-section .fast-section-detail .product .info .author a {
   color: #3da9f7;
 }
-/* line 101, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
-.fast-section-detail-wrap .main-section .fast-section-detail .fast-news .info .author a:hover {
-  color: #2c79b0;
-}
-/* line 45, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
-.fast-section-detail-wrap .main-section .fast-section-detail .fast-news .info .author .avatar {
+/* line 101, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+.fast-section-detail-wrap .main-section .fast-section-detail .product .info .author a span.avatar {
   vertical-align: middle;
   display: inline-block;
-  width: 25px;
-  height: 25px;
+  width: 28px;
+  height: 28px;
   background: no-repeat center center;
   background-size: cover;
   margin-right: 6px;
   border-radius: 50%;
 }
-@media (max-width: 800px) {
-  /* line 54, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
-  .fast-section-detail-wrap .main-section .fast-section-detail .fast-news .info .author .avatar {
-    width: 20px;
-    height: 20px;
-  }
+/* line 114, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+.fast-section-detail-wrap .main-section .fast-section-detail .product .info .links {
+  line-height: 28px;
+  float: left;
 }
-/* line 60, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
-.fast-section-detail-wrap .main-section .fast-section-detail .fast-news .info .share {
+/* line 118, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+.fast-section-detail-wrap .main-section .fast-section-detail .product .info .links a {
+  margin: 0 5px;
+  color: #3da9f7;
+}
+/* line 123, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+.fast-section-detail-wrap .main-section .fast-section-detail .product .info .share {
   float: right;
 }
-/* line 62, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
-.fast-section-detail-wrap .main-section .fast-section-detail .fast-news .info .share .panel-weixin {
-  line-height: 1.5;
+/* line 128, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+.fast-section-detail-wrap .main-section .fast-section-detail .product .share-group a .panel-weixin h3 {
+  top: 0;
 }
-/* line 69, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
-.fast-section-detail-wrap .main-section .fast-section-detail .fast-news .pic img {
-  max-width: 100%;
+/* line 134, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+.fast-section-detail-wrap .main-section .fast-section-detail .load-more {
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  margin-top: 20px;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  background: #cdd8e3;
+  display: block;
+  box-shadow: none;
+  color: #6483a2;
+}
+@media (max-width: 800px) {
+  /* line 145, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+  .fast-section-detail-wrap .main-section .fast-section-detail .load-more {
+    margin-top: 10px;
+  }
+}
+/* line 148, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+.fast-section-detail-wrap .main-section .fast-section-detail .load-more:before {
+  content: '查看更多新产品';
+  display: inline-block;
+}
+/* line 152, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/fast-section-detail.less */
+.fast-section-detail-wrap .main-section .fast-section-detail .load-more:hover {
+  background: #bccbd9;
 }

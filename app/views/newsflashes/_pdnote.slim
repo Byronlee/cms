@@ -1,47 +1,55 @@
-.fast-news.product
-  h3
-    a[href=newsflash.news_url target="_blank" rel="nofollow"]
-      = newsflash.hash_title
-  h4
-    | What:
-  p
-    = display_pnote_what(newsflash)
-  h4
-    | How:
-  p
-    = display_pnote_summary(newsflash, :first)
-  h4
-    | Think It Twice:
-  p
-    = display_pnote_summary(newsflash, :last)
-  .pic
-    = image_tag newsflash.cover, alt: "#{newsflash.hash_title}" if newsflash.cover.present?
-  .info
-    .author
-      a[href="javascript:void(0)"]
-        span.avatar[style="background-image: url('#{newsflash.author.try(:avatar)}')"]
-        span.name
-          = newsflash.author.try(:display_name)
-      span.time
-        | &nbsp;• &nbsp;
-        = smart_time_ago newsflash.created_at
-      .links
-        = link_to '官网地址', newsflash.site_url, target: '_blank' unless newsflash.site_url.blank?
-        = link_to '产品链接', newsflash.product_url, target: '_blank' unless newsflash.product_url.blank?
-        = link_to '原文链接', newsflash.news_url_type, target: '_blank' unless newsflash.news_url_type.blank?
-    span.share
-      |  分享到:
-      .share-group
-        a.weixin.mobile-hide[href="javascript:void(0)" ref="nofollow" target="_blank"]
-          i.icon-weixin
-          .panel-weixin
-            section.weixin-section
-              p
-                img[src="http://s.jiathis.com/qrcode.php?url=#{newsflash_show_url(newsflash)}?via=wechat_qr" alt="#{newsflash.hash_title}"]
-            h3
-              | 打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮
-        a.weibo[href="http://share.baidu.com/s?type=text&searchPic=1&sign=on&to=tsina&url=#{newsflash_show_url(newsflash)}&title=#{('新产品 ｜ ' + newsflash.hash_title + ' - ' + display_pnote_what(newsflash))}&pic=#{newsflash.cover}" ref="nofollow" target="_blank"]
-          i.icon-weibo
+header.header-new-pro
+  h2
+    |新产品
+    small &nbsp;&nbsp;探索发现未知世界
+.new-pro-inner
+  article data-id="#{newsflash.id}"
+    section.product
+      h3
+        a[href=newsflash.news_url target="_blank" rel="nofollow"]
+          = newsflash.hash_title
+      .main
+        h4
+          | What:
+        p
+          = display_pnote_what(newsflash)
+        h4
+          | How:
+        p
+          = display_pnote_summary(newsflash, :first)
+        h4
+          | Think It Twice:
+        p
+          = display_pnote_summary(newsflash, :last)
+        .pic
+          = image_tag newsflash.cover, alt: "#{newsflash.hash_title}" if newsflash.cover.present?
+        .info
+          .author
+            a[href="javascript:void(0)"]
+              span.avatar[style="background-image: url('#{newsflash.author.try(:avatar)}')"]
+              span.name
+                = newsflash.author.try(:display_name)
+            span.time
+              | &nbsp;• &nbsp;
+              = smart_time_ago newsflash.created_at
+          .links
+            = link_to '官网地址', newsflash.site_url, target: '_blank' unless newsflash.site_url.blank?
+            = link_to '产品链接', newsflash.product_url, target: '_blank' unless newsflash.product_url.blank?
+            = link_to '原文链接', newsflash.news_url, target: '_blank' unless newsflash.news_url.blank?
+          span.share
+            |  分享到:
+            .share-group
+              a.weixin.mobile-hide[href="javascript:void(0)" ref="nofollow" target="_blank"]
+                i.icon-weixin
+                .panel-weixin
+                  section.weixin-section
+                    p
+                      img[src="http://s.jiathis.com/qrcode.php?url=#{newsflash_show_url(newsflash)}?via=wechat_qr" alt="#{newsflash.hash_title}"]
+                  h3
+                    | 打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮
+              a.weibo[href="http://share.baidu.com/s?type=text&searchPic=1&sign=on&to=tsina&url=#{newsflash_show_url(newsflash)}&title=#{('新产品 ｜ ' + newsflash.hash_title + ' - ' + display_pnote_what(newsflash))}&pic=#{newsflash.cover}" ref="nofollow" target="_blank"]
+                i.icon-weibo
+
   - if show_options && can?(:toggle_tag, newsflash)
     div.post-operate style="border-top: solid 1px #f4f4f4; margin-top: 25px; padding-top: 25px;"
       div.pull-right
@@ -50,5 +58,7 @@
         = link_to "氪记新产品",'javascript:void(0)',id: "氪记新产品", onclick: "toggle_tag(#{@newsflash.id},'氪记新产品')", style: "#{"color:#3da9f7" if @newsflash.tag_list.include?('氪记新产品') }"
         span &nbsp;|&nbsp;
         = link_to "氪记投融资",'javascript:void(0)',id: "氪记投融资", onclick: "toggle_tag(#{@newsflash.id},'氪记投融资')", style: "#{"color:#3da9f7" if @newsflash.tag_list.include?('氪记投融资') }"
+
+a.load-more.load-index-pro href="#{product_notes_path}"
 
 = render 'welcome/wechat_share', share_img: newsflash.cover, share_desc: display_pnote_what(newsflash)

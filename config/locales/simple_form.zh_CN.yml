@@ -46,6 +46,9 @@ zh-CN:
         column: 所属专栏
         display_in_infoflow: 推送至信息流
         pin: 设置为头条
+        news_url: 原文链接
+        site_url: 官网链接
+        product_url: 产品链接
       page:
         title: 标题
         slug: 英文短标题
@@ -138,6 +141,10 @@ zh-CN:
         position: 广告位置
       info_flow:
         name: 信息流名称
+      newsflash:
+        news_url: 原文链接
+        site_url: 官网链接
+        product_url: 产品链接
     prompt:
   helpers:
     submit:

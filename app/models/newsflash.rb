@@ -60,8 +60,8 @@ class Newsflash < ActiveRecord::Base
 
   typed_store :extra do |s|
     s.string :news_url_type, default: '原文链接'
-    s.string :site_url, default: '官网链接'
-    s.string :product_url, default: '产品链接'
+    s.string :site_url, default: nil
+    s.string :product_url, default: nil
     s.text :what
     s.text :how
     s.text :think_it_twice

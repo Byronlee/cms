@@ -28,7 +28,7 @@
             .links
               = link_to '官网地址', pd.site_url, target: '_blank' unless pd.site_url.blank?
               = link_to '产品链接', pd.product_url, target: '_blank' unless pd.product_url.blank?
-              = link_to '原文链接', pd.news_url_type, target: '_blank' unless pd.news_url_type.blank?
+              = link_to '原文链接', pd.news_url, target: '_blank' unless pd.news_url.blank?
             span.share
               |  分享到
               .share-group
