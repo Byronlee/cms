@@ -2740,7 +2740,11 @@ body {
   visibility: visible;
   opacity: 1;
 }
+<<<<<<< HEAD
 /* line 176, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+=======
+
+>>>>>>> 文章详情页添加沉浸模式
 .fixed-tools .reading-open {
   padding-top: 9px;
 }
@@ -2812,7 +2816,11 @@ body {
       -ms-transform: rotate(135deg);
           transform: rotate(135deg);
 }
+<<<<<<< HEAD
 /* line 239, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+=======
+/* line 177, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
+>>>>>>> 文章详情页添加沉浸模式
 footer.common-footer {
   *zoom: 1;
   background: #2d3237;

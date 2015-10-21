@@ -6,7 +6,7 @@
 = render 'layouts/tag', deep_report_link: root_path, deep_report_active: 'false'
 = javascript_include_tag 'krx/article', media: 'all'
 
-.article-detail-wrap
+.article-detail-wrap.reading-off
   .main-section
     .content-wrapper
       = render 'content_and_comment'
@@ -21,7 +21,11 @@
         .fast-section.J_fastSection.mobile-hide
           = render 'welcome/aside'
           = render_cell :ads, :position_9
-
+.reading-article.reading-on
+  .mask
+  .article-detail-wrap
+    .main-section
+      .content-wrapper
 = render 'layouts/footer', subnavs: [["#{@post.title}", post_show_by_url_code_path(url_code: @post.url_code)]]
 = render 'welcome/wechat_share', share_img: high_speed_url(@post.cover_real_url, 'square'), share_desc: html_text_only(@post.summary)
 

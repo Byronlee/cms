@@ -72,22 +72,22 @@ $(document).ready(function(){
 
   // *************************Begin无缝加载********************************
     // 获取当前初始化文章的打赏二维码
-    var url_code = $('.article-section').attr('data-aid');
-    var titleCur = $('.article-section:eq(0)').find('.single-post__title').html(),
-        authorCur = $('.article-section:eq(0)').find('.author .name').html();
+    var url_code = $('.reading-off .article-section').attr('data-aid');
+    var titleCur = $('.reading-off .article-section:eq(0)').find('.single-post__title').html(),
+        authorCur = $('.reading-off .article-section:eq(0)').find('.author .name').html();
     crowdFunding(url_code,authorCur,titleCur,'EE');
     // 获取广告的内容
-    var ad = $('.article-section:eq(0)').find('.ad').html().replace(/<script.*?<\/script>/img, '');
+    var ad = $('.reading-off .article-section:eq(0)').find('.ad').html().replace(/<script.*?<\/script>/img, '');
     // 获取第二篇文章内容
     var nextArticleData = '';
     $.get('/p/' + url_code + '.html', function(data) {
       nextArticleData = data;
     });
     // 判断该文章是否已存在
-    function  pexist(aid){
+    function  pexist(obj,aid){
     var isexists = 0;
 
-    $.each($('.article-section'),function(i,v){
+    $.each($(obj).find('.article-section'),function(i,v){
       if($(this).data('aid') == aid){
         isexists = 1;
       }
@@ -113,7 +113,7 @@ $(document).ready(function(){
 
     var wB = $(window).scrollTop() + $(window).height();
     if(curscrolltop > -1) {
-      $.each($('.article-section'),function(i,v){
+      $.each($('.reading-off .article-section'),function(i,v){
         var title = $(this).find('.single-post__title').html(),
           url = $(this).data('url'),
           oT = $(this).offset().top,
@@ -190,7 +190,7 @@ $(document).ready(function(){
       // console.log(data);
 
       showNextCon = $($.parseHTML(data,true)).find('.ad').html(ad).parents('.ajax-article-main').html();
-      $('.article-section:last').after(showNextCon);
+      $('.reading-off .article-section:last').after(showNextCon);
 
 
       var title = $($.parseHTML(data,true)).find('.ad').html(ad).end().find('.single-post__title').html(),
@@ -222,7 +222,7 @@ $(document).ready(function(){
 
       if(aidC){
         // if(!aidC) return;
-        if(!pexist($($.parseHTML(nextArticleData,true)).find('.ad').html(ad).parents('.article-section').data('aid'))) {
+        if(!pexist('.reading-off', $($.parseHTML(nextArticleData,true)).find('.ad').html(ad).parents('.article-section').data('aid'))) {
           renderArticle(nextArticleData);
         }
         nextArticleData = getArticle(aidC);
@@ -230,4 +230,187 @@ $(document).ready(function(){
     }
   });
   // *************************End无缝加载********************************
+
+  // =============================沉浸模式===============================
+  if(!window.localStorage.getItem('readingStatus')) {
+        $('.reading-tips').addClass('show');
+    }
+    $('.btn-known').click(function(e) {
+        e.preventDefault();
+        $(this).parents('.reading-tips').removeClass('show').prev('.reading-open').addClass('active');
+        window.localStorage.setItem('readingStatus',true);
+    });
+
+    var reading = false;
+    $('.reading-open').click(function(e) {
+        e.preventDefault();
+        // 判断当前阅读模式按钮的状态
+        $(this).toggleClass('active');
+        if($(this).is('.active')) {
+          reading = true;
+        } else {
+          reading = false;
+          $('.reading-article .mask').click();
+      }
+
+      // 获取当前可视区范围内文章的ID
+        var path = window.location.pathname,
+        id = path.match(/\/p\/(\d+)\.html$/)[1];
+        // var path = window.location.pathname;
+        // // ******需要根据url进行截取id******
+        // var id = path.substr(1,location.pathname.substr(1).length - 5);
+        // var id = path.match(\/(\d+)\.html$);
+
+        var html = '';
+
+        // 输出当前可视区域的文章
+        var readingOnNextData = '';
+        var existHtml = '';   //非阅读模式已存在的文章
+        var curIndex = 0;
+        // 循环获取非阅读模式已存在的文章，并对其下一篇文章进行获取
+        $('.reading-off .article-section').each(function(i, val) {
+          existHtml += '<div class="article-section" data-aid="'+ $(this).data('aid') +'" data-url="'+ $(this).data('url') +'"><div class="inner"><article class="single-post"><section class="single-post-header">' + $(this).find('.single-post-header').html() + '</section><br/><section class="article">' + $(this).find('.article').html() + '</article></article></div></div>'
+          if($(this).data('aid') == id) {
+
+            // html = '<div class="article-section" data-aid="'+ $(this).data('aid') +'" data-url="'+ $(this).data('url') +'"><div class="inner"><article class="single-post"><section class="single-post-header">' + $(this).find('.single-post-header').html() + '</section><br/><section class="article">' + $(this).find('.article').html() + '</article></article></div></div>';
+            $(existHtml).appendTo($('.reading-article .content-wrapper'));
+            curIndex = i;
+            if(!$('.reading-off').find('.article-section').eq(i).next().html()) {
+              if(isgeting) return;
+          // console.log(aidC);
+              getArticle($(this).data('aid'));
+              readingOnNextData = '<div class="ajax-article-main"><div class="article-section" data-aid="'+ $($.parseHTML(nextArticleData,true)).find('.article-section').data('aid') +'" data-url="'+ $($.parseHTML(nextArticleData,true)).find('.article-section').data('url') +'"><div class="inner"><article class="single-post"><section class="single-post-header">' + $($.parseHTML(nextArticleData,true)).find('.single-post-header').html() + '</section><br/><section class="article">' + $($.parseHTML(nextArticleData,true)).find('.article').html() + '</article></article></div></div></div>';
+            }
+
+            // console.log('aid: ' + $($.parseHTML(nextArticleData,true)).find('.article-section').data('aid') + ' url=' + $($.parseHTML(nextArticleData,true)).find('.article-section').data('url'));
+          }
+        });
+
+
+        $('.reading-article').show();
+        // 阅读模式下，定位至当前的文章
+        setTimeout(function() {
+          var s = $('.reading-on .article-section').eq(curIndex).offset().top - $('.reading-on').offset().top;
+          $('.reading-article').scrollTop(s);
+          // $('.reading-article').animate({scrollTop: ($('.reading-on .article-section').eq(curIndex).offset().top - $('.reading-on').offset().top)}, 800);
+        }, 100);
+        $('body').height($(window).height()).css('overflow','hidden');
+        var readingCurscrolltop = -1;
+        $('.reading-article').scroll(function() {
+          var sT = $(this).scrollTop();
+
+          // 判断视野范围
+        var wT = sT,
+          wH = $(window).height();
+        if(Math.abs(wT - readingCurscrolltop) < 20) {
+          return 0;
+        }
+        var d = 0; //1 向下滑动   2  向上滑动
+        if((wT - readingCurscrolltop) > 0) {
+          d = 1;
+        } else if((wT - readingCurscrolltop) < 0) {
+          d = 2;
+        }
+
+        var wB = sT + $(window).height();
+        if(readingCurscrolltop > -1) {
+          $.each($('.reading-on .article-section'),function(i,v){
+            var title = $(this).find('.single-post__title').html(),
+              url = $(this).data('url'),
+              oT = $(this).offset().top - $(this).parents('.reading-on').offset().top,
+              pH = oT + $(this).outerHeight();
+
+
+            // 向下滑动
+            var date = new Date();
+            if(d == 1) {
+              if((oT > wT) && (oT < (wT + wH / 3))) {
+                if(window.location.href != url) {
+                  var state = {
+                    title: title,
+                    url: window.location.href
+                  }
+                  window.history.pushState(state, document.title, url + '?t=' + date.getTime());
+                  document.title = title;
+                }
+              }
+              // console.log('d: ' + d + ' oT: ' + oT + ' wT: ' + wT + ' sub: '  + (wT + wH / 3));
+            } else if(d == 2) {
+              // 向上滑动
+              if((pH < (wT + wH)) && (pH > (wT + wH * 2 / 3))) {
+
+                if(window.location.href != url) {
+                  var state = {
+                    title: title,
+                    url: window.location.href
+                  }
+                  window.history.pushState(state, document.title, url + '?t=' + date.getTime());
+                  document.title = title;
+                }
+              }
+              // console.log('d: ' + d + ' pH: ' + pH + ' sub: ' + (wT + wH) + ' sub2: '  + (wT + wH * 2 / 3));
+            }
+
+
+
+          });
+        }
+
+
+        readingCurscrolltop = wT;
+
+
+      // console.log('aa: ' + (sT + $(window).height() + 50) + 'bb: ' + $(document).height());
+      if((sT + $(window).height() + 50) > ($(this).find('.article-detail-wrap').height() + 30)) {
+        var aidC = $($.parseHTML(nextArticleData,true)).find('.article-section').data('aid');
+        console.log($($.parseHTML(nextArticleData,true)).html());
+        console.log('aidC: ' + aidC);
+        if(!aidC) return;
+        readingOnNextData = '<div class="ajax-article-main"><div class="article-section" data-aid="'+ $($.parseHTML(nextArticleData,true)).find('.article-section').data('aid') +'" data-url="'+ $($.parseHTML(nextArticleData,true)).find('.article-section').data('url') +'"><div class="inner"><article class="single-post"><section class="single-post-header">' + $($.parseHTML(nextArticleData,true)).find('.single-post-header').html() + '</section><br/><section class="article">' + $($.parseHTML(nextArticleData,true)).find('.article').html() + '</article></article></div></div></div>';
+
+        // 判断是否已经存在
+        if(!pexist('.reading-on',$($.parseHTML(readingOnNextData,true)).find('.article-section').data('aid'))) {
+
+          if(readingOnNextData) {
+            var dH = $('.reading-on .article-detail-wrap').height() + 30,
+              showNextCon = '';
+            $('reading-on').scrollTop(dH + 100);
+            showNextCon = $($.parseHTML(readingOnNextData,true)).html();
+            $('.reading-on .article-section:last').after(showNextCon);
+            renderArticle(nextArticleData);
+
+            var date = new Date();
+            var title = $($.parseHTML(readingOnNextData,true)).find('.single-post__title').html(),
+              url = $($.parseHTML(readingOnNextData,true)).find('.article-section').data('url');
+
+            var state = {
+              title: title,
+              url: window.location.href
+            }
+            window.history.pushState(state, document.title, url + '?t=' + date.getTime());
+            document.title = title;
+          }
+        }
+        if(isgeting) return;
+        nextArticleData = getArticle(aidC);
+      }
+        })
+      $('.reading-article .mask').click(function() {
+        $('.reading-article').hide().find('.article-section').remove();
+        $('.reading-open').removeClass('active');
+        $('body').css({'height': 'auto', 'overflow': 'auto'});
+        var path = window.location.pathname,
+        id = path.match(/\/p\/(\d+)\.html$/)[1];
+        // var path = window.location.pathname;
+        //   var id = path.substr(1,location.pathname.substr(1).length - 5);
+          $('.reading-off .article-section').each(function() {
+            if($(this).data('aid') == id) {
+              var s = $(this).offset().top;
+              setTimeout(function() {
+              $('body').scrollTop(s);
+              },100);
+            }
+          });
+      });
+    });
 });
