@@ -26,7 +26,7 @@ javascript:
     $.get("#{newsflashes_list_path(d: 'prev', column_slug: params[:column_slug], tag: params[:tag], pin: params[:pin])}&b_id=" + b_id, function(data){
       $('a[data-id="'+ b_id + '"]').parents('.item').before($(data).filter(".current-news").html());
       var newestNews = $(data).filter(".newest-news").html();
-      if( data !='' && newestNews.length > 1) {
+      if( data !='' && newestNews && newestNews.length > 1) {
         $(".time-tag.first").removeClass('first');
         $('.fase-time-line').prepend(newestNews);
       }
