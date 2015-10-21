@@ -323,7 +323,7 @@ a:hover {
 }
 /* line 10, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .article-section:not(:first-child) {
-  margin-top: 20px;
+  margin: 20px 0;
 }
 /* line 15, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section {
@@ -711,8 +711,6 @@ a:hover {
   }
 }
 /* line 287, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-<<<<<<< HEAD
-=======
 .article-detail-wrap .main-section .content-wrapper article.single-post section.single-post-tags .tag-tip {
   color: #666;
 }
@@ -724,8 +722,11 @@ a:hover {
   border-radius: 4px;
   margin-right: 10px;
 }
-/* line 301, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 298, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+.article-detail-wrap .main-section .content-wrapper article.single-post section.single-post-tags .tag-item a {
+  color: #fff;
+}
+/* line 305, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.enter-report {
   text-align: center;
   background-color: #fff;
@@ -737,11 +738,7 @@ a:hover {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   border-radius: 2px;
 }
-<<<<<<< HEAD
-/* line 297, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 311, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 315, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.enter-report a {
   display: inline-block;
   color: #fff;
@@ -749,11 +746,7 @@ a:hover {
   border-radius: 2px;
   width: 100px;
 }
-<<<<<<< HEAD
-/* line 305, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 319, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 323, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.mobile-author {
   display: none;
   margin-top: 15px;
@@ -764,11 +757,7 @@ a:hover {
     display: block;
   }
 }
-<<<<<<< HEAD
-/* line 307, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 321, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 325, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.mobile-author .author {
   padding: 25px;
   background: #f3f7fb;
@@ -779,20 +768,12 @@ a:hover {
   white-space: nowrap;
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-<<<<<<< HEAD
-  /* line 309, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-  /* line 323, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+  /* line 327, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .content-wrapper section.mobile-author .author {
     padding: 15px;
   }
 }
-<<<<<<< HEAD
-/* line 317, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 331, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 335, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.mobile-author .author .avatar {
   display: inline-block;
   width: 60px;
@@ -803,11 +784,7 @@ a:hover {
   margin-right: 15px;
   vertical-align: top;
 }
-<<<<<<< HEAD
-/* line 327, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 341, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 345, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.mobile-author .author .desc {
   overflow: hidden;
   display: inline-block;
@@ -815,21 +792,13 @@ a:hover {
   vertical-align: middle;
   white-space: normal;
 }
-<<<<<<< HEAD
-/* line 333, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 347, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 351, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.mobile-author .author .desc .name {
   font-size: 17px;
   font-weight: 600;
   display: inline-block;
 }
-<<<<<<< HEAD
-/* line 338, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 352, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 356, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.mobile-author .author .desc .badge {
   font-size: 12px;
   color: #fff;
@@ -841,28 +810,16 @@ a:hover {
   top: -2px;
   vertical-align: middle;
 }
-<<<<<<< HEAD
-/* line 349, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 363, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 367, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.mobile-author .author .desc .brief {
   margin-top: 5px;
   color: #666666;
 }
-<<<<<<< HEAD
-/* line 357, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 375, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-relate {
   margin-top: 15px;
 }
-/* line 359, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 371, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-.article-detail-wrap .main-section .content-wrapper section.single-post-relate {
-  margin-top: 15px;
-}
-/* line 373, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 377, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-relate ul {
   *zoom: 1;
 }
@@ -873,11 +830,7 @@ a:hover {
   clear: both;
   height: 0;
 }
-<<<<<<< HEAD
-/* line 361, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 375, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 379, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-relate ul li {
   float: left;
   margin-left: 21px;
@@ -896,11 +849,7 @@ a:hover {
   height: 0;
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-<<<<<<< HEAD
-  /* line 369, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-  /* line 383, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+  /* line 387, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .content-wrapper section.single-post-relate ul li {
     width: 220px;
     margin-left: 20px;
@@ -908,91 +857,55 @@ a:hover {
   }
 }
 @media (max-width: 800px) {
-<<<<<<< HEAD
-  /* line 374, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-  /* line 388, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+  /* line 392, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .content-wrapper section.single-post-relate ul li {
     float: none;
     margin: 0 0 10px;
     width: auto;
     padding: 15px;
   }
-<<<<<<< HEAD
-  /* line 379, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-  /* line 393, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+  /* line 397, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .content-wrapper section.single-post-relate ul li > a {
     float: left;
     width: 90px;
     height: 65px;
     margin-right: 10px;
   }
-<<<<<<< HEAD
-  /* line 384, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-  /* line 398, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+  /* line 402, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .content-wrapper section.single-post-relate ul li > a .image {
     height: 65px;
   }
 }
-<<<<<<< HEAD
-/* line 389, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 407, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-relate ul li:first-of-type {
   margin-left: 0;
 }
-/* line 392, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 403, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-.article-detail-wrap .main-section .content-wrapper section.single-post-relate ul li:first-of-type {
-  margin-left: 0;
-}
-/* line 406, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 410, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-relate ul li .image {
   height: 140px;
   overflow: hidden;
   width: 100%;
 }
-<<<<<<< HEAD
-/* line 398, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 412, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 416, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-relate ul li .image img {
   min-width: 100%;
   height: 100%;
   display: block;
 }
-<<<<<<< HEAD
-/* line 404, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 418, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 422, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-relate ul li .title {
   margin-top: 15px;
   height: 72px;
   overflow: hidden;
   line-height: 24px;
 }
-<<<<<<< HEAD
-/* line 409, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 423, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 427, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-relate ul li .title h3 a {
   font-size: 15px;
   font-weight: 600;
 }
 @media (max-width: 800px) {
-<<<<<<< HEAD
-  /* line 413, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-  /* line 427, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+  /* line 431, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .content-wrapper section.single-post-relate ul li .title {
     overflow: hidden;
     margin-top: 8px;
@@ -1000,11 +913,7 @@ a:hover {
     line-height: 22px;
   }
 }
-<<<<<<< HEAD
-/* line 427, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 441, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 445, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment {
   border-radius: 2px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -1013,40 +922,24 @@ a:hover {
   padding: 30px;
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-<<<<<<< HEAD
-  /* line 432, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-  /* line 446, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+  /* line 450, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .content-wrapper section.single-post-comment {
     padding: 20px;
   }
 }
 @media (max-width: 800px) {
-<<<<<<< HEAD
-  /* line 435, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-  /* line 449, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+  /* line 453, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .content-wrapper section.single-post-comment {
     padding: 20px;
   }
 }
-<<<<<<< HEAD
-/* line 438, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 452, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 456, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment h2 {
   margin-bottom: 15px;
   font-size: 15px;
   font-weight: 600;
 }
-<<<<<<< HEAD
-/* line 443, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 457, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 461, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment a {
   color: #3da9f7;
 }
@@ -1054,11 +947,7 @@ a:hover {
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment a:hover {
   color: #2c79b0;
 }
-<<<<<<< HEAD
-/* line 446, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 460, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 464, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .textarea {
   width: 100%;
   background: #f3f7fb;
@@ -1072,46 +961,26 @@ a:hover {
           transition: all 1s ease;
   -webkit-appearance: none;
 }
-<<<<<<< HEAD
-/* line 457, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 471, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 475, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .textarea::-moz-placeholder,
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .textarea::-webkit-input-placeholder {
   color: #aaaaaa;
   font-size: 15px;
 }
-<<<<<<< HEAD
-/* line 462, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 480, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .textarea:focus {
   background: #ffffff;
 }
-/* line 464, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 482, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .textarea:focus + .focus-tips {
   display: block;
 }
-/* line 470, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 476, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-.article-detail-wrap .main-section .content-wrapper section.single-post-comment .textarea:focus {
-  background: #ffffff;
-}
-/* line 478, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-.article-detail-wrap .main-section .content-wrapper section.single-post-comment .textarea:focus + .focus-tips {
-  display: block;
-}
-/* line 484, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 488, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .focus-tips {
   display: none;
   color: #999;
 }
-<<<<<<< HEAD
-/* line 474, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 488, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 492, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .bottom {
   margin-top: 15px;
   *zoom: 1;
@@ -1125,19 +994,11 @@ a:hover {
   clear: both;
   height: 0;
 }
-<<<<<<< HEAD
-/* line 479, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 497, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .bottom .meta {
   float: left;
 }
-/* line 481, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 493, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-.article-detail-wrap .main-section .content-wrapper section.single-post-comment .bottom .meta {
-  float: left;
-}
-/* line 495, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 499, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .bottom .meta .avatar {
   width: 28px;
   height: 28px;
@@ -1148,21 +1009,13 @@ a:hover {
   background: #aaaaaa no-repeat center center;
   background-size: cover;
 }
-<<<<<<< HEAD
-/* line 491, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 505, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 509, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .bottom .meta .username,
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .bottom .meta .username:hover {
   cursor: default;
   color: #333333;
 }
-<<<<<<< HEAD
-/* line 497, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 511, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 515, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .bottom button {
   float: right;
   width: 100px;
@@ -1177,19 +1030,11 @@ a:hover {
   padding: 0;
   font-size: 13px;
 }
-<<<<<<< HEAD
-/* line 510, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 528, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .bottom button:hover {
   background: #3798de;
 }
-/* line 516, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 524, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-.article-detail-wrap .main-section .content-wrapper section.single-post-comment .bottom button:hover {
-  background: #3798de;
-}
-/* line 530, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 534, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details {
   padding-bottom: 15px;
   padding-top: 15px;
@@ -1203,20 +1048,12 @@ a:hover {
   clear: both;
   height: 0;
 }
-<<<<<<< HEAD
-/* line 521, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 535, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 539, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .avatar {
   float: left;
   margin-right: 10px;
 }
-<<<<<<< HEAD
-/* line 524, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 538, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 542, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .avatar a {
   width: 40px;
   height: 40px;
@@ -1226,11 +1063,7 @@ a:hover {
   display: block;
   cursor: default;
 }
-<<<<<<< HEAD
-/* line 532, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 546, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 550, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .avatar a img {
   width: 100%;
   height: 100%;
@@ -1238,75 +1071,43 @@ a:hover {
   display: block;
   border-radius: 50%;
 }
-<<<<<<< HEAD
-/* line 542, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-.article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details:hover .btn-replay {
-  display: block;
-}
-/* line 546, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 556, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-.article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details:hover .btn-replay {
-  display: block;
-}
 /* line 560, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+.article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details:hover .btn-replay {
+  display: block;
+}
+/* line 564, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .btn-replay {
   text-align: right;
   display: none;
   font-size: 12px;
 }
-<<<<<<< HEAD
-/* line 550, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 568, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .btn-replay a {
   color: #999;
 }
-/* line 555, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 573, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .comment-wrapper {
   overflow: hidden;
 }
-/* line 557, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 564, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-.article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .btn-replay a {
-  color: #999;
-}
-/* line 569, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-.article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .comment-wrapper {
-  overflow: hidden;
-}
-/* line 571, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 575, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .comment-wrapper .postmeta {
   font-size: 12px;
   margin-bottom: 4px;
   color: #aaaaaa;
 }
-<<<<<<< HEAD
-/* line 561, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 575, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 579, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .comment-wrapper .postmeta a,
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .comment-wrapper .postmeta a:hover {
   cursor: default;
   color: #333333;
 }
-<<<<<<< HEAD
-/* line 568, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 582, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 586, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .comment-wrapper .common-details {
   text-indent: 58px;
   position: relative;
   line-height: 22px;
 }
-<<<<<<< HEAD
-/* line 574, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 588, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 592, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .comment-wrapper .badge {
   position: absolute;
   left: 0;
@@ -1318,43 +1119,23 @@ a:hover {
   text-indent: 0;
   font-size: 12px;
 }
-<<<<<<< HEAD
-/* line 586, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 604, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .comment-wrapper .badge-warning {
   background-color: #ffa84b;
 }
-/* line 589, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 607, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .comment-wrapper .badge-shield {
   background-color: #df3e3e;
-}
-/* line 592, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-.article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .comment-wrapper .comment-main {
-  font-size: 15px;
-}
-/* line 596, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-.article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .replay-tips {
-  color: #999;
-}
-/* line 602, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 600, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-.article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .comment-wrapper .badge-warning {
-  background-color: #ffa84b;
-}
-/* line 603, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-.article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .comment-wrapper .badge-shield {
-  background-color: #df3e3e;
-}
-/* line 606, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-.article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .comment-wrapper .comment-main {
-  font-size: 15px;
 }
 /* line 610, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+.article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .comment-wrapper .comment-main {
+  font-size: 15px;
+}
+/* line 614, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper section.single-post-comment .comment_details .replay-tips {
   color: #999;
 }
-/* line 616, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 620, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side {
   float: left;
 }
@@ -1378,11 +1159,7 @@ a:hover {
     float: none;
   }
 }
-<<<<<<< HEAD
-/* line 604, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 618, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 622, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .block.ad {
   width: 330px;
   height: 300px;
@@ -1394,11 +1171,7 @@ a:hover {
     display: none !important;
   }
 }
-<<<<<<< HEAD
-/* line 609, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 623, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 627, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .block.ad a {
   width: 100%;
   height: 100%;
@@ -1407,21 +1180,13 @@ a:hover {
   background-size: cover;
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-<<<<<<< HEAD
-  /* line 616, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-  /* line 630, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+  /* line 634, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .article-side .block.ad {
     width: 100%;
     height: 260px;
   }
 }
-<<<<<<< HEAD
-/* line 621, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 635, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 639, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .author {
   padding: 25px;
   background: #f3f7fb;
@@ -1438,20 +1203,12 @@ a:hover {
   }
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-<<<<<<< HEAD
-  /* line 624, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-  /* line 638, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+  /* line 642, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .article-side .author {
     padding: 15px;
   }
 }
-<<<<<<< HEAD
-/* line 632, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 646, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 650, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .author .avatar {
   display: inline-block;
   width: 60px;
@@ -1462,11 +1219,7 @@ a:hover {
   margin-right: 15px;
   vertical-align: top;
 }
-<<<<<<< HEAD
-/* line 642, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 656, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 660, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .author .desc {
   overflow: hidden;
   display: inline-block;
@@ -1475,30 +1228,18 @@ a:hover {
   white-space: normal;
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-<<<<<<< HEAD
-  /* line 646, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-  /* line 660, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+  /* line 664, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .article-side .author .desc {
     width: 160px;
   }
 }
-<<<<<<< HEAD
-/* line 651, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 665, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 669, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .author .desc .name {
   font-size: 17px;
   font-weight: 600;
   display: inline-block;
 }
-<<<<<<< HEAD
-/* line 656, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 670, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 674, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .author .desc .badge {
   font-size: 12px;
   color: #fff;
@@ -1510,20 +1251,12 @@ a:hover {
   top: -2px;
   vertical-align: middle;
 }
-<<<<<<< HEAD
-/* line 667, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 681, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 685, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .author .desc .brief {
   margin-top: 5px;
   color: #666666;
 }
-<<<<<<< HEAD
-/* line 673, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 687, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 691, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .vendor-links {
   border-radius: 2px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -1538,29 +1271,17 @@ a:hover {
   }
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-<<<<<<< HEAD
-  /* line 679, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-  /* line 693, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+  /* line 697, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .article-side .vendor-links {
     padding: 15px;
   }
 }
-<<<<<<< HEAD
-/* line 682, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 696, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 700, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .vendor-links h3 {
   font-size: 13px;
   font-weight: 600;
 }
-<<<<<<< HEAD
-/* line 686, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 700, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 704, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .vendor-links article {
   *zoom: 1;
   margin-top: 20px;
@@ -1573,37 +1294,21 @@ a:hover {
   height: 0;
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-<<<<<<< HEAD
-  /* line 689, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-  /* line 703, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+  /* line 707, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .article-side .vendor-links article {
     margin-top: 15px;
   }
 }
-<<<<<<< HEAD
-/* line 692, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 706, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 710, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .vendor-links article .image {
   float: left;
   margin-right: 15px;
 }
-<<<<<<< HEAD
-/* line 696, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 714, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .vendor-links article a {
   margin-top: 5px;
 }
-/* line 701, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 710, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-.article-detail-wrap .main-section .article-side .vendor-links article a {
-  margin-top: 5px;
-}
-/* line 715, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 719, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .top-articles {
   border-radius: 2px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -1618,29 +1323,17 @@ a:hover {
   }
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-<<<<<<< HEAD
-  /* line 707, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-  /* line 721, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+  /* line 725, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .article-side .top-articles {
     padding: 15px;
   }
 }
-<<<<<<< HEAD
-/* line 710, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 724, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 728, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .top-articles h3 {
   font-size: 13px;
   font-weight: 600;
 }
-<<<<<<< HEAD
-/* line 714, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 728, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 732, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .top-articles article {
   *zoom: 1;
   margin-top: 20px;
@@ -1653,20 +1346,12 @@ a:hover {
   height: 0;
 }
 @media (min-width: 800px) and (max-width: 1200px) {
-<<<<<<< HEAD
-  /* line 717, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-  /* line 731, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+  /* line 735, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
   .article-detail-wrap .main-section .article-side .top-articles article {
     margin-top: 15px;
   }
 }
-<<<<<<< HEAD
-/* line 720, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 734, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 738, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .top-articles article .pic {
   width: 80px;
   height: 60px;
@@ -1675,25 +1360,45 @@ a:hover {
   margin-right: 10px;
   float: left;
 }
-<<<<<<< HEAD
-/* line 728, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+/* line 746, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .top-articles article .desc {
   overflow: hidden;
 }
-/* line 730, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-=======
-/* line 742, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
-.article-detail-wrap .main-section .article-side .top-articles article .desc {
-  overflow: hidden;
-}
-/* line 744, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
->>>>>>> 审查代码后修改
+/* line 748, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .article-side .top-articles article .desc .title {
   display: inline-block;
   max-height: 60px;
   line-height: 20px;
   font-weight: 600;
   overflow: hidden;
+}
+/* line 764, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+.reading-article {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  display: none;
+}
+/* line 772, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+.reading-article .mask {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+}
+/* line 783, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
+.reading-article .article-detail-wrap .content-wrapper {
+  float: none;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1001;
 }
 /* line 7, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .page-fast-wrapper article.single-post {

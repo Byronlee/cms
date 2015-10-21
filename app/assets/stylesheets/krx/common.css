@@ -136,21 +136,9 @@ a img {
 	font-family: 'icomoon';
 	src:url('//krplus-cdn.b0.upaiyun.com/static-images/styles/fonts/14cfc841.icomoon.eot?fejlke');
 	src:url('//krplus-cdn.b0.upaiyun.com/static-images/styles/fonts/14cfc841.icomoon.eot?fejlke#iefix') format('embedded-opentype'),
-<<<<<<< HEAD
-<<<<<<< HEAD
 		url('//krplus-cdn.b0.upaiyun.com/static-images/styles/fonts/e0228cb8.icomoon.ttf?fejlke') format('truetype'),
 		url('//krplus-cdn.b0.upaiyun.com/static-images/styles/fonts/6d383381.icomoon.woff?fejlke') format('woff'),
 		url('//krplus-cdn.b0.upaiyun.com/static-images/styles/fonts/9990986a.icomoon.svg?fejlke#icomoon') format('svg');
-=======
-		url('fonts/e0228cb8.icomoon.ttf?fejlke') format('truetype'),
-		url('fonts/6d383381.icomoon.woff?fejlke') format('woff'),
-		url('fonts/9990986a.icomoon.svg?fejlke#icomoon') format('svg');
->>>>>>> 审查代码后修改
-=======
-		url('//krplus-cdn.b0.upaiyun.com/static-images/styles/fonts/e0228cb8.icomoon.ttf?fejlke') format('truetype'),
-		url('//krplus-cdn.b0.upaiyun.com/static-images/styles/fonts/6d383381.icomoon.woff?fejlke') format('woff'),
-		url('//krplus-cdn.b0.upaiyun.com/static-images/styles/fonts/9990986a.icomoon.svg?fejlke#icomoon') format('svg');
->>>>>>> 优化文章详情页滚动加载效果
 	font-weight: normal;
 	font-style: normal;
 }
@@ -1992,9 +1980,6 @@ a:hover {
 .share-group a .icon-evernote {
   background: #266800;
 }
-.share-group a .icon-linkedin {
-  background: #0076B7;
-}
 /* line 53, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/share-group.less */
 .share-group a .panel-weixin {
   visibility: hidden;
@@ -2740,11 +2725,7 @@ body {
   visibility: visible;
   opacity: 1;
 }
-<<<<<<< HEAD
 /* line 176, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
-=======
-
->>>>>>> 文章详情页添加沉浸模式
 .fixed-tools .reading-open {
   padding-top: 9px;
 }
@@ -2816,11 +2797,7 @@ body {
       -ms-transform: rotate(135deg);
           transform: rotate(135deg);
 }
-<<<<<<< HEAD
 /* line 239, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
-=======
-/* line 177, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
->>>>>>> 文章详情页添加沉浸模式
 footer.common-footer {
   *zoom: 1;
   background: #2d3237;
