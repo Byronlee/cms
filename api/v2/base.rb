@@ -51,6 +51,7 @@ class ::V2::Base < Grape::API
   mount ::V2::Controllers::Search
   mount ::V2::Controllers::Callbacks
   mount ::V2::Controllers::Subsites
+  mount ::V2::Controllers::MobileAds
 
   add_swagger_documentation(
     api_version: 'v2', mount_path: 'doc',

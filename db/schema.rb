@@ -141,8 +141,9 @@ ActiveRecord::Schema.define(version: 20151020030247) do
     t.string   "ad_position"
     t.datetime "ad_enable_time"
     t.datetime "ad_end_time"
-    t.integer  "api_count"
-    t.integer  "click_count"
+    t.boolean  "state",          default: false
+    t.integer  "api_count",      default: 0
+    t.integer  "click_count",    default: 0
     t.text     "ad_summary"
     t.datetime "created_at"
     t.datetime "updated_at"

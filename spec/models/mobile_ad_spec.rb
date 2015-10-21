@@ -9,8 +9,9 @@
 #  ad_position    :string(255)
 #  ad_enable_time :datetime
 #  ad_end_time    :datetime
-#  api_count      :integer
-#  click_count    :integer
+#  state          :boolean          default(FALSE)
+#  api_count      :integer          default(0)
+#  click_count    :integer          default(0)
 #  ad_summary     :text
 #  created_at     :datetime
 #  updated_at     :datetime
