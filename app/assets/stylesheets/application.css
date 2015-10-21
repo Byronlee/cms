@@ -87,6 +87,15 @@ header.common-header{
   }
 }
 
+section.single-post-tags{
+  margin-top: 20px;
+}
+
+section.single-post-tags .tag-item{
+  margin: 5px 0;
+  display: inline-block;
+}
+
 /*span.badge{
   border: solid #9e9e9e 1px;
   border-radius: 1px 15px;
