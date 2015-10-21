@@ -251,6 +251,7 @@ $(document).ready(function(){
         } else {
           reading = false;
           $('.reading-article .mask').click();
+          return
       }
 
       // 获取当前可视区范围内文章的ID
@@ -287,7 +288,7 @@ $(document).ready(function(){
         });
 
 
-        $('.reading-article').show();
+        $('.reading-article').show().scrollTop(0);
         // 阅读模式下，定位至当前的文章
         setTimeout(function() {
           var s = $('.reading-on .article-section').eq(curIndex).offset().top - $('.reading-on').offset().top;
