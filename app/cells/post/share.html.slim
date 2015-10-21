@@ -24,11 +24,11 @@ section.single-post-share data-stat-module="Wenzhang"
             | 打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮
       a.weibo[ref="nofollow" href="http://share.baidu.com/s?type=text&searchPic=1&sign=on&to=tsina&url=#{post_url(@post)}&title=#{(truncate(raw(@post.title), :length => 300)).html_safe}&key=595885820" target="_blank" data-stat-click="weibofenxiang.click"]
         i.icon-weibo
-      a.qq[ref="nofollow" href="http://connect.qq.com/widget/shareqq/index.html?url=#{post_url(@post)}&title=#{(truncate(raw(@post.title), :length => 300)).html_safe}&source=shareqq&desc=刚看到这篇文章不错，推荐给你看看～" target="_blank" data-stat-click="QQfenxiang.click"]
+      a.linkedin[ref="nofollow" href="http://share.baidu.com/s?type=text&searchPic=0&sign=on&to=linkedin&url=#{post_url(@post)}&title=#{(truncate(raw(@post.title), :length => 300)).html_safe}" target="_blank" data-stat-click="linkinfenxiang.click"]
         i.icon-linkedin
-      a.twitter.external.mobile-hide[ref="nofollow" href="http://share.baidu.com/s?type=text&searchPic=0&sign=on&to=twi&url=#{post_url(@post)}&title=#{(truncate(raw(@post.title), :length => 300)).html_safe}&key=" target="_blank" data-stat-click="twfenxiang.click"]
+      a.qq.external.mobile-hide[ref="nofollow" href="http://connect.qq.com/widget/shareqq/index.html?url=#{post_url(@post)}&title=#{(truncate(raw(@post.title), :length => 300)).html_safe}&source=shareqq&desc=刚看到这篇文章不错，推荐给你看看～" target="_blank" data-stat-click="QQfenxiang.click"]
         i.icon-qq
-      a.linkedin.external.mobile-hide[ref="nofollow" href="http://share.baidu.com/s?type=text&searchPic=0&sign=on&to=linkedin&url=#{post_url(@post)}&title=#{(truncate(raw(@post.title), :length => 300)).html_safe}" target="_blank" data-stat-click="linkinfenxiang.click"]
+      a.twitter.external.mobile-hide[ref="nofollow" href="http://share.baidu.com/s?type=text&searchPic=0&sign=on&to=twi&url=#{post_url(@post)}&title=#{(truncate(raw(@post.title), :length => 300)).html_safe}&key=" target="_blank" data-stat-click="twfenxiang.click"]
         i.icon-twitter
       a.douban.external.mobile-hide[ref="nofollow" href="http://share.baidu.com/s?type=text&searchPic=0&sign=on&to=douban&url=#{post_url(@post)}&title=#{(truncate(raw(@post.title), :length => 300)).html_safe}" target="_blank" data-stat-click="doufanfenxiang.click"]
         i.icon-douban

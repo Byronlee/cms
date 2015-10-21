@@ -1980,6 +1980,9 @@ a:hover {
 .share-group a .icon-evernote {
   background: #266800;
 }
+.share-group a .icon-linkedin {
+   background: #0076B7;
+ }
 /* line 53, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/share-group.less */
 .share-group a .panel-weixin {
   visibility: hidden;
