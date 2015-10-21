@@ -37,7 +37,7 @@ FactoryGirl.define do
       tag_list '_newsflash'
     end
 
-    trait :newsflash_data do
+    trait :product_data do
       what '陌陌'
       how ''
       think_it_twice ''

@@ -62,4 +62,16 @@ describe NewsflashesController do
       should respond_with(:success)
     end
   end
+
+  describe "get 'product_notes'" do
+    let!(:product) { create(:newsflash, :product_data) }
+    before do
+      get :product_notes, ptype: '_pdnote'
+    end
+
+    it "newsflash tag not include bdnews, return include" do
+      expect(assigns(:pdnotes)).to eq [product]
+      should respond_with(:success)
+    end
+  end
 end

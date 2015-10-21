@@ -30,7 +30,7 @@ class NewsflashesController < ApplicationController
 
   def product_notes
     @pdnotes = Newsflash.product_notes
-    @pdnotes = Newsflash.paginate(@pdnotes, params.merge({per_page: 5}))
+    @pdnotes, tmp = Newsflash.paginate(@pdnotes, params.merge({per_page: 5}))
 
     respond_to do |format|
       format.html do
