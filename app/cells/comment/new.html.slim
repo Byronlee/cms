@@ -33,6 +33,6 @@ h2
           = link_to "hello+account@36kr.com", "mailto:hello+account@36kr.com?subject=36Kr帐号解禁申请"
     - else
       .meta.left.cf
-        a href="#{new_user_session_path(ok_url: request.fullpath)}" class="login_before_comment" 登录
+        a href="#{new_user_session_path(ok_url: "/p/#{@post.url_code}.html")}" class="login_before_comment" 登录
         | 后参与讨论
 

@@ -1,7 +1,7 @@
 section.single-post-share data-stat-module="Wenzhang"
   ul.actions
     li
-      a.favorite-btn.social-btn.star-btn.J_addFavorite.require-login[ id="favorite-btn-post-#{@post.url_code}" class="#{@has_favorite ? 'is-favorite' : ''}" onclick=do_favorite(@post, @user) data-uid="#{@user.try(:id)}" href="javascript:void(0)" data-stat-click="shoucang.click" data-ok_url="#{request.fullpath}"]
+      a.favorite-btn.social-btn.star-btn.J_addFavorite.require-login[ id="favorite-btn-post-#{@post.url_code}" class="#{@has_favorite ? 'is-favorite' : ''}" onclick=do_favorite(@post, @user) data-uid="#{@user.try(:id)}" href="javascript:void(0)" data-stat-click="shoucang.click" data-ok_url="#{request.fullpath}" data-url_code="#{@post.url_code}"]
         i.icon.icon-star
         i.icon-star.fly
         span[id="star-count-post-#{@post.url_code}"] =  @post.favorites_count.to_i

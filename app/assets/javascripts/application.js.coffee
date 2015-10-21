@@ -59,7 +59,7 @@ jQuery ->
 
   $('body').delegate '.require-login', 'click', (e) ->
     if ($('.require-login').data().uid == undefined or $('.require-login').data().uid == '') and confirm('请登录后继续操作！ (●—●)')
-      window.location.href = '/users/sign_in?ok_url=' + $('.require-login').data().ok_url
+      window.location.href = '/users/sign_in?ok_url=' + '/p/' + $(this).data().url_code + '.html'
     return
   $('.single-post-header__headline img[src*=yestone]').after '<small><a href="http://yestone.com/?utm_source=36kr.com">图片: Yestone.com 版权图片库</a></small>'
   return
