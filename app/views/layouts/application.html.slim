@@ -42,7 +42,6 @@ html.no-js[lang="zh-CN"]
     = yield
 
     - cache [:layout, :fix_tools_and_script], :expires_in => Settings.cache.default_expires_in do
-      /= render_cell :layout, :fix_tools
       = render_cell :layout, :script
 
     - cache [:head, :ga, current_user.try(:id), current_user.try(:display_name)] do

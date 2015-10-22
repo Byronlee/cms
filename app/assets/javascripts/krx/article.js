@@ -71,6 +71,23 @@ $(document).ready(function(){
     })
 
   // *************************Begin无缝加载********************************
+  var readingDom = '<a href=" " class="reading-open">'
+              + '<span></span>'
+              + '<span></span>'
+              + '<span></span>'
+              + '<span></span>'
+          + '</a >'
+          + '<div class="reading-tips">'
+              + '<p>'
+                  + '在这里可以<br/>'
+                  + '开启纯净阅读模式！'
+              + '</p >'
+              + '<a href="#" class="btn-known">我知道了</a >'
+          + '</div>';
+
+    $('.fixed-tools').html(readingDom + $('.fixed-tools').html());
+    //$('.icon-qr').before($(readingDom));
+
     // 获取当前初始化文章的打赏二维码
     var url_code = $('.reading-off .article-section').attr('data-aid');
     var titleCur = $('.reading-off .article-section:eq(0)').find('.single-post__title').html(),
@@ -80,7 +97,9 @@ $(document).ready(function(){
     var ad = $('.reading-off .article-section:eq(0)').find('.ad').html().replace(/<script.*?<\/script>/img, '');
     // 获取第二篇文章内容
     var nextArticleData = '';
-    $.get('/p/' + url_code + '.html', function(data) {
+    var date = new Date();
+
+    $.get('/p/' + url_code + '.html?t=' + date.getTime(), function(data) {
       nextArticleData = data;
     });
     // 判断该文章是否已存在
@@ -129,7 +148,7 @@ $(document).ready(function(){
                 title: title,
                 url: window.location.href
               }
-              window.history.pushState(state, document.title, url + '?t=' + date.getTime());
+              window.history.pushState(state, document.title, url);
               document.title = title;
             }
           }
@@ -142,7 +161,7 @@ $(document).ready(function(){
                 title: title,
                 url: window.location.href
               }
-              window.history.pushState(state, document.title, url + '?t=' + date.getTime());
+              window.history.pushState(state, document.title, url);
               document.title = title;
             }
           }
@@ -157,8 +176,9 @@ $(document).ready(function(){
   var isgeting = 0;
   function getArticle(curAid) {
     var articleData = '';
+    var date = new Date();
     $.ajax({
-      url: '/p/' + curAid + '.html',
+      url: '/p/' + curAid + '.html?t=' + date.getTime(),
       type: 'get',
       beforeSend: function() {
         isgeting = 1;
@@ -203,7 +223,7 @@ $(document).ready(function(){
         title: title,
         url: window.location.href
       }
-      window.history.pushState(state, document.title, url + '?t=' + date.getTime());
+      window.history.pushState(state, document.title, url);
       document.title = title;
     }
   }
@@ -331,7 +351,7 @@ $(document).ready(function(){
                     title: title,
                     url: window.location.href
                   }
-                  window.history.pushState(state, document.title, url + '?t=' + date.getTime());
+                  window.history.pushState(state, document.title, url);
                   document.title = title;
                 }
               }
@@ -345,7 +365,7 @@ $(document).ready(function(){
                     title: title,
                     url: window.location.href
                   }
-                  window.history.pushState(state, document.title, url + '?t=' + date.getTime());
+                  window.history.pushState(state, document.title, url);
                   document.title = title;
                 }
               }
@@ -388,7 +408,7 @@ $(document).ready(function(){
               title: title,
               url: window.location.href
             }
-            window.history.pushState(state, document.title, url + '?t=' + date.getTime());
+            window.history.pushState(state, document.title, url);
             document.title = title;
           }
         }

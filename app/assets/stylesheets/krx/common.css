@@ -2745,7 +2745,7 @@ body {
 /* line 176, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
 .fixed-tools .reading-open {
   padding-top: 9px;
-  display: none;
+  /*display: none;*/
 }
 /* line 179, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
 .fixed-tools .reading-open span {
@@ -2771,9 +2771,9 @@ body {
   background-color: #ffffff;
 }
 /* line 197, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
-.fixed-tools .reading-open.show {
+/*fixed-tools .reading-open.show {
   display: block;
-}
+}*/
 /* line 202, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
 .fixed-tools .reading-tips {
   position: absolute;
