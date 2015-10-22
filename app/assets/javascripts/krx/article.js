@@ -255,23 +255,29 @@ $(document).ready(function(){
   if(!window.localStorage.getItem('readingStatus')) {
         $('.reading-tips').addClass('show');
     }
+
     $('.btn-known').click(function(e) {
         e.preventDefault();
-        $(this).parents('.reading-tips').removeClass('show').prev('.reading-open').addClass('active');
+        $(this).parents('.reading-tips').removeClass('show');
         window.localStorage.setItem('readingStatus',true);
+        $('.reading-open').click();
     });
 
     var reading = false;
     $('.reading-open').click(function(e) {
-        e.preventDefault();
-        // 判断当前阅读模式按钮的状态
-        $(this).toggleClass('active');
-        if($(this).is('.active')) {
-          reading = true;
-        } else {
-          reading = false;
-          $('.reading-article .mask').click();
-          return
+      e.preventDefault();
+      if(!window.localStorage.getItem('readingStatus')) {
+        window.localStorage.setItem('readingStatus',true);
+        $('.reading-tips').removeClass('show');
+      }
+      // 判断当前阅读模式按钮的状态
+      $(this).toggleClass('active');
+      if($(this).is('.active')) {
+        reading = true;
+      } else {
+        reading = false;
+        $('.reading-article .mask').click();
+        return;
       }
 
       // 获取当前可视区范围内文章的ID
@@ -384,8 +390,8 @@ $(document).ready(function(){
       // console.log('aa: ' + (sT + $(window).height() + 50) + 'bb: ' + $(document).height());
       if((sT + $(window).height() + 50) > ($(this).find('.article-detail-wrap').height() + 30)) {
         var aidC = $($.parseHTML(nextArticleData,true)).find('.article-section').data('aid');
-        console.log($($.parseHTML(nextArticleData,true)).html());
-        console.log('aidC: ' + aidC);
+        //console.log($($.parseHTML(nextArticleData,true)).html());
+        //console.log('aidC: ' + aidC);
         if(!aidC) return;
         readingOnNextData = '<div class="ajax-article-main"><div class="article-section" data-aid="'+ $($.parseHTML(nextArticleData,true)).find('.article-section').data('aid') +'" data-url="'+ $($.parseHTML(nextArticleData,true)).find('.article-section').data('url') +'"><div class="inner"><article class="single-post"><section class="single-post-header">' + $($.parseHTML(nextArticleData,true)).find('.single-post-header').html() + '</section><br/><section class="article">' + $($.parseHTML(nextArticleData,true)).find('.article').html() + '</article></article></div></div></div>';
 

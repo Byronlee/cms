@@ -1374,6 +1374,7 @@ a:hover {
 }
 /* line 764, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .reading-article {
+  z-index: 1000;
   position: fixed;
   left: 0;
   top: 0;
