@@ -5,15 +5,15 @@ class TagsController < ApplicationController
     @posts = @posts.includes(:column, author: [:krypton_authentication])
     @posts = Post.paginate(@posts, params)
 
-    raise ActiveRecord::RecordNotFound if @posts.blank?
+    raise ActiveRecord::RecordNotFound if @posts.blank? && !request.xhr?
 
     respond_to do |format|
       format.html do
         if request.xhr?
-          render 'tags/_list', locals: { :posts => @posts }, layout: false 
+          render 'tags/_list', locals: { :posts => @posts }, layout: false
         end
       end
-      format.json do 
+      format.json do
         render json: Post.posts_to_json(@posts)
       end
     end

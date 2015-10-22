@@ -241,6 +241,7 @@ class Post < ActiveRecord::Base
   end
 
   def self.paginate(posts, params)
+    params[:per_page] = 15
     if paginate_by_id_request?(params) && (boundary_post = Post.find_by_url_code(params[:b_url_code]))
       posts = Post.paginate_by_url_code(posts, params[:d], boundary_post)
     else

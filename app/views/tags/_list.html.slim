@@ -1,6 +1,6 @@
 - if @posts.count > 0
   = render @posts
-  - if @posts.count >= 15
+  - if @posts.count >= params[:per_page]
     = link_to '', tag_path(tag: @tag, d: 'next', b_url_code: @posts.last.url_code, format: :html), class: 'load-more J_listLoadMore', id: 'tag_next_link', 'data-stat-click' => "Wenzhanggengduo.click"
   - else
     = link_to '', "javascript:void(0)", class: 'load-more J_listLoadMore no-data'
