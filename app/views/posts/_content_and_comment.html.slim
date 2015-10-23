@@ -1,6 +1,6 @@
 .article-section id="article-section-#{@post.url_code}" data-aid="#{ @post.url_code }" data-url="#{ post_show_by_url_code_url(url_code: @post.url_code) }"
   .inner
-    article.single-post
+    article.single-post.english-wrap
       - cache [:show, :content, @post, @post.author] do
         = render_cell :post, :header, post: @post
         = render_cell :post, :content, post: @post

@@ -2232,6 +2232,13 @@ a:hover {
   display: none;
 }
 
+.english-wrap p, .english-wrap div, .english-wrap li{
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  word-break: break-word;
+}
 /* line 1, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/common.less */
 html,
 body {

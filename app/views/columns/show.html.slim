@@ -10,7 +10,7 @@
   .main-section
     = render layout: 'welcome/header', locals: { data_type: @column.slug, columns: @columns, tab_all_redirect: true } do
       .article-list
-        .articles.J_articleList
+        .articles.J_articleList.english-wrap
           = render 'list'
 
     .index-side

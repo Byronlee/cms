@@ -9,7 +9,7 @@
         .info.show
           span.time
             = smart_time_ago nf.created_at
-        .desc
+        .desc.english-wrap
           = nf.description_text
           - if nf.news_url.present?
             a[href=nf.news_url target="_blank" rel="nofollow" data-stat-click="kuaixunlianjie.#{index.next}.#{nf.id}.click"]
