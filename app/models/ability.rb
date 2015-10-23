@@ -76,6 +76,7 @@ class Ability
     can :toggle_tag, Newsflash
     cannot :destroy, HeadLine
     can :manage, Comment unless user.muted?
+    can :manage, MobileAd
   end
 
   # 作者

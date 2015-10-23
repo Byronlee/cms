@@ -61,9 +61,10 @@ ul.nav.nav-pills.nav-stacked
       a href=admin_ads_path
         span  广告位管理
 
+  - if can? :manage, MobileAd
     li class=nav_active(:mobile_ads, @controller_name)
       a href=admin_mobile_ads_path
-        span  移动端管理
+        span  移动端广告
   - if can?(:manage, :sidekiq) || can?(:manage, :tools)
     .deviler
     p

@@ -28,9 +28,9 @@
           td = ad.ad_end_time.strftime('%Y-%m-%d %H:%M')
           td
             - if ad.state == true
-              a class="btn btn-success" = "启用"
+              label = "启用中"
             - else
-              a class="btn btn-danger" = "禁用"
+              label = "未投放"
           td
             a title="编辑" href= edit_admin_mobile_ad_path(ad)
               i.fa.fa-pencil
