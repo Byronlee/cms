@@ -15,7 +15,7 @@ module V2
         end
         get do
           ads = MobileAd.recent.where(state: params[:state])
-          .where("ad_enable_time < ? and ad_end_time > ?", Time.now, Time.now)
+          .where("ad_enable_time < ? and ad_end_time > ? and ad_type = ? ", Time.now, Time.now, 0)
           .order(created_at: :desc).page(params[:page]).per(params[:per_page])
           #cache(key: "api:v2:ads", etag: Time.now, expires_in: Settings.api.expires_in) do
             present ads, with: Entities::MobileAdDetail
