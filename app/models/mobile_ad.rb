@@ -10,6 +10,7 @@
 #  ad_enable_time :datetime
 #  ad_end_time    :datetime
 #  state          :boolean          default(FALSE)
+#  ad_type        :integer          default(0)
 #  api_count      :integer          default(0)
 #  click_count    :integer          default(0)
 #  ad_summary     :text
@@ -22,7 +23,7 @@ class MobileAd < ActiveRecord::Base
   #has_and_belongs_to_many :info_flows
 
   validates :ad_title, :ad_url, :ad_img_url, :ad_position, presence: true #空判断
-  validates_uniqueness_of :ad_img_url, :ad_position #广告链接唯一
+  validates_uniqueness_of :ad_img_url
 
   #scope :published, -> { where(state: true) }
   scope :recent,    -> { order('ad_enable_time desc') }

@@ -8,6 +8,7 @@ class CreateMobileAds < ActiveRecord::Migration
       t.datetime :ad_enable_time
       t.datetime :ad_end_time
       t.boolean :state, default: false
+      t.integer :ad_type, default: 0
       t.integer :api_count, default: 0
       t.integer :click_count, default: 0
       t.text :ad_summary

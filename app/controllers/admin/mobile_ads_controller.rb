@@ -2,7 +2,7 @@ class Admin::MobileAdsController < Admin::BaseController
   load_and_authorize_resource
 
   def index
-    @mobile_ads = MobileAd.order(ad_position: :asc).page params[:page]
+    @mobile_ads = MobileAd.order(ad_type: :asc).order(state: :desc).page params[:page]
   end
 
   def show
@@ -50,6 +50,8 @@ class Admin::MobileAdsController < Admin::BaseController
     end
 
     def mobile_ad_params
-      params.require(:mobile_ad).permit(:ad_title, :ad_url, :ad_img_url, :ad_position, :ad_enable_time, :ad_end_time, :ad_summary, :api_count, :click_count, :state)
+      params.require(:mobile_ad).permit(:ad_title, :ad_url, :ad_img_url, :ad_position,
+                                        :ad_enable_time, :ad_end_time, :ad_summary, :api_count,
+                                        :click_count, :state, :ad_type)
     end
 end

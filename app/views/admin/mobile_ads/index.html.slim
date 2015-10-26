@@ -15,6 +15,7 @@
         th 显示标题
         th 启用时间
         th 禁用时间
+        th 广告类型
         th 状态
         th 操作
     tbody
@@ -26,6 +27,11 @@
           td = ad.ad_title
           td = ad.ad_enable_time.strftime('%Y-%m-%d %H:%M')
           td = ad.ad_end_time.strftime('%Y-%m-%d %H:%M')
+          td
+            - if ad.ad_type == 0
+              label = "主Feed流"
+            - elsif ad.ad_type == 1
+              label = "文章内页"
           td
             - if ad.state == true
               label = "启用中"

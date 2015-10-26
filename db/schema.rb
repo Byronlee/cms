@@ -122,9 +122,9 @@ ActiveRecord::Schema.define(version: 20151020030247) do
     t.integer  "url_code"
     t.string   "state"
     t.string   "section"
-    t.boolean  "hidden_title"
     t.text     "display_position"
     t.text     "summary"
+    t.boolean  "hidden_title"
     t.string   "section_text"
   end
 
@@ -142,6 +142,7 @@ ActiveRecord::Schema.define(version: 20151020030247) do
     t.datetime "ad_enable_time"
     t.datetime "ad_end_time"
     t.boolean  "state",          default: false
+    t.integer  "ad_type",        default: 0
     t.integer  "api_count",      default: 0
     t.integer  "click_count",    default: 0
     t.text     "ad_summary"
@@ -214,6 +215,8 @@ ActiveRecord::Schema.define(version: 20151020030247) do
     t.integer  "favorites_count"
     t.string   "company_keywords",       default: [], array: true
     t.integer  "favoriter_sso_ids",      default: [], array: true
+    t.string   "column_name"
+    t.integer  "api_hits_count",         default: 0
     t.integer  "related_post_url_codes", default: [], array: true
     t.text     "seo_meta"
   end

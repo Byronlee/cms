@@ -1,4 +1,4 @@
-= render 'welcome/title', title: '移动广告编辑'
+= render 'welcome/title', title: '移动广告创建'
 
 .col_main
   .main_hd
@@ -19,6 +19,10 @@
           = f.radio_button :state, false,checked: 'checked'
           |  启用
           = f.radio_button :state, true
+      div class="control-group string required"
+        label class="string required control-label" = '广告类型'
+        div class="controls"
+          = f.select :ad_type, [['主Feed流',0],['文章内页',1]], class: 'string required'
       div class="control-group string required"
         label class="string required control-label" = '展示标题'
         div class="controls"
