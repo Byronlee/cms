@@ -37,7 +37,7 @@ javascript:
     setInterval("loadingLatest()", #{Settings.newsflash_interval});
 
   if (#{params[:share_id].present?})
-  $(document).ready(function () {
-    $('a[data-id="#{params[:share_id]}"]').trigger('click');
-  });
+    $(document).ready(function () {
+      $('a[data-id="#{params[:share_id]}"]').trigger('click');
+    });
 
