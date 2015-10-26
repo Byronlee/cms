@@ -10,6 +10,7 @@
 #  ad_enable_time :datetime
 #  ad_end_time    :datetime
 #  state          :boolean          default(FALSE)
+#  ad_type        :integer          default(0)
 #  api_count      :integer          default(0)
 #  click_count    :integer          default(0)
 #  ad_summary     :text
