@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   authorize_resource
   load_resource :only => :bdnews
-  before_filter :fetch_feeds, only: [:feed, :partner_feed, :baidu_feed, :xiaozhi_feed, :chouti_feed, :uc_feed]
+  before_filter :fetch_feeds, only: [:feed, :partner_feed, :baidu_feed, :xiaozhi_feed, :chouti_feed, :uc_feed, :toutiao_feed]
   skip_before_filter :verify_authenticity_token, only: :article_toggle_tag
 
   def show
@@ -48,6 +48,7 @@ class PostsController < ApplicationController
   alias_method :baidu_feed, :feed
   alias_method :xiaozhi_feed, :feed
   alias_method :chouti_feed, :feed
+  alias_method :toutiao_feed, :feed
   alias_method :uc_feed, :feed
 
   def partner_feed
@@ -71,6 +72,11 @@ class PostsController < ApplicationController
   def xiaozhi_news
     @post = Post.published.find_by_url_code!(params[:url_code])
     render 'xiaozhi_news', layout: false
+  end
+
+  def toutiao_news
+    @post = Post.published.find_by_url_code!(params[:url_code])
+    render 'toutiao_news', layout: false
   end
 
   def chouti_news

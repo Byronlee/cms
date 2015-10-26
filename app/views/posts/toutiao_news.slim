@@ -1,0 +1,25 @@
+doctype html
+html[lang="en"]
+  head
+    link href="http://s0.pstatp.com/css/toutiao/wap_flow.css" rel="stylesheet" type="text/css"
+    link href="http://s2.pstatp.com/inapp/TTDefaultCSS.css" rel="stylesheet" type="text/css"
+    meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,minimal-ui"
+    title = @post.title
+  body
+    div class="TouTiaoBar" style="background-color: #2376BC;"
+      a#logo href="http://36kr.com?utm_source=toutiao"
+        img alt="36氪" style="height:40px" onerror="TouTiao.hideBar()" src="http://a.36krcnd.com/nil_class/e9dfee47-68bd-4121-b29d-dc06f058588b/36kr.png"
+    - cache [:post, :ucnews, :html, @post.updated_at]
+      header
+        h1 = raw @post.title
+        .subtitle
+          a#source href="http://36kr.com?utm_source=toutiao" 36氪
+          time = @post.published_at.strftime("%m-%d %H:%M")
+          a#toggle_img href="#" onclick=("TouTiao.showImage(); return false")  显示图片
+          a.comment_totoal_cnt
+      article
+        = raw @post.content
+
+    script src="http://s2.pstatp.com/inapp/TTDefaultJS.js" type="text/javascript"
+    - cache [:layout, :footer, baidu_statistics = FragmentTemplate.find_by_key(:baidu_statistics)] do
+      = render_fragment_template_content baidu_statistics
