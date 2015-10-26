@@ -47,7 +47,7 @@
       = render_cell :post, :relate, post: @post
 
     - cache [:show, :comment, @post.comments_counts, current_user, current_user.try(:display_name), @post] do
-      section.single-post-comment
+      section.single-post-comment.english-wrap
         - if @post.close_comment
           = render_cell :comment, :close
         - else

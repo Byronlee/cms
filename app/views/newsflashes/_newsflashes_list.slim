@@ -17,7 +17,7 @@
         span.tags.tags-kr-headline 氪头条
       - else
         span.tags class="tags-#{newsflash.column.try(:slug) || 'column'}" = newsflash.column.try(:name) || '专栏'
-      .item-details
+      .item-details.english-wrap
         h2 data-stat-click="kuaixunbiaoti.#{index.next}.#{newsflash.id}.click"
           a href="#" data-id="#{newsflash.id}" data-show="false" = newsflash.hash_title
         p.details-text

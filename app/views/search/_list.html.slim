@@ -13,9 +13,9 @@
               = (post['author']['name'])
           span.time
             |&nbsp;•&nbsp;
-            = smart_time_ago post['published_at'].to_time
-        .brief
-          = raw post['summary']
+            = smart_time_ago post.published_at
+        .brief.english-wrap
+          = raw post.summary
 
   = link_to '', search_path(q: params[:q], published_at: @posts.last['published_at'].to_time.to_i, format: :html), class: 'load-more J_listLoadMore', id: 'search_next_link', 'data-stat-click' => "wenzhanggengduo.click"
 
