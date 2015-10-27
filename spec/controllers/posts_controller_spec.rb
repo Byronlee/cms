@@ -71,9 +71,36 @@ describe PostsController do
     context 'rss' do
       it do
         post = create :post, :published
-        get 'feed', :format => :rss
+        get :feed, :format => :rss
         expect(assigns(:feeds)).to eq [post]
         should respond_with(:success)
+      end
+    end
+
+    context 'json' do
+      it do
+        post = create :post, :published
+        get :feed, :format => :json
+        expect(assigns(:feeds)).to eq [post]
+        should respond_with(:success)
+      end
+    end
+
+    context 'txt' do
+      it do
+        post = create :post, :published
+        get :feed, :format => :txt
+        should respond_with(302)
+        should redirect_to feed_path
+      end
+    end
+
+    context 'none exists' do
+      it do
+        post = create :post, :published
+        get :feed, :params => 'xxoo'
+        should respond_with(302)
+        should redirect_to feed_path
       end
     end
   end
@@ -155,17 +182,6 @@ describe PostsController do
       it do
         post = create :post, :published
         get :chouti_feed, :format => :rss
-        expect(assigns(:feeds)).to eq [post]
-        should respond_with(:success)
-      end
-    end
-  end
-
-  describe "GET 'uc_feed'" do
-    context 'rss' do
-      it do
-        post = create :post, :published
-        get :uc_feed, :format => :rss
         expect(assigns(:feeds)).to eq [post]
         should respond_with(:success)
       end

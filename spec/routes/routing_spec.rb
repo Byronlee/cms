@@ -27,6 +27,13 @@ describe 'Routing' do
   end
 
   describe 'Posts Controller', :type => :routing do
+    context '#feed' do
+      it { expect(get: '/feed').to route_to(controller: 'posts', action: 'feed', format: :rss) }
+      it { expect(get: '/feed.json').to route_to(controller: 'posts', action: 'feed', format: 'json') }
+      it { expect(get: '/feed/xxxoo').to route_to(controller: 'posts', action: 'feed', format: :rss, params: 'xxxoo') }
+    end
+
+
     context '#bdnews' do
       it { expect(get: '/baidu/1234').to route_to(controller: 'posts', action: 'bdnews', url_code: '1234') }
     end
