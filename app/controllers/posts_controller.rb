@@ -37,6 +37,7 @@ class PostsController < ApplicationController
   end
 
   def feed
+    redirect_to feed_path unless ['rss', 'json'].include? params[:format].to_s
   end
 
   alias_method :baidu_feed, :feed
