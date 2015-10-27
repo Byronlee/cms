@@ -94,15 +94,6 @@ describe PostsController do
         should redirect_to feed_path
       end
     end
-
-    context 'none exists' do
-      it do
-        post = create :post, :published
-        get :feed, :params => 'xxoo'
-        should respond_with(302)
-        should redirect_to feed_path
-      end
-    end
   end
 
   describe "GET 'baidu_feed'" do
