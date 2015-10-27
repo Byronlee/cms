@@ -4,7 +4,7 @@
 #
 #  id             :integer          not null, primary key
 #  ad_title       :string(255)
-#  ad_url         :string(255)
+#  ad_url         :text
 #  ad_img_url     :string(255)
 #  ad_position    :string(255)
 #  ad_enable_time :datetime
