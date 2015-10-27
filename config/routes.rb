@@ -169,6 +169,7 @@ Rails.application.routes.draw do
   match '/feed/bdnews_feed_d9rIUTwdPm' => 'posts#feed_bdnews', via: :get, defaults: { format: :rss }
   match '/feed(/:params).:format' => redirect('/feed'), via: :get
   match '/feed(/:params)' => 'posts#feed', via: :get, defaults: { format: :rss }
+  match '/json_feed' => 'posts#feed', via: :get, defaults: { format: :json }
   match '/tag/:tag', :controller => 'tags', :action => 'show', via: :get, as: :tag
   match '/clipped/:year/:month/:day', :controller => 'newsflashes', :action => 'index', via: :get, as: :newsflashes_of_day
   match '/clipped/feed/', :controller => 'newsflashes', :action => 'feed', ptype: '_newsflash', via: :get, defaults: { format: :rss }
