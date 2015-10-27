@@ -71,6 +71,8 @@ $(document).ready(function(){
     })
 
   // *************************Begin无缝加载********************************
+  // 隐藏footer
+  $('.common-footer').hide();
   var readingDom = '<a href=" " class="reading-open">'
               + '<span></span>'
               + '<span></span>'
@@ -154,7 +156,7 @@ $(document).ready(function(){
           }
         } else if(d == 2) {
           // 向上滑动
-          if((pH < (wT + wH)) && (pH > (wT + wH * 2 / 3))) {
+          if((pH < (wT + wH)) && (pH > (wT + wH / 3))) {
 
             if(window.location.href != url) {
               var state = {
@@ -233,8 +235,7 @@ $(document).ready(function(){
     var sT = $(window).scrollTop();
     invisiblezone();
     // console.log('aa: ' + (sT + $(window).height() + 50) + 'bb: ' + $(document).height());
-    if((sT + $(window).height() + 50) > $(document).height()) {
-
+    if((sT + $(window).height() + 300) > $(document).height()) {
       var aidC = $($.parseHTML(nextArticleData,true)).find('.ad').html(ad).parents('.article-section').data('aid');
 
       if(isgeting) return;
@@ -272,12 +273,13 @@ $(document).ready(function(){
       }
       // 判断当前阅读模式按钮的状态
       $(this).toggleClass('active');
-      if($(this).is('.active')) {
-        reading = true;
-      } else {
-        reading = false;
-        $('.reading-article .mask').click();
-        return;
+        if($(this).is('.active')) {
+          reading = true;
+          $('.reading-off').addClass('reading-model');
+        } else {
+          reading = false;
+          $('.reading-off').removeClass('reading-model');
+          return;
       }
 
       // 获取当前可视区范围内文章的ID
@@ -300,144 +302,145 @@ $(document).ready(function(){
           if($(this).data('aid') == id) {
 
             // html = '<div class="article-section" data-aid="'+ $(this).data('aid') +'" data-url="'+ $(this).data('url') +'"><div class="inner"><article class="single-post"><section class="single-post-header">' + $(this).find('.single-post-header').html() + '</section><br/><section class="article">' + $(this).find('.article').html() + '</article></article></div></div>';
-            $(existHtml).appendTo($('.reading-article .content-wrapper'));
+            // $(existHtml).appendTo($('.reading-article .content-wrapper'));
             curIndex = i;
-            if(!$('.reading-off').find('.article-section').eq(i).next().html()) {
-              if(isgeting) return;
-          // console.log(aidC);
-              getArticle($(this).data('aid'));
-              readingOnNextData = '<div class="ajax-article-main"><div class="article-section" data-aid="'+ $($.parseHTML(nextArticleData,true)).find('.article-section').data('aid') +'" data-url="'+ $($.parseHTML(nextArticleData,true)).find('.article-section').data('url') +'"><div class="inner"><article class="single-post"><section class="single-post-header">' + $($.parseHTML(nextArticleData,true)).find('.single-post-header').html() + '</section><br/><section class="article">' + $($.parseHTML(nextArticleData,true)).find('.article').html() + '</article></article></div></div></div>';
-            }
+          //   if(!$('.reading-off').find('.article-section').eq(i).next().html()) {
+          //     if(isgeting) return;
+          // // console.log(aidC);
+          //     getArticle($(this).data('aid'));
+          //     readingOnNextData = '<div class="ajax-article-main"><div class="article-section" data-aid="'+ $($.parseHTML(nextArticleData,true)).find('.article-section').data('aid') +'" data-url="'+ $($.parseHTML(nextArticleData,true)).find('.article-section').data('url') +'"><div class="inner"><article class="single-post"><section class="single-post-header">' + $($.parseHTML(nextArticleData,true)).find('.single-post-header').html() + '</section><br/><section class="article">' + $($.parseHTML(nextArticleData,true)).find('.article').html() + '</article></article></div></div></div>';
+          //   }
 
             // console.log('aid: ' + $($.parseHTML(nextArticleData,true)).find('.article-section').data('aid') + ' url=' + $($.parseHTML(nextArticleData,true)).find('.article-section').data('url'));
           }
         });
 
+        $(existHtml).appendTo($('.reading-article .content-wrapper'));
+        if(!$('.reading-off .article-section').eq(curIndex).next().html()) {
+          if(isgeting) return;
+          getArticle(id);
+          readingOnNextData = '<div class="ajax-article-main"><div class="article-section" data-aid="'+ $($.parseHTML(nextArticleData,true)).find('.article-section').data('aid') +'" data-url="'+ $($.parseHTML(nextArticleData,true)).find('.article-section').data('url') +'"><div class="inner"><article class="single-post"><section class="single-post-header">' + $($.parseHTML(nextArticleData,true)).find('.single-post-header').html() + '</section><br/><section class="article">' + $($.parseHTML(nextArticleData,true)).find('.article').html() + '</article></article></div></div></div>';
+        }
 
-        $('.reading-article').show().scrollTop(0);
+        $('.reading-article').addClass('active').scrollTop(0);
+        // $('.reading-article').show().animate({'top': 0}, 500).scrollTop(0);
         // 阅读模式下，定位至当前的文章
         setTimeout(function() {
-          var s = $('.reading-on .article-section').eq(curIndex).offset().top - $('.reading-on').offset().top;
+          var s = $('.reading-on .article-section').eq(curIndex).offset().top - $('.reading-on').offset().top - 20;
           $('.reading-article').scrollTop(s);
           // $('.reading-article').animate({scrollTop: ($('.reading-on .article-section').eq(curIndex).offset().top - $('.reading-on').offset().top)}, 800);
-        }, 100);
+        }, 50);
         $('body').height($(window).height()).css('overflow','hidden');
         var readingCurscrolltop = -1;
         $('.reading-article').scroll(function() {
           var sT = $(this).scrollTop();
 
           // 判断视野范围
-        var wT = sT,
-          wH = $(window).height();
-        if(Math.abs(wT - readingCurscrolltop) < 20) {
-          return 0;
-        }
-        var d = 0; //1 向下滑动   2  向上滑动
-        if((wT - readingCurscrolltop) > 0) {
-          d = 1;
-        } else if((wT - readingCurscrolltop) < 0) {
-          d = 2;
-        }
-
-        var wB = sT + $(window).height();
-        if(readingCurscrolltop > -1) {
-          $.each($('.reading-on .article-section'),function(i,v){
-            var title = $(this).find('.single-post__title').html(),
-              url = $(this).data('url'),
-              oT = $(this).offset().top - $(this).parents('.reading-on').offset().top,
-              pH = oT + $(this).outerHeight();
-
-
-            // 向下滑动
-            var date = new Date();
-            if(d == 1) {
-              if((oT > wT) && (oT < (wT + wH / 3))) {
-                if(window.location.href != url) {
-                  var state = {
-                    title: title,
-                    url: window.location.href
-                  }
-                  window.history.pushState(state, document.title, url);
-                  document.title = title;
-                }
-              }
-              // console.log('d: ' + d + ' oT: ' + oT + ' wT: ' + wT + ' sub: '  + (wT + wH / 3));
-            } else if(d == 2) {
-              // 向上滑动
-              if((pH < (wT + wH)) && (pH > (wT + wH * 2 / 3))) {
-
-                if(window.location.href != url) {
-                  var state = {
-                    title: title,
-                    url: window.location.href
-                  }
-                  window.history.pushState(state, document.title, url);
-                  document.title = title;
-                }
-              }
-              // console.log('d: ' + d + ' pH: ' + pH + ' sub: ' + (wT + wH) + ' sub2: '  + (wT + wH * 2 / 3));
-            }
-
-
-
-          });
-        }
-
-
-        readingCurscrolltop = wT;
-
-
-      // console.log('aa: ' + (sT + $(window).height() + 50) + 'bb: ' + $(document).height());
-      if((sT + $(window).height() + 50) > ($(this).find('.article-detail-wrap').height() + 30)) {
-        var aidC = $($.parseHTML(nextArticleData,true)).find('.article-section').data('aid');
-        //console.log($($.parseHTML(nextArticleData,true)).html());
-        //console.log('aidC: ' + aidC);
-        if(!aidC) return;
-        readingOnNextData = '<div class="ajax-article-main"><div class="article-section" data-aid="'+ $($.parseHTML(nextArticleData,true)).find('.article-section').data('aid') +'" data-url="'+ $($.parseHTML(nextArticleData,true)).find('.article-section').data('url') +'"><div class="inner"><article class="single-post"><section class="single-post-header">' + $($.parseHTML(nextArticleData,true)).find('.single-post-header').html() + '</section><br/><section class="article">' + $($.parseHTML(nextArticleData,true)).find('.article').html() + '</article></article></div></div></div>';
-
-        // 判断是否已经存在
-        if(!pexist('.reading-on',$($.parseHTML(readingOnNextData,true)).find('.article-section').data('aid'))) {
-
-          if(readingOnNextData) {
-            var dH = $('.reading-on .article-detail-wrap').height() + 30,
-              showNextCon = '';
-            $('reading-on').scrollTop(dH + 100);
-            showNextCon = $($.parseHTML(readingOnNextData,true)).html();
-            $('.reading-on .article-section:last').after(showNextCon);
-            renderArticle(nextArticleData);
-
-            var date = new Date();
-            var title = $($.parseHTML(readingOnNextData,true)).find('.single-post__title').html(),
-              url = $($.parseHTML(readingOnNextData,true)).find('.article-section').data('url');
-
-            var state = {
-              title: title,
-              url: window.location.href
-            }
-            window.history.pushState(state, document.title, url);
-            document.title = title;
+          var wT = sT,
+            wH = $(window).height();
+          if(Math.abs(wT - readingCurscrolltop) < 20) {
+            return 0;
           }
-        }
-        if(isgeting) return;
-        nextArticleData = getArticle(aidC);
-      }
-        })
-      $('.reading-article .mask').click(function() {
-        $('.reading-article').hide().find('.article-section').remove();
-        $('.reading-open').removeClass('active');
-        $('body').css({'height': 'auto', 'overflow': 'auto'});
-        var path = window.location.pathname,
-        id = path.match(/\/p\/(\d+)\.html$/)[1];
-        // var path = window.location.pathname;
-        //   var id = path.substr(1,location.pathname.substr(1).length - 5);
-          $('.reading-off .article-section').each(function() {
-            if($(this).data('aid') == id) {
-              var s = $(this).offset().top;
-              setTimeout(function() {
-              $('body').scrollTop(s);
-              },100);
+          var d = 0; //1 向下滑动   2  向上滑动
+          if((wT - readingCurscrolltop) > 0) {
+            d = 1;
+          } else if((wT - readingCurscrolltop) < 0) {
+            d = 2;
+          }
+
+          var wB = sT + $(window).height();
+          if(readingCurscrolltop > -1) {
+            $.each($('.reading-on .article-section'), function(i, v) {
+              var title = $(this).find('.single-post__title').html(),
+                url = $(this).data('url'),
+                curItem = i;
+              var oT = 20;
+              $.each($(this).prevAll(), function() {
+                oT = oT + $(this).height() + 20;
+              })
+
+              var pH = oT + $(this).outerHeight();
+
+              // 向下滑动
+              if(d == 1) {
+                if((oT > wT) && (oT < (wT + wH / 3))) {
+                  if(window.location.href != url) {
+                    var state = {
+                      title: title,
+                      url: window.location.href
+                    }
+                    window.history.pushState(state, document.title, url);
+                    document.title = title;
+                  }
+                }
+              } else if(d == 2) {
+                // 向上滑动
+                if((pH < (wT + wH)) && (pH > (wT + wH / 3))) {
+
+                  if(window.location.href != url) {
+                    var state = {
+                      title: title,
+                      url: window.location.href
+                    }
+                    window.history.pushState(state, document.title, url);
+                    document.title = title;
+                  }
+                }
+              }
+
+            });
+          }
+
+          readingCurscrolltop = wT;
+
+
+          // console.log('aa: ' + (sT + $(window).height() + 50) + 'bb: ' + $(document).height());
+          if((sT + $(window).height()) > ($('.reading-on .article-detail-wrap').height())) {
+            if(!$('.reading-open').is('.active')) return;
+            var aidC = $($.parseHTML(nextArticleData,true)).find('.article-section').data('aid');
+            if(!aidC) return;
+            readingOnNextData = '<div class="ajax-article-main"><div class="article-section" data-aid="'+ $($.parseHTML(nextArticleData,true)).find('.article-section').data('aid') +'" data-url="'+ $($.parseHTML(nextArticleData,true)).find('.article-section').data('url') +'"><div class="inner"><article class="single-post"><section class="single-post-header">' + $($.parseHTML(nextArticleData,true)).find('.single-post-header').html() + '</section><br/><section class="article">' + $($.parseHTML(nextArticleData,true)).find('.article').html() + '</article></article></div></div></div>';
+            // 判断是否已经存在
+            if(!pexist('.reading-on',$($.parseHTML(readingOnNextData,true)).find('.article-section').data('aid'))) {
+              if(readingOnNextData) {
+                // var dH = $('.reading-on .article-detail-wrap').height() + 30,
+                var showNextCon = '';
+                // $('reading-on').scrollTop(dH + 100);
+                showNextCon = $($.parseHTML(readingOnNextData,true)).html();
+                $('.reading-on .article-section:last').after(showNextCon);
+                renderArticle(nextArticleData);
+                // var title = $($.parseHTML(readingOnNextData,true)).find('.single-post__title').html(),
+                // url = $($.parseHTML(readingOnNextData,true)).find('.article-section').data('url');
+
+                // var state = {
+                //  title: title,
+                //  url: window.location.href
+                // }
+                // window.history.pushState(state, document.title, url);
+                // document.title = title;
+              }
             }
-          });
+            if(isgeting) return;
+            nextArticleData = getArticle(aidC);
+          }
+        })
+    });
+    $('body').on('click','.reading-on',function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var _This = $(this);
+      $('.reading-open').removeClass('active');
+      _This.removeClass('active').find('.article-section').remove();
+      // _This.hide().css('top', '100%').find('.article-section').remove();
+      $('body').css({'height': 'auto', 'overflow': 'auto'});
+      $('.reading-off').removeClass('reading-model');
+      var path = window.location.pathname;
+      var id = path.match(/\/p\/(\d+)\.html$/)[1];
+      $('.reading-off .article-section').each(function() {
+        if($(this).data('aid') == id) {
+          var s = $(this).offset().top - 20;
+          $('body').scrollTop(s);
+        }
       });
     });
 });
