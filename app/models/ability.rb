@@ -106,6 +106,7 @@ class Ability
   # 编辑
   def editor(user)
     can :read, :dashboard
+    can :read, :dashboard_resource
     can :manage, Post
     can :manage, RelatedLink
     can :manage, Newsflash
@@ -116,6 +117,39 @@ class Ability
     can :manage, Page
     can [:change_author], Post
     cannot :toggle_tag, Post
+  end
+
+  # 投资人
+  def investor(user)
+    can :read, :dashboard
+    cannot :manage, Column
+    can :manage, Post, :user_id => user.id
+    cannot :reviewings, Post
+    cannot :do_publish, Post
+    can :manage, RelatedLink, :post_id => user.posts.pluck(:id)
+    can :create, RelatedLink
+  end
+
+  # 投资机构
+  def investment_instiution(user)
+    can :read, :dashboard
+    cannot :manage, Column
+    can :manage, Post, :user_id => user.id
+    cannot :reviewings, Post
+    cannot :do_publish, Post
+    can :manage, RelatedLink, :post_id => user.posts.pluck(:id)
+    can :create, RelatedLink
+  end
+
+  # 创业者
+  def entrepreneur(user)
+    can :read, :dashboard
+    cannot :manage, Column
+    can :manage, Post, :user_id => user.id
+    cannot :reviewings, Post
+    cannot :do_publish, Post
+    can :manage, RelatedLink, :post_id => user.posts.pluck(:id)
+    can :create, RelatedLink
   end
 
   # 管理员

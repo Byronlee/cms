@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
   has_many :favorites
   has_many :related_links
 
-  scope :recent_editor, -> { where(role: [:operator, :writer, :editor, :admin, :contributor, :column_writer]).order('updated_at desc') }
+  scope :recent_editor, -> { where(role: [:operator, :writer, :editor, :admin, :contributor, :column_writer, :investor, investment_instiution, :entrepreneur]).order('updated_at desc') }
 
   typed_store :extra do |s|
     s.string :admin_post_manage_session_path,  default: ''

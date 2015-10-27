@@ -1,23 +1,26 @@
 = render 'welcome/title', title: 'Dashboard'
-
-div.container-fluid.dashboard
-  .col-lg-6.border_right async='true' async-url="/asynces/dashboard/pandect"
-    .spinner
-      .double-bounce1
-      .double-bounce2
-  .col-lg-6 async='true' async-url="/asynces/dashboard/charts" async-callback="window.draw_charts()"
-    .spinner
-      .double-bounce1
-      .double-bounce2
-  .col_main style="margin-top: 270px;"
-    .main_hd
-      table.spt class="table" style="float: left;"
-        thead
-          tr role="row" style="border-bottom: 5px solid #ddd;"
-            th style="width:70%" 今日文章
-            th.text_center style="width:10%" 发布时间
-            th.text_center style="width:11%" 操作&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            th style="width:5%" 作者
-        tbody
-          = render @posts, link_to_published:true
-
+- if can? :dashboard_resource, :dashboard
+  div.container-fluid.dashboard
+    .col-lg-6.border_right async='true' async-url="/asynces/dashboard/pandect"
+      .spinner
+        .double-bounce1
+        .double-bounce2
+    .col-lg-6 async='true' async-url="/asynces/dashboard/charts" async-callback="window.draw_charts()"
+      .spinner
+        .double-bounce1
+        .double-bounce2
+    .col_main style="margin-top: 270px;"
+      .main_hd
+        table.spt class="table" style="float: left;"
+          thead
+            tr role="row" style="border-bottom: 5px solid #ddd;"
+              th style="width:70%" 今日文章
+              th.text_center style="width:10%" 发布时间
+              th.text_center style="width:11%" 操作&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              th style="width:5%" 作者
+          tbody
+            = render @posts, link_to_published:true
+- else
+  .content.row
+  .page-404.text style="  width: 360px;  text-align: center;  margin: 0 auto;  margin-top: 13%; color: #4e627a;  line-height: 32px;  font-size: 10px;"
+    h2 欢迎登录后台系统

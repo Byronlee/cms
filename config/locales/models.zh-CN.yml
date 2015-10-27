@@ -15,6 +15,9 @@ zh-CN:
         admin: 管理员
         contributor: 新人作者
         column_writer: 专栏作者
+        investor: 投资人
+        investment_instiution: 投资机构
+        entrepreneur: 创业者
     head_line:
       display_position:
         normal: 普通展位

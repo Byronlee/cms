@@ -25,6 +25,12 @@ module Admin::PostsHelper
       admin_posts_path
     when 'contributor'
       draft_admin_posts_path
+    when 'investor'
+      myown_admin_posts_path
+    when 'investment_instiution'
+      myown_admin_posts_path
+    when 'entrepreneur'
+      myown_admin_posts_path
     else
       admin_favorites_path
     end
