@@ -7,7 +7,7 @@ html[lang="en"]
     title = @post.title
   body
     div class="TouTiaoBar" style="background-color: #2376BC;"
-      a#logo href="http://36kr.com?utm_source=toutiao"
+      a style="padding-left:15px"class="logo" href="http://36kr.com?utm_source=toutiao"
         img alt="36氪" style="height:40px" onerror="TouTiao.hideBar()" src="http://a.36krcnd.com/nil_class/e9dfee47-68bd-4121-b29d-dc06f058588b/36kr.png"
     - cache [:post, :ucnews, :html, @post.updated_at]
       header
