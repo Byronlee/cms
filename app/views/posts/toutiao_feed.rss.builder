@@ -26,7 +26,7 @@ xml.rss :version => "2.0" do
             xml.cdata! feed.column.name
           end
           xml.link do
-            xml.cdata! "http://36kr.com/toutiao/#{feed.url_code}.html?utm_source=toutiao"
+            xml.cdata! "#{Settings.site}/toutiao/#{feed.url_code}.html?utm_source=toutiao"
           end
           xml.description do
             xml.cdata! feed.summary
