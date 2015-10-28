@@ -157,8 +157,13 @@ Rails.application.routes.draw do
   match '/xiaozhi/(:url_code)' => 'posts#xiaozhi_news', via: :get, as: :xiaozhi_news
   match '/chouti/feed/' => 'posts#chouti_feed', via: :get, defaults: { format: :rss }
   match '/chouti/(:url_code)' => 'posts#chouti_news', via: :get, as: :chouti_news
+
   match '/toutiao/feed/' => 'posts#toutiao_feed', via: :get, defaults: { format: :rss }
   match '/toutiao/(:url_code).html' => 'posts#toutiao_news', via: :get, as: :toutiao_news
+
+  match '/coop/:coop/feed/' => 'posts#coop_feed', via: :get, defaults: { format: :rss }
+  match '/coop/:coop/(:url_code).html' => 'posts#coop_news', via: :get
+
   match '/crop/:partner/feed' => 'posts#partner_feed', via: :get, defaults: { format: :rss }
 
   match '/uc/feed/' => 'posts#uc_feed', via: :get, defaults: { format: :rss }

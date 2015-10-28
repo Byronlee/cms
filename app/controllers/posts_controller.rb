@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
   authorize_resource
   load_resource :only => :bdnews
-  before_filter :fetch_feeds, only: [:feed, :partner_feed, :baidu_feed, :xiaozhi_feed, :chouti_feed, :uc_feed, :toutiao_feed]
+  before_filter :fetch_feeds, only: [:feed, :partner_feed, :baidu_feed, :xiaozhi_feed,
+                                     :chouti_feed, :uc_feed, :coop_feed]
   skip_before_filter :verify_authenticity_token, only: :article_toggle_tag
 
   def show
@@ -45,11 +46,10 @@ class PostsController < ApplicationController
     redirect_to feed_path unless ['rss', 'json'].include? params[:format].to_s
   end
 
+  alias_method :uc_feed, :feed
   alias_method :baidu_feed, :feed
   alias_method :xiaozhi_feed, :feed
   alias_method :chouti_feed, :feed
-  alias_method :toutiao_feed, :feed
-  alias_method :uc_feed, :feed
 
   def partner_feed
     if params[:partner] == 'liebao'
@@ -74,14 +74,25 @@ class PostsController < ApplicationController
     render 'xiaozhi_news', layout: false
   end
 
-  def toutiao_news
-    @post = Post.published.find_by_url_code!(params[:url_code])
-    render 'toutiao_news', layout: false
-  end
-
   def chouti_news
     @post = Post.published.find_by_url_code!(params[:url_code])
     render 'chouti_news', layout: false
+  end
+
+  def coop_feed
+    if Settings.coop_rss.include?(params[:coop])
+    else
+      raise ActionController::RoutingError.new('Not Found')
+    end
+  end
+
+  def coop_news
+    if Settings.coop_rss.include?(params[:coop])
+      @post = Post.published.find_by_url_code!(params[:url_code])
+      render "posts/coop/#{params[:coop]}_news", layout: false
+    else
+      redirect_to root_path
+    end
   end
 
   def feed_bdnews

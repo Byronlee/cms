@@ -1,0 +1,27 @@
+doctype html
+html[lang="en"]
+  head
+    meta http-equiv="Content-type" content="text/html; charset=utf-8"
+    link href="http://static.yidianzixun.com/apps/ant_media_v1.0.0.5/main.css" rel="stylesheet" type="text/css"
+    meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,minimal-ui"
+    title = @post.title
+  body
+    div class="yidian-header" style="background-color: #2376BC;"
+      a style="padding-left:15px" href="http://36kr.com?utm_source=yidian"
+        img alt="36氪" style="height:40px" src="http://a.36krcnd.com/nil_class/e9dfee47-68bd-4121-b29d-dc06f058588b/36kr.png"
+    - cache [:post, :ucnews, :html, @post.updated_at]
+      header
+        h1 class="yidian-title" = raw @post.title
+        .yidian-info
+          span
+            a#source href="http://36kr.com?utm_source=yidian" 36氪
+          span id="yidian-date" =@post.published_at.strftime("%m-%d %H:%M")
+          a id="yidian-toggle-img" 显示图片
+          a.comment_totoal_cnt
+      article
+        div id="yidian-content" class="yidian-content" style="display: block;"
+          = raw @post.content
+
+    script src="http://static.yidianzixun.com/apps/ant_media_v1.0.0.5/main.js" type="text/javascript"
+    - cache [:layout, :footer, baidu_statistics = FragmentTemplate.find_by_key(:baidu_statistics)] do
+      = render_fragment_template_content baidu_statistics

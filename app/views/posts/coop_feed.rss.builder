@@ -1,6 +1,6 @@
 xml.instruct! :xml, :version => "1.0"
 xml.rss :version => "2.0" do
-  cache [ :post, :toutiao_feed, :xml, @feeds.map{|c| c["updated_at"]}.max ] do
+  cache [ :post, :coop_feed, :xml, @feeds.map{|c| c["updated_at"]}.max ] do
     xml.channel do
       xml.title do
         xml.cdata! '36氪 关注互联网创业'
@@ -26,7 +26,7 @@ xml.rss :version => "2.0" do
             xml.cdata! feed.column.name
           end
           xml.link do
-            xml.cdata! "#{Settings.site}/toutiao/#{feed.url_code}.html?utm_source=toutiao"
+            xml.cdata! "#{Settings.site}/coop/#{params[:coop]}/#{feed.url_code}.html?utm_source=#{params[:coop]}"
           end
           xml.description do
             xml.cdata! feed.summary
