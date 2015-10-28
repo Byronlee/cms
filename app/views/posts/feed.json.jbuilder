@@ -1,5 +1,4 @@
-cache [ :post, :feed, :json, @feeds.map{|c| c["updated_at"]}.max ] do
-
+json.cache! [ :post, :feed, :json, @feeds.map{|c| c["updated_at"]}.max ] do
   json.channel do
     json.title t('site_name')
     json.language 'zh-cn'
