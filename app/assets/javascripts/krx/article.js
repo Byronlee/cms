@@ -238,7 +238,6 @@ $(document).ready(function(){
     if((sT + $(window).height() + 300) > $(document).height()) {
       var aidC = $($.parseHTML(nextArticleData,true)).find('.ad').html(ad).parents('.article-section').data('aid');
 
-      if(isgeting) return;
       // console.log(aidC);
 
       if(aidC){
@@ -246,7 +245,10 @@ $(document).ready(function(){
         if(!pexist('.reading-off', $($.parseHTML(nextArticleData,true)).find('.ad').html(ad).parents('.article-section').data('aid'))) {
           renderArticle(nextArticleData);
         }
+        if(isgeting) return;
         nextArticleData = getArticle(aidC);
+      }else{
+        $('.common-footer').show();
       }
     }
   });
@@ -259,9 +261,8 @@ $(document).ready(function(){
 
     $('.btn-known').click(function(e) {
         e.preventDefault();
-        $(this).parents('.reading-tips').removeClass('show');
+        $('.reading-tips').removeClass('show');
         window.localStorage.setItem('readingStatus',true);
-        $('.reading-open').click();
     });
 
     var reading = false;

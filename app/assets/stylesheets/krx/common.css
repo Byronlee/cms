@@ -2080,7 +2080,8 @@ a:hover {
   margin-left: 6px;
   opacity: 0.8;
   background-size: cover;
-  text-indent: -200px;
+  /*text-indent: -200px;*/
+  font-size: 0;
   overflow: hidden;
 }
 @media (max-width: 800px) {
