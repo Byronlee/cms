@@ -7,7 +7,7 @@
   .main-section
     .content-wrapper.focus-edition
       article.single-post
-        section.article
+        section.article.english-wrap
           = raw(@page.try(:body))
 
 = render 'layouts/footer', subnavs: [[@page.title, page_path(slug: @page.try(:slug))]]
