@@ -153,3 +153,4 @@ settings.report_tip = '<p>“看完这篇还不够？如果你也在创业，并
 settings.rong_api = {
   organizations: 'https://rong.36kr.com/api/suggest/institution'
 }
+
