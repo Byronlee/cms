@@ -8,19 +8,19 @@ html[lang="en"]
   body
     div class="yidian-header" style="background-color: #2376BC;"
       a style="padding-left:15px" href="http://36kr.com?utm_source=yidian"
-        img alt="36氪" style="height:40px" src="http://a.36krcnd.com/nil_class/e9dfee47-68bd-4121-b29d-dc06f058588b/36kr.png"
+        img style="height:40px" src="http://a.36krcnd.com/nil_class/e9dfee47-68bd-4121-b29d-dc06f058588b/36kr.png"
     - cache [:post, :ucnews, :html, @post.updated_at]
       header
         h1 class="yidian-title" = raw @post.title
         .yidian-info
           span
             a#source href="http://36kr.com?utm_source=yidian" 36氪
-          span id="yidian-date" =@post.published_at.strftime("%m-%d %H:%M")
+          span id="yidian-date" =@post.published_at.strftime('%Y%m-%d %H:%M:%S')
           a id="yidian-toggle-img" 显示图片
           a.comment_totoal_cnt
       article
         div id="yidian-content" class="yidian-content" style="display: block;"
-          = raw @post.content
+          = raw yidian_img_src @post.content
 
     script src="http://static.yidianzixun.com/apps/ant_media_v1.0.0.5/main.js" type="text/javascript"
     - cache [:layout, :footer, baidu_statistics = FragmentTemplate.find_by_key(:baidu_statistics)] do

@@ -29,10 +29,18 @@ xml.rss :version => "2.0" do
             xml.cdata! "#{Settings.site}/coop/#{params[:coop]}/#{feed.url_code}.html?utm_source=#{params[:coop]}"
           end
           xml.description do
-            xml.cdata! feed.summary
+            if params[:coop] == 'yidian'
+              xml.cdata! feed.content
+            else
+              xml.cdata! feed.summary
+            end
           end
           xml.pubDate do
-            xml.cdata! feed.published_at && feed.published_at.to_s(:rfc822)
+            if params[:coop] == 'yidian'
+              xml.cdata! feed.published_at.to_formatted_s('%Y-%m-%d %H:%M:%S %Z')
+            else
+              xml.cdata! feed.published_at.to_s(:rfc822)
+            end
           end
           xml.source do
             xml.cdata! t('site_name')

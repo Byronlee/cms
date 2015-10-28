@@ -93,5 +93,9 @@ module PostsHelper
   def post_title(title)
     raw(sanitize_tags(title))
   end
+
+  def yidian_img_src(text)
+    text.gsub('src', 'alt_src')
+  end
 end
 
