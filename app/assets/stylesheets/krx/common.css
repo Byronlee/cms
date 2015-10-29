@@ -2572,7 +2572,7 @@ body {
   border: solid 1px #d7dde3;
   margin-top: -1px;
   color: #8e9ca9;
-  font-size: 30px;
+  font-size: 20px;
   line-height: 40px;
   text-align: center;
   background: #ffffff;
@@ -2726,6 +2726,7 @@ body {
   font-size: 20px;
   line-height: 36px;
   text-indent: 2px;
+  padding: 10px;
 }
 /* line 153, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
 .fixed-tools > a:last-of-type {
@@ -2758,13 +2759,13 @@ body {
 /* line 179, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
 .fixed-tools .reading-open span {
   display: block;
-  margin: 3px 5px;
+  margin: 2px 0px;
   height: 2px;
   background-color: #8e9ca9;
 }
 /* line 184, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
 .fixed-tools .reading-open span:last-child {
-  width: 52%;
+  width: 70%;
 }
 /* line 188, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
 .fixed-tools .reading-open:hover {

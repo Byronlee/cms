@@ -628,6 +628,7 @@ a:hover {
   list-style: none;
   float: left;
   margin-right: 70px;
+  word-break: normal;
 }
 /* line 212, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/article.less */
 .article-detail-wrap .main-section .content-wrapper article.single-post section.single-post-share ul.actions li a {

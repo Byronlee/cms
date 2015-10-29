@@ -301,18 +301,7 @@ $(document).ready(function(){
         $('.reading-off .article-section').each(function(i, val) {
           existHtml += '<div class="article-section" data-aid="'+ $(this).data('aid') +'" data-url="'+ $(this).data('url') +'"><div class="inner"><article class="single-post"><section class="single-post-header">' + $(this).find('.single-post-header').html() + '</section><br/><section class="article">' + $(this).find('.article').html() + '</article></article></div></div>'
           if($(this).data('aid') == id) {
-
-            // html = '<div class="article-section" data-aid="'+ $(this).data('aid') +'" data-url="'+ $(this).data('url') +'"><div class="inner"><article class="single-post"><section class="single-post-header">' + $(this).find('.single-post-header').html() + '</section><br/><section class="article">' + $(this).find('.article').html() + '</article></article></div></div>';
-            // $(existHtml).appendTo($('.reading-article .content-wrapper'));
             curIndex = i;
-          //   if(!$('.reading-off').find('.article-section').eq(i).next().html()) {
-          //     if(isgeting) return;
-          // // console.log(aidC);
-          //     getArticle($(this).data('aid'));
-          //     readingOnNextData = '<div class="ajax-article-main"><div class="article-section" data-aid="'+ $($.parseHTML(nextArticleData,true)).find('.article-section').data('aid') +'" data-url="'+ $($.parseHTML(nextArticleData,true)).find('.article-section').data('url') +'"><div class="inner"><article class="single-post"><section class="single-post-header">' + $($.parseHTML(nextArticleData,true)).find('.single-post-header').html() + '</section><br/><section class="article">' + $($.parseHTML(nextArticleData,true)).find('.article').html() + '</article></article></div></div></div>';
-          //   }
-
-            // console.log('aid: ' + $($.parseHTML(nextArticleData,true)).find('.article-section').data('aid') + ' url=' + $($.parseHTML(nextArticleData,true)).find('.article-section').data('url'));
           }
         });
 
@@ -320,7 +309,7 @@ $(document).ready(function(){
         if(!$('.reading-off .article-section').eq(curIndex).next().html()) {
           if(isgeting) return;
           getArticle(id);
-          readingOnNextData = '<div class="ajax-article-main"><div class="article-section" data-aid="'+ $($.parseHTML(nextArticleData,true)).find('.article-section').data('aid') +'" data-url="'+ $($.parseHTML(nextArticleData,true)).find('.article-section').data('url') +'"><div class="inner"><article class="single-post"><section class="single-post-header">' + $($.parseHTML(nextArticleData,true)).find('.single-post-header').html() + '</section><br/><section class="article">' + $($.parseHTML(nextArticleData,true)).find('.article').html() + '</article></article></div></div></div>';
+          readingOnNextData = '<div class="ajax-article-main"><div class="article-section" data-aid="'+ $($.parseHTML(nextArticleData,true)).children().parents('.article-section').data('aid') +'" data-url="'+ $($.parseHTML(nextArticleData,true)).children().parents('.article-section').data('url') +'"><div class="inner"><article class="single-post"><section class="single-post-header">' + $($.parseHTML(nextArticleData,true)).find('.single-post-header').html() + '</section><br/><section class="article">' + $($.parseHTML(nextArticleData,true)).find('.article').html() + '</article></article></div></div></div>';
         }
 
         $('.reading-article').addClass('active').scrollTop(0);
@@ -395,10 +384,11 @@ $(document).ready(function(){
           readingCurscrolltop = wT;
 
 
-          // console.log('aa: ' + (sT + $(window).height() + 50) + 'bb: ' + $(document).height());
+          // console.log('aa: ' + (sT + $(window).height()) + 'bb: ' + $('.reading-on .article-detail-wrap').height());
           if((sT + $(window).height()) > ($('.reading-on .article-detail-wrap').height())) {
             if(!$('.reading-open').is('.active')) return;
             var aidC = $($.parseHTML(nextArticleData,true)).find('.article-section').data('aid');
+            // console.log('aidC:' + aidC);
             if(!aidC) return;
             readingOnNextData = '<div class="ajax-article-main"><div class="article-section" data-aid="'+ $($.parseHTML(nextArticleData,true)).find('.article-section').data('aid') +'" data-url="'+ $($.parseHTML(nextArticleData,true)).find('.article-section').data('url') +'"><div class="inner"><article class="single-post"><section class="single-post-header">' + $($.parseHTML(nextArticleData,true)).find('.single-post-header').html() + '</section><br/><section class="article">' + $($.parseHTML(nextArticleData,true)).find('.article').html() + '</article></article></div></div></div>';
             // 判断是否已经存在
@@ -444,4 +434,7 @@ $(document).ready(function(){
         }
       });
     });
+    $('body').on('click', '.reading-on .article-section', function(e) {
+		e.stopPropagation();
+	})
 });

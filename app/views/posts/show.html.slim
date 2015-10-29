@@ -10,10 +10,10 @@
   .main-section
     .content-wrapper
       = render 'content_and_comment'
-      p.next-tips
-        |加载下一篇
-        i.icon-arrow-up
-        .next-loading
+      / p.next-tips
+      /   |加载下一篇
+      /   i.icon-arrow-up
+      /   .next-loading
     .article-side
       - cache [:show, :aside, @post.author, :cache_key_v1] do
         = render_cell :post, :author, author: @post.author
@@ -25,6 +25,11 @@
         .fast-section.J_fastSection.mobile-hide
           = render 'welcome/aside'
           = render_cell :ads, :position_9
+  / .loading-show
+  /   p.next-tips
+  /     |加载下一篇
+  /     i.icon-arrow-up
+  /   .next-loading
 .reading-article.reading-on
   .article-detail-wrap
     .main-section
