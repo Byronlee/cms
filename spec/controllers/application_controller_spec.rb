@@ -5,32 +5,6 @@ describe ApplicationController do
   login_user
 
   describe '#redirect_to_no_subdomain', :type => :request do
-    describe 'when request path include api or feed it should direct request' do
-      it 'www and feed' do
-        get 'http://www.kid.36kr.com/feed'
-        expect(response).to be_success
-        expect(response.status).to eq 200
-      end
-
-      it 'www and api' do
-        get 'http://www.2015.36kr.com/api/a14f30b8405857de59e098af4d1d07bda752a2dc'
-        expect(response.status).to eq 200
-        expect(response).to be_success
-      end
-
-      it 'only feed' do
-        get 'http://kid.36kr.com/feed'
-        expect(response.status).to eq 200
-        expect(response).to be_success
-      end
-
-      it 'only api' do
-        get 'http://2015.36kr.com/api/a14f30b8405857de59e098af4d1d07bda752a2dc'
-        expect(response.status).to eq 200
-        expect(response).to be_success
-      end
-    end
-
     describe 'www request not include api or feed, redirect_to a domain not include www' do
       it 'www' do
         get 'http://www.36kr.com'
