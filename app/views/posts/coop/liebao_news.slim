@@ -1,0 +1,28 @@
+doctype html
+html[lang="en"]
+  head
+    link href="http://7u2lac.com1.z0.glb.clouddn.com/css_liebao_rss.css" rel="stylesheet" type="text/css"
+    meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,minimal-ui"
+    meta name="format-detection" content="telephone=no"
+    meta name="description" content="#{@post.summary}"
+    meta name="keywords" content="36氪"
+    title = @post.title
+  body
+    div class="container"
+      div class="header" style="padding-left:25px;background-color: #2376BC;"
+        a href="http://36kr.com?utm_source=liebao"
+          img alt="36氪" style="height:47px" src="http://a.36krcnd.com/nil_class/e9dfee47-68bd-4121-b29d-dc06f058588b/36kr.png"
+    - cache [:post, :ucnews, :html, @post.updated_at]
+      div class="content"
+        div class="i-title"
+          h1 = raw @post.title
+          p
+            span class="i-time"  = @post.published_at.strftime("%Y-%m-%d %H:%M")
+            span class="i-source"
+              a href="http://36kr.com?utm_source=liebao" 36氪
+            a.comment_totoal_cnt
+        div class="i-content"
+          = raw @post.content
+
+    - cache [:layout, :footer, baidu_statistics = FragmentTemplate.find_by_key(:baidu_statistics)] do
+      = render_fragment_template_content baidu_statistics
