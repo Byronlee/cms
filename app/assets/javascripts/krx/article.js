@@ -152,6 +152,7 @@ $(document).ready(function(){
               }
               window.history.pushState(state, document.title, url);
               document.title = title;
+              krtracker('trackPageView', location.pathname);
             }
           }
         } else if(d == 2) {
@@ -165,6 +166,7 @@ $(document).ready(function(){
               }
               window.history.pushState(state, document.title, url);
               document.title = title;
+              krtracker('trackPageView', location.pathname);
             }
           }
         }
@@ -227,6 +229,7 @@ $(document).ready(function(){
       }
       window.history.pushState(state, document.title, url);
       document.title = title;
+      krtracker('trackPageView', location.pathname);
     }
   }
 
@@ -361,6 +364,7 @@ $(document).ready(function(){
                     }
                     window.history.pushState(state, document.title, url);
                     document.title = title;
+                    krtracker('trackPageView', location.pathname);
                   }
                 }
               } else if(d == 2) {
@@ -374,6 +378,7 @@ $(document).ready(function(){
                     }
                     window.history.pushState(state, document.title, url);
                     document.title = title;
+                    krtracker('trackPageView', location.pathname);
                   }
                 }
               }
