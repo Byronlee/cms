@@ -52,10 +52,10 @@ class PostsController < ApplicationController
   alias_method :chouti_feed, :feed
 
   def partner_feed
-    if params[:partner] == 'liebao'
-      render 'partner_liebao_feed'
+    if ['liebao', 'changdu'].include? params[:partner]
+      render "posts/partner/#{params[:partner]}_feed"
     else
-      render 'partner_feed'
+      render 'posts/partner/feed'
     end
   end
 
