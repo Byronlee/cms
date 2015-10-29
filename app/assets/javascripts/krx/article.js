@@ -153,6 +153,7 @@ $(document).ready(function(){
               window.history.pushState(state, document.title, url);
               document.title = title;
               krtracker('trackPageView', location.pathname);
+              _hmt.push(['_trackPageview', location.pathname]);
             }
           }
         } else if(d == 2) {
@@ -167,6 +168,7 @@ $(document).ready(function(){
               window.history.pushState(state, document.title, url);
               document.title = title;
               krtracker('trackPageView', location.pathname);
+              _hmt.push(['_trackPageview', location.pathname]);
             }
           }
         }
@@ -230,6 +232,7 @@ $(document).ready(function(){
       window.history.pushState(state, document.title, url);
       document.title = title;
       krtracker('trackPageView', location.pathname);
+      _hmt.push(['_trackPageview', location.pathname]);
     }
   }
 
@@ -365,6 +368,7 @@ $(document).ready(function(){
                     window.history.pushState(state, document.title, url);
                     document.title = title;
                     krtracker('trackPageView', location.pathname);
+                    _hmt.push(['_trackPageview', location.pathname]);
                   }
                 }
               } else if(d == 2) {
@@ -379,6 +383,7 @@ $(document).ready(function(){
                     window.history.pushState(state, document.title, url);
                     document.title = title;
                     krtracker('trackPageView', location.pathname);
+                    _hmt.push(['_trackPageview', location.pathname]);
                   }
                 }
               }
