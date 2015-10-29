@@ -19,11 +19,11 @@
               span.tag-item
                 = link_to "#{ tag }",tag_path(tag), target: '_blank'
 
-        - if can?(:edit, @post) || can?(:manage, Comment) || can?(:article_toggle_tag, @post)
+        - if current_user == @post.author || can?(:edit, @post) || can?(:manage, Comment) || can?(:article_toggle_tag, @post)
           div.post-operate style="border-top: solid 1px #f4f4f4; margin-top: 25px; padding-top: 25px;"
-            - if can?(:manage, Comment)
+            - if current_user == @post.author || can?(:manage, Comment)
               = link_to "管理评论", admin_post_comments_path(@post)
-            - if can?(:edit, @post)
+            - if current_user == @post.author || can?(:edit, @post)
               span &nbsp;|&nbsp;
               = link_to "编辑文章", Settings.writer_edit_path.call(@post)
               span &nbsp;|&nbsp;

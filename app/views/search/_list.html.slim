@@ -7,7 +7,7 @@
         a.title[href=show_post_url(post['id']) target="_blank" data-stat-click="Wenzhangbiaoti.#{@index}.#{post['id']}.click"]
           = raw post['highlight']
         .author
-          a[href="#{post['author']['domain']}" data-stat-click="Wenzhangzuozhe.#{@index}.#{post['id']}.click"]
+          a[href="/posts/#{post['author']['domain']}" data-stat-click="Wenzhangzuozhe.#{@index}.#{post['id']}.click"]
             span.avatar[data-lazyload="#{post['author']['avatar_url']}"]
             span.name
               = (post['author']['name'])
