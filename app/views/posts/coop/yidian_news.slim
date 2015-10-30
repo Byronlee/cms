@@ -9,7 +9,7 @@ html[lang="en"]
     div class="yidian-header" style="background-color: #2376BC;"
       a style="padding-left:15px" href="http://36kr.com?utm_source=yidian"
         img style="height:40px" src="http://a.36krcnd.com/nil_class/e9dfee47-68bd-4121-b29d-dc06f058588b/36kr.png"
-    - cache [:post, :ucnews, :html, @post.updated_at]
+    - cache [:post, :yidian, :html, @post.updated_at]
       header
         h1 class="yidian-title" = raw @post.title
         .yidian-info

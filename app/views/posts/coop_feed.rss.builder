@@ -17,13 +17,13 @@ xml.rss :version => "2.0" do
       for feed in @feeds
         xml.item do
           xml.author do
-            xml.cdata! feed.author.name
+            xml.cdata! feed.author.name.present?? feed.author.name : '36氪'
           end
           xml.title do
             xml.cdata! feed.title
           end
           xml.category do
-            xml.cdata! feed.column.name
+            xml.cdata! feed.column.name.present?? feed.column.name : '资讯'
           end
           xml.link do
             xml.cdata! "#{Settings.site}/coop/#{params[:coop]}/#{feed.url_code}.html?utm_source=#{params[:coop]}"
