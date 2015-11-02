@@ -124,8 +124,8 @@ class Ability
     can :read, :dashboard
     cannot :manage, Column
     can :manage, Post, :user_id => user.id
-    cannot :reviewings, Post
-    cannot :do_publish, Post
+    cannot [:toggle_tag, :publish, :do_publish, :edit, :undo_publish], Post
+    cannot :create, HeadLine
     can :manage, RelatedLink, :post_id => user.posts.pluck(:id)
     can :create, RelatedLink
   end
@@ -135,8 +135,8 @@ class Ability
     can :read, :dashboard
     cannot :manage, Column
     can :manage, Post, :user_id => user.id
-    cannot :reviewings, Post
-    cannot :do_publish, Post
+    cannot [:toggle_tag, :publish, :do_publish, :edit, :undo_publish], Post
+    cannot :create, HeadLine
     can :manage, RelatedLink, :post_id => user.posts.pluck(:id)
     can :create, RelatedLink
   end
@@ -146,8 +146,8 @@ class Ability
     can :read, :dashboard
     cannot :manage, Column
     can :manage, Post, :user_id => user.id
-    cannot :reviewings, Post
-    cannot :do_publish, Post
+    cannot [:toggle_tag, :publish, :do_publish, :edit, :undo_publish], Post
+    cannot :create, HeadLine
     can :manage, RelatedLink, :post_id => user.posts.pluck(:id)
     can :create, RelatedLink
   end
