@@ -9,4 +9,11 @@ class WelcomeCell < Cell::Rails
     @head_lines_next = @head_lines["next"] || []
     render
   end
+
+  def feed_top(args)
+    head_lines_data = args[:head_lines]
+    @head_lines = head_lines_data.present? ? JSON.parse(head_lines_data) : {}
+    @head_lines_top = @head_lines['top'] || []
+    render
+  end
 end

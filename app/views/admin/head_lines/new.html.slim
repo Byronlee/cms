@@ -87,7 +87,7 @@ javascript:
 
   function check_extra_info_area(){
     var position = $('#head_line_display_position').val();
-    if(position == 'next'){
+    if(position == 'next' || position == 'top' ){
       $(".extra_info_for_next").show();
       $(".extra_info_for_normal").hide();
     }

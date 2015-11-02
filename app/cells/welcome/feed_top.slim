@@ -1,0 +1,12 @@
+-if @head_lines_top[0].present?
+  - top = @head_lines_top[0]
+  article class="article-Top active-top-icon"
+    span class="badge-top" data-type="top" = '置顶'
+    a data-fit-mobile="true" class="pic" href="#{top['url']}" data-lazyload="#{top['image']}" data-stat-click="wenzhangzhidingtupian.#{top['url_code']}.click" target="_blank"
+    div class="desc"
+      a class="title" href="#{top['url']}" target="_blank"
+        = top['title']
+      div class="brief"
+        = top['summary']
+      a class="see-details" href="#{top['url']}" target="_blank"
+        = '查看详情'
