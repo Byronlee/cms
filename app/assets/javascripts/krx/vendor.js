@@ -287,13 +287,20 @@ function initFastSection(){
                 if(trigger.hasClass('loading'))return;
                 trigger.addClass('loading');
                 if(trigger.parents().is('.feed')) {
-                    if(page > feedData.data.totalPages - 1) {
+                    if((page > feedData.data.totalPages - 1) || (feedData.data.totalCount < 30)) {
+                        $('.J_fastSectionList .feed').find('.load-more').removeClass('loading').addClass('no-data');
                         return;
                     }
                     page++;
-                    $.get(KR_CONFIG_OBJECT.fetchFeed,{
-                        page: page,
-                        pageSize: 30
+                    $.ajax({
+                        url: KR_CONFIG_OBJECT.fetchFeed,
+                        data: {
+                            page: page,
+                            pageSize: 30
+                        },
+                        xhrFields: {
+                            withCredentials: true
+                        }
                     }).done(function(data){
                         feedData = data;
                         setTimeout(function() {
@@ -388,13 +395,20 @@ function initFastSection(){
             if(trigger.hasClass('loading'))return;
             trigger.addClass('loading');
             if(trigger.parents().is('.feed')) {
-                    if(page > feedData.data.totalPages - 1) {
+                    if((page > feedData.data.totalPages - 1) || (feedData.data.totalCount < 30)) {
+                        $('.J_fastSectionList .feed').find('.load-more').removeClass('loading').addClass('no-data');
                         return;
                     }
                     page++;
-                    $.get(KR_CONFIG_OBJECT.fetchFeed,{
-                        page: page,
-                        pageSize: 30
+                    $.ajax({
+                        url: KR_CONFIG_OBJECT.fetchFeed,
+                        data: {
+                            page: page,
+                            pageSize: 30
+                        },
+                        xhrFields: {
+                            withCredentials: true
+                        }
                     }).done(function(data){
                         feedData = data;
                         setTimeout(function() {
@@ -509,9 +523,15 @@ function initFastSection(){
         }
     }
 
-    $.get(KR_CONFIG_OBJECT.fetchFeed,{
-        page: page,
-        pageSize: 30
+    $.ajax({
+        url: KR_CONFIG_OBJECT.fetchFeed,
+        data: {
+            page: page,
+            pageSize: 30
+        },
+        xhrFields: {
+            withCredentials: true
+        }
     }).done(function(data){
         feedData = data;
         var feedInner = '<script>'

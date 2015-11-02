@@ -19,15 +19,15 @@ settings.elasticsearch = {
 }
 
 settings.kr_seo_server = {
-  development_url: 'http://sm.test.36tr.com',
-  production_url: 'http://sm.36tr.com',
+  development_url: 'http://sm.corp.36kr.com',
+  production_url: 'http://sm.corp.36kr.com',
   test_url: 'http://sm.dev.36tr.com'
 }
 
 settings.kr_search_server = {
-  development_url: 'http://data-internal.test.36tr.com/es-mobile?cmd=article',
-  production_url: 'http://data-internal.36tr.com:20421/es-mobile?cmd=article',
-  test_url: 'http://data-internal.test.36tr.com/es-mobile?cmd=article'
+  development_url: 'http://data-internal.corp.36kr.com/es-mobile?cmd=article',
+  production_url: 'http://data-internal.corp.36kr.com/es-mobile?cmd=article',
+  test_url: 'http://data-internal.36tr.com:20421/es-mobile?cmd=article'
 }
 
 settings.api = {
