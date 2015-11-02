@@ -19,6 +19,28 @@ module PostsHelper
      fix_wp_content_image(content)
   end
 
+  def display_krtv_content(content,cover,title)
+    youku_url = /(http:\/\/v.youku.com.*html)/im.match content #匹配去除优酷链接
+    image = if cover.blank?
+              cover
+            else
+              "<a href='#{youku_url[0]}' target='_blank'>
+                <img src='#{cover}' width='740px' height='498px'>
+              </a>"
+            end
+    content = if content.include?('<iframe')
+                  content.gsub(/<iframe.*<\/iframe>/,image) #将播放器替换成图片链接
+              else
+                content
+              end
+    content = sanitize_tags(content)
+    content = remove_blank_lines(content)
+    content = load_image_lazy(content)
+    content = href_add_ref_nofollow content
+    content = force_image_alt_to_post_title(content, title)
+    fix_wp_content_image(content)
+  end
+
   def href_add_ref_nofollow content
     doc = Nokogiri::HTML.fragment(content)
     as = doc.css 'a'
