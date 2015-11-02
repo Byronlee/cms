@@ -45,6 +45,7 @@ module PostsHelper
     doc = Nokogiri::HTML.fragment(content)
     as = doc.css 'a'
     as.each do |a|
+      next if /http:\/\/(www\.)?36kr\.com\/p\// =~ a.to_s
       a.set_attribute('ref', 'nofollow')
     end
     doc.to_html
