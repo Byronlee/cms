@@ -186,6 +186,7 @@ Rails.application.routes.draw do
   match '/posts/article_toggle_tag', to: 'posts#article_toggle_tag', via: :post, as: :article_toggle_tag
   match '/newsflashes/toggle_tag', to: 'newsflashes#toggle_tag', via: :post, as: :newsflash_toggle_tag
   match '/posts/:user_domain', to: 'users#posts', via: :get, as: :user_domain_posts
+  match '/newsflashes/change_switch_state', :controller => 'newsflashes', :action => 'change_switch_state', via: :post, as: :newsflashes_change_switch_state
 
   # 兼容老站，添加特定的URL映射
   match '/about' => redirect('/pages/about'), via: :get

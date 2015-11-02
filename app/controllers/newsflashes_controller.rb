@@ -95,6 +95,11 @@ class NewsflashesController < ApplicationController
     end
   end
 
+  def change_switch_state
+    current_user.update(timing_switch: params[:state])
+    render text: current_user.timing_switch
+  end
+
   def toggle_tag
     @newsflash = Newsflash.find(params[:newsflash_id])
     tag_name = params[:tag_name]

@@ -33,8 +33,22 @@ javascript:
       $('.timeago').timeago();//数据轮询后刷新相对时间
     })
   }
-  if (!#{params[:b_id].present? || params[:share_id].present?})
-    setInterval("loadingLatest()", #{Settings.newsflash_interval});
+
+  function change_switch_state(state){
+    $.post('/newsflashes/change_switch_state',{
+        "state": state
+    }, function(result) {
+
+    });
+  }
+
+  var timing_switch = "#{current_user.timing_switch}";
+  /*timing_switch = 'on'*/
+  console.log(timing_switch);
+  if (timing_switch == 'on'){
+    if (!#{params[:b_id].present? || params[:share_id].present?})
+      setInterval("loadingLatest()", #{Settings.newsflash_interval});
+  }
 
   if (#{params[:share_id].present?})
     $(document).ready(function () {

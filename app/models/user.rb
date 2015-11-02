@@ -30,7 +30,7 @@
 #  domain                              :string(255)
 #  rong_organization_id                :integer
 #  rong_organization_name              :string(255)
-#
+#  timing_switch                       :string(255)      default("on")
 
 class User < ActiveRecord::Base
   extend Enumerize
