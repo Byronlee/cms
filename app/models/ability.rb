@@ -24,6 +24,7 @@ class Ability
     anonymous
     return unless user
     can :create, Comment unless user.muted?
+    can :update_current, User, :id => user.id
   end
 
   # 管理界面权限

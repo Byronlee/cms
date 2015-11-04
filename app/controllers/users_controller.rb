@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   load_resource only: :current
   load_resource only: :posts, find_by: :domain, id_param: :user_domain
   load_and_authorize_resource :favorite, through: :current_user, only: :favorites, parent: false
+  authorize_resource only: :update_current
+  skip_before_action :verify_authenticity_token, only: :update_current
 
   def messages
     return render :text => '', layout: false if params['data'].blank? || params['data']['code'].to_i != 0
@@ -44,5 +46,12 @@ class UsersController < ApplicationController
 
   def current
     return if current_user.blank?
+  end
+
+  def update_current
+    current_user.domain = params[:domain] if params[:domain].present? && current_user.domain.blank?
+    current_user.tagline = params[:tagline] if params[:tagline].present?
+    current_user.save if current_user.changed?
+    render json: {result: 'success'}.to_json
   end
 end
