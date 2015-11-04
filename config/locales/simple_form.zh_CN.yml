@@ -41,6 +41,7 @@ zh-CN:
         tag_list: 标签
         tag: 标签
         hash_title: 标题
+        catch_title: 短标题
         description_text: 内容
         tag: 标签
         column: 所属专栏
@@ -144,6 +145,7 @@ zh-CN:
       newsflash:
         news_url: 原文链接
         site_url: 官网链接
+        catch_title: '请输入18字以内的文章短标题'
         product_url: 产品链接
     prompt:
   helpers:
