@@ -18,8 +18,11 @@
           div.controls
             = f.select :role, User.role.options
       div#rong_organization style="display: none"
-        = f.input :rong_organization_name
-        = f.input :rong_organization_id
+        = f.input :rong_organization_name, input_html: {value: @user.rong_organization_name, class: 'col-lg-12' }
+        .control-group.suggestion style="display: none"
+          .controls
+            ul#organization_suggestions
+        = f.input :rong_organization_id, input_html: {value: @user.rong_organization_id, class: 'col-lg-12' }
       = f.input :name, disabled: true, input_html: {value: @user.display_name, class: 'col-lg-12' }
       = f.input :email, disabled: true, input_html: {class: 'col-lg-12'}
       = f.input :phone, disabled: true, input_html: {class: 'col-lg-12'}
@@ -33,6 +36,20 @@
 
 
 javascript:
+
+  var organizations = [
+        {
+          "id": 57,
+          "logo": "http://krplus-pic.b0.upaiyun.com/org_logo/%E7%BA%A2%E6%9D%89%E8%B5%84%E6%9C%AC%E4%B8%AD%E5%9B%BD%E5%9F%BA%E9%87%91.jpg",
+          "name": "红杉资本"
+        },
+        {
+          "id": 2289,
+          "logo": "http://krplus-pic.b0.upaiyun.com/201506/30/b84b54987b4a43d11cce7210a4e8cf37.png",
+          "name": "红杉资本（海外）"
+        }
+      ]
+
   $("#user_role").change(function(){
      if($("#user_role").val() == 'organization'){
        $("#rong_organization").slideDown();
@@ -41,9 +58,27 @@ javascript:
      }
   });
 
-  $("#user_rong_organization_name").change(function(){
-    // $.get("#{Settings.rong_api.organizations}", function(data){
-    //    console.log('data');
-    // });
+  $("#user_rong_organization_name").keyup(function(){
+      var suggestList = $("ul#organization_suggestions");
+      $("div.suggestion").fadeIn(200);
+      suggestList.empty();
+      suggestList.width($("#user_rong_organization_name").width());
+
+      // $.get("#{Settings.rong_api.organizations}?wd=" + $("#user_rong_organization_name").val(), function(result){
+        // $.each(result.data.data, function(index, org){
+        if(true){
+          $.each(organizations, function(index, org){
+            suggestList.append("<li class='org_item' data-org-id='"+ org.id +"' data-org-name='"+ org.name +"'><img src='"+ org.logo +"' /><span data-org-id='"+ org.id +"'>" + org.name + "</span></li>");
+          });
+        }else{
+            suggestList.append("<li><span>未找到匹配的投资机构</span></li>");
+        }
+      //});
+  });
+
+  $("ul#organization_suggestions").delegate("li.org_item", "click", function(){
+    $("#user_rong_organization_name").val($(this).data("org-name"));
+    $("#user_rong_organization_id").val($(this).data("org-id"));
+    $("div.suggestion").fadeOut(50);
   });
 
