@@ -22,7 +22,7 @@
         .control-group.suggestion style="display: none"
           .controls
             ul#organization_suggestions
-        = f.input :rong_organization_id, input_html: {value: @user.rong_organization_id, class: 'col-lg-12' }
+        = f.input :rong_organization_id, disabled: true, input_html: {value: @user.rong_organization_id, class: 'col-lg-12' }
       = f.input :name, disabled: true, input_html: {value: @user.display_name, class: 'col-lg-12' }
       = f.input :email, disabled: true, input_html: {class: 'col-lg-12'}
       = f.input :phone, disabled: true, input_html: {class: 'col-lg-12'}
@@ -58,9 +58,9 @@ javascript:
      }
   });
 
-  $("#user_rong_organization_name").keyup(function(){
-      var suggestList = $("ul#organization_suggestions");
-      $("div.suggestion").fadeIn(200);
+  function displaySuggestions(){
+    var suggestList = $("ul#organization_suggestions");
+      $("div.suggestion").slideDown(200);
       suggestList.empty();
       suggestList.width($("#user_rong_organization_name").width());
 
@@ -74,6 +74,18 @@ javascript:
             suggestList.append("<li><span>未找到匹配的投资机构</span></li>");
         }
       //});
+  }
+
+  $("#user_rong_organization_name").keyup(function(){
+    displaySuggestions();
+  });
+
+  $("#user_rong_organization_name").focus(function(){
+    displaySuggestions();
+  });
+
+  $("#user_rong_organization_name").blur(function(){
+    $("div.suggestion").fadeOut(50);
   });
 
   $("ul#organization_suggestions").delegate("li.org_item", "click", function(){
