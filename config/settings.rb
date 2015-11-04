@@ -67,7 +67,7 @@ settings.next = {
 }
 
 # 读者, 运营, 作者, 编辑, 管理员, 投稿, 专栏作者, 投资人, 投资机构, 创业者
-settings.roles =  [:reader, :operator, :writer, :editor, :admin, :contributor, :column_writer, :investor, :investment_instiution, :entrepreneur]
+settings.roles =  [:reader, :operator, :writer, :editor, :admin, :contributor, :column_writer, :investor, :organization, :entrepreneur]
 settings.user_search_support = [['角色', 'role'], ['ID', 'id'], ['姓名', 'name'], ['电话', 'phone'], ['邮件', 'email'], ['sso_id', 'sso_id']]
 settings.editable_roles =  [:operator, :writer, :editor, :admin]
 

@@ -131,7 +131,7 @@ class Ability
   end
 
   # 投资机构
-  def investment_instiution(user)
+  def organization(user)
     can :read, :dashboard
     cannot :manage, Column
     can :manage, Post, :user_id => user.id

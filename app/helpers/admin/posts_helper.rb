@@ -27,7 +27,7 @@ module Admin::PostsHelper
       draft_admin_posts_path
     when 'investor'
       myown_admin_posts_path
-    when 'investment_instiution'
+    when 'investment'
       myown_admin_posts_path
     when 'entrepreneur'
       myown_admin_posts_path

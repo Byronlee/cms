@@ -50,11 +50,12 @@ class User < ActiveRecord::Base
   has_many :favorites
   has_many :related_links
 
-  scope :recent_editor, -> { where(role: [:operator, :writer, :editor, :admin, :contributor, :column_writer, :investor, investment_instiution, :entrepreneur]).order('updated_at desc') }
+  scope :recent_editor, -> { where(role: [:operator, :writer, :editor, :admin, :contributor, :column_writer, :investor, :investment, :entrepreneur]).order('updated_at desc') }
 
   typed_store :extra do |s|
     s.string :admin_post_manage_session_path,  default: ''
     s.datetime :last_comment_at, default: Time.now
+    s.integer :rong_ognization
   end
 
   before_save :ensure_authentication_token
