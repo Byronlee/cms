@@ -55,7 +55,8 @@ class User < ActiveRecord::Base
   typed_store :extra do |s|
     s.string :admin_post_manage_session_path,  default: ''
     s.datetime :last_comment_at, default: Time.now
-    s.integer :rong_ognization
+    s.integer :rong_organization_id
+    s.string :rong_organization_name
   end
 
   before_save :ensure_authentication_token
