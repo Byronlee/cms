@@ -93,6 +93,12 @@ describe Admin::PostsController do
       patch :update, id: post.id, post: attributes_for(:post)
       expect(response.status).to eq 302
     end
+
+    it "returns catch_title too log when length larger than 18 character" do
+      patch :update, id: post.id, post: attributes_for(:post).merge(catch_title: 'a' * 19)
+      assigns(:post).errors.empty?.should_not be_true
+      assigns(:post).errors[:catch_title].first.should match(/过长/)
+    end
   end
 
   describe "get 'show'" do
