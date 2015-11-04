@@ -121,35 +121,39 @@ class Ability
 
   # 投资人
   def investor(user)
-    can :read, :dashboard
     cannot :manage, Column
-    can :manage, Post, :user_id => user.id
-    cannot [:toggle_tag, :publish, :do_publish, :edit, :undo_publish, :reviewings], Post
-    cannot :create, HeadLine
-    can :manage, RelatedLink, :post_id => user.posts.pluck(:id)
-    can :create, RelatedLink
+    cannot :manage, RelatedLink
+    can :read, :dashboard
+    can [:new, :myown], Post
+    can [:read, :column, :reviewings], Post, :id => user.posts.pluck(:id)
+    can [:update, :edit, :preview], Post, :id => user.posts.reviewing.pluck(:id)
+    can :manage, Post, :id => user.posts.drafted.pluck(:id)
+    cannot [:toggle_tag, :article_toggle_tag], Post
+    cannot :toggle_tag, Newsflash
   end
 
   # 投资机构
   def organization(user)
-    can :read, :dashboard
     cannot :manage, Column
-    can :manage, Post, :user_id => user.id
-    cannot [:toggle_tag, :publish, :do_publish, :edit, :undo_publish, :reviewings], Post
-    cannot :create, HeadLine
-    can :manage, RelatedLink, :post_id => user.posts.pluck(:id)
-    can :create, RelatedLink
+    can :read, :dashboard
+    can [:new, :myown], Post
+    can [:read, :column, :reviewings], Post, :id => user.posts.pluck(:id)
+    can [:update, :edit, :preview], Post, :id => user.posts.reviewing.pluck(:id)
+    can :manage, Post, :id => user.posts.drafted.pluck(:id)
+    cannot [:toggle_tag, :article_toggle_tag], Post
+    cannot :toggle_tag, Newsflash
   end
 
   # 创业者
   def entrepreneur(user)
-    can :read, :dashboard
     cannot :manage, Column
-    can :manage, Post, :user_id => user.id
-    cannot [:toggle_tag, :publish, :do_publish, :edit, :undo_publish, :reviewings], Post
-    cannot :create, HeadLine
-    can :manage, RelatedLink, :post_id => user.posts.pluck(:id)
-    can :create, RelatedLink
+    can :read, :dashboard
+    can [:new, :myown], Post
+    can [:read, :column, :reviewings], Post, :id => user.posts.pluck(:id)
+    can [:update, :edit, :preview], Post, :id => user.posts.reviewing.pluck(:id)
+    can :manage, Post, :id => user.posts.drafted.pluck(:id)
+    cannot [:toggle_tag, :article_toggle_tag], Post
+    cannot :toggle_tag, Newsflash
   end
 
   # 管理员

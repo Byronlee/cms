@@ -3,7 +3,7 @@
 .col_main
   .main_hd
     = render 'toolbar', target_page: :myown, collections: @posts
-    
+
   table.spt class="table"
     thead
       tr role="row"
@@ -16,5 +16,5 @@
         - if post.published?
           = render partial: "post", locals:{post:post, link_to_published:false}
         - elsif post.reviewing?
-          = render partial: "post_reviewing", locals:{post:post, link_to_reviewing:false}
+          = render partial: "post_reviewing", locals:{post:post, link_to_reviewing:false, is_show_edit: !["investor","investment_instiution","entrepreneur"].include?(current_user.role) }
   = paginate @posts
