@@ -14,7 +14,7 @@
       = f.input :url, input_html: {class: 'col-lg-8', id: 'head_line_url'}
       div.head_line_details style="display:#{ @head_line.new_record? ? 'none' : 'block' }"
         = f.input :post_type, input_html: {id: 'head_line_post_type', readonly: true}
-        = f.input :hidden_title, as: :radio_buttons
+        = f.input :hidden_title, as: :radio_buttons, :checked => ['No', false]
         = f.input :title, input_html: {class: 'col-lg-12', id: 'head_line_title'}
         = f.input :image, input_html: {class: 'col-lg-12', id: 'head_line_image'}
         = f.input :display_position, input_html: {class: 'col-lg-12', id: 'head_line_display_position'}
