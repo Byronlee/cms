@@ -9,4 +9,14 @@ module NewsflashHelper
   def share_back_url(newsflash)
     return "#{newsflashes_list_url}?share_id=#{newsflash.id}"
   end
+
+  def wrap_period_content(newsflash)
+    if newsflash.present?
+      sting = /(.*?[。|？|！|\.])(.*)/im.match newsflash
+      new_string = sting.present?? "<div>#{sting[1]}</div><div>#{sting[2] if sting[2]}</div>" : newsflash
+    else
+      new_string = '<div>更多内容请查看http://36kr.com</div>'
+    end
+    return new_string
+  end
 end

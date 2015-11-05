@@ -103,6 +103,15 @@ class NewsflashesController < ApplicationController
     render text: params[:tag_name]
   end
 
+  def news_corp_feed
+    @news = Newsflash.recent.limit(20)
+  end
+
+  def news_corp_news
+    @new = Newsflash.find_by_id(params[:id])
+    render "news_corp_news", layout: false
+  end
+
   private
 
   def increase_views_count
