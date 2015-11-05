@@ -104,11 +104,11 @@ class NewsflashesController < ApplicationController
   end
 
   def news_corp_feed
-    @news = Newsflash.recent.limit(20)
+    @news = Newsflash.newsflashes.recent.limit(20)
   end
 
   def news_corp_news
-    @new = Newsflash.find_by_id(params[:id])
+    @new = Newsflash.newsflashes.find_by_id!(params[:id])
     render "news_corp_news", layout: false
   end
 

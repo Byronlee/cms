@@ -15,7 +15,7 @@ module NewsflashHelper
       sting = /(.*?[。|？|！|\.])(.*)/im.match newsflash
       new_string = sting.present?? "<div>#{sting[1]}</div><div>#{sting[2] if sting[2]}</div>" : newsflash
     else
-      new_string = '<div>更多内容请查看http://36kr.com</div>'
+      new_string = '<div>更多内容请查看https://36kr.com</div>'
     end
     return new_string
   end
