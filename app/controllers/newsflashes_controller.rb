@@ -104,7 +104,11 @@ class NewsflashesController < ApplicationController
   end
 
   def news_corp_feed
-    @news = Newsflash.newsflashes.recent.limit(20)
+    if Settings.coop_news_flash.include?(params[:coop])
+      @news = Newsflash.newsflashes.recent.limit(20)
+    else
+      raise ActionController::RoutingError.new('Not Found')
+    end
   end
 
   def news_corp_news
