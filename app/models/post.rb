@@ -81,11 +81,10 @@ class Post < ActiveRecord::Base
 
   # TODO: 将所有的回调采用注册机制全部异步去处理
   after_save :update_today_lastest_cache, :update_info_flows_cache,
-             :check_head_line_cache, :update_excellent_comments_cache
+             :check_head_line_cache, :update_excellent_comments_cache, :fetch_related_posts
   after_destroy :update_today_lastest_cache, :update_info_flows_cache,
                 :check_head_line_cache_for_destroy, :update_excellent_comments_cache
   before_create :generate_key
-  # after_create :fetch_related_posts
   before_save :auto_generate_summary, :check_source_type
   before_validation :generate_url_code
   after_save :check_company_keywords
@@ -99,6 +98,7 @@ class Post < ActiveRecord::Base
     logger.info UpdateElsearchIndexWorker.new.perform self.url_code
   end
 
+  # 是否每次更新都要执行？需要确认
   after_commit :sync_post_seo, on: :create
   def sync_post_seo
     template_id = 'www-article'
@@ -411,7 +411,9 @@ class Post < ActiveRecord::Base
   end
 
   def fetch_related_posts
-    self.related_post_url_codes = get_related_post_url_codes
-    self.save
+    if self.published? && self.tag_list.present? && self.tag_list_changed?
+      self.update_column(:related_post_url_codes, get_related_post_url_codes)
+      logger.info "update post##{self.url_code} related_posts for #{self.tag_list}"
+    end
   end
 end
