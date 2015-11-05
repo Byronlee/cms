@@ -74,4 +74,15 @@ describe NewsflashesController do
       should respond_with(:success)
     end
   end
+
+  describe "get 'news_corp_feed'" do
+    context 'should return success' do
+      before { get :news_corp_feed, coop: :toutiao, format: :rss }
+      it do
+        should respond_with(:success)
+        should render_template(:news_corp_feed)
+      end
+    end
+  end
+
 end

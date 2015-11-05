@@ -1,0 +1,32 @@
+doctype html
+html[lang="en"]
+  head
+    link href="http://s0.pstatp.com/css/toutiao/wap_flow.css" rel="stylesheet" type="text/css"
+    link href="http://s2.pstatp.com/inapp/TTDefaultCSS.css" rel="stylesheet" type="text/css"
+    meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,minimal-ui"
+    title = @new.hash_title
+  body
+    div class="TouTiaoBar" style="background-color: #2376BC;"
+      a style="padding-left:15px" class="logo" href="http://36kr.com?utm_source=toutiao"
+        img alt="36氪" style="height:40px" onerror="TouTiao.hideBar()" src="http://a.36krcnd.com/nil_class/e9dfee47-68bd-4121-b29d-dc06f058588b/36kr.png"
+    - cache [:newsflash, :toutiao, :html, @new.updated_at]
+      header
+        h1 =  @new.hash_title
+        .subtitle
+          a#source href="http://36kr.com?utm_source=toutiao" 36氪
+          time = @new.created_at.strftime("%m-%d %H:%M")
+          a#toggle_img href="#" onclick=("TouTiao.showImage(); return false")  显示图片
+          a.comment_totoal_cnt
+      article
+        = raw wrap_period_content(@new.description_text)
+
+    script src="http://s2.pstatp.com/inapp/TTDefaultJS.js" type="text/javascript"
+    - cache [:layout, :footer, baidu_statistics = FragmentTemplate.find_by_key(:baidu_statistics)] do
+      = render_fragment_template_content baidu_statistics
+
+  javascript:
+    (function(i,s,o,g,r,a,m){i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0]; a.async=1; a.src=g; m.parentNode.insertBefore(a, m)
+    })(window,document,'script','//stat.36kr.com/stat.js','krtracker');
+    krtracker('trackPageView', location.pathname);

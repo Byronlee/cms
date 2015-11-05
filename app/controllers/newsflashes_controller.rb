@@ -103,6 +103,19 @@ class NewsflashesController < ApplicationController
     render text: params[:tag_name]
   end
 
+  def news_corp_feed
+    if Settings.coop_newsflashes_rss.include?(params[:coop])
+      @news = Newsflash.newsflashes.recent.limit(20)
+    else
+      raise ActionController::RoutingError.new('Not Found')
+    end
+  end
+
+  def news_corp_news
+    @new = Newsflash.newsflashes.find_by_id!(params[:id])
+    render "news_corp_news", layout: false
+  end
+
   private
 
   def increase_views_count

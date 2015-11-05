@@ -161,6 +161,9 @@ Rails.application.routes.draw do
   match '/coop/:coop/(:url_code).html' => 'posts#coop_news', via: :get
   match '/crop/:partner/feed' => 'posts#partner_feed', via: :get, defaults: { format: :rss }
 
+  match '/newsflash/coop/:coop/feed/' => 'newsflashes#news_corp_feed', via: :get, defaults: { format: :rss }
+  match '/newsflash/coop/(:id).html' => 'newsflashes#news_corp_news', via: :get
+
   match '/uc/feed/' => 'posts#uc_feed', via: :get, defaults: { format: :rss }
   match '/uc/(:url_code)' => 'posts#ucnews', via: :get, as: :uc_news
   match '/p/(:url_code)(.:format)' => 'posts#show', via: :get, constraints: { format: '' }
