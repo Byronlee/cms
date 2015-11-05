@@ -15,7 +15,7 @@ tr
     - if can? :edit, post
       a title="编辑" target="_blank" href=Settings.writer_edit_path.call(post)
         i.fa.fa-pencil
-    - if can? :edit, post && is_show_related_links
+    - if (can? :edit, post) && is_show_related_links
       a title="相关链接" href=admin_post_related_links_path(post)
         i.fa.fa-link
     - if can? :destroy, post
