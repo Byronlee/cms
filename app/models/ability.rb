@@ -136,6 +136,7 @@ class Ability
   # 投资机构
   def organization(user)
     cannot :manage, Column
+    cannot :manage, RelatedLink
     can :read, :dashboard
     can [:new, :myown], Post
     can [:read, :column, :reviewings], Post, :id => user.posts.pluck(:id)
@@ -148,6 +149,7 @@ class Ability
   # 创业者
   def entrepreneur(user)
     cannot :manage, Column
+    cannot :manage, RelatedLink
     can :read, :dashboard
     can [:new, :myown], Post
     can [:read, :column, :reviewings], Post, :id => user.posts.pluck(:id)
