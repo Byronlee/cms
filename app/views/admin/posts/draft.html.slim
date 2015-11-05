@@ -15,5 +15,5 @@
         th style="width:3%" 作者
     tbody
       - @posts.each do |post|
-        = render partial: "draft", locals:{post:post, link_to_reviewing:false, is_show_related_links: !["investor","investment_instiution","entrepreneur"].include?(current_user.role) }
+        = render partial: "draft", locals:{post:post, link_to_reviewing:false, is_show_related_links: !["investor","organization","entrepreneur"].include?(current_user.role) }
   = paginate @posts
