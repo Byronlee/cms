@@ -144,7 +144,7 @@ Rails.application.routes.draw do
 
   match '/current_user.json', to: 'users#current', via: :get
   match '/current_user_favorites.json', to: 'users#favorites', via: :get
-  match '/upadte_current_user.json', to: 'users#update_current', via: :put
+  match '/upadte_current_user.json', to: 'users#update_current', via: :post
   match '/cancel_favorites', to: 'users#cancel_favorites', via: :get
   match '/comments/excellents', :controller => 'comments', :action => 'execllents', via: :get
   match '/columns/:slug/feed', :controller => 'columns', :action => 'feed', via: :get, as: :column_feed, defaults: { format: :rss }
