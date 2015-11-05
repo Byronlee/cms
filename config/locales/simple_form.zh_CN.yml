@@ -81,6 +81,8 @@ zh-CN:
         id: 用户ID
         sso: 用户中心ID
         sso_id: 用户中心ID
+        rong_organization_id: 投资机构ID
+        rong_organization_name: 投资机构名称
       comment:
         content: 评论内容
       ad:

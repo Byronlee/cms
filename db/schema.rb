@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151104131624) do
+ActiveRecord::Schema.define(version: 20151105095608) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -216,8 +216,6 @@ ActiveRecord::Schema.define(version: 20151104131624) do
     t.integer  "favorites_count"
     t.string   "company_keywords",       default: [], array: true
     t.integer  "favoriter_sso_ids",      default: [], array: true
-    t.string   "column_name"
-    t.integer  "api_hits_count",         default: 0
     t.integer  "related_post_url_codes", default: [], array: true
     t.text     "seo_meta"
   end
@@ -301,6 +299,8 @@ ActiveRecord::Schema.define(version: 20151104131624) do
     t.integer  "favorites_count"
     t.text     "extra"
     t.string   "domain"
+    t.integer  "rong_organization_id"
+    t.string   "rong_organization_name"
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree

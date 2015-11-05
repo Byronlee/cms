@@ -28,6 +28,8 @@
 #  favorites_count                     :integer
 #  extra                               :text
 #  domain                              :string(255)
+#  rong_organization_id                :integer
+#  rong_organization_name              :string(255)
 #
 
 class User < ActiveRecord::Base
@@ -42,6 +44,7 @@ class User < ActiveRecord::Base
 
   validates_uniqueness_of :domain, :case_sensitive => false, if: -> { self.domain.present? }
   validates :tagline, length: { maximum: 500 }
+  # validates_presence_of :, :content, :url_code
 
   has_many :authentications, dependent: :destroy
   has_one :krypton_authentication, -> { where(provider: :krypton) }, class_name: Authentication.to_s, dependent: :destroy
@@ -55,8 +58,6 @@ class User < ActiveRecord::Base
   typed_store :extra do |s|
     s.string :admin_post_manage_session_path,  default: ''
     s.datetime :last_comment_at, default: Time.now
-    s.integer :rong_organization_id
-    s.string :rong_organization_name
   end
 
   before_save :ensure_authentication_token

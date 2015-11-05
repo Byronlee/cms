@@ -37,26 +37,13 @@
 
 javascript:
 
-  var organizations = [
-        {
-          "id": 57,
-          "logo": "http://krplus-pic.b0.upaiyun.com/org_logo/%E7%BA%A2%E6%9D%89%E8%B5%84%E6%9C%AC%E4%B8%AD%E5%9B%BD%E5%9F%BA%E9%87%91.jpg",
-          "name": "红杉资本"
-        },
-        {
-          "id": 2289,
-          "logo": "http://krplus-pic.b0.upaiyun.com/201506/30/b84b54987b4a43d11cce7210a4e8cf37.png",
-          "name": "红杉资本（海外）"
-        }
-      ]
-
-  $("#user_role").change(function(){
-     if($("#user_role").val() == 'organization'){
+  function check_rong_fileds(){
+    if($("#user_role").val() == 'organization'){
        $("#rong_organization").slideDown();
      }else{
        $("#rong_organization").slideUp();
      }
-  });
+  }
 
   function displaySuggestions(){
     var suggestList = $("ul#organization_suggestions");
@@ -64,17 +51,25 @@ javascript:
       suggestList.empty();
       suggestList.width($("#user_rong_organization_name").width());
 
-      // $.get("#{Settings.rong_api.organizations}?wd=" + $("#user_rong_organization_name").val(), function(result){
-        // $.each(result.data.data, function(index, org){
-        if(true){
-          $.each(organizations, function(index, org){
+      $.get("#{Settings.rong_api.organizations}?wd=" + $("#user_rong_organization_name").val(), function(result){
+        suggestList.empty();
+        if(result.data.data.length > 0){
+          $.each(result.data.data, function(index, org){
             suggestList.append("<li class='org_item' data-org-id='"+ org.id +"' data-org-name='"+ org.name +"'><img src='"+ org.logo +"' /><span data-org-id='"+ org.id +"'>" + org.name + "</span></li>");
           });
         }else{
             suggestList.append("<li><span>未找到匹配的投资机构</span></li>");
         }
-      //});
+      });
   }
+
+  $(document).ready(function(){
+    check_rong_fileds();
+  });
+
+  $("#user_role").change(function(){
+    check_rong_fileds();
+  });
 
   $("#user_rong_organization_name").keyup(function(){
     displaySuggestions();

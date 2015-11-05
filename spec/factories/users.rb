@@ -28,6 +28,8 @@
 #  favorites_count                     :integer
 #  extra                               :text
 #  domain                              :string(255)
+#  rong_organization_id                :integer
+#  rong_organization_name              :string(255)
 #
 
 FactoryGirl.define do
