@@ -10,7 +10,13 @@ class Admin::UsersController < Admin::BaseController
   def update
     @user.assign_attributes(user_params)
     valid = @user.role_changed? && @user.valid?
-    flash[:notice] = SyncRoleToWriterWorker.new.perform(@user.krypton_authentication.uid, params[:user][:role]) if @user.save && valid
+    if @user.save
+      if valid
+        flash[:notice] = SyncRoleToWriterWorker.new.perform(@user.krypton_authentication.uid, params[:user][:role]) if @user.save && valid
+      else
+        @user.save if @user.invoke_rong_organization_api == 'save_needed'
+      end
+    end
     ok_url = (can? :manage, User) ? admin_users_path : edit_admin_user_path(@user)
     respond_with @user, location: ok_url
   end
@@ -39,7 +45,7 @@ class Admin::UsersController < Admin::BaseController
     else
       domain = {}
     end
-    other = params.require(:user).permit(:tagline)
+    other = params.require(:user).permit(:tagline, :rong_organization_id, :rong_organization_name)
     other.merge(role).merge(domain)
   end
 

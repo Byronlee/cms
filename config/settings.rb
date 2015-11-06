@@ -152,6 +152,6 @@ settings.coop_newsflashes_rss = ['toutiao']
 settings.report_tip = '<p>“看完这篇还不够？如果你也在创业，并且希望自己的项目被报道，请<a href="http://chuang.36kr.com/report#/report/index" target="_blank">戳这里</a>告诉我>们！”</p>'
 settings.rong_api = {
   organizations: 'https://rong.36kr.com/api/suggest/institution',
-  organization_role: 'http://rong.36kr.com/api/wirter/role'
+  organization_role: 'http://rong.36kr.com/api/internal/hostsite/role'
 }
 

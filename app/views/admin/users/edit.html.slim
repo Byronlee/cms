@@ -22,7 +22,7 @@
         .control-group.suggestion style="display: none"
           .controls
             ul#organization_suggestions
-        = f.input :rong_organization_id, disabled: true, input_html: {value: @user.rong_organization_id, class: 'col-lg-12' }
+        = f.input :rong_organization_id, readonly: true, input_html: {value: @user.rong_organization_id, class: 'col-lg-12' }
       = f.input :name, disabled: true, input_html: {value: @user.display_name, class: 'col-lg-12' }
       = f.input :email, disabled: true, input_html: {class: 'col-lg-12'}
       = f.input :phone, disabled: true, input_html: {class: 'col-lg-12'}

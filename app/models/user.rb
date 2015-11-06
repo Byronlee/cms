@@ -44,7 +44,7 @@ class User < ActiveRecord::Base
 
   validates_uniqueness_of :domain, :case_sensitive => false, if: -> { self.domain.present? }
   validates :tagline, length: { maximum: 500 }
-  # validates_presence_of :, :content, :url_code
+  validates_presence_of :rong_organization_id, :rong_organization_name, if: -> { self.role == 'organization' }
 
   has_many :authentications, dependent: :destroy
   has_one :krypton_authentication, -> { where(provider: :krypton) }, class_name: Authentication.to_s, dependent: :destroy
@@ -63,6 +63,11 @@ class User < ActiveRecord::Base
   before_save :ensure_authentication_token
   def ensure_authentication_token
     self.authentication_token ||= generate_authentication_token
+  end
+
+  before_save :sync_rong_organization
+  def sync_rong_organization
+    invoke_rong_organization_api if self.role_changed?
   end
 
   def apply_omniauth(omniauth)
@@ -161,6 +166,37 @@ class User < ActiveRecord::Base
 
   def can_comment?
     dist_time_from_next_comment <= 0
+  end
+
+  def invoke_rong_organization_api
+    if self.role == "organization"
+      params = { krId: self.sso_id, orgId: self.rong_organization_id }
+      response = Faraday.send(:post, Settings.rong_api.organization_role, params)
+      unless response.success?
+        logger.error response
+        msg = response.body rescue '' unless response.success?
+        errors.add(:rong_organization_name, "融资平台角色信息同步失败:#{msg}")
+      else
+        logger.info "融资平台角色信息添加成功： #{JSON.parse response.body}"
+      end
+
+      return "save_no_needed"
+    elsif self.rong_organization_id.present?
+      params = { krId: self.sso_id}
+      response = Faraday.send(:delete, Settings.rong_api.organization_role, params)
+      unless response.success?
+        logger.error response
+        msg = response.body rescue '' unless response.success?
+        errors.add(:rong_organization_name, "融资平台角色信息同步失败#{msg}")
+      else
+        logger.info "融资平台角色信息删除成功： #{JSON.parse response.body}"
+      end
+
+      self.rong_organization_id = nil
+      self.rong_organization_name = nil
+
+      return "save_needed"
+    end
   end
 
   protected
