@@ -169,7 +169,7 @@ class User < ActiveRecord::Base
   end
 
   def invoke_rong_organization_api
-    if self.role != 'reader'
+    if !['reader', 'operator'].include?(self.role)
       params = { krId: self.sso_id, role: rong_role}
       params[:orgId] = self.rong_organization_id if self.role == "organization"
       response = Faraday.send(:post, Settings.rong_api.organization_role, params)
@@ -218,6 +218,5 @@ class User < ActiveRecord::Base
   def rong_role
     return self.role.upcase if ['investor', 'organization', 'entrepreneur'].include? self.role
     return 'WRITER'
-
   end
 end
