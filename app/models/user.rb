@@ -172,6 +172,7 @@ class User < ActiveRecord::Base
     if !['reader', 'operator'].include?(self.role)
       params = { krId: self.sso_id, role: rong_role}
       params[:orgId] = self.rong_organization_id if self.role == "organization"
+      params[:md5] = rong_key
       response = Faraday.send(:post, Settings.rong_api.organization_role, params)
       unless response.success?
         logger.error response
@@ -184,6 +185,7 @@ class User < ActiveRecord::Base
       return "save_no_needed"
     else
       params = { krId: self.sso_id}
+      params[:md5] = rong_key
       response = Faraday.send(:delete, Settings.rong_api.organization_role, params)
       unless response.success?
         logger.error response
@@ -213,6 +215,11 @@ class User < ActiveRecord::Base
       token = Devise.friendly_token
       break token unless User.where(authentication_token: token).first
     end
+  end
+
+  def rong_key
+    hash_key = "api_key=#{Settings.rong_api.api_key}&krId=#{self.sso_id}&role=#{rong_role}"
+    Digest::MD5.hexdigest(hash_key).downcase
   end
 
   def rong_role
