@@ -42,9 +42,21 @@ javascript:
     });
   }
 
+ function autoRefresh(){
+    $(".auto-refresh-btn").click(function(){
+        if( $(this).hasClass("active")){
+          change_switch_state('on')
+          $(this).removeClass("active").children().addClass("current");
+        }else{
+          change_switch_state('off')
+          $(this).addClass("active").children().removeClass("current");
+        }
+    })
+  }
+    autoRefresh();
+
   var timing_switch = "#{current_user.timing_switch}";
   /*timing_switch = 'on'*/
-  console.log(timing_switch);
   if (timing_switch == 'on'){
     if (!#{params[:b_id].present? || params[:share_id].present?})
       setInterval("loadingLatest()", #{Settings.newsflash_interval});
