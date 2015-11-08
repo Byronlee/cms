@@ -49,9 +49,20 @@ class UsersController < ApplicationController
   end
 
   def update_current
+    binding.pry
     current_user.domain = params[:domain] if params[:domain].present? && current_user.domain.blank?
     current_user.tagline = params[:tagline] if params[:tagline].present?
-    current_user.save if current_user.changed?
-    render json: {result: 'success'}.to_json
+    if current_user.changed?
+      if current_user.save
+        render json: {result: 'success'}.to_json
+      else
+        render json: {
+          result: 'error',
+          message: current_user.errors.messages.map{|column, emsg| "#{column} #{emsg.first}"}
+        }.to_json
+      end
+    else
+      render json: {result: 'success'}.to_json
+    end
   end
 end
