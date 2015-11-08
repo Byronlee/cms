@@ -178,6 +178,9 @@ class User < ActiveRecord::Base
       else
         hash_key = "api_key=#{Settings.rong_api.api_key}&krId=#{self.krypton_authentication.uid}&role=#{rong_role}"
         params[:md5] = rong_key(hash_key)
+
+        self.rong_organization_id = nil
+        self.rong_organization_name = nil
       end
       response = Faraday.send(:post, Settings.rong_api.organization_role, params)
       unless response.success?
