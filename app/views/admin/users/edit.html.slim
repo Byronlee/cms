@@ -80,10 +80,11 @@ javascript:
   });
 
   $("#user_rong_organization_name").blur(function(){
-    $("div.suggestion").fadeOut(50);
+    setTimeout(function(){$("div.suggestion").fadeOut(50)},200);
   });
 
-  $("ul#organization_suggestions").delegate("li.org_item", "click", function(){
+  $("ul#organization_suggestions").delegate("li.org_item", "click", function(e){
+    e.preventDefault();
     $("#user_rong_organization_name").val($(this).data("org-name"));
     $("#user_rong_organization_id").val($(this).data("org-id"));
     $("div.suggestion").fadeOut(50);
