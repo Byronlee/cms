@@ -2820,6 +2820,7 @@ body {
 /* line 176, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
 .fixed-tools .reading-open {
   padding: 10px;
+  border-bottom: none;
 }
 /* line 178, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/components/footer.less */
 .fixed-tools .reading-open span {
