@@ -299,9 +299,9 @@ ActiveRecord::Schema.define(version: 20151105095608) do
     t.integer  "favorites_count"
     t.text     "extra"
     t.string   "domain"
+    t.string   "timing_switch",                       default: "on"
     t.integer  "rong_organization_id"
     t.string   "rong_organization_name"
-    t.string   "timing_switch",                       default: "on"
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree
