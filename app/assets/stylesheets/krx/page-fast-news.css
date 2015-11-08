@@ -1779,6 +1779,7 @@ a:hover {
   color: #666;
   font-size: 13px;
   line-height: 22px;
+  height: 40px;
   background-color: #f9f9f9;
 }
 /* line 311, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
