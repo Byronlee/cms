@@ -169,8 +169,9 @@ class User < ActiveRecord::Base
   end
 
   def invoke_rong_organization_api
-    if self.role == "organization"
-      params = { krId: self.sso_id, orgId: self.rong_organization_id }
+    if self.role != 'reader'
+      params = { krId: self.sso_id, role: rong_role}
+      params[:orgId] = self.rong_organization_id if self.role == "organization"
       response = Faraday.send(:post, Settings.rong_api.organization_role, params)
       unless response.success?
         logger.error response
@@ -181,7 +182,7 @@ class User < ActiveRecord::Base
       end
 
       return "save_no_needed"
-    elsif self.rong_organization_id.present?
+    else
       params = { krId: self.sso_id}
       response = Faraday.send(:delete, Settings.rong_api.organization_role, params)
       unless response.success?
@@ -212,5 +213,11 @@ class User < ActiveRecord::Base
       token = Devise.friendly_token
       break token unless User.where(authentication_token: token).first
     end
+  end
+
+  def rong_role
+    return self.role.upcase if ['investor', 'organization', 'entrepreneur'].include? self.role
+    return 'WRITER'
+
   end
 end
