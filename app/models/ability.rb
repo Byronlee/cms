@@ -24,6 +24,7 @@ class Ability
     anonymous
     return unless user
     can :create, Comment unless user.muted?
+    can :update_current, User, :id => user.id
   end
 
   # 管理界面权限
@@ -106,6 +107,7 @@ class Ability
   # 编辑
   def editor(user)
     can :read, :dashboard
+    can :read, :dashboard_resource
     can :manage, Post
     can :manage, RelatedLink
     can :manage, Newsflash
@@ -116,6 +118,45 @@ class Ability
     can :manage, Page
     can [:change_author], Post
     cannot :toggle_tag, Post
+  end
+
+  # 投资人
+  def investor(user)
+    cannot :manage, Column
+    cannot :manage, RelatedLink
+    can :read, :dashboard
+    can [:new, :myown], Post
+    can [:read, :column, :reviewings], Post, :id => user.posts.pluck(:id)
+    can [:update, :edit, :preview], Post, :id => user.posts.reviewing.pluck(:id)
+    can :manage, Post, :id => user.posts.drafted.pluck(:id)
+    cannot [:toggle_tag, :article_toggle_tag], Post
+    cannot :toggle_tag, Newsflash
+  end
+
+  # 投资机构
+  def organization(user)
+    cannot :manage, Column
+    cannot :manage, RelatedLink
+    can :read, :dashboard
+    can [:new, :myown], Post
+    can [:read, :column, :reviewings], Post, :id => user.posts.pluck(:id)
+    can [:update, :edit, :preview], Post, :id => user.posts.reviewing.pluck(:id)
+    can :manage, Post, :id => user.posts.drafted.pluck(:id)
+    cannot [:toggle_tag, :article_toggle_tag], Post
+    cannot :toggle_tag, Newsflash
+  end
+
+  # 创业者
+  def entrepreneur(user)
+    cannot :manage, Column
+    cannot :manage, RelatedLink
+    can :read, :dashboard
+    can [:new, :myown], Post
+    can [:read, :column, :reviewings], Post, :id => user.posts.pluck(:id)
+    can [:update, :edit, :preview], Post, :id => user.posts.reviewing.pluck(:id)
+    can :manage, Post, :id => user.posts.drafted.pluck(:id)
+    cannot [:toggle_tag, :article_toggle_tag], Post
+    cannot :toggle_tag, Newsflash
   end
 
   # 管理员

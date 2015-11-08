@@ -28,7 +28,9 @@
 #  favorites_count                     :integer
 #  extra                               :text
 #  domain                              :string(255)
-#
+#  rong_organization_id                :integer
+#  rong_organization_name              :string(255)
+#  timing_switch                       :string(255)      default("on")
 
 class User < ActiveRecord::Base
   extend Enumerize
@@ -42,6 +44,7 @@ class User < ActiveRecord::Base
 
   validates_uniqueness_of :domain, :case_sensitive => false, if: -> { self.domain.present? }
   validates :tagline, length: { maximum: 500 }
+  validates_presence_of :rong_organization_id, :rong_organization_name, if: -> { self.role == 'organization' }
 
   has_many :authentications, dependent: :destroy
   has_one :krypton_authentication, -> { where(provider: :krypton) }, class_name: Authentication.to_s, dependent: :destroy
@@ -50,7 +53,7 @@ class User < ActiveRecord::Base
   has_many :favorites
   has_many :related_links
 
-  scope :recent_editor, -> { where(role: [:operator, :writer, :editor, :admin, :contributor, :column_writer]).order('updated_at desc') }
+  scope :recent_editor, -> { where(role: [:operator, :writer, :editor, :admin, :contributor, :column_writer, :investor, :organization, :entrepreneur]).order('updated_at desc') }
 
   typed_store :extra do |s|
     s.string :admin_post_manage_session_path,  default: ''
@@ -60,6 +63,11 @@ class User < ActiveRecord::Base
   before_save :ensure_authentication_token
   def ensure_authentication_token
     self.authentication_token ||= generate_authentication_token
+  end
+
+  before_save :sync_rong_organization
+  def sync_rong_organization
+    invoke_rong_organization_api if self.role_changed?
   end
 
   def apply_omniauth(omniauth)
@@ -160,6 +168,50 @@ class User < ActiveRecord::Base
     dist_time_from_next_comment <= 0
   end
 
+  def invoke_rong_organization_api
+    if !['reader', 'operator'].include?(self.role)
+      params = { krId: self.krypton_authentication.uid, role: rong_role}
+      if self.role == "organization"
+        params[:orgId] = self.rong_organization_id
+        hash_key = "api_key=#{Settings.rong_api.api_key}&krId=#{self.krypton_authentication.uid}&orgId=#{params[:orgId]}&role=#{rong_role}"
+        params[:md5] = rong_key(hash_key)
+      else
+        hash_key = "api_key=#{Settings.rong_api.api_key}&krId=#{self.krypton_authentication.uid}&role=#{rong_role}"
+        params[:md5] = rong_key(hash_key)
+
+        self.rong_organization_id = nil
+        self.rong_organization_name = nil
+      end
+      response = Faraday.send(:post, Settings.rong_api.organization_role, params)
+      unless response.success?
+        logger.error response
+        msg = response.body rescue '' unless response.success?
+        errors.add(:rong_organization_name, "融资平台角色信息同步失败:#{msg}")
+      else
+        logger.info "融资平台角色信息添加成功： #{JSON.parse response.body}"
+      end
+
+      return "save_no_needed"
+    else
+      params = { krId: self.krypton_authentication.uid}
+      hash_key = "api_key=#{Settings.rong_api.api_key}&krId=#{self.krypton_authentication.uid}"
+      params[:md5] = rong_key(hash_key)
+      response = Faraday.send(:delete, Settings.rong_api.organization_role, params)
+      unless response.success?
+        logger.error response
+        msg = response.body rescue '' unless response.success?
+        errors.add(:rong_organization_name, "融资平台角色信息同步失败#{msg}")
+      else
+        logger.info "融资平台角色信息删除成功： #{JSON.parse response.body}"
+      end
+
+      self.rong_organization_id = nil
+      self.rong_organization_name = nil
+
+      return "save_needed"
+    end
+  end
+
   protected
 
   def email_required?
@@ -173,5 +225,14 @@ class User < ActiveRecord::Base
       token = Devise.friendly_token
       break token unless User.where(authentication_token: token).first
     end
+  end
+
+  def rong_key(hash_key)
+    Digest::MD5.hexdigest(hash_key).downcase
+  end
+
+  def rong_role
+    return self.role.upcase if ['investor', 'organization', 'entrepreneur'].include? self.role
+    return 'WRITER'
   end
 end

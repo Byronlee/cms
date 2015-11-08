@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151027023317) do
+ActiveRecord::Schema.define(version: 20151105095608) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -122,9 +122,9 @@ ActiveRecord::Schema.define(version: 20151027023317) do
     t.integer  "url_code"
     t.string   "state"
     t.string   "section"
+    t.boolean  "hidden_title"
     t.text     "display_position"
     t.text     "summary"
-    t.boolean  "hidden_title"
     t.string   "section_text"
   end
 
@@ -175,6 +175,7 @@ ActiveRecord::Schema.define(version: 20151027023317) do
     t.text     "extra"
     t.boolean  "display_in_infoflow"
     t.boolean  "pin",                                   default: false
+    t.string   "catch_title"
   end
 
   add_index "newsflashes", ["created_at"], name: "index_newsflashes_on_created_at", using: :btree
@@ -215,8 +216,6 @@ ActiveRecord::Schema.define(version: 20151027023317) do
     t.integer  "favorites_count"
     t.string   "company_keywords",       default: [], array: true
     t.integer  "favoriter_sso_ids",      default: [], array: true
-    t.string   "column_name"
-    t.integer  "api_hits_count",         default: 0
     t.integer  "related_post_url_codes", default: [], array: true
     t.text     "seo_meta"
   end
@@ -277,11 +276,11 @@ ActiveRecord::Schema.define(version: 20151027023317) do
   create_table "users", force: true do |t|
     t.string   "email"
     t.string   "phone"
-    t.string   "encrypted_password",                  default: "", null: false
+    t.string   "encrypted_password",                  default: "",   null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                       default: 0,  null: false
+    t.integer  "sign_in_count",                       default: 0,    null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -300,6 +299,9 @@ ActiveRecord::Schema.define(version: 20151027023317) do
     t.integer  "favorites_count"
     t.text     "extra"
     t.string   "domain"
+    t.integer  "rong_organization_id"
+    t.string   "rong_organization_name"
+    t.string   "timing_switch",                       default: "on"
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree

@@ -33,8 +33,38 @@ javascript:
       $('.timeago').timeago();//数据轮询后刷新相对时间
     })
   }
-  if (!#{params[:b_id].present? || params[:share_id].present?})
-    setInterval("loadingLatest()", #{Settings.newsflash_interval});
+
+  var timing_switch = "#{current_user.timing_switch}";
+  var clear_num = 0;
+  /*timing_switch = 'on'*/
+  if (timing_switch == 'on'){
+    if (!#{params[:b_id].present? || params[:share_id].present?})
+      clear_num = setInterval("loadingLatest()", #{Settings.newsflash_interval});
+  }
+
+  function change_switch_state(state){
+    $.post('/newsflashes/change_switch_state',{
+        "state": state
+    }, function(result) {
+
+    });
+  }
+
+ function autoRefresh(clear_num){
+    $(".auto-refresh-btn").click(function(){
+        if( $(this).hasClass("active")){
+          change_switch_state('on')
+          if (!#{params[:b_id].present? || params[:share_id].present?})
+            clear_num = setInterval("loadingLatest()", #{Settings.newsflash_interval});
+          $(this).removeClass("active").children().addClass("current");
+        }else{
+          change_switch_state('off')
+          clearInterval(clear_num)
+          $(this).addClass("active").children().removeClass("current");
+        }
+    })
+  }
+    autoRefresh(clear_num);
 
   if (#{params[:share_id].present?})
     $(document).ready(function () {

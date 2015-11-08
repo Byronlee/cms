@@ -28,6 +28,12 @@ describe Admin::NewsflashesController do
       patch :update, id: newsflash.id, newsflash: attributes_for(:newsflash).merge(tag_list: '_newsflash')
       expect(response.status).to eq 302
     end
+
+    it "returns catch_title too log when length larger than 18 character" do
+      patch :update, id: newsflash.id, newsflash: attributes_for(:newsflash).merge(tag_list: '_newsflash', catch_title: 'a' * 19)
+      assigns(:newsflash).errors.empty?.should_not be_true
+      assigns(:newsflash).errors[:catch_title].first.should match(/过长/)
+    end
   end
 
   describe "post 'create'" do
@@ -35,6 +41,12 @@ describe Admin::NewsflashesController do
       expect do
         post :create, newsflash: attributes_for(:newsflash).merge(tag_list: '_newsflash')
       end.to change(Newsflash, :count).by(1)
+    end
+
+    it "returns catch_title too log when length larger than 18 character" do
+      post :create, newsflash: attributes_for(:newsflash).merge(tag_list: '_newsflash', catch_title: 'a' * 19)
+      assigns(:newsflash).errors.empty?.should_not be_true
+      assigns(:newsflash).errors[:catch_title].first.should match(/过长/)
     end
   end
 

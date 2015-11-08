@@ -66,8 +66,8 @@ settings.next = {
   collection_api: 'https://next.36kr.com/api/v1/posts/collections'
 }
 
-# 读者, 运营, 作者, 编辑, 管理员, 投稿, 专栏作者
-settings.roles =  [:reader, :operator, :writer, :editor, :admin, :contributor, :column_writer]
+# 读者, 运营, 作者, 编辑, 管理员, 投稿, 专栏作者, 投资人, 投资机构, 创业者
+settings.roles =  [:reader, :operator, :writer, :editor, :admin, :contributor, :column_writer, :investor, :organization, :entrepreneur]
 settings.user_search_support = [['角色', 'role'], ['ID', 'id'], ['姓名', 'name'], ['电话', 'phone'], ['邮件', 'email'], ['sso_id', 'sso_id']]
 settings.editable_roles =  [:operator, :writer, :editor, :admin]
 
@@ -150,3 +150,9 @@ settings.coop_rss = ['toutiao','yidian','liebao']
 settings.coop_newsflashes_rss = ['toutiao']
 
 settings.report_tip = '<p>“看完这篇还不够？如果你也在创业，并且希望自己的项目被报道，请<a href="http://chuang.36kr.com/report#/report/index" target="_blank">戳这里</a>告诉我>们！”</p>'
+settings.rong_api = {
+  organizations: 'https://rong.36kr.com/api/suggest/institution',
+  organization_role: 'http://rong.36kr.com/api/backend/hostsite/role',
+  api_key: '560e36f8bbc6614253acd633'
+}
+

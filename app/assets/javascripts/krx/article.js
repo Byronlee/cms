@@ -73,7 +73,7 @@ $(document).ready(function(){
   // *************************Begin无缝加载********************************
   // 隐藏footer
   $('.common-footer').hide();
-  var readingDom = '<a href=" " class="reading-open">'
+  var readingDom = '<a href=" " class="reading-open" data-stat-click="Wenzhang.chenjinyuedu.click">'
               + '<span></span>'
               + '<span></span>'
               + '<span></span>'

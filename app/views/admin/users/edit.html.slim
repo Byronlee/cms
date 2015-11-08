@@ -17,15 +17,78 @@
           = f.label :role
           div.controls
             = f.select :role, User.role.options
+      div#rong_organization style="display: none"
+        = f.input :rong_organization_name, input_html: {value: @user.rong_organization_name, class: 'col-lg-12', autocomplete: 'off' }
+        .control-group.suggestion style="display: none"
+          .controls
+            ul#organization_suggestions
+        = f.input :rong_organization_id, readonly: true, input_html: {value: @user.rong_organization_id, class: 'col-lg-12' }
       = f.input :name, disabled: true, input_html: {value: @user.display_name, class: 'col-lg-12' }
       = f.input :email, disabled: true, input_html: {class: 'col-lg-12'}
       = f.input :phone, disabled: true, input_html: {class: 'col-lg-12'}
       = f.input :tagline, input_html: {class: 'col-lg-12'}
-      div#user_domain_input style="display: #{ current_user.role.admin? ? 'block' : 'none' } "
+      - if current_user.role.admin?
         = f.input :domain, input_html: {class: 'col-lg-12'}
+      - else
+        = f.input :domain, disabled: true, input_html: {class: 'col-lg-12'}
       = f.input :id, disabled: true, input_html: {class: 'col-lg-12'}
       = f.input :sso_id, disabled: true, input_html: { value: @user.krypton_authentication && @user.krypton_authentication.uid, class: 'col-lg-12' }
       div.form-actions
         = f.button :submit, data: { disable_with: "Submitting..." }, class:"btn btn-primary"
 
+
+javascript:
+
+  function check_rong_fileds(){
+    if($("#user_role").val() == 'organization'){
+       $("#rong_organization").slideDown();
+     }else{
+       $("#rong_organization").slideUp();
+     }
+  }
+
+  function displaySuggestions(){
+    var suggestList = $("ul#organization_suggestions");
+      $("div.suggestion").slideDown(200);
+      suggestList.empty();
+      suggestList.width($("#user_rong_organization_name").width());
+
+      $.get("#{Settings.rong_api.organizations}?wd=" + $("#user_rong_organization_name").val(), function(result){
+        suggestList.empty();
+        if(result.data.data.length > 0){
+          $.each(result.data.data, function(index, org){
+            suggestList.append("<li class='org_item' data-org-id='"+ org.id +"' data-org-name='"+ org.name +"'><img src='"+ org.logo +"' /><span data-org-id='"+ org.id +"'>" + org.name + "</span></li>");
+          });
+        }else{
+            suggestList.append("<li><span>未找到匹配的投资机构</span></li>");
+        }
+      });
+  }
+
+  $(document).ready(function(){
+    check_rong_fileds();
+  });
+
+  $("#user_role").change(function(){
+    check_rong_fileds();
+  });
+
+  $("#user_rong_organization_name").keyup(function(){
+    displaySuggestions();
+  });
+
+  $("#user_rong_organization_name").focus(function(){
+    displaySuggestions();
+  });
+
+  $("#user_rong_organization_name").blur(function(){
+    setTimeout(function(){$("div.suggestion").fadeOut(50)},200);
+  });
+
+  $("ul#organization_suggestions").delegate("li.org_item", "click", function(e){
+    e.preventDefault();
+    $("#user_rong_organization_name").val($(this).data("org-name"));
+    $("#user_rong_organization_id").val($(this).data("org-id"));
+    $("div.suggestion").fadeOut(50);
+  });
 

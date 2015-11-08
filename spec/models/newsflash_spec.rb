@@ -20,6 +20,7 @@
 #  extra                    :text
 #  display_in_infoflow      :boolean
 #  pin                      :boolean          default(FALSE)
+#  catch_title              :string(255)
 #
 
 require 'spec_helper'

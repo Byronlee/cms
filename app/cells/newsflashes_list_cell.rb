@@ -1,6 +1,8 @@
 class NewsflashesListCell < Cell::Rails
   helper ApplicationHelper
   helper NewsflashHelper
+  include Devise::Controllers::Helpers
+  helper_method :current_user
 
   def header(args)
     @columns = args[:columns]

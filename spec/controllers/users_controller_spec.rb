@@ -29,6 +29,26 @@ describe UsersController do
     end
   end
 
+  describe "update 'update_current'" do
+    context 'current user is nil' do
+      it do
+        put 'update_current'
+        expect(response).to redirect_to 'http://test.host/users/sign_in'
+      end
+    end
+
+    context 'current user is valid' do
+      login_admin_user
+
+      it do
+        tagline = 'hi, i am chad'
+        put 'update_current', tagline: tagline
+        expect(session_user.reload.tagline).to eq tagline
+        response.should be_success
+      end
+    end
+  end
+
   describe "GET 'cancel_favorites'" do
     login_admin_user
     context 'no favorites' do

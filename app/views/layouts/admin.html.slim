@@ -27,6 +27,7 @@ html lang="en"
           = link_to "← 返回", root_path
           | &nbsp;&nbsp;
           = current_user.display_name
+          |[#{current_user.role_text}]
           | &nbsp;&nbsp;
           = link_to "注销", destroy_user_session_path, method: :delete
     .container

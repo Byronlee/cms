@@ -548,3 +548,49 @@ table tr{
   top: 0;
   background-color: #fff;
 }
+
+
+.suggestion{
+  margin-top: -20px;
+  margin-bottom: 20px;
+
+  ul{
+    list-style: none;padding: 0;
+    border: 1px solid rgba(82, 168, 236, 0.8);
+    padding: 5px;
+    position: absolute;
+    background-color: #fff;
+    width: 500px;
+    z-index: 1000;
+
+    li{
+       position: relative;
+       line-height: 30px;
+       cursor: pointer;
+       height: 30px;
+
+       img{
+         max-width: 100px;
+         max-height: 30px;
+       }
+       span{
+         font-size: 12px;
+         left: 110px;
+         position: absolute;
+         line-height: 30px;
+       }
+
+      &:hover{
+        &:after{
+            background-color: rgba(82, 168, 236, 0.8);
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            content: '';
+            left: 0;
+            opacity: 0.3;
+        }
+      }
+    }
+  }
+}

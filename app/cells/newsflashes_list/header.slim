@@ -35,8 +35,9 @@ header.time-line-header
         div
           input type="text" name="q" placeholder="关键字" value="#{params[:q]}"
           button data-stat-click = "sousuo.click"
-- if [:q, :pin, :column_slug, :tag].collect {|p| eval "params['#{p}'].present?"}.any?
-  .tools
+/ - if [:q, :pin, :column_slug, :tag].collect {|p| eval "params['#{p}'].present?"}.any?
+.tools
+  - if [:q, :pin, :column_slug, :tag].collect {|p| eval "params['#{p}'].present?"}.any?
     span
       | 查看条件：
     span.search-express
@@ -50,3 +51,12 @@ header.time-line-header
     span.line
     a.clear-btn[href=newsflashes_list_path data-stat-click = "qingkongtiaojian.click"]
       | 清空条件
+  .auto-refresh-box
+    span
+      | 自动刷新
+    - if current_user.timing_switch == 'off'
+      .auto-refresh-btn.active
+        i
+    - else
+      .auto-refresh-btn
+        i.current

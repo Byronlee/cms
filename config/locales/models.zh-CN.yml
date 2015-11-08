@@ -15,10 +15,14 @@ zh-CN:
         admin: 管理员
         contributor: 新人作者
         column_writer: 专栏作者
+        investor: 投资人
+        organization: 投资机构
+        entrepreneur: 创业者
     head_line:
       display_position:
         normal: 普通展位
         next: NEXT展位
+        top: Feed展位
       hidden_title:
         true: 隐藏
         false: 不隐藏

@@ -42,7 +42,7 @@ jQuery ->
     return
 
   $(window).scroll ->
-    if $(document).scrollTop() > $('.comments-batch-toolbar-boundary').offset().top
+    if $('.comments-batch-toolbar-boundary').offset() && $(document).scrollTop() > $('.comments-batch-toolbar-boundary').offset().top
       $('.comments-batch-toolbar').addClass 'position-fixed'
       $('.comments-batch-toolbar').width $('table.table-comments').width()
     else

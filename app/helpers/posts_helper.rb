@@ -24,7 +24,7 @@ module PostsHelper
     image = if cover.blank?
               cover
             else
-              "<a href='#{youku_url[0]}' target='_blank'>
+              "<a href='#{youku_url[0] if youku_url}' target='_blank'>
                 <img src='#{cover}' width='740px' height='498px'>
               </a>"
             end

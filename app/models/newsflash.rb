@@ -20,6 +20,7 @@
 #  extra                    :text
 #  display_in_infoflow      :boolean
 #  pin                      :boolean          default(FALSE)
+#  catch_title              :string(255)
 #
 
 class Newsflash < ActiveRecord::Base
@@ -27,7 +28,7 @@ class Newsflash < ActiveRecord::Base
   include Tire::Model::Callbacks if Settings.elasticsearch.auto_index
 
   validates_presence_of :hash_title
-
+  validates :catch_title, length: { maximum: 18 }, if: -> { self.fast_type == 'newsflash' }
   validates :description_text, length: { maximum: 500 }
 
   belongs_to :author, class_name: User.to_s, foreign_key: 'user_id'

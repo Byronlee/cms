@@ -1779,6 +1779,7 @@ a:hover {
   color: #666;
   font-size: 13px;
   line-height: 22px;
+  height: 40px;
   background-color: #f9f9f9;
 }
 /* line 311, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
@@ -1809,6 +1810,56 @@ a:hover {
 .article-detail-wrap .main-section .tools .clear-btn {
   background: none;
   padding: 0;
+}
+.article-detail-wrap .main-section .tools .auto-refresh-box {
+  float: right;
+  height: auto;
+}
+@media (max-width: 480px) {
+  /* line 340, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+  .article-detail-wrap .main-section .tools .auto-refresh-box {
+    display: none;
+  }
+}
+/* line 339, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+.article-detail-wrap .main-section .tools .auto-refresh-box span {
+  float: left;
+  margin: 1px 10px 0 0;
+}
+/* line 343, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+.article-detail-wrap .main-section .tools .auto-refresh-box .auto-refresh-btn {
+  width: 36px;
+  height: 20px;
+  border-radius: 20px;
+  background: #7ccd66;
+  display: inline-block;
+  position: relative;
+}
+/* line 350, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+.article-detail-wrap .main-section .tools .auto-refresh-box .auto-refresh-btn:hover {
+  cursor: pointer;
+}
+/* line 353, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+.article-detail-wrap .main-section .tools .auto-refresh-box .auto-refresh-btn i {
+  position: absolute;
+  top: 2px;
+  display: block;
+  height: 16px;
+  width: 16px;
+  border-radius: 20px;
+  background: #fff;
+}
+/* line 362, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+.article-detail-wrap .main-section .tools .auto-refresh-box .auto-refresh-btn i.current {
+  left: 2px;
+}
+/* line 366, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+.article-detail-wrap .main-section .tools .auto-refresh-box .auto-refresh-btn.active {
+  background: #e8e8e8;
+}
+/* line 368, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
+.article-detail-wrap .main-section .tools .auto-refresh-box .auto-refresh-btn.active i {
+  right: 2px;
 }
 /* line 338, /data/jenkins/workspace/fe-36kr-deploy-for ruby/src/styles/page-fast-news.less */
 .article-detail-wrap .main-section .fase-time-line {

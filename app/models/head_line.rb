@@ -28,7 +28,7 @@ class HeadLine < ActiveRecord::Base
   paginates_per 20
   extend Enumerize
 
-  enumerize :display_position, in: [:normal, :next], default: :next
+  enumerize :display_position, in: [:normal, :next, :top], default: :next
 
   validates :url, :title, presence: true
   validates_uniqueness_of :url
@@ -40,6 +40,7 @@ class HeadLine < ActiveRecord::Base
   scope :archived, -> { where(state: :archived) }
   scope :normal, -> { where(display_position: [:normal, :nil]) }
   scope :next, -> { where(display_position: :next) }
+  scope :top, -> {where(display_position: :top)}
   scope :recent, -> { order(updated_at: :desc) }
   scope :weight, -> { order('order_num desc nulls last') }
   scope :related, -> { includes(user: :krypton_authentication)}
