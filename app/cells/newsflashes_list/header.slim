@@ -54,7 +54,7 @@ header.time-line-header
   .auto-refresh-box
     span
       | 自动刷新
-    - if current_user.timing_switch == 'off'
+    - if current_user && current_user.timing_switch == 'off'
       .auto-refresh-btn.active
         i
     - else

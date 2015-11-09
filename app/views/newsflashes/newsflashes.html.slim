@@ -34,7 +34,7 @@ javascript:
     })
   }
 
-  var timing_switch = "#{current_user.timing_switch}";
+  var timing_switch = "#{current_user.present? ? current_user.timing_switch : 'on'}";
   var clear_num = 0;
   /*timing_switch = 'on'*/
   if (timing_switch == 'on'){
