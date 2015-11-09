@@ -49,12 +49,15 @@ javascript:
 
   function displaySuggestions(){
     var suggestList = $("ul#organization_suggestions");
-      $("div.suggestion").slideDown(200);
-      suggestList.empty();
-      suggestList.width($("#user_rong_organization_name").width());
+    var word = $("#user_rong_organization_name").val();
+    suggestList.empty();
+    suggestList.width($("#user_rong_organization_name").width());
 
-      $.get("#{Settings.rong_api.organizations}?wd=" + $("#user_rong_organization_name").val(), function(result){
-        suggestList.empty();
+    if(!word){
+      $("div.suggestion").fadeOut(20);
+    }else{
+      $.get("#{Settings.rong_api.organizations}?wd=" + word, function(result){
+        $("div.suggestion").slideDown(200);
         if(result.data.data.length > 0){
           $.each(result.data.data, function(index, org){
             suggestList.append("<li class='org_item' data-org-id='"+ org.id +"' data-org-name='"+ org.name +"'><img src='"+ org.logo +"' /><span data-org-id='"+ org.id +"'>" + org.name + "</span></li>");
@@ -63,6 +66,7 @@ javascript:
             suggestList.append("<li><span>未找到匹配的投资机构</span></li>");
         }
       });
+    }
   }
 
   $(document).ready(function(){
