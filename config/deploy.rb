@@ -18,9 +18,10 @@ set :linked_files, %w{
   config/sidekiq.yml
   config/settings.rb
   config/settings.local.rb
-  config/unicorn/production.rb
   config/secrets.yml
 }
+
+# config/unicorn/production.rb
 
 set :linked_dirs, %w{log tmp/pids tmp/logs tmp/cache tmp/sockets public/uploads}
 
@@ -29,12 +30,15 @@ set :keep_releases, 8
 namespace :deploy do
 
   desc "serurely manages database config file after deploy"
-  task :setup_config do
+  task :setup do
     on roles(:web) do |host|
       execute :mkdir, "-p #{deploy_to}/shared/config"
-      upload! "config/config.yml.sample", "#{deploy_to}/shared/config/config.yml"
-      upload! "config/database.yml.sample", "#{deploy_to}/shared/config/database.yml"
-      upload! "config/secrets.yml.sample", "#{deploy_to}/shared/config/secrets.yml"
+      upload! "config/settings.rb", "#{deploy_to}/shared/config/settings.rb"
+      upload! "config/settings.local.rb", "#{deploy_to}/shared/config/settings.local.rb"
+      upload! "config/database.yml", "#{deploy_to}/shared/config/database.yml"
+      upload! "config/secrets.yml", "#{deploy_to}/shared/config/secrets.yml"
+      upload! "config/redis.yml", "#{deploy_to}/shared/config/redis.yml"
+      upload! "config/sidekiq.yml", "#{deploy_to}/shared/config/sidekiq.yml"
     end
   end
 
