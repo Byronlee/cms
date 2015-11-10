@@ -36,8 +36,6 @@ module PostsHelper
 
   def post_content_format(content, title)
     content = sanitize_tags(content)
-    content = remove_blank_lines(content)
-    content = remove_control_character(content)
     content = load_image_lazy(content)
     content = href_add_ref_nofollow content
     content = force_image_alt_to_post_title(content, title)
@@ -75,7 +73,8 @@ module PostsHelper
     text = text.gsub(/<title>.+?<\/title>/, "")
     tags = %w(a p br hr i em u strong iframe embed blockquote img h1 h2 h3 h4 h5 ul li ol)
     attributes = %w(href ref target src title alt width height frameborder allowfullscreen)
-    remove_blank_lines sanitize(text, tags: tags, attributes: attributes)
+    content = remove_blank_lines sanitize(text, tags: tags, attributes: attributes)
+    remove_control_character(content)
   end
 
   def bdnews_sanitize_tags(text)
@@ -84,7 +83,8 @@ module PostsHelper
     content = content.gsub('src', 'data-url').gsub('fr-fin fr-dib fr-tag', 'lazy-load')
     content = content.gsub(/<img.*?">/) { |match| '</p><p class="p-image">' + match + '</p><p class="p-text">' }
     content = '<p class="p-text">' + content + '</p>'
-    content.to_s.gsub('<p class="p-text"></p>', '')
+    content = content.to_s.gsub('<p class="p-text"></p>', '')
+    remove_control_character(content)
   end
 
   def uc_sanitize_tags(text)
