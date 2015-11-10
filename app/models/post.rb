@@ -409,7 +409,7 @@ class Post < ActiveRecord::Base
   end
 
   def fetch_related_posts
-    if self.tag_list.present? && self.tag_list_changed?
+    if(self.related_post_url_codes.blank? || (self.tag_list.present? && self.tag_list_changed?))
       self.update_column(:related_post_url_codes, get_related_post_url_codes)
       logger.info "update post##{self.url_code} related_posts for #{self.tag_list}"
     end
