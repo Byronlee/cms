@@ -11,15 +11,12 @@ module PostsHelper
                   "#{sub_str.sub(/<img.*?#{cover_real_url}.*?>/, '')}#{content[(cover_real_url.length + 300)..-1]}"
                 end
               end
-     content = sanitize_tags(content)
-     content = remove_blank_lines(content)
-     content = load_image_lazy(content)
-     content = href_add_ref_nofollow content
-     content = force_image_alt_to_post_title(content, title)
-     fix_wp_content_image(content)
+
+    post_content_format(content, title)
   end
 
-  def display_krtv_content(content,cover,title)
+  def display_krtv_content(content, cover, title)
+    return content if content.blank?
     youku_url = /(http:\/\/v.youku.com.*html)/im.match content #匹配去除优酷链接
     image = if cover.blank?
               cover
@@ -33,8 +30,14 @@ module PostsHelper
               else
                 content
               end
+
+    post_content_format(content, title)
+  end
+
+  def post_content_format(content, title)
     content = sanitize_tags(content)
     content = remove_blank_lines(content)
+    content = remove_control_character(content)
     content = load_image_lazy(content)
     content = href_add_ref_nofollow content
     content = force_image_alt_to_post_title(content, title)
@@ -91,6 +94,11 @@ module PostsHelper
 
   def remove_blank_lines(text)
     text.to_s.gsub('<p><br></p>', '')
+  end
+
+  def remove_control_character(text)
+    #该字符导致rss失效
+    text.to_s.gsub("\b", '')
   end
 
   def onblur_title(title)
