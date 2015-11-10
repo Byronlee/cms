@@ -171,15 +171,18 @@ class User < ActiveRecord::Base
   def invoke_rong_organization_api
     # 跑通测试临时方案，该方法应该mock
     return "save_no_needed" if Rails.env == 'test'
+    authen_sso_id = self.sso_id
+    authen_sso_id = self.krypton_authentication.uid if self.krypton_authentication
+    return "save_no_needed" if authen_sso_id.blank?
 
     if !['reader', 'operator'].include?(self.role)
-      params = { krId: self.krypton_authentication.uid, role: rong_role}
+      params = { krId: authen_sso_id, role: rong_role}
       if self.role == "organization"
         params[:orgId] = self.rong_organization_id
-        hash_key = "api_key=#{Settings.rong_api.api_key}&krId=#{self.krypton_authentication.uid}&orgId=#{params[:orgId]}&role=#{rong_role}"
+        hash_key = "api_key=#{Settings.rong_api.api_key}&krId=#{authen_sso_id}&orgId=#{params[:orgId]}&role=#{rong_role}"
         params[:md5] = rong_key(hash_key)
       else
-        hash_key = "api_key=#{Settings.rong_api.api_key}&krId=#{self.krypton_authentication.uid}&role=#{rong_role}"
+        hash_key = "api_key=#{Settings.rong_api.api_key}&krId=#{authen_sso_id}&role=#{rong_role}"
         params[:md5] = rong_key(hash_key)
 
         self.rong_organization_id = nil
@@ -196,8 +199,8 @@ class User < ActiveRecord::Base
 
       return "save_no_needed"
     else
-      params = { krId: self.krypton_authentication.uid}
-      hash_key = "api_key=#{Settings.rong_api.api_key}&krId=#{self.krypton_authentication.uid}"
+      params = { krId: authen_sso_id}
+      hash_key = "api_key=#{Settings.rong_api.api_key}&krId=#{authen_sso_id}"
       params[:md5] = rong_key(hash_key)
       response = Faraday.send(:delete, Settings.rong_api.organization_role, params)
       unless response.success?
