@@ -24,7 +24,7 @@ xml.rss 'xmlns:content' => "http://purl.org/rss/1.0/modules/content/", :version 
             xml.cdata! sanitize_tags feed.content
           end
           xml.category feed.column.name
-          xml.author feed.author.name
+          xml.author feed.author.display_name
           xml.source t('site_name')
           xml.pubDate feed.published_at && feed.published_at.to_s(:rfc822)
         end

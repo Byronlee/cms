@@ -20,7 +20,7 @@ xml.rss :version => "2.0" do
           xml.link post_url(feed)
           xml.guid post_url(feed)
           xml.source t('site_name')
-          xml.author feed.author.name
+          xml.author feed.author.display_name
           xml.link_3g post_url(feed)
         end
       end

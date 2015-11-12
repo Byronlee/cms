@@ -27,7 +27,7 @@ xml.rss :version => "2.0" do
           end
           xml.guid chouti_news_url(feed.url_code) + (params[:utm_source].present? ? ("?utm_source=" + params[:utm_source]) : "")
           xml.source t('site_name')
-          xml.author feed.author.name
+          xml.author feed.author.display_name
           xml.tags feed.tag_list
           xml.link_3g post_url(feed) + (params[:utm_source].present? ? ("?utm_source=" + params[:utm_source]) : "")
         end

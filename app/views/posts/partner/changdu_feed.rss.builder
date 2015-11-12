@@ -29,7 +29,7 @@ xml.rss 'xmlns:content' => "http://purl.org/rss/1.0/modules/content/", :version 
           end
           xml.guid "#{post_url feed.url_code, utm_source: params[:partner]}"
           xml.source t('site_name')
-          xml.author feed.author.name
+          xml.author feed.author.display_name
           xml.tags feed.tag_list
           xml.link_3g post_url(feed)
           xml.related do

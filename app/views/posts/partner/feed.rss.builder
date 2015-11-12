@@ -30,7 +30,7 @@ xml.rss :version => "2.0" do
           xml.guid "#{post_url feed.url_code, utm_source: params[:partner]}"
           xml.source t('site_name')
           xml.category feed.column.name
-          xml.author feed.author.name
+          xml.author feed.author.display_name
           xml.tags feed.tag_list
         end
       end

@@ -15,7 +15,7 @@ json.cache! [ :post, :feed, :json, @feeds.map{|c| c["updated_at"]}.max ] do
       json.link "#{post_url(feed)}?utm_source=dcloud"
       json.guid "#{post_url(feed)}?utm_source=dcloud"
       json.source t('site_name')
-      json.author feed.author.name
+      json.author feed.author.display_name
       json.link_3g "#{post_url(feed)}?utm_source=dcloud"
     end
 end

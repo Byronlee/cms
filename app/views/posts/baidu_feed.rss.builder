@@ -18,7 +18,7 @@ xml.rss :version => "2.0" do
           xml.link "http://36kr.com/baidu/#{feed.url_code}"
           xml.guid "http://36kr.com/baidu/#{feed.url_code}"
           xml.source t('site_name')
-          xml.author feed.author.name
+          xml.author feed.author.display_name
           xml.link_3g post_url(feed)
         end
       end

@@ -17,7 +17,7 @@ xml.rss :version => "2.0" do
       for feed in @feeds
         xml.item do
           xml.author do
-            xml.cdata! feed.author.name.present?? feed.author.name : '36氪'
+            xml.cdata! feed.author.display_name
           end
           xml.title do
             xml.cdata! feed.title
