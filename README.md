@@ -1,6 +1,6 @@
-## 36krx2015
+## CMS x2015
 
-36krx2015(2015年36kr主站).
+CMS x2015(2015年36kr主站).
 
 ### System dependencies
 
